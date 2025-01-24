@@ -20,6 +20,7 @@ const ServicesSection = () => {
               cardDescription={service.cardDescription}
               cardSubText={service.cardSubText}
               props={service.props}
+              key={service.cardTitle}
             />
           ))}
         </div>
