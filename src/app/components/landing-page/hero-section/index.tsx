@@ -41,6 +41,7 @@ const HeroSection = () => {
             height={574}
             className='h-[200px] lg:h-full w-full object-cover object-center'
             alt='mountains'
+            priority
           />
         </div>
       </section>
