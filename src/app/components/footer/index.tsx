@@ -52,7 +52,7 @@ const Footer = () => {
 
       <div className='w-full bg-gray-custom-100 lg:-mb-[0px] -z-50 relative'>
         <Image
-          src='/images/mountains_hero_footer.png'
+          src='/images/Mountains_hero_footer.png'
           width={3200}
           height={400}
           className='h-[200px] lg:h-full w-full object-cover object-center'
