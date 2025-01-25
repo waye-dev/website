@@ -4,16 +4,63 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Wrapper from "@/app/components/wrapper";
+import Jotform from "jotform";
+import { checkFormValues } from "@/utils";
+import { API_KEY, FORM_ID } from "@/config";
 
 const Footer = () => {
-  const [email, setEmail] = React.useState("");
-  const [error, setError] = React.useState(false);
-  const [success, setSuccess] = React.useState(false);
+  const jotform = new Jotform(API_KEY);
+
+  const [error, setError] = React.useState("");
+  const [success, setSuccess] = React.useState("");
+  const [formValues, setFormValues] = React.useState({ name: "", email: "" });
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setEmail(e.target.value);
+    const { name, value } = e.target;
+    setFormValues((prev) => ({ ...prev, [name]: value }));
   };
+
+  React.useEffect(() => {
+    checkFormValues(formValues.name, formValues.email, setError);
+  }, [formValues.name, formValues.email]);
+
+  async function handleSubscribe() {
+    const { name, email } = formValues;
+
+    const getSubmissions = await jotform.form.getSubmissions(FORM_ID, { limit: 1000, orderby: "ENABLED" });
+    const isEmailPresent = (getSubmissions.content as unknown as any[]).some((submission: any) => submission.answers["4"].answer === email);
+
+    if (isEmailPresent) {
+      setError("You are already subscribed");
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const submission = await jotform.form.addSubmissions(FORM_ID, [
+        {
+          "3_first": name,
+          "4": email,
+        },
+      ]);
+
+      setSuccess("Success! Thank you for subscribing :D");
+      setFormValues({ name: "", email: "" });
+      return submission;
+    } catch (error) {
+      console.log(error);
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Oops! Something went wrong. Please try again.");
+      }
+    } finally {
+      setIsLoading(false);
+      setFormValues({ name: "", email: "" });
+    }
+  }
 
   return (
     <div className='flex flex-col'>
@@ -24,29 +71,39 @@ const Footer = () => {
             <p className='text-lg text-center'>Subscribe for meaningful updates & insights. No clutter.</p>
           </section>
 
-          <section className='flex relative w-full max-w-[470px]'>
-            {/* TODO: add email validation and focused state */}
+          <section className='flex flex-col gap-[16px] w-full max-w-[470px]'>
+            <input
+              type='text'
+              required
+              placeholder='Name'
+              className='w-full rounded-[10px] p-4 min-h-[65px] border-2 border-gray-custom-200'
+              onChange={handleSubmit}
+              value={formValues.name}
+              name='name'
+            />
             <input
               type='email'
               required
               placeholder='yourname@email.com'
               className='w-full rounded-[10px] p-4 min-h-[65px] border-2 border-gray-custom-200'
               onChange={handleSubmit}
+              value={formValues.email}
+              name='email'
             />
-            <button className='bg-black text-white rounded-[10px] px-6 absolute right-2 top-2 bottom-2'>Subscribe</button>
+            <button className='bg-black text-white rounded-[10px] px-6 py-4' onClick={handleSubscribe}>
+              {isLoading ? "Submitting..." : "Subscribe"}
+            </button>
           </section>
-          {/* TODO: add error states */}
 
-          {success && (
+          {success ? (
             <div className='w-full flex flex-col items-center gap-[10px] mx-auto'>
-              <div className=''>
-                <p className=''>Success! Thank you for subscribing :)</p>
-              </div>
-              <div className=''>
-                <p>Oops! Something went wrong.</p>
-              </div>
+              <p className=''>Success! Thank you for subscribing </p>
             </div>
-          )}
+          ) : formValues.name || (formValues.email && error) ? (
+            <div className=''>
+              <p>{error}</p>
+            </div>
+          ) : null}
         </Wrapper>
       </div>
 
