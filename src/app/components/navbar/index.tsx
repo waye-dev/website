@@ -25,7 +25,9 @@ const Navbar = () => {
             Check out our <span className='font-medium text-lg underline'>current initiatives</span>.
           </Link>
           <div className='hidden md:flex items-center space-x-8'>
-            <CustomButton href='/subscribe'>Stay Updated</CustomButton>
+            <CustomButton href='/subscribe' className='lg:min-w-[183.66px] text-center'>
+              Stay Updated
+            </CustomButton>
           </div>
 
           <button className='md:hidden flex flex-col gap-2.5' onClick={() => setIsOpen(!isOpen)}>

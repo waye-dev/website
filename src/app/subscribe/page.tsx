@@ -1,6 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Wrapper from "@/app/components/wrapper";
+import { genPageMetadata } from "@/app/seo";
+
+export const metadata = genPageMetadata({
+  title: "Stay Updated with Waye | Subscribe",
+  description:
+    "Join the Waye community and stay informed about tools, programs, and initiatives for open-source developers. Subscribe to receive updates, insights, and resources to help you thrive.",
+});
 
 const page = () => {
   return (
@@ -16,7 +23,7 @@ const page = () => {
       </div>
 
       <div className='items-center justify-center mx-auto text-center w-full bg-gray-custom-100'>
-        <Wrapper className='pt-[72px] pb-[60px] max-w-[770px] flex flex-col gap-[15px]'>
+        <Wrapper className='pt-[72px] pb-[20px] max-w-[770px] flex flex-col gap-[15px]'>
           <p className='text-[32px] md:text-4xl font-medium'>We may be young, but we're feisty.</p>
           <p className='text-lg leading-[160%]'>
             We have lots brewing and would love to tell you about it. No clutter, no regular newsletters, just periodic updates when we've got
