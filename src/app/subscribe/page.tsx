@@ -7,6 +7,7 @@ export const metadata = genPageMetadata({
   title: "Stay Updated with Waye | Subscribe",
   description:
     "Join the Waye community and stay informed about tools, programs, and initiatives for open-source developers. Subscribe to receive updates, insights, and resources to help you thrive.",
+  url: "https://waye.dev/subscribe",
 });
 
 const page = () => {
