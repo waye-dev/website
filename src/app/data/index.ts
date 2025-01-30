@@ -21,13 +21,9 @@ export const SERVICES_SECTION_DATA = [
   },
 ] as Array<{
   src: string;
-  href: string;
-  buttonName: string;
   cardTitle: string;
   cardDescription: string;
   cardSubText: string;
-  className: string;
-  style: React.CSSProperties;
   props?: React.HTMLAttributes<HTMLDivElement>;
 }>;
 

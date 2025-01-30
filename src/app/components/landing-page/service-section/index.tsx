@@ -8,20 +8,13 @@ const ServicesSection = () => {
   return (
     <div className='bg-gray-custom-100'>
       <Wrapper className='pt-[90px] md:pb-[60px] px-4 md:px-8'>
-        <h2 className='text-[34px] md:text-[40px] lg:text-[46px] font-medium leading-[140%] tracking-tighter max-w-6xl '>
+        <h2 className='text-[34px] md:text-[40px] lg:text-[46px] font-medium leading-[140%] tracking-tighter lg:max-w-[60vw] '>
           Are you an open-source dev working on bitcoin, nostr, or other decentralized tech? Waye helps you maximize impact.
         </h2>
 
         <div className='pt-[60px] md:pt-[168px] flex flex-col gap-[90px] md:gap-[168px] py-[80px] md:py-[168px]'>
           {SERVICES_SECTION_DATA.map((service) => (
-            <ServicesComponent
-              src={service.src}
-              cardTitle={service.cardTitle}
-              cardDescription={service.cardDescription}
-              cardSubText={service.cardSubText}
-              props={service.props}
-              key={service.cardTitle}
-            />
+            <ServicesComponent {...service} key={service.cardTitle} />
           ))}
         </div>
       </Wrapper>

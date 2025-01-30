@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import Wrapper from "@/app/components/wrapper";
 import Jotform from "jotform";
-import { checkFormValues } from "@/utils";
+import { checkFormValues, isValidEmail, isValidName } from "@/utils";
 import { API_KEY, FORM_ID } from "@/config";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const jotform = new Jotform(API_KEY);
-
+  const pathname = usePathname();
+  const isSubscribePage = pathname === "/subscribe";
   const [error, setError] = React.useState("");
   const [success, setSuccess] = React.useState("");
   const [formValues, setFormValues] = React.useState({ name: "", email: "" });
@@ -52,7 +54,7 @@ const Footer = () => {
     } catch (error) {
       console.log(error);
       if (error instanceof Error) {
-        setError(error.message);
+        setError("Oops! Something went wrong. Please try again.");
       } else {
         setError("Oops! Something went wrong. Please try again.");
       }
@@ -62,14 +64,18 @@ const Footer = () => {
     }
   }
 
+  const isDisabled = isLoading === true || !isValidName(formValues.name) || !isValidEmail(formValues.email);
+
   return (
     <div className='flex flex-col'>
       <div className='w-full bg-gray-custom-100 pb-[132px]'>
         <Wrapper className=' flex flex-col gap-[30px] items-center justify-center'>
-          <section className='flex flex-col gap-[15px]'>
-            <p className='text-[32px] md:text-4xl font-medium text-center'>Stay up-to-date on all things Waye!</p>
-            <p className='text-lg text-center'>Subscribe for meaningful updates & insights. No clutter.</p>
-          </section>
+          {!isSubscribePage && (
+            <section className='flex flex-col gap-[15px]'>
+              <p className='text-[32px] md:text-4xl font-medium text-center'>Stay up-to-date on all things Waye!</p>
+              <p className='text-lg text-center'>Subscribe for meaningful updates & insights. No clutter.</p>
+            </section>
+          )}
 
           <section className='flex flex-col gap-[16px] w-full max-w-[470px]'>
             <input
@@ -90,14 +96,18 @@ const Footer = () => {
               value={formValues.email}
               name='email'
             />
-            <button className='bg-black text-white rounded-[10px] px-6 py-4' onClick={handleSubscribe}>
+            <button
+              className={`bg-black text-white rounded-[10px] px-6 py-4 ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={isDisabled}
+              onClick={handleSubscribe}
+            >
               {isLoading ? "Submitting..." : "Subscribe"}
             </button>
           </section>
 
           {success ? (
             <div className='w-full flex flex-col items-center gap-[10px] mx-auto'>
-              <p className=''>Success! Thank you for subscribing </p>
+              <p>`Success! Thank you for subscribing :)`</p>
             </div>
           ) : formValues.name || (formValues.email && error) ? (
             <div className=''>
@@ -112,7 +122,7 @@ const Footer = () => {
           src='/images/Mountains_hero_footer.png'
           width={3200}
           height={400}
-          className='h-[200px] lg:h-full w-full object-cover object-center'
+          className='h-[200px] lg:h-full lg:min-h-[350px] w-full object-cover object-center'
           alt='mountains footer'
         />
       </div>
@@ -120,7 +130,7 @@ const Footer = () => {
       <div className='bg-blue-custom-100  w-full text-gray-custom-100 pb-10 z-20'>
         <Wrapper className='py-[60px] flex flex-col items-center md:items-start text-center md:text-left gap-3 md:gap-[30px] '>
           <Link href='/' className='text-[40px] font-medium'>
-            waye
+            <Image src='/images/waye-text.png' width={94} height={34.31} alt='waye footer logo' />
           </Link>
           <p className='pb-[10px] font-light md:font-medium'>Strengthening the human infrastructure of open source.</p>
           <Link href='mailto:waye.dev@gmail.com' className='pb-[22px] font-light md:font-medium flex items-center gap-3'>
