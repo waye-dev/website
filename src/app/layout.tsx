@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     creator: "@waye_dev",
     images: ["https://waye.dev/images/webclip.webp"],
   },
