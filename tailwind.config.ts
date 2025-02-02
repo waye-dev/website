@@ -18,11 +18,15 @@ export default {
           "custom-500": "#cce5fa",
           "custom-600": "#c4def8",
           "custom-700": "#eff6fc",
+          "custom-800": "#B8C8D9BF",
         },
         gray: {
           "custom-100": "#fdf7ec",
           "custom-200": "#333",
           "custom-300": "#fcfbe9",
+        },
+        orange: {
+          "custom-100": "#FBE5C4",
         },
       },
     },
