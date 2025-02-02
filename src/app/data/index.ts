@@ -37,6 +37,7 @@ export const INITIATIVES_SECTION_DATA = [
     advertText: "",
     linkText: "Explore the program",
     href: "/initiatives/os-reboot",
+    filterKey: "program",
   },
   {
     src: "/images/dialogue-image.png",
@@ -45,8 +46,9 @@ export const INITIATIVES_SECTION_DATA = [
       "Explore bitcoin’s implications for humanity through these discussion-based seminars. Learn from Plato and Aristotle to Diffie and Hellman. Engage critically with controversial thinkers and define your internal compass. World-changing open-source infrastructure doesn’t happen aimlessly.",
     infoText: "More details coming soon.",
     advertText: "",
-    linkText: "",
-    href: "",
+    linkText: "Explore the program",
+    href: "/initiatives/decentralized-dialogues",
+    filterKey: "program",
   },
   {
     src: "/images/toolbox-image.png",
@@ -57,6 +59,7 @@ export const INITIATIVES_SECTION_DATA = [
     advertText: "",
     linkText: "Check out the template",
     href: "https://docs.google.com/document/d/17iFCmubO37MeREXWlvjqDFmjx3n9vWTkfJp-ZLy1mDo/edit?usp=sharing",
+    filterKey: "tool",
   },
   {
     src: "/images/onboarding-image.png",
@@ -67,6 +70,7 @@ export const INITIATIVES_SECTION_DATA = [
     advertText: "Do you run a developer training program?",
     linkText: "Join the community",
     href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
+    filterKey: "program",
   },
   {
     src: "/images/research-image.png",
@@ -77,6 +81,7 @@ export const INITIATIVES_SECTION_DATA = [
     advertText: "",
     linkText: "",
     href: "",
+    filterKey: "research",
   },
   {
     src: "/images/idea-image.png",
@@ -88,5 +93,13 @@ export const INITIATIVES_SECTION_DATA = [
     linkText: "Pitch your idea",
     href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
     props: { style: { backgroundColor: "transparent" } },
+    filterKey: "",
   },
+];
+
+export const INITIATIVES_FILTER_KEYS = [
+  { key: "program", label: "programs" },
+  { key: "tool", label: "tools" },
+  { key: "research", label: "research" },
+  { key: "all", label: "all" },
 ];
