@@ -73,7 +73,7 @@ const Footer = () => {
           {!isSubscribePage && (
             <section className='flex flex-col gap-[15px]'>
               <p className='text-[32px] md:text-4xl font-medium text-center'>Stay up-to-date on all things Waye!</p>
-              <p className='text-lg text-center'>Subscribe for meaningful updates & insights. No clutter.</p>
+              <p className='text-lg text-center'>Get valuable updates and insights—just the good stuff, no clutter.</p>
             </section>
           )}
 
