@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
 import Wrapper from "../wrapper";
-import { INITIATIVES_FILTER_KEYS, INITIATIVES_SECTION_DATA } from "../../data";
+import React, { useState, useMemo } from "react";
 import { InitiativesCard } from "./initiatives-card";
+import { motion, AnimatePresence } from "framer-motion";
+import { INITIATIVES_FILTER_KEYS, INITIATIVES_SECTION_DATA } from "../../data";
 
 type InititativeFilterKeys = "all" | "program" | "tool" | "research" | "";
 
@@ -54,11 +55,21 @@ const InitiativesSection = () => {
       </Wrapper>
 
       <Wrapper>
-        <div className='pt-[60px] pb-[114px] max-w-[936px] mx-auto flex flex-col gap-10 md:gap-[60px]'>
-          {memoizedInitiativesData.map((item) => (
-            <InitiativesCard key={item.title} {...item} props={{ ...item.props }} />
-          ))}
-        </div>
+        <motion.div className='pt-[60px] pb-[114px] max-w-[936px] mx-auto flex flex-col gap-10 md:gap-[60px]'>
+          <AnimatePresence mode='wait'>
+            {memoizedInitiativesData.map((item) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <InitiativesCard {...item} props={{ ...item.props }} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </Wrapper>
     </div>
   );
