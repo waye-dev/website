@@ -22,19 +22,19 @@ export const metadata: Metadata = {
     title: "Waye",
     description:
       "A website to discover tools, programs, and support systems designed to help open-source developers thrive. Waye empowers builders to stay clear-headed, motivated, and aligned for long-term impact.",
-    url: "https://waye.dev",
+    url: "https://www.waye.dev",
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: "https://waye.dev/images/webclip.webp",
+        url: "https://www.waye.dev/images/webclip.webp",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@waye_dev",
-    images: ["https://waye.dev/images/webclip.webp"],
+    images: ["https://www.waye.dev/images/webclip.webp"],
   },
 };
 
