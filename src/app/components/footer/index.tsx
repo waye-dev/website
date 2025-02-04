@@ -97,7 +97,7 @@ const Footer = () => {
               name='email'
             />
             <button
-              className={`bg-black text-white rounded-[10px] px-6 py-4 ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+              className={`bg-black text-white rounded-[10px] px-6 py-4 ${isDisabled ? "cursor-not-allowed" : ""}`}
               disabled={isDisabled}
               onClick={handleSubscribe}
             >
@@ -107,7 +107,7 @@ const Footer = () => {
 
           {success ? (
             <div className='w-full flex flex-col items-center gap-[10px] mx-auto'>
-              <p>`Success! Thank you for subscribing :)`</p>
+              <p>Success! Thank you for subscribing :)</p>
             </div>
           ) : formValues.name || (formValues.email && error) ? (
             <div className=''>
