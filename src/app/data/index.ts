@@ -33,7 +33,7 @@ export const INITIATIVES_SECTION_DATA = [
     title: "OS Reboot",
     description:
       "OS Reboot is your reset button. Through expert-led monthly deep dives, we cut through the noise, tackle everything from burnout to imposter syndrome, and help you refocus—so you can build with clarity, purpose, and renewed energy.",
-    infoText: "More details coming soon.",
+    infoText: "",
     advertText: "",
     linkText: "Sign up for a program",
     href: "/initiatives/os-reboot",
