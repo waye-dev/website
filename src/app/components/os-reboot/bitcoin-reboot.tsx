@@ -108,7 +108,7 @@ const BitcoinReboot = () => {
       </section>
 
       <section className='pt-[40px]'>
-        <CardHeading title='What join?' />
+        <CardHeading title='Why join?' />
         <section className='text-lg leading-[28.8px] flex flex-col gap-[28.8px]'>
           <p>
             Open source isn’t a solo mission, and neither is this. OS Reboot gives you the structure, connections, and expert guidance to make your

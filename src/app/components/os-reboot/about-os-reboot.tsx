@@ -41,7 +41,7 @@ const AboutOSReboot = () => {
       <section className='pt-[40px] md:pt-[80px] pb-[30px] md:pb-[40px]'>
         <CTACard
           title='Ready to reboot?'
-          description='Scroll down the page to learn more about our OS Reboot programs or explore one of our open programs:'
+          description='Explore our programs and sign up for the one that’s right for you.'
           buttonLinks={buttonLinks}
         />
       </section>
@@ -90,7 +90,7 @@ const AboutOSReboot = () => {
       <section className='pt-[50px] sm:pt-[60px]'>
         <CTACard
           title='Ready to reboot?'
-          description='Scroll down the page to learn more about our OS Reboot programs or explore one of our open programs:'
+          description='Explore our programs and sign up for the one that’s right for you.'
           buttonLinks={buttonLinks}
         />
       </section>
