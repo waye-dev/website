@@ -8,7 +8,7 @@ export const SERVICES_SECTION_DATA = [
   },
   {
     src: "waye_backpack-p-800",
-    cardTitle: "Get Focused.",
+    cardTitle: "Get focused.",
     cardDescription: `40 hour workweeks are outdated. Want to be an effective knowledge worker? Listen to the research: our brains have a max of ~4 hours of deep focus per day. Sprint hard. Rest hard. Repeat.`,
     cardSubText: "Turn ambition into impact.",
     props: { className: "flex flex-col md:flex-row-reverse gap-8 justify-between items-center " },
@@ -30,12 +30,12 @@ export const SERVICES_SECTION_DATA = [
 export const INITIATIVES_SECTION_DATA = [
   {
     src: "/images/os-reboot-image.png",
-    title: "OS Reboot: Nostara Edition",
+    title: "OS Reboot",
     description:
-      "To be effective in open-source, you have to wear many hats. This 8-session coaching protocol supports navigating the complexities of the open-source realm, so you can focus on what you do best: building censorship resistant communication.",
+      "OS Reboot is your reset button. Through expert-led monthly deep dives, we cut through the noise, tackle everything from burnout to imposter syndrome, and help you refocus—so you can build with clarity, purpose, and renewed energy.",
     infoText: "More details coming soon.",
     advertText: "",
-    linkText: "Explore the program",
+    linkText: "Sign up for a program",
     href: "/initiatives/os-reboot",
     filterKey: "program",
   },

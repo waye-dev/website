@@ -39,7 +39,7 @@ const InitiativesSection = () => {
           Open-source needs you to keep building. Waye keeps you focused. Get involved, sign up, and let us know what you'd like to see.
         </p>
 
-        <div className='flex items-center gap-2.5'>
+        <div className='flex items-center gap-2.5 flex-wrap'>
           {INITIATIVES_FILTER_KEYS.map(({ key, label }) => (
             <button
               key={key}

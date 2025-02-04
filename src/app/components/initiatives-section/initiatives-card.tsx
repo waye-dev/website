@@ -33,16 +33,14 @@ export const InitiativesCard = ({
 
       <section className='flex flex-col items-start gap-[14px] text-lg leading-[28.8px] text-black'>
         {filterKey && (
-          <button className='border border-black rounded-full bg-orange-custom-100 uppercase text-base leading-[25.2px] py-[4.5px] px-[13px]'>
-            {filterKey}
-          </button>
+          <button className='border border-black rounded-full uppercase text-base leading-[25.2px] py-[4.5px] px-[13px]'>{filterKey}</button>
         )}
         <p className='text-[28px] leading-[160%] font-medium'>{title}</p>
         <p>{description}</p>
         {infoText && <p>{infoText}</p>}
         {advertText && <p className='font-medium'>{advertText}</p>}
         {href.length ? (
-          <Link href={href} className='flex items-center gap-2'>
+          <Link href={href} target={href.startsWith("http") ? "_blank" : "_self"} className='flex items-center gap-2'>
             <span className='underline-offset-8 underline'>{linkText}</span>
             <span className='text-blue-custom-100'>→</span>
           </Link>

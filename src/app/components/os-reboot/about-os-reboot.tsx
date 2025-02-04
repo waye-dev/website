@@ -10,7 +10,7 @@ const AboutOSReboot = () => {
       text: "Reboot NOSTR",
     },
     {
-      link: "https://form.jotform.com/250026446325046",
+      link: "https://form.jotform.com/250226065727051",
       text: "Reboot Bitcoin",
     },
   ];
@@ -27,30 +27,6 @@ const AboutOSReboot = () => {
           <Image src='/images/mountain-climbers.png' alt='mountain climbers' width={653} height={400} className='' />
         </section>
       </div>
-
-      <section className='pt-[30px] sm:pt-[60px]'>
-        <DetailsCard
-          timeline={
-            <span className='flex flex-col gap-1'>
-              <span>8 virtual sessions, Feb - July 2025</span>
-              <span className='font-medium='>Feb 12 ✧ Mar 3 ✧ Mar 26 ✧ Apr 16 ✧ May 7 ✧ Jun 4 ✧ Jun 25 ✧ Jul 16</span>
-            </span>
-          }
-          location={<span>Virtual; 4PM GMT</span>}
-          tldr={
-            <span>Take a step back, look at the bigger picture, see where your work fits in & make sure you are on track to f*ck some sh*t up.</span>
-          }
-        />
-      </section>
-
-      <section className='pt-[40px]'>
-        <CTACard
-          title='Ready to reboot?'
-          description='Scroll down the page to learn more about our OS Reboot programs or explore one of our open programs:'
-          buttonLinks={buttonLinks}
-        />
-      </section>
-
       <section className='pt-10 sm:pt-[69px]'>
         <CardHeading title='What is OS Reboot?' />
         <section className='flex flex-col gap-[27px]'>
@@ -62,6 +38,13 @@ const AboutOSReboot = () => {
         </section>
       </section>
 
+      <section className='pt-[40px]'>
+        <CTACard
+          title='Ready to reboot?'
+          description='Scroll down the page to learn more about our OS Reboot programs or explore one of our open programs:'
+          buttonLinks={buttonLinks}
+        />
+      </section>
       <section className='pt-[30px] sm:pt-[40px]'>
         <CardHeading title='What is it for?' />
         <section className='flex flex-col gap-[19px]'>
@@ -84,7 +67,6 @@ const AboutOSReboot = () => {
           </p>
         </section>
       </section>
-
       <section className='pt-[40px]'>
         <CardHeading title='Why join?' />
         <section className='flex flex-col gap-[20px]'>
@@ -105,7 +87,6 @@ const AboutOSReboot = () => {
           </section>
         </section>
       </section>
-
       <section className='pt-[50px] sm:pt-[60px]'>
         <CTACard
           title='Ready to reboot?'
@@ -113,7 +94,6 @@ const AboutOSReboot = () => {
           buttonLinks={buttonLinks}
         />
       </section>
-
       <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
         <p className='text-xl leading-[160%] font-medium'>Questions?</p>
         <div className='text-lg leading-[160%]'>

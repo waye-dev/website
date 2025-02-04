@@ -4,9 +4,9 @@ import CustomButton from "@/app/components/custom-button";
 
 const HeroSection = () => {
   return (
-    <div className='max-h-screen h-[calc(100vh-75.5px)] md:h-[calc(100vh-98.3px)] bg-blue-custom-100 bg-gradient-to-b from-[#1a1f36] to-[#7192f55c] via-[#7192f51c] text-gray-custom-100'>
+    <div className='max-h-screen h-[calc(100vh-75.5px)] md:h-[calc(100vh-98.3px)] bg-blue-custom-100 bg-gradient-to-b from-[#1a1f36] to-[#7192f55c] via-[#7192f51c] text-gray-custom-100 flex flex-col justify-between relative'>
       <section className='h-full flex flex-col justify-between text-gray-custom-100'>
-        <div className='container mx-auto px-4 md:px-8 pb-9 z-10 h-full md:h-[80%] lg:h-[75%] flex flex-col justify-center items-center'>
+        <div className='container mx-auto px-4 md:px-8 pb-9 z-10 h-[85%] md:h-[80%] lg:h-[75%] flex flex-col justify-center items-center'>
           <div className='max-w-4xl mx-auto'>
             <h1 className='text-[42px] md:text-[60px] leading-[140%] md:leading-[80px] mb-8 text-center'>
               Building freedom tech is hard. Don't do it alone.
