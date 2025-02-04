@@ -44,7 +44,7 @@ export const INITIATIVES_SECTION_DATA = [
     title: "Decentralized Dialogues",
     description:
       "Explore bitcoin’s implications for humanity through these discussion-based seminars. Learn from Plato and Aristotle to Diffie and Hellman. Engage critically with controversial thinkers and define your internal compass. World-changing open-source infrastructure doesn’t happen aimlessly.",
-    infoText: "More details coming soon.",
+    infoText: "",
     advertText: "",
     linkText: "Explore the program",
     href: "/initiatives/decentralized-dialogues",
