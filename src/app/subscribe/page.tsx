@@ -25,10 +25,9 @@ const page = () => {
 
       <div className='items-center justify-center mx-auto text-center w-full bg-gray-custom-100'>
         <Wrapper className='pt-[72px] pb-[20px] max-w-[770px] flex flex-col gap-[15px]'>
-          <p className='text-[32px] md:text-4xl font-medium'>We may be young, but we're feisty.</p>
+          <p className='text-[32px] md:text-4xl font-medium'>Sign up for the Waye mailing list!</p>
           <p className='text-lg leading-[160%]'>
-            We have lots brewing and would love to tell you about it. No clutter, no regular newsletters, just periodic updates when we've got
-            something exciting to share.
+            For now, we are choosing silence over spam. But we have a lot brewing and can't wait to tell you all about it.
             <br />
             <br />
             <span className='text-lg font-medium md:font-normal'>Join our mailing list ↓</span>
