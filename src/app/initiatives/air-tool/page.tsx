@@ -165,8 +165,8 @@ const page = () => {
 
             <div className='text-lg leading-[160%]'>
               <p>Your feedback helps us improve and create tools that serve you better.</p>
-              <Link href='mailto:waye.dev@gmail.com' className='flex items-center gap-2'>
-                <span className='underline-offset-8 underline'>waye.dev@gmail.com</span>
+              <Link href='https://form.jotform.com/243196595832064' target='_blank' className='flex items-center gap-2'>
+                <span className='underline-offset-8 underline'>Take the feedback survey</span>
                 <span className='text-blue-custom-100'>
                   <Image src='/svgs/forward-arrow-icon.svg' alt='forward-arrow-icon' width={16} height={26} />
                 </span>
