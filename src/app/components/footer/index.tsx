@@ -31,7 +31,7 @@ const Footer = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch("/api/subscribe", {
+      const response = await fetch("/subscribe-newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email }),
@@ -47,17 +47,22 @@ const Footer = () => {
 
       if (response.status === 400) {
         const data = await response.json();
+
         if (data?.title?.toLowerCase().includes("member exists")) {
           setError("You are already subscribed to our newsletter");
           return;
         }
       }
     } catch (error) {
+      console.log({ error });
       setIsLoading(false);
-      console.error({ error });
       if (error instanceof Error) {
         setError(error.message);
+      } else {
+        setError("An error occurred, please try again later.");
       }
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -112,12 +117,10 @@ const Footer = () => {
 
           {success ? (
             <div className='w-full flex flex-col items-center gap-[10px] mx-auto'>
-              <p>Success! Thank you for subscribing :)</p>
+              <p>{success}</p>
             </div>
           ) : formValues.name || (formValues.email && error) ? (
-            <div className=''>
-              <p>{error}</p>
-            </div>
+            <p className='text-red-500'>{error}</p>
           ) : null}
         </Wrapper>
       </div>
