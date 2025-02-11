@@ -22,7 +22,7 @@ const ContentTabs = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabContent = {
-    "0": <AboutOSReboot />,
+    "0": <AboutOSReboot setActiveTab={setActiveTab} />,
     "1": <NostrReboot />,
     "2": <BitcoinReboot />,
   } as Record<string, React.JSX.Element>;

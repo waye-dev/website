@@ -1,20 +1,9 @@
 import Image from "next/image";
-import React from "react";
+import React, { useCallback } from "react";
 import Link from "next/link";
-import { CardHeading, CTACard, DetailsCard } from "./cards";
+import { CardHeading } from "./cards";
 
-const AboutOSReboot = () => {
-  const buttonLinks = [
-    {
-      link: "https://form.jotform.com/250026446325046",
-      text: "Reboot NOSTR",
-    },
-    {
-      link: "https://form.jotform.com/250226065727051",
-      text: "Reboot Bitcoin",
-    },
-  ];
-
+const AboutOSReboot = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
   return (
     <div>
       <div className='flex gap-4 flex-col sm:flex-row sm:relative justify-between'>
@@ -39,12 +28,9 @@ const AboutOSReboot = () => {
       </section>
 
       <section className='pt-[40px] md:pt-[80px] pb-[30px] md:pb-[40px]'>
-        <CTACard
-          title='Ready to reboot?'
-          description='Explore our programs and sign up for the one that’s right for you.'
-          buttonLinks={buttonLinks}
-        />
+        <OsRebootCard setActiveTab={setActiveTab} />
       </section>
+
       <section className='pt-[30px] sm:pt-[40px]'>
         <CardHeading title='What is it for?' />
         <section className='flex flex-col gap-[19px]'>
@@ -88,12 +74,9 @@ const AboutOSReboot = () => {
         </section>
       </section>
       <section className='pt-[50px] sm:pt-[60px]'>
-        <CTACard
-          title='Ready to reboot?'
-          description='Explore our programs and sign up for the one that’s right for you.'
-          buttonLinks={buttonLinks}
-        />
+        <OsRebootCard setActiveTab={setActiveTab} />
       </section>
+
       <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
         <p className='text-xl leading-[160%] font-medium'>Questions?</p>
         <div className='text-lg leading-[160%]'>
@@ -104,6 +87,50 @@ const AboutOSReboot = () => {
           </Link>
         </div>
       </section>
+    </div>
+  );
+};
+
+const OsRebootCard = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+  const buttonLinks = [
+    {
+      text: "Reboot NOSTR",
+    },
+    {
+      text: "Reboot Bitcoin",
+    },
+  ];
+
+  return (
+    <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[55px] bg-blue-custom-600 rounded-[10px] w-full md:min-w-[400px]'>
+      <section>
+        <p className={`text-[22px] leading-[160%] font-medium w-full`}>Ready to reboot?</p>
+      </section>
+      <p className='text-lg leading-[25.5px] sm:leading-[28.8px]'>Explore our programs and sign up for the one that’s right for you.</p>
+
+      {buttonLinks && (
+        <section className='flex flex-col md:flex-row gap-[14px] mt-[25px] md:mt-[35px]'>
+          {buttonLinks.map((btn, index) => (
+            <button
+              key={index}
+              className='rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[55px] text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit'
+              onClick={() => {
+                setActiveTab(index + 1);
+                scrollToTop();
+              }}
+            >
+              {btn.text}
+            </button>
+          ))}
+        </section>
+      )}
     </div>
   );
 };

@@ -4,13 +4,6 @@ import Image from "next/image";
 import { CardHeading, CTACard, DetailsCard } from "./cards";
 
 const NostrRebbot = () => {
-  const buttonLinks = [
-    {
-      link: "https://form.jotform.com/250026446325046",
-      text: "Reboot NOSTR",
-    },
-  ];
-
   return (
     <div>
       <div className='flex gap-4 flex-col sm:flex-row sm:relative justify-between'>
@@ -44,11 +37,17 @@ const NostrRebbot = () => {
           title='Ready to reboot?'
           description={
             <span>
-              Ready to reboot? You have until <span className='font-medium'>February 3rd</span> to sign up & help architect our framework.
+              <span className='mt-[20px]'>
+                Enrollment for this program is closed. Check out our open Reboot and sign up, or{" "}
+                <span className='underline'>
+                  <Link href='mailto:waye.dev@gmail.com'>email us</Link>
+                </span>{" "}
+                if this one truly speaks to you.
+              </span>
             </span>
           }
-          buttonLinks={buttonLinks}
           underline
+          descriptionProps={{ className: "pt-[10px] text-lg leading-[25.5px] sm:leading-[28.8px]" }}
         />
       </section>
 
@@ -174,10 +173,15 @@ const NostrRebbot = () => {
           title='Ready to reboot?'
           description={
             <span>
-              Ready to reboot? You have until <span className='font-medium'>February 3rd</span> to sign up & help architect our framework.
+              <span className='mt-[20px]'>
+                Enrollment for this program is closed. Check out our open Reboot and sign up, or{" "}
+                <span className='underline'>
+                  <Link href='mailto:waye.dev@gmail.com'>email us</Link>
+                </span>{" "}
+                if this one truly speaks to you.
+              </span>
             </span>
           }
-          buttonLinks={buttonLinks}
         />
       </section>
 
