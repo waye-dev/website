@@ -1,7 +1,7 @@
 import { MAILCHIMP_API_KEY, MAILCHIMP_LIST_ID, MAILCHIMP_SERVER } from "@/config";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: NextRequest, res: NextResponse) {
+export async function POST(request: NextRequest) {
   try {
     const { email, name } = await request.json();
 
