@@ -14,7 +14,7 @@ const page = () => {
   return (
     <div className='bg-gray-custom-100 text-black pt-10 md:pt-[128px] pb-[130px]'>
       <Wrapper>
-        <div className='max-w-[1133px] mx-auto rounded-[20px] border-2 border-black p-4 md:p-5 lg:p-10 bg-blue-custom-700'>
+        <div className='max-w-[1030px] mx-auto rounded-[20px] border-2 border-black p-4 md:p-5 lg:p-10 bg-blue-custom-700'>
           <section className='flex flex-col border-b-2 border-b-black pb-5 mb-[30px]'>
             <h1 className='text-[42px] md:text-[52px]'>Decentralized Dialogues</h1>
             <p className='text-[22px] md:text-2xl'>Challenge your perspectives, build better systems.</p>
@@ -24,7 +24,7 @@ const page = () => {
             <div className='flex flex-col gap-4 text-lg max-w-[540px]'>
               <section>
                 <p className='font-semibold underline underline-offset-4'>TIMELINE:</p>
-                <p>12 sessions, February 2025 - January 2026</p>
+                <p> 12 sessions, March 2025 - February 2026</p>
               </section>
 
               <section>
@@ -41,14 +41,14 @@ const page = () => {
             <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[55px] bg-blue-custom-600 rounded-[10px] w-full md:min-w-[400px]'>
               <p className='text-[22px] leading-[160%] font-medium'>Ready to explore bitcoin's transformative potential?</p>
               <p className='text-lg'>
-                You have until <span className='font-semibold'>February 20th</span> to secure your spot in this exclusive seminar series. Only 10
-                seats available—don’t miss out.
+                You have until <span className='font-semibold'>March 15th</span> to secure your spot in this exclusive seminar series. Only 10 seats
+                available—don’t miss out.
               </p>
               <CustomButton
-                href='https://form.jotform.com/250206134622040'
+                href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
                 props={{
                   className:
-                    "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[43px] text-black text-nowrap border-2 border-black flex items-center justify-center mt-[25px] md:mt-[50px] md:w-fit",
+                    "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[43px] text-black text-nowrap border-2 border-black flex items-center justify-center mt-[25px] md:mt-[50px] md:w-fit underline",
                   target: "_blank",
                 }}
               >
@@ -183,24 +183,25 @@ const page = () => {
             </section>
 
             <section className='flex flex-col gap-[28px]'>
-              <p className='text-lg leading-[160%]'>12 sessions, February - January 2026, online @ 5PM GMT on the last Wednesday of each month:</p>
+              <p className='text-lg leading-[160%]'>12 sessions, March - February 2026, online @ 5PM GMT on the last Wednesday of each month:</p>
               <p className='font-semibold text-lg leading-[160%]'>
-                Feb 26 ✧ Mar 26 ✧ Apr 30 ✧ May 28 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 26 ✧ Dec 31 ✧ Jan 28
+                Mar 26 ✧ Apr 30 ✧ May 28 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 26 ✧ Dec 31 ✧ Jan 28 ✧ Feb 25{" "}
               </p>
 
               <p className='text-lg leading-[160%]'>If these times don’t work for you but you’re interested, let us know!</p>
 
-              <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[60px] max-w-[772px] bg-blue-custom-600 rounded-[10px] w-full'>
+              <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[60px] bg-blue-custom-600 rounded-[10px] w-full'>
                 <p className='text-[22px] leading-[160%] font-medium'>Ready to explore bitcoin's transformative potential?</p>
                 <p className='text-lg'>
-                  You have until <span className='font-semibold'>February 20th</span> to secure your spot in this exclusive seminar series. Only 10
-                  seats available—don’t miss out.
+                  You have until <span className='font-semibold'>March 15th</span> to secure your spot in this exclusive seminar series. Only 10 seats
+                  available—don’t miss out.
                 </p>
                 <CustomButton
-                  href='https://form.jotform.com/250206134622040'
+                  href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
                   props={{
                     className:
-                      "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[14px] px-[38px] text-black text-nowrap border-2 border-black flex items-center justify-center mt-[35px] md:w-fit",
+                      "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[14px] px-[38px] text-black text-nowrap border-2 border-black flex items-center justify-center mt-[35px] md:w-fit underline",
+                    target: "_blank",
                   }}
                 >
                   Join the Dialogue
