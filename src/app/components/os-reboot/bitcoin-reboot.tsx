@@ -6,7 +6,7 @@ import { CardHeading, CTACard, DetailsCard } from "./cards";
 const BitcoinReboot = () => {
   const buttonLinks = [
     {
-      link: "https://form.jotform.com/250226065727051",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSfNrpjygyjOlaexrPhMoWb0RUDqSmW238HMl82JCCRDYyJzFA/viewform",
       text: "Reboot Bitcoin",
     },
   ];
@@ -41,7 +41,11 @@ const BitcoinReboot = () => {
           title='Ready to reboot?'
           description={<span className='pt-[10px]'>Sign up now, and we’ll set the dates together.</span>}
           buttonLinks={buttonLinks}
-          underline
+          buttonProps={{
+            className:
+              "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[54px] underline text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit",
+            target: "_blank",
+          }}
         />
       </section>
 
@@ -143,7 +147,16 @@ const BitcoinReboot = () => {
       </section>
 
       <section className='pt-[30px] sm:pt-[40px]'>
-        <CTACard title='Ready to reboot?' description={<span>Sign up now, and we’ll set the dates together.</span>} buttonLinks={buttonLinks} />
+        <CTACard
+          title='Ready to reboot?'
+          description={<span>Sign up now, and we’ll set the dates together.</span>}
+          buttonLinks={buttonLinks}
+          buttonProps={{
+            className:
+              "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[54px] underline text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit",
+            target: "_blank",
+          }}
+        />
       </section>
 
       <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
