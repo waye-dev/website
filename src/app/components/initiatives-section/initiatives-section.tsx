@@ -56,7 +56,7 @@ const InitiativesSection = () => {
 
       <Wrapper>
         <motion.div className='pt-[60px] pb-[114px] max-w-[936px] mx-auto flex flex-col gap-10 md:gap-[60px]'>
-          <AnimatePresence mode='wait'>
+          <AnimatePresence mode='sync'>
             {memoizedInitiativesData.map((item) => (
               <motion.div
                 key={item.title}

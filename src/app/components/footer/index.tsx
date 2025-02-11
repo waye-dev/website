@@ -3,16 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Wrapper from "@/app/components/wrapper";
-import Jotform from "jotform";
-import { checkFormValues, isValidEmail, isValidName } from "@/utils";
-import { API_KEY, FORM_ID } from "@/config";
 import { usePathname } from "next/navigation";
+import Wrapper from "@/app/components/wrapper";
+import { checkFormValues, isValidEmail, isValidName } from "@/utils";
 
 const Footer = () => {
-  const jotform = new Jotform(API_KEY);
   const pathname = usePathname();
   const isSubscribePage = pathname === "/subscribe";
+
   const [error, setError] = React.useState("");
   const [success, setSuccess] = React.useState("");
   const [formValues, setFormValues] = React.useState({ name: "", email: "" });
@@ -31,36 +29,35 @@ const Footer = () => {
   async function handleSubscribe() {
     const { name, email } = formValues;
 
-    const getSubmissions = await jotform.form.getSubmissions(FORM_ID, { limit: 1000, orderby: "ENABLED" });
-    const isEmailPresent = (getSubmissions.content as unknown as any[]).some((submission: any) => submission.answers["4"].answer === email);
-
-    if (isEmailPresent) {
-      setError("You are already subscribed");
-      return;
-    }
-
     try {
       setIsLoading(true);
-      const submission = await jotform.form.addSubmissions(FORM_ID, [
-        {
-          "3_first": name,
-          "4": email,
-        },
-      ]);
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
+      });
 
-      setSuccess("Success! Thank you for subscribing :D");
-      setFormValues({ name: "", email: "" });
-      return submission;
-    } catch (error) {
-      console.log(error);
-      if (error instanceof Error) {
-        setError("Oops! Something went wrong. Please try again.");
-      } else {
-        setError("Oops! Something went wrong. Please try again.");
+      if (response.ok) {
+        const data = await response.json();
+        setSuccess(data.message);
+        setFormValues({ name: "", email: "" });
+        setIsLoading(false);
+        return;
       }
-    } finally {
+
+      if (response.status === 400) {
+        const data = await response.json();
+        if (data?.title?.toLowerCase().includes("member exists")) {
+          setError("You are already subscribed to our newsletter");
+          return;
+        }
+      }
+    } catch (error) {
       setIsLoading(false);
-      setFormValues({ name: "", email: "" });
+      console.error({ error });
+      if (error instanceof Error) {
+        setError(error.message);
+      }
     }
   }
 
@@ -72,8 +69,10 @@ const Footer = () => {
         <Wrapper className=' flex flex-col gap-[30px] items-center justify-center'>
           {!isSubscribePage && (
             <section className='flex flex-col gap-[15px]'>
-              <p className='text-[32px] md:text-4xl font-medium text-center'>Stay up-to-date on all things Waye!</p>
-              <p className='text-lg text-center'>Get valuable updates and insights—just the good stuff, no clutter.</p>
+              <p className='text-[32px] md:text-4xl font-medium text-center'>Sign up for the Waye mailing list!</p>
+              <p className='text-lg text-center max-w-[604px]'>
+                For now, we are choosing silence over spam. But we have a lot brewing and can't wait to tell you all about it.
+              </p>
             </section>
           )}
 
@@ -97,11 +96,17 @@ const Footer = () => {
               name='email'
             />
             <button
-              className={`bg-black text-white rounded-[10px] px-6 py-4 ${isDisabled ? "cursor-not-allowed" : ""}`}
+              className={`bg-black text-white rounded-[10px] px-6 py-4 flex items-center justify-center ${isDisabled ? "cursor-not-allowed" : ""}`}
               disabled={isDisabled}
               onClick={handleSubscribe}
             >
-              {isLoading ? "Submitting..." : "Subscribe"}
+              {isLoading ? (
+                <>
+                  <div className='h-6 w-6 border-2 border-white border-t-transparent rounded-full animate-spin' />
+                </>
+              ) : (
+                "Subscribe"
+              )}
             </button>
           </section>
 
