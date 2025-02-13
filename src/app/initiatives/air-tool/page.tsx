@@ -157,23 +157,6 @@ const page = () => {
             </div>
           </section>
 
-          <section className='flex flex-col gap-[9px] pt-[40px]'>
-            <section>
-              <p className='text-xl leading-[160%] font-medium'>Feedback</p>
-              <p>We’d love to hear your thoughts.</p>
-            </section>
-
-            <div className='text-lg leading-[160%]'>
-              <p>Your feedback helps us improve and create tools that serve you better.</p>
-              <Link href='https://form.jotform.com/243196595832064' target='_blank' className='flex items-center gap-2'>
-                <span className='underline-offset-8 underline'>Take the feedback survey</span>
-                <span className='text-blue-custom-100'>
-                  <Image src='/svgs/forward-arrow-icon.svg' alt='forward-arrow-icon' width={16} height={26} />
-                </span>
-              </Link>
-            </div>
-          </section>
-
           <section className='pt-20'>
             <p className='text-lg leading-[28.8px]'>
               This template was created by The Waye Foundation for the benefit of developers working in open source.
