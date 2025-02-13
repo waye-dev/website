@@ -62,17 +62,6 @@ export const INITIATIVES_SECTION_DATA = [
     filterKey: "tool",
   },
   {
-    src: "/images/onboarding-image.png",
-    title: "The Onboarding Waye",
-    description:
-      "Waye partners with developer training programs to demystify full-time open-source work. Through Bitcoin Unfiltered, prospective contributors gain raw insights into its challenges and rewards, while Mindsets for Success helps them embrace its unique dynamics and craft personal roadmaps to thrive.",
-    infoText: "More details coming soon.",
-    advertText: "Do you run a developer training program?",
-    linkText: "Join the community",
-    href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
-    filterKey: "program",
-  },
-  {
     src: "/images/research-image.png",
     title: "Permissionless Paths",
     description:
@@ -82,6 +71,17 @@ export const INITIATIVES_SECTION_DATA = [
     linkText: "More details",
     href: "/initiatives/permissionless-paths",
     filterKey: "research",
+  },
+  {
+    src: "/images/onboarding-image.png",
+    title: "The Onboarding Waye",
+    description:
+      "Waye partners with developer training programs to demystify full-time open-source work. Through Bitcoin Unfiltered, prospective contributors gain raw insights into its challenges and rewards, while Mindsets for Success helps them embrace its unique dynamics and craft personal roadmaps to thrive.",
+    infoText: "More details coming soon.",
+    advertText: "Do you run a developer training program?",
+    linkText: "Join the community",
+    href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
+    filterKey: "program",
   },
   {
     src: "/images/idea-image.png",
