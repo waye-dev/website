@@ -1,7 +1,6 @@
-import Image from "next/image";
 import React, { useCallback } from "react";
 import Link from "next/link";
-import { CardHeading } from "./cards";
+import { CardHeading, RebootImage } from "./cards";
 
 const AboutOSReboot = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
   return (
@@ -13,7 +12,7 @@ const AboutOSReboot = ({ setActiveTab }: { setActiveTab: (tab: number) => void }
         </section>
 
         <section className='flex justify-end items-end w-full sm:mt-10 md:mt-0'>
-          <Image src='/images/mountain-climbers.png' alt='mountain climbers' width={653} height={400} className='' />
+          <RebootImage />
         </section>
       </div>
       <section className='pt-10 sm:pt-[69px]'>

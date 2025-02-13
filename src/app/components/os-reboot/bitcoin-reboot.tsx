@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { CardHeading, CTACard, DetailsCard } from "./cards";
+import { CardHeading, CTACard, DetailsCard, RebootImage } from "./cards";
 
 const BitcoinReboot = () => {
   const buttonLinks = [
@@ -21,7 +20,7 @@ const BitcoinReboot = () => {
         </section>
 
         <section className='flex justify-end items-end w-full sm:mt-10 md:mt-0'>
-          <Image src='/images/mountain-climbers.png' alt='mountain climbers' width={653} height={400} className='' />
+          <RebootImage />
         </section>
       </div>
 
