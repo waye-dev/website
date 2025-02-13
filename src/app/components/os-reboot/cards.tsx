@@ -1,3 +1,4 @@
+import Image from "next/image";
 import CustomButton from "../custom-button";
 
 export const CTACard = ({
@@ -82,4 +83,8 @@ export const CardHeading = ({ title }: { title: string }) => {
       <p className='text-xl sm:text-2xl'>{title}</p>
     </section>
   );
+};
+
+export const RebootImage = () => {
+  return <Image src='/images/mountain-climbers.png' priority alt='mountain climbers' width={653} height={400} />;
 };
