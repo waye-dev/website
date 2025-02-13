@@ -168,7 +168,8 @@ const page = () => {
               <p>
                 We’ll be publishing a final report with{" "}
                 <span className='font-semibold'>concrete insights, clear patterns, and a language for talking about these issues</span> in a way that
-                moves the conversation forward.
+                moves the conversation forward. This study adheres to standard ethical guidelines, including informed consent, voluntary
+                participation, confidentiality, and the right to withdraw at any time.
               </p>
             </section>
           </section>
