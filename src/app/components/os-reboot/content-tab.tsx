@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Wrapper from "../wrapper";
 import AboutOSReboot from "./about-os-reboot";
 import BitcoinReboot from "./bitcoin-reboot";
@@ -21,6 +21,21 @@ const ContentTabs = () => {
 
   const [activeTab, setActiveTab] = useState(0);
 
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const tabIndex = parseInt(hash, 10);
+      if (!isNaN(tabIndex)) {
+        setActiveTab(tabIndex);
+      }
+    }
+  }, []);
+
+  const handleTabClick = (index: number) => {
+    setActiveTab(index);
+    window.location.hash = String(index);
+  };
+
   const tabContent = {
     "0": <AboutOSReboot setActiveTab={setActiveTab} />,
     "1": <NostrReboot />,
@@ -37,7 +52,7 @@ const ContentTabs = () => {
                 <button
                   key={index}
                   className={`h-full text-[16px] sm:text-lg leading-4 sm:leading-6 font-medium text-start`}
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => handleTabClick(index)}
                 >
                   <span>{item}</span>
                 </button>
