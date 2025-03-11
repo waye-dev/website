@@ -45,14 +45,6 @@ const ServicesComponent = ({
         <h2 className='text-[34px] md:text-4xl font-medium'>{cardTitle}</h2>
         <p className='text-lg'>{cardDescription}</p>
         <p className='text-lg font-medium mt-5'>{cardSubText}</p>
-
-        <CustomButton
-          href='/initiatives'
-          className='w-full text-center md:w-fit border-2 border-blue-custom-100 mt-5'
-          props={{ style: { padding: "14px 38px" }, "aria-label": "Get Involved" }}
-        >
-          Explore Initiatives
-        </CustomButton>
       </section>
     </div>
   );
