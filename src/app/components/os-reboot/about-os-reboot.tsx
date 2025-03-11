@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import Link from "next/link";
 import { CardHeading, RebootImage } from "./cards";
 
-const AboutOSReboot = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
+const AboutOSReboot = ({ setActiveTab }: { setActiveTab: (tab: string) => void }) => {
   return (
     <div>
       <div className='flex gap-4 flex-col sm:flex-row sm:relative justify-between'>
@@ -90,7 +90,7 @@ const AboutOSReboot = ({ setActiveTab }: { setActiveTab: (tab: number) => void }
   );
 };
 
-const OsRebootCard = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
+const OsRebootCard = ({ setActiveTab }: { setActiveTab: (tab: string) => void }) => {
   const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
@@ -101,9 +101,11 @@ const OsRebootCard = ({ setActiveTab }: { setActiveTab: (tab: number) => void })
   const buttonLinks = [
     {
       text: "Reboot Nostr",
+      tag: "nostr",
     },
     {
       text: "Reboot Bitcoin",
+      tag: "bitcoin",
     },
   ];
 
@@ -121,7 +123,7 @@ const OsRebootCard = ({ setActiveTab }: { setActiveTab: (tab: number) => void })
               key={index}
               className='rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[55px] text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit'
               onClick={() => {
-                setActiveTab(index + 1);
+                setActiveTab(btn.tag);
                 scrollToTop();
               }}
             >
