@@ -74,9 +74,9 @@ const Footer = () => {
         <Wrapper className=' flex flex-col gap-[30px] items-center justify-center'>
           {!isSubscribePage && (
             <section className='flex flex-col gap-[15px]'>
-              <p className='text-[32px] md:text-4xl font-medium text-center'>Sign up for the Waye mailing list!</p>
+              <p className='text-[32px] md:text-4xl font-medium text-center'>Join our mailing list</p>
               <p className='text-lg text-center max-w-[604px]'>
-                For now, we are choosing silence over spam. But we have a lot brewing and can't wait to tell you all about it.
+                We have a lot brewing and can't wait to tell you all about it!
               </p>
             </section>
           )}
