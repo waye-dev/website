@@ -27,6 +27,45 @@ export const SERVICES_SECTION_DATA = [
   props?: React.HTMLAttributes<HTMLDivElement>;
 }>;
 
+export const ABOUT_SECTION_DATA = [
+  {
+    src: "dialogue-image",
+    cardTitle: "We need censorship-resistant technology.",
+    cardDescriptionBlocks: [
+      "Global freedom needs open-source software and decentralized development ecosystems. Centralization is vulnerable to compromise, whether malicious or unintentional. Opaque systems are ideal for surveillance and backdoors. ",
+      "Censorship resistance simply means anyone can participate. Code that can’t be silenced means people can’t be controlled.",
+    ],
+    cardSubText: "Free code creates a few world.",
+    props: { className: "flex flex-col md:flex-row-reverse gap-8 justify-between items-center " },
+  },
+  {
+    src: "Fuel_image_1-p-800",
+    cardTitle: "We are scattered.",
+    cardDescriptionBlocks: [
+      "Decentralized doesn’t mean isolated. In fact, the opposite: effective decentralization necessitates an increase of message exchange. Our social layer needs strong feedback loops. We are not there. ",
+      "Developers building freedom technology must be solopreneurs- identify impactful improvements, write & review code, manage project lifecycles, get collaborator buy-in, build community and raise funding. We are losing many of the brightest technical minds, while the rest navigate through muddled, low feedback environments.",
+    ],
+    cardSubText: "Turn ambition into impact.",
+  },
+  {
+    src: "",
+    cardTitle: "Let's do better.",
+    cardDescriptionBlocks: [
+      "Elite athletes are supported by professionals to transform their natural talent into repeatable excellence. We know the value of psycho-social support for high-achievers.",
+      "Waye customizes evidenced-based practices to the unique challenges faced by devs building censorship-resistant technology. Waye empowers devs to build meaningful solutions that last.",
+    ],
+    cardSubText: "Free minds build freedom technology.",
+    props: { className: "flex flex-col gap-8" },
+  },
+] as Array<{
+  src: string;
+  cardTitle: string;
+  cardDescription: string;
+  cardDescriptionBlocks: string[];
+  cardSubText: string;
+  props?: React.HTMLAttributes<HTMLDivElement>;
+}>;
+
 export const INITIATIVES_SECTION_DATA = [
   {
     src: "/images/os-reboot-image.png",
