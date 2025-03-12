@@ -21,9 +21,20 @@ const Navbar = () => {
             <Image src='/images/waye-temp-logo-p-500.png' alt='Waye Logo' width={133} height={34.31} className='h-[34px] w-[133px]' priority />
           </Link>
 
-          <Link href='/initiatives' className='hidden md:block'>
-            Check out our <span className='font-medium text-lg underline'>current initiatives</span>.
-          </Link>
+          <div className='hidden items-center space-x-12 md:flex font-medium'>
+            <Link href='/about'>
+              About
+            </Link>
+
+            <Link href='/initiatives'>
+              Initiatives
+            </Link>
+
+            <Link href='/research'>
+              Research
+            </Link>
+          </div>
+
           <div className='hidden md:flex items-center space-x-8'>
             <CustomButton href='/subscribe' className='lg:min-w-[183.66px] text-center'>
               Stay Updated
