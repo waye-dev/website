@@ -4,7 +4,7 @@ import { genPageMetadata } from "@/app/seo";
 import InitiativesSection from "@/app/components/initiatives-section/initiatives-section";
 
 export const metadata = genPageMetadata({
-  title: "Supporting Builders of Freedom Tech | Explore Waye Initiatives",
+  title: "Initiatives @ Waye",
   description:
     "Learn about Waye’s initiatives to empower open-source developers with tools, workshops, and community support. Together, we’re building a sustainable decentralized future.",
   url: "https://waye.dev/initiatives",
