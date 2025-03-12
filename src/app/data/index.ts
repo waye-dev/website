@@ -35,7 +35,7 @@ export const ABOUT_SECTION_DATA = [
       "Global freedom needs open-source software and decentralized development ecosystems. Centralization is vulnerable to compromise, whether malicious or unintentional. Opaque systems are ideal for surveillance and backdoors. ",
       "Censorship resistance simply means anyone can participate. Code that can’t be silenced means people can’t be controlled.",
     ],
-    cardSubText: "Free code creates a few world.",
+    cardSubText: "Free code creates a free world.",
     props: { className: "flex flex-col md:flex-row-reverse gap-8 justify-between items-center " },
   },
   {
