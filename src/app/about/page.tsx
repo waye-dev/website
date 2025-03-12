@@ -50,8 +50,8 @@ const AboutFlexComponent = ({
 export default function About() {
   return (
     <div>
-      <div className='bg-gray-custom-100'>
-        <Wrapper className='pt-[90px] md:pb-[60px] px-4 md:px-8'>
+      <div className='items-center justify-center mx-auto w-full text-black bg-gray-custom-100'>
+        <Wrapper className='flex mx-auto flex-col gap-[20px] items-center justify-center w-full pb-[80px] pt-[80px]'> 
           <div className='items-center flex justify-center'>
             <h2 className='text-[34px] md:text-[40px] lg:text-[46px] font-medium leading-[140%] tracking-tighter lg:max-w-[70vw] text-center'>
               Waye offers psycho-social support for people
@@ -59,7 +59,7 @@ export default function About() {
             </h2>
           </div>
 
-          <div className='pt-[60px] md:pt-[108px] flex flex-col gap-[90px] md:gap-[18px] py-[80px] md:py-[168px] relative'>
+          <div className='pt-[60px] md:pt-[8px] flex flex-col gap-[90px] md:gap-[18px] py-[80px] md:py-[168px] relative'>
             {ABOUT_SECTION_DATA.map((service) => (
               <AboutFlexComponent {...service} key={service.cardTitle} />
             ))}

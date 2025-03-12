@@ -6,9 +6,9 @@ import { SERVICES_SECTION_DATA } from "@/app/data";
 
 const ServicesSection = () => {
   return (
-    <div className='bg-gray-custom-100'>
-      <Wrapper className='pt-[90px] md:pb-[60px] px-4 md:px-8'>
-        <h2 className='text-[34px] md:text-[40px] lg:text-[46px] font-medium leading-[140%] tracking-tighter lg:max-w-[60vw] '>
+    <div className='items-center justify-center mx-auto w-full text-black bg-gray-custom-100'>
+      <Wrapper className='flex mx-auto flex-col gap-[20px] items-center justify-center w-full pb-[20px]'>
+        <h2 className='text-[34px] md:text-[40px] lg:text-[46px] font-medium leading-[140%] tracking-tighter text-center lg:max-w-[60vw] '>
           Are you an open-source dev working on bitcoin, nostr, or other decentralized tech? Waye helps you maximize impact.
         </h2>
 
