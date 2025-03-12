@@ -45,7 +45,7 @@ export const ABOUT_SECTION_DATA = [
       "Decentralized doesn’t mean isolated. In fact, the opposite: effective decentralization necessitates an increase of message exchange. Our social layer needs strong feedback loops. We are not there. ",
       "Developers building freedom technology must be solopreneurs- identify impactful improvements, write & review code, manage project lifecycles, get collaborator buy-in, build community and raise funding. We are losing many of the brightest technical minds, while the rest navigate through muddled, low feedback environments.",
     ],
-    cardSubText: "Turn ambition into impact.",
+    cardSubText: "Individuals do not overthrow oppression, movements do.",
   },
   {
     src: "",
