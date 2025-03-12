@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Wrapper from "@/app/components/wrapper";
 import { genPageMetadata } from "@/app/seo";
+import EmailSignup from "../components/email-signup";
 
 export const metadata = genPageMetadata({
   title: "Stay Updated with Waye | Subscribe",
@@ -35,6 +36,8 @@ const page = () => {
           </div>
         </Wrapper>
       </div>
+
+      <EmailSignup />
     </div>
   );
 };
