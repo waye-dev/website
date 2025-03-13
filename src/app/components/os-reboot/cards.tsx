@@ -51,7 +51,23 @@ export const CTACard = ({
   );
 };
 
-export const DetailsCard = ({ timeline, tldr, location }: { timeline: React.JSX.Element; tldr: React.JSX.Element; location?: React.JSX.Element }) => {
+export const DetailsCard = (
+  {
+    timeline,
+    tldr,
+    who,
+    location,
+    buttonLinks
+  }: {
+    timeline: React.JSX.Element;
+    tldr: React.JSX.Element;
+    who?: React.JSX.Element,
+    location?: React.JSX.Element,
+    buttonLinks?: {
+      link: string;
+      text: string;
+    }[];
+  }) => {
   return (
     <div className='flex flex-col gap-5 sm:gap-[5px] sm:p-5 md:p-[30px] md:pb-[55px] sm:bg-blue-custom-800 rounded-[10px] w-full md:min-w-[400px] text-lg leading-[25.5px] sm:leading-[28.8px]'>
       <section className='hidden sm:flex flex-col border-b border-b-black pb-2.5 mb-2.5'>
@@ -69,10 +85,36 @@ export const DetailsCard = ({ timeline, tldr, location }: { timeline: React.JSX.
           <p>{location}</p>
         </section>
       )}
+
       <section className='flex flex-col gap-[1px]'>
         <p className='font-semibold'>{`Tl;DR`}:</p>
         <p>{tldr}</p>
       </section>
+
+      {who && (
+        <section className='flex flex-col gap-[1px]'>
+          <p className='font-semibold'>WHO:</p>
+          <p>{who}</p>
+        </section>
+      )}
+
+      {buttonLinks && (
+        <section className='flex flex-col md:flex-row gap-[14px] mt-[25px] md:mt-[35px]'>
+          {buttonLinks.map((btn, index) => (
+            <CustomButton
+              key={index}
+              href={btn.link}
+              props={{
+                className:
+                  "rounded-full text-lg leading-[160%] font-medium py-[15px] px-[55px] text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit",
+                target: `${btn.link.startsWith("http") ? "_blank" : "_self"}`,
+              }}
+            >
+              {btn.text}
+            </CustomButton>
+          ))}
+        </section>
+      )}
     </div>
   );
 };
