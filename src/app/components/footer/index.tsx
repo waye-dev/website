@@ -33,16 +33,16 @@ const Footer = () => {
 
           <div className='flex flex-col items-center md:items-start'>
             <h3 className='text-lg font-medium mb-4 underline'>Legalese</h3>
-            <Link href='/tos' className='mb-2'>
+            <Link href='https://github.com/waye-dev/waye/blob/main/TOS.md' className='mb-2'>
               Terms of Use
             </Link>
-            <Link href='/privacy' className='mb-2'>
+            <Link href='https://github.com/waye-dev/waye/blob/main/PRIVACY.md' className='mb-2'>
               Privacy Policy
             </Link>
-            <Link href='/donations' className='mb-2'>
+            <Link href='https://github.com/waye-dev/waye/blob/main/DISCLOSURE.md' className='mb-2'>
               Donation Disclosure
             </Link>
-            <Link href='https://github.com/waye-dev/waye/blob/main/LICENSE' className='mb-2'>
+            <Link href='https://github.com/waye-dev/waye/blob/main/LICENSE.md' className='mb-2'>
               License: MIT
             </Link>
           </div>
