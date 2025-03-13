@@ -1,4 +1,4 @@
-Last Updated: March 12, 2025
+Last Updated: March 12, 2025  
 The OS Waye Foundation ("we," "our," or "us") is committed to protecting your privacy and safeguarding your personal information. As a registered 501(c)(3) nonprofit organization, we value transparency and accountability in how we handle your data. This Privacy Policy explains what data we collect, how we use it, and how we protect it when you interact with our website, participate in our programs, or use our tools and research. By accessing our website, engaging with our services, or using our resources, you agree to the terms of this Privacy Policy.
 
 1. Information We Collect
@@ -48,5 +48,7 @@ We may update this policy to reflect operational, legal, or security changes. We
 
 8. Contact Us
 If you have any questions about this Privacy Policy or how we handle your data, please contact us at:  
-The OS Waye FoundationEmail: waye.dev@gmail.comAddress: 8 The Green, STE A, Dover, Delaware 19901  
+The OS Waye Foundation  
+Email: waye.dev@gmail.com  
+Address: 8 The Green, STE A, Dover, Delaware 19901  
 By accessing our website, participating in our programs, or using our tools and research, you acknowledge that you have read and agree to this Privacy Policy.  
