@@ -126,9 +126,9 @@ export const INITIATIVES_SECTION_DATA = [
     src: "/images/idea-image.png",
     title: "Your Idea",
     description:
-      "Have an idea for a program, workshop, or initiative? Let’s build it.",
+      `Have an idea for a program, workshop, or initiative?`,
     infoText: "",
-    advertText: "",
+    advertText: "Let’s build it.",
     linkText: "Email us",
     href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
     props: { style: { backgroundColor: "transparent" } },
