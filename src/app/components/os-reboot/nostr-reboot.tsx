@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { CardHeading, CTACard, DetailsCard, RebootImage } from "./cards";
 
-const NostrRebbot = () => {
+const NostrReboot = () => {
   return (
     <div>
       <div className='flex gap-4 flex-col sm:flex-row sm:relative justify-between'>
@@ -37,11 +37,7 @@ const NostrRebbot = () => {
           description={
             <span>
               <span className='mt-[20px]'>
-                Enrollment for this program is closed. Check out our open Reboot and sign up, or{" "}
-                <span className='underline'>
-                  <Link href='mailto:waye.dev@gmail.com'>email us</Link>
-                </span>{" "}
-                if this one truly speaks to you.
+                Sign ups for Nostr Reboot are closed. Sign ups for Bitcoin Reboot currently open.
               </span>
             </span>
           }
@@ -169,15 +165,11 @@ const NostrRebbot = () => {
 
       <section className='pt-[30px] sm:pt-[40px]'>
         <CTACard
-          title='Ready to reboot?'
+          title=''
           description={
             <span>
               <span className='mt-[20px]'>
-                Enrollment for this program is closed. Check out our open Reboot and sign up, or{" "}
-                <span className='underline'>
-                  <Link href='mailto:waye.dev@gmail.com'>email us</Link>
-                </span>{" "}
-                if this one truly speaks to you.
+                Enrollment for this program is closed. Check out Bitcoin Reboot.
               </span>
             </span>
           }
@@ -198,4 +190,4 @@ const NostrRebbot = () => {
   );
 };
 
-export default NostrRebbot;
+export default NostrReboot;

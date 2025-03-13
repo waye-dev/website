@@ -71,11 +71,11 @@ export const INITIATIVES_SECTION_DATA = [
     src: "/images/os-reboot-image.png",
     title: "OS Reboot",
     description:
-      "Just like operating systems, open source contributors can use an occasional reboot. Upgrade your mental OS through monthly sessions facilitated by world-class experts. Nostr reboot underway. Bitcoin reboot sign ups open.",
+      "Just like operating systems, open source contributors can use an occasional reboot. Upgrade your mental OS through monthly sessions facilitated by world-class experts. Sign ups for Bitcoin Reboot are open. Nostr Reboot is underway.",
     infoText: "",
     advertText: "",
     linkText: "Learn more & sign up",
-    href: "/initiatives/os-reboot",
+    href: "/initiatives/os-reboot#bitcoin",
     filterKey: "program",
   },
   {
@@ -126,7 +126,7 @@ export const INITIATIVES_SECTION_DATA = [
     src: "/images/idea-image.png",
     title: "Your Idea",
     description:
-      `Have an idea for a program, workshop, or initiative?`,
+      `Have an idea for a program, initiative or research?`,
     infoText: "",
     advertText: "Let’s build it.",
     linkText: "Email us",
