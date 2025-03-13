@@ -5,15 +5,15 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Wrapper from "@/app/components/wrapper";
 import CustomButton from "@/app/components/custom-button";
+import { NAV_LINKS } from "@/app/data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav
-      className={`sticky top-0 flex flex-col items-center justify-between py-4 md:py-5 ${
-        isOpen ? "pb-0" : "pb-[16px]"
-      } bg-blue-custom-100 text-gray-custom-100 border-b-[1.5px] border-gray-custom-300 z-50`}
+      className={`sticky top-0 flex flex-col items-center justify-between py-4 md:py-5 ${isOpen ? "pb-0" : "pb-[16px]"
+        } bg-blue-custom-100 text-gray-custom-100 border-b-[1.5px] border-gray-custom-300 z-50`}
     >
       <Wrapper>
         <div className='flex items-center justify-between w-full'>
@@ -22,21 +22,13 @@ const Navbar = () => {
           </Link>
 
           <div className='hidden items-center space-x-12 md:flex font-medium'>
-            <Link href='/about'>
-              About
-            </Link>
-
-            <Link href='/initiatives'>
-              Initiatives
-            </Link>
-
-            <Link href='/initiatives/permissionless-paths'>
-              Research
-            </Link>
-
-            <Link href='https://github.com/waye-dev/waye/blob/main/doc/FAQ.md'>
-              FAQ
-            </Link>
+            {
+              NAV_LINKS.map(({ href, text }) => (
+                <Link key={text} href={href}>
+                  {text}
+                </Link>
+              ))
+            }
           </div>
 
           <div className='hidden md:flex items-center space-x-8'>
@@ -54,14 +46,24 @@ const Navbar = () => {
 
       <Link
         href='/initiatives'
-        className={`block md:hidden w-full h-full bg-blue-custom-100 text-gray-custom-100 text-center transition-all duration-[400ms] ${
-          isOpen ? "pt-[26px] pb-[10px] opacity-100" : "pt-0 pb-0 opacity-0"
-        }`}
+        className={`block md:hidden w-full h-full bg-blue-custom-100 text-gray-custom-100 text-center transition-all duration-[400ms] ${isOpen ? "pt-[26px] pb-[10px] opacity-100" : "pt-0 pb-0 opacity-0"
+          }`}
       >
         {isOpen && (
-          <p>
-            Check out our <span className='font-medium text-lg underline'>current initiatives</span>.
-          </p>
+          <div>
+            {
+              NAV_LINKS.map(({ href, text }) => (
+                <div className='pb-[10px]'>
+                  <Link key={text} href={href}>
+                    {text}
+                  </Link>
+                </div>
+              ))
+            }
+            <p>
+              Check out our <span className='font-medium text-lg underline'>current initiatives</span>.
+            </p>
+          </div>
         )}
       </Link>
     </nav>
