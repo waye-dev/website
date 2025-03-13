@@ -6,7 +6,7 @@ const BitcoinReboot = () => {
   const buttonLinks = [
     {
       link: "https://docs.google.com/forms/d/e/1FAIpQLSfNrpjygyjOlaexrPhMoWb0RUDqSmW238HMl82JCCRDYyJzFA/viewform",
-      text: "Reboot Bitcoin",
+      text: "Let's go",
     },
   ];
 
@@ -15,7 +15,7 @@ const BitcoinReboot = () => {
       <div className='flex gap-4 flex-col sm:flex-row sm:relative justify-between'>
         <section className='flex flex-col sm:absolute top-0 left-0'>
           <h1 className='text-[38px] lg:text-[52px] leading-[120%] lg:leading-[62.4px]'>
-            OS Reboot <br /> *Bitcoin
+            OS Reboot <br /> Bitcoin
           </h1>
         </section>
 
@@ -28,17 +28,18 @@ const BitcoinReboot = () => {
         <DetailsCard
           timeline={
             <span className='flex flex-col gap-1'>
-              <span>8 sessions, virtual. The exact schedule? Monthly, but final dates haven’t been determined yet.</span>
+              <span>8 sessions, April - November 2025, 4-530PM GMT</span>
+              <span className='font-medium='>Apr 15 ✧ May 20 ✧ Jun 17 ✧ Jul 15 ✧ Aug 19 ✧ Sep 16 ✧ Oct 21 ✧ Nov 18</span>
             </span>
           }
-          tldr={<span>Get clear on where your work fits, build the tools to stay in the game, and beat burnout before it beats you.</span>}
+          tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a comprehensive professional audit guaranteed to level you up. </span>}
         />
       </section>
 
       <section className='pt-[40px]'>
         <CTACard
           title='Ready to reboot?'
-          description={<span className='pt-[10px]'>Sign up now, and we’ll set the dates together.</span>}
+          description={<span className='pt-[10px]'>Sign up today! 10 spots available to actively contributing OS devs.</span>}
           buttonLinks={buttonLinks}
           buttonProps={{
             className:
@@ -57,8 +58,7 @@ const BitcoinReboot = () => {
             keep going.
           </p>
           <p className='text-lg leading-[160%]'>
-            This program isn’t about <span className='font-semibold'>teaching Bitcoin</span>—you already know what you’re doing. It’s about making
-            sure you’re equipped to keep doing it, without burning out or losing sight of why you started.
+            This program is about making sure you’re equipped to keep doing going, without burning out or losing sight of why you started.
           </p>
         </section>
       </section>
@@ -68,20 +68,17 @@ const BitcoinReboot = () => {
         <section className='text-lg leading-[28.8px]'>
           <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
             <li>
-              <span className='font-semibold'>Virtual Group Sessions.</span> Eight 60-minute, interactive discussions held monthly. Sign up to be the
-              first to know when sessions are scheduled.
+              <span className='font-semibold'>Virtual Group Sessions.</span> Eight 90-minute, interactive discussions held monthly.
             </li>
             <li>
-              <span className='font-semibold'>Structured Approach.</span> Guided facilitation, reflection time, and group discussions that actually
-              make you think—no fluff.
+              <span className='font-semibold'>Structured Approach.</span> Expert facilitators will guide each session. Show up fully & we will handle the rest.
             </li>
             <li>
-              <span className='font-semibold'>Commitment Required.</span> Miss more than two sessions? This isn’t the program for you. Show up and put
-              in the work.
+              <span className='font-semibold'>Sign up. Show up.</span> Miss more than two sessions will make this program unsuitable for you.
             </li>
             <li>
-              <span className='font-semibold'>Eligibility.</span> Open-source developers only. If you’re not one, no hard feelings, but this isn’t
-              your cohort. Reach out if you’re curious about something else.
+              <span className='font-semibold'>Eligibility.</span> Available to open-source developers who are actively contributing. For the rest of you, keep an eye
+              on our mailing list.
             </li>
           </ul>
         </section>

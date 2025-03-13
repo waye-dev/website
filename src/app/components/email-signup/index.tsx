@@ -82,7 +82,7 @@ const EmailSignup = () => {
             <input
                 type='text'
                 required
-                placeholder='Name'
+                placeholder='Name / Nym'
                 className='w-full rounded-[10px] p-4 min-h-[65px] border-2 border-gray-custom-200'
                 onChange={handleSubmit}
                 value={formValues.name}

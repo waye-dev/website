@@ -36,7 +36,7 @@ const InitiativesSection = () => {
       <Wrapper className='flex  mx-auto flex-col gap-[20px] items-center justify-center text-center w-full pb-[20px]'>
         <p className='text-[40px] md:text-[54px] leading-[75.6px]'>Build better 🔥</p>
         <p className='text-lg leading-[28.8px] max-w-[650px]'> Become more productive today with the self-paced AIR tool. </p>
-		<p className='text-lg leading-[28.8px] max-w-[650px]'> OS devs: sign ups open for OS reboot (coaching protocol) & decentralized dialogues (philosophy seminars). Looking to interview for permissionless paths (ethnographic research). </p>
+		<p className='text-lg leading-[28.8px] max-w-[650px]'> OS devs: sign ups are open for OS Reboot (productivity protocol) & Decentralized Dialogues (philosophy seminars). We are looking to interview for Permissionless Paths (ethnographic research). </p>
 
         <div className='flex items-center gap-2.5 flex-wrap'>
           {INITIATIVES_FILTER_KEYS.map(({ key, label }) => (
