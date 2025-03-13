@@ -6,7 +6,7 @@ const BitcoinReboot = () => {
   const buttonLinks = [
     {
       link: "https://docs.google.com/forms/d/e/1FAIpQLSfNrpjygyjOlaexrPhMoWb0RUDqSmW238HMl82JCCRDYyJzFA/viewform",
-      text: "Let's go",
+      text: "Sign up now",
     },
   ];
 
@@ -28,24 +28,13 @@ const BitcoinReboot = () => {
         <DetailsCard
           timeline={
             <span className='flex flex-col gap-1'>
-              <span>8 sessions, April - November 2025, 4-530PM GMT</span>
-              <span className='font-medium='>Apr 15 ✧ May 20 ✧ Jun 17 ✧ Jul 15 ✧ Aug 19 ✧ Sep 16 ✧ Oct 21 ✧ Nov 18</span>
+              <span>8 sessions, virtual. The exact schedule? Monthly, but final dates haven’t been
+              determined yet.</span>
             </span>
           }
-          tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a comprehensive professional audit guaranteed to level you up. </span>}
-        />
-      </section>
-
-      <section className='pt-[40px]'>
-        <CTACard
-          title='Ready to reboot?'
-          description={<span className='pt-[10px]'>Sign up today! 10 spots available to actively contributing OS devs.</span>}
+          tldr={<span>Get clear on where your work fits, build the tools to stay in the game, and beat burnout before it beats you.</span>}
+          who={<span>10 spots available to actively contributing OS devs.</span>}
           buttonLinks={buttonLinks}
-          buttonProps={{
-            className:
-              "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[54px] underline text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit",
-            target: "_blank",
-          }}
         />
       </section>
 
@@ -140,19 +129,6 @@ const BitcoinReboot = () => {
           <p className='text-lg leading-[160%]'>8 sessions, virtual. Exact schedule TBD.</p>
           <p className='text-lg leading-[160%]'>Sign up, and we’ll let you know as soon as dates are set.</p>
         </section>
-      </section>
-
-      <section className='pt-[30px] sm:pt-[40px]'>
-        <CTACard
-          title='Ready to reboot?'
-          description={<span>Sign up now, and we’ll set the dates together.</span>}
-          buttonLinks={buttonLinks}
-          buttonProps={{
-            className:
-              "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[54px] underline text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit",
-            target: "_blank",
-          }}
-        />
       </section>
 
       <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
