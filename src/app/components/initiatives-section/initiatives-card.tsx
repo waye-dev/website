@@ -36,7 +36,7 @@ export const InitiativesCard = ({
           <button className='border border-black rounded-full uppercase text-base leading-[25.2px] py-[4.5px] px-[13px]'>{filterKey}</button>
         )}
         <p className='text-[28px] leading-[160%] font-bold'>{title}</p>
-        <p className='font-medium'>{description}</p>
+        <p>{description}</p>
         {infoText && <p>{infoText}</p>}
         {advertText && <p className='font-medium'>{advertText}</p>}
         {href.length ? (
