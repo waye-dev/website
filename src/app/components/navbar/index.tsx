@@ -30,7 +30,7 @@ const Navbar = () => {
               Initiatives
             </Link>
 
-            <Link href='/research'>
+            <Link href='/initiatives/permissionless-paths'>
               Research
             </Link>
           </div>
