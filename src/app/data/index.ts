@@ -79,6 +79,17 @@ export const INITIATIVES_SECTION_DATA = [
     filterKey: "program",
   },
   {
+    src: "/images/research-image.png",
+    title: "Permissionless Paths",
+    description:
+      "What do open source devs actually struggle with? This ethnographic research tackles the question head on. Looking for OS devs to interview.",
+    infoText: "",
+    advertText: "",
+    linkText: "Learn more & sign up",
+    href: "/initiatives/permissionless-paths",
+    filterKey: "research",
+  },
+  {
     src: "/images/dialogue-image.png",
     title: "Decentralized Dialogues",
     description:
@@ -101,24 +112,13 @@ export const INITIATIVES_SECTION_DATA = [
     filterKey: "tool",
   },
   {
-    src: "/images/research-image.png",
-    title: "Permissionless Paths",
-    description:
-      "How does grant-funded open-source work differ from traditional employment? This ethnographic research explores independent contributors' mindsets to deepen understanding, shift the Overton window, and drive systemic change. Get in on the ground floor—sign up to be interviewed!",
-    infoText: "",
-    advertText: "",
-    linkText: "More details",
-    href: "/initiatives/permissionless-paths",
-    filterKey: "research",
-  },
-  {
     src: "/images/onboarding-image.png",
     title: "The Onboarding Waye",
     description:
-      "Waye partners with developer training programs to demystify full-time open-source work. Through Bitcoin Unfiltered, prospective contributors gain raw insights into its challenges and rewards, while Mindsets for Success helps them embrace its unique dynamics and craft personal roadmaps to thrive.",
-    infoText: "More details coming soon.",
-    advertText: "Do you run a developer training program?",
-    linkText: "Join the community",
+      "Flipping the script from conventional workplaces to open-source development takes a minute. Waye helps devs-in-training understand what they are getting into. Reach out if you run a training program and want to learn more.",
+    infoText: "",
+    advertText: "",
+    linkText: "Email us",
     href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
     filterKey: "program",
   },
@@ -126,10 +126,10 @@ export const INITIATIVES_SECTION_DATA = [
     src: "/images/idea-image.png",
     title: "Your Idea",
     description:
-      "Have an idea for a program, workshop, or initiative? Let’s build it. Waye is a community-led ecosystem where developers drive and we create meaningful solutions together.",
+      "Have an idea for a program, workshop, or initiative? Let’s build it.",
     infoText: "",
     advertText: "",
-    linkText: "Pitch your idea",
+    linkText: "Email us",
     href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
     props: { style: { backgroundColor: "transparent" } },
     filterKey: "",
