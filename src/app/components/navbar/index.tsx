@@ -33,6 +33,10 @@ const Navbar = () => {
             <Link href='/initiatives/permissionless-paths'>
               Research
             </Link>
+
+            <Link href='https://github.com/waye-dev/waye/blob/main/doc/FAQ.md'>
+              FAQ
+            </Link>
           </div>
 
           <div className='hidden md:flex items-center space-x-8'>
