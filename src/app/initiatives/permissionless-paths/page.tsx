@@ -8,11 +8,7 @@ const page = () => {
   const buttonLinks = [
     {
       link: "https://docs.google.com/forms/d/e/1FAIpQLSf5RKqNV0I_zEekk1vxAToizH2OU1JR8AShfxQeqJVGRiTuCQ/viewform",
-      text: "Participate",
-    },
-    {
-      link: "/subscribe",
-      text: "Stay Updated",
+      text: "Schedule an interview",
     },
   ];
 
@@ -23,12 +19,12 @@ const page = () => {
           <section className='w-full'>
             <section className='flex flex-col gap-2 md:gap-1'>
               <p className='text-[40px] md:text-[54px] leading-[120%] md:leading-[75.6px]'>Permissionless Paths</p>
-              <CardHeading title='Burnout, Isolation, and the Chaos of Independence' />
+              <CardHeading title='Ethnographic research: mapping the minds of FOSS devs' />
             </section>
             <section className='flex flex-col md:flex-row gap-4 md:gap-8 pt-3 sm:pt-0'>
               <Image
                 src='/images/hamster-wheel.png' // Replace with your image path
-                alt='Description of image'
+                alt='woman on hamster wheel thinking she will be happy when she gets to the finish line'
                 width={706} // Adjust the width as needed
                 height={721} // Adjust the height as needed
                 className='w-full md:w-[50%] h-full max-w-[50%]'
@@ -186,8 +182,8 @@ const page = () => {
 
           <section className='pt-[30px] sm:pt-10 w-full'>
             <CTACard
-              title='Ready to help define the future of open-source work?'
-              description='Sign up to participate or receive updates:'
+              title='Sound fun?'
+              description='We are looking to interview FOSS devs with 1+ years of experience. If that is you, click the button!'
               buttonLinks={buttonLinks}
               buttonProps={{
                 className:
