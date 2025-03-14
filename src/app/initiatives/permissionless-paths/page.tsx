@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from "@/app/components/wrapper";
 import { CardHeading, CTACard } from "@/app/components/os-reboot/cards";
 import Link from "next/link";
+import Image from "next/image";
 
 const page = () => {
   const buttonLinks = [
@@ -24,23 +25,32 @@ const page = () => {
               <p className='text-[40px] md:text-[54px] leading-[120%] md:leading-[75.6px]'>Permissionless Paths</p>
               <CardHeading title='Burnout, Isolation, and the Chaos of Independence' />
             </section>
-            <section className='flex text-lg leading-[28.8px] flex-col gap-[27px] pt-3 sm:pt-0'>
-              <p>
-                Open-source development is often seen as the future of work—independent, decentralized, driven by purpose. But let’s be real:
-                <span className='font-semibold'> it’s the Wild West.</span>
-              </p>
-              <p>
-                You’re not just writing code. You’re managing your own time, budget, and long-term sustainability. You’re chasing grants, navigating
-                community politics, and staying on top of ever-changing projects—all while trying to maintain deep focus and produce meaningful work.
-                There’s no roadmap, no structure, no safety net.
-                <span className='font-semibold'> It’s liberating, but it’s also exhausting.</span>
-              </p>
-              <p>
-                Burnout, isolation, and the challenges of independent open-source work are real and growing problems— widely felt but rarely discussed
-                in a structured, actionable way. There’s no shared language, no clear solutions, and no roadmap for improvement. Everyone feels the
-                weight, yet it remains nebulous—an open secret with no clear way forward.
-                <span className='font-semibold'> This pilot study is here to change that and we need your help.</span>
-              </p>
+            <section className='flex flex-col md:flex-row gap-4 md:gap-8 pt-3 sm:pt-0'>
+              <Image
+                src='/images/hamster-wheel.png' // Replace with your image path
+                alt='Description of image'
+                width={706} // Adjust the width as needed
+                height={721} // Adjust the height as needed
+                className='w-full md:w-[50%] h-full max-w-[50%]'
+              />
+              <div className='flex text-lg leading-[28.8px] flex-col gap-[27px]'>
+                <p>
+                  Open-source development is often seen as the future of work—independent, decentralized, driven by purpose. But let’s be real:
+                  <span className='font-semibold'> it’s the Wild West.</span>
+                </p>
+                <p>
+                  You’re not just writing code. You’re managing your own time, budget, and long-term sustainability. You’re chasing grants, navigating
+                  community politics, and staying on top of ever-changing projects—all while trying to maintain deep focus and produce meaningful work.
+                  There’s no roadmap, no structure, no safety net.
+                  <span className='font-semibold'> It’s liberating, but it’s also exhausting.</span>
+                </p>
+                <p>
+                  Burnout, isolation, and the challenges of independent open-source work are real and growing problems— widely felt but rarely discussed
+                  in a structured, actionable way. There’s no shared language, no clear solutions, and no roadmap for improvement. Everyone feels the
+                  weight, yet it remains nebulous—an open secret with no clear way forward.
+                  <span className='font-semibold'> This pilot study is here to change that and we need your help.</span>
+                </p>
+              </div>
             </section>
           </section>
 
