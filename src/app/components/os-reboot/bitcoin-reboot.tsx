@@ -32,22 +32,36 @@ const BitcoinReboot = () => {
 			  <span className='font-medium'>Apr 15 ✧ May 20 ✧ Jun 17 ✧ Jul 15 ✧ Aug 19 ✧ Sep 16 ✧ Oct 21 ✧ Nov 18</span>
             </span>
           }
-          tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a comprehensive professional audit guaranteed to level you up.</span>}
+          tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a professional audit guaranteed to level you up.</span>}
           who={<span>10 spots available to actively contributing OS devs.</span>}
           buttonLinks={buttonLinks}
         />
       </section>
 
       <section className='pt-10 sm:pt-[69px]'>
-        <CardHeading title='Why OS Reboot – Bitcoin Edition?' />
+        <CardHeading title='What is this?' />
         <section className='flex flex-col gap-[27px]'>
           <p className='text-lg leading-[160%]'>
-            Building in open source is powerful, but it can also be frustrating, isolating, and exhausting. Bitcoin is a long game, and if you’re
-            here, you already know the stakes are high. OS Reboot is your chance to step back, refocus, and find the structure and support you need to
-            keep going.
+			  Being a dev in the decentralized ecosystem means juggling many roles. In addition to writing & reviewing code, you have to identify what is impactful, manage the end-to-end lifecycle, build your community, get project buy-in from collaborators, organize day-to-day priorities, create focus time, navigate the funding ecosystem… You know the grind.
           </p>
           <p className='text-lg leading-[160%]'>
-            This program is about making sure you’re equipped to keep doing going, without burning out or losing sight of why you started.
+			  This balancing act is like paying a constant cognitive tax. OS Reboot guides you to build a map of your non-coding professional landscape. So when it’s time to code, you can enter flow state, have more fun & increase your productivity.
+          </p>
+          <p className='text-lg leading-[160%]'>
+            If you’ve ever felt like:
+          </p>
+
+          <section className='text-lg leading-[160%]'>
+            <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
+              <li>Burnout is creeping in.</li>
+              <li>Work-life balance is impossible.</li>
+              <li>You want to increase deep focus.</li>
+              <li>There's way too much to do.</li>
+            </ul>
+          </section>
+
+          <p className='text-lg leading-[160%]'>
+            OS Reboot is for you.
           </p>
         </section>
       </section>
@@ -66,33 +80,9 @@ const BitcoinReboot = () => {
               <span className='font-semibold'>Sign up. Show up.</span> Miss more than two sessions will make this program unsuitable for you.
             </li>
             <li>
-              <span className='font-semibold'>Eligibility.</span> Available to open-source developers who are actively contributing. For the rest of you, keep an eye
-              on our mailing list.
+              <span className='font-semibold'>Eligibility.</span> Available to open-source developers who are actively contributing.
             </li>
           </ul>
-        </section>
-      </section>
-
-      <section className='pt-[30px] sm:pt-[40px]'>
-        <CardHeading title='The human side of open source:' />
-        <section className='flex flex-col gap-[19px]'>
-          <p className='text-lg leading-[160%]'>
-            Bitcoin development isn’t just about code—it’s about resilience. You’re dealing with intense public scrutiny, high expectations, and a
-            constantly shifting landscape. If you’ve ever felt like:
-          </p>
-
-          <section className='text-lg leading-[28.8px] font-medium'>
-            <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
-              <li>Burnout is creeping in.</li>
-              <li>Work-life balance is impossible.</li>
-              <li>Imposter syndrome is real.</li>
-              <li>Staying motivated feels like a fight.</li>
-            </ul>
-          </section>
-
-          <p className='text-lg leading-[160%]'>
-            You’re not alone. OS Reboot is here to help you face it all head-on and come out stronger—or at least, smarter.
-          </p>
         </section>
       </section>
 
@@ -101,40 +91,43 @@ const BitcoinReboot = () => {
         <section className='text-lg leading-[28.8px] flex flex-col gap-[28.8px]'>
           <p>
             Open source isn’t a solo mission, and neither is this. OS Reboot gives you the structure, connections, and expert guidance to make your
-            work more sustainable and impactful. But it only works if you show up.
+            work more sustainable and impactful.
           </p>
           <p>
             Bring your commitment, bring your perspective, and be ready to dig in. The more you invest, the more you’ll gain—because the best insights
-            don’t just come from experts, they come from each other.
+            don’t just come from experts, they come from you.
           </p>
         </section>
       </section>
 
       <section className='pt-[40px]'>
-        <CardHeading title='Meet your facilitators:' />
+        <CardHeading title='Meet the crew:' />
 
         <section>
           <p className='text-lg leading-[160%]'>
-            Expert facilitators and the Waye team will lead each session, bringing in diverse perspectives from mental health experts, industry
-            leaders, and perhaps even activists utilizing the technologies you’re building. Whether it’s navigating burnout, enhancing collaboration,
-            or increasing the impact of your work, these sessions will be real, direct, and actually useful.
+            We are pulling together a DREAM TEAM. Lot's more to come, here's a glimpse.
           </p>
-        </section>
-      </section>
-
-      <section className='pt-[40px]'>
-        <CardHeading title='Key details recap:' />
-
-        <section className='flex flex-col gap-[20px]'>
-          <p className='text-lg leading-[160%]'>8 sessions, virtual. Exact schedule TBD.</p>
-          <p className='text-lg leading-[160%]'>Sign up, and we’ll let you know as soon as dates are set.</p>
+          <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
+            <li>
+              <span className='font-semibold'>Amiti Uttarwar.</span> Bitcoin P2P protocol engineer since 2019. On a mission to uncover our human source code. Ask the dozens of OS devs she's coached.
+            </li>
+            <li>
+              <span className='font-semibold'>Anna Sides.</span> Operational excellence that literally sent 100,000s of people camping. Her dogs are her personality.
+            </li>
+            <li>
+              <span className='font-semibold'>Debbie Johnstone.</span> 25 years as an HR leader is just the tip of the iceberg. Professional unlocker of human potential.
+            </li>
+            <li>
+              <span className='font-semibold'>Vanina Kala Waizmann.</span> Doctor of Psychology with specialized knowledge of burnout and nervous system regulation. Magical creature.
+            </li>
+          </ul>
         </section>
       </section>
 
       <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
         <p className='text-xl leading-[160%] font-medium'>Questions?</p>
         <div className='text-lg leading-[160%]'>
-          <p>Reach out to us.</p>
+          <p>We want to hear.</p>
           <Link href='mailto:waye.dev@gmail.com' className='flex items-center gap-2'>
             <span className='underline-offset-8 underline'>waye.dev@gmail.com</span>
             <span className='text-blue-custom-100'>→</span>
