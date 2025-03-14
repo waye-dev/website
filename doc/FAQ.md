@@ -8,44 +8,38 @@ The OS Waye Foundation is a 501(c)(3) nonprofit dedicated to supporting open-sou
 
 Waye supports a decentralized future by breaking down barriers and providing practical, open-source solutions for long-term impact.
 
-**Do you care about privacy?**
-
-We take privacy seriously. What you share stays with us.
-
 **How can I stay updated on Waye?**
 
 Subscribe to our [mailing list](https://www.waye.dev/subscribe). 
 
 **How are you funded?**
 
-We are very thankful to HRF and OpenSats for their belief and investment in Waye! If you are interested in contributing, please email us at waye.dev@gmail.com. 
+We are very thankful to HRF and OpenSats for their belief and investment in Waye! If you are interested in contributing, please [email us](waye.dev@gmail.com). 
 
-## Verbiage:
-**What does it mean to be decentralized?**
+## How we work:
+**Do you care about privacy?**
 
-Decentralization isn’t just a technical structure—it’s a way of working, thinking, and supporting the people behind open-source innovation.
-We open-source everything – Knowledge, frameworks, and research should be accessible to all, not locked behind paywalls or institutions.
-We encourage competition, not control – The best solutions emerge when multiple voices, perspectives, and contributors shape them.
-We elevate, not prescribe – Waye provides tools and resources, but we don’t dictate how they should be used. Developers, contributors, and communities decide what works best for them.
-We strengthen human infrastructure – Decentralization is meaningless if the people building it burn out. Waye exists to support the developers behind the code, ensuring sustainability in open-source work.
-Decentralization at Waye means freedom, resilience, and shared progress—for both technology and the people creating it.
+We take privacy seriously. What you share stays with us.
 
-**What is Proof of Work?**
+**What does it mean to support a decentralized, open-source ecosystem?**
 
-Eligibility for programs is based on real contributions to open-source—not financial backing or paid models like traditional apps and coaching programs.
+Open source & decentralization are two techniques to ensure resilience, which is essential for freedom technology. We understand it goes beyond code-it's about access, transparency, and collaboration. Here are some of our organizational values:
+- We open-source everything – Our research, frameworks, and methodologies will be shared for anyoone to use, adapt, and improve. 
+- We encourage competition, not control – The best solutions emerge when multiple voices, perspectives, and contributors shape them.
+- Bottom up, not top down – Waye is here to listen and share, not preach. We believe the best solutions come from your creativity, but we are here to elevate and support. We don’t dictate how tools should be used. You decide what works best for you.
+- We strengthen human infrastructure – Decentralization is meaningless if the people building it burn out. Waye exists to support the developers behind the code, ensuring sustainability in open-source work.
 
-**What is open source?**
+Freedom goes beyond code. 
 
-Open source isn’t just about code—it’s about access, transparency, and sustainability. We believe open-source development should be viable, supported, and free from burnout, so we take a broader approach:
-- We open-source everything – Our research, productivity frameworks, and methodologies are available for anyone to use, adapt, and improve.
-- We don’t gatekeep knowledge – Instead of prescribing solutions, we elevate ideas and give developers the tools to build their own.
-- We focus on people, not just projects – Open source only thrives when the developers behind it are supported, which is why our work centers on reducing burnout, improving sustainability, and making contributions long-term viable.
-- We work for the ecosystem – Our programs, research, and resources help ensure that open-source developers can keep building without being left behind.
+**Who can participate in the programs?**
 
-For Waye, open source isn’t just software—it’s a way of thinking, working, and sustaining the people who make it all possible.
+We are grateful to be able to offer our programs on a proof of work model due to the financial support of HRF & OpenSats. This means if you are a dev who is making contributions to FOSS code, you are automatically eligible for our programs. 
 
-## Want to join us?
+## Need help?
 
+Yes we do!! If you're excited to get involved, send us an [email](waye.dev@gmail.com) & share your ideas and skillsets. 
+
+Here are some areas that we are actively looking for support: 
 - Designer – We have plenty of words. Too many, really. Help us communicate visually.
 - Social Media Manager – Open-source developers need to know we exist. If you’re tapped in (or know how to be), we need you.
-- Time Management Expert (or recommendation) – How do we do it all? We need someone who can help OS developers manage time better so they can stay productive with the time we have.
+- Time Management Expert (or recommendation) – How do we do it all? Looking for a guest facilitator who can run a session to help OS developers manage time better.
