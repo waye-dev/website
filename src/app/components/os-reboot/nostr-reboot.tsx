@@ -8,7 +8,7 @@ const NostrReboot = () => {
       <div className='flex gap-4 flex-col sm:flex-row sm:relative justify-between'>
         <section className='flex flex-col sm:absolute top-0 left-0'>
           <h1 className='text-[38px] lg:text-[52px] leading-[120%] lg:leading-[62.4px]'>
-            OS Reboot <br /> *Nostr
+            OS Reboot <br /> Nostr
           </h1>
         </section>
 

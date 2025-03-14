@@ -124,6 +124,15 @@ const BitcoinReboot = () => {
         </section>
       </section>
 
+      <section className='pt-[40px]'>
+        <CardHeading title='Do you take bitcoin?' />
+        <section className='text-lg leading-[28.8px] flex flex-col gap-[28.8px]'>
+          <p>
+			Thanks to the support of OpenSats, we are able to offer this program on a proof of work model. If you are making code contributions to open source software, you can hang on to your bitcoin. How cool is that?
+          </p>
+        </section>
+	  </section>
+
       <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
         <p className='text-xl leading-[160%] font-medium'>Questions?</p>
         <div className='text-lg leading-[160%]'>
