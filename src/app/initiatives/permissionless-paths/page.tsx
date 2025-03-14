@@ -30,65 +30,36 @@ const page = () => {
                 className='w-full md:w-[50%] h-full max-w-[50%]'
               />
               <div className='flex text-lg leading-[28.8px] flex-col gap-[27px]'>
-                <p>
-                  Open-source development is often seen as the future of work—independent, decentralized, driven by purpose. But let’s be real:
-                  <span className='font-semibold'> it’s the Wild West.</span>
+				<p>
+					  Working in a decentralized development ecosystem takes a minute to figure out. Unlike in the education system or traditional workplaces, there’s no clear path of what you should work on, how you should work on it, and how the heck you get paid to do it.
+                </p>
+				<p>
+					  This pilot study will strengthen our shared understanding of the motivations and challenges of open source devs. What drives productivity vs burnout?
                 </p>
                 <p>
-                  You’re not just writing code. You’re managing your own time, budget, and long-term sustainability. You’re chasing grants, navigating
-                  community politics, and staying on top of ever-changing projects—all while trying to maintain deep focus and produce meaningful work.
-                  There’s no roadmap, no structure, no safety net.
-                  <span className='font-semibold'> It’s liberating, but it’s also exhausting.</span>
+                  <span className='font-semibold'> We are looking to interview FOSS devs who have contributed for 1+ years. </span>
+					  Sound like you? Help our community learn:
+				</p>
+				<p>
+                <span className='underline'>
+                  <Link
+                    href='https://docs.google.com/forms/d/e/1FAIpQLSf5RKqNV0I_zEekk1vxAToizH2OU1JR8AShfxQeqJVGRiTuCQ/viewform?pli=1'
+                    target='_blank'
+                  >
+                     Schedule an interview.
+					  </Link>
+						  </span>
                 </p>
                 <p>
-                  Burnout, isolation, and the challenges of independent open-source work are real and growing problems— widely felt but rarely discussed
-                  in a structured, actionable way. There’s no shared language, no clear solutions, and no roadmap for improvement. Everyone feels the
-                  weight, yet it remains nebulous—an open secret with no clear way forward.
-                  <span className='font-semibold'> This pilot study is here to change that and we need your help.</span>
+					Through in-depth qualitative interviews, the study aims to gain an understanding of open source developers’ work environment, with a focus on motivations, expectations, work habits, responsibilities, and challenges (churn, constraints).
                 </p>
               </div>
             </section>
           </section>
 
           <section className='w-full pt-[1.875rem] md:pt-10'>
-            <CardHeading title='The Study: Making Sense of Chaos' />
+            <CardHeading title='Themes:' />
             <section className='flex text-lg leading-[28.8px] flex-col gap-[27px] pt-3 sm:pt-0'>
-              <p>
-                We’re launching a first-of-its-kind <span className='font-semibold'> ethnographic research study</span> to{" "}
-                <span className='font-semibold'>finally bring clarity</span> to the reality of full- time, grant-funded open-source development. Right
-                now, it’s a system built on uncertainty—developers navigate financial instability, burnout, and the pressure to produce without the
-                support structures found in traditional careers.{" "}
-                <span className='font-semibold'>
-                  No HR, no manager, no clear path forward—just you, your code, and the constant challenge of staying afloat.
-                </span>
-              </p>
-              <p>
-                For too long, we’ve talked about these struggles in vague terms. Everyone knows the issues exist, but no one has mapped them out in a
-                way that leads to real solutions. We’re here to change that.
-              </p>
-              <p>
-                Our goal is to <span className='font-semibold'>interview 30+ open-source developers</span> working in Bitcoin, Nostr, and related
-                freedom tech, we’re unpacking the <span className='font-semibold'>real, lived experiences</span> of what it takes to build without an
-                institution backing you. This study isn’t about surface-level observations—it’s about{" "}
-                <span className='font-semibold'>listening, documenting, and defining the problem space finally start addressing it.</span>{" "}
-                <span className='underline'>
-                  <Link
-                    href='https://docs.google.com/forms/d/e/1FAIpQLSf5RKqNV0I_zEekk1vxAToizH2OU1JR8AShfxQeqJVGRiTuCQ/viewform?pli=1'
-                    target='_blank'
-                  >
-                    Schedule an interview to participate.
-                  </Link>
-                </span>
-              </p>
-            </section>
-          </section>
-
-          <section className='w-full pt-[1.875rem] md:pt-10'>
-            <CardHeading title='What we’re uncovering:' />
-            <section className='flex text-lg leading-[28.8px] flex-col gap-[27px] pt-3 sm:pt-0'>
-              <p>
-                We’re digging into the realities of being a full-time, grant-funded open-source developer. That means answering some tough questions:
-              </p>
 
               <section className='text-lg leading-[28.8px]'>
                 <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
@@ -107,83 +78,25 @@ const page = () => {
                 </ul>
               </section>
 
-              <p>
-                We’re not here to theorize. <span className='font-semibold'>We’re here to bring clarity to a space that has none.</span>
-              </p>
-            </section>
-          </section>
-
-          <section className='w-full pt-[1.875rem] md:pt-10'>
-            <CardHeading title={`How we're doing it:`} />
-            <section className='flex text-lg leading-[28.8px] flex-col gap-[27px] pt-3 sm:pt-0'>
-              <p>
-                This research takes an <span className='font-semibold'>ethnographic approach</span>—meaning we’re going straight to the source. Our
-                methodology is built on direct engagement with open-source developers, focusing on:
-              </p>
-
-              <section className='text-lg leading-[28.8px]'>
-                <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
-                  <li>
-                    <span className='font-semibold'>One-on-one interviews</span> with grant-funded developers who’ve been navigating this space
-                    firsthand.
-                  </li>
-                  <li>
-                    <span className='font-semibold'>Observational research</span> into how developers manage their time, attention, and mental load.
-                  </li>
-                  <li className='font-semibold'>
-                    <span>Pattern analysis</span> to connect shared struggles and solutions across contributors.
-                  </li>
-                  <li>
-                    <span className='font-semibold'>No institutional bias </span> —this study is independent, unaffiliated, and built around what
-                    developers actually experience, not what outsiders assume.
-                  </li>
-                </ul>
-              </section>
-
-              <p>
-                We’ll be publishing a final report with{" "}
-                <span className='font-semibold'>concrete insights, clear patterns, and a language for talking about these issues</span> in a way that
-                moves the conversation forward.
-              </p>
             </section>
           </section>
 
           <section className='w-full pt-[1.875rem] md:pt-10	'>
-            <CardHeading title='Who can participate?' />
+            <CardHeading title='Up Next' />
             <section className='flex text-lg leading-[28.8px] flex-col gap-[15px] pt-3 sm:pt-0'>
               <p>
-                We’re looking for{" "}
-                <span className='font-semibold'>developers who have worked under a grant or contributed to open source for at least a year</span>{" "}
-                without being tied to an organization.
-              </p>
-
-              <p>Ways to get involved:</p>
-
-              <section className='text-lg leading-[28.8px]'>
-                <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
-                  <li>
-                    <span className='font-semibold'>Join an interview.</span> Share your experience—what’s worked, what hasn’t, and what needs to
-                    change.
-                  </li>
-                  <li>
-                    <span className='font-semibold'>Stay in the loop.</span> Not ready to participate? No problem. Sign up for our mailing list.
-                  </li>
-                </ul>
-              </section>
-
-              <p>
-                We’ll be publishing a final report with{" "}
-                <span className='font-semibold'>concrete insights, clear patterns, and a language for talking about these issues</span> in a way that
-                moves the conversation forward. This study adheres to standard ethical guidelines, including informed consent, voluntary
-                participation, confidentiality, and the right to withdraw at any time.
-              </p>
+			    Sign up for our mailing list to stay posted.
+			  </p>
+			  <p>
+			    Open source devs- an anonymous interview will go a long way. Understanding the decentralized development ecosystem will help us improve our day-to-day lives and work environments.
+			  </p>
             </section>
           </section>
 
           <section className='pt-[30px] sm:pt-10 w-full'>
             <CTACard
-              title='Sound fun?'
-              description='We are looking to interview FOSS devs with 1+ years of experience. If that is you, click the button!'
+              title='Ready to interview?'
+              description='FOSS devs with 1+ years of experience: click below'
               buttonLinks={buttonLinks}
               buttonProps={{
                 className:
