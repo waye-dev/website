@@ -28,11 +28,11 @@ const BitcoinReboot = () => {
         <DetailsCard
           timeline={
             <span className='flex flex-col gap-1'>
-              <span>8 sessions, virtual. The exact schedule? Monthly, but final dates haven’t been
-              determined yet.</span>
+              <span>8 sessions, April - November 2025, 4-530PM GMT</span>
+			  <span className='font-medium'>Apr 15 ✧ May 20 ✧ Jun 17 ✧ Jul 15 ✧ Aug 19 ✧ Sep 16 ✧ Oct 21 ✧ Nov 18</span>
             </span>
           }
-          tldr={<span>Get clear on where your work fits, build the tools to stay in the game, and beat burnout before it beats you.</span>}
+          tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a comprehensive professional audit guaranteed to level you up.</span>}
           who={<span>10 spots available to actively contributing OS devs.</span>}
           buttonLinks={buttonLinks}
         />
