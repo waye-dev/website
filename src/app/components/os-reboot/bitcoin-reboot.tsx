@@ -109,7 +109,7 @@ const BitcoinReboot = () => {
           </p>
           <ul className='text-lg pt-[20px] list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
             <li>
-              <span className='font-semibold'>Amiti Uttarwar.</span> Bitcoin P2P protocol engineer since 2019. On a mission to uncover our human source code. Ask the dozens of OS devs she's coached.
+              <span className='font-semibold'>Amiti Uttarwar.</span> Bitcoin P2P protocol engineer since 2019. On a mission to uncover our human source code, just ask the dozens of OS devs she's coached.
             </li>
             <li>
               <span className='font-semibold'>Anna Sides.</span> Operational excellence that literally sent 100,000s of people camping. Her dogs are her personality.
@@ -125,10 +125,10 @@ const BitcoinReboot = () => {
       </section>
 
       <section className='pt-[40px]'>
-        <CardHeading title='Do you take bitcoin?' />
+        <CardHeading title='POW Pricing:' />
         <section className='text-lg leading-[28.8px] flex flex-col gap-[28.8px]'>
           <p>
-			Thanks to the support of OpenSats, we are able to offer this program on a proof of work model. If you are making code contributions to open source software, you can hang on to your bitcoin. How cool is that?
+			Thanks to the support of HRF and OpenSats, we are able to offer this program on a proof of work model. If you are making code contributions to open source software, you can hang on to your bitcoin. How cool is that?
           </p>
         </section>
 	  </section>
