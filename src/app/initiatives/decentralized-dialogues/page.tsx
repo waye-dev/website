@@ -41,7 +41,7 @@ const page = () => {
             <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[55px] bg-blue-custom-600 rounded-[10px] w-full md:min-w-[400px]'>
               <p className='text-[22px] leading-[160%] font-medium'>Ready to explore bitcoin's transformative potential?</p>
               <p className='text-lg'>
-                You have until <span className='font-semibold'>March 15th</span> to secure your spot in this exclusive seminar series. Only 10 seats
+                You have until <span className='font-semibold'>March 24th</span> to secure your spot in this exclusive seminar series. Only 10 seats
                 available—don’t miss out.
               </p>
               <CustomButton
