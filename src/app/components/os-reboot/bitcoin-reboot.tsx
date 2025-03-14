@@ -42,10 +42,10 @@ const BitcoinReboot = () => {
         <CardHeading title='What is this?' />
         <section className='flex flex-col gap-[27px]'>
           <p className='text-lg leading-[160%]'>
-			  Being a dev in the decentralized ecosystem means juggling many roles. In addition to writing & reviewing code, you have to identify what is impactful, manage the end-to-end lifecycle, build your community, get project buy-in from collaborators, organize day-to-day priorities, create focus time, navigate the funding ecosystem… You know the grind.
+			  Being a dev in the decentralized ecosystem means juggling many roles. In addition to writing & reviewing code, you have to identify what is impactful, manage the end-to-end lifecycle, build your community, get project buy-in from collaborators, organize day-to-day priorities, create focus time, navigate the funding ecosystem… <span className='font-bold'>You know the grind.</span>
           </p>
           <p className='text-lg leading-[160%]'>
-			  This balancing act is like paying a constant cognitive tax. OS Reboot guides you to build a map of your non-coding professional landscape. So when it’s time to code, you can enter flow state, have more fun & increase your productivity.
+			  This balancing act is like paying a constant cognitive tax. OS Reboot guides you to build a map of your non-coding professional landscape. So when it’s time to code, you can <span className='font-bold'>enter flow state</span>, have more fun & increase your productivity.
           </p>
           <p className='text-lg leading-[160%]'>
             If you’ve ever felt like:
@@ -60,7 +60,7 @@ const BitcoinReboot = () => {
             </ul>
           </section>
 
-          <p className='text-lg leading-[160%]'>
+          <p className='text-lg leading-[160%] font-bold'>
             OS Reboot is for you.
           </p>
         </section>
@@ -105,9 +105,9 @@ const BitcoinReboot = () => {
 
         <section>
           <p className='text-lg leading-[160%]'>
-            We are pulling together a DREAM TEAM. Lot's more to come, here's a glimpse.
+            We are pulling together a DREAM TEAM. Lot's more to come, here's a glimpse.<br/>
           </p>
-          <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
+          <ul className='text-lg pt-[20px] list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
             <li>
               <span className='font-semibold'>Amiti Uttarwar.</span> Bitcoin P2P protocol engineer since 2019. On a mission to uncover our human source code. Ask the dozens of OS devs she's coached.
             </li>
