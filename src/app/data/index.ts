@@ -82,7 +82,7 @@ export const INITIATIVES_SECTION_DATA = [
     src: "/images/research-image.png",
     title: "Permissionless Paths",
     description:
-      "What do open source devs actually struggle with? This ethnographic research tackles the question head on. Looking for OS devs to interview.",
+      "What do open source devs actually struggle with? This ethnographic research tackles the question head on. Looking to interview OS devs with 1+ years of experience.",
     infoText: "",
     advertText: "",
     linkText: "Learn more & sign up",
