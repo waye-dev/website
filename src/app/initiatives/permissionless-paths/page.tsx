@@ -23,15 +23,15 @@ const page = () => {
             </section>
             <section className='flex flex-col md:flex-row gap-4 md:gap-8 pt-3 sm:pt-0'>
               <Image
-                src='/images/hamster-wheel.png' // Replace with your image path
-                alt='woman on hamster wheel thinking she will be happy when she gets to the finish line'
-                width={706} // Adjust the width as needed
-                height={721} // Adjust the height as needed
+                src='/images/action-intention.png'
+                alt=''
+                width={706}
+                height={721}
                 className='w-full md:w-[50%] h-full max-w-[50%]'
               />
               <div className='flex text-lg leading-[28.8px] flex-col gap-[27px]'>
 				<p>
-					  Working in a decentralized development ecosystem takes a minute to figure out. Unlike in the education system or traditional workplaces, there’s no clear path of what you should work on, how you should work on it, and how the heck you get paid to do it.
+					  Working in a decentralized development ecosystem takes a minute to figure out. Unlike in the education system or traditional workplaces, there’s no clear path of what you should work on, how you should work on it, and how the heck you get community buy-in.
                 </p>
 				<p>
 					  This pilot study will strengthen our shared understanding of the motivations and challenges of open source devs. What drives productivity vs burnout?
