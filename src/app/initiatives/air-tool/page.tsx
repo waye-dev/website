@@ -157,11 +157,6 @@ const page = () => {
             </div>
           </section>
 
-          <section className='pt-20'>
-            <p className='text-lg leading-[28.8px]'>
-              This template was created by The Waye Foundation for the benefit of developers working in open source.
-            </p>
-          </section>
         </div>
       </Wrapper>
     </div>
