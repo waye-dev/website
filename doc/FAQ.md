@@ -24,7 +24,7 @@ We take privacy seriously. What you share stays with us.
 **What does it mean to support a decentralized, open-source ecosystem?**
 
 Open source & decentralization are two techniques to ensure resilience, which is essential for freedom technology. We understand it goes beyond code-it's about access, transparency, and collaboration. Here are some of our organizational values:
-- We open-source everything – Our research, frameworks, and methodologies will be shared for anyoone to use, adapt, and improve. 
+- We open-source everything – Our research, frameworks, and methodologies will be shared for anyone to use, adapt, and improve. 
 - We encourage competition, not control – The best solutions emerge when multiple voices, perspectives, and contributors shape them.
 - Bottom up, not top down – Waye is here to listen and share, not preach. We believe the best solutions come from your creativity, but we are here to elevate and support. We don’t dictate how tools should be used. You decide what works best for you.
 - We strengthen human infrastructure – Decentralization is meaningless if the people building it burn out. Waye exists to support the developers behind the code, ensuring sustainability in open-source work.
