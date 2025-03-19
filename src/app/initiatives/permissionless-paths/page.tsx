@@ -101,7 +101,7 @@ const page = () => {
               <p>
                 For more information please take a look at our{" "}
                 <Link
-                  href='https://github.com/waye-dev/waye/blob/main/doc/PRIVACY.md'
+                  href='https://github.com/waye-dev/waye/blob/main/doc/RESEARCH_PRIVACY.md'
                   target='_blank'
                   className='underline underline-offset-4 italic'
                 >
