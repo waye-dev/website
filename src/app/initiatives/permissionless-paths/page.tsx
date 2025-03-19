@@ -22,36 +22,33 @@ const page = () => {
               <CardHeading title='Ethnographic research: mapping the minds of FOSS devs' />
             </section>
             <section className='flex flex-col md:flex-row gap-4 md:gap-8 pt-3 sm:pt-0'>
-              <Image
-                src='/images/action-intention.png'
-                alt=''
-                width={706}
-                height={721}
-                className='w-full md:w-[50%] h-full max-w-[50%]'
-              />
+              <Image src='/images/action-intention.png' alt='' width={706} height={721} className='w-full md:w-[50%] h-full max-w-[50%]' />
               <div className='flex text-lg leading-[28.8px] flex-col gap-[27px]'>
-				<p>
-					  Working in a decentralized development ecosystem takes a minute to figure out. Unlike in the education system or traditional workplaces, there’s no clear path of what you should work on, how you should work on it, and how the heck you get community buy-in.
+                <p>
+                  Working in a decentralized development ecosystem takes a minute to figure out. Unlike in the education system or traditional
+                  workplaces, there’s no clear path of what you should work on, how you should work on it, and how the heck you get community buy-in.
                 </p>
-				<p>
-					  This pilot study will strengthen our shared understanding of the motivations and challenges of open source devs. What drives productivity vs burnout?
+                <p>
+                  This pilot study will strengthen our shared understanding of the motivations and challenges of open source devs. What drives
+                  productivity vs burnout?
                 </p>
                 <p>
                   <span className='font-semibold'> We are looking to interview FOSS devs who have contributed for 1+ years. </span>
-					  Sound like you? Help our community learn:
-				</p>
-				<p>
-                <span className='underline'>
-                  <Link
-                    href='https://docs.google.com/forms/d/e/1FAIpQLSf5RKqNV0I_zEekk1vxAToizH2OU1JR8AShfxQeqJVGRiTuCQ/viewform?pli=1'
-                    target='_blank'
-                  >
-                     Schedule an interview.
-					  </Link>
-						  </span>
+                  Sound like you? Help our community learn:
                 </p>
                 <p>
-					Through in-depth qualitative interviews, the study aims to gain an understanding of open source developers’ work environment, with a focus on motivations, expectations, work habits, responsibilities, and challenges (churn, constraints).
+                  <span className='underline'>
+                    <Link
+                      href='https://docs.google.com/forms/d/e/1FAIpQLSf5RKqNV0I_zEekk1vxAToizH2OU1JR8AShfxQeqJVGRiTuCQ/viewform?pli=1'
+                      target='_blank'
+                    >
+                      Schedule an interview.
+                    </Link>
+                  </span>
+                </p>
+                <p>
+                  Through in-depth qualitative interviews, the study aims to gain an understanding of open source developers’ work environment, with a
+                  focus on motivations, expectations, work habits, responsibilities, and challenges (churn, constraints).
                 </p>
               </div>
             </section>
@@ -60,7 +57,6 @@ const page = () => {
           <section className='w-full pt-[1.875rem] md:pt-10'>
             <CardHeading title='Themes:' />
             <section className='flex text-lg leading-[28.8px] flex-col gap-[27px] pt-3 sm:pt-0'>
-
               <section className='text-lg leading-[28.8px]'>
                 <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
                   <li>
@@ -77,19 +73,31 @@ const page = () => {
                   </li>
                 </ul>
               </section>
-
             </section>
           </section>
 
           <section className='w-full pt-[1.875rem] md:pt-10	'>
             <CardHeading title='Up Next' />
             <section className='flex text-lg leading-[28.8px] flex-col gap-[15px] pt-3 sm:pt-0'>
+              <p>Sign up for our mailing list to stay posted.</p>
               <p>
-			    Sign up for our mailing list to stay posted.
-			  </p>
-			  <p>
-			    Open source devs- an anonymous interview will go a long way. Understanding the decentralized development ecosystem will help us improve our day-to-day lives and work environments.
-			  </p>
+                Open source devs- an anonymous interview will go a long way. Understanding the decentralized development ecosystem will help us
+                improve our day-to-day lives and work environments.
+              </p>
+              <p>
+                This study adheres to standard ethical guidelines, including informed consent, voluntary participation, confidentiality, and the right
+                to withdraw at any time.
+              </p>
+            </section>
+          </section>
+
+          <section className='w-full pt-[1.875rem] md:pt-10	'>
+            <CardHeading title='Important Note:' />
+            <section className='flex text-lg leading-[28.8px] flex-col gap-[15px] pt-3 sm:pt-0'>
+              <p>
+                This study adheres to standard ethical guidelines, including informed consent, voluntary participation, confidentiality, and the right
+                to withdraw at any time.
+              </p>
             </section>
           </section>
 
