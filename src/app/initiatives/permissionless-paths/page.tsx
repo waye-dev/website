@@ -98,6 +98,17 @@ const page = () => {
                 This study adheres to standard ethical guidelines, including informed consent, voluntary participation, confidentiality, and the right
                 to withdraw at any time.
               </p>
+              <p>
+                For more information please take a look at our{" "}
+                <Link
+                  href='https://github.com/waye-dev/waye/blob/main/doc/PRIVACY.md'
+                  target='_blank'
+                  className='underline underline-offset-4 italic'
+                >
+                  privacy policy
+                </Link>
+                .
+              </p>
             </section>
           </section>
 
