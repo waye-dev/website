@@ -77,16 +77,12 @@ const page = () => {
           </section>
 
           <section className='w-full pt-[1.875rem] md:pt-10	'>
-            <CardHeading title='Up Next' />
+            <CardHeading title='Up Next:' />
             <section className='flex text-lg leading-[28.8px] flex-col gap-[15px] pt-3 sm:pt-0'>
               <p>Sign up for our mailing list to stay posted.</p>
               <p>
-                Open source devs- an anonymous interview will go a long way. Understanding the decentralized development ecosystem will help us
-                improve our day-to-day lives and work environments.
-              </p>
-              <p>
-                This study adheres to standard ethical guidelines, including informed consent, voluntary participation, confidentiality, and the right
-                to withdraw at any time.
+                Open source devs- an anonymous interview will go a long way. Understanding the decentralized development ecosystem will help
+                improve day-to-day lives and work environments.
               </p>
             </section>
           </section>
