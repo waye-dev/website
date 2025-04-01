@@ -29,4 +29,4 @@ The information you share will be used for:
   * Your identity will remain protected in all these uses
 
 #### Contact Information  
-If you have questions or concerns, please contact Waye via email at waye.dev@gmail.com.
+If you have questions or concerns, please contact Waye via email at hello@waye.dev.

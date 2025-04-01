@@ -137,8 +137,8 @@ const BitcoinReboot = () => {
         <p className='text-xl leading-[160%] font-medium'>Questions?</p>
         <div className='text-lg leading-[160%]'>
           <p>We want to hear.</p>
-          <Link href='mailto:waye.dev@gmail.com' className='flex items-center gap-2'>
-            <span className='underline-offset-8 underline'>waye.dev@gmail.com</span>
+          <Link href='mailto:hello@waye.dev' className='flex items-center gap-2'>
+            <span className='underline-offset-8 underline'>hello@waye.dev</span>
             <span className='text-blue-custom-100'>→</span>
           </Link>
         </div>
