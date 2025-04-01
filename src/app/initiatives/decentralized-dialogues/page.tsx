@@ -199,7 +199,7 @@ total — don’t miss out.
 
             <div className='text-lg leading-[160%]'>
               <p>Let's chat.</p>
-              <Link href='mailto:waye.dev@gmail.com' className='flex items-center gap-2'>
+              <Link href='mailto:hello@waye.dev' className='flex items-center gap-2'>
                 <span className='underline-offset-8 underline'>hello@waye.dev</span>
                 <span className='text-blue-custom-100'>→</span>
               </Link>

@@ -119,7 +119,7 @@ export const INITIATIVES_SECTION_DATA = [
     infoText: "",
     advertText: "",
     linkText: "Email us",
-    href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
+    href: "mailto:hello@waye.dev?subject=Initiative%20proposal",
     filterKey: "program",
   },
   {
@@ -130,7 +130,7 @@ export const INITIATIVES_SECTION_DATA = [
     infoText: "",
     advertText: "Let’s build it.",
     linkText: "Email us",
-    href: "mailto:waye.dev@gmail.com?subject=Initiative%20proposal",
+    href: "mailto:hello@waye.dev?subject=Initiative%20proposal",
     props: { style: { backgroundColor: "transparent" } },
     filterKey: "",
   },
