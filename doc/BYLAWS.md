@@ -262,12 +262,9 @@ determines one exists as per Section 3.
 A. Duty to Disclose: Any interested person must fully disclose their financial interest and all relevant facts to the board or committee.
 B. Determining a Conflict of Interest: The board or committee shall determine if a conflict exists, excluding the interested person from discussion and voting.
 C. Addressing the Conflict:
-a. The interested person may present their case but must leave the meeting during discussion and voting.
-b. Disinterested board members may evaluate alternatives to the proposed arrangement.
-c. If no better alternative exists, the board may approve the transaction by majority vote, provided it is fair, reasonable, and in the Foundation’s best interest.
-```
-
-```
+ a. The interested person may present their case but must leave the meeting during discussion and voting.
+ b. Disinterested board members may evaluate alternatives to the proposed arrangement.
+ c. If no better alternative exists, the board may approve the transaction by majority vote, provided it is fair, reasonable, and in the Foundation’s best interest.
 D. Violations: If a member fails to disclose a conflict, the board will investigate and take corrective actions, which may include removal.
 ```
 **9.04. RECORDINGS OF PROCEEDINGS.** Meeting minutes shall document:
