@@ -23,26 +23,28 @@ const page = () => {
           <section className='flex flex-col lg:flex-row items-start justify-between gap-12 md:gap-6 md:p-5 mb-[60px]'>
             <div className='flex flex-col gap-4 text-lg max-w-[540px]'>
               <section>
-                <p className='font-semibold underline underline-offset-4'>TIMELINE:</p>
-                <p> 12 sessions, March 2025 - February 2026</p>
+                <p className='font-semibold underline underline-offset-4'>12 Virtual Sessions:</p>
+                <p> April 2025 – March 2026 at 5PM GMT on the last Wednesday of each month
+                </p>
               </section>
 
               <section>
-                <p className='font-semibold underline underline-offset-4'>WHERE IS IT ?</p>
-                <p>Virtual. 5pm GMT on the last Wednesday of each month</p>
+                <p className='font-semibold underline underline-offset-4'>Seats.</p>
+                <p>8 remaining.</p>
               </section>
 
               <section>
-                <p className='font-semibold underline underline-offset-4'>{`Tl;DR`}:</p>
-                <p>Learn from OG cypherpunks and philosophers to sharpen your ethical compass and ensure your work builds a better world.</p>
+                <p className='font-semibold underline underline-offset-4'>Tl;DR:</p>
+                <p>Cryptography, political philosophy and legal theory. 12 seminars where we apply seminal texts to Bitcoin’s implications on power, privacy and freedom. 
+                </p>
               </section>
+      
             </div>
 
             <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[55px] bg-blue-custom-600 rounded-[10px] w-full md:min-w-[400px]'>
-              <p className='text-[22px] leading-[160%] font-medium'>Ready to explore bitcoin's transformative potential?</p>
+              <p className='text-[22px] leading-[160%] font-medium'>Only 8 spots left. Stop lurking and apply.</p>
               <p className='text-lg'>
-                You have until <span className='font-semibold'>March 24th</span> to secure your spot in this exclusive seminar series. Only 10 seats
-                available—don’t miss out.
+              Bitcoin isn’t just software—it’s about sovereignty, disruption, and rewriting the rules. If you’re an OS dev serious about building systems that challenge the status quo, we’re glad you’re here.
               </p>
               <CustomButton
                 href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
@@ -52,25 +54,21 @@ const page = () => {
                   target: "_blank",
                 }}
               >
-                Join the Dialogue
+                Let's Go
               </CustomButton>
             </div>
           </section>
 
           <section className='pb-[45px]'>
             <section className='flex flex-col border-b-2 border-b-black pb-5 mb-[30px]'>
-              <p className='text-2xl'>About Decentralized Dialogues:</p>
+              <p className='text-2xl'>General:</p>
             </section>
             <section className='flex flex-col gap-[27px]'>
               <p className='text-lg leading-[160%]'>
-                Bitcoin isn’t just about code—it’s about rewriting the rules of governance, sovereignty, and power. But how do you ensure your work
-                aligns with a bigger vision? Decentralized Dialogues offers a space to step back, challenge your assumptions, and gain the perspective
-                you need to shape the future responsibly.
+              This is a year-long seminar series for open-source developers ready to discuss the legal, political, and ethical forces shaping Bitcoin.
               </p>
               <p className='text-lg leading-[160%]'>
-                Join this intimate seminar series, designed for Bitcoin developers ready to think critically about the ethical and societal
-                implications of their work. Together, we’ll tackle the big questions and dig deep into the philosophical, legal, and economic ideas
-                that underpin the systems you’re helping to build.
+              We dissect essential readings—from ancient philosophy to cypherpunk manifestos—and show up monthly to debate how these big ideas interact with the code you’re shipping. Think gloves-off salon to engage in these big ideas.
               </p>
             </section>
           </section>
@@ -82,18 +80,14 @@ const page = () => {
             <section className='text-lg leading-[28.8px]'>
               <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
                 <li>
-                  <span className='font-semibold'>Virtual group sessions.</span> 90-minute discussions held monthly from February 2025 to January
-                  2026.
+                  <span className='font-semibold'>12 virtual group sessions.</span> (10 participants max) with a truly great group of people. 
                 </li>
                 <li>
-                  <span className='font-semibold'>Structured themes.</span> Each session focuses on a new theme—from governance and sovereignty to
-                  cryptographic ethics—grounded in seminal texts.
+                  <span className='font-semibold'>Pre-session readings.</span> like <em>Plato’s Republic, Hobbes’ Leviathan, Crypto Anarchist Manifesto, Security Without Identification.</em>
                 </li>
                 <li>
-                  <span className='font-semibold'>Intimate setting.</span> Limited to 10 participants for focused and meaningful engagement.
-                </li>
-                <li>
-                  <span className='font-semibold'>Accountability.</span> Missing more than two sessions? This isn’t the right fit for you.
+                  <span className='font-semibold'>No lectures. No spectators. Participation encouraged.
+                  </span> 
                 </li>
               </ul>
             </section>
@@ -106,23 +100,16 @@ const page = () => {
             <section className='text-lg leading-[28.8px]'>
               <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
                 <li>
-                  <span className='font-semibold'>See the bigger picture.</span> Understand Bitcoin’s role in reshaping political, social, and
-                  economic systems.
+                Because Bitcoin is reshaping how power and governance work—but what does that mean?
                 </li>
                 <li>
-                  <span className='font-semibold'>Challenge your thinking.</span> Engage with controversial perspectives and sharpen your critical
-                  faculties.
+                Because building without context or reflection isn’t enough anymore.
                 </li>
                 <li>
-                  <span className='font-semibold'>Shape ethical tech.</span> Learn how to balance innovation with responsible decision-making.
+                Because your code influences systems and people.
                 </li>
                 <li>
-                  <span className='font-semibold'>Build community.</span> Join a network of like-minded developers committed to creating
-                  world-changing open-source infrastructure.
-                </li>
-                <li>
-                  <span className='font-semibold'>Learn from the best.</span> Work with a facilitator who brings years of experience in guiding
-                  impactful conversations and fostering ethical clarity.
+                Because thoughtful developers who care about the bigger picture are essential.
                 </li>
               </ul>
             </section>
@@ -135,14 +122,13 @@ const page = () => {
             <section className='text-lg leading-[28.8px]'>
               <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
                 <li>
-                  <span className='font-semibold'>Curiosity.</span> Be ready to engage deeply with diverse viewpoints and tough questions.
+                  <span className='font-semibold'>Curiosity.</span> Show up ready to question and engage.
                 </li>
                 <li>
-                  <span className='font-semibold'>Commitment.</span> Show up fully and contribute honestly—this isn’t a spectator sport.
+                  <span className='font-semibold'>Commitment.</span> Miss more than 2 sessions? This isn’t for you.
                 </li>
                 <li>
-                  <span className='font-semibold'>Perspective.</span> Share your experiences and help co-create a shared understanding of Bitcoin’s
-                  potential.
+                  <span className='font-semibold'>Perspective.</span> Your input is part of the learning.
                 </li>
               </ul>
             </section>
@@ -170,9 +156,8 @@ const page = () => {
                 rewriting the rules of Bitcoin security.
                 <br />
                 <br />
-                Jesse doesn’t just contribute to open-source—he sets the standard. From adaptor signatures to FROST, his work has earned backing from
-                Brink and the Human Rights Foundation. His mission? Making decentralized tech unstoppable, turning privacy into a guarantee, and
-                proving that cryptographers have more power than lawyers ever did.
+                From adaptor signatures to FROST, Jesse's work has earned backing from Brink and the Human Rights Foundation. His mission? Making 
+                decentralized tech unstoppable, turning privacy into a guarantee, and proving that cryptographers have more power than lawyers ever did.
               </p>
             </section>
           </section>
@@ -183,18 +168,17 @@ const page = () => {
             </section>
 
             <section className='flex flex-col gap-[28px]'>
-              <p className='text-lg leading-[160%]'>12 sessions, March - February 2026, online @ 5PM GMT on the last Wednesday of each month:</p>
-              <p className='font-semibold text-lg leading-[160%]'>
-                Mar 26 ✧ Apr 30 ✧ May 28 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 26 ✧ Dec 31 ✧ Jan 28 ✧ Feb 25{" "}
+              <p className='text-lg leading-[160%]'>12 virtual sessions April 2025 – March 2026 at 5PM GMT on the last Wednesday of each month
               </p>
-
-              <p className='text-lg leading-[160%]'>If these times don’t work for you but you’re interested, let us know!</p>
+              <p className='font-semibold text-lg leading-[160%]'>
+                Apr 30 ✧ May 28 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 26 ✧ Dec 31 ✧ Jan 28 ✧ Feb 25 ✧ Mar 25{" "}
+              </p>
 
               <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[60px] bg-blue-custom-600 rounded-[10px] w-full'>
                 <p className='text-[22px] leading-[160%] font-medium'>Ready to explore bitcoin's transformative potential?</p>
                 <p className='text-lg'>
-                  You have until <span className='font-semibold'>March 15th</span> to secure your spot in this exclusive seminar series. Only 10 seats
-                  available—don’t miss out.
+                  You have until <span className='font-semibold'>April 22nd</span> to secure your spot in this exclusive seminar series. Only 10 seats
+total — don’t miss out.
                 </p>
                 <CustomButton
                   href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
@@ -216,7 +200,7 @@ const page = () => {
             <div className='text-lg leading-[160%]'>
               <p>Let's chat.</p>
               <Link href='mailto:waye.dev@gmail.com' className='flex items-center gap-2'>
-                <span className='underline-offset-8 underline'>waye.dev@gmail.com</span>
+                <span className='underline-offset-8 underline'>hello@waye.dev</span>
                 <span className='text-blue-custom-100'>→</span>
               </Link>
             </div>
