@@ -45,7 +45,7 @@ const Footer = () => {
             <Link href='https://github.com/waye-dev/waye/blob/main/LICENSE' className='mb-2'>
               License: MIT
             </Link>
-            <Link href='https://github.com/waye-dev/waye/blob/main/BYLAWS.md' className='mb-2'>
+            <Link href='https://github.com/waye-dev/waye/blob/main/doc/BYLAWS.md' className='mb-2'>
               Bylaws
             </Link>
           </div>
