@@ -14,7 +14,7 @@ Subscribe to our [mailing list](https://www.waye.dev/subscribe).
 
 **How are you funded?**
 
-We are very thankful to HRF and OpenSats for their belief and investment in Waye! If you are interested in contributing, please [email us](waye.dev@gmail.com). 
+We are very thankful to HRF and OpenSats for their belief and investment in Waye! If you are interested in contributing, please [email us](hello@waye.dev). 
 
 ## How we work:
 **Do you care about privacy?**
@@ -37,7 +37,7 @@ We are grateful to be able to offer our programs on a proof of work model due to
 
 ## Need help?
 
-Yes we do!! If you're excited to get involved, send us an [email](waye.dev@gmail.com) & share your ideas and skillsets. 
+Yes we do!! If you're excited to get involved, send us an [email](hello@waye.dev) & share your ideas and skillsets. 
 
 Here are some areas that we are actively looking for support: 
 - Designer – We have plenty of words. Too many, really. Help us communicate visually.

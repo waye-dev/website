@@ -43,7 +43,7 @@ Request Access – Obtain a copy of the personal information we store about you.
 Request Corrections – Fix any inaccuracies in your information.  
 Withdraw Consent & Request Deletion – Ask us to delete your data, subject to legal or operational constraints.  
 Manage Cookies – Adjust browser settings to disable or limit tracking technologies.  
-To exercise your rights, contact us at waye.dev@gmail.com.  
+To exercise your rights, contact us at hello@waye.dev.  
 
 6. Cookies & Tracking Technologies  
 
@@ -57,6 +57,6 @@ We may update this policy to reflect operational, legal, or security changes. We
 
 If you have any questions about this Privacy Policy or how we handle your data, please contact us at:  
 The OS Waye Foundation  
-Email: waye.dev@gmail.com  
+Email: hello@waye.dev  
 Address: 8 The Green, STE A, Dover, Delaware 19901  
 By accessing our website, participating in our programs, or using our tools and research, you acknowledge that you have read and agree to this Privacy Policy.  

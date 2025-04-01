@@ -61,5 +61,5 @@ These Terms shall be governed by and construed in accordance with the laws of Th
 13. Contact Information  
 If you have any questions or concerns about these Terms or our Services, please contact us at:  
 The OS Waye Foundation  
-Email: waye.dev@gmail.com  
+Email: hello@waye.dev  
 Address: 8 The Green, Dover, Delaware 19901  
