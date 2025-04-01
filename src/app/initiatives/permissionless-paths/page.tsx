@@ -88,6 +88,25 @@ const page = () => {
           </section>
 
           <section className='w-full pt-[1.875rem] md:pt-10	'>
+            <CardHeading title='Meet Our Research Team:' />
+            <section>
+          <p className='text-xl leading-[160%] font-medium pb-[10px]'>Laura Lotti - Lead Researcher</p>
+          <p className='text-lg leading-[160%]'>
+            Researcher, analyst and writer exploring the relations between economic, technological and socio-cultural systems. Incipient interests: regenerative technocultures, mutualistic org structures, food sovereignty. When you show up for your interview, you'll be lucky enough to meet her.
+            <br />
+            </p>
+        </section>
+
+        <section className='pt-[40px]'>
+          <p className='text-xl leading-[160%] font-medium pb-[10px]'>Nadia Asparouhova - Advisor</p>
+          <p className='text-lg leading-[160%]'>
+          Writer and researcher who explores how the internet enables individual creators. Author of <em>Working in Public: The Making and Maintenance of Open Source Software</em>. AKA the only book about the humans behind open source software. We're lucky to have her on the team.
+            <br />
+          </p>
+        </section>
+          </section>
+
+          <section className='w-full pt-[1.875rem] md:pt-10	'>
             <CardHeading title='Important Note:' />
             <section className='flex text-lg leading-[28.8px] flex-col gap-[15px] pt-3 sm:pt-0'>
               <p>

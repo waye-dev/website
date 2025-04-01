@@ -27,7 +27,7 @@ const Footer = () => {
             <p className='pb-[10px] font-light md:font-medium'>Strengthening the human infrastructure of open source.</p>
             <Link href='mailto:waye.dev@gmail.com' className='pb-[22px] font-light md:font-medium flex items-center gap-3'>
               <Image src='/svgs/envelope.svg' width={20} height={20} alt='envelope' />
-              waye.dev@gmail.com
+              hello@waye.dev
             </Link>
           </div>
 
