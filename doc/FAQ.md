@@ -40,6 +40,5 @@ We are grateful to be able to offer our programs on a proof of work model due to
 Yes we do!! If you're excited to get involved, send us an [email](hello@waye.dev) & share your ideas and skillsets. 
 
 Here are some areas that we are actively looking for support: 
-- Designer – We have plenty of words. Too many, really. Help us communicate visually.
-- Social Media Manager – Open-source developers need to know we exist. If you’re tapped in (or know how to be), we need you.
+- [Designer](https://github.com/waye-dev/waye/blob/main/doc/DESIGNER-WANTED.md) – We have plenty of words. Too many, really. Help us communicate visually.
 - Time Management Expert (or recommendation) – How do we do it all? Looking for a guest facilitator who can run a session to help OS developers manage time better.
