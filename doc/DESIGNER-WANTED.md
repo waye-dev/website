@@ -18,3 +18,5 @@ We’re looking for someone to help develop our visual communication — to help
 
 We value **project ownership** and **creativity in communicating**.
 
+If this is you or if you know who this person is, email us: [hello@waye.dev](hello@waye.dev)
+
