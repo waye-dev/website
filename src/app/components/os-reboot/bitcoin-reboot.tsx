@@ -28,12 +28,12 @@ const BitcoinReboot = () => {
         <DetailsCard
           timeline={
             <span className='flex flex-col gap-1'>
-              <span>8 sessions. 3rd Thursdays. April - November 2025. 4-530PM GMT.</span>
-			  <span className='font-medium'>Apr 17 ✧ May 15 ✧ Jun 19 ✧ Jul 17 ✧ Aug 21 ✧ Sep 18 ✧ Oct 16 ✧ Nov 20</span>
+              <span>8 sessions. Thursdays. May - October 2025. 4:30-6PM GMT.</span>
+			  <span className='font-medium'>May 8 ✧ May 29 ✧ Jun 19 ✧ Jul 10 ✧ Jul 31 ✧ Aug 21 ✧ Sep 11 ✧ Oct 2</span>
             </span>
           }
           tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a professional audit guaranteed to level you up.</span>}
-          who={<span>10 spots available to actively contributing OS devs.</span>}
+          who={<span>8 spots available to actively contributing OS devs (10 total).</span>}
           buttonLinks={buttonLinks}
         />
       </section>
