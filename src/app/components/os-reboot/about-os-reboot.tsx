@@ -100,11 +100,11 @@ const OsRebootCard = ({ setActiveTab }: { setActiveTab: (tab: string) => void })
 
   const buttonLinks = [
     {
-      text: "Reboot Nostr",
+      text: "OS Reboot [Nostr]",
       tag: "nostr",
     },
     {
-      text: "Reboot Bitcoin",
+      text: "OS Reboot [Freedom]",
       tag: "bitcoin",
     },
   ];
