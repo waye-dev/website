@@ -8,9 +8,8 @@ import NostrReboot from "./nostr-reboot";
 
 const ContentTabs = () => {
   const tabItems = [
-    { key: "about", label: <span>About <br /> OS Reboot</span> },
-    { key: "nostr", label: <span>Nostr <br /> Reboot</span> },
-    { key: "bitcoin", label: <span>Bitcoin <br /> Reboot</span> },
+    { key: "nostr", label: <span>OS Reboot <br /> [Nostr]</span> },
+    { key: "bitcoin", label: <span> OS Reboot <br /> [Freedom]</span> },
   ];
 
   const [activeTab, setActiveTab] = useState("about");
