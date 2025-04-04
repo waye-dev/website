@@ -8,7 +8,7 @@ const NostrReboot = () => {
       <div className='flex gap-4 flex-col sm:flex-row sm:relative justify-between'>
         <section className='flex flex-col sm:absolute top-0 left-0'>
           <h1 className='text-[38px] lg:text-[52px] leading-[120%] lg:leading-[62.4px]'>
-            OS Reboot <br /> Nostr
+            OS Reboot <br /> [Nostr]
           </h1>
         </section>
 
@@ -37,7 +37,7 @@ const NostrReboot = () => {
           description={
             <span>
               <span className='mt-[20px]'>
-                Sign ups for Nostr Reboot are closed. Sign ups for Bitcoin Reboot currently open.
+                Sign ups for OS Reboot [Nostr] are closed. Sign ups for OS Reboot [Freedom] currently open.
               </span>
             </span>
           }
@@ -47,7 +47,7 @@ const NostrReboot = () => {
       </section>
 
       <section className='pt-10 sm:pt-[69px]'>
-        <CardHeading title='About OS Nostr Reboot' />
+        <CardHeading title='About OS Reboot [Nostr]' />
         <section className='flex flex-col gap-[27px]'>
           <p className='text-lg leading-[160%]'>
             Decentralized development is a critical aspect of building censorship-resistant technology. But sometimes it can feel lonely and
@@ -169,7 +169,7 @@ const NostrReboot = () => {
           description={
             <span>
               <span className='mt-[20px]'>
-                Enrollment for this program is closed. Check out Bitcoin Reboot.
+                Enrollment for this program is closed. Check out OS Reboot [Freedom].
               </span>
             </span>
           }
