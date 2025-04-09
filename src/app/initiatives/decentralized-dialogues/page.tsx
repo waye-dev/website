@@ -24,7 +24,7 @@ const page = () => {
             <div className='flex flex-col gap-4 text-lg max-w-[540px]'>
               <section>
                 <p className='font-semibold underline underline-offset-4'>12 Virtual Sessions:</p>
-                <p> April 2025 – March 2026 at 5PM GMT on the last Wednesday of each month
+                <p> April 2025 – March 2026. Wednesdays @ 5PM GMT.
                 </p>
               </section>
 
@@ -168,10 +168,10 @@ const page = () => {
             </section>
 
             <section className='flex flex-col gap-[28px]'>
-              <p className='text-lg leading-[160%]'>12 virtual sessions April 2025 – March 2026 at 5PM GMT on the last Wednesday of each month
+              <p className='text-lg leading-[160%]'>12 virtual sessions April 2025 – March 2026. Wednesdays @ 5PM GMT.  
               </p>
               <p className='font-semibold text-lg leading-[160%]'>
-                Apr 30 ✧ May 28 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 26 ✧ Dec 31 ✧ Jan 28 ✧ Feb 25 ✧ Mar 25{" "}
+                Apr 30 ✧ May 28 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 19 ✧ Dec 17 ✧ Jan 28 ✧ Feb 25 ✧ Mar 25{" "}
               </p>
 
               <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[60px] bg-blue-custom-600 rounded-[10px] w-full'>
