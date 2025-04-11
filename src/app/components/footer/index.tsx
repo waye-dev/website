@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FOOTER_LINKS } from "@/app/data";
 import Wrapper from "@/app/components/wrapper";
 
 const Footer = () => {
@@ -33,21 +34,11 @@ const Footer = () => {
 
           <div className='flex flex-col items-center md:items-start'>
             <h3 className='text-lg font-medium mb-4 underline'>Legalese</h3>
-            <Link href='https://github.com/waye-dev/waye/blob/main/doc/TOS.md' className='mb-2'>
-              Terms of Use
-            </Link>
-            <Link href='https://github.com/waye-dev/waye/blob/main/doc/PRIVACY.md' className='mb-2'>
-              Privacy Policy
-            </Link>
-            <Link href='https://github.com/waye-dev/waye/blob/main/doc/DISCLOSURE.md' className='mb-2'>
-              Donation Disclosure
-            </Link>
-            <Link href='https://github.com/waye-dev/waye/blob/main/LICENSE' className='mb-2'>
-              License: MIT
-            </Link>
-            <Link href='https://github.com/waye-dev/waye/blob/main/doc/BYLAWS.md' className='mb-2'>
-              Bylaws
-            </Link>
+            {FOOTER_LINKS.map(({ text, href }) => (
+              <Link href={href} key={text} target='_blank' className='mb-2'>
+                {text}
+              </Link>
+            ))}
           </div>
         </Wrapper>
 
