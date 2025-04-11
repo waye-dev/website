@@ -48,14 +48,14 @@ export const ABOUT_SECTION_DATA = [
     cardSubText: "Individuals do not overthrow oppression, movements do.",
   },
   {
-    src: "",
+    src: "waye_backpack-p-800",
     cardTitle: "Let's do better.",
     cardDescriptionBlocks: [
       "Elite athletes are supported by professionals to transform their natural talent into repeatable excellence. We know the value of psycho-social support for high-achievers.",
       "Waye customizes evidenced-based practices to the unique challenges faced by devs building censorship-resistant technology. Waye empowers devs to build meaningful solutions that last.",
     ],
     cardSubText: "Free minds build freedom technology.",
-    props: { className: "flex flex-col gap-8" },
+    props: { className: "flex flex-col md:flex-row-reverse gap-8 justify-between items-center " },
   },
 ] as Array<{
   src: string;
@@ -125,8 +125,7 @@ export const INITIATIVES_SECTION_DATA = [
   {
     src: "/images/idea-image.png",
     title: "Your Idea",
-    description:
-      `Have an idea for a program, initiative or research?`,
+    description: `Have an idea for a program, initiative or research?`,
     infoText: "",
     advertText: "Let’s build it.",
     linkText: "Email us",
@@ -148,4 +147,12 @@ export const NAV_LINKS = [
   { href: "/initiatives", text: "Initiatives" },
   { href: "/initiatives/permissionless-paths", text: "Research" },
   { href: "https://github.com/waye-dev/waye/blob/main/doc/FAQ.md", text: "FAQ" },
-]
+];
+
+export const FOOTER_LINKS = [
+  { text: "Terms of Use", href: "https://github.com/waye-dev/waye/blob/main/doc/TOS.md" },
+  { text: "Privacy Policy", href: "https://github.com/waye-dev/waye/blob/main/doc/PRIVACY.md" },
+  { text: "Donation Disclosure", href: "https://github.com/waye-dev/waye/blob/main/doc/DISCLOSURE.md" },
+  { text: "License: MIT", href: "https://github.com/waye-dev/waye/blob/main/LICENSE" },
+  { text: "Bylaws", href: "https://github.com/waye-dev/waye/blob/main/doc/BYLAWS.md" },
+];
