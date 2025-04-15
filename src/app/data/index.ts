@@ -156,3 +156,13 @@ export const FOOTER_LINKS = [
   { text: "License: MIT", href: "https://github.com/waye-dev/waye/blob/main/LICENSE" },
   { text: "Bylaws", href: "https://github.com/waye-dev/waye/blob/main/doc/BYLAWS.md" },
 ];
+
+export const SOCIAL_LINKS = [
+  { text: "hello@waye.dev", href: "mailto:hello@waye.dev", src: "/svgs/envelope.svg" },
+  { text: "@waye_dev", href: "https://x.com/waye_dev", src: "/svgs/x.svg" },
+  {
+    text: "waye",
+    href: "https://primal.net/p/nprofile1qqs8yjjh4xn7xctqcqjamyms3tghgdjtj00a3jns6rnt2awfe4td7xcc3xfsr",
+    src: "/svgs/nostr.svg",
+  },
+];
