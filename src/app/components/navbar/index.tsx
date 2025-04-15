@@ -24,7 +24,7 @@ const Navbar = () => {
 
           <div className='hidden items-center space-x-12 md:flex font-medium'>
             {NAV_LINKS.map(({ href, text }) => (
-              <Link key={text} href={href}>
+              <Link key={text} href={href} target={href.includes("https") ? "_blank" : "_self"}>
                 {text}
               </Link>
             ))}
@@ -52,7 +52,9 @@ const Navbar = () => {
           <div>
             {NAV_LINKS.map(({ href, text }) => (
               <div className='pb-[10px]' key={text}>
-                <Link href={href}>{text}</Link>
+                <Link href={href} target={href.includes("https") ? "_blank" : "_self"}>
+                  {text}
+                </Link>
               </div>
             ))}
           </div>
