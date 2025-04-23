@@ -17,34 +17,37 @@ const page = () => {
         <div className='max-w-[1030px] mx-auto rounded-[20px] border-2 border-black p-4 md:p-5 lg:p-10 bg-blue-custom-700'>
           <section className='flex flex-col border-b-2 border-b-black pb-5 mb-[30px]'>
             <h1 className='text-[42px] md:text-[52px]'>Decentralized Dialogues</h1>
-            <p className='text-[22px] md:text-2xl'>Challenge your perspectives, build better systems.</p>
+            <p className='text-[22px] md:text-2xl'>Challenge perspectives, build better.</p>
           </section>
 
           <section className='flex flex-col lg:flex-row items-start justify-between gap-12 md:gap-6 md:p-5 mb-[60px]'>
             <div className='flex flex-col gap-4 text-lg max-w-[540px]'>
               <section>
                 <p className='font-semibold underline underline-offset-4'>12 Virtual Sessions:</p>
-                <p> April 2025 – March 2026. Wednesdays @ 5PM GMT.
+                <p> April 2025 – March 2026. Wednesdays @ 5-630PM GMT.
                 </p>
               </section>
 
               <section>
                 <p className='font-semibold underline underline-offset-4'>Seats.</p>
-                <p>8 remaining.</p>
+                <p>10 total.</p>
               </section>
 
               <section>
                 <p className='font-semibold underline underline-offset-4'>Tl;DR:</p>
-                <p>Cryptography, political philosophy and legal theory. 12 seminars where we apply seminal texts to Bitcoin’s implications on power, privacy and freedom. 
+                <p>Cryptography, political philosophy and legal theory. Selected readings from seminal texts. Seminars where we apply key concepts to Bitcoin’s implications on power, privacy and freedom.
+                <br />
+                <br />
+                First session on <span className='font-semibold'>April 30th.</span>
                 </p>
               </section>
-      
+
             </div>
 
             <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[55px] bg-blue-custom-600 rounded-[10px] w-full md:min-w-[400px]'>
-              <p className='text-[22px] leading-[160%] font-medium'>Only 8 spots left. Stop lurking and apply.</p>
+              <p className='text-[22px] leading-[160%] font-medium'>Only 6 spots left. Stop lurking and apply.</p>
               <p className='text-lg'>
-              Bitcoin isn’t just software—it’s about sovereignty, disruption, and rewriting the rules. If you’re an OS dev serious about building systems that challenge the status quo, we’re glad you’re here.
+              Bitcoin isn’t just software—it’s about sovereignty, disruption, and rewriting the rules. If you’re serious about freedom tech that challenges the status quo, we’re glad you’re here.
               </p>
               <CustomButton
                 href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
@@ -65,10 +68,10 @@ const page = () => {
             </section>
             <section className='flex flex-col gap-[27px]'>
               <p className='text-lg leading-[160%]'>
-              This is a year-long seminar series for open-source developers ready to discuss the legal, political, and ethical forces shaping Bitcoin.
+              This is a year-long seminar series to discuss the legal, political, and ethical forces shaping Bitcoin. Open to people contributing to freedom technology.
               </p>
               <p className='text-lg leading-[160%]'>
-              We dissect essential readings—from ancient philosophy to cypherpunk manifestos—and show up monthly to debate how these big ideas interact with the code you’re shipping. Think gloves-off salon to engage in these big ideas.
+              We dissect essential readings—from ancient philosophy to cypherpunk manifestos—and show up monthly to debate how these big ideas interact with the freedom tech you’re building. Think gloves-off salon to engage in these big ideas.
               </p>
             </section>
           </section>
@@ -103,13 +106,13 @@ const page = () => {
                 Because Bitcoin is reshaping how power and governance work—but what does that mean?
                 </li>
                 <li>
-                Because building without context or reflection isn’t enough anymore.
+                Because building without context or reflection isn’t enough.
                 </li>
                 <li>
-                Because your code influences systems and people.
+                Because your work influences systems and people.
                 </li>
                 <li>
-                Because thoughtful developers who care about the bigger picture are essential.
+                Because if you don't bring intentionality, who will?
                 </li>
               </ul>
             </section>
@@ -125,7 +128,7 @@ const page = () => {
                   <span className='font-semibold'>Curiosity.</span> Show up ready to question and engage.
                 </li>
                 <li>
-                  <span className='font-semibold'>Commitment.</span> Miss more than 2 sessions? This isn’t for you.
+                  <span className='font-semibold'>Commitment.</span> Read texts ahead of time. Show up to sessions.
                 </li>
                 <li>
                   <span className='font-semibold'>Perspective.</span> Your input is part of the learning.
@@ -136,10 +139,10 @@ const page = () => {
 
           <section className='pb-[45px]'>
             <section className='flex flex-col border-b-2 border-b-black pb-5 mb-[30px]'>
-              <p className='text-2xl'>Meet your facilitators:</p>
+              <p className='text-2xl'>Meet the crew:</p>
             </section>
             <section className='text-lg leading-[28.8px]'>
-              <p className='text-xl leading-[160%] font-medium pb-[10px]'>Jesse Posner</p>
+              <p className='text-xl leading-[160%] font-medium pb-[10px]'>Lead facilitator: Jesse Posner</p>
               <p className='text-lg leading-[160%]'>
                 Jesse Posner went from arguing cases in court to arguing with cryptographic proofs—because who needs a judge when you’ve got math on
                 your side? A philosophy-trained mergers-and-acquisitions lawyer once deep in high-stakes banking litigation, he ditched the suits for
@@ -156,8 +159,20 @@ const page = () => {
                 rewriting the rules of Bitcoin security.
                 <br />
                 <br />
-                From adaptor signatures to FROST, Jesse's work has earned backing from Brink and the Human Rights Foundation. His mission? Making 
+                From adaptor signatures to FROST, Jesse's work has earned backing from Brink and the Human Rights Foundation. His mission? Making
                 decentralized tech unstoppable, turning privacy into a guarantee, and proving that cryptographers have more power than lawyers ever did.
+                <br />
+                <br />
+              </p>
+              <p className='text-xl leading-[160%] font-medium pb-[10px]'>Special guest: Troy Cross</p>
+              <p className='text-lg leading-[160%]'>
+                Troy Cross is a Professor of Philosophy and Humanities at Reed College, Chief Editor at The Nakamoto Project, Senior Fellow at the Bitcoin Policy
+                Institute, and a generally aggro twitter personality. He has done lots of fancy things in the world of academic philosophy, but would much rather
+                talk about the nuanced relationship between US politics and bitcoin. His deep dive into the world of bitcoin mining and the environment has him
+                advising more bitcoin companies than you can name.
+                <br />
+                <br />
+                He is skilled at asking questions that make you think. At least, that's what his professional certificate says.
               </p>
             </section>
           </section>
@@ -168,17 +183,16 @@ const page = () => {
             </section>
 
             <section className='flex flex-col gap-[28px]'>
-              <p className='text-lg leading-[160%]'>12 virtual sessions April 2025 – March 2026. Wednesdays @ 5PM GMT.  
+              <p className='text-lg leading-[160%]'>12 virtual sessions April 2025 – March 2026. Wednesdays @ 5PM GMT.
               </p>
               <p className='font-semibold text-lg leading-[160%]'>
-                Apr 30 ✧ May 28 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 19 ✧ Dec 17 ✧ Jan 28 ✧ Feb 25 ✧ Mar 25{" "}
+                Apr 30 ✧ May 21 ✧ Jun 25 ✧ Jul 30 ✧ Aug 27 ✧ Sep 24 ✧ Oct 29 ✧ Nov 19 ✧ Dec 17 ✧ Jan 28 ✧ Feb 25 ✧ Mar 25{" "}
               </p>
 
               <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[60px] bg-blue-custom-600 rounded-[10px] w-full'>
                 <p className='text-[22px] leading-[160%] font-medium'>Ready to explore bitcoin's transformative potential?</p>
                 <p className='text-lg'>
-                  You have until <span className='font-semibold'>April 22nd</span> to secure your spot in this exclusive seminar series. Only 10 seats
-total — don’t miss out.
+                  First session on <span className='font-semibold'>April 30th.</span> Secure your spot today.
                 </p>
                 <CustomButton
                   href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
