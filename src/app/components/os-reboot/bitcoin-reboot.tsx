@@ -33,7 +33,7 @@ const BitcoinReboot = () => {
             </span>
           }
           tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a professional audit guaranteed to level you up.</span>}
-          who={<span>8 spots available to actively contributing OS devs (10 total).</span>}
+          who={<span>10 spots for actively contributing OS devs (3 remaining).</span>}
           buttonLinks={buttonLinks}
         />
       </section>
