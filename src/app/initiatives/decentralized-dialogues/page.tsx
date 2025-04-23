@@ -167,7 +167,7 @@ const page = () => {
               <p className='text-xl leading-[160%] font-medium pb-[10px]'>Special guest: Troy Cross</p>
               <p className='text-lg leading-[160%]'>
                 Troy Cross is a Professor of Philosophy and Humanities at Reed College, Chief Editor at The Nakamoto Project, Senior Fellow at the Bitcoin Policy
-                Institute, and a generally aggro twitter personality. He has done lots of fancy things in the world of academic philosophy, but would much rather
+                Institute, and generally aggro twitter personality. Has done lots of fancy things in the world of academic philosophy, but would much rather
                 talk about the nuanced relationship between US politics and bitcoin. His deep dive into the world of bitcoin mining and the environment has him
                 advising more bitcoin companies than you can name.
                 <br />
