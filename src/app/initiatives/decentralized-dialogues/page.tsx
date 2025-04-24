@@ -43,23 +43,6 @@ const page = () => {
               </section>
 
             </div>
-
-            <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[55px] bg-blue-custom-600 rounded-[10px] w-full md:min-w-[400px]'>
-              <p className='text-[22px] leading-[160%] font-medium'>Only 3 spots left. Stop lurking and apply.</p>
-              <p className='text-lg'>
-              Bitcoin isn’t just software—it’s about sovereignty, disruption, and rewriting the rules. If you’re serious about freedom tech that challenges the status quo, we’re glad you’re here.
-              </p>
-              <CustomButton
-                href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
-                props={{
-                  className:
-                    "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[43px] text-black text-nowrap border-2 border-black flex items-center justify-center mt-[25px] md:mt-[50px] md:w-fit underline",
-                  target: "_blank",
-                }}
-              >
-                Let's Go
-              </CustomButton>
-            </div>
           </section>
 
           <section className='pb-[45px]'>
@@ -83,7 +66,7 @@ const page = () => {
             <section className='text-lg leading-[28.8px]'>
               <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
                 <li>
-                  <span className='font-semibold'>12 virtual group sessions.</span> (10 participants max) with a truly great group of people. 
+                  <span className='font-semibold'>12 virtual group sessions.</span> (10 participants max) with a truly great group of people.
                 </li>
                 <li>
                   <span className='font-semibold'>Pre-session readings.</span> like <em>Plato’s Republic, Hobbes’ Leviathan, Crypto Anarchist Manifesto, Security Without Identification.</em>
@@ -192,18 +175,8 @@ const page = () => {
               <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[60px] bg-blue-custom-600 rounded-[10px] w-full'>
                 <p className='text-[22px] leading-[160%] font-medium'>Ready to explore bitcoin's transformative potential?</p>
                 <p className='text-lg'>
-                  First session on <span className='font-semibold'>April 30th.</span> Secure your spot today.
+                  First session on <span className='font-semibold'>April 30th.</span> Enrollment closed, but if you're dying to play, email us.
                 </p>
-                <CustomButton
-                  href='https://docs.google.com/forms/d/e/1FAIpQLSexujtqe0_bRlv1bKGzFZ8DNBlwY_V9w5gQ67KFHZt-B9OoNg/viewform'
-                  props={{
-                    className:
-                      "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[14px] px-[38px] text-black text-nowrap border-2 border-black flex items-center justify-center mt-[35px] md:w-fit underline",
-                    target: "_blank",
-                  }}
-                >
-                  Join the Dialogue
-                </CustomButton>
               </div>
             </section>
           </section>
