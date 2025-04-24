@@ -35,8 +35,8 @@ const InitiativesSection = () => {
     <div className='items-center justify-center mx-auto w-full text-black bg-gray-custom-100'>
       <Wrapper className='flex  mx-auto flex-col gap-[20px] items-center justify-center text-center w-full pb-[20px]'>
         <p className='text-[40px] md:text-[54px] leading-[75.6px]'>Build better 🔥</p>
-        <p className='text-lg leading-[28.8px] max-w-[650px]'> Become more productive today with the self-paced AIR tool. </p>
-		<p className='text-lg leading-[28.8px] max-w-[650px]'> OS devs: sign ups are open for OS Reboot (productivity protocol) & Decentralized Dialogues (philosophy seminars). We are looking to interview for Permissionless Paths (ethnographic research). </p>
+        <p className='text-lg leading-[28.8px] max-w-[650px]'> Open source needs you to keep building. Waye keeps you focused. </p>
+        <p className='text-lg leading-[28.8px] max-w-[650px]'> We have programs, tools & research. Check it out 👇🏽 </p>
 
         <div className='flex items-center gap-2.5 flex-wrap'>
           {INITIATIVES_FILTER_KEYS.map(({ key, label }) => (
