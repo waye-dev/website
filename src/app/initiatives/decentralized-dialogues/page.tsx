@@ -45,7 +45,7 @@ const page = () => {
             </div>
 
             <div className='flex flex-col gap-[5px] p-5 md:p-[30px] md:pb-[55px] bg-blue-custom-600 rounded-[10px] w-full md:min-w-[400px]'>
-              <p className='text-[22px] leading-[160%] font-medium'>Only 6 spots left. Stop lurking and apply.</p>
+              <p className='text-[22px] leading-[160%] font-medium'>Only 3 spots left. Stop lurking and apply.</p>
               <p className='text-lg'>
               Bitcoin isn’t just software—it’s about sovereignty, disruption, and rewriting the rules. If you’re serious about freedom tech that challenges the status quo, we’re glad you’re here.
               </p>
