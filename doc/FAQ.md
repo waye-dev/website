@@ -33,7 +33,7 @@ Freedom goes beyond code.
 
 **Who can participate in the programs?**
 
-We are grateful to be able to offer our programs on a proof of work model due to the financial support of HRF & OpenSats. This means if you are a dev who is making contributions to FOSS code, you are automatically eligible for our programs. 
+We are grateful to be able to offer our programs on a proof of work model due to the financial support of HRF & OpenSats. This means if you are a dev who is making contributions to FOSS code, you are automatically eligible for our programs. Also, you gotta follow our [community guidelines](https://github.com/waye-dev/waye/blob/main/doc/COMMUNITY-GUIDELINES.md).
 
 ## Need help?
 
