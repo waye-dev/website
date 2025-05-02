@@ -37,7 +37,7 @@ const NostrReboot = () => {
           description={
             <span>
               <span className='mt-[20px]'>
-                Sign ups for OS Reboot [Nostr] are closed. Sign ups for OS Reboot [Freedom] currently open.
+                Sign ups for OS Reboot [Nostr] are closed. Sign up for our newsletter to get notified about the next OS Reboot.
               </span>
             </span>
           }
@@ -169,7 +169,7 @@ const NostrReboot = () => {
           description={
             <span>
               <span className='mt-[20px]'>
-                Enrollment for this program is closed. Check out OS Reboot [Freedom].
+                Enrollment for this program is closed. Sign up for our newsletter to get notified about the next OS Reboot.
               </span>
             </span>
           }

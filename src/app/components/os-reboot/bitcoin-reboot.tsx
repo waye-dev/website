@@ -33,8 +33,20 @@ const BitcoinReboot = () => {
             </span>
           }
           tldr={<span>Upgrade your mental OS through this structured protocol. World-class experts lead a professional audit guaranteed to level you up.</span>}
-          who={<span>10 spots for actively contributing OS devs (3 remaining).</span>}
-          buttonLinks={buttonLinks}
+          who={<span>10 actively contributing OS devs.</span>}
+        />
+      </section>
+
+      <section className='pt-[30px] sm:pt-[40px]'>
+        <CTACard
+          title=''
+          description={
+            <span>
+              <span className='mt-[20px]'>
+                Enrollment for this program is closed. Sign up for our newsletter to get notified about the next OS Reboot.
+              </span>
+            </span>
+          }
         />
       </section>
 
@@ -132,6 +144,19 @@ const BitcoinReboot = () => {
           </p>
         </section>
 	  </section>
+
+          <section className='pt-[30px] sm:pt-[40px]'>
+            <CTACard
+              title=''
+              description={
+                <span>
+                  <span className='mt-[20px]'>
+                    Enrollment for this program is closed. Sign up for our newsletter to get notified about the next OS Reboot.
+                  </span>
+                </span>
+              }
+            />
+          </section>
 
       <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
         <p className='text-xl leading-[160%] font-medium'>Questions?</p>
