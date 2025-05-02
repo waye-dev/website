@@ -71,10 +71,10 @@ export const INITIATIVES_SECTION_DATA = [
     src: "/images/os-reboot-image.png",
     title: "OS Reboot",
     description:
-      "Just like operating systems, open source contributors can use an occasional reboot. Upgrade your mental OS through monthly sessions facilitated by world-class experts. Sign ups for OS Reboot [Freedom] are open. OS Reboot [Nostr] is underway.",
+    "Upgrade your mental OS through monthly sessions facilitated by world-class experts. OS Reboot [Freedom] and OS Reboot [Nostr] are underway. Sign up for our newsletter to get notified about the next OS Reboot.",
     infoText: "",
     advertText: "",
-    linkText: "Learn more & sign up",
+    linkText: "Learn more",
     href: "/initiatives/os-reboot#bitcoin",
     filterKey: "program",
   },
