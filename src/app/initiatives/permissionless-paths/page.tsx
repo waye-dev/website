@@ -38,7 +38,14 @@ const page = () => {
                 </p>
                 <p>
                 <span className='font-semibold'>
-                Get the report! sign up for mailing list!
+                <Link
+                  href='https://www.waye.dev/subscribe'
+                  target='_blank'
+                  className='underline underline-offset-4 italic'
+                >
+                  Sign up for our mailing list{" "} 
+                </Link>
+                  to stay updated on the research and be the first to know when we publish our findings.
                 </span>
                 </p>
               </div>
