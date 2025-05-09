@@ -33,20 +33,6 @@ const page = () => {
                   productivity vs burnout?
                 </p>
                 <p>
-                  <span className='font-semibold'> We are looking to interview FOSS devs who have contributed for 1+ years. </span>
-                  Sound like you? Help our community learn:
-                </p>
-                <p>
-                  <span className='underline'>
-                    <Link
-                      href='https://docs.google.com/forms/d/e/1FAIpQLSf5RKqNV0I_zEekk1vxAToizH2OU1JR8AShfxQeqJVGRiTuCQ/viewform?pli=1'
-                      target='_blank'
-                    >
-                      Schedule an interview.
-                    </Link>
-                  </span>
-                </p>
-                <p>
                   Through in-depth qualitative interviews, the study aims to gain an understanding of open source developers’ work environment, with a
                   focus on motivations, expectations, work habits, responsibilities, and challenges (churn, constraints).
                 </p>
@@ -79,11 +65,7 @@ const page = () => {
           <section className='w-full pt-[1.875rem] md:pt-10	'>
             <CardHeading title='Up Next:' />
             <section className='flex text-lg leading-[28.8px] flex-col gap-[15px] pt-3 sm:pt-0'>
-              <p>Sign up for our mailing list to stay posted.</p>
-              <p>
-                Open source devs- an anonymous interview will go a long way. Understanding the decentralized development ecosystem will help
-                improve day-to-day lives and work environments.
-              </p>
+              <p>Sign up for our mailing list to get the report.</p>
             </section>
           </section>
 
@@ -125,18 +107,6 @@ const page = () => {
                 .
               </p>
             </section>
-          </section>
-
-          <section className='pt-[30px] sm:pt-10 w-full'>
-            <CTACard
-              title='Ready to interview?'
-              description='FOSS devs with 1+ years of experience: click below'
-              buttonLinks={buttonLinks}
-              buttonProps={{
-                className:
-                  "rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[15px] px-[72px] underline text-black text-nowrap border-2 border-black flex items-center justify-center md:w-fit",
-              }}
-            />
           </section>
 
           <section className='flex flex-col gap-[9px] pt-[40px] pb-[30px] sm:pb-[90px]'>
