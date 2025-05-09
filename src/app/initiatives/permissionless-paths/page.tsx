@@ -45,7 +45,7 @@ const page = () => {
                 >
                   Sign up for our mailing list{" "} 
                 </Link>
-                  to stay updated on the research and be the first to know when we publish our findings.
+                  to stay updated on the research receive our final report.
                 </span>
                 </p>
               </div>
