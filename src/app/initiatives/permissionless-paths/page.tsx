@@ -36,6 +36,11 @@ const page = () => {
                   Through in-depth qualitative interviews, the study aims to gain an understanding of open source developers’ work environment, with a
                   focus on motivations, expectations, work habits, responsibilities, and challenges (churn, constraints).
                 </p>
+                <p>
+                <span className='font-semibold'>
+                Get the report! sign up for mailing list!
+                </span>
+                </p>
               </div>
             </section>
           </section>
@@ -59,13 +64,6 @@ const page = () => {
                   </li>
                 </ul>
               </section>
-            </section>
-          </section>
-
-          <section className='w-full pt-[1.875rem] md:pt-10	'>
-            <CardHeading title='Up Next:' />
-            <section className='flex text-lg leading-[28.8px] flex-col gap-[15px] pt-3 sm:pt-0'>
-              <p>Sign up for our mailing list to get the report.</p>
             </section>
           </section>
 
