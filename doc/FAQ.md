@@ -19,7 +19,7 @@ We are very thankful to HRF and OpenSats for their belief and investment in Waye
 ## How we work:
 **Do you care about privacy?**
 
-We take privacy seriously. What you share stays with us.
+We take privacy seriously. What you share stays with us. For more details, check out the details on our [privacy page](https://github.com/waye-dev/waye/blob/main/doc/PRIVACY.md).
 
 **What does it mean to support a decentralized, open-source ecosystem?**
 
