@@ -9,6 +9,8 @@ export const InitiativesCard = ({
   advertText,
   linkText,
   href,
+  href2,
+  linkText2,
   props,
   filterKey,
 }: {
@@ -19,6 +21,8 @@ export const InitiativesCard = ({
   advertText?: string;
   linkText?: string;
   href: string;
+  href2?: string;
+  linkText2?: string;
   props?: React.HTMLAttributes<HTMLDivElement>;
   filterKey: string;
 }) => {
@@ -28,7 +32,7 @@ export const InitiativesCard = ({
       {...props}
     >
       <section>
-        <Image src={src} alt={title} height={250} width={250} className='h-full w-full max-w-[425px] sm:h-[250px] sm:w-[250px]'/>
+        <Image src={src} alt={title} height={250} width={250} className='h-full w-full max-w-[425px] sm:h-[250px] sm:w-[250px]' />
       </section>
 
       <section className='flex flex-col items-start gap-[14px] text-lg leading-[28.8px] text-black'>
@@ -42,6 +46,13 @@ export const InitiativesCard = ({
         {href.length ? (
           <Link href={href} target={href.startsWith("http") ? "_blank" : "_self"} className='flex items-center gap-2'>
             <span className='underline-offset-8 underline'>{linkText}</span>
+            <span className='text-blue-custom-100'>→</span>
+          </Link>
+        ) : null}
+
+        {href2?.length ? (
+          <Link href={href2} target={href2.startsWith("http") ? "_blank" : "_self"} className='flex items-center gap-2'>
+            <span className='underline-offset-8 underline'>{linkText2}</span>
             <span className='text-blue-custom-100'>→</span>
           </Link>
         ) : null}

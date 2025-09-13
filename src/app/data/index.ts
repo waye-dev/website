@@ -71,7 +71,7 @@ export const INITIATIVES_SECTION_DATA = [
     src: "/images/os-reboot-image.png",
     title: "OS Reboot",
     description:
-    "Upgrade your mental OS through monthly sessions facilitated by world-class experts. OS Reboot [Freedom] and OS Reboot [Nostr] are underway. Sign up for our newsletter to get notified about the next OS Reboot.",
+      "Upgrade your mental OS through monthly sessions facilitated by world-class experts. OS Reboot [Freedom] and OS Reboot [Nostr] are underway. Sign up for our newsletter to get notified about the next OS Reboot.",
     infoText: "",
     advertText: "",
     linkText: "Learn more",
@@ -81,8 +81,7 @@ export const INITIATIVES_SECTION_DATA = [
   {
     src: "/images/research-image.png",
     title: "Permissionless Paths",
-    description:
-      "What do open source devs actually struggle with? This ethnographic research tackles the question head on.",
+    description: "What do open source devs actually struggle with? This ethnographic research tackles the question head on.",
     infoText: "",
     advertText: "",
     linkText: "Learn more",
@@ -92,8 +91,7 @@ export const INITIATIVES_SECTION_DATA = [
   {
     src: "/images/dialogue-image.png",
     title: "Decentralized Dialogues",
-    description:
-      "Revolutions don’t happen aimlessly. Explore bitcoin’s implications for humanity through these discussion-based seminars.",
+    description: "Revolutions don’t happen aimlessly. Explore bitcoin’s implications for humanity through these discussion-based seminars.",
     infoText: "",
     advertText: "",
     linkText: "Learn more",
@@ -113,14 +111,16 @@ export const INITIATIVES_SECTION_DATA = [
   },
   {
     src: "/images/onboarding-image.png",
-    title: "The Onboarding Waye",
+    title: "Wayepoint Calls",
     description:
-      "Flipping the script from conventional workplaces to open-source development takes a minute. Waye helps devs-in-training understand what they are getting into. Reach out if you run a training program and want to learn more.",
+      "A Wayepoint call helps you reflect, reset, and plan next steps. Complete a self-audit, then join a 60-minute session focused on clarity and tangible actions tailored to you.",
     infoText: "",
     advertText: "",
-    linkText: "Email us",
-    href: "mailto:hello@waye.dev?subject=Initiative%20proposal",
+    linkText: "Step 1: Complete this Self Audit",
+    href: "https://drive.google.com/file/d/1zL-peL2X-Ijg4dNHxBqGSlKfvHpOycGF/view?usp=sharing",
     filterKey: "program",
+    linkText2: "Step 2: Join the waitlist",
+    href2: "https://docs.google.com/forms/d/e/1FAIpQLScpLf4OFIVfcu0SMMOt_IyDnbCeMv-jn1zgDgPa6cGou1HxoQ/viewform?usp=dialog",
   },
   {
     src: "/images/idea-image.png",
