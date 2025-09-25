@@ -6,6 +6,10 @@ export default {
     extend: {
       fontFamily: {
         workSans: ["var(--font-work-sans)"],
+        inknutAntiqua: ["var(--font-inknut-antiqua)"],
+        josefinSlab: ["var(--font-josefin-slab)"],
+        josefinSans: ["var(--font-josefin-sans)"],
+        inter: ["var(--font-inter)"],
       },
       colors: {
         background: "var(--background)",
@@ -19,11 +23,19 @@ export default {
           "custom-600": "#c4def8",
           "custom-700": "#eff6fc",
           "custom-800": "#B8C8D9BF",
+          "custom-900": "#1B1F35",
+          "custom-1000": "#F0F6FC",
+          "custom-1100": "#283555",
         },
         gray: {
           "custom-100": "#fdf7ec",
           "custom-200": "#333",
           "custom-300": "#fcfbe9",
+          "custom-400": "#FCF7ED",
+          "custom-500": "#A9A9A9",
+          "custom-600": "#000000B2",
+          "custom-700": "#E7D7B400",
+          "custom-800": "#D9D9D9",
         },
         orange: {
           "custom-100": "#FBE5C4",
