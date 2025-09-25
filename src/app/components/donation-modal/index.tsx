@@ -78,6 +78,38 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
     }
   };
 
+  const btcpayUrl = process.env.BTC_PAY_ENDPOINT ?? "";
+
+  const params = {
+    storeId: process.env.BTC_PAY_STORE_ID ?? "",
+    price: amount as number,
+    currency: "USD",
+    checkoutDesc: "donation to waye",
+    browserRedirect: "https://waye.dev/gracias",
+  };
+
+  const donationUrl = `${btcpayUrl}?${new URLSearchParams(params as unknown as Record<string, string>)}`;
+
+  const makeBitcoinDonation = async () => {
+    const queryParams = new URLSearchParams(params as unknown as Record<string, string>);
+
+    try {
+      const result = await fetch(`${btcpayUrl}?${queryParams.toString()}`, {
+        method: "POST",
+      });
+      console.log(result);
+
+      const data = await result.json();
+      console.log(data.invoiceUrl);
+
+      if (result.ok) {
+        // window.open(data.invoiceUrl, "_blank");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
