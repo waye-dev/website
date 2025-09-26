@@ -29,19 +29,19 @@ export const EMAIL_REGEX = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}
 export const PRESET_AMOUNTS = [50, 100, 250, 500];
 
 export const DONATION_DESCRIPTIONS = [
-  "Supporting freedom tech builders' mental health",
+  "Supporting freedom tech builders' mental well-being",
   "Empowering builders through psycho-social care",
   "Funding mental health support for developers",
   "Building resilient tech communities",
   "Supporting Bitcoin builders' wellbeing",
-  "Advancing builder mental health",
+  "Advancing builders' mental health",
   "Nurturing freedom tech talent",
   "Supporting sustainable open source",
-  "Enabling builder resilience",
+  "Enabling builders' resilience",
   "Fostering healthy tech culture",
-  "Supporting builders' psychological safety",
+  "Supporting builders' psychological well-being",
   "Building strong support networks",
-  "Funding builder wellness programs",
+  "Funding builders' wellness programs",
   "Supporting sustainable development",
   "Building resilient tech ecosystems",
 ];

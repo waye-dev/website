@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Modal from "@/app/components/modal";
 import { submitDonationData } from "./action";
 import { DONATION_DESCRIPTIONS, isValidEmail, PRESET_AMOUNTS } from "@/utils";
+import { RobotsMeta } from "./robots-meta";
 
 type DonationModalProps = {
   isOpen: boolean;
@@ -118,148 +119,152 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={() => {
-        onClose();
-        setSubmitMessage("");
-      }}
-      ariaLabel='Donation form'
-      className='bg-blue-custom-100 text-[#090909]'
-    >
-      <div className='space-y-8'>
-        <div className='space-y-3'>
-          <h2 className='text-2xl lg:text-4xl font-semibold'>Support Decentralized Technologies</h2>
-          <p className='mt-1 text-[#090909]'>
-            Help us to provide sustainable support for free and open-source contributors working on freedom tech and projects that help decentralized
-            technologies flourish. We are a 501(c)(3) public charity. All donations are tax deductible.
-          </p>
-        </div>
-
-        <div className='border-b border-gray-400 w-full'></div>
-
-        <div className='space-y-5'>
-          <div>
-            <p className='mb-2 font-medium'>Do you want this donation to be tax deductible?</p>
-            <div className='flex items-center gap-6 text-black'>
-              <label className='inline-flex items-center gap-2'>
-                <input
-                  type='radio'
-                  name='tax_deductible'
-                  checked={isTaxDeductible === "yes"}
-                  onChange={() => setIsTaxDeductible("yes")}
-                  className='h-4 w-4'
-                />
-                <span>Yes</span>
-              </label>
-              <label className='inline-flex items-center gap-2'>
-                <input
-                  type='radio'
-                  name='tax_deductible'
-                  checked={isTaxDeductible === "no"}
-                  onChange={() => setIsTaxDeductible("no")}
-                  className='h-4 w-4'
-                />
-                <span>No</span>
-              </label>
-            </div>
+    <>
+      <RobotsMeta isModalOpen={isOpen} />
+      <Modal
+        isOpen={isOpen}
+        onClose={() => {
+          onClose();
+          setSubmitMessage("");
+        }}
+        ariaLabel='Donation form'
+        className='bg-blue-custom-100 text-[#090909]'
+      >
+        <div className='space-y-8'>
+          <div className='space-y-3'>
+            <h2 className='text-2xl lg:text-4xl font-semibold'>Support Decentralized Technologies</h2>
+            <p className='mt-1 text-[#090909]'>
+              Help us to provide sustainable support for free and open-source contributors working on freedom tech and projects that help
+              decentralized technologies flourish. We are a 501(c)(3) public charity. All donations are tax deductible.
+            </p>
           </div>
 
-          <div className='grid gap-4 md:grid-cols-2'>
-            <div className='flex flex-col gap-2'>
-              <label className='text-sm'>Name (optional)</label>
-              <input
-                type='text'
-                placeholder='Satoshi Nakamoto'
-                name='donorName'
-                value={donorName}
-                required={isTaxDeductible === "yes"}
-                onChange={(e) => setDonorName(e.target.value)}
-                className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-3 text-black placeholder-gray-500 focus:outline-none'
-              />
-            </div>
-            <div className='flex flex-col gap-2'>
-              <label className='text-sm'>Email (optional)</label>
-              <input
-                type='email'
-                placeholder='satoshin@gmx.com'
-                name='donorEmail'
-                value={donorEmail}
-                required={isTaxDeductible === "yes"}
-                onChange={(e) => setDonorEmail(e.target.value)}
-                className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-3 text-black placeholder-gray-500 focus:outline-none'
-              />
-            </div>
-          </div>
+          <div className='border-b border-gray-400 w-full'></div>
 
-          <div>
-            <p className='mb-3 font-medium'>How much would you like to donate?</p>
-            <div className='flex flex-wrap gap-3'>
-              {PRESET_AMOUNTS.map((value) => {
-                const active = amount !== "" && amount === value;
-                return (
-                  <button
-                    key={value}
-                    type='button'
-                    onClick={() => setAmount(value)}
-                    className={`rounded-lg border px-4 py-2 text-black ${active ? "border-orange-500 bg-orange-100/70" : "border-gray-300 bg-white"}`}
-                  >
-                    ${value}
-                  </button>
-                );
-              })}
-              <div className='relative flex-1'>
-                <span className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500'>$</span>
+          <div className='space-y-5'>
+            <div>
+              <p className='mb-2 font-medium'>Do you want this donation to be tax deductible?</p>
+              <div className='flex items-center gap-6 text-black'>
+                <label className='inline-flex items-center gap-2'>
+                  <input
+                    type='radio'
+                    name='tax_deductible'
+                    checked={isTaxDeductible === "yes"}
+                    onChange={() => setIsTaxDeductible("yes")}
+                    className='h-4 w-4'
+                  />
+                  <span>Yes</span>
+                </label>
+                <label className='inline-flex items-center gap-2'>
+                  <input
+                    type='radio'
+                    name='tax_deductible'
+                    checked={isTaxDeductible === "no"}
+                    onChange={() => setIsTaxDeductible("no")}
+                    className='h-4 w-4'
+                  />
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div className='grid gap-4 md:grid-cols-2'>
+              <div className='flex flex-col gap-2'>
+                <label className='text-sm'>Name (optional)</label>
                 <input
                   type='text'
-                  inputMode='numeric'
-                  pattern='[0-9]*'
-                  value={amount === "" ? "" : String(amount)}
-                  onChange={handleCustomAmountChange}
-                  placeholder='Or enter custom amount'
-                  className='w-full rounded-lg border border-gray-300 bg-white py-2 pl-7 pr-3 text-black placeholder-gray-500 focus:outline-none'
+                  placeholder='Satoshi Nakamoto'
+                  name='donorName'
+                  value={donorName}
+                  required={isTaxDeductible === "yes"}
+                  onChange={(e) => setDonorName(e.target.value)}
+                  className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-3 text-black placeholder-gray-500 focus:outline-none'
+                />
+              </div>
+              <div className='flex flex-col gap-2'>
+                <label className='text-sm'>Email (optional)</label>
+                <input
+                  type='email'
+                  placeholder='satoshin@gmx.com'
+                  name='donorEmail'
+                  value={donorEmail}
+                  required={isTaxDeductible === "yes"}
+                  onChange={(e) => setDonorEmail(e.target.value)}
+                  className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-3 text-black placeholder-gray-500 focus:outline-none'
                 />
               </div>
             </div>
-          </div>
 
-          {/* Status message */}
-          {submitMessage && (
-            <div
-              className={`rounded-lg p-3 text-center ${
-                submitMessage.includes("Error") || submitMessage.includes("required") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
-              }`}
-            >
-              {submitMessage}
-            </div>
-          )}
-
-          <div className='grid gap-4 md:grid-cols-1'>
-            <button
-              type='button'
-              onClick={() => makeBitcoinDonation()}
-              disabled={!canDonate || isSubmitting.bitcoin}
-              className={`flex items-center justify-center gap-3 rounded-2xl border-2 px-6 py-5 text-lg font-semibold transition-colors ${
-                canDonate && !isSubmitting.bitcoin
-                  ? "border-orange-500 bg-orange-100 text-orange-600 hover:bg-orange-200"
-                  : "cursor-not-allowed border-gray-300 bg-gray-200 text-gray-500"
-              }`}
-            >
-              {isSubmitting.bitcoin ? (
-                <div className='flex items-center gap-2'>
-                  <div className='h-4 w-4 animate-spin rounded-full border-2 border-orange-600 border-t-transparent'></div>
-                  <span>Processing...</span>
+            <div>
+              <p className='mb-3 font-medium'>How much would you like to donate?</p>
+              <div className='flex flex-wrap gap-3'>
+                {PRESET_AMOUNTS.map((value) => {
+                  const active = amount !== "" && amount === value;
+                  return (
+                    <button
+                      key={value}
+                      type='button'
+                      onClick={() => setAmount(value)}
+                      className={`rounded-lg border px-4 py-2 text-black ${
+                        active ? "border-orange-500 bg-orange-100/70" : "border-gray-300 bg-white"
+                      }`}
+                    >
+                      ${value}
+                    </button>
+                  );
+                })}
+                <div className='relative flex-1'>
+                  <span className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500'>$</span>
+                  <input
+                    type='text'
+                    inputMode='numeric'
+                    pattern='[0-9]*'
+                    value={amount === "" ? "" : String(amount)}
+                    onChange={handleCustomAmountChange}
+                    placeholder='Or enter custom amount'
+                    className='w-full rounded-lg border border-gray-300 bg-white py-2 pl-7 pr-3 text-black placeholder-gray-500 focus:outline-none'
+                  />
                 </div>
-              ) : (
-                <>
-                  <span>₿</span>
-                  <span>Donate with Bitcoin</span>
-                </>
-              )}
-            </button>
+              </div>
+            </div>
 
-            {/* to be implemented */}
-            {/* <button
+            {/* Status message */}
+            {submitMessage && (
+              <div
+                className={`rounded-lg p-3 text-center ${
+                  submitMessage.includes("Error") || submitMessage.includes("required") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+                }`}
+              >
+                {submitMessage}
+              </div>
+            )}
+
+            <div className='grid gap-4 md:grid-cols-1'>
+              <button
+                type='button'
+                onClick={() => makeBitcoinDonation()}
+                disabled={!canDonate || isSubmitting.bitcoin}
+                className={`flex items-center justify-center gap-3 rounded-2xl border-2 px-6 py-5 text-lg font-semibold transition-colors ${
+                  canDonate && !isSubmitting.bitcoin
+                    ? "border-orange-500 bg-orange-100 text-orange-600 hover:bg-orange-200"
+                    : "cursor-not-allowed border-gray-300 bg-gray-200 text-gray-500"
+                }`}
+              >
+                {isSubmitting.bitcoin ? (
+                  <div className='flex items-center gap-2'>
+                    <div className='h-4 w-4 animate-spin rounded-full border-2 border-orange-600 border-t-transparent'></div>
+                    <span>Processing...</span>
+                  </div>
+                ) : (
+                  <>
+                    <span>₿</span>
+                    <span>Donate with Bitcoin</span>
+                  </>
+                )}
+              </button>
+
+              {/* to be implemented */}
+              {/* <button
               type='button'
               onClick={() => updateSpreadSheet("fiat")}
               disabled={!canDonate || isSubmitting.fiat}
@@ -289,10 +294,11 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
                 </>
               )}
             </button> */}
+            </div>
           </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+    </>
   );
 };
 

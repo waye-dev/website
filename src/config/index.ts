@@ -1,6 +1,6 @@
-export const FORM_ID = process.env.NEXT_PUBLIC_JOTFORM_FORM_ID ?? "";
+export const FORM_ID = process.env.JOTFORM_FORM_ID ?? "";
 
-export const API_KEY = process.env.NEXT_PUBLIC_JOTFORM_API_KEY ?? "";
+export const API_KEY = process.env.JOTFORM_API_KEY ?? "";
 
 export const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY ?? "";
 
