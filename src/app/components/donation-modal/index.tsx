@@ -46,7 +46,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
       });
 
       if (result.success) {
-        setSubmitMessage("Thank you! Your donation to decentralizing open-source is appreciated.");
+        setSubmitMessage("Thank you! Your contribution to decentralizing open-source is appreciated.");
         // Reset form after successful submission
         setTimeout(() => {
           setDonorName("");
@@ -102,12 +102,12 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
 
       if (response.ok && data.success) {
         try {
-          await updateSpreadSheet("bitcoin");
         } catch (spreadsheetError) {
           console.warn("Spreadsheet update failed, but continuing with donation:", spreadsheetError);
         }
 
         window.open(data.donationUrl, "_blank", "noopener,noreferrer");
+        await updateSpreadSheet("bitcoin");
       } else {
         setSubmitMessage(`Error: ${data.error || "Failed to create donation"}`);
       }
