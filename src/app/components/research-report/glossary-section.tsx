@@ -1,16 +1,39 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useInView } from "framer-motion"
 
-export const GlossarySection = ({ summary, title, index }: { title: string; index: number; summary: string | React.ReactNode }) => {
+export const GlossarySection = ({ summary, title, index, onInViewChange }: { title: string; index: number; summary: string | React.ReactNode; onInViewChange?: (id: number, inView: boolean) => void }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { margin: "-50% 0% -50% 0%" });
+
+  useEffect(() => {
+    if(onInViewChange) {
+      onInViewChange(index, isInView);
+    }
+  }, [isInView, index, onInViewChange])
+
   return (
-    <div className='flex flex-col w-full gap-2.5 py-[1.875rem] px-[0.9375rem] pr-[1.875rem] rounded-[10px] bg-blue-custom-900'>
+    <div
+      ref={ref}
+      className={
+        `flex flex-col w-full gap-2.5 py-[1.875rem] px-[0.9375rem] pr-[1.875rem] rounded-[10px] text-black transition-all duration-500 ease-in-out`
+        + (isInView ? " bg-blue-custom-900 text-white" : "")
+      }
+    >
       <section className='flex flex-row items-center justify-between gap-6'>
-        <h4 className='uppercase text-2xl font-normal font-josefinSans text-white'>{title}</h4>
+        <h4 className='uppercase text-2xl font-normal font-josefinSans'>{title}</h4>
         <p className='uppercase text-2xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
       </section>
 
-      <div className='text-lg text-gray-custom-600 text-white cursor-pointer justify-normal font-normal'>{summary}</div>
+      <div
+        className={
+          "text-lg cursor-pointer justify-normal font-normal transition-all duration-500 ease-in-out"
+          + (isInView ? " text-white" : "text-gray-custom-600")
+        }
+      >
+        {summary}
+      </div>
     </div>
   );
 };
@@ -131,7 +154,7 @@ export const GLOSSARY_LIST = [
   },
 ];
 
-export const GlossaryChart = () => {
+export const GlossaryChart = ({ activeId }: { activeId: number | null }) => {
   const [isClient, setIsClient] = useState(false);
   const [screenHeight, setScreenHeight] = useState<number>(0); // Default fallback height
 
@@ -150,24 +173,28 @@ export const GlossaryChart = () => {
   const estimatedScreenHeight = screenHeight * 0.75;
 
   return (
-    <div className='flex flex-row items-end gap-3'>
-      {GLOSSARY_LIST.map((part) => (
-        <div
-          key={part.id}
-          className='bg-blue-custom-900 rounded-[2px] p-6 transition-all duration-300 flex justify-center items-end'
-          style={{
-            height: isClient ? `${estimatedScreenHeight * part.heightPercentage}px` : "450px",
-            width: `${Math.floor(12 * part.widthPercentage)}%`,
-          }}
-        >
-          <h1
-            className='font-inknutAntiqua text-white text-xl [writing-mode:vertical-rl] rotate-180 whitespace-nowrap'
-            style={{ fontSize: `${estimatedScreenHeight * 0.025}px` }}
+    <div className="flex flex-row items-end gap-3">
+      {GLOSSARY_LIST.map((part) => {
+        const isActive = part.id === activeId;
+        return (
+          <div
+            key={part.id}
+            className="bg-blue-custom-900 rounded-[2px] p-6 transition-transform duration-500 ease-in-out flex justify-center items-end"
+            style={{
+              height: isClient ? `${estimatedScreenHeight * part.heightPercentage}px` : "450px",
+              width: `${Math.floor(12 * part.widthPercentage)}%`,
+              transform: isActive ? "translateY(-50px)" : "translateY(0)",
+            }}
           >
-            Part {part.id}: {part.title}
-          </h1>
-        </div>
-      ))}
+            <h1
+              className="font-inknutAntiqua text-white text-xl [writing-mode:vertical-rl] rotate-180 whitespace-nowrap"
+              style={{ fontSize: `${estimatedScreenHeight * 0.025}px` }}
+            >
+              Part {part.id}: {part.title}
+            </h1>
+          </div>
+        );
+      })}
     </div>
   );
 };
