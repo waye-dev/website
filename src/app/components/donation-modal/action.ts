@@ -39,7 +39,6 @@ export async function submitDonationData(body: DonationData) {
 
     return { success: true, data: jsonResult };
   } catch (err: any) {
-    console.error("Donation submission error:", err);
     return { success: false, error: err.message };
   }
 }
