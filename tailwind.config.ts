@@ -26,6 +26,7 @@ export default {
           "custom-900": "#1B1F35",
           "custom-1000": "#F0F6FC",
           "custom-1100": "#283555",
+          "custom-1200": "#031C51",
         },
         gray: {
           "custom-100": "#fdf7ec",
