@@ -1,16 +1,19 @@
 "use client";
 
-import { isValidEmail } from "@/utils";
 import React, { useState } from "react";
 import Modal from "@/app/components/modal";
 import { submitDonationData } from "./action";
+import { DONATION_DESCRIPTIONS, isValidEmail, PRESET_AMOUNTS } from "@/utils";
 
 type DonationModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-const PRESET_AMOUNTS = [50, 100, 250, 500];
+const getRandomDonationDescription = () => {
+  const randomIndex = Math.floor(Math.random() * DONATION_DESCRIPTIONS.length);
+  return DONATION_DESCRIPTIONS[randomIndex];
+};
 
 const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
   const [donorName, setDonorName] = useState("");
@@ -32,22 +35,6 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
   const canDonate = amount !== "" && (amount as number) > 0;
 
   const updateSpreadSheet = async (paymentMethod: "bitcoin" | "fiat") => {
-    if (!canDonate) return;
-
-    // For tax deductible donations, require name and email
-    if (isTaxDeductible === "yes" && (!donorName.trim() || !donorEmail.trim())) {
-      setSubmitMessage("Name and email are required for tax deductible donations");
-      return;
-    }
-
-    if (!isValidEmail(donorEmail) && isTaxDeductible === "yes") {
-      setSubmitMessage("A valid email address is required");
-      return;
-    }
-
-    setIsSubmitting({ ...isSubmitting, [paymentMethod]: true });
-    setSubmitMessage("");
-
     try {
       const result = await submitDonationData({
         name: donorName.trim(),
@@ -78,35 +65,55 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
     }
   };
 
-  const btcpayUrl = process.env.BTC_PAY_ENDPOINT ?? "";
-
-  const params = {
-    storeId: process.env.BTC_PAY_STORE_ID ?? "",
-    price: amount as number,
-    currency: "USD",
-    checkoutDesc: "donation to waye",
-    browserRedirect: "https://waye.dev/gracias",
-  };
-
-  const donationUrl = `${btcpayUrl}?${new URLSearchParams(params as unknown as Record<string, string>)}`;
-
   const makeBitcoinDonation = async () => {
-    const queryParams = new URLSearchParams(params as unknown as Record<string, string>);
+    if (!canDonate) return;
+
+    // For tax deductible donations, require name and email
+    if (isTaxDeductible === "yes" && (!donorName.trim() || !donorEmail.trim())) {
+      setSubmitMessage("Name and email are required for tax deductible donations");
+      return;
+    }
+
+    if (!isValidEmail(donorEmail) && isTaxDeductible === "yes") {
+      setSubmitMessage("A valid email address is required");
+      return;
+    }
+
+    setIsSubmitting({ ...isSubmitting, bitcoin: true });
+    setSubmitMessage("");
 
     try {
-      const result = await fetch(`${btcpayUrl}?${queryParams.toString()}`, {
+      const randomDescription = getRandomDonationDescription();
+
+      const response = await fetch("/api/create-donation", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: amount as number,
+          currency: "USD",
+          checkoutDesc: randomDescription,
+        }),
       });
-      console.log(result);
 
-      const data = await result.json();
-      console.log(data.invoiceUrl);
+      const data = await response.json();
 
-      if (result.ok) {
-        // window.open(data.invoiceUrl, "_blank");
+      if (response.ok && data.success) {
+        try {
+          await updateSpreadSheet("bitcoin");
+        } catch (spreadsheetError) {
+          console.warn("Spreadsheet update failed, but continuing with donation:", spreadsheetError);
+        }
+
+        window.open(data.donationUrl, "_blank", "noopener,noreferrer");
+      } else {
+        setSubmitMessage(`Error: ${data.error || "Failed to create donation"}`);
       }
     } catch (error) {
-      console.error(error);
+      setSubmitMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting({ ...isSubmitting, bitcoin: false });
     }
   };
 
@@ -230,7 +237,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
           <div className='grid gap-4 md:grid-cols-1'>
             <button
               type='button'
-              onClick={() => updateSpreadSheet("bitcoin")}
+              onClick={() => makeBitcoinDonation()}
               disabled={!canDonate || isSubmitting.bitcoin}
               className={`flex items-center justify-center gap-3 rounded-2xl border-2 px-6 py-5 text-lg font-semibold transition-colors ${
                 canDonate && !isSubmitting.bitcoin

@@ -25,3 +25,23 @@ export const checkFormValues = (name: string, email: string, setMessage: React.D
 };
 
 export const EMAIL_REGEX = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+
+export const PRESET_AMOUNTS = [50, 100, 250, 500];
+
+export const DONATION_DESCRIPTIONS = [
+  "Supporting freedom tech builders' mental health",
+  "Empowering builders through psycho-social care",
+  "Funding mental health support for developers",
+  "Building resilient tech communities",
+  "Supporting Bitcoin builders' wellbeing",
+  "Advancing builder mental health",
+  "Nurturing freedom tech talent",
+  "Supporting sustainable open source",
+  "Enabling builder resilience",
+  "Fostering healthy tech culture",
+  "Supporting builders' psychological safety",
+  "Building strong support networks",
+  "Funding builder wellness programs",
+  "Supporting sustainable development",
+  "Building resilient tech ecosystems",
+];
