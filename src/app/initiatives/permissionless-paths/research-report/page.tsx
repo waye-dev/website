@@ -7,7 +7,7 @@ import { GLOSSARY_LIST, GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection }
 import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
 import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
 import { Strategies } from "@/app/components/research-report/strategies";
-import Eyeballs from "@/app/components/research-report/eyeballs";
+import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 
 export default function ResearchReport() {
   return (
@@ -21,13 +21,12 @@ export default function ResearchReport() {
                 <h1 className='text-[30px] md:text-[40px] lg:text-[54px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua font-normal text-center'>
                   Permissionless Paths Report
                 </h1>
-
                 <p className='text-xl sm:text-3xl font-josefinSlab font-normal text-center'>By Laura Lotti</p>
               </section>
 
               <Eyeballs 
-                guyImageSrc="/svgs/research-intro/guy.svg"
-                eyesImageSrc="/svgs/research-intro/eyes.svg"
+                guyImageSrc="/svgs/research/intro/guy.svg"
+                eyesImageSrc="/svgs/research/intro/eyes.svg"
                 guyWidth={390}
                 guyHeight={350}
                 eyesWidth={147}
