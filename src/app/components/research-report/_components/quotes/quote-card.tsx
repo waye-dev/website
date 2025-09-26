@@ -1,5 +1,6 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { QuoteAuthor } from "./quote-author"
+import { useResponsiveQuote } from "./use-responsive-quote"
 
 export type AuthorType = "new" | "experienced" | "mid"
 
@@ -14,7 +15,6 @@ export interface Quote {
 
 interface QuoteCardProps {
   quote: Quote
-  index: number
   isActive: boolean
   angle: number
   zIndex: number
@@ -25,7 +25,6 @@ interface QuoteCardProps {
 
 export function QuoteCard({ 
   quote, 
-  index, 
   isActive, 
   angle, 
   zIndex, 
@@ -35,49 +34,22 @@ export function QuoteCard({
 }: QuoteCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [expandedHeight, setExpandedHeight] = useState(200)
-  const contentRef = useRef<HTMLDivElement>(null)
+  
+  const {
+    isMobile,
+    optimalFontSize,
+    cardHeight,
+    threeLineHeight,
+    contentRef,
+    calculateExpandedHeight,
+    checkNeedsExpansion
+  } = useResponsiveQuote({
+    text: quote.text,
+    isActive,
+    isExpanded
+  })
 
   const actualIsExpanded = isActive ? isExpanded : false
-
-  const calculateExpandedHeight = (): number => {
-    if (!contentRef.current) return 200
-    
-    const tempDiv = document.createElement('div')
-    tempDiv.style.position = 'absolute'
-    tempDiv.style.visibility = 'hidden'
-    tempDiv.style.width = contentRef.current.offsetWidth + 'px'
-    tempDiv.style.fontSize = '12.58px'
-    tempDiv.style.lineHeight = '115%'
-    tempDiv.style.fontFamily = 'Inter, sans-serif'
-    tempDiv.style.fontStyle = 'italic'
-    tempDiv.textContent = quote.text
-    
-    document.body.appendChild(tempDiv)
-    const fullHeight = tempDiv.offsetHeight
-    document.body.removeChild(tempDiv)
-    
-    return Math.max(fullHeight + 102, 200)
-  }
-
-  const checkNeedsExpansion = (): boolean => {
-    if (!contentRef.current) return false
-    
-    const tempDiv = document.createElement('div')
-    tempDiv.style.position = 'absolute'
-    tempDiv.style.visibility = 'hidden'
-    tempDiv.style.width = contentRef.current.offsetWidth + 'px'
-    tempDiv.style.fontSize = '12.58px'
-    tempDiv.style.lineHeight = '115%'
-    tempDiv.style.fontFamily = 'Inter, sans-serif'
-    tempDiv.style.fontStyle = 'italic'
-    tempDiv.textContent = quote.text
-    
-    document.body.appendChild(tempDiv)
-    const fullHeight = tempDiv.offsetHeight
-    document.body.removeChild(tempDiv)
-    
-    return fullHeight > 45
-  }
 
   const handleToggleExpansion = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -116,10 +88,7 @@ export function QuoteCard({
   }
 
   const needsExpansion = isActive ? checkNeedsExpansion() : false
-  
   const showGradient = needsExpansion && !actualIsExpanded
-
-  const threeLineHeight = 45
 
   return (
     <div
@@ -131,19 +100,19 @@ export function QuoteCard({
         transform: `rotate(${angle}deg)`,
         zIndex,
         opacity: isActive ? 1 : 0.7,
-        height: actualIsExpanded ? `${expandedHeight}px` : "136px",
-        minHeight: actualIsExpanded ? `${expandedHeight}px` : "136px",
+        height: actualIsExpanded ? `${expandedHeight}px` : `${cardHeight}px`,
+        minHeight: actualIsExpanded ? `${expandedHeight}px` : `${cardHeight}px`,
       }}
     >
       <div className="absolute top-3 right-5 z-20">
         <span className="text-2xl font-bold font-inknutAntiqua">
-        “
+        "
         </span>
       </div>
 
       <div className="absolute bottom-0 left-5 z-20">
         <span className="text-2xl font-bold font-inknutAntiqua">
-          ”
+          "
         </span>
       </div>
 
@@ -162,7 +131,7 @@ export function QuoteCard({
             className="text-xs font-inter italic"
             style={{ 
               fontFamily: "Inter, sans-serif",
-              fontSize: "12.58px",
+              fontSize: `${optimalFontSize}px`,
               lineHeight: "115%"
             }}
           >

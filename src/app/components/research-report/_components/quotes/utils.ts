@@ -19,12 +19,14 @@ export const getTextColor = (backgroundColor: string) => {
   return backgroundColor === "#1B1F35" ? "#FFFFFF" : "#000000"
 }
 
-export const getCardAngle = (index: number, currentIndex: number) => {
+export const getCardAngle = (index: number, currentIndex: number, isMobile: boolean = false) => {
   if (index === currentIndex) return 0 
   
   const diff = index - currentIndex
-  if (diff === 1 || diff === -2) return 3
-  if (diff === -1 || diff === 2) return -3
+  const angle = isMobile ? 5 : 3
+  
+  if (diff === 1 || diff === -2) return angle
+  if (diff === -1 || diff === 2) return -angle
   
   return 0
 }
@@ -65,3 +67,4 @@ export function getAuthorName(respondentNumber?: number): string {
   
   return `Respondent #${respondentNumber}`
 }
+

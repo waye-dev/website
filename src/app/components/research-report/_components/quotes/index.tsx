@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { gsap } from "gsap"
+import { useMediaQuery } from "../../../../../hooks/window-dimensions"
 import { QuoteCard, Quote } from "./quote-card"
 import { getCardColor, getTextColor, getCardAngle, getCardZIndex } from "./utils"
 import { CardColor } from "./utils"
@@ -11,22 +12,24 @@ interface QuoteCardsProps {
   firstColor?: CardColor
 }
 
+
 export function QuoteCards({
   quotes,
   firstColor = "white",
 }: QuoteCardsProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
+  const isMobile = useMediaQuery("(max-width: 767px)")
 
   const displayQuotes = quotes.slice(0, 3)
 
   useEffect(() => {
     cardsRef.current.forEach((card, index) => {
       if (!card) return
-
-      const angle = getCardAngle(index, currentIndex)
+      const angle = getCardAngle(index, currentIndex, isMobile)
       const zIndex = getCardZIndex(index, currentIndex)
       const isActive = index === currentIndex
       
@@ -71,19 +74,16 @@ export function QuoteCards({
     setIsAnimating(true)
     const nextIndex = (currentIndex + 1) % displayQuotes.length
     
-
     const currentCard = cardsRef.current[currentIndex]
     const nextCard = cardsRef.current[nextIndex]
     
     if (currentCard && nextCard) {
-
       const tl = gsap.timeline({
         onComplete: () => {
           setCurrentIndex(nextIndex)
           setIsAnimating(false)
         }
       })
-
 
       tl.to(currentCard, {
         scale: 0.95,
@@ -92,7 +92,6 @@ export function QuoteCards({
         ease: "power2.in"
       })
       
-
       .to(containerRef.current, {
         filter: "brightness(1.1)",
         duration: 0.05,
@@ -121,7 +120,7 @@ export function QuoteCards({
     <div className="group flex w-full flex-col items-center space-y-4 px-2 py-12">
       <div 
         ref={containerRef} 
-        className="relative w-full h-32 cursor-pointer transition-all duration-200" 
+        className="relative w-full h-56 md:h-32 cursor-pointer transition-all duration-200" 
         onClick={switchToNext}
         style={{ 
           pointerEvents: isAnimating ? 'none' : 'auto',
@@ -130,13 +129,13 @@ export function QuoteCards({
       >
         {displayQuotes.map((quote, index) => {
           const backgroundColor = getCardColor(index, firstColor)
+          
           return (
             <QuoteCard
               key={quote.id}
               quote={quote}
-              index={index}
               isActive={index === currentIndex}
-              angle={getCardAngle(index, currentIndex)}
+              angle={getCardAngle(index, currentIndex, isMobile)}
               zIndex={getCardZIndex(index, currentIndex)}
               backgroundColor={backgroundColor}
               textColor={getTextColor(backgroundColor)}
