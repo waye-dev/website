@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Wrapper from "@/app/components/wrapper";
 import { StudyOverviewSection } from "@/app/components/research-report/study-overview-section";
@@ -10,6 +11,8 @@ import { Strategies } from "@/app/components/research-report/strategies";
 import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 
 export default function ResearchReport() {
+  const [activeId, setActiveId] = useState<number | null>(null)
+
   return (
     <main>
       <div className='bg-gray-custom-400 text-black'>
@@ -66,14 +69,32 @@ export default function ResearchReport() {
 
         {/* glossary section */}
         <Wrapper className='py-24'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-16 overflow-scroll items-center'>
-            <section className='flex flex-col gap-6'>
-              {GLOSSARY_TEXT_SECTIONS.map((section, index) => (
-                <GlossarySection key={index} title={section.title} index={index + 1} summary={section.summary} />
-              ))}
+          <div className='flex flex-row w-full gap-16'>
+            <section className='flex-1 relative'>
+              <div className="flex flex-col gap-6 pt-[70vh] pb-[85px]">
+                {GLOSSARY_TEXT_SECTIONS.map((section, index) => (
+                  <GlossarySection
+                    key={index}
+                    title={section.title}
+                    index={index + 1}
+                    summary={section.summary}
+                    onInViewChange={(id, inView) => {
+                      if(inView) {
+                        setActiveId(id);
+                      } else {
+                        setActiveId((prev) => (prev === id ? null : prev));
+                      }
+                    }}
+                  />
+                ))}
+              </div>
             </section>
 
-            <GlossaryChart />
+            <div className="sticky top-0 h-screen flex items-center">
+              <div className="w-full">
+                <GlossaryChart activeId={activeId} />
+              </div>
+            </div>
           </div>
         </Wrapper>
 
