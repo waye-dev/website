@@ -2,7 +2,7 @@ import { useState } from "react"
 import { QuoteAuthor } from "./quote-author"
 import { useResponsiveQuote } from "./use-responsive-quote"
 
-export type AuthorType = "new" | "experienced" | "mid"
+export type AuthorType = "new" | "expert" | "mid"
 
 export interface Quote {
   id: string

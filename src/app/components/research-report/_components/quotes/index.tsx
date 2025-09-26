@@ -45,55 +45,61 @@ export function QuoteCards({
   const containerRef = useRef<HTMLDivElement>(null)
   const isMobile = useMediaQuery("(max-width: 767px)")
 
-  const displayQuotes = quotes.slice(0, 3)
-
   useEffect(() => {
     cardsRef.current.forEach((card, index) => {
       if (!card) return
-      const angle = getCardAngle(index, currentIndex, isMobile)
-      const zIndex = getCardZIndex(index, currentIndex)
+      const angle = getCardAngle(index, currentIndex, isMobile, quotes.length)
+      const zIndex = getCardZIndex(index, currentIndex, quotes.length)
       const isActive = index === currentIndex
-      
+      const isVisible = zIndex >= 0 // Cards with negative z-index should be hidden
+
       const tl = gsap.timeline()
 
-      if (isActive) {
+      if (isActive && isVisible) {
         tl.to(card, {
           rotation: angle,
           zIndex: zIndex,
-          scale: 1.02, 
+          scale: 1.02,
           opacity: 1,
           duration: 0.4,
           ease: "back.out(1.2)",
         })
         .to(card, {
-          scale: 1, 
+          scale: 1,
           duration: 0.2,
           ease: "power2.out",
         }, "-=0.1")
-      } else {
-
+      } else if (isVisible) {
         tl.to(card, {
           rotation: angle,
           zIndex: zIndex,
-          scale: 0.98, 
+          scale: 0.98,
           opacity: 0.7,
           duration: 0.3,
           ease: "power2.out",
         })
         .to(card, {
-          scale: 1, 
+          scale: 1,
           duration: 0.15,
           ease: "power2.out",
         }, "-=0.1")
+      } else {
+        // Hide invisible cards
+        tl.to(card, {
+          opacity: 0,
+          zIndex: -1,
+          duration: 0.1,
+          ease: "power2.out",
+        })
       }
     })
-  }, [currentIndex])
+  }, [currentIndex, quotes.length])
 
   const switchToNext = () => {
-    if (displayQuotes.length <= 1 || isAnimating) return
+    if (quotes.length <= 1 || isAnimating) return
 
     setIsAnimating(true)
-    const nextIndex = (currentIndex + 1) % displayQuotes.length
+    const nextIndex = (currentIndex + 1) % quotes.length
     
     const currentCard = cardsRef.current[currentIndex]
     const nextCard = cardsRef.current[nextIndex]
@@ -135,7 +141,7 @@ export function QuoteCards({
     }
   }
 
-  if (displayQuotes.length === 0) return null
+  if (quotes.length === 0) return null
 
   return (
     <div className="group flex w-full flex-col items-center space-y-4 px-2 py-12">
@@ -148,7 +154,7 @@ export function QuoteCards({
           transform: isAnimating ? 'scale(0.99)' : 'scale(1)'
         }}
       >
-        {displayQuotes.map((quote, index) => {
+        {quotes.map((quote, index) => {
           const backgroundColor = getCardColor(index, firstColor)
           
           return (
@@ -156,8 +162,8 @@ export function QuoteCards({
               key={quote.id}
               quote={quote}
               isActive={index === currentIndex}
-              angle={getCardAngle(index, currentIndex, isMobile)}
-              zIndex={getCardZIndex(index, currentIndex)}
+              angle={getCardAngle(index, currentIndex, isMobile, quotes.length)}
+              zIndex={getCardZIndex(index, currentIndex, quotes.length)}
               backgroundColor={backgroundColor}
               textColor={getTextColor(backgroundColor)}
               cardRef={(el) => { cardsRef.current[index] = el; }}
@@ -166,7 +172,7 @@ export function QuoteCards({
         })}
       </div>
 
-      {displayQuotes.length > 1 && (
+      {quotes.length > 1 && (
         <div className="flex items-center pt-4 space-x-2 text-sm opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
           <img 
             src="/svgs/research/quotes/cursor-switch.svg" 

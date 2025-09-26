@@ -19,21 +19,47 @@ export const getTextColor = (backgroundColor: string) => {
   return backgroundColor === "#1B1F35" ? "#FFFFFF" : "#000000"
 }
 
-export const getCardAngle = (index: number, currentIndex: number, isMobile: boolean = false) => {
-  if (index === currentIndex) return 0 
-  
+export const getCardAngle = (index: number, currentIndex: number, isMobile: boolean = false, totalCards: number = 3) => {
+  if (index === currentIndex) return 0
+
   const diff = index - currentIndex
   const angle = isMobile ? 5 : 3
-  
-  if (diff === 1 || diff === -2) return angle
-  if (diff === -1 || diff === 2) return -angle
-  
+
+  if (totalCards <= 3) {
+    if (diff === 1 || diff === -2) return angle
+    if (diff === -1 || diff === 2) return -angle
+    return 0
+  }
+
+  const normalizedDiff = ((diff % totalCards) + totalCards) % totalCards
+
+  if (normalizedDiff === 1 || normalizedDiff === totalCards - 1) {
+    return normalizedDiff === 1 ? angle : -angle
+  }
+
+  if (normalizedDiff > 1 && normalizedDiff < totalCards - 1) {
+    return 0
+  }
+
   return 0
 }
 
-export const getCardZIndex = (index: number, currentIndex: number) => {
+export const getCardZIndex = (index: number, currentIndex: number, totalCards: number = 3) => {
   if (index === currentIndex) return 10
-  return 5
+
+  const diff = index - currentIndex
+
+  if (totalCards <= 3) {
+    return 5
+  }
+
+  const normalizedDiff = ((diff % totalCards) + totalCards) % totalCards
+
+  if (normalizedDiff === 1 || normalizedDiff === totalCards - 1) {
+    return 5
+  }
+
+  return -1
 }
 
 export function getAuthorAvatar(authorType?: AuthorType): string {
@@ -41,7 +67,7 @@ export function getAuthorAvatar(authorType?: AuthorType): string {
   
   const avatarMap: Record<AuthorType, string> = {
     new: "/svgs/research/quotes/junior-avatar.svg",
-    experienced: "/svgs/research/quotes/senior-avatar.svg", 
+    expert: "/svgs/research/quotes/senior-avatar.svg",
     mid: "/svgs/research/quotes/mid-avatar.svg"
   }
   
@@ -53,7 +79,7 @@ export function getAuthorRole(authorType?: AuthorType): string {
   
   const roleMap: Record<AuthorType, string> = {
     new: "New contributor",
-    experienced: "Experienced contributor",
+    expert: "Expert contributor",
     mid: "Mid-level contributor"
   }
   
