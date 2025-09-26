@@ -24,32 +24,6 @@ export const Strategies = () => {
           <li>
             <strong>Focus area</strong> — core infrastructure (Bitcoin core protocol, libraries, developer tools) vs applications (payments,
             messaging, hardware){" "}
-            <QuoteCards quotes={[
-                  {
-                    id: "quote-1",
-                    text: "This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.",
-                    author: {
-                      type: "mid",
-                      respondentNumber: 1,
-                    },
-                  },
-                  {
-                    id: "quote-2",
-                    text: "This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.",
-                    author: {
-                      type: "new",
-                      respondentNumber: 1,
-                    },
-                  },
-                  {
-                    id: "quote-3",
-                    text: "This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.",
-                    author: {
-                      type: "new",
-                      respondentNumber: 1,
-                    },
-                  },
-                ]} />
           </li>
           <li>
             <strong>OSS experience:</strong> newer contributors vs experienced ones.

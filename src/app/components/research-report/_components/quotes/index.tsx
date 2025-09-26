@@ -12,6 +12,27 @@ interface QuoteCardsProps {
   firstColor?: CardColor
 }
 
+//usage
+{/* <QuoteCards quotes={[
+{
+  id: "quote-1",
+  text: "",
+  author: {
+    type: "mid",
+    respondentNumber: 1,
+  },
+},
+{
+  id: "quote-2",
+  text: "",
+  author: {
+    type: "new",
+    respondentNumber: 20,
+  },
+},
+..
+},
+]} /> */}
 
 export function QuoteCards({
   quotes,
