@@ -7,6 +7,7 @@ import { GLOSSARY_LIST, GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection }
 import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
 import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
 import { Strategies } from "@/app/components/research-report/strategies";
+import Eyeballs from "@/app/components/research-report/eyeballs";
 
 export default function ResearchReport() {
   return (
@@ -24,7 +25,14 @@ export default function ResearchReport() {
                 <p className='text-xl sm:text-3xl font-josefinSlab font-normal text-center'>By Laura Lotti</p>
               </section>
 
-              <Image src='/svgs/research-intro-image.svg' alt='research intro image' width={390} height={350} />
+              <Eyeballs 
+                guyImageSrc="/svgs/research-intro/guy.svg"
+                eyesImageSrc="/svgs/research-intro/eyes.svg"
+                guyWidth={390}
+                guyHeight={350}
+                eyesWidth={147}
+                eyesHeight={20}
+              />
             </div>
 
             <div className='flex flex-col gap-5'>
