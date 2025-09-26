@@ -173,12 +173,15 @@ export function QuoteCards({
       </div>
 
       {quotes.length > 1 && (
-        <div className="flex items-center pt-4 space-x-2 text-sm opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-          <img 
-            src="/svgs/research/quotes/cursor-switch.svg" 
-            alt="arrow" 
-            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-            style={{ filter: "invert(1)" }} 
+        <div
+          className="flex items-center pt-4 space-x-2 text-sm opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 cursor-pointer"
+          onClick={switchToNext}
+        >
+          <img
+            src="/svgs/research/quotes/cursor-switch.svg"
+            alt="arrow"
+            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            style={{ filter: "invert(1)" }}
           />
           <span className="font-inknut-antiqua" style={{ fontFamily: "var(--font-inknut-antiqua)" }}>
             tap to switch
