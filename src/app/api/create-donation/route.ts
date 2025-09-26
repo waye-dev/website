@@ -5,6 +5,12 @@ export async function POST(request: NextRequest) {
     const initRedirect = process.env.INITIATIVES_REDIRECT;
     const redirectKey = process.env.SUSTAINABILITY_REDIRECT;
 
+    // Debug: Log environment variables (remove in production)
+    console.log("Environment variables:", {
+      initRedirect: initRedirect ? "✓ Set" : "✗ Missing",
+      redirectKey: redirectKey ? "✓ Set" : "✗ Missing",
+    });
+
     const { amount, currency = "USD", checkoutDesc = "donation to waye" } = await request.json();
 
     if (!amount || amount <= 1) {
