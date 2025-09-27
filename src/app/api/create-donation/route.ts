@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const initRedirect = process.env.NEXT_PUBLIC_INITIATIVES_REDIRECT;
-    const redirectKey = process.env.NEXT_PUBLIC_SUSTAINABILITY_REDIRECT;
+    const initRedirect = process.env.INITIATIVES_REDIRECT;
+    const redirectKey = process.env.SUSTAINABILITY_REDIRECT;
 
     const { amount, currency = "USD", checkoutDesc = "donation to waye" } = await request.json();
 
