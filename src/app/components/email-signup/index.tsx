@@ -52,7 +52,6 @@ const EmailSignup = () => {
         }
       }
     } catch (error) {
-      console.log({ error });
       setIsLoading(false);
       if (error instanceof Error) {
         setError(error.message);
@@ -68,58 +67,56 @@ const EmailSignup = () => {
 
   return (
     <div className='w-full bg-gray-custom-100 pb-[132px]'>
-        <Wrapper className=' flex flex-col gap-[30px] items-center justify-center'>
-            {!isSubscribePage && (
-            <section className='flex flex-col gap-[15px]'>
-                <p className='text-[32px] md:text-4xl font-medium text-center'>Join our mailing list</p>
-                <p className='text-lg text-center max-w-[604px]'>
-                We have a lot brewing and can't wait to tell you all about it!
-                </p>
-            </section>
+      <Wrapper className=' flex flex-col gap-[30px] items-center justify-center'>
+        {!isSubscribePage && (
+          <section className='flex flex-col gap-[15px]'>
+            <p className='text-[32px] md:text-4xl font-medium text-center'>Join our mailing list</p>
+            <p className='text-lg text-center max-w-[604px]'>We have a lot brewing and can't wait to tell you all about it!</p>
+          </section>
+        )}
+
+        <section className='flex flex-col gap-[16px] w-full max-w-[470px]'>
+          <input
+            type='text'
+            required
+            placeholder='Name / Nym'
+            className='w-full rounded-[10px] p-4 min-h-[65px] border-2 border-gray-custom-200'
+            onChange={handleSubmit}
+            value={formValues.name}
+            name='name'
+          />
+          <input
+            type='email'
+            required
+            placeholder='yourname@email.com'
+            className='w-full rounded-[10px] p-4 min-h-[65px] border-2 border-gray-custom-200'
+            onChange={handleSubmit}
+            value={formValues.email}
+            name='email'
+          />
+          <button
+            className={`bg-black text-white rounded-[10px] px-6 py-4 flex items-center justify-center ${isDisabled ? "cursor-not-allowed" : ""}`}
+            disabled={isDisabled}
+            onClick={handleSubscribe}
+          >
+            {isLoading ? (
+              <>
+                <div className='h-6 w-6 border-2 border-white border-t-transparent rounded-full animate-spin' />
+              </>
+            ) : (
+              "Subscribe"
             )}
+          </button>
+        </section>
 
-            <section className='flex flex-col gap-[16px] w-full max-w-[470px]'>
-            <input
-                type='text'
-                required
-                placeholder='Name / Nym'
-                className='w-full rounded-[10px] p-4 min-h-[65px] border-2 border-gray-custom-200'
-                onChange={handleSubmit}
-                value={formValues.name}
-                name='name'
-            />
-            <input
-                type='email'
-                required
-                placeholder='yourname@email.com'
-                className='w-full rounded-[10px] p-4 min-h-[65px] border-2 border-gray-custom-200'
-                onChange={handleSubmit}
-                value={formValues.email}
-                name='email'
-            />
-            <button
-                className={`bg-black text-white rounded-[10px] px-6 py-4 flex items-center justify-center ${isDisabled ? "cursor-not-allowed" : ""}`}
-                disabled={isDisabled}
-                onClick={handleSubscribe}
-            >
-                {isLoading ? (
-                <>
-                    <div className='h-6 w-6 border-2 border-white border-t-transparent rounded-full animate-spin' />
-                </>
-                ) : (
-                "Subscribe"
-                )}
-            </button>
-            </section>
-
-            {success ? (
-            <div className='w-full flex flex-col items-center gap-[10px] mx-auto'>
-                <p>{success}</p>
-            </div>
-            ) : formValues.name || (formValues.email && error) ? (
-            <p className='text-red-500'>{error}</p>
-            ) : null}
-        </Wrapper>
+        {success ? (
+          <div className='w-full flex flex-col items-center gap-[10px] mx-auto'>
+            <p>{success}</p>
+          </div>
+        ) : formValues.name || (formValues.email && error) ? (
+          <p className='text-red-500'>{error}</p>
+        ) : null}
+      </Wrapper>
     </div>
   );
 };

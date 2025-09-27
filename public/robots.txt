@@ -1,0 +1,21 @@
+# Robots.txt for waye.dev
+
+User-agent: *
+Allow: /
+
+# Disallow donation-related API endpoints
+Disallow: /api/create-donation
+Disallow: /api/donation*
+
+# Disallow thank you pages (if they exist as separate routes)
+Disallow: /gracias
+Disallow: /thank-you
+
+# Allow main pages
+Allow: /
+Allow: /about
+Allow: /initiatives
+Allow: /subscribe
+
+# Sitemap location
+Sitemap: https://waye.dev/sitemap.xml
