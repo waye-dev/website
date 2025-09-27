@@ -9,7 +9,7 @@ type DonationData = {
 };
 
 export async function submitDonationData(body: DonationData) {
-  const url = process.env.NEXT_PUBLIC_DONATION_APP_SCRIPT_URL;
+  const url = process.env.DONATION_APP_SCRIPT_URL;
 
   if (!url) {
     throw new Error("Donation URL is not defined in environment variables");
