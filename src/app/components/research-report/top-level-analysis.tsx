@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useMediaQuery } from "@/hooks/window-dimensions";
+import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 
 export const TopLevelAnalysis = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -23,13 +24,7 @@ export const TopLevelAnalysis = () => {
         <p>Here are the results, highlighting common patterns and strongest polarizations.</p>
       </section>
 
-      <Image
-        src={isMobile ? "/svgs/analysis-chart-mobile.svg" : "/svgs/analysis-chart-desktop.svg"}
-        alt='top level analysis image'
-        width={1000}
-        height={1000}
-        className='mx-auto w-full'
-      />
+      <ParadoxVisualization />
 
       {/* experience the paradoxies section */}
       <div className='flex flex-col gap-12 py-24'>
