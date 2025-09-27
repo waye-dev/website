@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useMediaQuery } from "@/hooks/window-dimensions";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
+import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
 
 export const TopLevelAnalysis = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -23,44 +24,61 @@ export const TopLevelAnalysis = () => {
 
         <p>Here are the results, highlighting common patterns and strongest polarizations.</p>
       </section>
-
       <ParadoxVisualization />
-
-      {/* experience the paradoxies section */}
-      <div className='flex flex-col gap-12 py-24'>
-        <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Experience the paradoxies</h5>
-
-        <div className='grid grid-cols-2 md:grid-cols-1 gap-6 md:gap-12 h-fit'>
-          <Image
-            src={isMobile ? "/svgs/experience-paradox-mobile.svg" : "/svgs/experience-paradox-desktop.svg"}
-            alt='experience paradox desktop'
-            width={isMobile ? 1291 : 1291}
-            height={isMobile ? 600 : 369}
-            className='w-full h-fit max-h-[800px]'
-          />
-
-          <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-fit'>
-            {experienceLevels.map((level) => (
-              <div key={level.title} className='flex flex-col gap-4 items-center'>
-                <div className='w-full h-full flex items-center justify-center'>
-                  <Image
-                    src={level.image}
-                    alt={level.title}
-                    width={level.width}
-                    height={level.height}
-                    className='w-full h-fit max-w-[406px] max-h-[190px] md:max-h-[316px]'
-                  />
-                </div>
-
-                <section>
-                  <p className='text-lg font-bold'>{level.title}</p>
-                  <p className='text-base italic'>{level.description}</p>
-                </section>
-              </div>
-            ))}
-          </section>
-        </div>
-      </div>
+      
+      <ExperienceParadoxes data={{
+        new: {
+          preference: {
+            title: "Preference: Overarching",
+            subtitle: "Public Goods Focus",
+            image: "/svgs/experience-the-paradoxes/new/Group 114.svg"
+          },
+          work: {
+            title: "Work: Sustainability",
+            subtitle: "Generally Sustainable",
+            image: "/svgs/experience-the-paradoxes/new/Group 145.svg"
+          },
+          rhythm: {
+            title: "Work: Rhythm",
+            subtitle: "Routine Focus",
+            image: "/svgs/experience-the-paradoxes/new/Group 151.svg"
+          }
+        },
+        mid: {
+          preference: {
+            title: "Preference: Overarching",
+            subtitle: "Public Goods Focus",
+            image: "/svgs/experience-the-paradoxes/mid/Group 114.svg"
+          },
+          work: {
+            title: "Work: Sustainability",
+            subtitle: "Somewhat Sustainable",
+            image: "/svgs/experience-the-paradoxes/mid/Group 184.svg"
+          },
+          rhythm: {
+            title: "Work: Rhythm",
+            subtitle: "Sprint-Oriented",
+            image: "/svgs/experience-the-paradoxes/mid/Group 185.svg"
+          }
+        },
+        expert: {
+          preference: {
+            title: "Preference: Overarching",
+            subtitle: "Balancing Commons & Commercial",
+            image: "/svgs/experience-the-paradoxes/expert/Group 115.svg"
+          },
+          work: {
+            title: "Work: Sustainability",
+            subtitle: "Somewhat Sustainable",
+            image: "/svgs/experience-the-paradoxes/expert/Group 203.svg"
+          },
+          rhythm: {
+            title: "Work: Rhythm",
+            subtitle: "Sprint-Oriented",
+            image: "/svgs/experience-the-paradoxes/expert/Group 204.svg"
+          }
+        }
+      }} />
 
       {/* core findings section */}
       <div className='flex flex-col gap-12 py-24'>
