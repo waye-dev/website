@@ -22,7 +22,7 @@ export const BeyondFinancialSustainability = () => {
             long-term experience.'
         />
 
-        <div className='flex flex-row items-center gap-6 justify-between'>
+        <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-6 flex-wrap justify-between'>
           <section className='flex flex-row gap-6 items-end'>
             <Image src='/svgs/role-sustainability-percent-icon.svg' alt='role sustainability icon' width={129} height={130} />
             <p className='font-inter font-semibold text-[22px] max-w-[340px]'>of participants had held grant-funded roles for two years or less</p>
