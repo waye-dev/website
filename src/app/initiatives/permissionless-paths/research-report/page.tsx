@@ -12,7 +12,7 @@ import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 import { BeyondFinancialSustainability } from "@/app/components/research-report/beyond-financial-sustainability";
 
 export default function ResearchReport() {
-  const [activeId, setActiveId] = useState<number | null>(null);
+  const [activeId, setActiveId] = useState<number | null>(null)
 
   return (
     <main>
@@ -72,7 +72,7 @@ export default function ResearchReport() {
         <Wrapper className='py-24'>
           <div className='flex flex-row w-full gap-16'>
             <section className='flex-1 relative'>
-              <div className='flex flex-col gap-6 pt-[70vh] pb-[85px]'>
+              <div className="flex flex-col gap-6 pt-[70vh] pb-[85px]">
                 {GLOSSARY_TEXT_SECTIONS.map((section, index) => (
                   <GlossarySection
                     key={index}
@@ -80,7 +80,7 @@ export default function ResearchReport() {
                     index={index + 1}
                     summary={section.summary}
                     onInViewChange={(id, inView) => {
-                      if (inView) {
+                      if(inView) {
                         setActiveId(id);
                       } else {
                         setActiveId((prev) => (prev === id ? null : prev));
@@ -91,8 +91,8 @@ export default function ResearchReport() {
               </div>
             </section>
 
-            <div className='sticky top-0 h-screen flex items-center'>
-              <div className='w-full'>
+            <div className="sticky top-0 h-screen flex items-center">
+              <div className="w-full">
                 <GlossaryChart activeId={activeId} />
               </div>
             </div>
