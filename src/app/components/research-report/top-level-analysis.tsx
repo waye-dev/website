@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useMediaQuery } from "@/hooks/window-dimensions";
-import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/paradox-visualization";
+import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 
 export const TopLevelAnalysis = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");

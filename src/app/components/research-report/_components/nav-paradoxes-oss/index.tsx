@@ -7,7 +7,7 @@ import AvatarHeader from './avatar-header'
 import MovingAvatars from './moving-avatars'
 import ParadoxLine from './paradox-line'
 import FooterAvatars from './footer-avatars'
-import MobileParadoxPage from './mobile-paradox-page'
+import MobileParadoxPage from './mobile'
 import ConnectingLines from './connecting-lines'
 
 const ParadoxVisualization: React.FC = () => {

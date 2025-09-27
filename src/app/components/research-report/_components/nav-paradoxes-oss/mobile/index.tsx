@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { paradoxData, avatars } from './data'
+import { paradoxData, avatars } from '../data'
+import { ParadoxDataItem, Avatar } from '../types'
 
 const MobileParadoxPage: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set())
@@ -70,7 +71,7 @@ const MobileParadoxPage: React.FC = () => {
 
 
       <div className="px-2 space-y-0 pb-12">
-        {paradoxData.map((item, index) => {
+        {paradoxData.map((item: ParadoxDataItem, index: number) => {
           const isVisible = visibleItems.has(index)
 
           return (
@@ -85,7 +86,7 @@ const MobileParadoxPage: React.FC = () => {
                 </div>
 
                 <div className="flex-1 space-y-1">
-                  {avatars.map((avatar, avatarIndex) => {
+                  {avatars.map((avatar: Avatar, avatarIndex: number) => {
                     const value = item[avatar.id as keyof typeof item] as number
                     const percentage = (value / 10) * 100
                     const config = getAvatarConfig(avatar.id)

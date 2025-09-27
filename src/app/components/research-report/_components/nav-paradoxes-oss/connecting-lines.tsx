@@ -46,10 +46,6 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
     const startIndex = Math.floor(startLineFloat)
     const endIndex = Math.min(totalLines - 1, Math.ceil(endLineFloat))
 
-    if (isAnimating && typeof window !== 'undefined') {
-      console.log(`Trail: current=${currentLineFloat.toFixed(2)}, start=${startIndex}, end=${endIndex}, behind=${trailBehind}, ahead=${trailAhead}`)
-    }
-
     const lineContainers = document.querySelectorAll('[data-line-container]')
 
     for (let index = startIndex; index <= endIndex; index++) {
