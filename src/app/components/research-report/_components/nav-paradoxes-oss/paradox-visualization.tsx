@@ -8,12 +8,14 @@ import MovingAvatars from './moving-avatars'
 import ParadoxLine from './paradox-line'
 import FooterAvatars from './footer-avatars'
 import MobileParadoxPage from './mobile-paradox-page'
+import ConnectingLines from './connecting-lines'
 
 const ParadoxVisualization: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isClient, setIsClient] = useState(false)
 
   const {
+    scrollProgress,
     isAnimating,
     isInFooter,
     passedLines,
@@ -62,6 +64,13 @@ const ParadoxVisualization: React.FC = () => {
       />
 
       <div ref={linesRef} className="space-y-12 relative z-10 max-w-6xl mx-auto">
+        <ConnectingLines
+          paradoxData={paradoxData}
+          avatars={avatars}
+          passedLines={passedLines}
+          isAnimating={isAnimating}
+          scrollProgress={scrollProgress}
+        />
         {paradoxData.map((item, index) => (
           <ParadoxLine
             key={item.Index}
