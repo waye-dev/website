@@ -27,7 +27,6 @@ export const useParadoxAnimation = () => {
 
       if (shouldStop) {
         setIsAnimating(false)
-        setScrollProgress(1) // Keep final progress for footer positioning
         setIsInFooter(true)
         // Keep all lines as passed when in footer
         const allLines = new Set<number>()
@@ -37,6 +36,7 @@ export const useParadoxAnimation = () => {
         setPassedLines(allLines)
       } else if (shouldAnimate) {
         setIsAnimating(true)
+        setIsInFooter(false)
 
         const lines = linesRef.current.querySelectorAll('[data-line]')
         const newPassedLines = new Set<number>()
@@ -75,7 +75,8 @@ export const useParadoxAnimation = () => {
   }, [])
 
   const getAvatarPosition = (avatarId: string) => {
-    if ((!isAnimating && !isInFooter) || !linesRef.current) return null
+    // Only show moving avatars during animation, not in footer
+    if (!isAnimating || !linesRef.current) return null
 
     const lines = linesRef.current.querySelectorAll('[data-line-container]')
     if (lines.length === 0) return null
@@ -105,7 +106,7 @@ export const useParadoxAnimation = () => {
 
     return {
       xPercent: Math.max(0, Math.min(100, xPercent)),
-      isAtBottom: isInFooter
+      isAtBottom: false
     }
   }
 

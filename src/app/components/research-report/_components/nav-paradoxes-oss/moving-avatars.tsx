@@ -6,10 +6,11 @@ import { AVATAR_SIZE } from './data'
 interface MovingAvatarsProps {
   avatars: Avatar[]
   isAnimating: boolean
+  isInFooter: boolean
   getAvatarPosition: (avatarId: string) => { xPercent: number; isAtBottom: boolean } | null
 }
 
-const MovingAvatars: React.FC<MovingAvatarsProps> = ({ avatars, isAnimating, getAvatarPosition }) => {
+const MovingAvatars: React.FC<MovingAvatarsProps> = ({ avatars, isAnimating, isInFooter, getAvatarPosition }) => {
   if (!isAnimating) return null
 
   return (
@@ -29,16 +30,16 @@ const MovingAvatars: React.FC<MovingAvatarsProps> = ({ avatars, isAnimating, get
               transform: position.isAtBottom
                 ? `translateX(-50%)`
                 : `translate(-50%, -50%)`,
-              width: `${AVATAR_SIZE}px`,
-              height: `${AVATAR_SIZE}px`
+              width: `${AVATAR_SIZE + 8}px`,
+              height: `${AVATAR_SIZE + 8}px`
             }}
           >
             <Image
               src={`/svgs/research/paradox-graph/${avatar.id}.svg`}
               alt={avatar.name}
-              width={AVATAR_SIZE}
-              height={AVATAR_SIZE}
-              className="w-full h-full object-cover"
+              width={AVATAR_SIZE + 8}
+              height={AVATAR_SIZE + 8}
+              className="w-full h-full object-contain"
             />
           </div>
         )

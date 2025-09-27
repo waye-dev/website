@@ -24,16 +24,16 @@ const AvatarHeader = forwardRef<HTMLDivElement, AvatarHeaderProps>(
               <div
                 className="flex items-center justify-center"
                 style={{
-                  width: `${AVATAR_SIZE}px`,
-                  height: `${AVATAR_SIZE}px`
+                  width: `${AVATAR_SIZE + 8}px`,
+                  height: `${AVATAR_SIZE + 8}px`
                 }}
               >
                 <Image
                   src={`/svgs/research/paradox-graph/${avatar.id}.svg`}
                   alt={avatar.name}
-                  width={AVATAR_SIZE}
-                  height={AVATAR_SIZE}
-                  className="w-full h-full object-cover"
+                  width={AVATAR_SIZE + 8}
+                  height={AVATAR_SIZE + 8}
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="mt-3 text-base font-medium">{avatar.name}</span>
