@@ -5,6 +5,7 @@ export const useParadoxAnimation = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [isInFooter, setIsInFooter] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
   const [passedLines, setPassedLines] = useState<Set<number>>(new Set())
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -16,27 +17,60 @@ export const useParadoxAnimation = () => {
     const handleScroll = () => {
       if (!containerRef.current || !headerRef.current || !linesRef.current || !legendRef.current) return
 
+      const containerRect = containerRef.current.getBoundingClientRect()
       const headerRect = headerRef.current.getBoundingClientRect()
       const legendRect = legendRef.current.getBoundingClientRect()
       const windowHeight = window.innerHeight
       const middleLine = windowHeight / 2
 
-      const shouldAnimate = headerRect.bottom < middleLine
+      const isCompletelyPastSection = containerRect.bottom < middleLine
 
-      const shouldStop = middleLine >= legendRect.top
+      const isBeforeSection = headerRect.top > middleLine
 
-      if (shouldStop) {
+      const shouldAnimate = headerRect.bottom < middleLine && !isCompletelyPastSection
+      const shouldShowFooter = middleLine >= legendRect.top && middleLine <= legendRect.bottom && !isCompletelyPastSection
+
+      if (isCompletelyPastSection) {
+        setScrollProgress(1)
         setIsAnimating(false)
         setIsInFooter(true)
-        // Keep all lines as passed when in footer
+        setIsTransitioning(false)
+
+        const allLines = new Set<number>()
+        for (let i = 0; i < paradoxData.length; i++) {
+          allLines.add(i)
+        }
+        setPassedLines(allLines)
+      } else if (isBeforeSection) {
+        setScrollProgress(0)
+        setIsAnimating(false)
+        setIsInFooter(false)
+        setIsTransitioning(false)
+        setPassedLines(new Set())
+      } else if (shouldShowFooter) {
+        if (!isTransitioning && !isInFooter) {
+          setIsTransitioning(true)
+          setIsAnimating(true)
+
+          setTimeout(() => {
+            setIsAnimating(false)
+            setIsInFooter(true)
+            setIsTransitioning(false)
+          }, 600)
+        }
+
         const allLines = new Set<number>()
         for (let i = 0; i < paradoxData.length; i++) {
           allLines.add(i)
         }
         setPassedLines(allLines)
       } else if (shouldAnimate) {
+        if (isInFooter || isTransitioning) {
+          setIsInFooter(false)
+          setIsTransitioning(false)
+        }
+
         setIsAnimating(true)
-        setIsInFooter(false)
 
         const lines = linesRef.current.querySelectorAll('[data-line]')
         const newPassedLines = new Set<number>()
@@ -61,22 +95,33 @@ export const useParadoxAnimation = () => {
           const progress = Math.min(1, Math.max(0, currentPosition / totalRange))
           setScrollProgress(progress)
         }
-      } else {
-        setScrollProgress(0)
-        setIsAnimating(false)
-        setIsInFooter(false)
-        setPassedLines(new Set())
       }
     }
 
     window.addEventListener('scroll', handleScroll)
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isInFooter, isTransitioning])
 
   const getAvatarPosition = (avatarId: string) => {
-    // Only show moving avatars during animation, not in footer
-    if (!isAnimating || !linesRef.current) return null
+    if (!isAnimating || !linesRef.current || isInFooter) return null
+
+    if (isTransitioning && legendRef.current) {
+      const footerAvatars = legendRef.current.querySelectorAll('[data-avatar]')
+      const avatarIndex = ['new', 'mid', 'senior'].indexOf(avatarId)
+
+      if (avatarIndex !== -1 && footerAvatars[avatarIndex]) {
+        const footerAvatarRect = footerAvatars[avatarIndex].getBoundingClientRect()
+        const footerXPercent = ((footerAvatarRect.left + footerAvatarRect.width / 2) / window.innerWidth) * 100
+        const footerYPixels = footerAvatarRect.top + footerAvatarRect.height / 2
+
+        return {
+          xPercent: footerXPercent,
+          yPixels: footerYPixels,
+          isAtFooter: true
+        }
+      }
+    }
 
     const lines = linesRef.current.querySelectorAll('[data-line-container]')
     if (lines.length === 0) return null
@@ -106,7 +151,7 @@ export const useParadoxAnimation = () => {
 
     return {
       xPercent: Math.max(0, Math.min(100, xPercent)),
-      isAtBottom: false
+      isAtFooter: false
     }
   }
 
@@ -114,6 +159,7 @@ export const useParadoxAnimation = () => {
     scrollProgress,
     isAnimating,
     isInFooter,
+    isTransitioning,
     passedLines,
     containerRef,
     headerRef,

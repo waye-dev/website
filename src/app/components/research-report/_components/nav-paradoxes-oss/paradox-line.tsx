@@ -12,18 +12,14 @@ interface ParadoxLineProps {
 const ParadoxLine: React.FC<ParadoxLineProps> = ({ item, index, avatars, hasPassedLine }) => {
   return (
     <div data-line className="relative mb-16">
-      <div className="flex items-center justify-center max-w-6xl mx-auto">
-        <div
-          className="text-right break-words leading-tight pr-6"
-          style={{ width: `${TERM_WIDTH}px` }}
-        >
-          <span className="text-base font-medium">{item.Term1}</span>
+      <div className="flex items-center justify-center max-w-6xl mx-auto px-4">
+        <div className="text-right break-words leading-tight pr-3 md:pr-6 flex-shrink-0 w-20 sm:w-28 md:w-40 lg:w-52">
+          <span className="text-sm md:text-base font-400 font-inknutAntiqua md:text-[18.33px]">{item.Term1}</span>
         </div>
 
         <div
           data-line-container
-          className="relative flex-shrink-0"
-          style={{ width: `${LINE_WIDTH}px` }}
+          className="relative flex-1 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-4xl"
         >
           <div className="h-px w-full bg-gray-400" />
 
@@ -35,7 +31,7 @@ const ParadoxLine: React.FC<ParadoxLineProps> = ({ item, index, avatars, hasPass
               return (
                 <div
                   key={`circle-${avatar.id}-${index}`}
-                  className={`absolute w-6 h-6 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
+                  className={`absolute w-4 h-4 md:w-6 md:h-6 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
                     hasPassedLine ? 'scale-100 opacity-80' : 'scale-0 opacity-0'
                   }`}
                   style={{
@@ -50,11 +46,8 @@ const ParadoxLine: React.FC<ParadoxLineProps> = ({ item, index, avatars, hasPass
           </div>
         </div>
 
-        <div
-          className="text-left break-words leading-tight pl-6"
-          style={{ width: `${TERM_WIDTH}px` }}
-        >
-          <span className="text-base font-medium">{item.Term2}</span>
+        <div className="text-left break-words leading-tight pl-3 md:pl-6 flex-shrink-0 w-20 sm:w-28 md:w-40 lg:w-52">
+          <span className="text-sm md:text-base font-400 font-inknutAntiqua md:text-[18.33px]">{item.Term2}</span>
         </div>
       </div>
     </div>

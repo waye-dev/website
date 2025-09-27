@@ -7,7 +7,7 @@ interface MovingAvatarsProps {
   avatars: Avatar[]
   isAnimating: boolean
   isInFooter: boolean
-  getAvatarPosition: (avatarId: string) => { xPercent: number; isAtBottom: boolean } | null
+  getAvatarPosition: (avatarId: string) => { xPercent: number; yPixels?: number; isAtFooter: boolean } | null
 }
 
 const MovingAvatars: React.FC<MovingAvatarsProps> = ({ avatars, isAnimating, isInFooter, getAvatarPosition }) => {
@@ -22,13 +22,14 @@ const MovingAvatars: React.FC<MovingAvatarsProps> = ({ avatars, isAnimating, isI
         return (
           <div
             key={`moving-${avatar.id}`}
-            className={`absolute flex items-center justify-center transition-all duration-300 ease-out ${
-              position.isAtBottom ? 'bottom-24' : 'top-1/2 -translate-y-1/2'
-            }`}
+            className="absolute flex items-center justify-center transition-all duration-600 ease-out"
             style={{
               left: `${position.xPercent}%`,
-              transform: position.isAtBottom
-                ? `translateX(-50%)`
+              top: position.isAtFooter && position.yPixels
+                ? `${position.yPixels}px`
+                : '50%',
+              transform: position.isAtFooter
+                ? `translate(-50%, -50%)`
                 : `translate(-50%, -50%)`,
               width: `${AVATAR_SIZE + 8}px`,
               height: `${AVATAR_SIZE + 8}px`
