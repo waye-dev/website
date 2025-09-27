@@ -47,7 +47,7 @@ const ParadoxVisualization: React.FC = () => {
   }
 
   return (
-    <section ref={containerRef} className="w-full mx-auto px-4 relative pt-4">
+    <section ref={containerRef} className="w-full mx-auto relative pt-0">
       <AvatarHeader
         ref={headerRef}
         avatars={avatars}

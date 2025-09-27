@@ -31,15 +31,15 @@ const MovingAvatars: React.FC<MovingAvatarsProps> = ({ avatars, isAnimating, isI
               transform: position.isAtFooter
                 ? `translate(-50%, -50%)`
                 : `translate(-50%, -50%)`,
-              width: `${AVATAR_SIZE + 8}px`,
-              height: `${AVATAR_SIZE + 8}px`
+              width: `${AVATAR_SIZE + 24}px`,
+              height: `${AVATAR_SIZE + 24}px`
             }}
           >
             <Image
               src={`/svgs/research/paradox-graph/${avatar.id}.svg`}
               alt={avatar.name}
-              width={AVATAR_SIZE + 8}
-              height={AVATAR_SIZE + 8}
+              width={AVATAR_SIZE + 24}
+              height={AVATAR_SIZE + 24}
               className="w-full h-full object-contain"
             />
           </div>

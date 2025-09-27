@@ -12,7 +12,7 @@ interface ParadoxLineProps {
 const ParadoxLine: React.FC<ParadoxLineProps> = ({ item, index, avatars, hasPassedLine }) => {
   return (
     <div data-line className="relative mb-16">
-      <div className="flex items-center justify-center max-w-6xl mx-auto px-4">
+      <div className="flex items-center justify-center max-w-6xl mx-auto">
         <div className="text-right break-words leading-tight pr-3 md:pr-6 flex-shrink-0 w-20 sm:w-28 md:w-40 lg:w-52">
           <span className="text-sm md:text-base font-400 font-inknutAntiqua md:text-[18.33px]">{item.Term1}</span>
         </div>
