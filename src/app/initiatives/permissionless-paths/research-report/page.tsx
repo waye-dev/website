@@ -10,6 +10,7 @@ import { TyrannyOfPermissionlessness } from "@/app/components/research-report/ty
 import { Strategies } from "@/app/components/research-report/strategies";
 import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 import { BeyondFinancialSustainability } from "@/app/components/research-report/beyond-financial-sustainability";
+import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -152,6 +153,11 @@ export default function ResearchReport() {
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
           <BeyondFinancialSustainability />
         </Wrapper>
+      </div>
+      <div className='bg-blue-custom-1100 overflow-hidden'>
+        <div className="w-full max-w-[1400px] mx-auto">
+          <RecommendationReveal />
+        </div>
       </div>
     </main>
   );
