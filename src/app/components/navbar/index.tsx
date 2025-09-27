@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import { NAV_LINKS } from "@/app/data";
 import React, { useState } from "react";
 import Wrapper from "@/app/components/wrapper";
-import CustomButton from "@/app/components/custom-button";
-import { NAV_LINKS } from "@/app/data";
+
+const DonationModal = dynamic(() => import("@/app/components/donation-modal"), { ssr: false });
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDonationOpen, setIsDonationOpen] = useState(false);
 
   return (
     <nav
@@ -31,15 +34,29 @@ const Navbar = () => {
           </div>
 
           <div className='hidden md:flex items-center space-x-8'>
-            <CustomButton href='/subscribe' className='lg:min-w-[183.66px] text-center'>
-              Stay Updated
-            </CustomButton>
+            <button
+              onClick={() => setIsDonationOpen(true)}
+              className='rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[14px] px-[22px] text-black text-nowrap  lg:min-w-[183.66px]'
+            >
+              Donate
+            </button>
           </div>
 
-          <button className='md:hidden flex flex-col gap-2.5' onClick={() => setIsOpen(!isOpen)}>
-            <span className={`w-[34px] h-[2px] bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[6px]" : ""}`}></span>
-            <span className={`w-[34px] h-[2px] bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[6px]" : ""}`}></span>
-          </button>
+          <div className='items-center gap-4 flex md:hidden'>
+            <div className='flex md:hidden items-center space-x-8'>
+              <button
+                onClick={() => setIsDonationOpen(true)}
+                className='rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[10px] px-[16px] text-black text-nowrap lg:min-w-[183.66px]'
+              >
+                Donate
+              </button>
+            </div>
+
+            <button className='md:hidden flex flex-col gap-2.5' onClick={() => setIsOpen(!isOpen)}>
+              <span className={`w-[34px] h-[2px] bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[6px]" : ""}`}></span>
+              <span className={`w-[34px] h-[2px] bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[6px]" : ""}`}></span>
+            </button>
+          </div>
         </div>
       </Wrapper>
 
@@ -60,6 +77,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      <DonationModal isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />
     </nav>
   );
 };
