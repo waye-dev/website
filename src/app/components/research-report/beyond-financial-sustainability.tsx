@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { QuoteCards } from "./_components/quotes";
+import { RecommendationReveal } from "./recommendation-reveal";
 
 export const BeyondFinancialSustainability = () => {
   return (
