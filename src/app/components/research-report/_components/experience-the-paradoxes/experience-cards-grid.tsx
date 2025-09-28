@@ -22,14 +22,12 @@ export const ExperienceCardsGrid = ({
 }: ExperienceCardsGridProps) => {
   const [displayCards, setDisplayCards] = useState(cards);
 
-  // Initialize display cards and handle non-animation updates
   useEffect(() => {
     if (!isAnimating) {
       setDisplayCards(cards);
     }
   }, [cards, isAnimating]);
 
-  // When animation starts, show previous cards if available
   useEffect(() => {
     if (isAnimating && previousCards) {
       setDisplayCards(previousCards);
@@ -49,16 +47,38 @@ export const ExperienceCardsGrid = ({
   });
 
   return (
-    <div className="flex justify-center pt-32">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-7xl mx-auto px-4">
+    <div className="flex justify-center pt-12 md:pt-32">
+      <div className="hidden md:grid grid-cols-3 gap-20 max-w-7xl mx-auto px-4">
         {displayCards.map((card: any, index: number) => (
-          <div 
-            key={`${currentStage}-card-${index}`} 
+          <div
+            key={`${currentStage}-card-${index}`}
             ref={registerCardRef(index)}
             className="card"
             style={{
               willChange: "transform, opacity",
               position: "relative"
+            }}
+          >
+            <Card
+              title={card.title}
+              subtitle={card.subtitle}
+              image={card.image}
+              alt={card.title}
+              currentStage={currentStage}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="md:hidden w-full space-y-2 pl-4">
+        {displayCards.map((card: any, index: number) => (
+          <div
+            key={`${currentStage}-card-${index}`}
+            className="card w-full"
+            style={{
+              minHeight: '120px',
+              display: 'flex',
+              alignItems: 'stretch'
             }}
           >
             <Card

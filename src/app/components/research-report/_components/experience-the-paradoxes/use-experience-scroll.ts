@@ -25,6 +25,19 @@ export const useExperienceScroll = () => {
         scrollTriggerRef.current.kill();
       }
 
+      // Set initial position for desktop avatar
+      const isMobile = window.innerWidth < 768;
+      if (!isMobile && avatarRef.current && lineRef.current) {
+        const lineWidth = lineRef.current.offsetWidth;
+        const initialX = getAvatarPosition(0, lineWidth);
+        const initialY = getAvatarVerticalPosition(0);
+        gsap.set(avatarRef.current, {
+          x: initialX,
+          y: initialY,
+          force3D: true
+        });
+      }
+
       let lastStage = 'new';
 
       try {
@@ -38,16 +51,36 @@ export const useExperienceScroll = () => {
           onUpdate: (self) => {
             const progress = self.progress;
             const newStage = getStageFromProgress(progress);
-            
+
+            console.log('ScrollTrigger progress:', progress);
+
             // Update progress state for labels
             setProgress(progress);
 
             if (avatarRef.current && lineRef.current && avatarRef.current.parentNode) {
               try {
                 const lineWidth = lineRef.current.offsetWidth;
-                const avatarX = getAvatarPosition(progress, lineWidth);
-                const avatarY = getAvatarVerticalPosition(progress);
-                gsap.set(avatarRef.current, { x: avatarX, y: avatarY });
+                const isMobile = window.innerWidth < 768;
+
+                if (!isMobile) {
+                  // Desktop: Move avatar horizontally across the timeline AND vertically
+                  const avatarX = getAvatarPosition(progress, lineWidth);
+                  const avatarY = getAvatarVerticalPosition(progress);
+                  gsap.set(avatarRef.current, {
+                    x: avatarX,
+                    y: avatarY,
+                    force3D: true
+                  });
+                  console.log('Desktop avatar position:', {
+                    progress: progress.toFixed(3),
+                    x: avatarX.toFixed(1),
+                    y: avatarY.toFixed(1),
+                    lineWidth
+                  });
+                } else {
+                  // Mobile: Keep avatar stationary, no movement
+                  gsap.set(avatarRef.current, { x: 0, y: 0 });
+                }
               } catch (error) {
                 console.warn('GSAP avatar positioning error:', error);
               }

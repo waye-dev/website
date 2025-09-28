@@ -8,8 +8,11 @@ export const getAvatarPosition = (progress: number, containerWidth: number) => {
   const avatarWidth = 128;
   const startX = -avatarWidth / 2;
   const endX = containerWidth - avatarWidth / 2;
-  
-  return startX + (endX - startX) * progress;
+
+  const calculatedX = startX + (endX - startX) * progress;
+
+
+  return calculatedX;
 };
 
 export const getAvatarVerticalPosition = (progress: number) => {

@@ -46,7 +46,9 @@ export const useCardSwitchAnimation = ({
   };
 
   const animateCardSwitch = () => {
-    if (!cardRefs.current.length || !isAnimating) return;
+    // Only run card switch animation on desktop (md and up)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    if (!cardRefs.current.length || !isAnimating || isMobile) return;
 
     if (animationTimeline.current) {
       animationTimeline.current.kill();
