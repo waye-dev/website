@@ -10,7 +10,7 @@ interface ExperienceAvatarProps {
 export const ExperienceAvatar = ({ avatarRef, avatar, alt }: ExperienceAvatarProps) => {
   return (
     <div className="absolute top-0 left-0 w-full h-40 overflow-visible">
-      <div ref={avatarRef} className="absolute w-32 h-32 will-change-transform">
+      <div ref={avatarRef} className="absolute w-32 h-32 will-change-transform" style={{ zIndex: 10, transform: 'translate3d(0, 0, 0)' }}>
         <div className="w-32 h-32 mb-3">
           <Image
             src={avatar}

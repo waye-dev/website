@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { getStageFromProgress, getAvatarPosition } from "./utils";
+import { getStageFromProgress, getAvatarPosition, getAvatarVerticalPosition } from "./utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,18 +42,17 @@ export const useExperienceScroll = () => {
               try {
                 const lineWidth = lineRef.current.offsetWidth;
                 const avatarX = getAvatarPosition(progress, lineWidth);
-                gsap.set(avatarRef.current, { x: avatarX });
+                const avatarY = getAvatarVerticalPosition(progress);
+                gsap.set(avatarRef.current, { x: avatarX, y: avatarY });
               } catch (error) {
                 console.warn('GSAP avatar positioning error:', error);
               }
             }
 
-            // Update stage if changed
             if (newStage !== lastStage) {
               setPreviousStage(lastStage as 'new' | 'mid' | 'expert' | null);
               setTargetStage(newStage);
               setIsAnimating(true);
-              // Don't update currentStage immediately - let animation complete first
               lastStage = newStage;
             }
           }

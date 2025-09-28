@@ -25,6 +25,7 @@ export const TopLevelAnalysis = () => {
         <p>Here are the results, highlighting common patterns and strongest polarizations.</p>
       </section>
       <ParadoxVisualization />
+      {/* {TOFIX: NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.} */}
       
       <ExperienceParadoxes data={{
         new: {
@@ -73,7 +74,7 @@ export const TopLevelAnalysis = () => {
           alt: "Medium Experience",
           label1: "Medium",
           label2: "Experience",
-          labelOffset: { x: -40, y: 40 }
+          labelOffset: { x: -40, y: -25 }
         },
         expert: {
           cards: [
@@ -97,7 +98,7 @@ export const TopLevelAnalysis = () => {
           alt: "Experienced Contributor",
           label1: "Experienced",
           label2: "Contributor",
-          labelOffset: { x: 0, y: 40 }
+          labelOffset: { x: 0, y: 0 }
         }
       }} />
 

@@ -21,7 +21,6 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
   // Use targetStage for cards during animation, currentStage otherwise
   const cardsStage = isAnimating ? targetStage : currentStage;
   const currentLevel = data[cardsStage];
-  const previousLevel = previousStage ? data[previousStage] : null;
 
   return (
     <div ref={containerRef} className="h-screen flex flex-col justify-center items-center px-4 relative z-10">
@@ -35,9 +34,8 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
         currentLevel={currentLevel}
       />
 
-      <ExperienceCardsGrid
+      <ExperienceCardsGrid 
         cards={currentLevel.cards}
-        previousCards={previousLevel?.cards}
         currentStage={cardsStage}
         previousStage={previousStage}
         isAnimating={isAnimating}

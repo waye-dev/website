@@ -1,18 +1,24 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
+// Animation constants for easy adjustment
+// Adjust these values to fine-tune the card switching animation
 const ANIMATION_CONSTANTS = {
+  // Timing (in seconds)
   CONVERGENCE_DURATION: 0.6,    // How long cards take to meet in center
   SWITCH_DURATION: 0.1,         // How long the switch effect takes
   RETURN_DURATION: 0.5,         // How long cards take to return to positions
   CONVERGENCE_STAGGER_DELAY: 0.1, // Delay between each card starting movement (ordered)
   
+  // Movement
   VERTICAL_OFFSET: 0,         // How much to move up from center (negative = up)
   SCALE_WHEN_TOGETHER: 0.8,    // How small cards get when together (0.8 = 80% size)
   
+  // Angles (in degrees)
   PRIMARY_ANGLE: 15,            // Main angle for first two cards
   SECONDARY_ANGLE_REDUCTION: 0.7, // Multiplier for additional cards (0.7 = 70% of primary)
   
+  // Effects
   OPACITY_DURING_SWITCH: 0.7,   // Opacity during the switch phase (0.7 = 70% opacity)
   Z_INDEX_OFFSET: 10            // Z-index offset for layering
 } as const;
@@ -22,15 +28,13 @@ interface CardSwitchAnimationProps {
   previousStage?: string;
   isAnimating: boolean;
   onAnimationComplete: () => void;
-  onContentSwitch?: () => void;
 }
 
 export const useCardSwitchAnimation = ({
   currentStage,
   previousStage,
   isAnimating,
-  onAnimationComplete,
-  onContentSwitch
+  onAnimationComplete
 }: CardSwitchAnimationProps) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const animationTimeline = useRef<gsap.core.Timeline | null>(null);
@@ -86,14 +90,9 @@ export const useCardSwitchAnimation = ({
       duration: ANIMATION_CONSTANTS.SWITCH_DURATION,
       ease: "power2.inOut",
       onComplete: () => {
-        // Trigger content switch when cards are together and hidden
-        if (onContentSwitch) {
-          onContentSwitch();
-        }
-
         cards.forEach((card, index) => {
           if (!card) return;
-          gsap.set(card, {
+          gsap.set(card, { 
             zIndex: cards.length - index + ANIMATION_CONSTANTS.Z_INDEX_OFFSET,
             opacity: 1
           });

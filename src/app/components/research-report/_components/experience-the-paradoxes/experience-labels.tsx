@@ -20,7 +20,7 @@ export const ExperienceLabels = ({ data, currentStage }: ExperienceLabelsProps) 
         return (
           <div
             key={stage}
-            className={`absolute ${positions[index]} transition-opacity duration-500`}
+            className={`absolute ${positions[index]}`}
             style={{
               opacity: currentStage === stage ? 1 : 0.4,
               transform: transforms[index],
