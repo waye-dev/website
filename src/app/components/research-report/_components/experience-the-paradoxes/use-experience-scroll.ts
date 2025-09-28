@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { getStageFromProgress, getAvatarPosition, getAvatarVerticalPosition } from "./utils";
+import { getStageFromProgress, getAvatarPosition, getAvatarVerticalPosition, getMobileAvatarTransform } from "./utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,12 +11,17 @@ export const useExperienceScroll = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [targetStage, setTargetStage] = useState<'new' | 'mid' | 'expert'>('new');
   const [progress, setProgress] = useState(0);
-  
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+
   const containerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
   const mobileAvatarRef = useRef<HTMLDivElement>(null);
+  const mobileAvatarNewRef = useRef<HTMLDivElement>(null);
+  const mobileAvatarMidRef = useRef<HTMLDivElement>(null);
+  const mobileAvatarExpertRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+  const lastProgressRef = useRef(0);
 
   useEffect(() => {
     if (!containerRef.current || !avatarRef.current || !lineRef.current) return;
@@ -36,6 +41,25 @@ export const useExperienceScroll = () => {
           y: initialY,
           force3D: true
         });
+      } else if (isMobile) {
+        // Initialize mobile avatars with correct opacity
+        const mobileAvatarRefs = [
+          { ref: mobileAvatarNewRef, stage: 'new' as const },
+          { ref: mobileAvatarMidRef, stage: 'mid' as const },
+          { ref: mobileAvatarExpertRef, stage: 'expert' as const }
+        ];
+
+        mobileAvatarRefs.forEach(({ ref, stage }) => {
+          if (ref.current) {
+            const initialTransform = getMobileAvatarTransform(0, stage, 'down');
+            gsap.set(ref.current, {
+              opacity: initialTransform.opacity,
+              x: initialTransform.x,
+              y: 0,
+              force3D: true
+            });
+          }
+        });
       }
 
       let lastStage = 'new';
@@ -51,6 +75,10 @@ export const useExperienceScroll = () => {
           onUpdate: (self) => {
             const progress = self.progress;
             const newStage = getStageFromProgress(progress);
+
+            const currentScrollDirection = progress > lastProgressRef.current ? 'down' : 'up';
+            setScrollDirection(currentScrollDirection);
+            lastProgressRef.current = progress;
 
             setProgress(progress);
 
@@ -68,9 +96,23 @@ export const useExperienceScroll = () => {
                     force3D: true
                   });
                 } else {
-                  if (mobileAvatarRef.current) {
-                    gsap.set(mobileAvatarRef.current, { x: 0, y: 0 });
-                  }
+                  const mobileAvatarRefs = [
+                    { ref: mobileAvatarNewRef, stage: 'new' as const },
+                    { ref: mobileAvatarMidRef, stage: 'mid' as const },
+                    { ref: mobileAvatarExpertRef, stage: 'expert' as const }
+                  ];
+
+                  mobileAvatarRefs.forEach(({ ref, stage }) => {
+                    if (ref.current) {
+                      const transform = getMobileAvatarTransform(progress, stage, currentScrollDirection);
+                      gsap.set(ref.current, {
+                        opacity: transform.opacity,
+                        x: transform.x,
+                        y: 0,
+                        force3D: true
+                      });
+                    }
+                  });
                 }
               } catch (error) {
                 console.error('GSAP avatar positioning error:', error);
@@ -110,9 +152,13 @@ export const useExperienceScroll = () => {
     isAnimating,
     targetStage,
     progress,
+    scrollDirection,
     containerRef,
     avatarRef,
     mobileAvatarRef,
+    mobileAvatarNewRef,
+    mobileAvatarMidRef,
+    mobileAvatarExpertRef,
     lineRef,
     handleAnimationComplete
   };

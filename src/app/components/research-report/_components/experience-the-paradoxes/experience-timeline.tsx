@@ -9,6 +9,9 @@ interface ExperienceTimelineProps {
   lineRef: RefObject<HTMLDivElement | null>;
   avatarRef: RefObject<HTMLDivElement | null>;
   mobileAvatarRef: RefObject<HTMLDivElement | null>;
+  mobileAvatarNewRef: RefObject<HTMLDivElement | null>;
+  mobileAvatarMidRef: RefObject<HTMLDivElement | null>;
+  mobileAvatarExpertRef: RefObject<HTMLDivElement | null>;
   data: ExperienceParadoxesData;
   currentLevel: any;
   progress?: number;
@@ -20,6 +23,9 @@ export const ExperienceTimeline = ({
   lineRef,
   avatarRef,
   mobileAvatarRef,
+  mobileAvatarNewRef,
+  mobileAvatarMidRef,
+  mobileAvatarExpertRef,
   data,
   currentLevel,
   progress = 0,
@@ -83,11 +89,24 @@ export const ExperienceTimeline = ({
           })}
         </div>
 
-        <div className="absolute" style={{ left: '28px', top: '-90px' }}>
+        <div className="absolute" style={{ left: '-10px', top: '-85px' }}>
           <ExperienceAvatar
-            avatarRef={mobileAvatarRef}
-            avatar={currentLevel.avatar}
-            alt={currentLevel.alt}
+            avatarRef={mobileAvatarExpertRef}
+            avatar={data.expert.avatar}
+            alt={data.expert.alt}
+            style={{ zIndex: 13 }}
+          />
+          <ExperienceAvatar
+            avatarRef={mobileAvatarMidRef}
+            avatar={data.mid.avatar}
+            alt={data.mid.alt}
+            style={{ zIndex: 14 }}
+          />
+          <ExperienceAvatar
+            avatarRef={mobileAvatarNewRef}
+            avatar={data.new.avatar}
+            alt={data.new.alt}
+            style={{ zIndex: 15 }}
           />
         </div>
       </div>

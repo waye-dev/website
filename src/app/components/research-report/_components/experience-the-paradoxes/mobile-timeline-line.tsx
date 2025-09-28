@@ -55,7 +55,7 @@ export const MobileTimelineLine = ({ className = "", progress = 0}: MobileTimeli
     { x: lineCoordinates.curveEndX, y: lineCoordinates.verticalEndY }
   ])
 
-  const dashOffset = -(progress * 200) % 36; // 36 = 18 + 18 (dash + gap length)
+  const dashOffset = (progress * 200) % 36;
 
   return (
     <div className={`relative ${className}`}>

@@ -5,16 +5,19 @@ interface ExperienceAvatarProps {
   avatarRef: RefObject<HTMLDivElement | null>;
   avatar: string;
   alt: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-export const ExperienceAvatar = ({ avatarRef, avatar, alt }: ExperienceAvatarProps) => {
+export const ExperienceAvatar = ({ avatarRef, avatar, alt, className = "", style = {} }: ExperienceAvatarProps) => {
   return (
-    <div className="absolute top-0 left-0 w-full h-40 overflow-visible">
+    <div className={`absolute top-0 left-0 w-full h-40 overflow-visible ${className}`}>
       <div
         ref={avatarRef}
         className="absolute w-32 h-32 will-change-transform"
         style={{
-          zIndex: 10
+          zIndex: 10,
+          ...style
         }}
       >
         <div className="w-32 h-32 mb-3">

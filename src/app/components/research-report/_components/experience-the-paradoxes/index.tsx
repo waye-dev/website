@@ -15,14 +15,21 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
     containerRef,
     avatarRef,
     mobileAvatarRef,
+    mobileAvatarNewRef,
+    mobileAvatarMidRef,
+    mobileAvatarExpertRef,
     lineRef,
     handleAnimationComplete,
-    progress
+    progress,
+    scrollDirection
   } = useExperienceScroll();
   
   const cardsStage = isAnimating ? targetStage : currentStage;
   const currentLevel = data[cardsStage];
   const previousLevel = previousStage ? data[previousStage] : null;
+
+  const mobileStage = progress < 0.4 ? 'new' : progress < 0.8 ? 'mid' : 'expert';
+  const mobileCurrentLevel = data[mobileStage];
 
   return (
     <div ref={containerRef} className="h-screen flex flex-col justify-center items-center px-4 relative z-10">
@@ -32,9 +39,13 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
         lineRef={lineRef}
         avatarRef={avatarRef}
         mobileAvatarRef={mobileAvatarRef}
+        mobileAvatarNewRef={mobileAvatarNewRef}
+        mobileAvatarMidRef={mobileAvatarMidRef}
+        mobileAvatarExpertRef={mobileAvatarExpertRef}
         data={data}
         currentLevel={currentLevel}
         progress={progress}
+        scrollDirection={scrollDirection}
       />
 
       <div className="md:block hidden">
@@ -50,11 +61,11 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
 
       <div className="md:hidden block absolute left-1/2 -translate-x-1/4 top-1/2 -translate-y-1/2 w-3/5 pt-56">
         <ExperienceCardsGrid
-          cards={currentLevel.cards}
+          cards={mobileCurrentLevel.cards}
           previousCards={previousLevel?.cards}
-          currentStage={cardsStage}
+          currentStage={mobileStage}
           previousStage={previousStage}
-          isAnimating={isAnimating}
+          isAnimating={false}
           onAnimationComplete={handleAnimationComplete}
         />
       </div>
