@@ -28,55 +28,76 @@ export const TopLevelAnalysis = () => {
       
       <ExperienceParadoxes data={{
         new: {
-          preference: {
-            title: "Preference: Overarching",
-            subtitle: "Public Goods Focus",
-            image: "/svgs/experience-the-paradoxes/new/Group 114.svg"
-          },
-          work: {
-            title: "Work: Sustainability",
-            subtitle: "Generally Sustainable",
-            image: "/svgs/experience-the-paradoxes/new/Group 145.svg"
-          },
-          rhythm: {
-            title: "Work: Rhythm",
-            subtitle: "Routine Focus",
-            image: "/svgs/experience-the-paradoxes/new/Group 151.svg"
-          }
+          cards: [
+            {
+              title: "Preference: Overarching",
+              subtitle: "Public Goods Focus",
+              image: "/svgs/experience-the-paradoxes/new/Group 114.svg"
+            },
+            {
+              title: "Work: Sustainability",
+              subtitle: "Generally Sustainable",
+              image: "/svgs/experience-the-paradoxes/new/Group 145.svg"
+            },
+            {
+              title: "Work: Rhythm",
+              subtitle: "Routine Focus",
+              image: "/svgs/experience-the-paradoxes/new/Group 151.svg"
+            }
+          ],
+          avatar: "/svgs/experience-the-paradoxes/new-avatar.svg",
+          alt: "New Contributor",
+          label1: "New",
+          label2: "Contributor",
+          labelOffset: { x: 0, y: 40 }
         },
         mid: {
-          preference: {
-            title: "Preference: Overarching",
-            subtitle: "Public Goods Focus",
-            image: "/svgs/experience-the-paradoxes/mid/Group 114.svg"
-          },
-          work: {
-            title: "Work: Sustainability",
-            subtitle: "Somewhat Sustainable",
-            image: "/svgs/experience-the-paradoxes/mid/Group 184.svg"
-          },
-          rhythm: {
-            title: "Work: Rhythm",
-            subtitle: "Sprint-Oriented",
-            image: "/svgs/experience-the-paradoxes/mid/Group 185.svg"
-          }
+          cards: [
+            {
+              title: "Preference: Overarching",
+              subtitle: "Public Goods Focus",
+              image: "/svgs/experience-the-paradoxes/mid/Group 114.svg"
+            },
+            {
+              title: "Work: Sustainability",
+              subtitle: "Somewhat Sustainable",
+              image: "/svgs/experience-the-paradoxes/mid/Group 184.svg"
+            },
+            {
+              title: "Work: Rhythm",
+              subtitle: "Sprint-Oriented",
+              image: "/svgs/experience-the-paradoxes/mid/Group 185.svg"
+            }
+          ],
+          avatar: "/svgs/experience-the-paradoxes/mid-avatar.svg",
+          alt: "Medium Experience",
+          label1: "Medium",
+          label2: "Experience",
+          labelOffset: { x: -40, y: 40 }
         },
         expert: {
-          preference: {
-            title: "Preference: Overarching",
-            subtitle: "Balancing Commons & Commercial",
-            image: "/svgs/experience-the-paradoxes/expert/Group 115.svg"
-          },
-          work: {
-            title: "Work: Sustainability",
-            subtitle: "Somewhat Sustainable",
-            image: "/svgs/experience-the-paradoxes/expert/Group 203.svg"
-          },
-          rhythm: {
-            title: "Work: Rhythm",
-            subtitle: "Sprint-Oriented",
-            image: "/svgs/experience-the-paradoxes/expert/Group 204.svg"
-          }
+          cards: [
+            {
+              title: "Preference: Overarching",
+              subtitle: "Balancing Commons & Commercial",
+              image: "/svgs/experience-the-paradoxes/expert/Group 115.svg"
+            },
+            {
+              title: "Work: Sustainability",
+              subtitle: "Somewhat Sustainable",
+              image: "/svgs/experience-the-paradoxes/expert/Group 203.svg"
+            },
+            {
+              title: "Work: Rhythm",
+              subtitle: "Sprint-Oriented",
+              image: "/svgs/experience-the-paradoxes/expert/Group 204.svg"
+            }
+          ],
+          avatar: "/svgs/experience-the-paradoxes/expert-avatar.svg",
+          alt: "Experienced Contributor",
+          label1: "Experienced",
+          label2: "Contributor",
+          labelOffset: { x: 0, y: 40 }
         }
       }} />
 

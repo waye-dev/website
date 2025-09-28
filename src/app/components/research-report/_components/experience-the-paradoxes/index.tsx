@@ -1,258 +1,112 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card } from "./card";
-import { ExperienceIndicator } from "./experience-indicator";
+import { ExperienceParadoxesData } from "./types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-enum ExperienceLevel {
-  New = 'new',
-  Medium = 'mid',
-  Expert = 'expert',
-}
+export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData }) => {
+  const [currentStage, setCurrentStage] = useState<'new' | 'mid' | 'expert'>('new');
 
-interface CardData {
-  preference: {
-    title: string;
-    subtitle: string;
-    image: string;
-  };
-  work: {
-    title: string;
-    subtitle: string;
-    image: string;
-  };
-  rhythm: {
-    title: string;
-    subtitle: string;
-    image: string;
-  };
-}
-
-export const ExperienceParadoxes = ({ data }: { data: Record<ExperienceLevel, CardData> }) => {
-  const [currentState, setCurrentState] = useState<ExperienceLevel>(ExperienceLevel.New);
   const containerRef = useRef<HTMLDivElement>(null);
-  const singleAvatarRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLImageElement>(null);
-  const lineContainerRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
-  
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const setCardRef = useCallback((index: number) => {
-    return (el: HTMLDivElement | null) => {
-      cardRefs.current[index] = el;
-    };
-  }, []);
 
-  const getAvatarData = (state: ExperienceLevel) => {
-    switch (state) {
-      case ExperienceLevel.New:
-        return {
-          avatar: "/svgs/experience-the-paradoxes/new-avatar.svg",
-          alt: "New Contributor",
-          label1: "New",
-          label2: "Contributor"
-        };
-      case ExperienceLevel.Medium:
-        return {
-          avatar: "/svgs/experience-the-paradoxes/mid-avatar.svg",
-          alt: "Medium Experience",
-          label1: "Medium",
-          label2: "Experience"
-        };
-      case ExperienceLevel.Expert:
-        return {
-          avatar: "/svgs/experience-the-paradoxes/expert-avatar.svg",
-          alt: "Experienced Contributor",
-          label1: "Experienced",
-          label2: "Contributor"
-        };
+  const currentLevel = data[currentStage];
+
+  // Get stage from progress
+  const getStageFromProgress = (progress: number) => {
+    if (progress < 0.33) return 'new';
+    if (progress < 0.85) return 'mid';
+    return 'expert';
+  };
+
+  // Get avatar position
+  const getAvatarPosition = (progress: number, containerWidth: number) => {
+    const avatarWidth = 128;
+    const startX = -avatarWidth / 2;
+    const midX = (containerWidth - avatarWidth) / 2;
+    const endX = containerWidth - avatarWidth / 2;
+
+    if (progress < 0.33) {
+      const localProgress = progress / 0.33;
+      return startX + (midX - startX) * localProgress;
+    } else if (progress < 0.85) {
+      const localProgress = (progress - 0.33) / (0.85 - 0.33);
+      return midX + (endX - midX) * localProgress;
+    } else {
+      return endX;
     }
   };
-
-  const calculatePositions = useCallback(() => {
-    if (!lineContainerRef.current || !singleAvatarRef.current) return [0, 0, 0];
-    
-    const lineContainer = lineContainerRef.current;
-    const avatar = singleAvatarRef.current;
-    
-    const containerRect = lineContainer.getBoundingClientRect();
-    const avatarRect = avatar.getBoundingClientRect();
-    
-    const avatarWidth = 128;
-    const availableWidth = containerRect.width - avatarWidth;
-    
-    return [
-      0,
-      availableWidth * 0.5,
-      availableWidth
-    ];
-  }, []);
 
   useEffect(() => {
-    if (scrollTriggerRef.current) {
-      scrollTriggerRef.current.kill();
-      scrollTriggerRef.current = null;
-    }
+    if (!containerRef.current || !avatarRef.current || !lineRef.current) return;
 
+    // Wait for next tick to ensure DOM is ready
     const timer = setTimeout(() => {
-      if (!containerRef.current || !singleAvatarRef.current || !lineContainerRef.current) return;
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+      }
 
-      const container = containerRef.current;
-      const singleAvatar = singleAvatarRef.current;
-      const cards = cardRefs.current.filter(Boolean);
-
-      if (cards.length === 0) return;
-
-      const states = [ExperienceLevel.New, ExperienceLevel.Medium, ExperienceLevel.Expert];
-      let currentIndex = 0;
-
-      let positions = calculatePositions();
+      let lastStage = 'new';
 
       try {
-        gsap.set(singleAvatar, { 
-          x: positions[0], 
-          y: -60, 
-          scale: 1.5,
-          transformOrigin: "center center",
-          force3D: true
-        });
-
-        cards.forEach((card, i) => {
-          if (card) {
-            gsap.set(card, {
-              rotation: 0,
-              x: 0,
-              y: 0,
-              scale: 1,
-              transformOrigin: "center center",
-              zIndex: 1,
-              force3D: true
-            });
-          }
-        });
-
         scrollTriggerRef.current = ScrollTrigger.create({
-          trigger: container,
+          trigger: containerRef.current,
           start: "top top",
           end: "+=1000vh",
           scrub: 1,
           pin: true,
           pinSpacing: true,
-          anticipatePin: 1,
-          refreshPriority: 1,
           onUpdate: (self) => {
             const progress = self.progress;
-            
-            let newIndex = 0;
-            let avatarX = positions[0];
+            const newStage = getStageFromProgress(progress);
 
-            if (progress < 0.33) {
-              newIndex = 0;
-              const moveProgress = progress / 0.33;
-              avatarX = positions[0] + (positions[1] - positions[0]) * moveProgress;
-            } else if (progress < 0.9) {
-              newIndex = 1;
-              const moveProgress = (progress - 0.33) / (0.9 - 0.33);
-              avatarX = positions[1] + (positions[2] - positions[1]) * moveProgress;
-            } else {
-              newIndex = 2;
-              avatarX = positions[2];
+            // Update avatar position with error checking
+            if (avatarRef.current && lineRef.current && avatarRef.current.parentNode) {
+              try {
+                const lineWidth = lineRef.current.offsetWidth;
+                const avatarX = getAvatarPosition(progress, lineWidth);
+                gsap.set(avatarRef.current, { x: avatarX });
+              } catch (error) {
+                console.warn('GSAP avatar positioning error:', error);
+              }
             }
 
-            if (newIndex !== currentIndex) {
-              currentIndex = newIndex;
-              setCurrentState(states[currentIndex]);
+            // Update stage if changed
+            if (newStage !== lastStage) {
+              lastStage = newStage;
+              setCurrentStage(newStage);
             }
-
-            if (singleAvatar) {
-              gsap.set(singleAvatar, {
-                x: avatarX,
-                force3D: true
-              });
-            }
-
-            const validCards = cards.filter(card => card && card.parentNode);
-            
-            const isTransitioning = (progress > 0.31 && progress < 0.35) || 
-                                   (progress > 0.88 && progress < 0.92);
-            
-            if (isTransitioning) {
-              validCards.forEach((card, index) => {
-                if (card) {
-                  const rotationAmount = Math.sin(progress * Math.PI * 8 + index) * 20;
-                  const scaleAmount = 0.95 + Math.sin(progress * Math.PI * 6 + index) * 0.05;
-                  
-                  gsap.set(card, {
-                    rotation: rotationAmount,
-                    scale: scaleAmount,
-                    force3D: true
-                  });
-                }
-              });
-            } else {
-              validCards.forEach((card, index) => {
-                if (card) {
-                  const waveY = Math.sin(progress * Math.PI * 4 + index * 1.2) * 10;
-                  const waveRotation = Math.sin(progress * Math.PI * 3 + index * 0.8) * 3;
-                  
-                  gsap.set(card, {
-                    y: waveY,
-                    rotation: waveRotation,
-                    scale: 1,
-                    force3D: true
-                  });
-                }
-              });
-            }
-          },
-          onRefresh: () => {
-            positions = calculatePositions();
           }
         });
-
       } catch (error) {
-        console.error('GSAP setup error:', error);
+        console.warn('ScrollTrigger creation error:', error);
       }
-    }, 100);
+    }, 10);
 
     return () => {
       clearTimeout(timer);
       if (scrollTriggerRef.current) {
         scrollTriggerRef.current.kill();
-        scrollTriggerRef.current = null;
       }
     };
   }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (scrollTriggerRef.current) {
-        ScrollTrigger.refresh();
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const currentData = data[currentState];
-  const avatarData = getAvatarData(currentState);
 
   return (
-    <div ref={containerRef} id="experience-paradoxes" className="h-screen flex flex-col justify-center items-center px-4 relative z-10">
+    <div ref={containerRef} className="h-screen flex flex-col justify-center items-center px-4 relative z-10">
       <div className="flex flex-col items-center gap-8 mb-16">
         <h2 className="text-[28px] font-inknutAntiqua font-bold text-center pb-24">
           Experience the paradoxes
         </h2>
 
-        <div ref={lineContainerRef} className="w-full max-w-6xl relative">
+        <div ref={lineRef} className="w-full max-w-7xl relative">
           <Image
-            ref={lineRef}
             src="/svgs/experience-the-paradoxes/line.svg"
             alt="horizontal line"
             width={800}
@@ -260,49 +114,71 @@ export const ExperienceParadoxes = ({ data }: { data: Record<ExperienceLevel, Ca
             className="w-full h-auto"
           />
 
-          <div className="absolute top-0 left-0 w-full h-32 overflow-visible">
-            <div ref={singleAvatarRef} className="absolute w-32 h-32 will-change-transform">
-              <ExperienceIndicator
-                avatar={avatarData.avatar}
-                alt={avatarData.alt}
-                label1={avatarData.label1}
-                label2={avatarData.label2}
-                isActive={true}
-                size="large"
-              />
+          {/* Static labels */}
+          <div className="absolute top-16 left-0 w-full h-16">
+            {(['new', 'mid', 'expert'] as const).map((stage, index) => {
+              const levelData = data[stage];
+              const positions = ['left-0', 'left-1/2', 'right-0'];
+              const transforms = [
+                'translate(calc(-50% + var(--offset-x)), var(--offset-y))',
+                'translate(calc(-50% + var(--offset-x)), var(--offset-y))',
+                'translate(calc(50% + var(--offset-x)), var(--offset-y))'
+              ];
+
+              return (
+                <div
+                  key={stage}
+                  className={`absolute ${positions[index]} transition-opacity duration-500`}
+                  style={{
+                    opacity: currentStage === stage ? 1 : 0.4,
+                    transform: transforms[index],
+                    '--offset-x': `${levelData.labelOffset.x}px`,
+                    '--offset-y': `${levelData.labelOffset.y}px`,
+                  } as React.CSSProperties}
+                >
+                  <div className="text-center">
+                    <p className="text-sm font-josefinSans font-bold uppercase tracking-wide text-gray-800 leading-tight">
+                      {levelData.label1}
+                    </p>
+                    <p className="text-sm font-josefinSans font-bold uppercase tracking-wide text-gray-800 leading-tight">
+                      {levelData.label2}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Animated avatar */}
+          <div className="absolute top-0 left-0 w-full h-40 overflow-visible">
+            <div ref={avatarRef} className="absolute w-32 h-32 will-change-transform">
+              <div className="w-32 h-32 mb-3">
+                <Image
+                  src={currentLevel.avatar}
+                  alt={currentLevel.alt}
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-contain drop-shadow-lg"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex justify-center mt-8">
-        <div className="card-set grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4" style={{ perspective: "1000px" }}>
-          <div ref={setCardRef(0)} className="card will-change-transform">
-            <Card
-              title={currentData.preference.title}
-              subtitle={currentData.preference.subtitle}
-              image={currentData.preference.image}
-              alt={currentData.preference.title}
-            />
-          </div>
-
-          <div ref={setCardRef(1)} className="card will-change-transform">
-            <Card
-              title={currentData.work.title}
-              subtitle={currentData.work.subtitle}
-              image={currentData.work.image}
-              alt={currentData.work.title}
-            />
-          </div>
-
-          <div ref={setCardRef(2)} className="card will-change-transform">
-            <Card
-              title={currentData.rhythm.title}
-              subtitle={currentData.rhythm.subtitle}
-              image={currentData.rhythm.image}
-              alt={currentData.rhythm.title}
-            />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
+          {currentLevel.cards.map((card: any, index: number) => (
+            <div key={`${currentStage}-card-${index}`} className="card">
+              <Card
+                title={card.title}
+                subtitle={card.subtitle}
+                image={card.image}
+                alt={card.title}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

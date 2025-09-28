@@ -9,14 +9,13 @@ interface CardProps {
 
 export const Card = ({ title, subtitle, image, alt }: CardProps) => {
   return (
-    <div 
+    <div
       className="bg-white rounded-xl shadow-xl p-6 transition-all duration-500 ease-out h-96 relative"
       style={{
         transformStyle: "preserve-3d",
         backfaceVisibility: "hidden"
       }}
     >
-      {/* Add a subtle gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 rounded-xl" />
       
       <div className="relative z-10 flex flex-col items-center gap-4 h-full">
@@ -36,7 +35,6 @@ export const Card = ({ title, subtitle, image, alt }: CardProps) => {
         </div>
       </div>
       
-      {/* Add a subtle border for better 3D effect */}
       <div className="absolute inset-0 rounded-xl border border-gray-200 pointer-events-none" />
     </div>
   );
