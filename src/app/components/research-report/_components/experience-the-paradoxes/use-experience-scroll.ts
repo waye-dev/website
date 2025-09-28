@@ -10,6 +10,7 @@ export const useExperienceScroll = () => {
   const [previousStage, setPreviousStage] = useState<'new' | 'mid' | 'expert' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [targetStage, setTargetStage] = useState<'new' | 'mid' | 'expert'>('new');
+  const [progress, setProgress] = useState(0);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
@@ -37,6 +38,9 @@ export const useExperienceScroll = () => {
           onUpdate: (self) => {
             const progress = self.progress;
             const newStage = getStageFromProgress(progress);
+            
+            // Update progress state for labels
+            setProgress(progress);
 
             if (avatarRef.current && lineRef.current && avatarRef.current.parentNode) {
               try {
@@ -82,6 +86,7 @@ export const useExperienceScroll = () => {
     previousStage,
     isAnimating,
     targetStage,
+    progress,
     containerRef,
     avatarRef,
     lineRef,

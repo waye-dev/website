@@ -10,6 +10,7 @@ interface ExperienceTimelineProps {
   data: ExperienceParadoxesData;
   currentStage: ExperienceStage;
   currentLevel: any;
+  progress?: number;
 }
 
 export const ExperienceTimeline = ({ 
@@ -17,7 +18,8 @@ export const ExperienceTimeline = ({
   avatarRef, 
   data, 
   currentStage, 
-  currentLevel 
+  currentLevel,
+  progress = 0
 }: ExperienceTimelineProps) => {
   return (
     <div ref={lineRef} className="w-full max-w-7xl relative">
@@ -29,7 +31,7 @@ export const ExperienceTimeline = ({
         className="w-full h-auto"
       />
 
-      <ExperienceLabels data={data} currentStage={currentStage} />
+      <ExperienceLabels data={data} progress={progress} />
 
       <ExperienceAvatar 
         avatarRef={avatarRef}

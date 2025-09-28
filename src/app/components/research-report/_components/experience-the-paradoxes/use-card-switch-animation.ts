@@ -28,13 +28,15 @@ interface CardSwitchAnimationProps {
   previousStage?: string;
   isAnimating: boolean;
   onAnimationComplete: () => void;
+  onContentSwitch?: () => void;
 }
 
 export const useCardSwitchAnimation = ({
   currentStage,
   previousStage,
   isAnimating,
-  onAnimationComplete
+  onAnimationComplete,
+  onContentSwitch
 }: CardSwitchAnimationProps) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const animationTimeline = useRef<gsap.core.Timeline | null>(null);
@@ -90,9 +92,12 @@ export const useCardSwitchAnimation = ({
       duration: ANIMATION_CONSTANTS.SWITCH_DURATION,
       ease: "power2.inOut",
       onComplete: () => {
+        // Call content switch callback at the exact moment of switch
+        onContentSwitch?.();
+
         cards.forEach((card, index) => {
           if (!card) return;
-          gsap.set(card, { 
+          gsap.set(card, {
             zIndex: cards.length - index + ANIMATION_CONSTANTS.Z_INDEX_OFFSET,
             opacity: 1
           });

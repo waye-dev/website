@@ -31,18 +31,18 @@ export const TopLevelAnalysis = () => {
         new: {
           cards: [
             {
-              title: "Preference: Overarching",
-              subtitle: "Public Goods Focus",
+              title: "Public Goods Focus",
+              subtitle: "Institutional Orientation",
               image: "/svgs/experience-the-paradoxes/new/Group 114.svg"
             },
             {
-              title: "Work: Sustainability",
+              title: "Work Sustainability",
               subtitle: "Generally Sustainable",
               image: "/svgs/experience-the-paradoxes/new/Group 145.svg"
             },
             {
-              title: "Work: Rhythm",
-              subtitle: "Routine Focus",
+              title: "Routine Focus",
+              subtitle: "Work Rhythm",
               image: "/svgs/experience-the-paradoxes/new/Group 151.svg"
             }
           ],
@@ -55,18 +55,18 @@ export const TopLevelAnalysis = () => {
         mid: {
           cards: [
             {
-              title: "Preference: Overarching",
-              subtitle: "Public Goods Focus",
+              title: "Public Goods Focus",
+              subtitle: "Institutional Orientation",
               image: "/svgs/experience-the-paradoxes/mid/Group 114.svg"
             },
             {
-              title: "Work: Sustainability",
-              subtitle: "Somewhat Sustainable",
+              title: "Somewhat Sustainable",
+              subtitle: "Work Sustainability",
               image: "/svgs/experience-the-paradoxes/mid/Group 184.svg"
             },
             {
-              title: "Work: Rhythm",
-              subtitle: "Sprint-Oriented",
+              title: "Sprint-Oriented",
+              subtitle: "Work Rhythm",
               image: "/svgs/experience-the-paradoxes/mid/Group 185.svg"
             }
           ],
@@ -79,18 +79,18 @@ export const TopLevelAnalysis = () => {
         expert: {
           cards: [
             {
-              title: "Preference: Overarching",
-              subtitle: "Balancing Commons & Commercial",
+              title: "Balancing Commons & Commercial",
+              subtitle: "Institutional Orientation",
               image: "/svgs/experience-the-paradoxes/expert/Group 115.svg"
             },
             {
-              title: "Work: Sustainability",
-              subtitle: "Somewhat Sustainable",
+              title: "Somewhat Sustainable",
+              subtitle: "Work Sustainability",
               image: "/svgs/experience-the-paradoxes/expert/Group 203.svg"
             },
             {
-              title: "Work: Rhythm",
-              subtitle: "Sprint-Oriented",
+              title: "Sprint-Oriented",
+              subtitle: "Work Rhythm",
               image: "/svgs/experience-the-paradoxes/expert/Group 204.svg"
             }
           ],

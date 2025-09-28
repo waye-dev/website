@@ -44,3 +44,13 @@ export const getAvatarVerticalPosition = (progress: number) => {
   // Если progress выходит за границы, возвращаем крайние значения
   return progress <= 0 ? points[0].y : points[points.length - 1].y;
 };
+
+// Avatar color mapping based on the nav-paradoxes-oss data
+export const getAvatarColor = (stage: 'new' | 'mid' | 'expert') => {
+  const colors = {
+    new: '#C4DEF8',  // Light blue
+    mid: '#1B1F35',  // Dark blue
+    expert: '#F9D483'  // Yellow
+  };
+  return colors[stage];
+};

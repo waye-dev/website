@@ -2,10 +2,17 @@ import { ExperienceParadoxesData, ExperienceStage } from "./types";
 
 interface ExperienceLabelsProps {
   data: ExperienceParadoxesData;
-  currentStage: ExperienceStage;
+  progress?: number;
 }
 
-export const ExperienceLabels = ({ data, currentStage }: ExperienceLabelsProps) => {
+export const ExperienceLabels = ({ data, progress = 0 }: ExperienceLabelsProps) => {
+  const getOpacityForStage = (stage: ExperienceStage) => {
+    if (stage === 'new') return progress < 0.4 ? 1 : 0.4;
+    if (stage === 'mid') return progress >= 0.4 && progress < 0.8 ? 1 : 0.4;
+    if (stage === 'expert') return progress >= 0.8 ? 1 : 0.4;
+    return 0.4;
+  };
+
   return (
     <div className="absolute top-16 left-0 w-full h-16">
       {(['new', 'mid', 'expert'] as const).map((stage, index) => {
@@ -22,7 +29,7 @@ export const ExperienceLabels = ({ data, currentStage }: ExperienceLabelsProps) 
             key={stage}
             className={`absolute ${positions[index]}`}
             style={{
-              opacity: currentStage === stage ? 1 : 0.4,
+              opacity: getOpacityForStage(stage),
               transform: transforms[index],
               '--offset-x': `${levelData.labelOffset.x}px`,
               '--offset-y': `${levelData.labelOffset.y}px`,
