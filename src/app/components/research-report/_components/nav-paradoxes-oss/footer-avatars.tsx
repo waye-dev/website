@@ -10,12 +10,20 @@ interface FooterAvatarsProps {
 const FooterAvatars = forwardRef<HTMLDivElement, FooterAvatarsProps>(
   ({ avatars, isInFooter }, ref) => {
     return (
-      <div ref={ref} className="mt-12 pb-24 flex justify-center space-x-8 relative z-5">
+      <div
+        ref={ref}
+        className={`mt-12 pb-24 flex justify-center space-x-8 relative z-5 transition-all duration-600 ease-out ${
+          isInFooter ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        style={{
+          visibility: isInFooter ? 'visible' : 'hidden'
+        }}
+      >
         {avatars.map((avatar) => (
           <div
             key={avatar.id}
             data-avatar={avatar.id}
-            className={`flex items-center space-x-3 transition-all duration-700 ease-out ${
+            className={`flex items-center space-x-3 transition-all duration-600 ease-out ${
               isInFooter ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >

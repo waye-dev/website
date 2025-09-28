@@ -104,27 +104,30 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
   }
 
   useEffect(() => {
-    const timer = setTimeout(updatePaths, 100)
+    let animationFrame: number
 
     const handleUpdate = () => {
       updatePaths()
+      if (isAnimating) {
+        animationFrame = requestAnimationFrame(handleUpdate)
+      }
     }
 
-    let animationFrame: number
-
-    const handleScroll = () => {
-      if (animationFrame) cancelAnimationFrame(animationFrame)
+    if (isAnimating) {
       animationFrame = requestAnimationFrame(handleUpdate)
+    } else {
+      updatePaths()
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleUpdate)
+    const handleResize = () => {
+      updatePaths()
+    }
+
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      clearTimeout(timer)
       if (animationFrame) cancelAnimationFrame(animationFrame)
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleUpdate)
+      window.removeEventListener('resize', handleResize)
     }
   }, [paradoxData, passedLines, isAnimating, scrollProgress])
 
@@ -144,7 +147,9 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
     <div
       className="absolute inset-0 pointer-events-none"
       style={{
-        zIndex: 0
+        zIndex: 0,
+        willChange: 'contents', // GPU
+        transform: 'translate3d(0, 0, 0)'
       }}
     >
       <svg
@@ -155,7 +160,9 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
           top: 0,
           left: 0,
           width: '100%',
-          height: '100%'
+          height: '100%',
+          willChange: 'auto',
+          transform: 'translate3d(0, 0, 0)'
         }}
         preserveAspectRatio="none"
       >

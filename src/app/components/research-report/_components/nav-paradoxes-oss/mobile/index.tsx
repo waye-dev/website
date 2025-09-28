@@ -37,7 +37,7 @@ const MobileParadoxPage: React.FC = () => {
   }
 
   const isLongText = (text: string) => {
-    return text.length > 20 // Adjust threshold as needed
+    return text.length > 20
   }
 
   return (
