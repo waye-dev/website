@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { paradoxData } from './data'
 
 export const useParadoxAnimation = () => {
@@ -13,22 +13,58 @@ export const useParadoxAnimation = () => {
   const linesRef = useRef<HTMLDivElement>(null)
   const legendRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current || !headerRef.current || !linesRef.current || !legendRef.current) return
+  const cachedRects = useRef<{
+    container?: DOMRect
+    header?: DOMRect
+    legend?: DOMRect
+    lines?: DOMRect[]
+    timestamp?: number
+  }>({})
 
-      const containerRect = containerRef.current.getBoundingClientRect()
-      const headerRect = headerRef.current.getBoundingClientRect()
-      const legendRect = legendRef.current.getBoundingClientRect()
+  const rafRef = useRef<number | null>(null)
+  const lastScrollTime = useRef<number>(0)
+
+  const getCachedRects = useCallback(() => {
+    const now = Date.now()
+    const CACHE_DURATION = 16
+
+    if (!cachedRects.current.timestamp || now - cachedRects.current.timestamp > CACHE_DURATION) {
+      if (containerRef.current && headerRef.current && legendRef.current && linesRef.current) {
+        cachedRects.current = {
+          container: containerRef.current.getBoundingClientRect(),
+          header: headerRef.current.getBoundingClientRect(),
+          legend: legendRef.current.getBoundingClientRect(),
+          lines: Array.from(linesRef.current.querySelectorAll('[data-line]')).map(el => el.getBoundingClientRect()),
+          timestamp: now
+        }
+      }
+    }
+
+    return cachedRects.current
+  }, [])
+
+  const handleScrollThrottled = useCallback(() => {
+    const now = Date.now()
+    const THROTTLE_MS = 8
+
+    if (now - lastScrollTime.current < THROTTLE_MS) return
+    lastScrollTime.current = now
+
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+    }
+
+    rafRef.current = requestAnimationFrame(() => {
+      const rects = getCachedRects()
+      if (!rects.container || !rects.header || !rects.legend) return
+
       const windowHeight = window.innerHeight
       const middleLine = windowHeight / 2
 
-      const isCompletelyPastSection = containerRect.bottom < middleLine
-
-      const isBeforeSection = headerRect.top > middleLine
-
-      const shouldAnimate = headerRect.bottom < middleLine && !isCompletelyPastSection
-      const shouldShowFooter = middleLine >= legendRect.top && middleLine <= legendRect.bottom && !isCompletelyPastSection
+      const isCompletelyPastSection = rects.container.bottom < middleLine
+      const isBeforeSection = rects.header.top > middleLine
+      const shouldAnimate = rects.header.bottom < middleLine && !isCompletelyPastSection
+      const shouldShowFooter = middleLine >= rects.legend.top && middleLine <= rects.legend.bottom && !isCompletelyPastSection
 
       if (isCompletelyPastSection) {
         setScrollProgress(1)
@@ -72,13 +108,11 @@ export const useParadoxAnimation = () => {
 
         setIsAnimating(true)
 
-        const lines = linesRef.current.querySelectorAll('[data-line]')
+        const lines = rects.lines || []
         const newPassedLines = new Set<number>()
 
-        lines.forEach((line, index) => {
-          const lineRect = line.getBoundingClientRect()
+        lines.forEach((lineRect, index) => {
           const lineMiddle = lineRect.top + lineRect.height / 2
-
           if (middleLine > lineMiddle) {
             newPassedLines.add(index)
           }
@@ -87,8 +121,8 @@ export const useParadoxAnimation = () => {
         setPassedLines(newPassedLines)
 
         if (lines.length > 0) {
-          const firstLine = lines[0].getBoundingClientRect()
-          const lastLine = lines[lines.length - 1].getBoundingClientRect()
+          const firstLine = lines[0]
+          const lastLine = lines[lines.length - 1]
 
           const totalRange = lastLine.top - firstLine.top
           const currentPosition = Math.max(0, middleLine - firstLine.top)
@@ -96,32 +130,23 @@ export const useParadoxAnimation = () => {
           setScrollProgress(progress)
         }
       }
-    }
+    })
+  }, [getCachedRects, isInFooter, isTransitioning])
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [isInFooter, isTransitioning])
+  useEffect(() => {
+    window.addEventListener('scroll', handleScrollThrottled, { passive: true })
+    handleScrollThrottled()
 
-  const getAvatarPosition = (avatarId: string) => {
-    if (!isAnimating || !linesRef.current || isInFooter) return null
-
-    if (isTransitioning && legendRef.current) {
-      const footerAvatars = legendRef.current.querySelectorAll('[data-avatar]')
-      const avatarIndex = ['new', 'mid', 'senior'].indexOf(avatarId)
-
-      if (avatarIndex !== -1 && footerAvatars[avatarIndex]) {
-        const footerAvatarRect = footerAvatars[avatarIndex].getBoundingClientRect()
-        const footerXPercent = ((footerAvatarRect.left + footerAvatarRect.width / 2) / window.innerWidth) * 100
-        const footerYPixels = footerAvatarRect.top + footerAvatarRect.height / 2
-
-        return {
-          xPercent: footerXPercent,
-          yPixels: footerYPixels,
-          isAtFooter: true
-        }
+    return () => {
+      window.removeEventListener('scroll', handleScrollThrottled)
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
       }
     }
+  }, [handleScrollThrottled])
+
+  const getAvatarPosition = useCallback((avatarId: string) => {
+    if (!isAnimating || !linesRef.current || isInFooter || isTransitioning) return null
 
     const lines = linesRef.current.querySelectorAll('[data-line-container]')
     if (lines.length === 0) return null
@@ -153,7 +178,7 @@ export const useParadoxAnimation = () => {
       xPercent: Math.max(0, Math.min(100, xPercent)),
       isAtFooter: false
     }
-  }
+  }, [isAnimating, isInFooter, isTransitioning, scrollProgress])
 
   return {
     scrollProgress,

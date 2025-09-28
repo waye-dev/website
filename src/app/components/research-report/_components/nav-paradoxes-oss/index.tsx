@@ -18,6 +18,7 @@ const ParadoxVisualization: React.FC = () => {
     scrollProgress,
     isAnimating,
     isInFooter,
+    isTransitioning,
     passedLines,
     containerRef,
     headerRef,
@@ -54,12 +55,15 @@ const ParadoxVisualization: React.FC = () => {
         ref={headerRef}
         avatars={avatars}
         isAnimating={isAnimating}
+        isInFooter={isInFooter}
+        isTransitioning={isTransitioning}
       />
 
       <MovingAvatars
         avatars={avatars}
         isAnimating={isAnimating}
         isInFooter={isInFooter}
+        isTransitioning={isTransitioning}
         getAvatarPosition={getAvatarPosition}
       />
 
