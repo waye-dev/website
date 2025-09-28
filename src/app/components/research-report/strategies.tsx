@@ -1,4 +1,5 @@
 import { QuoteCards } from "./_components/quotes";
+import { StrategiesWall } from "./strategies-wall";
 
 export const Strategies = () => {
   return (
@@ -61,6 +62,7 @@ export const Strategies = () => {
 
         <p>Each combination reflects a different way of working in the ecosystem.</p>
       </section>
+
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { GLOSSARY_LIST, GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection }
 import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
 import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
 import { Strategies } from "@/app/components/research-report/strategies";
+import { StrategiesWall } from "@/app/components/research-report/strategies-wall";
 import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 import { BeyondFinancialSustainability } from "@/app/components/research-report/beyond-financial-sustainability";
 import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
@@ -140,17 +141,21 @@ export default function ResearchReport() {
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
           <Strategies />
         </Wrapper>
-
-        <div className='w-full max-h-[600px bg-cover bg-center bg-no-repeat relative' style={{ backgroundImage: "url('/svgs/block-bg.svg')" }}>
-          <div className='grid grid-cols-2 gap-4 md:gap-8 items-center justify-items-center p-4 md:p-8 h-full'>
-            {strategyImages.map((image) => (
-              <div key={image.alt} className='flex items-center justify-center'>
-                <Image src={image.src} alt={image.alt} width={image.width} height={image.height} className='object-contain' />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
+      
+      <div className="bg-blue-custom-1200">
+        <StrategiesWall />
+      </div>
+
+      {/* <div className='w-full max-h-[600px bg-cover bg-center bg-no-repeat relative' style={{ backgroundImage: "url('/svgs/block-bg.svg')" }}>
+        <div className='grid grid-cols-2 gap-4 md:gap-8 items-center justify-items-center p-4 md:p-8 h-full'>
+          {strategyImages.map((image) => (
+            <div key={image.alt} className='flex items-center justify-center'>
+              <Image src={image.src} alt={image.alt} width={image.width} height={image.height} className='object-contain' />
+            </div>
+          ))}
+        </div>
+      </div> */}
       <div className='bg-gray-custom-400 text-black'>
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
           <StrategySubSections />
