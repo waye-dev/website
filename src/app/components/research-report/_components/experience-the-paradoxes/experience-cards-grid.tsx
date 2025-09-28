@@ -70,7 +70,7 @@ export const ExperienceCardsGrid = ({
         ))}
       </div>
 
-      <div className="md:hidden w-full space-y-2 pl-4">
+      <div className="md:hidden w-full space-y-2 pl-10">
         {displayCards.map((card: any, index: number) => (
           <div
             key={`${currentStage}-card-${index}`}
