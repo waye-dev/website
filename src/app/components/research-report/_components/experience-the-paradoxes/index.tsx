@@ -14,6 +14,7 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
     targetStage,
     containerRef,
     avatarRef,
+    mobileAvatarRef,
     lineRef,
     handleAnimationComplete,
     progress
@@ -30,6 +31,7 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
       <ExperienceTimeline
         lineRef={lineRef}
         avatarRef={avatarRef}
+        mobileAvatarRef={mobileAvatarRef}
         data={data}
         currentLevel={currentLevel}
         progress={progress}

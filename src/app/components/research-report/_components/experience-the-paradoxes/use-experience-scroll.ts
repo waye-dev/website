@@ -14,6 +14,7 @@ export const useExperienceScroll = () => {
   
   const containerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
+  const mobileAvatarRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 
@@ -24,8 +25,7 @@ export const useExperienceScroll = () => {
       if (scrollTriggerRef.current) {
         scrollTriggerRef.current.kill();
       }
-
-      // Set initial position for desktop avatar
+      
       const isMobile = window.innerWidth < 768;
       if (!isMobile && avatarRef.current && lineRef.current) {
         const lineWidth = lineRef.current.offsetWidth;
@@ -52,9 +52,6 @@ export const useExperienceScroll = () => {
             const progress = self.progress;
             const newStage = getStageFromProgress(progress);
 
-            console.log('ScrollTrigger progress:', progress);
-
-            // Update progress state for labels
             setProgress(progress);
 
             if (avatarRef.current && lineRef.current && avatarRef.current.parentNode) {
@@ -63,7 +60,6 @@ export const useExperienceScroll = () => {
                 const isMobile = window.innerWidth < 768;
 
                 if (!isMobile) {
-                  // Desktop: Move avatar horizontally across the timeline AND vertically
                   const avatarX = getAvatarPosition(progress, lineWidth);
                   const avatarY = getAvatarVerticalPosition(progress);
                   gsap.set(avatarRef.current, {
@@ -71,18 +67,13 @@ export const useExperienceScroll = () => {
                     y: avatarY,
                     force3D: true
                   });
-                  console.log('Desktop avatar position:', {
-                    progress: progress.toFixed(3),
-                    x: avatarX.toFixed(1),
-                    y: avatarY.toFixed(1),
-                    lineWidth
-                  });
                 } else {
-                  // Mobile: Keep avatar stationary, no movement
-                  gsap.set(avatarRef.current, { x: 0, y: 0 });
+                  if (mobileAvatarRef.current) {
+                    gsap.set(mobileAvatarRef.current, { x: 0, y: 0 });
+                  }
                 }
               } catch (error) {
-                console.warn('GSAP avatar positioning error:', error);
+                console.error('GSAP avatar positioning error:', error);
               }
             }
 
@@ -95,7 +86,7 @@ export const useExperienceScroll = () => {
           }
         });
       } catch (error) {
-        console.warn('ScrollTrigger creation error:', error);
+        console.error('ScrollTrigger creation error:', error);
       }
     }, 10);
 
@@ -110,7 +101,6 @@ export const useExperienceScroll = () => {
   const handleAnimationComplete = () => {
     setIsAnimating(false);
     setPreviousStage(null);
-    // Update the stage after animation completes
     setCurrentStage(targetStage);
   };
 
@@ -122,6 +112,7 @@ export const useExperienceScroll = () => {
     progress,
     containerRef,
     avatarRef,
+    mobileAvatarRef,
     lineRef,
     handleAnimationComplete
   };

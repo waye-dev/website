@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { RefObject } from "react";
-import { ExperienceParadoxesData, ExperienceStage } from "./types";
+import { ExperienceParadoxesData } from "./types";
 import { ExperienceAvatar } from "./experience-avatar";
 import { ExperienceLabels } from "./experience-labels";
 import { MobileTimelineLine, avatarHeightPresets } from "./mobile-timeline-line";
@@ -8,6 +8,7 @@ import { MobileTimelineLine, avatarHeightPresets } from "./mobile-timeline-line"
 interface ExperienceTimelineProps {
   lineRef: RefObject<HTMLDivElement | null>;
   avatarRef: RefObject<HTMLDivElement | null>;
+  mobileAvatarRef: RefObject<HTMLDivElement | null>;
   data: ExperienceParadoxesData;
   currentLevel: any;
   progress?: number;
@@ -18,6 +19,7 @@ interface ExperienceTimelineProps {
 export const ExperienceTimeline = ({
   lineRef,
   avatarRef,
+  mobileAvatarRef,
   data,
   currentLevel,
   progress = 0,
@@ -83,7 +85,7 @@ export const ExperienceTimeline = ({
 
         <div className="absolute" style={{ left: '28px', top: '-90px' }}>
           <ExperienceAvatar
-            avatarRef={avatarRef}
+            avatarRef={mobileAvatarRef}
             avatar={currentLevel.avatar}
             alt={currentLevel.alt}
           />

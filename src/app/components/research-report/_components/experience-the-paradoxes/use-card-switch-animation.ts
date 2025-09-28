@@ -1,26 +1,20 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
-// Animation constants for easy adjustment
-// Adjust these values to fine-tune the card switching animation
 const ANIMATION_CONSTANTS = {
-  // Timing (in seconds)
-  CONVERGENCE_DURATION: 0.6,    // How long cards take to meet in center
-  SWITCH_DURATION: 0.1,         // How long the switch effect takes
-  RETURN_DURATION: 0.5,         // How long cards take to return to positions
-  CONVERGENCE_STAGGER_DELAY: 0.1, // Delay between each card starting movement (ordered)
+  CONVERGENCE_DURATION: 0.6,   
+  SWITCH_DURATION: 0.1,        
+  RETURN_DURATION: 0.5,        
+  CONVERGENCE_STAGGER_DELAY: 0.1, 
   
-  // Movement
-  VERTICAL_OFFSET: 0,         // How much to move up from center (negative = up)
-  SCALE_WHEN_TOGETHER: 0.8,    // How small cards get when together (0.8 = 80% size)
+  VERTICAL_OFFSET: 0,        
+  SCALE_WHEN_TOGETHER: 0.8,   
   
-  // Angles (in degrees)
-  PRIMARY_ANGLE: 15,            // Main angle for first two cards
-  SECONDARY_ANGLE_REDUCTION: 0.7, // Multiplier for additional cards (0.7 = 70% of primary)
+  PRIMARY_ANGLE: 15,           
+  SECONDARY_ANGLE_REDUCTION: 0.7,
   
-  // Effects
-  OPACITY_DURING_SWITCH: 0.7,   // Opacity during the switch phase (0.7 = 70% opacity)
-  Z_INDEX_OFFSET: 10            // Z-index offset for layering
+  OPACITY_DURING_SWITCH: 0.7,  
+  Z_INDEX_OFFSET: 10           
 } as const;
 
 interface CardSwitchAnimationProps {
@@ -46,7 +40,6 @@ export const useCardSwitchAnimation = ({
   };
 
   const animateCardSwitch = () => {
-    // Only run card switch animation on desktop (md and up)
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     if (!cardRefs.current.length || !isAnimating || isMobile) return;
 
@@ -65,7 +58,6 @@ export const useCardSwitchAnimation = ({
     const centerY = window.innerHeight / 1.5 + ANIMATION_CONSTANTS.VERTICAL_OFFSET;
 
 
-    // Phase 1: Bring cards to center in order (1, 2, 3...)
     cards.forEach((card, index) => {
       if (!card) return;
       const rect = card.getBoundingClientRect();
@@ -88,13 +80,11 @@ export const useCardSwitchAnimation = ({
       }, index * ANIMATION_CONSTANTS.CONVERGENCE_STAGGER_DELAY);
     });
 
-    // Phase 2: Switch cards by changing z-index and opacity effect
     animationTimeline.current.to(cards, {
       opacity: ANIMATION_CONSTANTS.OPACITY_DURING_SWITCH,
       duration: ANIMATION_CONSTANTS.SWITCH_DURATION,
       ease: "power2.inOut",
       onComplete: () => {
-        // Call content switch callback at the exact moment of switch
         onContentSwitch?.();
 
         cards.forEach((card, index) => {
@@ -107,10 +97,8 @@ export const useCardSwitchAnimation = ({
       }
     }, ANIMATION_CONSTANTS.CONVERGENCE_DURATION);
 
-    // Phase 3: Return cards to their original positions
     const returnStartTime = ANIMATION_CONSTANTS.CONVERGENCE_DURATION + ANIMATION_CONSTANTS.SWITCH_DURATION;
     
-    // Simply reset all transforms to return to original positions
     animationTimeline.current.to(cards, {
       x: 0,
       y: 0,

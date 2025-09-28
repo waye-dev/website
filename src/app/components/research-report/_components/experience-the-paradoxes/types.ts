@@ -1,4 +1,4 @@
-// Types for the new data structure
+
 export interface ExperienceCard {
   title: string;
   subtitle: string;
