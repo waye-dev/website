@@ -20,8 +20,9 @@ export const GlossarySection = ({ summary, title, index, onInViewChange }: { tit
         `flex flex-col w-full gap-2.5 py-[1.875rem] px-[0.9375rem] pr-[1.875rem] rounded-[10px] text-black transition-all duration-500 ease-in-out`
         + (isInView ? " bg-blue-custom-900 text-white" : "")
       }
+      style={{ opacity: isInView ? 1 : 0.3 }}
     >
-      <section className='flex flex-row items-center justify-between gap-6'>
+      <section className='flex flex-col-reverse md:flex-row md:items-center justify-between gap-2 md:gap-6'>
         <h4 className='uppercase text-2xl font-normal font-josefinSans'>{title}</h4>
         <p className='uppercase text-2xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
       </section>
@@ -156,39 +157,53 @@ export const GLOSSARY_LIST = [
 
 export const GlossaryChart = ({ activeId }: { activeId: number | null }) => {
   const [isClient, setIsClient] = useState(false);
-  const [screenHeight, setScreenHeight] = useState<number>(0); // Default fallback height
+  const [screenHeight, setScreenHeight] = useState<number>(0);
+  const [screenWidth, setScreenWidth] = useState<number>(0); // Track width for mobile detection
 
   useEffect(() => {
     setIsClient(true);
     setScreenHeight(window.innerHeight);
+    setScreenWidth(window.innerWidth);
 
     const handleResize = () => {
       setScreenHeight(window.innerHeight);
+      setScreenWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const estimatedScreenHeight = screenHeight * 0.75;
+  // Determine if the screen is mobile (e.g., width < 640px)
+  const isMobile = isClient && screenWidth < 640;
+
+  // Scale down height for mobile (50% of screen height, capped at 300px)
+  const estimatedScreenHeight = isMobile
+    ? Math.min(screenHeight * 0.5, 300)
+    : screenHeight * 0.75;
+
+  // Scale down width multiplier for mobile
+  const widthMultiplier = isMobile ? 8 : 12;
 
   return (
-    <div className="flex flex-row items-end gap-3">
+    <div className="flex flex-row items-end gap-2">
       {GLOSSARY_LIST.map((part) => {
         const isActive = part.id === activeId;
         return (
           <div
             key={part.id}
-            className="bg-blue-custom-900 rounded-[2px] p-6 transition-transform duration-500 ease-in-out flex justify-center items-end"
+            className="bg-blue-custom-900 rounded-[2px] p-4 transition-transform duration-500 ease-in-out flex justify-center items-end"
             style={{
-              height: isClient ? `${estimatedScreenHeight * part.heightPercentage}px` : "450px",
-              width: `${Math.floor(12 * part.widthPercentage)}%`,
-              transform: isActive ? "translateY(-50px)" : "translateY(0)",
+              height: isClient ? `${estimatedScreenHeight * part.heightPercentage}px` : "300px",
+              width: isMobile
+                ? `${Math.floor(widthMultiplier * part.widthPercentage)}vw`
+                : `${Math.floor(widthMultiplier * part.widthPercentage)}%`,
+              transform: isActive ? "translateY(-30px)" : "translateY(0)",
             }}
           >
             <h1
               className="font-inknutAntiqua text-white text-xl [writing-mode:vertical-rl] rotate-180 whitespace-nowrap"
-              style={{ fontSize: `${estimatedScreenHeight * 0.025}px` }}
+              style={{ fontSize: `${estimatedScreenHeight * (isMobile ? 0.02 : 0.025)}px` }}
             >
               Part {part.id}: {part.title}
             </h1>

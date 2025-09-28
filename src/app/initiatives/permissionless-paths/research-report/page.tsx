@@ -73,7 +73,7 @@ export default function ResearchReport() {
 
         {/* glossary section */}
         <Wrapper className='py-24'>
-          <div className='flex flex-row w-full gap-16'>
+          <div className='flex flex-col-reverse md:flex-row w-full gap-16'>
             <section className='flex-1 relative'>
               <div className='flex flex-col gap-6 pt-[70vh] pb-[85px]'>
                 {GLOSSARY_TEXT_SECTIONS.map((section, index) => (
@@ -94,7 +94,7 @@ export default function ResearchReport() {
               </div>
             </section>
 
-            <div className='sticky top-0 h-screen flex items-center'>
+            <div className='sticky top-0 h-[50vh] md:h-screen flex items-center'>
               <div className='w-full'>
                 <GlossaryChart activeId={activeId} />
               </div>
