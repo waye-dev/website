@@ -49,42 +49,34 @@ export const getAvatarColor = (stage: 'new' | 'mid' | 'expert') => {
 };
 
 export const getMobileAvatarTransform = (progress: number, stage: 'new' | 'mid' | 'expert', scrollDirection: 'up' | 'down' = 'down') => {
-  // Avatar positions and opacities for stacked animation
   const result = { x: 0, opacity: 1 };
 
   if (stage === 'new') {
     if (progress < 0.4) {
-      // 'new' is visible and in position
       result.x = 0;
       result.opacity = 1;
     } else {
-      // 'new' moves left and exits
-      const exitProgress = Math.min((progress - 0.4) / 0.1, 1); // Exit over 10% progress
+      const exitProgress = Math.min((progress - 0.4) / 0.1, 1);
       result.x = -200 * exitProgress;
       result.opacity = 1;
     }
   } else if (stage === 'mid') {
     if (progress < 0.4) {
-      // 'mid' is behind 'new', invisible
       result.x = 0;
       result.opacity = 0;
     } else if (progress < 0.8) {
-      // 'mid' is now visible as 'new' has moved out
       result.x = 0;
       result.opacity = 1;
     } else {
-      // 'mid' moves left and exits
       const exitProgress = Math.min((progress - 0.8) / 0.1, 1);
       result.x = -200 * exitProgress;
       result.opacity = 1;
     }
   } else if (stage === 'expert') {
     if (progress < 0.8) {
-      // 'expert' is behind others, invisible
       result.x = 0;
       result.opacity = 0;
     } else {
-      // 'expert' is now visible as 'mid' has moved out
       result.x = 0;
       result.opacity = 1;
     }

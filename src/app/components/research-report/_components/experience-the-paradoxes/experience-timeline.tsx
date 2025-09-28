@@ -32,6 +32,10 @@ export const ExperienceTimeline = ({
   scrollDirection = 'down',
   mobileAvatarHeight = avatarHeightPresets.default
 }: ExperienceTimelineProps) => {
+  // Calculate current mobile stage based on progress
+  const mobileStage = progress < 0.4 ? 'new' : progress < 0.8 ? 'mid' : 'expert';
+  const mobileCurrentLevel = data[mobileStage];
+
   return (
     <>
       <div ref={lineRef} className="hidden md:block w-full max-w-7xl relative">
@@ -59,34 +63,15 @@ export const ExperienceTimeline = ({
           avatarHeight={mobileAvatarHeight}
         />
 
-        <div className="absolute left-0 top-0 h-full">
-          {(['new', 'mid', 'expert'] as const).map((stage, index) => {
-            const levelData = data[stage];
-            const yPositions = [110, 180, 250];
-            const isActive = progress >= (index * 0.4) && progress < ((index + 1) * 0.4) || (index === 2 && progress >= 0.8);
-
-            return (
-              <div
-                key={stage}
-                className="absolute"
-                style={{
-                  top: `${yPositions[index]}px`,
-                  transform: 'translateY(-50%)',
-                  opacity: isActive ? 1 : 0.4,
-                  right: '60px'
-                }}
-              >
-                <div className="text-right">
-                  <p className="text-xs font-josefinSans font-bold uppercase tracking-wide text-gray-800 leading-tight">
-                    {levelData.label1}
-                  </p>
-                  <p className="text-xs font-josefinSans font-bold uppercase tracking-wide text-gray-800 leading-tight">
-                    {levelData.label2}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+        <div className="absolute left-0 w-[85px] items-end justify-end flex top-16">
+          <div className="text-right bg-white/10 px-3 py-2 rounded shadow-sm">
+            <p className="text-xs font-josefinSans font-bold uppercase tracking-wide text-gray-800 leading-tight">
+              {mobileCurrentLevel.label1}
+            </p>
+            <p className="text-xs text-right font-josefinSans font-bold uppercase tracking-wide text-gray-800 leading-tight">
+              {mobileCurrentLevel.label2}
+            </p>
+          </div>
         </div>
 
         <div className="absolute" style={{ left: '-10px', top: '-85px' }}>
