@@ -14,6 +14,7 @@ export const useExperienceScroll = () => {
   
   const containerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
+  const mobileAvatarRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 
@@ -23,6 +24,18 @@ export const useExperienceScroll = () => {
     const timer = setTimeout(() => {
       if (scrollTriggerRef.current) {
         scrollTriggerRef.current.kill();
+      }
+      
+      const isMobile = window.innerWidth < 768;
+      if (!isMobile && avatarRef.current && lineRef.current) {
+        const lineWidth = lineRef.current.offsetWidth;
+        const initialX = getAvatarPosition(0, lineWidth);
+        const initialY = getAvatarVerticalPosition(0);
+        gsap.set(avatarRef.current, {
+          x: initialX,
+          y: initialY,
+          force3D: true
+        });
       }
 
       let lastStage = 'new';
@@ -38,18 +51,29 @@ export const useExperienceScroll = () => {
           onUpdate: (self) => {
             const progress = self.progress;
             const newStage = getStageFromProgress(progress);
-            
-            // Update progress state for labels
+
             setProgress(progress);
 
             if (avatarRef.current && lineRef.current && avatarRef.current.parentNode) {
               try {
                 const lineWidth = lineRef.current.offsetWidth;
-                const avatarX = getAvatarPosition(progress, lineWidth);
-                const avatarY = getAvatarVerticalPosition(progress);
-                gsap.set(avatarRef.current, { x: avatarX, y: avatarY });
+                const isMobile = window.innerWidth < 768;
+
+                if (!isMobile) {
+                  const avatarX = getAvatarPosition(progress, lineWidth);
+                  const avatarY = getAvatarVerticalPosition(progress);
+                  gsap.set(avatarRef.current, {
+                    x: avatarX,
+                    y: avatarY,
+                    force3D: true
+                  });
+                } else {
+                  if (mobileAvatarRef.current) {
+                    gsap.set(mobileAvatarRef.current, { x: 0, y: 0 });
+                  }
+                }
               } catch (error) {
-                console.warn('GSAP avatar positioning error:', error);
+                console.error('GSAP avatar positioning error:', error);
               }
             }
 
@@ -62,7 +86,7 @@ export const useExperienceScroll = () => {
           }
         });
       } catch (error) {
-        console.warn('ScrollTrigger creation error:', error);
+        console.error('ScrollTrigger creation error:', error);
       }
     }, 10);
 
@@ -77,7 +101,6 @@ export const useExperienceScroll = () => {
   const handleAnimationComplete = () => {
     setIsAnimating(false);
     setPreviousStage(null);
-    // Update the stage after animation completes
     setCurrentStage(targetStage);
   };
 
@@ -89,6 +112,7 @@ export const useExperienceScroll = () => {
     progress,
     containerRef,
     avatarRef,
+    mobileAvatarRef,
     lineRef,
     handleAnimationComplete
   };
