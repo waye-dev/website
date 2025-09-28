@@ -11,10 +11,6 @@ export const Card = ({ title, subtitle, image, alt }: CardProps) => {
   return (
     <div
       className="bg-white rounded-xl shadow-xl p-6 transition-all duration-500 ease-out h-96 relative"
-      style={{
-        transformStyle: "preserve-3d",
-        backfaceVisibility: "hidden"
-      }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 rounded-xl" />
       

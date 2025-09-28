@@ -1,0 +1,91 @@
+import { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getStageFromProgress, getAvatarPosition } from "./utils";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const useExperienceScroll = () => {
+  const [currentStage, setCurrentStage] = useState<'new' | 'mid' | 'expert'>('new');
+  const [previousStage, setPreviousStage] = useState<'new' | 'mid' | 'expert' | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [targetStage, setTargetStage] = useState<'new' | 'mid' | 'expert'>('new');
+  
+  const containerRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+
+  useEffect(() => {
+    if (!containerRef.current || !avatarRef.current || !lineRef.current) return;
+
+    const timer = setTimeout(() => {
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+      }
+
+      let lastStage = 'new';
+
+      try {
+        scrollTriggerRef.current = ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=2000vh",
+          scrub: 1,
+          pin: true,
+          pinSpacing: true,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const newStage = getStageFromProgress(progress);
+
+            if (avatarRef.current && lineRef.current && avatarRef.current.parentNode) {
+              try {
+                const lineWidth = lineRef.current.offsetWidth;
+                const avatarX = getAvatarPosition(progress, lineWidth);
+                gsap.set(avatarRef.current, { x: avatarX });
+              } catch (error) {
+                console.warn('GSAP avatar positioning error:', error);
+              }
+            }
+
+            // Update stage if changed
+            if (newStage !== lastStage) {
+              setPreviousStage(lastStage as 'new' | 'mid' | 'expert' | null);
+              setTargetStage(newStage);
+              setIsAnimating(true);
+              // Don't update currentStage immediately - let animation complete first
+              lastStage = newStage;
+            }
+          }
+        });
+      } catch (error) {
+        console.warn('ScrollTrigger creation error:', error);
+      }
+    }, 10);
+
+    return () => {
+      clearTimeout(timer);
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+      }
+    };
+  }, []);
+
+  const handleAnimationComplete = () => {
+    setIsAnimating(false);
+    setPreviousStage(null);
+    // Update the stage after animation completes
+    setCurrentStage(targetStage);
+  };
+
+  return {
+    currentStage,
+    previousStage,
+    isAnimating,
+    targetStage,
+    containerRef,
+    avatarRef,
+    lineRef,
+    handleAnimationComplete
+  };
+};
