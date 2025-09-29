@@ -16,11 +16,9 @@ export function StrategiesWall() {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const windowsGridRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const contentSectionsRef = useRef<HTMLDivElement>(null);
-  const [currentStrategy, setCurrentStrategy] = useState(1);
+  const contentGridRef = useRef<HTMLDivElement>(null);
   const [showContent, setShowContent] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
-  const contentLayerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (!overlayRef.current) return;
@@ -31,7 +29,8 @@ export function StrategiesWall() {
         y: 0,
         scale: 1,
         duration: 0.8,
-        ease: 'power2.out'
+        ease: 'power2.out',
+        pointerEvents: 'auto'
       });
     } else {
       gsap.to(overlayRef.current, {
@@ -39,93 +38,49 @@ export function StrategiesWall() {
         y: 50,
         scale: 0.95,
         duration: 0.5,
-        ease: 'power2.in'
+        ease: 'power2.in',
+        pointerEvents: 'none'
       });
     }
   }, [showOverlay]);
 
   useEffect(() => {
-    if (!contentLayerRefs.current.length || !showOverlay) return;
-
-    contentLayerRefs.current.forEach((layer, index) => {
-      if (layer) {
-        const strategyIndex = index + 1;
-
-        if (strategyIndex === currentStrategy) {
-          gsap.fromTo(layer,
-            {
-              y: window.innerHeight,
-              opacity: 0,
-              scale: 0.95
-            },
-            {
-              y: 0,
-              opacity: 1,
-              scale: 1,
-              duration: 1.4,
-              ease: 'power2.out',
-              zIndex: 10 + strategyIndex
-            }
-          );
-        } else if (strategyIndex < currentStrategy) {
-          gsap.to(layer, {
-            y: -window.innerHeight * 0.15 * (currentStrategy - strategyIndex),
-            opacity: 0.8 - (currentStrategy - strategyIndex) * 0.2,
-            scale: 0.98 - (currentStrategy - strategyIndex) * 0.02,
-            duration: 1.2,
-            ease: 'power2.out',
-            zIndex: 10 - (currentStrategy - strategyIndex)
-          });
-        } else {
-          gsap.set(layer, {
-            y: window.innerHeight,
-            opacity: 0,
-            scale: 0.95,
-            zIndex: strategyIndex
-          });
-        }
-      }
-    });
-  }, [currentStrategy, showOverlay]);
-
-
-  useEffect(() => {
-    if (!containerRef.current || !windowsGridRef.current) return;
+    if (!containerRef.current || !windowsGridRef.current || !contentGridRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Initial state for overlay
       gsap.set(overlayRef.current, { 
         opacity: 0, 
         y: 50,
-        scale: 0.95
+        scale: 0.95,
+        pointerEvents: 'none'
       });
 
-      const tl = gsap.timeline({
+      // Get all content layers
+      const contentLayers = contentGridRef.current!.querySelectorAll('.content-layer');
+      
+      // Set initial positions for content layers
+      contentLayers.forEach((layer, index) => {
+        if (index > 0) {
+          gsap.set(layer, { y: '100%' });
+        }
+      });
+
+      // Main timeline for window animations
+      const mainTl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=600%',
+          end: '+=1000%',
           scrub: 1,
           pin: true,
           onUpdate: (self) => {
             const progress = self.progress;
-            if (progress < 0.1) {
-              setCurrentStrategy(1);
+            
+            if (progress < 0.05) {
               setShowContent(false);
               setShowOverlay(false);
-            } else if (progress < 0.25) {
-              setCurrentStrategy(1);
-              setShowContent(true);
-              setShowOverlay(true);
-            } else if (progress < 0.4) {
-              setCurrentStrategy(2);
-              setShowContent(true);
-              setShowOverlay(true);
-            } else if (progress < 0.55) {
-              setCurrentStrategy(3);
-              setShowContent(true);
-              setShowOverlay(true);
-            } else if (progress < 0.7) {
-              setCurrentStrategy(4);
+            } else if (progress >= 0.05 && progress < 0.9) {
               setShowContent(true);
               setShowOverlay(true);
             } else {
@@ -165,47 +120,92 @@ export function StrategiesWall() {
         }
       ];
 
-      tl.to([windowsGridRef.current, backgroundRef.current], {
+      // Window zoom to first position
+      mainTl.to([windowsGridRef.current, backgroundRef.current], {
         scale: scale,
         x: positions[0].x,
         y: positions[0].y,
-        duration: 1,
+        duration: 0.5,
         ease: 'power2.inOut'
-      })
-      
-      .to({}, { duration: 1.5 })
+      });
 
-      .to([windowsGridRef.current, backgroundRef.current], {
+      // Hold for content scrolling
+      mainTl.to({}, { duration: 2 });
+
+      // Move to second window
+      mainTl.to([windowsGridRef.current, backgroundRef.current], {
         x: positions[1].x,
         y: positions[1].y,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power2.inOut'
-      })
-      .to({}, { duration: 1.5 })
+      });
+      
+      // Hold for content scrolling
+      mainTl.to({}, { duration: 2 });
 
-      .to([windowsGridRef.current, backgroundRef.current], {
+      // Move to third window
+      mainTl.to([windowsGridRef.current, backgroundRef.current], {
         x: positions[2].x,
         y: positions[2].y,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power2.inOut'
-      })
-      .to({}, { duration: 1.5 })
+      });
+      
+      // Hold for content scrolling
+      mainTl.to({}, { duration: 2 });
 
-      .to([windowsGridRef.current, backgroundRef.current], {
+      // Move to fourth window
+      mainTl.to([windowsGridRef.current, backgroundRef.current], {
         x: positions[3].x,
         y: positions[3].y,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power2.inOut'
-      })
-      .to({}, { duration: 1.5 })
+      });
+      
+      // Hold for content scrolling
+      mainTl.to({}, { duration: 2 });
 
-      .to([windowsGridRef.current, backgroundRef.current], {
+      // Zoom back out
+      mainTl.to([windowsGridRef.current, backgroundRef.current], {
         scale: 1,
         x: 0,
         y: 0,
-        duration: 1.5,
+        duration: 0.5,
         ease: 'power2.inOut'
       });
+
+      // Create a separate timeline for content layers
+      // This runs independently based on the same scroll position
+      const contentTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=1000%',
+          scrub: 1,
+        }
+      });
+
+      // Add a delay before content animations start
+      contentTl.to({}, { duration: 0.5 });
+
+      // Animate each content layer with proper spacing
+      contentLayers.forEach((layer, index) => {
+        if (index > 0) {
+          // Each layer gets 2 units of timeline space
+          // First unit: hold previous layer
+          // Second unit: animate in new layer
+          const startTime = 0.5 + (index * 2);
+          
+          contentTl.to(layer, {
+            y: '0%',
+            duration: 0.8,
+            ease: 'power2.out'
+          }, startTime);
+        }
+      });
+
+      // Add final hold
+      contentTl.to({}, { duration: 1 });
 
     }, containerRef);
 
@@ -219,133 +219,159 @@ export function StrategiesWall() {
         className="relative w-full h-screen overflow-hidden"
         style={{ backgroundColor: '#031C51' }}
       >
-      <div
-        ref={backgroundRef}
-        className="absolute inset-0 w-full h-full"
-      >
-        <Image
-          src="/svgs/research/strategies/bg.svg"
-          alt="Background"
-          fill
-          className="object-cover"
-        />
-      </div>
+        <div
+          ref={backgroundRef}
+          className="absolute inset-0 w-full h-full"
+        >
+          <Image
+            src="/svgs/research/strategies/bg.svg"
+            alt="Background"
+            fill
+            className="object-cover"
+          />
+        </div>
 
-      <div
-        ref={windowsGridRef}
-        className="absolute inset-0 flex items-center justify-center"
-      >
-        <div className="grid grid-cols-2 gap-6 w-[800px] h-[600px]">
-          <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
-            <Image
-              src="/svgs/research/strategies/window.svg"
-              alt="Window frame"
-              fill
-              className="object-contain"
-            />
-            <div className="absolute inset-0 flex items-center justify-center p-4">
+        <div
+          ref={windowsGridRef}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <div className="grid grid-cols-2 gap-6 w-[800px] h-[600px]">
+            <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
               <Image
-                src="/svgs/research/strategies/1.svg"
-                alt="Window 1"
-                width={300}
-                height={200}
+                src="/svgs/research/strategies/window.svg"
+                alt="Window frame"
+                fill
                 className="object-contain"
               />
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <Image
+                  src="/svgs/research/strategies/1.svg"
+                  alt="Window 1"
+                  width={300}
+                  height={200}
+                  className="object-contain"
+                />
+              </div>
             </div>
-          </div>
-          <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
-            <Image
-              src="/svgs/research/strategies/window.svg"
-              alt="Window frame"
-              fill
-              className="object-contain"
-            />
-            <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
               <Image
-                src="/svgs/research/strategies/2.svg"
-                alt="Window 2"
-                width={300}
-                height={200}
+                src="/svgs/research/strategies/window.svg"
+                alt="Window frame"
+                fill
                 className="object-contain"
               />
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <Image
+                  src="/svgs/research/strategies/2.svg"
+                  alt="Window 2"
+                  width={300}
+                  height={200}
+                  className="object-contain"
+                />
+              </div>
             </div>
-          </div>
-          <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
-            <Image
-              src="/svgs/research/strategies/window.svg"
-              alt="Window frame"
-              fill
-              className="object-contain"
-            />
-            <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
               <Image
-                src="/svgs/research/strategies/3.svg"
-                alt="Window 3"
-                width={300}
-                height={200}
+                src="/svgs/research/strategies/window.svg"
+                alt="Window frame"
+                fill
                 className="object-contain"
               />
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <Image
+                  src="/svgs/research/strategies/3.svg"
+                  alt="Window 3"
+                  width={300}
+                  height={200}
+                  className="object-contain"
+                />
+              </div>
             </div>
-          </div>
-          <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
-            <Image
-              src="/svgs/research/strategies/window.svg"
-              alt="Window frame"
-              fill
-              className="object-contain"
-            />
-            <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="relative w-full h-full" style={{ backgroundColor: '#FBF7EE' }}>
               <Image
-                src="/svgs/research/strategies/4.svg"
-                alt="Window 4"
-                width={300}
-                height={200}
+                src="/svgs/research/strategies/window.svg"
+                alt="Window frame"
+                fill
                 className="object-contain"
               />
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <Image
+                  src="/svgs/research/strategies/4.svg"
+                  alt="Window 4"
+                  width={300}
+                  height={200}
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
+        {/* Content layers */}
         <div
           ref={overlayRef}
-          className="fixed inset-0 flex items-center justify-center pointer-events-none"
-          style={{ backgroundColor: '#FBF7EE' }}
+          className="fixed inset-0"
+          style={{ 
+            opacity: 0,
+            transform: 'translateY(50px) scale(0.95)',
+            pointerEvents: 'none'
+          }}
         >
-          <div className="w-full h-full overflow-y-auto relative">
+          <div 
+            ref={contentGridRef}
+            className="grid w-full h-full relative"
+            style={{ isolation: 'isolate' }}
+          >
             <div
-              ref={el => { contentLayerRefs.current[0] = el; }}
-              className="absolute inset-0 w-full h-full"
-              style={{ backgroundColor: '#FBF7EE' }}
+              className="content-layer col-start-1 row-start-1 relative"
+              style={{
+                backgroundColor: '#FBF7EE',
+                zIndex: 10,
+                height: '100vh',
+                overflowY: 'auto'
+              }}
             >
               <JuniorCoreDev />
             </div>
+            
             <div
-              ref={el => { contentLayerRefs.current[1] = el; }}
-              className="absolute inset-0 w-full h-full"
-              style={{ backgroundColor: '#FBF7EE' }}
+              className="content-layer col-start-1 row-start-1 relative"
+              style={{
+                backgroundColor: '#FBF7EE',
+                zIndex: 20,
+                height: '100vh',
+                overflowY: 'auto'
+              }}
             >
               <SeniorCoreDev />
             </div>
+            
             <div
-              ref={el => { contentLayerRefs.current[2] = el; }}
-              className="absolute inset-0 w-full h-full"
-              style={{ backgroundColor: '#FBF7EE' }}
+              className="content-layer col-start-1 row-start-1 relative"
+              style={{
+                backgroundColor: '#FBF7EE',
+                zIndex: 30,
+                height: '100vh',
+                overflowY: 'auto'
+              }}
             >
               <JuniorAppDev />
             </div>
+            
             <div
-              ref={el => { contentLayerRefs.current[3] = el; }}
-              className="absolute inset-0 w-full h-full"
-              style={{ backgroundColor: '#FBF7EE' }}
+              className="content-layer col-start-1 row-start-1 relative"
+              style={{
+                backgroundColor: '#FBF7EE',
+                zIndex: 40,
+                height: '100vh',
+                overflowY: 'auto'
+              }}
             >
               <SeniorAppDev />
             </div>
           </div>
         </div>
       </div>
-
-
-   </div>
- );
+    </div>
+  );
 }

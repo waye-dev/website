@@ -156,11 +156,11 @@ export default function ResearchReport() {
           ))}
         </div>
       </div> */}
-      <div className='bg-gray-custom-400 text-black'>
+      {/* <div className='bg-gray-custom-400 text-black'>
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
           <StrategySubSections />
         </Wrapper>
-      </div>
+      </div> */}
       <div className='bg-blue-custom-1100'>
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
           <BeyondFinancialSustainability />
