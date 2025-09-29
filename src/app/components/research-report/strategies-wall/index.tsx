@@ -151,7 +151,7 @@ export function StrategiesWall() {
       }
     });
 
-    // Entry: Zoom to first window
+    // Entry: Zoom to first window (top-left)
     tl.to([windowsGridRef.current, backgroundRef.current], {
       scale: scale,
       x: positions[0].x,
@@ -215,22 +215,32 @@ export function StrategiesWall() {
       }
     });
 
-    // Exit: Hide overlay first
+    let exitX, exitY;
+    
+      exitX = -(window.innerWidth - windowWidth * scale - (windowWidth + gap/2) * scale / 2) + -900;
+      exitY = -(window.innerHeight - windowHeight * scale - (windowHeight + gap/2) * scale / 2 - 100) + -900;
+
+    tl.to([windowsGridRef.current, backgroundRef.current], {
+      x: exitX,
+      y: exitY,
+      duration: 0.6,
+      ease: 'power2.inOut'
+    });
+
     tl.to(overlayRef.current, {
       opacity: 0,
       scale: 0.95,
-      duration: 0.5,
+      duration: 0.4,
       ease: 'power1.in'
-    });
+    }, '-=0.3');
 
-    // Then zoom back out
     tl.to([windowsGridRef.current, backgroundRef.current], {
       scale: 1,
       x: 0,
       y: 0,
       duration: 0.8,
       ease: 'power2.inOut'
-    }, '-=0.1');
+    });
 
   }, { scope: containerRef, dependencies: [] });
 
