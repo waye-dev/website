@@ -9,6 +9,7 @@ import { JuniorCoreDev } from './junior-core-dev';
 import { SeniorCoreDev } from './senior-core-dev';
 import { JuniorAppDev } from './junior-app-dev';
 import { SeniorAppDev } from './senior-app-dev';
+import { ContentLayer } from './content-layer';
 
 
 const strategyImages = [
@@ -29,32 +30,6 @@ const strategyImages = [
     alt: "strategy image 4",
   },
 ];
-
-interface ContentLayerProps {
-  children: React.ReactNode;
-  zIndex: number;
-}
-
-export const ContentLayer: React.FC<ContentLayerProps> = ({
-  children,
-  zIndex
-}) => {
-  return (
-    <div
-      className="content-layer col-start-1 row-start-1 relative overflow-hidden"
-      style={{
-        backgroundColor: '#FBF7EE',
-        zIndex,
-        height: '100vh',
-        boxShadow: '0 -5px 5px rgba(0, 0, 0, 0.03)',
-      }}
-    >
-        <div className="content-inner w-full max-w-[1000px] xl:max-w-[1250px] mx-auto px-8 my-[150px]">
-          {children}
-      </div>
-    </div>
-  );
-};
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -81,63 +56,78 @@ export function StrategiesWall() {
     contentLayers.forEach((layer, index) => {
       const inner = layer.querySelector('.content-inner') as HTMLElement;
       if (index === 0) {
-        // First layer starts visible but scrolled to top
         gsap.set(layer, { yPercent: 0 });
         gsap.set(inner, { yPercent: 0 });
       } else {
-        // Other layers start below
         gsap.set(layer, { yPercent: 100 });
         gsap.set(inner, { yPercent: 0 });
       }
     });
 
-    // Calculate window positions for zooming
-    const gridWidth = 960; // 800 * 1.2
-    const gridHeight = 720; // 600 * 1.2
-    const gap = 28.8; // 24 * 1.2
-    const windowWidth = (gridWidth - gap) / 2;
-    const windowHeight = (gridHeight - gap) / 2;
+    const isMobile = window.innerWidth < 768;
+
+    // Configuration
+    const config = {
+      desktop: {
+        zoomInScale: 0.9,
+        enterY: 100,
+        enterX: 0,
+        exitX: -900,
+        exitY: -900,
+      },
+      mobile: {
+        zoomInScale: 2.15,
+        enterY: 50,
+        enterX: -340,
+        exitX: -1420,
+        exitY: -600,
+      }
+    };
+
+    const currentConfig = isMobile ? config.mobile : config.desktop;
+
+    const gap = 28.8;
+    const windowWidth = (960 - gap) / 2;
+    const windowHeight = (720 - gap) / 2;
 
     const scaleX = window.innerWidth / windowWidth;
     const scaleY = window.innerHeight / windowHeight;
     const baseScale = Math.min(scaleX, scaleY);
-    const scale = baseScale * 0.9; // scaleMultiplier = 0.9
+    const scale = baseScale * currentConfig.zoomInScale;
 
     const positions = [
-      { 
-        x: (windowWidth + gap/2) * scale / 2 + 0, // xOffset = 0
-        y: (windowHeight + gap/2) * scale / 2 + 100 // yOffset = 100
+      {
+        x: (windowWidth + gap/2) * scale / 2 + currentConfig.enterX,
+        y: (windowHeight + gap/2) * scale / 2 + currentConfig.enterY
       },
-      { 
-        x: (windowWidth + gap/2) * scale / 2 + (windowWidth + gap) * scale + 0, // xOffset = 0
-        y: (windowHeight + gap/2) * scale / 2 + 100 // yOffset = 100
+      {
+        x: (windowWidth + gap/2) * scale / 2 + (windowWidth + gap) * scale + currentConfig.enterX,
+        y: (windowHeight + gap/2) * scale / 2 + currentConfig.enterY
       },
-      { 
-        x: (windowWidth + gap/2) * scale / 2 + 0, // xOffset = 0
-        y: (windowHeight + gap/2) * scale / 2 + (windowHeight + gap) * scale + 100 // yOffset = 100
+      {
+        x: (windowWidth + gap/2) * scale / 2 + currentConfig.enterX,
+        y: (windowHeight + gap/2) * scale / 2 + (windowHeight + gap) * scale + currentConfig.enterY
       },
-      { 
-        x: (windowWidth + gap/2) * scale / 2 + (windowWidth + gap) * scale + 0, // xOffset = 0
-        y: (windowHeight + gap/2) * scale / 2 + (windowHeight + gap) * scale + 100 // yOffset = 100
+      {
+        x: (windowWidth + gap/2) * scale / 2 + (windowWidth + gap) * scale + currentConfig.enterX,
+        y: (windowHeight + gap/2) * scale / 2 + (windowHeight + gap) * scale + currentConfig.enterY
       }
     ];
 
-    // Calculate content heights dynamically
     const getContentHeight = (layer: Element) => {
       const inner = layer.querySelector('.content-inner') as HTMLElement;
       if (!inner) return window.innerHeight;
-      // Get the actual content height
       const contentHeight = inner.scrollHeight || window.innerHeight * 2;
-      // Return how many viewport heights this content spans
-      return Math.max(window.innerHeight * 2, contentHeight);
+      const minHeight = isMobile ? window.innerHeight * 2.5 : window.innerHeight * 2;
+      return Math.max(minHeight, contentHeight);
     };
 
-    // Calculate total timeline duration
-    let totalDuration = 1; // Entry
+    let totalDuration = isMobile ? 1.2 : 1;
     contentLayers.forEach((layer) => {
-      totalDuration += getContentHeight(layer) / window.innerHeight + 0.5; // Content + transition
+      const extraBuffer = isMobile ? 1.2 : 0.5;
+      totalDuration += getContentHeight(layer) / window.innerHeight + extraBuffer;
     });
-    totalDuration += 1; // Exit
+    totalDuration += isMobile ? 1.2 : 1;
 
     // Main timeline
     const tl = gsap.timeline({
@@ -151,12 +141,11 @@ export function StrategiesWall() {
       }
     });
 
-    // Entry: Zoom to first window (top-left)
     tl.to([windowsGridRef.current, backgroundRef.current], {
       scale: scale,
       x: positions[0].x,
       y: positions[0].y,
-      duration: 0.8,
+      duration: isMobile ? 1 : 0.8,
       ease: 'power2.inOut'
     });
 
@@ -191,16 +180,16 @@ export function StrategiesWall() {
         tl.to([windowsGridRef.current, backgroundRef.current], {
           x: positions[windowIndex].x,
           y: positions[windowIndex].y,
-          duration: 1.2,
+          duration: isMobile ? 1.5 : 1.2,
           ease: 'power2.inOut'
         });
 
         // Slide in the new layer
         tl.to(layer, {
           yPercent: 0,
-          duration: 2.5,
+          duration: isMobile ? 3 : 2.5,
           ease: 'power1.out'
-        }, '-=0.6');
+        }, isMobile ? '-=0.8' : '-=0.6');
         
         // Scroll through its content
         if (inner && contentHeight > window.innerHeight) {
@@ -215,30 +204,30 @@ export function StrategiesWall() {
       }
     });
 
-    let exitX, exitY;
-    
-      exitX = -(window.innerWidth - windowWidth * scale - (windowWidth + gap/2) * scale / 2) + -900;
-      exitY = -(window.innerHeight - windowHeight * scale - (windowHeight + gap/2) * scale / 2 - 100) + -900;
+    const exitX = -(window.innerWidth - windowWidth * scale - (windowWidth + gap/2) * scale / 2) + currentConfig.exitX;
+    const exitY = -(window.innerHeight - windowHeight * scale - (windowHeight + gap/2) * scale / 2 - currentConfig.enterY) + currentConfig.exitY;
 
+    // Prepare zoom-out position before overlay starts fading
     tl.to([windowsGridRef.current, backgroundRef.current], {
       x: exitX,
       y: exitY,
-      duration: 0.6,
+      duration: isMobile ? 0.8 : 0.6,
       ease: 'power2.inOut'
     });
 
+    // EXIT: Start overlay fade after zoom-out position is ready
     tl.to(overlayRef.current, {
       opacity: 0,
-      scale: 0.95,
-      duration: 0.4,
+      scale: isMobile ? 0.9 : 0.95,
+      duration: isMobile ? 0.5 : 0.4,
       ease: 'power1.in'
-    }, '-=0.3');
+    }, isMobile ? '-=0.3' : '-=0.2');
 
     tl.to([windowsGridRef.current, backgroundRef.current], {
       scale: 1,
       x: 0,
       y: 0,
-      duration: 0.8,
+      duration: isMobile ? 1 : 0.8,
       ease: 'power2.inOut'
     });
 
@@ -282,7 +271,6 @@ export function StrategiesWall() {
           </div>
         </div>
 
-        {/* Content layers */}
         <div
           ref={overlayRef}
           className="fixed inset-0 pointer-events-auto"

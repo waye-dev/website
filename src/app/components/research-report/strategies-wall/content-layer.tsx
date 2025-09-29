@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ContentLayerProps {
   children: React.ReactNode;
   zIndex: number;
@@ -15,10 +13,11 @@ export const ContentLayer: React.FC<ContentLayerProps> = ({
       style={{
         backgroundColor: '#FBF7EE',
         zIndex,
-        height: '100vh'
+        height: '100vh',
+        boxShadow: '0 -5px 5px rgba(0, 0, 0, 0.03)',
       }}
     >
-        <div className="content-inner w-full max-w-[1000px] xl:max-w-[1250px] mx-auto px-8 my-[200px] shadow-t-lg">
+        <div className="content-inner w-full max-w-[1000px] xl:max-w-[1250px] mx-auto px-4 md:px-8 my-[80px] md:my-[150px] pb-[100px] md:pb-0">
           {children}
       </div>
     </div>
