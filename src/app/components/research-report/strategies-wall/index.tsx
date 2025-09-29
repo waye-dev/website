@@ -11,7 +11,6 @@ import { JuniorAppDev } from './junior-app-dev';
 import { SeniorAppDev } from './senior-app-dev';
 import { ContentLayer } from './content-layer';
 
-
 const strategyImages = [
   {
     src: "/svgs/strategy-image-1.svg",
@@ -39,20 +38,63 @@ export function StrategiesWall() {
   const windowsGridRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentGridRef = useRef<HTMLDivElement>(null);
+  const windowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const calculateZoomPosition = (windowIndex: number) => {
+    if (!windowsGridRef.current || !windowRefs.current[windowIndex]) return null;
+
+    const windowElement = windowRefs.current[windowIndex];
+    if (!windowElement) return null;
+
+    const windowRect = windowElement.getBoundingClientRect();
+    const gridRect = windowsGridRef.current.getBoundingClientRect();
+    
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    const scaleX = viewportWidth / windowRect.width;
+    const scaleY = viewportHeight / windowRect.height;
+    
+    const isMobile = viewportWidth < 768;
+    const isTablet = viewportWidth >= 768 && viewportWidth < 1024;
+    
+    let targetScale: number;
+    
+    if (isMobile) {
+      targetScale = scaleX * 0.9; // Slight padding
+    } else if (isTablet) {
+      targetScale = Math.min(scaleX, scaleY) * 1.05;
+    } else {
+      targetScale = Math.min(scaleX * 1.2, scaleY * 1.2);
+      targetScale = Math.min(targetScale, 2.5);
+    }
+    
+    const windowCenterX = windowRect.left + windowRect.width / 2 - gridRect.left;
+    const windowCenterY = windowRect.top + windowRect.height / 2 - gridRect.top;
+    
+    const gridCenterX = gridRect.width / 2;
+    const gridCenterY = gridRect.height / 2;
+    
+    const translateX = (gridCenterX - windowCenterX) * targetScale;
+    const translateY = (gridCenterY - windowCenterY) * targetScale;
+    
+    return {
+      scale: targetScale,
+      x: translateX,
+      y: translateY
+    };
+  };
 
   useGSAP(() => {
     if (!containerRef.current || !windowsGridRef.current || !contentGridRef.current || !overlayRef.current) return;
 
-    // Initial state for overlay
     gsap.set(overlayRef.current, { 
       opacity: 0, 
       scale: 0.95
     });
 
-    // Get all content layers
     const contentLayers = contentGridRef.current.querySelectorAll('.content-layer');
     
-    // Set initial positions for content layers
     contentLayers.forEach((layer, index) => {
       const inner = layer.querySelector('.content-inner') as HTMLElement;
       if (index === 0) {
@@ -64,70 +106,24 @@ export function StrategiesWall() {
       }
     });
 
-    const isMobile = window.innerWidth < 768;
-
-    // Configuration
-    const config = {
-      desktop: {
-        zoomInScale: 0.9,
-        enterY: 100,
-        enterX: 0,
-        exitX: -900,
-        exitY: -900,
-      },
-      mobile: {
-        zoomInScale: 2.15,
-        enterY: 50,
-        enterX: -340,
-        exitX: -1420,
-        exitY: -600,
-      }
-    };
-
-    const currentConfig = isMobile ? config.mobile : config.desktop;
-
-    const gap = 28.8;
-    const windowWidth = (960 - gap) / 2;
-    const windowHeight = (720 - gap) / 2;
-
-    const scaleX = window.innerWidth / windowWidth;
-    const scaleY = window.innerHeight / windowHeight;
-    const baseScale = Math.min(scaleX, scaleY);
-    const scale = baseScale * currentConfig.zoomInScale;
-
-    const positions = [
-      {
-        x: (windowWidth + gap/2) * scale / 2 + currentConfig.enterX,
-        y: (windowHeight + gap/2) * scale / 2 + currentConfig.enterY
-      },
-      {
-        x: (windowWidth + gap/2) * scale / 2 + (windowWidth + gap) * scale + currentConfig.enterX,
-        y: (windowHeight + gap/2) * scale / 2 + currentConfig.enterY
-      },
-      {
-        x: (windowWidth + gap/2) * scale / 2 + currentConfig.enterX,
-        y: (windowHeight + gap/2) * scale / 2 + (windowHeight + gap) * scale + currentConfig.enterY
-      },
-      {
-        x: (windowWidth + gap/2) * scale / 2 + (windowWidth + gap) * scale + currentConfig.enterX,
-        y: (windowHeight + gap/2) * scale / 2 + (windowHeight + gap) * scale + currentConfig.enterY
-      }
-    ];
-
     const getContentHeight = (layer: Element) => {
       const inner = layer.querySelector('.content-inner') as HTMLElement;
       if (!inner) return window.innerHeight;
       const contentHeight = inner.scrollHeight || window.innerHeight * 2;
+      const isMobile = window.innerWidth < 768;
       const minHeight = isMobile ? window.innerHeight * 2.5 : window.innerHeight * 2;
       return Math.max(minHeight, contentHeight);
     };
 
+    const isMobile = window.innerWidth < 768;
     let totalDuration = isMobile ? 1.2 : 1;
     contentLayers.forEach((layer) => {
       const extraBuffer = isMobile ? 1.2 : 0.5;
       totalDuration += getContentHeight(layer) / window.innerHeight + extraBuffer;
     });
     totalDuration += isMobile ? 1.2 : 1;
+
+    const positions = [0, 1, 2, 3].map(index => calculateZoomPosition(index));
 
     // Main timeline
     const tl = gsap.timeline({
@@ -141,13 +137,17 @@ export function StrategiesWall() {
       }
     });
 
-    tl.to([windowsGridRef.current, backgroundRef.current], {
-      scale: scale,
-      x: positions[0].x,
-      y: positions[0].y,
-      duration: isMobile ? 1 : 0.8,
-      ease: 'power2.inOut'
-    });
+    // Zoom to first window
+    const firstPosition = positions[0];
+    if (firstPosition) {
+      tl.to([windowsGridRef.current, backgroundRef.current], {
+        scale: firstPosition.scale,
+        x: firstPosition.x,
+        y: firstPosition.y,
+        duration: isMobile ? 1 : 0.8,
+        ease: 'power2.inOut'
+      });
+    }
 
     // Show overlay
     tl.to(overlayRef.current, {
@@ -177,12 +177,17 @@ export function StrategiesWall() {
       } else {
         // Transition to next window position
         const windowIndex = index % 4;
-        tl.to([windowsGridRef.current, backgroundRef.current], {
-          x: positions[windowIndex].x,
-          y: positions[windowIndex].y,
-          duration: isMobile ? 1.5 : 1.2,
-          ease: 'power2.inOut'
-        });
+        const position = positions[windowIndex];
+        
+        if (position) {
+          tl.to([windowsGridRef.current, backgroundRef.current], {
+            x: position.x,
+            y: position.y,
+            scale: position.scale,
+            duration: isMobile ? 1.5 : 1.2,
+            ease: 'power2.inOut'
+          });
+        }
 
         // Slide in the new layer
         tl.to(layer, {
@@ -204,18 +209,20 @@ export function StrategiesWall() {
       }
     });
 
-    const exitX = -(window.innerWidth - windowWidth * scale - (windowWidth + gap/2) * scale / 2) + currentConfig.exitX;
-    const exitY = -(window.innerHeight - windowHeight * scale - (windowHeight + gap/2) * scale / 2 - currentConfig.enterY) + currentConfig.exitY;
+    // Calculate exit position (zoom out from last window)
+    const lastPosition = positions[3];
+    if (lastPosition) {
+      // Position for smooth transition before zoom out
+      tl.to([windowsGridRef.current, backgroundRef.current], {
+        x: lastPosition.x,
+        y: lastPosition.y,
+        scale: lastPosition.scale,
+        duration: isMobile ? 0.8 : 0.6,
+        ease: 'power2.inOut'
+      });
+    }
 
-    // Prepare zoom-out position before overlay starts fading
-    tl.to([windowsGridRef.current, backgroundRef.current], {
-      x: exitX,
-      y: exitY,
-      duration: isMobile ? 0.8 : 0.6,
-      ease: 'power2.inOut'
-    });
-
-    // EXIT: Start overlay fade after zoom-out position is ready
+    // Start overlay fade
     tl.to(overlayRef.current, {
       opacity: 0,
       scale: isMobile ? 0.9 : 0.95,
@@ -223,6 +230,7 @@ export function StrategiesWall() {
       ease: 'power1.in'
     }, isMobile ? '-=0.3' : '-=0.2');
 
+    // Zoom out to original position
     tl.to([windowsGridRef.current, backgroundRef.current], {
       scale: 1,
       x: 0,
@@ -256,15 +264,21 @@ export function StrategiesWall() {
           ref={windowsGridRef}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <div className="grid grid-cols-2 gap-6 max-w-7xl w-full h-full max-h-[800px] items-center justify-items-center p-4 md:p-8">
-            {strategyImages.map((image) => (
-              <div key={image.alt} className="flex items-center justify-center">
+          <div className="grid grid-cols-2 gap-6 max-w-7xl w-full h-full items-center justify-items-center p-4 md:p-48">
+            {strategyImages.map((image, index) => (
+              <div 
+                key={image.alt} 
+                ref={(el) => {
+                  windowRefs.current[index] = el;
+                }}
+                className="flex items-center justify-center w-full h-full"
+              >
                 <Image 
                   src={image.src} 
                   alt={image.alt} 
                   width={426} 
                   height={358} 
-                  className="object-contain" 
+                  className="object-contain w-full h-full" 
                 />
               </div>
             ))}
