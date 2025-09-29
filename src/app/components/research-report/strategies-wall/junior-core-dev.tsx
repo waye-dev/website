@@ -4,7 +4,6 @@ import { QuoteCards } from "../_components/quotes";
 
 export const JuniorCoreDev = () => {
   return (
-    <div className='w-full max-w-[1000px] xl:max-w-[1250px] mx-auto px-8 py-24'>
       <div className='flex flex-col gap-16'>
         <h1 className='text-[30px] md:text-[28px] leading-[120%] font-inknutAntiqua text-center'>Junior core dev: lost in the protocol</h1>
 
@@ -56,7 +55,6 @@ export const JuniorCoreDev = () => {
           ]}
         />
       </div>
-    </div>
   );
 };
 
