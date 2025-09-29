@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useMediaQuery } from "@/hooks/window-dimensions";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
+import { CrocAnimation } from "./croc-animation";
 
 export const TopLevelAnalysis = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -14,7 +15,7 @@ export const TopLevelAnalysis = () => {
         </h1>
       </section>
 
-      <section className='flex flex-col gap-4 text-lg'>
+      <section className='flex flex-col gap-4 text-lg max-w-[1000px] xl:max-w-[1250px] mx-auto'>
         <p>
           Before starting with the open interviews, we asked participants to rate on a scale between 1 and 10 how close they saw themselves – in their
           roles, their work processes and environment, and their projects’ organizational structures – in relation to two opposite terms (where 1 is
@@ -27,7 +28,7 @@ export const TopLevelAnalysis = () => {
       <ParadoxVisualization />
 
       {/* experience the paradoxies section */}
-      <div className='flex flex-col gap-12 py-24'>
+      <div className='flex flex-col gap-12 max-w-[1000px] xl:max-w-[1250px] mx-auto py-24'>
         <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Experience the paradoxies</h5>
 
         <div className='grid grid-cols-2 md:grid-cols-1 gap-6 md:gap-12 h-fit'>
@@ -63,24 +64,28 @@ export const TopLevelAnalysis = () => {
       </div>
 
       {/* core findings section */}
-      <div className='flex flex-col gap-12 py-24'>
-        <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center'>
-          Core findings: the tyranny of permissionlessness
-        </h5>
+      <div className='flex flex-col'>
+        <div className=" max-w-[1000px] xl:max-w-[1250px] mx-auto">
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center pb-12'>
+            Core findings: the tyranny of permissionlessness
+          </h5>
+          <section className='flex flex-col gap-8 text-lg'>
+            <p>
+              The paradoxes revealed in our opening exercise — between commons and commerce, sustainability and experience, autonomy and isolation — all
+              point to a deeper structural tension, revealed by our interviews.
+            </p>
+            <strong>{`Permissionlessness — the defining principle of Bitcoin and the broader OSS ecosystem — becomes oppressive when applied to human work systems.`}</strong>
+            <p>
+              We call this <strong>“the tyranny of permissionlessness.”</strong>
+            </p>
+          </section>
+        </div>
 
-        <section className='flex flex-col gap-8 text-lg'>
-          <p>
-            The paradoxes revealed in our opening exercise — between commons and commerce, sustainability and experience, autonomy and isolation — all
-            point to a deeper structural tension, revealed by our interviews.
-          </p>
-          <strong>{`Permissionlessness — the defining principle of Bitcoin and the broader OSS ecosystem — becomes oppressive when applied to human work systems.`}</strong>
-          <p>
-            We call this <strong>“the tyranny of permissionlessness.”</strong>
-          </p>
+        <section className='w-full'>
+          <CrocAnimation />
         </section>
+        <section className="h-screen bg-[#031C51]">
 
-        <section className='w-full h-full flex items-center justify-end pr-32'>
-          <Image src='/svgs/permissionless-woman.svg' alt='permissionless woman' width={398} height={448} />
         </section>
       </div>
     </div>

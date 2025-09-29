@@ -121,14 +121,14 @@ export default function ResearchReport() {
           </div>
 
           {/* study overview section */}
-          <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
+          <Wrapper className='max-w-[1000px] xl:max-w-[1250px]'>
             <StudyOverviewSection />
           </Wrapper>
 
           {/* top level analysis section */}
-          <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
+          <section className=' py-24'>
             <TopLevelAnalysis />
-          </Wrapper>
+          </section>
         </div>
       </div>
       <div className='bg-blue-custom-1100'>
@@ -161,9 +161,9 @@ export default function ResearchReport() {
           <BeyondFinancialSustainability />
         </Wrapper>
       </div>
-      <div className='bg-blue-custom-1100 overflow-hidden'>
+      {/* <div className='bg-blue-custom-1100 overflow-hidden'>
         <RecommendationReveal />
-      </div>
+      </div> */}
 
       <div className='bg-gray-custom-400 text-black'>
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
