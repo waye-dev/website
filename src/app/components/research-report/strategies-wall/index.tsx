@@ -11,8 +11,6 @@ import { SeniorAppDev } from './senior-app-dev';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Убираем фиктивные данные strategies
-
 export function StrategiesWall() {
   const containerRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -23,8 +21,6 @@ export function StrategiesWall() {
   const [showContent, setShowContent] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const contentLayerRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const bgRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (!overlayRef.current) return;
@@ -48,65 +44,50 @@ export function StrategiesWall() {
     }
   }, [showOverlay]);
 
-  // Анимация выезжания экранов снизу
   useEffect(() => {
-    if (!contentLayerRefs.current.length) return;
+    if (!contentLayerRefs.current.length || !showOverlay) return;
 
     contentLayerRefs.current.forEach((layer, index) => {
       if (layer) {
-        if (index + 1 === currentStrategy) {
-          // Текущий экран выезжает снизу
-          gsap.fromTo(layer, 
-            { 
+        const strategyIndex = index + 1;
+
+        if (strategyIndex === currentStrategy) {
+          gsap.fromTo(layer,
+            {
               y: window.innerHeight,
-              opacity: 0
+              opacity: 0,
+              scale: 0.95
             },
             {
               y: 0,
               opacity: 1,
-              duration: 1.2,
+              scale: 1,
+              duration: 1.4,
               ease: 'power2.out',
-              zIndex: 10
+              zIndex: 10 + strategyIndex
             }
           );
+        } else if (strategyIndex < currentStrategy) {
+          gsap.to(layer, {
+            y: -window.innerHeight * 0.15 * (currentStrategy - strategyIndex),
+            opacity: 0.8 - (currentStrategy - strategyIndex) * 0.2,
+            scale: 0.98 - (currentStrategy - strategyIndex) * 0.02,
+            duration: 1.2,
+            ease: 'power2.out',
+            zIndex: 10 - (currentStrategy - strategyIndex)
+          });
         } else {
-          // Остальные экраны скрыты
           gsap.set(layer, {
-            opacity: 0,
             y: window.innerHeight,
-            zIndex: 1
+            opacity: 0,
+            scale: 0.95,
+            zIndex: strategyIndex
           });
         }
       }
     });
   }, [currentStrategy, showOverlay]);
 
-  // Параллакс эффект для секций
-  useEffect(() => {
-    if (!sectionRefs.current.length) return;
-
-    const getRatio = (el: HTMLElement) => window.innerHeight / (window.innerHeight + el.offsetHeight);
-
-    sectionRefs.current.forEach((section, i) => {
-      if (section && bgRefs.current[i]) {
-        const bg = bgRefs.current[i];
-        
-        gsap.fromTo(bg, {
-          backgroundPosition: () => i ? `50% ${-window.innerHeight * getRatio(section)}px` : "50% 0px"
-        }, {
-          backgroundPosition: () => `50% ${window.innerHeight * (1 - getRatio(section))}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: () => i ? "top bottom" : "top top", 
-            end: "bottom top",
-            scrub: true,
-            invalidateOnRefresh: true
-          }
-        });
-      }
-    });
-  }, []);
 
   useEffect(() => {
     if (!containerRef.current || !windowsGridRef.current) return;
@@ -233,7 +214,6 @@ export function StrategiesWall() {
 
   return (
     <div className="w-full">
-      {/* Первая секция с окнами */}
       <div
         ref={containerRef}
         className="relative w-full h-screen overflow-hidden"
@@ -333,7 +313,6 @@ export function StrategiesWall() {
           style={{ backgroundColor: '#FBF7EE' }}
         >
           <div className="w-full h-full overflow-y-auto relative">
-            {/* Слои контента - каждый со своим фоном */}
             <div
               ref={el => { contentLayerRefs.current[0] = el; }}
               className="absolute inset-0 w-full h-full"
@@ -366,85 +345,7 @@ export function StrategiesWall() {
         </div>
       </div>
 
-      <section
-       ref={el => { sectionRefs.current[0] = el as HTMLDivElement; }}
-        className="relative h-screen flex items-center justify-center"
-        style={{ backgroundColor: '#FBF7EE' }}
-     >
-        <div
-          ref={el => { bgRefs.current[0] = el; }}
-          className="absolute top-0 left-0 w-full h-full z-[-1]"
-          style={{
-            backgroundImage: "url('/svgs/research/strategies/bg.svg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        <div className="w-full max-w-7xl mx-auto px-8">
-          <JuniorCoreDev />
-        </div>
-      </section>
 
-      <section
-        ref={el => { sectionRefs.current[1] = el as HTMLDivElement; }}
-        className="relative h-screen flex items-center justify-center"
-        style={{ backgroundColor: '#FBF7EE' }}
-     >
-        <div
-          ref={el => { bgRefs.current[1] = el; }}
-          className="absolute top-0 left-0 w-full h-full z-[-1]"
-          style={{
-            backgroundImage: "url('/svgs/research/strategies/bg.svg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        <div className="w-full max-w-7xl mx-auto px-8">
-          <SeniorCoreDev />
-        </div>
-      </section>
-
-      <section
-        ref={el => { sectionRefs.current[2] = el as HTMLDivElement; }}
-        className="relative h-screen flex items-center justify-center"
-        style={{ backgroundColor: '#FBF7EE' }}
-     >
-        <div
-          ref={el => { bgRefs.current[2] = el; }}
-          className="absolute top-0 left-0 w-full h-full z-[-1]"
-          style={{
-            backgroundImage: "url('/svgs/research/strategies/bg.svg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        <div className="w-full max-w-7xl mx-auto px-8">
-          <JuniorAppDev />
-        </div>
-      </section>
-
-      <section
-        ref={el => { sectionRefs.current[3] = el as HTMLDivElement; }}
-        className="relative h-screen flex items-center justify-center"
-        style={{ backgroundColor: '#FBF7EE' }}
-     >
-        <div
-          ref={el => { bgRefs.current[3] = el; }}
-          className="absolute top-0 left-0 w-full h-full z-[-1]"
-          style={{
-            backgroundImage: "url('/svgs/research/strategies/bg.svg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        <div className="w-full max-w-7xl mx-auto px-8">
-          <SeniorAppDev />
-        </div>
-      </section>
    </div>
  );
-}   
+}
