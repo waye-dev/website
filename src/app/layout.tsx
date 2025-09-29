@@ -2,10 +2,34 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-import { Work_Sans } from "next/font/google";
+import { Work_Sans, Inknut_Antiqua, Josefin_Slab, Inter, Josefin_Sans } from "next/font/google";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
+  subsets: ["latin"],
+});
+
+const inknutAntiqua = Inknut_Antiqua({
+  variable: "--font-inknut-antiqua",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+
+const josefinSlab = Josefin_Slab({
+  variable: "--font-josefin-slab",
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const josefinSans = Josefin_Sans({
+  variable: "--font-josefin-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -45,7 +69,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${workSans.variable} bg-blue-custom-100 font-workSans antialiased`}>
+      <body
+        className={`${workSans.variable} ${inknutAntiqua.variable} ${josefinSlab.variable} ${josefinSans.variable} ${inter.variable} bg-blue-custom-100 font-workSans antialiased`}
+      >
         <Navbar />
         {children}
         <Footer />

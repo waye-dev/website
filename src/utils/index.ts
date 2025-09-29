@@ -1,3 +1,6 @@
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export const isValidEmail = (email: string): boolean => EMAIL_REGEX.test(email);
 
 export const isValidName = (name: string): boolean => {
@@ -23,6 +26,10 @@ export const checkFormValues = (name: string, email: string, setMessage: React.D
 
   setMessage("");
 };
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export const EMAIL_REGEX = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
 
