@@ -24,10 +24,6 @@ export default function ResearchReport() {
     <main>
       <div className='bg-gray-custom-400 text-black'>
         {/* intro section */}
-        <div className='bg-gray-custom-400'>
-          <FromTyrannyToPermissionlessness />
-      </div>
-
         <Wrapper>
           <div className='flex flex-col gap-24'>
             <div className='flex flex-col gap-14 items-center w-full pt-16'>
@@ -172,11 +168,9 @@ export default function ResearchReport() {
         <RecommendationReveal />
       </div>
 
-      {/* <div className='bg-gray-custom-400'>
-        <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
+      <div className='bg-gray-custom-400'>
           <FromTyrannyToPermissionlessness />
-        </Wrapper>
-      </div> */}
+      </div>
 
       <div className='bg-gray-custom-400 text-black'>
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
