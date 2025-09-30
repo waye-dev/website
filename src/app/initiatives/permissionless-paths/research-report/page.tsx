@@ -13,7 +13,7 @@ import { BeyondFinancialSustainability } from "@/app/components/research-report/
 import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
 import { Conclusion } from "@/app/components/research-report/conclusion";
 import { StrategySubSections } from "@/app/components/research-report/strategy-sub-sections";
-import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
+import FromTyrannyToPermissionlessness from "@/app/components/research-report/from-tyranny-to-permissionlessness";
 
 
 
