@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { ShareableContent } from "../share-mode";
+import { DemographicsMap } from "./_components/map-demographics";
 import { useResponsiveCircles } from "@/hooks/use-responsive-circles";
-import { useState } from "react";
-import { useEffect } from "react";
 
 export const StudyOverviewSection = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0); // Default fallback height
@@ -23,16 +24,18 @@ export const StudyOverviewSection = () => {
 
   return (
     <div className='flex flex-col gap-14'>
-      <h1 className='text-[30px] md:text-[40px] lg:text-[50px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua font-bold text-center'>
-        Study Overview
-      </h1>
+      <section className='flex flex-col gap-9'>
+        <h1 className='text-[30px] md:text-[40px] lg:text-[50px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua text-center'>
+          Study Overview
+        </h1>
 
-      <p className='text-lg'>
-        Open Source Software (OSS) is foundational to our global digital infrastructure. OSS promises new modes of work that transcend corporate
-        constraints — collaborative development beyond institutional boundaries, creative freedom without hierarchical control. In reality, however,
-        open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure
-        vulnerable to both burnout and institutional capture.
-      </p>
+        <ShareableContent
+          id='study-overview-section-1'
+          content='Open Source Software (OSS) is foundational to our global digital infrastructure. OSS promises new modes of work that transcend corporate constraints — collaborative development beyond institutional boundaries, creative freedom without hierarchical control. In reality, however, open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure vulnerable to both burnout and institutional capture.'
+          type='text'
+          className='text-lg'
+        />
+      </section>
 
       <div className='flex flex-col gap-24'>
         {/* the bitcoin solution section */}
@@ -73,33 +76,33 @@ export const StudyOverviewSection = () => {
         <div className='flex flex-col gap-12'>
           <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Our Research </h5>
 
-          <section className='flex md:flex-row flex-col gap-8'>
-            <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
+          <section className='flex flex-col gap-12 pl-16'>
+            <section className='flex md:flex-row flex-col md:gap-24 gap-8'>
+              <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
 
-            <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
-              <p>This pilot study addresses a foundational question:</p>
-              <p className='font-inknutAntiqua text-xl'>
-                How do full-time, grant-funded, institutionally unaffiliated developers in the Bitcoin and Bitcoin-adjacent (i.e. Nostr) ecosystem
-                work – and what do they need to sustainably perform their role?
-              </p>
-            </article>
+              <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
+                <p>This pilot study addresses a foundational question:</p>
+                <p className='font-inknutAntiqua text-xl'>
+                  How do full-time, grant-funded, institutionally unaffiliated developers in the Bitcoin and Bitcoin-adjacent (i.e. Nostr) ecosystem
+                  work – and what do they need to sustainably perform their role?
+                </p>
+              </article>
+            </section>
+
+            <section className='flex flex-row gap-4 justify-between'>
+              {researchOverviewNumbers.map((number) => (
+                <div key={number.description} className='flex flex-col gap-2 items-center'>
+                  <p className='font-inknutAntiqua text-2xl md:text-4xl lg:text-4xl font-bold'>{number.number}</p>
+                  <p className='font-inknutAntiqua text-xl md:text-3xl'>{number.description}</p>
+                </div>
+              ))}
+            </section>
           </section>
 
-          <section className='flex flex-col gap-4 text-lg'>
-            <p>
-              Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
-              least 12 months. Through semi-structured interviews, we explored:
-            </p>
-          </section>
-
-          <section className='flex flex-row gap-4 justify-between'>
-            {researchOverviewNumbers.map((number) => (
-              <div key={number.description} className='flex flex-col gap-2 items-center'>
-                <p className='font-inknutAntiqua text-2xl md:text-4xl lg:text-4xl font-bold'>{number.number}</p>
-                <p className='font-inknutAntiqua text-xl md:text-3xl'>{number.description}</p>
-              </div>
-            ))}
-          </section>
+          <p>
+            Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
+            least 12 months. Through semi-structured interviews, we explored:
+          </p>
 
           <section className='grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10'>
             {researchOverviewNumbersIcons.map((icon) => (
@@ -108,7 +111,7 @@ export const StudyOverviewSection = () => {
 
                 <section className='flex flex-col gap-2'>
                   <p className='text-lg font-bold'>{icon.title}</p>
-                  <p className='text-base italic'>{icon.description}</p>
+                  <p className='text-base'>{icon.description}</p>
                 </section>
               </div>
             ))}
@@ -119,7 +122,7 @@ export const StudyOverviewSection = () => {
         <div className='flex flex-col gap-12'>
           <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Key Findings & Impact </h5>
 
-          <section className='flex md:flex-row flex-col gap-8'>
+          <section className='flex md:flex-row flex-col items-center gap-8 pl-16'>
             <Image src='/svgs/key-findings-image.svg' alt='key findings image' width={375} height={308} />
 
             <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
@@ -221,17 +224,7 @@ export const StudyOverviewSection = () => {
               <p>Two participants chose not to disclose their location.</p>
             </section>
 
-            <div className='w-full flex flex-col gap-10 items-center'>
-              <Image src='/svgs/demographics.svg' alt='demographics image' width={700} height={560} />
-              <section className='flex flex-row gap-6 justify-between flex-wrap'>
-                {demographics.map((demographic) => (
-                  <div key={demographic.country} className='flex flex-row gap-2 items-center'>
-                    <div className='w-4 h-4 rounded-full' style={{ backgroundColor: demographic.color }} />
-                    <p className='font-inknutAntiqua text-xs'>{demographic.country}</p>
-                  </div>
-                ))}
-              </section>
-            </div>
+            <DemographicsMap />
           </div>
         </div>
 
@@ -362,16 +355,16 @@ const experienceLevels = [
     height: 250,
   },
   {
-    title: "Mid-level contributors (3-5 years)",
+    title: "Mid-level contributors (3-6 years)",
     image: "/svgs/mid-level-developer.svg",
-    description: "make up 34.6% of the sample, showing a steady influx of developers.",
+    description: "are evenly distributed, suggesting no clear specialization pathway.",
     width: 260,
     height: 250,
   },
   {
-    title: "Senior contributors (5+ years)",
+    title: "Senior contributors (6+ years)",
     image: "/svgs/senior-developer.svg",
-    description: "account for 23.1% of the sample, indicating a growing number of experienced developers.",
+    description: "specialize in infrastructure and applications, not protocol work.",
     width: 260,
     height: 250,
   },

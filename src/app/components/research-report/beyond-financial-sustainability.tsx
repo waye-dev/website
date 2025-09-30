@@ -378,7 +378,7 @@ export const BeyondFinancialSustainability = () => {
 
 export const TakeawayCard = ({ text }: { text: string }) => {
   return (
-    <section className='flex flex-col gap-3 py-8 px-9 bg-blue-custom-900 rounded-3xl'>
+    <section className='flex flex-col gap-3 py-8 px-9 bg-blue-custom-1100 rounded-3xl'>
       <section className='flex flex-row gap-2'>
         <Image src='/svgs/notes-icon.svg' alt='note icon' width={31} height={31} />
         <p className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold '>Takeaway</p>

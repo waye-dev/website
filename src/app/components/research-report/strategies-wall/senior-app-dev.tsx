@@ -5,7 +5,7 @@ import { StrategySubSection, StrategySubSectionWithList } from "./strategy-sub-s
 
 export const SeniorAppDev = () => {
   return (
-      <div className='flex flex-col gap-16'>
+    <div className='flex flex-col gap-16'>
       <h1 className='text-[30px] md:text-[28px] leading-[120%] font-inknutAntiqua text-center'>
         Senior app dev: "using chaos to keep things interesting"
       </h1>
@@ -64,7 +64,7 @@ export const SeniorAppDev = () => {
           },
           {
             id: "25",
-            text: "There is this funny thing. So if you build something, then there's an expectation for you to then maintain that thing. And for some brains, like my brain, I like building something and moving on to the next thing, but you can't really do that, because people then become dependent upon the thing working, so you end up having to maintain and then more and more of your time starts to be focused on maintaining projects. Some people just move on to the next thing. But I think a lot of us feel the responsibility to maintain those projects. So even if you're reluctantly doing it, often you find yourself maintaining a lot more than innovating and contributing and developing and building new stuff. — Respondent #25 Expert contributor",
+            text: "There is this funny thing. So if you build something, then there's an expectation for you to then maintain that thing. And for some brains, like my brain, I like building something and moving on to the next thing, but you can't really do that, because people then become dependent upon the thing working, so you end up having to maintain and then more and more of your time starts to be focused on maintaining projects. Some people just move on to the next thing. But I think a lot of us feel the responsibility to maintain those projects. So even if you're reluctantly doing it, often you find yourself maintaining a lot more than innovating and contributing and developing and building new stuff.",
             author: {
               type: "expert",
               respondentNumber: 25,
@@ -88,7 +88,7 @@ export const SeniorAppDev = () => {
           },
           {
             id: "18",
-            text: "I can easily find a job at a company. I mean, I don't have a problem or fear of not having a job. I have a problem, a fear of not working on Bitcoin. — Respondent #18 Expert contributor",
+            text: "I can easily find a job at a company. I mean, I don't have a problem or fear of not having a job. I have a problem, a fear of not working on Bitcoin.",
             author: {
               type: "expert",
               respondentNumber: 18,
@@ -96,7 +96,6 @@ export const SeniorAppDev = () => {
           },
         ]}
       />
-      </div>
+    </div>
   );
 };
-

@@ -34,10 +34,18 @@ export const TyrannyOfPermissionlessness = () => {
         <p>This tyranny emerges at the confluence of four interconnected dimensions that shape the developer experience:</p>
 
         <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[7px]'>
-          <li>Ideological factors: how freedom as mission becomes freedom as burden</li>
-          <li>Structural factors: how permissionless architecture and work practices create isolated work</li>
-          <li>Human factors: how self-management becomes self-exploitation</li>
-          <li>Institutional factors: how grant systems reinforce individual struggles, rather than facilitating collective support</li>
+          <li>
+            <strong>Ideological factors:</strong> how freedom as mission becomes freedom as burden
+          </li>
+          <li>
+            <strong>Structural factors:</strong> how permissionless architecture and work practices create isolated work
+          </li>
+          <li>
+            <strong>Human factors:</strong> how self-management becomes self-exploitation
+          </li>
+          <li>
+            <strong>Institutional factors:</strong> how grant systems reinforce individual struggles, rather than facilitating collective support
+          </li>
         </ul>
 
         <p>
