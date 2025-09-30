@@ -10,17 +10,27 @@ export const SharePopover: React.FC = () => {
   const { selectedElement, popoverPosition, hideSharePopover, cancelHidePopover, isShareModeActive } = useShareMode();
   const pathname = usePathname();
   const popoverRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [shouldRender, setShouldRender] = useState<boolean>(false);
   const [copiedOption, setCopiedOption] = useState<string | null>(null);
   const [sharedOption, setSharedOption] = useState<string | null>(null);
 
   // Show/hide animation
   useEffect(() => {
     if (selectedElement && popoverPosition) {
-      setIsVisible(true);
+      setShouldRender(true);
+      // Small delay for smooth fade-in
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 50);
+      return () => clearTimeout(timer);
     } else {
-      // setIsVisible(true);
       setIsVisible(false);
+      // Wait for fade-out animation to complete before unmounting
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 300); // Match the duration-300 in className
+      return () => clearTimeout(timer);
     }
   }, [selectedElement, popoverPosition]);
 
@@ -64,20 +74,43 @@ export const SharePopover: React.FC = () => {
     }
   };
 
-  const createShareableUrl = async (selectedElement: ShareableElement) => {
-    const slicedQuote = selectedElement.content.substring(0, 10) + "...";
-
+  const createShareableUrl = (selectedElement: ShareableElement) => {
     const url = `${window.location.origin}${pathname}#${encodeURIComponent(selectedElement.id)}`;
-
-    const success = await copyToClipboard(url);
-    if (success) {
-      setSharedOption("share");
-      setTimeout(() => setSharedOption(null), 2000);
-    }
-    // hideSharePopover();
+    return url;
   };
 
-  if (!selectedElement || !popoverPosition || !isVisible) {
+  const handleNativeShare = async (selectedElement: ShareableElement) => {
+    const url = createShareableUrl(selectedElement);
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: selectedElement.title || "Share this content",
+          text: selectedElement.content,
+          url: url,
+        });
+        setSharedOption("share");
+        setTimeout(() => setSharedOption(null), 2000);
+      } catch (error) {
+        if (error instanceof Error) {
+          if (error.name === 'AbortError') {
+            return;
+          }
+          console.error("Error sharing:", error);
+        } else {
+          console.error("Unknown error during share:", error);
+        }
+      }
+    } else {
+      const success = await copyToClipboard(url);
+      if (success) {
+        setSharedOption("share");
+        setTimeout(() => setSharedOption(null), 2000);
+      }
+    }
+  };
+
+  if (!shouldRender || !popoverPosition || !selectedElement) {
     return null;
   }
 
@@ -94,7 +127,9 @@ export const SharePopover: React.FC = () => {
     <div
       ref={popoverRef}
       style={popoverStyle}
-      className={`bg-[#0F172A] text-white rounded-[10px] w-[90vw] sm:w-full max-w-[513px] py-2 px-4 transition-all duration-200`}
+      className={`bg-[#0F172A] text-white rounded-[10px] w-[90vw] sm:w-full max-w-[513px] py-2 px-4 transition-all duration-300 ease-out ${
+        isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-2'
+      }`}
       onMouseEnter={() => cancelHidePopover()}
       onMouseLeave={() => hideSharePopover()}
     >
@@ -117,7 +152,7 @@ export const SharePopover: React.FC = () => {
           {/* share button */}
           <button
             className='text-[11.28px] flex flex-row items-center gap-1 text-[#0F172A] font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#BFDBFE] transition-all duration-150 hover:scale-105 active:scale-95'
-            onClick={async () => createShareableUrl(selectedElement)}
+            onClick={async () => handleNativeShare(selectedElement)}
           >
             {sharedOption === "share" ? (
               <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -134,11 +169,12 @@ export const SharePopover: React.FC = () => {
             <span className='hidden sm:inline'>{sharedOption === "share" ? "Link Copied" : "Share Quote"}</span>
           </button>
 
-          {/* copy button */}
+          {/* copy link button */}
           <button
             className='text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] transition-all duration-150 hover:scale-105 active:scale-95'
             onClick={async () => {
-              const success = await copyToClipboard(selectedElement.content);
+              const url = createShareableUrl(selectedElement);
+              const success = await copyToClipboard(url);
               if (success) {
                 setCopiedOption("copy");
                 setTimeout(() => setCopiedOption(null), 2000);
@@ -163,7 +199,7 @@ export const SharePopover: React.FC = () => {
                 />
               </svg>
             )}
-            <span className='hidden sm:inline'>Copy</span>
+            <span className='hidden sm:inline'>Copy Link</span>
           </button>
         </section>
       </div>
