@@ -1,110 +1,190 @@
-"use client";
+import React, { useEffect, useRef, useState } from 'react';
 
-import { useState, useRef } from "react";
-import { AnimatedSVG } from "./animated-svg";
-import { TextSection } from "./text-section";
-import { sections } from "./sections-data";
+// Extend Window interface for GSAP
+declare global {
+  interface Window {
+    gsap: any;
+  }
+}
 
-export const FromTyrannyToPermissionlessness = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [replayKey, setReplayKey] = useState(0);
-  const [sectionKeys, setSectionKeys] = useState<number[]>(sections.map(() => 0));
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+// Extend HTMLElement for animation timeline
+interface ExtendedHTMLElement extends HTMLElement {
+  _animationTimeline?: any;
+}
 
-  const handleSectionChange = (newIndex: number) => {
-    if (newIndex === activeIndex || isAnimating) return;
-    setIsAnimating(true);
-    setActiveIndex(newIndex);
-    // Increment key for the new section to restart its animation
-    setSectionKeys(prev => {
-      const newKeys = [...prev];
-      newKeys[newIndex] = newKeys[newIndex] + 1;
-      return newKeys;
-    });
-    setTimeout(() => setIsAnimating(false), 500);
-  };
+export default function FromTyrannyToPermissionlessness() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [gsapLoaded, setGsapLoaded] = useState(false);
 
-  const handleAnimationReplay = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setReplayKey(prev => prev + 1);
-    // Also increment the active section's key
-    setSectionKeys(prev => {
-      const newKeys = [...prev];
-      newKeys[activeIndex] = newKeys[activeIndex] + 1;
-      return newKeys;
-    });
-    setTimeout(() => setIsAnimating(false), 500);
-  };
+  useEffect(() => {
+    // Load GSAP core only (DrawSVG is premium)
+    const loadGSAP = async () => {
+      try {
+        // Load GSAP core
+        const gsapScript = document.createElement('script');
+        gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+        
+        await new Promise((resolve, reject) => {
+          gsapScript.onload = resolve;
+          gsapScript.onerror = reject;
+          document.head.appendChild(gsapScript);
+        });
 
-  const getTextAnimation = (index: number) => {
-    const isActive = index === activeIndex;
-    return {
-      opacity: isActive ? 1 : 0,
-      transform: `translateY(${isActive ? 0 : -500}px) scale(${isActive ? 1 : 0.9})`,
+        setGsapLoaded(true);
+      } catch (error) {
+        console.error('Failed to load GSAP:', error);
+      }
     };
-  };
 
-  const getSVGAnimation = (index: number) => {
-    const isActive = index === activeIndex;
-    return {
-      opacity: isActive ? 1 : 0,
+    loadGSAP();
+
+    // Load SVG
+    fetch('/svgs/research/from-tyranny-to-permissionlessness/full.svg')
+      .then(response => response.text())
+      .then(svgText => {
+        if (containerRef.current) {
+          containerRef.current.innerHTML = svgText;
+          setIsLoaded(true);
+        }
+      })
+      .catch(error => {
+        console.error('Failed to load SVG:', error);
+      });
+
+    return () => {
+      // Cleanup scripts
+      const scripts = document.querySelectorAll('script[src*="gsap"]');
+      scripts.forEach(script => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
     };
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded || !gsapLoaded || !window.gsap) return;
+
+    const svg = containerRef.current?.querySelector('svg');
+    if (!svg) return;
+
+    // Get all elements for animation
+    const strokeElements = svg.querySelectorAll('path[stroke]');
+    const fillElements = svg.querySelectorAll('path[fill]:not([stroke])');
+    
+    console.log(`Found ${strokeElements.length} stroke elements and ${fillElements.length} fill elements to animate`);
+
+    // Create main timeline
+    const tl = window.gsap.timeline();
+
+    // Stage 1: Animate stroke elements (main structure)
+    strokeElements.forEach((element: Element, index: number) => {
+      try {
+        const pathElement = element as SVGPathElement;
+        const length = pathElement.getTotalLength();
+        
+        // Set initial state
+        window.gsap.set(element, {
+          strokeDasharray: length,
+          strokeDashoffset: length
+        });
+
+        // Add to timeline
+        tl.to(element, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          ease: "power2.inOut"
+        }, index * 0.2); // 0.2 second stagger
+      } catch (error) {
+        console.log('Skipping stroke element:', element);
+      }
+    });
+
+    // Stage 2: Animate fill elements (details) - fade in with stagger
+    fillElements.forEach((element: Element, index: number) => {
+      // Set initial state - invisible
+      window.gsap.set(element, {
+        opacity: 0,
+        scale: 0.8
+      });
+
+      // Add to timeline with delay after stroke elements
+      tl.to(element, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.7)"
+      }, 2 + (index * 0.05)); // Start after stroke animation + stagger
+    });
+
+    // Stage 3: Final polish - slight scale animation for the whole SVG
+    tl.to(svg, {
+      scale: 1.02,
+      duration: 0.3,
+      ease: "power2.out"
+    }, "-=0.5")
+    .to(svg, {
+      scale: 1,
+      duration: 0.3,
+      ease: "power2.inOut"
+    });
+
+    // Store timeline reference for replay
+    if (containerRef.current) {
+      (containerRef.current as ExtendedHTMLElement)._animationTimeline = tl;
+    }
+
+  }, [isLoaded, gsapLoaded]);
+
+  const handleReplay = () => {
+    if (!containerRef.current) return;
+    
+    const timeline = (containerRef.current as ExtendedHTMLElement)._animationTimeline;
+    if (!timeline) return;
+    
+    // Restart the animation
+    timeline.restart();
   };
 
   return (
-    <div className='font-inter min-h-screen relative'>
-      <div className="fixed top-40 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="flex gap-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
-          {sections.map((section, index) => (
-            <button
-              key={section.id}
-              className={`py-2 px-10 rounded-full text-xs font-medium transition-all duration-300 ${
-                index === activeIndex ? 'bg-black text-white' : 'text-gray-600 hover:text-black hover:bg-gray-100'
-              }`}
-              onClick={() => handleSectionChange(index)}
-              disabled={isAnimating}
-            >
-              {section.title}
-            </button>
-          ))}
-          <button
-            onClick={handleAnimationReplay}
-            disabled={isAnimating}
-            className="ml-2 px-4 rounded-full text-xs font-medium transition-all duration-300 bg-gray-100 hover:bg-gray-200 text-gray-700 disabled:opacity-50"
-          >
-            ↻
-          </button>
-        </div>
+    <div style={{ padding: '2rem' }}>
+      <div ref={containerRef} style={{ maxWidth: '800px', margin: '0 auto' }} />
+      <div style={{ 
+        marginTop: '1rem', 
+        display: 'flex', 
+        gap: '1rem', 
+        justifyContent: 'center',
+        flexWrap: 'wrap'
+      }}>
+        <button 
+          onClick={handleReplay}
+          disabled={!isLoaded || !gsapLoaded}
+          style={{ 
+            padding: '0.5rem 1rem',
+            backgroundColor: '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: isLoaded && gsapLoaded ? 'pointer' : 'not-allowed',
+            opacity: isLoaded && gsapLoaded ? 1 : 0.5,
+            fontSize: '14px',
+            fontWeight: '500'
+          }}
+        >
+          🔄 Replay Animation
+        </button>
+        {isLoaded && gsapLoaded && (
+          <div style={{ 
+            fontSize: '12px', 
+            color: '#666', 
+            alignSelf: 'center',
+            textAlign: 'center'
+          }}>
+            ✨ Full SVG Animation with 3 stages
+          </div>
+        )}
       </div>
-
-          {sections.map((section, index) => (
-            <div
-              key={section.id}
-              ref={(el) => { sectionRefs.current[index] = el; }}
-              className="absolute inset-0"
-            >
-              <TextSection
-                isActive={index === activeIndex}
-                style={getTextAnimation(index)}
-              >
-                {section.textContent}
-              </TextSection>
-              <div
-                className="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500"
-                style={getSVGAnimation(index)}
-              >
-                {section.animation && (
-                  <AnimatedSVG
-                    key={sectionKeys[index]}
-                    stage={section.animation}
-                    replayKey={sectionKeys[index]}
-                  />
-                )}
-              </div>
-            </div>
-          ))}
-      </div>
+    </div>
   );
-};
+}
