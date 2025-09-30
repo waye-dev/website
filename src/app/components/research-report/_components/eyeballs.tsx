@@ -8,12 +8,20 @@ import gsap from "gsap";
 interface EyeballsProps {
   guyImageSrc?: string;
   eyesImageSrc?: string;
+  guyWidth?: number;
+  guyHeight?: number;
+  eyesWidth?: number;
+  eyesHeight?: number;
   className?: string;
 }
 
 export default function Eyeballs({
   guyImageSrc = "/svgs/research-intro/guy.svg",
   eyesImageSrc = "/svgs/research-intro/eyes.svg",
+  guyWidth = 390,
+  guyHeight = 350,
+  eyesWidth = 147,
+  eyesHeight = 20,
   className = "",
 }: EyeballsProps) {
   const eyesRef = useRef<HTMLDivElement>(null);
@@ -111,6 +119,18 @@ export default function Eyeballs({
     } else {
       window.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
+
+    return () => {
+      clearTimeout(interactionTimeout);
+      if (idleTimelineRef.current) {
+        idleTimelineRef.current.kill();
+      }
+      if (isTouchDevice) {
+        window.removeEventListener('scroll', handleScroll);
+      } else {
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
+    };
   });
 
   return (
@@ -118,8 +138,8 @@ export default function Eyeballs({
       <Image
         src={guyImageSrc}
         alt="Guy illustration"
-        width={390}
-        height={350}
+        width={guyWidth}
+        height={guyHeight}
         className="w-auto h-auto"
       />
       <div
@@ -129,8 +149,8 @@ export default function Eyeballs({
         <Image
           src={eyesImageSrc}
           alt="Eyes"
-          width={147}
-          height={20}
+          width={eyesWidth}
+          height={eyesHeight}
           className="w-auto h-auto scale-75 md:scale-100"
         />
       </div>
