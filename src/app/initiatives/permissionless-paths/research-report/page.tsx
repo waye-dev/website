@@ -16,6 +16,7 @@ import { ShareModeProvider } from "@/contexts/share-mode-context";
 import { HashNavigation } from "@/app/components/hash-navigation";
 import { FloatingShareButton, SharePopover } from "@/app/components/share-mode";
 import { StickyNavigation } from "@/app/components/research-report/sticky-navigation";
+import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -141,6 +142,9 @@ export default function ResearchReport() {
           <RecommendationReveal />
         </div>
 
+        <div className='bg-gray-custom-400'>
+          <FromTyrannyToPermissionlessness />
+        </div>
         <div className='bg-gray-custom-400 text-black'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='toward-sustainable-permissionlessness'>
             <Conclusion />
