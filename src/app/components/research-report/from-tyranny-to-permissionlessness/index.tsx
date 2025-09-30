@@ -1,15 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 // Extend Window interface for GSAP
 declare global {
   interface Window {
     gsap: any;
+    ScrollTrigger: any;
   }
-}
-
-// Extend HTMLElement for animation timeline
-interface ExtendedHTMLElement extends HTMLElement {
-  _animationTimeline?: any;
 }
 
 export default function FromTyrannyToPermissionlessness() {
@@ -18,7 +14,7 @@ export default function FromTyrannyToPermissionlessness() {
   const [gsapLoaded, setGsapLoaded] = useState(false);
 
   useEffect(() => {
-    // Load GSAP core only (DrawSVG is premium)
+    // Load GSAP core and ScrollTrigger
     const loadGSAP = async () => {
       try {
         // Load GSAP core
@@ -30,6 +26,21 @@ export default function FromTyrannyToPermissionlessness() {
           gsapScript.onerror = reject;
           document.head.appendChild(gsapScript);
         });
+
+        // Load ScrollTrigger
+        const scrollTriggerScript = document.createElement('script');
+        scrollTriggerScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
+        
+        await new Promise((resolve, reject) => {
+          scrollTriggerScript.onload = resolve;
+          scrollTriggerScript.onerror = reject;
+          document.head.appendChild(scrollTriggerScript);
+        });
+
+        // Register ScrollTrigger
+        if (window.gsap && window.ScrollTrigger) {
+          window.gsap.registerPlugin(window.ScrollTrigger);
+        }
 
         setGsapLoaded(true);
       } catch (error) {
@@ -64,7 +75,7 @@ export default function FromTyrannyToPermissionlessness() {
   }, []);
 
   useEffect(() => {
-    if (!isLoaded || !gsapLoaded || !window.gsap) return;
+    if (!isLoaded || !gsapLoaded || !window.gsap || !window.ScrollTrigger) return;
 
     const svg = containerRef.current?.querySelector('svg');
     if (!svg) return;
@@ -76,7 +87,17 @@ export default function FromTyrannyToPermissionlessness() {
     console.log(`Found ${strokeElements.length} stroke elements and ${fillElements.length} fill elements to animate`);
 
     // Create main timeline
-    const tl = window.gsap.timeline();
+    const tl = window.gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top top',
+        end: '+=300%', // Scroll 3x viewport height for smooth animation
+        scrub: 1.5, // Smooth scrubbing with 1.5 second delay (less sensitive)
+        pin: true, // Pin the section while animating
+        anticipatePin: 1,
+        markers: false // Set to true for debugging
+      }
+    });
 
     // Stage 1: Animate stroke elements (main structure)
     strokeElements.forEach((element: Element, index: number) => {
@@ -130,61 +151,27 @@ export default function FromTyrannyToPermissionlessness() {
       ease: "power2.inOut"
     });
 
-    // Store timeline reference for replay
-    if (containerRef.current) {
-      (containerRef.current as ExtendedHTMLElement)._animationTimeline = tl;
-    }
+    // Cleanup
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
 
   }, [isLoaded, gsapLoaded]);
 
-  const handleReplay = () => {
-    if (!containerRef.current) return;
-    
-    const timeline = (containerRef.current as ExtendedHTMLElement)._animationTimeline;
-    if (!timeline) return;
-    
-    // Restart the animation
-    timeline.restart();
-  };
-
   return (
-    <div style={{ padding: '2rem' }}>
-      <div ref={containerRef} style={{ maxWidth: '800px', margin: '0 auto' }} />
-      <div style={{ 
-        marginTop: '1rem', 
-        display: 'flex', 
-        gap: '1rem', 
-        justifyContent: 'center',
-        flexWrap: 'wrap'
-      }}>
-        <button 
-          onClick={handleReplay}
-          disabled={!isLoaded || !gsapLoaded}
-          style={{ 
-            padding: '0.5rem 1rem',
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: isLoaded && gsapLoaded ? 'pointer' : 'not-allowed',
-            opacity: isLoaded && gsapLoaded ? 1 : 0.5,
-            fontSize: '14px',
-            fontWeight: '500'
-          }}
-        >
-          🔄 Replay Animation
-        </button>
-        {isLoaded && gsapLoaded && (
-          <div style={{ 
-            fontSize: '12px', 
-            color: '#666', 
-            alignSelf: 'center',
-            textAlign: 'center'
-          }}>
-            ✨ Full SVG Animation with 3 stages
-          </div>
-        )}
-      </div>
+    <div>
+      <div 
+        ref={containerRef} 
+        style={{ 
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '2rem',
+          background: '#ffffff'
+        }} 
+      />
     </div>
   );
 }
