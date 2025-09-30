@@ -21,11 +21,11 @@ export default function ResearchReport() {
       <div className='bg-gray-custom-400 text-black'>
         {/* intro section */}
         <Wrapper>
-          <div className='flex flex-col gap-24'>
+          <div className='flex flex-col gap-16 md:gap-24'>
             <div className='flex flex-col gap-14 items-center w-full pt-16'>
               <section className='flex flex-col items-center gap-5'>
                 <h1 className='text-[30px] md:text-[40px] lg:text-[54px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua font-normal text-center'>
-                  Permissionless Paths Report
+                  Permissionless Paths
                 </h1>
                 <p className='text-xl sm:text-3xl font-josefinSlab font-normal text-center'>By Laura Lotti</p>
               </section>
@@ -33,15 +33,11 @@ export default function ResearchReport() {
               <Eyeballs
                 guyImageSrc='/svgs/research/intro/guy.svg'
                 eyesImageSrc='/svgs/research/intro/eyes.svg'
-                guyWidth={390}
-                guyHeight={350}
-                eyesWidth={147}
-                eyesHeight={20}
               />
             </div>
 
             <div className='flex flex-col gap-5'>
-              <h3 className='text-xl sm:text-4xl font-josefinSlab font-bold'>Executive Summary</h3>
+              <h3 className='text-xl sm:text-4xl font-josefinSlab font-bold sm:text-center'>Executive Summary</h3>
               <section className='flex flex-col gap-3'>
                 <p>
                   This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem —
