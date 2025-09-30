@@ -8,7 +8,7 @@ import { useMediaQuery } from '../../../../hooks/window-dimensions';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FromTyrannyToPermissionlessness() {
+export function FromTyrannyToPermissionlessness() {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<HTMLDivElement>(null);
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -203,6 +203,13 @@ export default function FromTyrannyToPermissionlessness() {
       }
     });
 
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === containerRef.current) {
+          trigger.kill();
+        }
+      });
+    };
   }, { scope: containerRef, dependencies: [svgLoaded] });
 
   if (isMobile) {
