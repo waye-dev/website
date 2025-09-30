@@ -44,7 +44,7 @@ export const FloatingShareButton: React.FC = () => {
     >
       <button
         onClick={handleClick}
-        className={`flex items-center justify-center py-2.5 px-3 rounded-full gap-2.5 shadow-md shadow-gray-700/50 ${
+        className={`flex items-center justify-center py-2.5 px-4 rounded-full gap-2 shadow-md shadow-gray-700/50 transition-all duration-300 ease-in-out ${
           isShareModeActive ? "bg-[#3D506B] text-white" : "bg-[#C4DEF9] text-gray-700"
         }`}
         aria-label={isShareModeActive ? "Exit Share Mode" : "Enter Share Mode"}
