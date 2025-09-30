@@ -24,7 +24,6 @@ export default function ResearchReport() {
     <ShareModeProvider>
       <main>
         <div className='bg-gray-custom-400 text-black'>
-
           <Wrapper>
             <div className='flex flex-col gap-16 md:gap-24'>
               <div className='flex flex-col gap-14 items-center w-full pt-16'>
