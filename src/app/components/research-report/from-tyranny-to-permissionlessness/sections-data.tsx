@@ -36,8 +36,7 @@ export const sections: Section[] = [
     title: "Core Principle",
     textContent: (
       <div className="max-w-3xl">
-        <h2 className="text-2xl font-bold mb-4">The Core Principle</h2>
-        <p>Building systems that support contributors without compromising the open nature of decentralized development.</p>
+        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors’ day-to-day experience. They are directed primarily to funders, since project maintainers and contributors are already bearing the full weight of the tyranny of permissionlessness.</p>
       </div>
     ),
     animation: 'innerOnly',
