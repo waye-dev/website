@@ -1,76 +1,137 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 interface EyeballsProps {
   guyImageSrc?: string;
   eyesImageSrc?: string;
-  guyWidth?: number;
-  guyHeight?: number;
-  eyesWidth?: number;
-  eyesHeight?: number;
   className?: string;
 }
 
 export default function Eyeballs({
   guyImageSrc = "/svgs/research-intro/guy.svg",
   eyesImageSrc = "/svgs/research-intro/eyes.svg",
-  guyWidth = 390,
-  guyHeight = 350,
-  eyesWidth = 147,
-  eyesHeight = 20,
   className = "",
 }: EyeballsProps) {
-    
-  useEffect(() => {
-    let rafId: number;
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      if (rafId) return;
-      
-      rafId = requestAnimationFrame(() => {
-        const screenWidth = window.innerWidth;
-        const centerX = screenWidth / 2;
-        const mouseOffset = e.clientX - centerX;
-        const clampedOffset = Math.max(-20, Math.min(20, (mouseOffset / centerX) * 20));
-        
-        document.documentElement.style.setProperty('--eye-offset', `${clampedOffset}px`);
-        rafId = 0;
+  const eyesRef = useRef<HTMLDivElement>(null);
+  const idleTimelineRef = useRef<gsap.core.Timeline | null>(null);
+
+  useGSAP(() => {
+    if (!eyesRef.current) return;
+
+    const isTouchDevice = 'ontouchstart' in window;
+    let isInteracting = false;
+    let interactionTimeout: NodeJS.Timeout;
+
+    const startRandomMove = () => {
+      if (idleTimelineRef.current) {
+        idleTimelineRef.current.kill();
+      }
+
+      idleTimelineRef.current = gsap.timeline({
+        repeat: -1,
+        repeatRefresh: true
+      });
+
+      idleTimelineRef.current.to(eyesRef.current, {
+        x: () => gsap.utils.random(-6, 6),
+        duration: () => gsap.utils.random(2, 3),
+        ease: "power1.inOut"
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      if (rafId) cancelAnimationFrame(rafId);
+    startRandomMove();
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isInteracting) {
+        isInteracting = true;
+        idleTimelineRef.current?.kill();
+      }
+
+      clearTimeout(interactionTimeout);
+
+      const rect = eyesRef.current?.getBoundingClientRect();
+      if (!rect) return;
+
+      const eyeCenterX = rect.left + rect.width / 2;
+      const eyeCenterY = rect.top + rect.height / 2;
+
+      const deltaX = e.clientX - eyeCenterX;
+      const deltaY = e.clientY - eyeCenterY;
+
+      const angle = Math.atan2(deltaY, deltaX);
+      const distance = Math.min(Math.sqrt(deltaX * deltaX + deltaY * deltaY) / 30, 20);
+      const yDistance = Math.min(distance, 4);
+
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * yDistance;
+
+      gsap.to(eyesRef.current, {
+        x,
+        y,
+        duration: 0.3,
+        ease: "power2.out",
+        overwrite: true
+      });
+
+      interactionTimeout = setTimeout(() => {
+        isInteracting = false;
+        startRandomMove();
+      }, 2000);
     };
-  }, []);
+
+    const handleScroll = () => {
+      if (!isInteracting) {
+        isInteracting = true;
+        idleTimelineRef.current?.kill();
+      }
+
+      clearTimeout(interactionTimeout);
+
+      const x = Math.sin(window.scrollY * 0.01) * 8;
+      gsap.to(eyesRef.current, {
+        x,
+        y: 0,
+        duration: 0.2,
+        ease: "power1.out",
+        overwrite: true
+      });
+
+      interactionTimeout = setTimeout(() => {
+        isInteracting = false;
+        startRandomMove();
+      }, 2000);
+    };
+
+    if (isTouchDevice) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    } else {
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    }
+  });
 
   return (
     <div className={`relative flex justify-center ${className}`}>
       <Image
         src={guyImageSrc}
         alt="Guy illustration"
-        width={guyWidth}
-        height={guyHeight}
+        width={390}
+        height={350}
         className="w-auto h-auto"
       />
-      <div 
-        className="absolute transition-all duration-300 ease-out" 
-        style={{ 
-          top: '28.5%', 
-          left: '50%',
-          transform: 'translateX(calc(-50% + var(--eye-offset, 0px)))'
-        }}
+      <div
+        ref={eyesRef}
+        className="absolute top-[27.5%] md:top-[28.5%] left-1/2 -translate-x-1/2"
       >
         <Image
           src={eyesImageSrc}
           alt="Eyes"
-          width={eyesWidth}
-          height={eyesHeight}
-          className="w-auto h-auto"
+          width={147}
+          height={20}
+          className="w-auto h-auto scale-75 md:scale-100"
         />
       </div>
     </div>
