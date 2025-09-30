@@ -118,6 +118,8 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
     }
   };
 
+  const selectedOptionTaxDeductible = Boolean(isTaxDeductible === "yes");
+
   return (
     <>
       <RobotsMeta isModalOpen={isOpen} />
@@ -135,7 +137,8 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
             <h2 className='text-2xl lg:text-4xl font-semibold'>Support Decentralized Technologies</h2>
             <p className='mt-1 text-[#090909]'>
               Help us to provide sustainable support for free and open-source contributors working on freedom tech and projects that help
-              decentralized technologies flourish. We are a 501(c)(3) public charity. All donations are tax deductible.
+              decentralized technologies flourish. <br />{" "}
+              <span className='text-sm italic'>We are a 501(c)(3) public charity. All donations are tax deductible.</span>
             </p>
           </div>
 
@@ -170,7 +173,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
 
             <div className='grid gap-4 md:grid-cols-2'>
               <div className='flex flex-col gap-2'>
-                <label className='text-sm'>Name (optional)</label>
+                <label className='text-sm'>Name {!selectedOptionTaxDeductible && <span>(optional)</span>}</label>
                 <input
                   type='text'
                   placeholder='Satoshi Nakamoto'
@@ -182,7 +185,9 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
                 />
               </div>
               <div className='flex flex-col gap-2'>
-                <label className='text-sm'>Email (optional)</label>
+                <label className='text-sm'>
+                  Email <span>{!selectedOptionTaxDeductible && <span>(optional)</span>}</span>
+                </label>
                 <input
                   type='email'
                   placeholder='satoshin@gmx.com'
