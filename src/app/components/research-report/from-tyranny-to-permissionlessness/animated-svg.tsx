@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 interface AnimatedSVGProps {
   stage: 'framesOnly' | 'innerOnly' | 'complete';
@@ -28,7 +30,13 @@ export const AnimatedSVG = ({ stage, replayKey }: AnimatedSVGProps) => {
   const circle3bRef = useRef<SVGCircleElement>(null);
   const circle3cRef = useRef<SVGCircleElement>(null);
 
-  useEffect(() => {
+  const allCircles = [
+    circle1aRef, circle1bRef, circle1cRef,
+    circle2aRef, circle2bRef, circle2cRef,
+    circle3aRef, circle3bRef, circle3cRef
+  ];
+
+  useGSAP(() => {
     const framePaths = [frame1Ref.current, frame2Ref.current, frame3Ref.current];
     const stage2Paths = [
       line1Ref.current, line2Ref.current, line3Ref.current,
@@ -37,16 +45,14 @@ export const AnimatedSVG = ({ stage, replayKey }: AnimatedSVGProps) => {
       circle3aRef.current, circle3bRef.current, circle3cRef.current
     ];
 
-    // Setup frame paths
+    // Initialize stroke dash arrays
     framePaths.forEach(path => {
       if (!path) return;
       const pathLength = path.getTotalLength();
       path.style.strokeDasharray = `${pathLength}`;
-      // For innerOnly, frames should be already drawn
       path.style.strokeDashoffset = stage === 'innerOnly' ? '0' : `${pathLength}`;
     });
 
-    // Setup stage2 paths
     stage2Paths.forEach(path => {
       if (!path) return;
       const pathLength = path.getTotalLength();
@@ -54,68 +60,80 @@ export const AnimatedSVG = ({ stage, replayKey }: AnimatedSVGProps) => {
       path.style.strokeDashoffset = `${pathLength}`;
     });
 
-    // Load GSAP if not already loaded
-    const loadGSAP = () => {
-      if (window.gsap) {
-        animatePaths();
-        return;
-      }
+    allCircles.forEach(circleRef => {
+      const circle = circleRef.current;
+      if (!circle) return;
+      circle.style.fill = 'none';
+    });
 
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
-      script.onload = () => animatePaths();
-      document.head.appendChild(script);
-    };
-
-    const animatePaths = () => {
-      if (!window.gsap) return;
-
-      if (stage === 'framesOnly') {
-        // Stage 1: Draw frames only
-        framePaths.forEach(path => {
-          if (!path) return;
-          window.gsap.to(path, {
-            strokeDashoffset: 0,
-            duration: 2,
-            ease: "power2.inOut"
-          });
+    // Animate based on stage
+    if (stage === 'framesOnly') {
+      // Stage 1: Draw frames only
+      framePaths.forEach(path => {
+        if (!path) return;
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          duration: 2,
+          ease: "power2.inOut"
         });
-      } else if (stage === 'innerOnly') {
-        // Only animate inner elements (frames already drawn)
-        stage2Paths.forEach(path => {
-          if (!path) return;
-          window.gsap.to(path, {
-            strokeDashoffset: 0,
-            duration: 1.5,
-            ease: "power2.inOut"
-          });
+      });
+    } else if (stage === 'innerOnly') {
+      // Only animate inner elements (frames already drawn)
+      stage2Paths.forEach(path => {
+        if (!path) return;
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          ease: "power2.inOut"
         });
-      } else if (stage === 'complete') {
-        // Draw frames first, then inner elements
-        framePaths.forEach(path => {
-          if (!path) return;
-          window.gsap.to(path, {
-            strokeDashoffset: 0,
-            duration: 2,
-            ease: "power2.inOut"
-          });
-        });
+      });
 
-        // Draw inner elements after frames complete
-        stage2Paths.forEach(path => {
-          if (!path) return;
-          window.gsap.to(path, {
-            strokeDashoffset: 0,
-            duration: 1.5,
-            delay: 2,
-            ease: "power2.inOut"
-          });
+      // Fill circles after stroke animation
+      allCircles.forEach(circleRef => {
+        const circle = circleRef.current;
+        if (!circle) return;
+        gsap.to(circle, {
+          fill: 'black',
+          duration: 0.5,
+          delay: 1.5,
+          ease: "power2.inOut"
         });
-      }
-    };
+      });
+    } else if (stage === 'complete') {
+      // Draw frames first, then inner elements
+      framePaths.forEach(path => {
+        if (!path) return;
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          duration: 2,
+          ease: "power2.inOut"
+        });
+      });
 
-    loadGSAP();
-  }, [stage, replayKey]);
+      // Draw inner elements after frames complete
+      stage2Paths.forEach(path => {
+        if (!path) return;
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          delay: 2,
+          ease: "power2.inOut"
+        });
+      });
+
+      // Fill circles after inner elements are drawn
+      allCircles.forEach(circleRef => {
+        const circle = circleRef.current;
+        if (!circle) return;
+        gsap.to(circle, {
+          fill: 'black',
+          duration: 0.5,
+          delay: 3.5, // 2 (frames) + 1.5 (inner elements) = 3.5
+          ease: "power2.inOut"
+        });
+      });
+    }
+  }, { dependencies: [stage, replayKey] });
 
   return (
     <div className="flex gap-4 items-center w-[1410px]">
