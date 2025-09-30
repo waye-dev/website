@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { QuoteCards } from "../_components/quotes";
+import { StrategySubSection } from "./strategy-sub-sections";
 
 export const JuniorCoreDev = () => {
   return (
@@ -58,11 +59,3 @@ export const JuniorCoreDev = () => {
   );
 };
 
-const StrategySubSection = ({ title, description }: { title: string; description: string | React.ReactNode }) => {
-  return (
-    <section className='flex flex-col gap-4'>
-      <h5 className='font-josefinSans font-bold text-xl uppercase'>{title}</h5>
-      <section className='font-inter font-normal'>{description}</section>
-    </section>
-  );
-};
