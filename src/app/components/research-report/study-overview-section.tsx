@@ -23,16 +23,25 @@ export const StudyOverviewSection = () => {
 
   return (
     <div className='flex flex-col gap-14'>
-      <h1 className='text-[30px] md:text-[40px] lg:text-[50px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua font-bold text-center'>
-        Study Overview
-      </h1>
+      <section className='flex flex-col gap-9'>
+        <h1 className='text-[30px] md:text-[40px] lg:text-[50px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua text-center'>
+          Study Overview
+        </h1>
 
-      <p className='text-lg'>
-        Open Source Software (OSS) is foundational to our global digital infrastructure. OSS promises new modes of work that transcend corporate
-        constraints — collaborative development beyond institutional boundaries, creative freedom without hierarchical control. In reality, however,
-        open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure
-        vulnerable to both burnout and institutional capture.
-      </p>
+        <ShareableContent
+          id='study-overview-section-1'
+          content='Open Source Software (OSS) is foundational to our global digital infrastructure. OSS promises new modes of work that transcend corporate constraints — collaborative development beyond institutional boundaries, creative freedom without hierarchical control. In reality, however, open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure vulnerable to both burnout and institutional capture.'
+          type='text'
+          className='text-lg'
+        />
+
+        <p className='text-lg'>
+          Open Source Software (OSS) is foundational to our global digital infrastructure. OSS promises new modes of work that transcend corporate
+          constraints — collaborative development beyond institutional boundaries, creative freedom without hierarchical control. In reality, however,
+          open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure
+          vulnerable to both burnout and institutional capture.
+        </p>
+      </section>
 
       <div className='flex flex-col gap-24'>
         {/* the bitcoin solution section */}
