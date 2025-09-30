@@ -24,6 +24,8 @@ interface DataCircleProps {
 }
 
 const DataCircle = ({ percentage, bgColor, textColor, size, fontSize, position, onRef }: DataCircleProps) => {
+  const mobileSize = Math.round(size * 0.65);
+
   return (
     <div
       ref={onRef}
@@ -36,9 +38,17 @@ const DataCircle = ({ percentage, bgColor, textColor, size, fontSize, position, 
         ...position,
       }}
     >
-      <span className={`font-inknutAntiqua ${fontSize}`} style={{ color: textColor }}>
+      <span className={`font-inknutAntiqua ${fontSize} md:${fontSize}`} style={{ color: textColor, fontSize: `clamp(0.65rem, 2vw, 1rem)` }}>
         {percentage}
       </span>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          div {
+            width: ${mobileSize}px !important;
+            height: ${mobileSize}px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
