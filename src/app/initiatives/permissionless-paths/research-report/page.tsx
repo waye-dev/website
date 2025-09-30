@@ -66,8 +66,7 @@ export default function ResearchReport() {
           </div>
         </Wrapper>
 
-        {/* glossary section */}
-        {/* <Wrapper className='py-24'>
+        <Wrapper className='py-24'>
           <div className='flex flex-row w-full gap-16'>
             <section className='flex-1 relative'>
               <div className='flex flex-col gap-6 pt-[70vh] pb-[85px]'>
@@ -95,7 +94,7 @@ export default function ResearchReport() {
               </div>
             </div>
           </div>
-        </Wrapper> */}
+        </Wrapper> 
 
         {/* Glossary content section */}
         <div className='flex flex-col gap-16'>
@@ -150,7 +149,7 @@ export default function ResearchReport() {
       </div>
 
       <div className='bg-gray-custom-400'>
-          <FromTyrannyToPermissionlessness />
+          <TyrannyOfPermissionlessness />
       </div>
 
       <div className='bg-gray-custom-400 text-black'>
