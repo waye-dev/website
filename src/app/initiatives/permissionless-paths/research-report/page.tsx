@@ -13,6 +13,9 @@ import { BeyondFinancialSustainability } from "@/app/components/research-report/
 import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
 import { Conclusion } from "@/app/components/research-report/conclusion";
 import { StrategySubSections } from "@/app/components/research-report/strategy-sub-sections";
+import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
+
+
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -21,6 +24,10 @@ export default function ResearchReport() {
     <main>
       <div className='bg-gray-custom-400 text-black'>
         {/* intro section */}
+        <div className='bg-gray-custom-400'>
+          <FromTyrannyToPermissionlessness />
+      </div>
+
         <Wrapper>
           <div className='flex flex-col gap-24'>
             <div className='flex flex-col gap-14 items-center w-full pt-16'>
@@ -164,6 +171,12 @@ export default function ResearchReport() {
       <div className='bg-blue-custom-1100 overflow-hidden'>
         <RecommendationReveal />
       </div>
+
+      {/* <div className='bg-gray-custom-400'>
+        <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
+          <FromTyrannyToPermissionlessness />
+        </Wrapper>
+      </div> */}
 
       <div className='bg-gray-custom-400 text-black'>
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
