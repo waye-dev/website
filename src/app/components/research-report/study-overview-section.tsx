@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useResponsiveCircles } from "@/hooks/use-responsive-circles";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { DemographicsMap } from "./_components/map-demographics";
 
 export const StudyOverviewSection = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0); // Default fallback height
@@ -221,17 +221,7 @@ export const StudyOverviewSection = () => {
               <p>Two participants chose not to disclose their location.</p>
             </section>
 
-            <div className='w-full flex flex-col gap-10 items-center'>
-              <Image src='/svgs/demographics.svg' alt='demographics image' width={700} height={560} />
-              <section className='flex flex-row gap-6 justify-between flex-wrap'>
-                {demographics.map((demographic) => (
-                  <div key={demographic.country} className='flex flex-row gap-2 items-center'>
-                    <div className='w-4 h-4 rounded-full' style={{ backgroundColor: demographic.color }} />
-                    <p className='font-inknutAntiqua text-xs'>{demographic.country}</p>
-                  </div>
-                ))}
-              </section>
-            </div>
+            <DemographicsMap />
           </div>
         </div>
 
