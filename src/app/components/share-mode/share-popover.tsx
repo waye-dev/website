@@ -1,17 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { useShareMode, ShareableElement } from "@/contexts/share-mode-context";
-import { useMediaQuery } from "../../../hooks/window-dimensions";
 import { usePathname } from "next/navigation";
-
-interface ShareOption {
-  id: string;
-  name: string;
-  icon: React.ReactNode;
-  color: string;
-  action: (element: ShareableElement) => void;
-}
+import React, { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "../../../hooks/window-dimensions";
+import { useShareMode, ShareableElement } from "@/contexts/share-mode-context";
 
 export const SharePopover: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");

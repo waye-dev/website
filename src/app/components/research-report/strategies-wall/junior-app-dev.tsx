@@ -5,7 +5,7 @@ import { StrategySubSection, StrategySubSectionWithList } from "./strategy-sub-s
 
 export const JuniorAppDev = () => {
   return (
-      <div className='flex flex-col gap-16'>
+    <div className='flex flex-col gap-16'>
       <h1 className='text-[30px] md:text-[28px] leading-[120%] font-inknutAntiqua text-center'>Junior app dev: building user-facing applications</h1>
 
       <section className='grid grid-cols-1 md:grid-cols-2 gap-14 items-center'>
@@ -16,9 +16,9 @@ export const JuniorAppDev = () => {
             title='Key motivators vs lived reality: '
             description={
               <p>
-                Similarly to junior core developers, contributors working on user-facing applications are attracted by the opportunities to work in
-                an expanding value-aligned ecosystem, but also struggle with autonomous decision making and self-management, as well as the added
-                tasks of working on a product (communication, recruiting and retaining volunteer contributors, scaling the project). The ideological
+                Similarly to junior core developers, contributors working on user-facing applications are attracted by the opportunities to work in an
+                expanding value-aligned ecosystem, but also struggle with autonomous decision making and self-management, as well as the added tasks
+                of working on a product (communication, recruiting and retaining volunteer contributors, scaling the project). The ideological
                 commitment and community focus drives daily motivation, while adding pressure to deliver.
               </p>
             }
@@ -49,7 +49,7 @@ export const JuniorAppDev = () => {
         quotes={[
           {
             id: "5",
-            text: `This is probably the most common thing you're gonna hear the whole time. I'm my own best asset and worst enemy in the sense that I'm highly motivated, I want to work on the thing, I like to think I'm fairly intelligent and can do good work, but I am limited strongly by the number of hours I can work. I'm learning on the job and trying to figure stuff out. And often it takes me longer than I feel like it should. I just have all the general failings of a human and so, I have to just keep reminding myself on a regular basis. — Respondent #5 New contributor`,
+            text: `This is probably the most common thing you're gonna hear the whole time. I'm my own best asset and worst enemy in the sense that I'm highly motivated, I want to work on the thing, I like to think I'm fairly intelligent and can do good work, but I am limited strongly by the number of hours I can work. I'm learning on the job and trying to figure stuff out. And often it takes me longer than I feel like it should. I just have all the general failings of a human and so, I have to just keep reminding myself on a regular basis.`,
             author: {
               type: "new",
               respondentNumber: 5,
@@ -73,7 +73,6 @@ export const JuniorAppDev = () => {
           },
         ]}
       />
-      </div>
+    </div>
   );
 };
-
