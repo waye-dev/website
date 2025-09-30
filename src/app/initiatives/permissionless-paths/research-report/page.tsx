@@ -6,6 +6,7 @@ import { StudyOverviewSection } from "@/app/components/research-report/study-ove
 import { GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection } from "@/app/components/research-report/glossary-section";
 import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
 import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
+import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
 import { Strategies } from "@/app/components/research-report/strategies";
 import { StrategiesWall } from "@/app/components/research-report/strategies-wall";
 import Eyeballs from "@/app/components/research-report/_components/eyeballs";
@@ -69,7 +70,7 @@ export default function ResearchReport() {
           </Wrapper>
 
           {/* glossary section */}
-          {/* <Wrapper className='py-24'>
+          <Wrapper className='py-24'>
           <div className='flex flex-row w-full gap-16'>
             <section className='flex-1 relative'>
               <div className='flex flex-col gap-6 pt-[70vh] pb-[85px]'>
@@ -97,7 +98,7 @@ export default function ResearchReport() {
               </div>
             </div>
           </div>
-        </Wrapper> 
+        </Wrapper>
 
           {/* Glossary content section */}
           <div className='flex flex-col gap-16'>
@@ -135,7 +136,7 @@ export default function ResearchReport() {
           <RecommendationReveal />
         </div>
         <div className='bg-gray-custom-400'>
-          <TyrannyOfPermissionlessness />
+          <FromTyrannyToPermissionlessness />
         </div>
 
         <div className='bg-gray-custom-400 text-black'>
