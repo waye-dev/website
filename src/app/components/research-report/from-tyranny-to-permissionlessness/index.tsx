@@ -1,110 +1,214 @@
-"use client";
+import React, { useRef, useState, useEffect } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { sections } from './sections-data';
 
-import { useState, useRef } from "react";
-import { AnimatedSVG } from "./animated-svg";
-import { TextSection } from "./text-section";
-import { sections } from "./sections-data";
+gsap.registerPlugin(ScrollTrigger);
 
-export const FromTyrannyToPermissionlessness = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [replayKey, setReplayKey] = useState(0);
-  const [sectionKeys, setSectionKeys] = useState<number[]>(sections.map(() => 0));
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+export default function FromTyrannyToPermissionlessness() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<HTMLDivElement>(null);
+  const textRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [svgLoaded, setSvgLoaded] = useState(false);
 
-  const handleSectionChange = (newIndex: number) => {
-    if (newIndex === activeIndex || isAnimating) return;
-    setIsAnimating(true);
-    setActiveIndex(newIndex);
-    // Increment key for the new section to restart its animation
-    setSectionKeys(prev => {
-      const newKeys = [...prev];
-      newKeys[newIndex] = newKeys[newIndex] + 1;
-      return newKeys;
-    });
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  const handleAnimationReplay = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setReplayKey(prev => prev + 1);
-    // Also increment the active section's key
-    setSectionKeys(prev => {
-      const newKeys = [...prev];
-      newKeys[activeIndex] = newKeys[activeIndex] + 1;
-      return newKeys;
-    });
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  const getTextAnimation = (index: number) => {
-    const isActive = index === activeIndex;
-    return {
-      opacity: isActive ? 1 : 0,
-      transform: `translateY(${isActive ? 0 : -500}px) scale(${isActive ? 1 : 0.9})`,
+  useEffect(() => {
+    const loadSvg = async () => {
+      try {
+        const response = await fetch('/svgs/research/from-tyranny-to-permissionlessness/full.svg');
+        const svgText = await response.text();
+        
+        if (svgRef.current) {
+          svgRef.current.innerHTML = svgText;
+          
+          const svg = svgRef.current.querySelector('svg');
+          if (svg) {
+            svg.style.width = '100%';
+            svg.style.height = 'auto';
+            svg.style.display = 'block';
+            svg.style.margin = '0 auto';
+          }
+          
+          setSvgLoaded(true);
+        }
+      } catch (error) {
+        console.error('Failed to load SVG:', error);
+      }
     };
-  };
 
-  const getSVGAnimation = (index: number) => {
-    const isActive = index === activeIndex;
-    return {
-      opacity: isActive ? 1 : 0,
-    };
-  };
+    loadSvg();
+  }, []);
+
+  useGSAP(() => {
+    if (!svgLoaded) return;
+
+    const svg = svgRef.current?.querySelector('svg');
+    if (!svg) return;
+
+    const strokeElements = svg.querySelectorAll('path[stroke]');
+    const fillElements = svg.querySelectorAll('path[fill]:not([stroke])');
+    
+    console.log(`Found ${strokeElements.length} stroke elements and ${fillElements.length} fill elements`);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top top',
+        end: `+=${sections.length * 100}%`,
+        scrub: 1.5,
+        pin: true,
+        anticipatePin: 1,
+        markers: false
+      }
+    });
+
+    const textSectionDuration = 2;
+    const totalTimelineDuration = sections.length * textSectionDuration;
+    
+    const svgAnimationEndTime = totalTimelineDuration * 0.8;
+
+    const strokeAnimationDuration = svgAnimationEndTime * 0.6;
+    const fillAnimationStartTime = svgAnimationEndTime * 0.4;
+    
+    // Find the index of section with id '08' (assuming it's the last one)
+    const lastSectionIndex = sections.findIndex(section => section.id === '08');
+    const swapStartTime = lastSectionIndex * textSectionDuration;
+    
+    strokeElements.forEach((element: Element, index: number) => {
+      try {
+        const pathElement = element as SVGPathElement;
+        const length = pathElement.getTotalLength();
+        
+        gsap.set(element, {
+          strokeDasharray: length,
+          strokeDashoffset: length
+        });
+
+        const strokeStartTime = (index / strokeElements.length) * strokeAnimationDuration;
+        const strokeDuration = strokeAnimationDuration / strokeElements.length * 2;
+        
+        tl.to(element, {
+          strokeDashoffset: 0,
+          duration: Math.min(strokeDuration, 1.5),
+          ease: "power2.inOut"
+        }, strokeStartTime);
+      } catch (error) {
+        console.log('Skipping stroke element');
+      }
+    });
+
+    fillElements.forEach((element: Element, index: number) => {
+      gsap.set(element, {
+        opacity: 0,
+        scale: 0.8
+      });
+
+      const fillStartTime = fillAnimationStartTime + (index / fillElements.length) * (svgAnimationEndTime - fillAnimationStartTime);
+      
+      tl.to(element, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.7)"
+      }, fillStartTime);
+    });
+
+    tl.to(svg, {
+      scale: 1.02,
+      duration: 0.3,
+      ease: "power2.out"
+    }, svgAnimationEndTime - 0.6)
+    .to(svg, {
+      scale: 1,
+      duration: 0.3,
+      ease: "power2.inOut"
+    }, svgAnimationEndTime - 0.3);
+
+    // Animate position swap for the last section
+    if (lastSectionIndex >= 0) {
+      // Animate SVG moving from bottom to top position
+      tl.to(svgRef.current, {
+        y: '-45vh', // Move SVG up to where text typically appears
+        duration: 1,
+        ease: "power2.inOut"
+      }, swapStartTime);
+    }
+
+    textRefs.current.forEach((textEl, index) => {
+      if (!textEl) return;
+
+      gsap.set(textEl, {
+        opacity: 0,
+        y: 100
+      });
+
+      const startTime = index * textSectionDuration;
+
+      tl.to(textEl, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+      }, startTime);
+
+      // Special handling for the last section (id: 08)
+      if (sections[index]?.id === '08') {
+        // Move this text section down to where SVG was
+        tl.to(textEl, {
+          y: '35vh', // Move text down to SVG's original position
+          duration: 1,
+          ease: "power2.inOut"
+        }, startTime);
+        
+        // Keep it visible for the remaining duration
+        tl.to(textEl, {
+          opacity: 1,
+          duration: textSectionDuration - 0.8
+        }, startTime + 1);
+      } else {
+        // Normal animation for other sections
+        tl.to(textEl, {
+          opacity: 1,
+          y: 0,
+          duration: textSectionDuration - 1.6
+        }, startTime + 0.8);
+
+        if (index < sections.length - 1) {
+          tl.to(textEl, {
+            opacity: 0,
+            y: -150,
+            duration: 0.8,
+            ease: "power2.in"
+          }, startTime + textSectionDuration - 0.8);
+        }
+      }
+    });
+
+  }, { scope: containerRef, dependencies: [svgLoaded] });
 
   return (
-    <div className='font-inter min-h-screen relative'>
-      <div className="fixed top-40 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="flex gap-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
-          {sections.map((section, index) => (
-            <button
-              key={section.id}
-              className={`py-2 px-10 rounded-full text-xs font-medium transition-all duration-300 ${
-                index === activeIndex ? 'bg-black text-white' : 'text-gray-600 hover:text-black hover:bg-gray-100'
-              }`}
-              onClick={() => handleSectionChange(index)}
-              disabled={isAnimating}
-            >
-              {section.title}
-            </button>
-          ))}
-          <button
-            onClick={handleAnimationReplay}
-            disabled={isAnimating}
-            className="ml-2 px-4 rounded-full text-xs font-medium transition-all duration-300 bg-gray-100 hover:bg-gray-200 text-gray-700 disabled:opacity-50"
-          >
-            ↻
-          </button>
-        </div>
-      </div>
+    <div>
+      <div 
+        ref={containerRef} 
+        className="min-h-screen flex items-center justify-center relative"
+      >
+        <div 
+          ref={svgRef}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 scale-125 flex justify-center items-center"
+        />
 
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-full z-20">
           {sections.map((section, index) => (
             <div
               key={section.id}
-              ref={(el) => { sectionRefs.current[index] = el; }}
-              className="absolute inset-0"
+              ref={el => { textRefs.current[index] = el; }}
+              className="absolute w-full flex justify-center items-center"
             >
-              <TextSection
-                isActive={index === activeIndex}
-                style={getTextAnimation(index)}
-              >
-                {section.textContent}
-              </TextSection>
-              <div
-                className="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500"
-                style={getSVGAnimation(index)}
-              >
-                {section.animation && (
-                  <AnimatedSVG
-                    key={sectionKeys[index]}
-                    stage={section.animation}
-                    replayKey={sectionKeys[index]}
-                  />
-                )}
-              </div>
+              {section.textContent}
             </div>
           ))}
+        </div>
       </div>
+    </div>
   );
-};
+}
