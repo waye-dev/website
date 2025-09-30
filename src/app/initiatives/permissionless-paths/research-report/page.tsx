@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Wrapper from "@/app/components/wrapper";
 import { StudyOverviewSection } from "@/app/components/research-report/study-overview-section";
 import { GLOSSARY_LIST, GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection } from "@/app/components/research-report/glossary-section";
@@ -13,7 +12,6 @@ import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 import { BeyondFinancialSustainability } from "@/app/components/research-report/beyond-financial-sustainability";
 import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
 import { Conclusion } from "@/app/components/research-report/conclusion";
-import { StrategySubSections } from "@/app/components/research-report/strategy-sub-sections";
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
