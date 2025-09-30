@@ -111,6 +111,18 @@ export default function Eyeballs({
     } else {
       window.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
+
+    return () => {
+      clearTimeout(interactionTimeout);
+      if (idleTimelineRef.current) {
+        idleTimelineRef.current.kill();
+      }
+      if (isTouchDevice) {
+        window.removeEventListener('scroll', handleScroll);
+      } else {
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
+    };
   });
 
   return (
