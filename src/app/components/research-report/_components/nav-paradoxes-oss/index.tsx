@@ -9,10 +9,10 @@ import ParadoxLine from './paradox-line'
 import FooterAvatars from './footer-avatars'
 import MobileParadoxPage from './mobile'
 import ConnectingLines from './connecting-lines'
+import { useMediaQuery } from '@/hooks/window-dimensions'
 
 const ParadoxVisualization: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(false)
-  const [isClient, setIsClient] = useState(false)
+  const isMobile = useMediaQuery("(max-width: 768px)")
 
   const {
     scrollProgress,
@@ -26,24 +26,6 @@ const ParadoxVisualization: React.FC = () => {
     legendRef,
     getAvatarPosition
   } = useParadoxAnimation()
-
-  useEffect(() => {
-    setIsClient(true)
-
-    const checkIsMobile = () => {
-      const mobile = window.innerWidth < 768
-      setIsMobile(mobile)
-    }
-
-    checkIsMobile()
-    window.addEventListener('resize', checkIsMobile)
-
-    return () => window.removeEventListener('resize', checkIsMobile)
-  }, [])
-
-  if (!isClient) {
-    return null
-  }
 
   if (isMobile) {
     return <MobileParadoxPage />

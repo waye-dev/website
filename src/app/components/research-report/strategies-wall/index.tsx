@@ -115,27 +115,36 @@ export function StrategiesWall() {
       return Math.max(minHeight, contentHeight);
     };
 
-    const isMobile = window.innerWidth < 768;
-    let totalDuration = isMobile ? 1.2 : 1;
-    contentLayers.forEach((layer) => {
-      const extraBuffer = isMobile ? 1.2 : 0.5;
-      totalDuration += getContentHeight(layer) / window.innerHeight + extraBuffer;
-    });
-    totalDuration += isMobile ? 1.2 : 1;
+    const mm = gsap.matchMedia();
 
-    const positions = [0, 1, 2, 3].map(index => calculateZoomPosition(index));
+    mm.add({
+      isMobile: "(max-width: 767px)",
+      isDesktop: "(min-width: 768px)"
+    }, (context) => {
+      const { isMobile } = context.conditions as { isMobile: boolean };
 
-    // Main timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: () => `+=${totalDuration * window.innerHeight}`,
-        scrub: 0.5,
-        pin: true,
-        anticipatePin: 1,
-      }
-    });
+      let totalDuration = isMobile ? 1.2 : 1;
+      contentLayers.forEach((layer) => {
+        const extraBuffer = isMobile ? 1.2 : 0.5;
+        totalDuration += getContentHeight(layer) / window.innerHeight + extraBuffer;
+      });
+      totalDuration += isMobile ? 1.2 : 1;
+
+      const positions = [0, 1, 2, 3].map(index => calculateZoomPosition(index));
+
+      // Main timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: "strategies-wall",
+          trigger: containerRef.current,
+          start: 'top top',
+          end: () => `+=${totalDuration * window.innerHeight}`,
+          scrub: 0.5,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        }
+      });
 
     // Zoom to first window
     const firstPosition = positions[0];
@@ -230,15 +239,17 @@ export function StrategiesWall() {
       ease: 'power1.in'
     }, isMobile ? '-=0.3' : '-=0.2');
 
-    // Zoom out to original position
-    tl.to([windowsGridRef.current, backgroundRef.current], {
-      scale: 1,
-      x: 0,
-      y: 0,
-      duration: isMobile ? 1 : 0.8,
-      ease: 'power2.inOut'
+      // Zoom out to original position
+      tl.to([windowsGridRef.current, backgroundRef.current], {
+        scale: 1,
+        x: 0,
+        y: 0,
+        duration: isMobile ? 1 : 0.8,
+        ease: 'power2.inOut'
+      });
     });
 
+    return () => mm.revert();
   }, { scope: containerRef, dependencies: [] });
 
   return (
