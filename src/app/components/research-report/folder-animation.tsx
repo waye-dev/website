@@ -29,7 +29,7 @@ export const FolderAnimation = () => {
                 trigger: containerRef.current,
                 start: "top top",
                 end: "bottom",
-                markers: true,
+                // markers: true,
             }
         })
 
