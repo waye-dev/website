@@ -56,12 +56,14 @@ export function FromTyrannyToPermissionlessness() {
 
     const tl = gsap.timeline({
       scrollTrigger: {
+        id: "tyranny-permissionlessness",
         trigger: containerRef.current,
         start: 'top top',
         end: `+=${sections.length * 100}%`,
         scrub: 1.5,
         pin: true,
         anticipatePin: 1,
+        invalidateOnRefresh: true,
         markers: false
       }
     });

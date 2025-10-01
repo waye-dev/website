@@ -78,6 +78,7 @@ export const DemographicsMap = () => {
             delay: index * 0.25,
             ease: "back.out(1.7)",
             scrollTrigger: {
+              id: `map-circle-${index}`,
               trigger: mapRef.current,
               start: "top 70%",
               toggleActions: "play none none none",
@@ -103,6 +104,7 @@ export const DemographicsMap = () => {
             delay: 1.5,
             ease: "power2.out",
             scrollTrigger: {
+              id: "map-legend",
               trigger: mapRef.current,
               start: "top 70%",
               toggleActions: "play none none none",
