@@ -17,7 +17,7 @@ interface ShareableContentProps {
 export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content, type, title, className = "", disabled = false }) => {
   const {
     showSharePopover,
-
+    hideSharePopover,
     isShareModeActive,
     registerShareableElement,
     unregisterShareableElement,
@@ -87,7 +87,7 @@ export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content,
 
     const position: SharePopoverPosition = {
       x: rect.left + rect.width / 2,
-      y: rect.top - 10,
+      y: rect.top + window.scrollY - 10,
       width: rect.width,
       height: rect.height,
     };
@@ -103,6 +103,12 @@ export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content,
     showSharePopover(element, position);
   }, [disabled, isShareModeActive, id, content, type, title, showSharePopover]);
 
+  // Handle mouse leave to hide popover
+  const handleMouseLeave = useCallback(() => {
+    if (disabled || !isShareModeActive) return;
+    hideSharePopover();
+  }, [disabled, isShareModeActive, hideSharePopover]);
+
   // Build className
   const combinedClassName = `
     ${className}
@@ -116,6 +122,7 @@ export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content,
       ref={elementRef}
       onMouseUp={handleMouseUp}
       onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       data-shareable-id={id}
       data-shareable-type={type}
       className={combinedClassName}

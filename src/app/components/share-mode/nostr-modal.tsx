@@ -1,13 +1,7 @@
 "use client";
 
 import React from "react";
-
-interface NostrModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  content: string;
-  shareUrl: string;
-}
+import { useShareMode } from "@/contexts/share-mode-context";
 
 const NOSTR_CLIENTS = [
   {
@@ -47,15 +41,17 @@ const NOSTR_EXTENSIONS = [
   { name: "nos2x", url: "https://github.com/fiatjaf/nos2x" },
 ];
 
-export const NostrModal: React.FC<NostrModalProps> = ({ isOpen, onClose, content, shareUrl }) => {
-  if (!isOpen) return null;
+export const NostrModal: React.FC = () => {
+  const { isNostrModalOpen, nostrModalContent, closeNostrModal } = useShareMode();
+
+  if (!isNostrModalOpen || !nostrModalContent) return null;
 
   const handleClientShare = (clientUrl: string) => {
     window.open(clientUrl, "_blank");
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0F172A]/80" onClick={onClose}>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0F172A]/80" onClick={closeNostrModal}>
       <div className="bg-[#0F172A] text-white rounded-[10px] w-[90vw] sm:w-full max-w-[500px] p-6 shadow-2xl border border-[#282F40]" onClick={(e) => e.stopPropagation()}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col items-center text-center gap-2">
@@ -108,7 +104,7 @@ export const NostrModal: React.FC<NostrModalProps> = ({ isOpen, onClose, content
           </div>
 
           <button
-            onClick={onClose}
+            onClick={closeNostrModal}
             className="mt-2 w-full px-6 py-2 bg-[#BFDBFE] text-[#0F172A] rounded-lg text-sm font-inknutAntiqua transition-all duration-150 hover:scale-105 active:scale-95"
           >
             Close
