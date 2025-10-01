@@ -38,10 +38,6 @@ export default function ResearchReport() {
                 <Eyeballs 
                   guyImageSrc="/svgs/research/intro/guy.svg"
                   eyesImageSrc="/svgs/research/intro/eyes.svg"
-                  guyWidth={390}
-                  guyHeight={350}
-                  eyesWidth={147}
-                  eyesHeight={20}
                 />
               </div>
 
