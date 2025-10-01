@@ -181,11 +181,11 @@ export const CardOne = ({ isExpanded, onLabelClick, onScroll, position, isIntera
                             <QuoteCards
                                 quotes={[
                                     {
-                                        id: "9",
+                                        id: "19",
                                         text: "I guess every day I hate Bitcoin because it's also full of assholes, and it has its share of problems and discourse, so it feels like every day is a decision to work on it again, but if I'm being realistic, I don't see anything better that I could do with my time, and it's rewarding work.",
                                         author: {
                                         type: "expert",
-                                        respondentNumber: 9,
+                                        respondentNumber: 19,
                                         },
                                     },
                                     {

@@ -148,10 +148,10 @@ export default function ResearchReport() {
         </div>
       </main>
 
-      {/* <StickyNavigation />
+      <StickyNavigation />
       <HashNavigation />
       <FloatingShareButton />
-      <SharePopover /> */}
+      <SharePopover />
     </ShareModeProvider>
   );
 }
