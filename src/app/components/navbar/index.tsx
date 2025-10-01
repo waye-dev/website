@@ -15,14 +15,27 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 flex flex-col items-center justify-between py-4 md:py-5 ${
-        isOpen ? "pb-0" : "pb-[16px]"
-      } bg-blue-custom-100 text-gray-custom-100 border-b-[1.5px] border-gray-custom-300 z-50`}
+      className={`sticky top-0 flex flex-col items-center justify-between py-4 ${
+        isOpen ? "pb-0" : ""
+    } bg-blue-custom-100 text-gray-custom-100 z-50`}
+      // OLD VERSION (commented for future reference):
+      // className={`sticky top-0 flex flex-col items-center justify-between py-4 md:py-5 ${
+      //   isOpen ? "pb-0" : "pb-[16px]"
+      // } bg-blue-custom-100 text-gray-custom-100 border-b-[1.5px] border-gray-custom-300 z-50`}
     >
       <Wrapper>
         <div className='flex items-center justify-between w-full'>
           <Link href='/' className='flex items-center'>
+            <Image 
+              src='/images/waye-temp-logo-p-500.png' 
+              alt='Waye Logo' 
+              width={100} 
+              height={28} 
+              priority 
+            />
+            {/* OLD VERSION (commented for future reference):
             <Image src='/images/waye-temp-logo-p-500.png' alt='Waye Logo' width={133} height={34.31} className='h-[34px] w-[133px]' priority />
+            */}
           </Link>
 
           <div className='hidden items-center space-x-12 md:flex font-medium'>
@@ -36,7 +49,9 @@ const Navbar = () => {
           <div className='hidden md:flex items-center space-x-8'>
             <button
               onClick={() => setIsDonationOpen(true)}
-              className='rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[14px] px-[22px] text-black text-nowrap  lg:min-w-[183.66px]'
+              className='rounded-full bg-blue-custom-200 text-md leading-[160%] font-medium py-1.5 px-8 text-black text-nowrap'
+              // OLD VERSION (commented for future reference):
+              // className='rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[14px] px-[22px] text-black text-nowrap  lg:min-w-[183.66px]'
             >
               Donate
             </button>

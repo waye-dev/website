@@ -151,27 +151,6 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     };
   }, []);
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeydown = (event: KeyboardEvent) => {
-      // Toggle share mode with Ctrl/Cmd + Shift + S
-      if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === "S") {
-        event.preventDefault();
-        toggleShareMode();
-      }
-
-      // Escape to exit share mode
-      if (event.key === "Escape" && isShareModeActive) {
-        setIsShareModeActive(false);
-        clearAllHighlights();
-        hideSharePopover();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeydown);
-    return () => document.removeEventListener("keydown", handleKeydown);
-  }, [isShareModeActive, toggleShareMode, clearAllHighlights, hideSharePopover]);
-
   const contextValue: ShareModeContextType = {
     isShareModeActive,
     toggleShareMode,
