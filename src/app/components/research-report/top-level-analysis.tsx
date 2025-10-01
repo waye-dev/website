@@ -4,7 +4,7 @@ import ParadoxVisualization from "@/app/components/research-report/_components/n
 import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
 
 export const TopLevelAnalysis = () => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  // const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <div className='flex flex-col gap-14'>
