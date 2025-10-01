@@ -205,11 +205,11 @@ export const CardOne = ({ isExpanded, onLabelClick, onScroll, position, isIntera
                                         },
                                     },
                                     {
-                                        id: "9",
+                                        id: "39",
                                         text: "I think the Bitcoin community itself has these cult-like tendencies which make it, I think, very demoralizing for people who are in the situation I was in … So it just seems like there's a lot more enthusiasm for cheerleading Michael Saylor and the crap he spouts, as opposed to the people who are actually trying to make tangible, positive change in this thing, because it's not ready. It's not. Like there's still so much work to be done.",
                                         author: {
                                         type: "expert",
-                                        respondentNumber: 9,
+                                        respondentNumber: 19,
                                         },
                                     },
                                 ]}
