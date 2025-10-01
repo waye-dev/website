@@ -16,6 +16,7 @@ import { ShareModeProvider } from "@/contexts/share-mode-context";
 import { HashNavigation } from "@/app/components/hash-navigation";
 import { FloatingShareButton, SharePopover } from "@/app/components/share-mode";
 import { StickyNavigation } from "@/app/components/research-report/sticky-navigation";
+import { FolderAnimation } from "@/app/components/research-report/folder-animation";
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -117,6 +118,11 @@ export default function ResearchReport() {
             <TyrannyOfPermissionlessness />
           </Wrapper>
         </div>
+        <div className="bg-blue-custom-1200 py-24">
+          <section className="h-screen md:h-[120vh] px-2">
+            <FolderAnimation />
+          </section>
+        </div>
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='strategies'>
             <Strategies />
@@ -142,10 +148,10 @@ export default function ResearchReport() {
         </div>
       </main>
 
-      <StickyNavigation />
+      {/* <StickyNavigation />
       <HashNavigation />
       <FloatingShareButton />
-      <SharePopover />
+      <SharePopover /> */}
     </ShareModeProvider>
   );
 }
