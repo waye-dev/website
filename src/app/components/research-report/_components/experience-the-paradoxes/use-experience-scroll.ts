@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { getStageFromProgress, getAvatarPosition, getAvatarVerticalPosition, getMobileAvatarTransform } from "./utils";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export const useExperienceScroll = () => {
   const [currentStage, setCurrentStage] = useState<'new' | 'mid' | 'expert'>('new');
@@ -20,125 +21,139 @@ export const useExperienceScroll = () => {
   const mobileAvatarMidRef = useRef<HTMLDivElement>(null);
   const mobileAvatarExpertRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
-  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
   const lastProgressRef = useRef(0);
+  const lastStageRef = useRef<'new' | 'mid' | 'expert'>('new');
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!containerRef.current || !avatarRef.current || !lineRef.current) return;
 
-    const timer = setTimeout(() => {
-      if (scrollTriggerRef.current) {
-        scrollTriggerRef.current.kill();
-      }
-      
-      const isMobile = window.innerWidth < 768;
-      if (!isMobile && avatarRef.current && lineRef.current) {
-        const lineWidth = lineRef.current.offsetWidth;
-        const initialX = getAvatarPosition(0, lineWidth);
-        const initialY = getAvatarVerticalPosition(0);
-        gsap.set(avatarRef.current, {
-          x: initialX,
-          y: initialY,
-          force3D: true
-        });
-      } else if (isMobile) {
-        // Initialize mobile avatars with correct opacity
-        const mobileAvatarRefs = [
-          { ref: mobileAvatarNewRef, stage: 'new' as const },
-          { ref: mobileAvatarMidRef, stage: 'mid' as const },
-          { ref: mobileAvatarExpertRef, stage: 'expert' as const }
-        ];
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      if (!avatarRef.current || !lineRef.current) return;
 
-        mobileAvatarRefs.forEach(({ ref, stage }) => {
-          if (ref.current) {
-            const initialTransform = getMobileAvatarTransform(0, stage, 'down');
-            gsap.set(ref.current, {
-              opacity: initialTransform.opacity,
-              x: initialTransform.x,
-              y: 0,
-              force3D: true
+      // Initialize desktop avatar position
+      const lineWidth = lineRef.current.offsetWidth;
+      const initialX = getAvatarPosition(0, lineWidth);
+      const initialY = getAvatarVerticalPosition(0);
+      gsap.set(avatarRef.current, {
+        x: initialX,
+        y: initialY,
+        force3D: true
+      });
+
+      // Create desktop ScrollTrigger
+      ScrollTrigger.create({
+        id: "experience-paradoxes-desktop",
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=2000vh",
+        scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const currentProgress = self.progress;
+          const newStage = getStageFromProgress(currentProgress);
+
+          const currentScrollDirection = currentProgress > lastProgressRef.current ? 'down' : 'up';
+          setScrollDirection(currentScrollDirection);
+          lastProgressRef.current = currentProgress;
+          setProgress(currentProgress);
+
+          if (avatarRef.current && lineRef.current) {
+            const lineWidth = lineRef.current.offsetWidth;
+            const avatarX = getAvatarPosition(currentProgress, lineWidth);
+            const avatarY = getAvatarVerticalPosition(currentProgress);
+
+            gsap.set(avatarRef.current, {
+              x: avatarX,
+              y: avatarY,
+              force3D: true,
+              overwrite: 'auto'
             });
           }
-        });
-      }
 
-      let lastStage = 'new';
-
-      try {
-        scrollTriggerRef.current = ScrollTrigger.create({
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=2000vh",
-          scrub: 1,
-          pin: true,
-          pinSpacing: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const newStage = getStageFromProgress(progress);
-
-            const currentScrollDirection = progress > lastProgressRef.current ? 'down' : 'up';
-            setScrollDirection(currentScrollDirection);
-            lastProgressRef.current = progress;
-
-            setProgress(progress);
-
-            if (avatarRef.current && lineRef.current && avatarRef.current.parentNode) {
-              try {
-                const lineWidth = lineRef.current.offsetWidth;
-                const isMobile = window.innerWidth < 768;
-
-                if (!isMobile) {
-                  const avatarX = getAvatarPosition(progress, lineWidth);
-                  const avatarY = getAvatarVerticalPosition(progress);
-                  gsap.set(avatarRef.current, {
-                    x: avatarX,
-                    y: avatarY,
-                    force3D: true
-                  });
-                } else {
-                  const mobileAvatarRefs = [
-                    { ref: mobileAvatarNewRef, stage: 'new' as const },
-                    { ref: mobileAvatarMidRef, stage: 'mid' as const },
-                    { ref: mobileAvatarExpertRef, stage: 'expert' as const }
-                  ];
-
-                  mobileAvatarRefs.forEach(({ ref, stage }) => {
-                    if (ref.current) {
-                      const transform = getMobileAvatarTransform(progress, stage, currentScrollDirection);
-                      gsap.set(ref.current, {
-                        opacity: transform.opacity,
-                        x: transform.x,
-                        y: 0,
-                        force3D: true
-                      });
-                    }
-                  });
-                }
-              } catch (error) {
-                console.error('GSAP avatar positioning error:', error);
-              }
-            }
-
-            if (newStage !== lastStage) {
-              setPreviousStage(lastStage as 'new' | 'mid' | 'expert' | null);
-              setTargetStage(newStage);
-              setIsAnimating(true);
-              lastStage = newStage;
-            }
+          if (newStage !== lastStageRef.current) {
+            setPreviousStage(lastStageRef.current);
+            setTargetStage(newStage);
+            setIsAnimating(true);
+            lastStageRef.current = newStage;
           }
-        });
-      } catch (error) {
-        console.error('ScrollTrigger creation error:', error);
-      }
-    }, 10);
+        }
+      });
+    });
 
-    return () => {
-      clearTimeout(timer);
-      if (scrollTriggerRef.current) {
-        scrollTriggerRef.current.kill();
-      }
-    };
-  }, []);
+    // Mobile animations
+    mm.add("(max-width: 767px)", () => {
+      const mobileAvatarRefs = [
+        { ref: mobileAvatarNewRef, stage: 'new' as const },
+        { ref: mobileAvatarMidRef, stage: 'mid' as const },
+        { ref: mobileAvatarExpertRef, stage: 'expert' as const }
+      ];
+
+      // Initialize mobile avatars
+      mobileAvatarRefs.forEach(({ ref, stage }) => {
+        if (ref.current) {
+          const initialTransform = getMobileAvatarTransform(0, stage, 'down');
+          gsap.set(ref.current, {
+            opacity: initialTransform.opacity,
+            x: initialTransform.x,
+            y: 0,
+            force3D: true
+          });
+        }
+      });
+
+      // Create mobile ScrollTrigger
+      ScrollTrigger.create({
+        id: "experience-paradoxes-mobile",
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=2000vh",
+        scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const currentProgress = self.progress;
+          const newStage = getStageFromProgress(currentProgress);
+
+          const currentScrollDirection = currentProgress > lastProgressRef.current ? 'down' : 'up';
+          setScrollDirection(currentScrollDirection);
+          lastProgressRef.current = currentProgress;
+          setProgress(currentProgress);
+
+          mobileAvatarRefs.forEach(({ ref, stage }) => {
+            if (ref.current) {
+              const transform = getMobileAvatarTransform(currentProgress, stage, currentScrollDirection);
+              gsap.set(ref.current, {
+                opacity: transform.opacity,
+                x: transform.x,
+                y: 0,
+                force3D: true,
+                overwrite: 'auto'
+              });
+            }
+          });
+
+          if (newStage !== lastStageRef.current) {
+            setPreviousStage(lastStageRef.current);
+            setTargetStage(newStage);
+            setIsAnimating(true);
+            lastStageRef.current = newStage;
+          }
+        }
+      });
+    });
+
+    return () => mm.revert();
+  }, {
+    scope: containerRef,
+    dependencies: [],
+    revertOnUpdate: true
+  });
 
   const handleAnimationComplete = () => {
     setIsAnimating(false);
