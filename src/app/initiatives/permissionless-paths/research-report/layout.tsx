@@ -1,6 +1,6 @@
 import { HashNavigation } from "@/app/components/hash-navigation";
 import { StickyNavigation } from "@/app/components/research-report/sticky-navigation";
-import { FloatingShareButton, ShareModeProvider, SharePopover } from "@/app/components/share-mode";
+import { FloatingShareButton, ShareModeProvider, SharePopover, NostrModal } from "@/app/components/share-mode";
 
 export default function ResearchReportLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -10,6 +10,7 @@ export default function ResearchReportLayout({ children }: { children: React.Rea
       <HashNavigation />
       <FloatingShareButton />
       <SharePopover />
+      <NostrModal />
     </ShareModeProvider>
     )
 }

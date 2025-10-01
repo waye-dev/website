@@ -1,15 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { useShareMode } from "@/contexts/share-mode-context";
 import { ShareButtons } from "./share-buttons";
-import { NostrModal } from "./nostr-modal";
 
 export const SharePopover: React.FC = () => {
-  const { selectedElement, popoverPosition, isPopoverVisible, hideSharePopover } = useShareMode();
+  const { selectedElement, popoverPosition, isPopoverVisible, hideSharePopover, cancelHidePopover, openNostrModal } = useShareMode();
   const pathname = usePathname();
-  const [showNostrModal, setShowNostrModal] = useState<boolean>(false);
 
   const createShareableUrl = () => {
     if (!selectedElement) return "";
@@ -22,17 +20,17 @@ export const SharePopover: React.FC = () => {
 
   return (
     <>
-      <div className="fixed inset-0 z-[999]" onClick={hideSharePopover} />
-
       <div
         style={{
-          position: "fixed",
+          position: "absolute",
           left: `${popoverPosition.x}px`,
           top: `${popoverPosition.y}px`,
           transform: "translate(-50%, -100%)",
           zIndex: 1000,
         }}
         className="bg-[#0F172A] text-white rounded-[10px] w-[90vw] sm:w-full max-w-[513px] py-2 px-4 shadow-lg"
+        onMouseEnter={cancelHidePopover}
+        onMouseLeave={hideSharePopover}
       >
         <div className="flex flex-row justify-between items-center gap-4">
           <section className="flex flex-row items-center gap-2">
@@ -43,11 +41,13 @@ export const SharePopover: React.FC = () => {
             </div>
           </section>
 
-          <ShareButtons selectedElement={selectedElement} shareUrl={createShareableUrl()} onNostrError={() => setShowNostrModal(true)} />
+          <ShareButtons
+            selectedElement={selectedElement}
+            shareUrl={createShareableUrl()}
+            onNostrError={() => openNostrModal(createShareableUrl(), selectedElement.content)}
+          />
         </div>
       </div>
-
-      <NostrModal isOpen={showNostrModal} onClose={() => setShowNostrModal(false)} shareUrl={createShareableUrl()} content={selectedElement.content} />
     </>
   );
 };
