@@ -1,31 +1,48 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { paradoxData, avatars } from '../data'
 import { ParadoxDataItem, Avatar } from '../types'
 
+gsap.registerPlugin(ScrollTrigger, useGSAP)
+
 const MobileParadoxPage: React.FC = () => {
-  const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set())
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0')
-            setVisibleItems(prev => new Set([...prev, index]))
-          }
-        })
-      },
-      { threshold: 0.3 }
-    )
+  useGSAP(() => {
+    if (!containerRef.current) return
 
-    const elements = document.querySelectorAll('[data-index]')
-    elements.forEach(el => observer.observe(el))
+    const items = containerRef.current.querySelectorAll('[data-index]')
 
-    return () => observer.disconnect()
-  }, [])
+    items.forEach((item, index) => {
+      const bars = item.querySelectorAll('[data-bar]')
+
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top 70%',
+        once: true,
+        onEnter: () => {
+          bars.forEach((bar, barIndex) => {
+            gsap.to(bar, {
+              scaleX: 1,
+              duration: 1,
+              delay: barIndex * 0.2,
+              ease: 'power2.out',
+              transformOrigin: 'left center'
+            })
+          })
+        }
+      })
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach(st => st.kill())
+    }
+  }, { scope: containerRef })
 
   const getAvatarConfig = (avatarId: string) => {
     const configs = {
@@ -41,39 +58,22 @@ const MobileParadoxPage: React.FC = () => {
   }
 
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full">
       <div className="grid grid-cols-3 gap-0 mb-8">
-        <div className="aspect-square relative overflow-hidden">
-          <Image
-            src="/svgs/research/paradox-graph/mobile/junior.svg"
-            alt="Junior"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="aspect-square relative overflow-hidden">
-          <Image
-            src="/svgs/research/paradox-graph/mobile/mid.svg"
-            alt="Mid"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="aspect-square relative overflow-hidden">
-          <Image
-            src="/svgs/research/paradox-graph/mobile/senior.svg"
-            alt="Expert"
-            fill
-            className="object-cover"
-          />
-        </div>
+        {avatars.map((avatar: Avatar) => (
+          <div key={avatar.id} className="aspect-square relative overflow-hidden">
+            <Image
+              src={`/svgs/research/paradox-graph/mobile/${avatar.id}.svg`}
+              alt={avatar.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+        ))}
       </div>
-
 
       <div className="px-2 space-y-0 pb-12">
         {paradoxData.map((item: ParadoxDataItem, index: number) => {
-          const isVisible = visibleItems.has(index)
-
           return (
             <div
               key={item.Index}
@@ -92,29 +92,29 @@ const MobileParadoxPage: React.FC = () => {
                     const config = getAvatarConfig(avatar.id)
 
                     return (
-                      <div 
-                        key={avatar.id} 
+                      <div
+                        key={avatar.id}
                         className="relative h-1.5 rounded-full overflow-hidden"
                         style={{
                           backgroundColor: config.color === '#0F172A' ? `${config.color}30` : `${config.color}40`
                         }}
                       >
                         <div
-                          className="absolute left-0 top-0 h-full rounded-full transition-all duration-1000 ease-out"
+                          data-bar
+                          className="absolute left-0 top-0 h-full rounded-full"
                           style={{
                             backgroundColor: config.color,
-                            width: isVisible ? `${percentage}%` : '0%',
-                            transitionDelay: `${avatarIndex * 200}ms`,
-                            opacity: config.color === '#C4DEF8' ? 0.9 : 1
+                            width: `${percentage}%`,
+                            opacity: config.color === '#C4DEF8' ? 0.9 : 1,
+                            transform: 'scaleX(0)'
                           }}
                         />
 
                         <div
-                          className="absolute left-0 top-0 h-full rounded-full transition-all duration-1000 ease-out opacity-20"
+                          className="absolute left-0 top-0 h-full rounded-full opacity-20 pointer-events-none"
                           style={{
                             background: `linear-gradient(90deg, transparent 0%, white 100%)`,
-                            width: isVisible ? `${percentage}%` : '0%',
-                            transitionDelay: `${avatarIndex * 200}ms`
+                            width: `${percentage}%`
                           }}
                         />
                       </div>
