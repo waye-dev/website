@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback, useRef, useEffect } from "react";
+import React, { createContext, useContext, useState, useCallback, useRef } from "react";
 
 // Types
 export interface ShareableElement {
@@ -23,13 +23,14 @@ export interface ShareModeContextType {
   toggleShareMode: () => void;
   hideSharePopover: () => void;
   cancelHidePopover: () => void;
-  clearAllHighlights: () => void;
-  highlightedElements: Set<string>;
-  addHighlight: (id: string) => void;
   shareableElements: ShareableElement[];
-  removeHighlight: (id: string) => void;
   selectedElement: ShareableElement | null;
   popoverPosition: SharePopoverPosition | null;
+  isPopoverVisible: boolean;
+  isNostrModalOpen: boolean;
+  nostrModalContent: { url: string; content: string } | null;
+  openNostrModal: (url: string, content: string) => void;
+  closeNostrModal: () => void;
   unregisterShareableElement: (id: string) => void;
   registerShareableElement: (element: ShareableElement) => void;
   showSharePopover: (element: ShareableElement, position: SharePopoverPosition) => void;
@@ -37,7 +38,6 @@ export interface ShareModeContextType {
 
 const ShareModeContext = createContext<ShareModeContextType | undefined>(undefined);
 
-// Custom hook to use share mode context
 export const useShareMode = (): ShareModeContextType => {
   const context = useContext(ShareModeContext);
   if (!context) {
@@ -46,7 +46,6 @@ export const useShareMode = (): ShareModeContextType => {
   return context;
 };
 
-// Provider component
 interface ShareModeProviderProps {
   children: React.ReactNode;
 }
@@ -57,98 +56,76 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
   const [shareableElements, setShareableElements] = useState<ShareableElement[]>([]);
   const [selectedElement, setSelectedElement] = useState<ShareableElement | null>(null);
   const [popoverPosition, setPopoverPosition] = useState<SharePopoverPosition | null>(null);
-  const [highlightedElements, setHighlightedElements] = useState<Set<string>>(new Set());
+  const [isPopoverVisible, setIsPopoverVisible] = useState<boolean>(false);
+  const [isNostrModalOpen, setIsNostrModalOpen] = useState<boolean>(false);
+  const [nostrModalContent, setNostrModalContent] = useState<{ url: string; content: string } | null>(null);
+  const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Refs for cleanup
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Toggle share mode
   const toggleShareMode = useCallback(() => {
     setIsShareModeActive((prev) => {
       const newState = !prev;
       if (!newState) {
-        // When turning off share mode, clear highlights and popover
-        setHighlightedElements(new Set());
-        hideSharePopover();
+        setIsPopoverVisible(false);
+        setSelectedElement(null);
+        setPopoverPosition(null);
       }
       return newState;
     });
   }, []);
 
-  // Register a shareable element
   const registerShareableElement = useCallback((element: ShareableElement) => {
     setShareableElements((prev) => {
       const exists = prev.find((el) => el.id === element.id);
       if (exists) {
-        // Update existing element
         return prev.map((el) => (el.id === element.id ? element : el));
       }
       return [...prev, element];
     });
   }, []);
 
-  // Unregister a shareable element
   const unregisterShareableElement = useCallback((id: string) => {
     setShareableElements((prev) => prev.filter((el) => el.id !== id));
-    setHighlightedElements((prev) => {
-      const newSet = new Set(prev);
-      newSet.delete(id);
-      return newSet;
-    });
   }, []);
 
-  // Show share popover
   const showSharePopover = useCallback((element: ShareableElement, position: SharePopoverPosition) => {
+    // Cancel any pending hide
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+
     setSelectedElement(element);
     setPopoverPosition(position);
+    setIsPopoverVisible(true);
+  }, []);
 
-    // Clear any existing timeout
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+  const cancelHidePopover = useCallback(() => {
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
     }
   }, []);
 
-  // Hide share popover
   const hideSharePopover = useCallback(() => {
-    // Add a small delay to allow for popover interaction
-    timeoutRef.current = setTimeout(() => {
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+    }
+
+    hideTimeoutRef.current = setTimeout(() => {
+      setIsPopoverVisible(false);
       setSelectedElement(null);
       setPopoverPosition(null);
-    }, 300);
+    }, 100);
   }, []);
 
-  // Cancel hide popover (for when hovering over popover)
-  const cancelHidePopover = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
+  const openNostrModal = useCallback((url: string, content: string) => {
+    setNostrModalContent({ url, content });
+    setIsNostrModalOpen(true);
   }, []);
 
-  // Highlight management
-  const addHighlight = useCallback((id: string) => {
-    setHighlightedElements((prev) => new Set([...prev, id]));
-  }, []);
-
-  const removeHighlight = useCallback((id: string) => {
-    setHighlightedElements((prev) => {
-      const newSet = new Set(prev);
-      newSet.delete(id);
-      return newSet;
-    });
-  }, []);
-
-  const clearAllHighlights = useCallback(() => {
-    setHighlightedElements(new Set());
-  }, []);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
+  const closeNostrModal = useCallback(() => {
+    setIsNostrModalOpen(false);
+    setNostrModalContent(null);
   }, []);
 
   const contextValue: ShareModeContextType = {
@@ -159,13 +136,14 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     unregisterShareableElement,
     selectedElement,
     popoverPosition,
+    isPopoverVisible,
+    isNostrModalOpen,
+    nostrModalContent,
+    openNostrModal,
+    closeNostrModal,
     showSharePopover,
     hideSharePopover,
     cancelHidePopover,
-    highlightedElements,
-    addHighlight,
-    removeHighlight,
-    clearAllHighlights,
   };
 
   return <ShareModeContext.Provider value={contextValue}>{children}</ShareModeContext.Provider>;

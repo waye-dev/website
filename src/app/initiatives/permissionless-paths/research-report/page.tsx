@@ -12,18 +12,12 @@ import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 import { BeyondFinancialSustainability } from "@/app/components/research-report/beyond-financial-sustainability";
 import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
 import { Conclusion } from "@/app/components/research-report/conclusion";
-import { ShareModeProvider } from "@/contexts/share-mode-context";
-import { HashNavigation } from "@/app/components/hash-navigation";
-import { FloatingShareButton, SharePopover } from "@/app/components/share-mode";
-import { StickyNavigation } from "@/app/components/research-report/sticky-navigation";
 import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
-import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss";
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
 
   return (
-    <ShareModeProvider>
       <main>
         <div className='bg-gray-custom-400 text-black'>
           <Wrapper>
@@ -144,11 +138,5 @@ export default function ResearchReport() {
           </Wrapper>
         </div>
       </main>
-
-      <StickyNavigation />
-      <HashNavigation />
-      <FloatingShareButton />
-      <SharePopover />
-    </ShareModeProvider>
   );
 }
