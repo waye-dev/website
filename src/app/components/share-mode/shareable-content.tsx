@@ -16,13 +16,9 @@ interface ShareableContentProps {
 
 export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content, type, title, className = "", disabled = false }) => {
   const {
-    addHighlight,
-    removeHighlight,
-    hideSharePopover,
     showSharePopover,
+    hideSharePopover,
     isShareModeActive,
-    cancelHidePopover,
-    highlightedElements,
     registerShareableElement,
     unregisterShareableElement,
   } = useShareMode();
@@ -82,20 +78,16 @@ export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content,
     showSharePopover(selectedElement, position);
   }, [id, title, disabled, showSharePopover]);
 
-  // Handle hover events
+  // Handle hover to show popover
   const handleMouseEnter = useCallback(() => {
     if (disabled || !isShareModeActive) return;
-
-    // Cancel any pending hide operations when hovering over shareable content
-    cancelHidePopover();
 
     const rect = elementRef.current?.getBoundingClientRect();
     if (!rect) return;
 
-    // Show popover on hover
     const position: SharePopoverPosition = {
       x: rect.left + rect.width / 2,
-      y: rect.top - 10,
+      y: rect.top + window.scrollY - 10,
       width: rect.width,
       height: rect.height,
     };
@@ -109,12 +101,13 @@ export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content,
     };
 
     showSharePopover(element, position);
-  }, [disabled, isShareModeActive, id, content, type, title, cancelHidePopover, showSharePopover]);
+  }, [disabled, isShareModeActive, id, content, type, title, showSharePopover]);
 
+  // Handle mouse leave to hide popover
   const handleMouseLeave = useCallback(() => {
-    // Only hide if we're not moving to the popover
+    if (disabled || !isShareModeActive) return;
     hideSharePopover();
-  }, [hideSharePopover]);
+  }, [disabled, isShareModeActive, hideSharePopover]);
 
   // Build className
   const combinedClassName = `
@@ -127,12 +120,12 @@ export const ShareableContent: React.FC<ShareableContentProps> = ({ id, content,
   return (
     <div
       ref={elementRef}
-      data-shareable-id={id}
       onMouseUp={handleMouseUp}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      data-shareable-id={id}
       data-shareable-type={type}
       className={combinedClassName}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={handleMouseEnter}
       tabIndex={isShareModeActive && !disabled ? 0 : undefined}
       role={isShareModeActive && !disabled ? "button" : undefined}
       aria-label={isShareModeActive && !disabled ? `Shareable ${type}: ${title || "content"}` : undefined}
