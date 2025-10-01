@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -23,11 +23,42 @@ export const useExperienceScroll = () => {
   const lineRef = useRef<HTMLDivElement>(null);
   const lastProgressRef = useRef(0);
   const lastStageRef = useRef<'new' | 'mid' | 'expert'>('new');
+  const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Kill all ScrollTriggers before cleanup
+  useEffect(() => {
+    return () => {
+      ScrollTrigger.getAll().forEach(st => {
+        if (st.vars.id?.includes('experience-paradoxes')) {
+          st.kill(true);
+        }
+      });
+    };
+  }, []);
 
   useGSAP(() => {
     if (!containerRef.current || !avatarRef.current || !lineRef.current) return;
 
+    // Debounce resize events
+    const handleResize = () => {
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+      resizeTimeoutRef.current = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 150);
+    };
+
+    window.addEventListener('resize', handleResize);
+
     const mm = gsap.matchMedia();
+
+    // Kill existing ScrollTriggers before creating new ones
+    ScrollTrigger.getAll().forEach(st => {
+      if (st.vars.id?.includes('experience-paradoxes')) {
+        st.kill(true);
+      }
+    });
     mm.add("(min-width: 768px)", () => {
       if (!avatarRef.current || !lineRef.current) return;
 
@@ -148,11 +179,16 @@ export const useExperienceScroll = () => {
       });
     });
 
-    return () => mm.revert();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+      mm.revert();
+    };
   }, {
     scope: containerRef,
-    dependencies: [],
-    revertOnUpdate: true
+    dependencies: []
   });
 
   const handleAnimationComplete = () => {
