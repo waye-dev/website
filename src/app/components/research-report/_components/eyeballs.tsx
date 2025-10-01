@@ -8,20 +8,12 @@ import gsap from "gsap";
 interface EyeballsProps {
   guyImageSrc?: string;
   eyesImageSrc?: string;
-  guyWidth?: number;
-  guyHeight?: number;
-  eyesWidth?: number;
-  eyesHeight?: number;
   className?: string;
 }
 
 export default function Eyeballs({
   guyImageSrc = "/svgs/research-intro/guy.svg",
   eyesImageSrc = "/svgs/research-intro/eyes.svg",
-  guyWidth = 390,
-  guyHeight = 350,
-  eyesWidth = 147,
-  eyesHeight = 20,
   className = "",
 }: EyeballsProps) {
   const eyesRef = useRef<HTMLDivElement>(null);
@@ -33,6 +25,8 @@ export default function Eyeballs({
     const isTouchDevice = 'ontouchstart' in window;
     let isInteracting = false;
     let interactionTimeout: NodeJS.Timeout;
+
+    gsap.set(eyesRef.current, { x: 0, y: 0 });
 
     const startRandomMove = () => {
       if (idleTimelineRef.current) {
@@ -71,8 +65,8 @@ export default function Eyeballs({
       const deltaY = e.clientY - eyeCenterY;
 
       const angle = Math.atan2(deltaY, deltaX);
-      const distance = Math.min(Math.sqrt(deltaX * deltaX + deltaY * deltaY) / 30, 20);
-      const yDistance = Math.min(distance, 4);
+      const distance = Math.min(Math.sqrt(deltaX * deltaX + deltaY * deltaY) / 30, 8);
+      const yDistance = Math.min(distance, 3);
 
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * yDistance;
@@ -99,7 +93,7 @@ export default function Eyeballs({
 
       clearTimeout(interactionTimeout);
 
-      const x = Math.sin(window.scrollY * 0.01) * 8;
+      const x = Math.sin(window.scrollY * 0.01) * 4;
       gsap.to(eyesRef.current, {
         x,
         y: 0,
@@ -138,8 +132,8 @@ export default function Eyeballs({
       <Image
         src={guyImageSrc}
         alt="Guy illustration"
-        width={guyWidth}
-        height={guyHeight}
+        width={390}
+        height={350}
         className="w-auto h-auto"
       />
       <div
@@ -149,8 +143,8 @@ export default function Eyeballs({
         <Image
           src={eyesImageSrc}
           alt="Eyes"
-          width={eyesWidth}
-          height={eyesHeight}
+          width={147}
+          height={20}
           className="w-auto h-auto scale-75 md:scale-100"
         />
       </div>

@@ -1,5 +1,4 @@
 import { QuoteCards } from "./_components/quotes";
-import { StrategiesWall } from "./strategies-wall";
 
 export const Strategies = () => {
   return (
