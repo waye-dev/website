@@ -17,118 +17,37 @@ export default function Eyeballs({
   className = "",
 }: EyeballsProps) {
   const eyesRef = useRef<HTMLDivElement>(null);
-  const idleTimelineRef = useRef<gsap.core.Timeline | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (!eyesRef.current) return;
-
-    const isTouchDevice = 'ontouchstart' in window;
-    let isInteracting = false;
-    let interactionTimeout: NodeJS.Timeout;
-
-    gsap.set(eyesRef.current, { x: 0, y: 0 });
-
-    const startRandomMove = () => {
-      if (idleTimelineRef.current) {
-        idleTimelineRef.current.kill();
-      }
-
-      idleTimelineRef.current = gsap.timeline({
-        repeat: -1,
-        repeatRefresh: true
-      });
-
-      idleTimelineRef.current.to(eyesRef.current, {
-        x: () => gsap.utils.random(-6, 6),
-        duration: () => gsap.utils.random(2, 3),
-        ease: "power1.inOut"
-      });
-    };
-
-    startRandomMove();
-
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isInteracting) {
-        isInteracting = true;
-        idleTimelineRef.current?.kill();
-      }
+      if (!containerRef.current || !eyesRef.current) return;
 
-      clearTimeout(interactionTimeout);
-
-      const rect = eyesRef.current?.getBoundingClientRect();
-      if (!rect) return;
-
-      const eyeCenterX = rect.left + rect.width / 2;
-      const eyeCenterY = rect.top + rect.height / 2;
-
-      const deltaX = e.clientX - eyeCenterX;
-      const deltaY = e.clientY - eyeCenterY;
-
-      const angle = Math.atan2(deltaY, deltaX);
-      const distance = Math.min(Math.sqrt(deltaX * deltaX + deltaY * deltaY) / 30, 8);
-      const yDistance = Math.min(distance, 3);
-
-      const x = Math.cos(angle) * distance;
-      const y = Math.sin(angle) * yDistance;
-
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const containerCenterX = containerRect.left + containerRect.width / 2;
+      const relativeX = (e.clientX - containerCenterX) / (containerRect.width / 2);
+      const clampedX = Math.max(-1, Math.min(1, relativeX));
+      const eyeMovement = clampedX * 8;
+      
       gsap.to(eyesRef.current, {
-        x,
-        y,
+        x: eyeMovement,
         duration: 0.3,
-        ease: "power2.out",
-        overwrite: true
+        ease: "power2.out"
       });
-
-      interactionTimeout = setTimeout(() => {
-        isInteracting = false;
-        startRandomMove();
-      }, 2000);
     };
 
-    const handleScroll = () => {
-      if (!isInteracting) {
-        isInteracting = true;
-        idleTimelineRef.current?.kill();
-      }
-
-      clearTimeout(interactionTimeout);
-
-      const x = Math.sin(window.scrollY * 0.01) * 4;
-      gsap.to(eyesRef.current, {
-        x,
-        y: 0,
-        duration: 0.2,
-        ease: "power1.out",
-        overwrite: true
-      });
-
-      interactionTimeout = setTimeout(() => {
-        isInteracting = false;
-        startRandomMove();
-      }, 2000);
-    };
-
-    if (isTouchDevice) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    } else {
-      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      
+      return () => {
+        container.removeEventListener('mousemove', handleMouseMove);
+      };
     }
-
-    return () => {
-      clearTimeout(interactionTimeout);
-      if (idleTimelineRef.current) {
-        idleTimelineRef.current.kill();
-      }
-      if (isTouchDevice) {
-        window.removeEventListener('scroll', handleScroll);
-      } else {
-        window.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  });
+  }, []);
 
   return (
-    <div className={`relative flex justify-center ${className}`}>
+    <div ref={containerRef} className={`relative flex justify-center ${className}`}>
       <Image
         src={guyImageSrc}
         alt="Guy illustration"
