@@ -151,6 +151,7 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
         willChange: 'contents', // GPU
         transform: 'translate3d(0, 0, 0)'
       }}
+      suppressHydrationWarning
     >
       <svg
         ref={svgRef}
@@ -165,6 +166,7 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
           transform: 'translate3d(0, 0, 0)'
         }}
         preserveAspectRatio="none"
+        suppressHydrationWarning
       >
         <defs>
           <linearGradient id="trail-reveal-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -178,7 +180,7 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
             <stop offset="90%" stopColor="white" stopOpacity="0.2" />
             <stop offset="100%" stopColor="white" stopOpacity="0" />
           </linearGradient>
-          <mask id="smooth-trail-mask">
+          <mask id="smooth-trail-mask" suppressHydrationWarning>
             <rect width="100%" height="100%" fill="black" />
             <rect
               x="0"
@@ -186,6 +188,7 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({ paradoxData, avatars,
               width="100%"
               height={gradientHeight}
               fill="url(#trail-reveal-gradient)"
+              suppressHydrationWarning
             />
           </mask>
         </defs>

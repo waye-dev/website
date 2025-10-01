@@ -17,17 +17,19 @@ export const RecommendationReveal = () => {
   useGSAP(
     () => {
       ScrollTrigger.create({
+        id: "recommendation-reveal",
         trigger: container.current,
         start: "top top",
         end: "+=200%",
         pin: true,
         // pinSpacing: false,
         scrub: true,
+        invalidateOnRefresh: true,
         onUpdate: (self) => {
           const progress = self.progress;
           const y = progress * 2000;
 
-          gsap.set(girlRip.current, { y, ease: "none" });
+          gsap.set(girlRip.current, { y, ease: "none", overwrite: 'auto' });
         },
       });
     },
