@@ -207,8 +207,8 @@ export function FromTyrannyToPermissionlessness() {
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars.trigger === containerRef.current) {
-          trigger.kill();
+        if (trigger.vars.id === 'tyranny-permissionlessness' || trigger.vars.trigger === containerRef.current) {
+          trigger.kill(true);
         }
       });
     };

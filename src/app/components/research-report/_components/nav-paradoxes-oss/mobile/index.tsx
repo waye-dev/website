@@ -22,6 +22,7 @@ const MobileParadoxPage: React.FC = () => {
       const bars = item.querySelectorAll('[data-bar]')
 
       ScrollTrigger.create({
+        id: `mobile-paradox-${index}`,
         trigger: item,
         start: 'top 70%',
         once: true,
@@ -40,7 +41,11 @@ const MobileParadoxPage: React.FC = () => {
     })
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill())
+      ScrollTrigger.getAll().forEach(st => {
+        if (st.vars.id?.includes('mobile-paradox')) {
+          st.kill(true)
+        }
+      })
     }
   }, { scope: containerRef })
 
