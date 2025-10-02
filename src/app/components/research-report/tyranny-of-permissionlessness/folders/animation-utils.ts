@@ -53,19 +53,31 @@ export function createZoomInAnimation(
 ) {
     const zoomPosition = { scale: 1, x: 0, y: 0 }
 
+    const zoomDuration = 1
+
+    // Ensure first folder content is hidden during scale
+    if (contents[0]) {
+        tl.set(contents[0], {
+            pointerEvents: 'none',
+            overflowY: 'hidden',
+            opacity: 0,
+            visibility: 'hidden'
+        })
+    }
+
     // Zoom in to full screen and expand folders to 100% width simultaneously
     tl.to(wrapper, {
         scale: zoomPosition.scale,
         x: zoomPosition.x,
         y: zoomPosition.y,
-        duration: 1,
+        duration: zoomDuration,
         ease: "power2.inOut"
     })
 
     folders.forEach((folder) => {
         tl.to(folder, {
             width: "100%",
-            duration: 1,
+            duration: zoomDuration,
             ease: "power2.inOut"
         }, "<")
     })
@@ -84,24 +96,16 @@ export function createZoomInAnimation(
         }
     })
 
-    // Show first folder content - use fromTo for reversibility
+    // Make first folder content visible and enable scrolling ONLY after scale reaches 100%
     if (contents[0]) {
-        tl.fromTo(contents[0],
-            {
-                pointerEvents: 'none',
-                overflowY: 'hidden',
-                opacity: 0,
-                visibility: 'hidden',
-            },
-            {
-                pointerEvents: 'auto',
-                overflowY: 'auto',
-                opacity: 1,
-                visibility: 'visible',
-                duration: 0.01,
-                ease: "none"
-            }
-        )
+        tl.to(contents[0], {
+            pointerEvents: 'auto',
+            overflowY: 'auto',
+            opacity: 1,
+            visibility: 'visible',
+            duration: 0.3,
+            ease: "power2.out"
+        })
     }
 }
 
@@ -180,7 +184,19 @@ export function createZoomOutAnimation(
     const isMobile = window.innerWidth < 768
     const zoomOutDuration = isMobile ? 1.5 : 1.2
 
-    // Reset folder positions first - use fromTo for reversibility
+    // Hide content BEFORE zoom-out starts
+    contents.forEach((content) => {
+        tl.to(content, {
+            pointerEvents: 'none',
+            overflowY: 'hidden',
+            opacity: 0,
+            visibility: 'hidden',
+            duration: 0.3,
+            ease: "power2.in"
+        })
+    })
+
+    // Reset folder positions
     folders.forEach((folder, i) => {
         if (i > 0) {
             tl.fromTo(folder,
@@ -207,23 +223,6 @@ export function createZoomOutAnimation(
             duration: zoomOutDuration,
             ease: "power2.inOut"
         }, "<")
-    })
-
-    // Hide content AFTER zoom-out completes
-    contents.forEach((content) => {
-        tl.fromTo(content,
-            {
-                pointerEvents: 'auto',
-                overflowY: 'auto',
-                opacity: 1,
-                visibility: 'visible',
-            },
-            {
-                ...INITIAL_STATE.content,
-                duration: 0.01,
-                ease: "none"
-            }
-        )
     })
 }
 
