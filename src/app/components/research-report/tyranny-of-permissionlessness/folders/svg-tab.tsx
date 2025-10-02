@@ -21,10 +21,10 @@ export const SvgTab = ({ label, fillColor, className = "", width, leftPosition }
         <div
             className={`absolute ${className}`}
             style={{
-                left: `${leftPosition}px`,
+                left: `${leftPosition+5}px`,
                 width: `${width}px`,
                 height: `${height}px`,
-                bottom: -5
+                bottom: -15
             }}
         >
             {/* SVG Path - absolute positioned */}
