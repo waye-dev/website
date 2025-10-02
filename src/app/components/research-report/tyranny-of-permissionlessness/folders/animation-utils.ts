@@ -5,12 +5,13 @@ export const CONFIG = {
     INITIAL_SCALE: 0.6,
     INITIAL_STACK_OFFSET: 2,
     NEXT_FOLDER_Y_OFFSET: 85,
+    SCALED_FOLDER_WIDTH: 88, // Width percentage when folders are scaled out
 } as const
 
 // Initial state definition
 export const INITIAL_STATE = {
     wrapper: { scale: CONFIG.INITIAL_SCALE, x: 0, y: 0 },
-    folder: { yPercent: 0 },
+    folder: { yPercent: 0, width: `${CONFIG.SCALED_FOLDER_WIDTH}%` },
     content: {
         pointerEvents: 'none' as const,
         overflowY: 'hidden' as const,
@@ -52,13 +53,21 @@ export function createZoomInAnimation(
 ) {
     const zoomPosition = { scale: 1, x: 0, y: 0 }
 
-    // Zoom in to full screen
+    // Zoom in to full screen and expand folders to 100% width simultaneously
     tl.to(wrapper, {
         scale: zoomPosition.scale,
         x: zoomPosition.x,
         y: zoomPosition.y,
         duration: 1,
         ease: "power2.inOut"
+    })
+
+    folders.forEach((folder) => {
+        tl.to(folder, {
+            width: "100%",
+            duration: 1,
+            ease: "power2.inOut"
+        }, "<")
     })
 
     // Position future folders at bottom - use fromTo for reversibility
@@ -91,7 +100,7 @@ export function createZoomInAnimation(
                 visibility: 'visible',
                 duration: 0.01,
                 ease: "none"
-            }, "<"
+            }
         )
     }
 }
@@ -124,16 +133,16 @@ export function createFolderTransitions(
 
         // Transition to next folder
         if (nextFolder) {
-            const transitionDuration = 1.2
+            const transitionDuration = 0.8
 
-            // Hide and disable current content
-            tl.call(() => {
-                gsap.set(content, {
-                    pointerEvents: 'none',
-                    overflowY: 'hidden',
-                    opacity: 0,
-                    visibility: 'hidden'
-                })
+            // Hide current content and slide next folder simultaneously
+            tl.to(content, {
+                pointerEvents: 'none',
+                overflowY: 'hidden',
+                opacity: 0,
+                visibility: 'hidden',
+                duration: 0.3,
+                ease: "power2.in"
             })
 
             // Slide next folder up from bottom to center
@@ -141,7 +150,7 @@ export function createFolderTransitions(
                 yPercent: 0,
                 duration: transitionDuration,
                 ease: "power1.inOut"
-            })
+            }, "<0.2")
 
             // Keep current folder centered while next folder slides over it
             tl.to(folder, {
@@ -150,18 +159,16 @@ export function createFolderTransitions(
                 ease: "power1.inOut"
             }, "<")
 
-            // Show and enable scrolling on next folder
-            tl.call(() => {
-                if (nextContent) {
-                    gsap.set(nextContent, {
-                        pointerEvents: 'auto',
-                        overflowY: 'auto',
-                        opacity: 1,
-                        visibility: 'visible',
-                        scrollTop: 0
-                    })
-                }
-            })
+            // Show next folder content when it reaches center
+            tl.to(nextContent, {
+                pointerEvents: 'auto',
+                overflowY: 'auto',
+                opacity: 1,
+                visibility: 'visible',
+                scrollTop: 0,
+                duration: 0.3,
+                ease: "power2.out"
+            }, "<0.5")
         }
     })
 }
@@ -173,7 +180,36 @@ export function createZoomOutAnimation(
     const isMobile = window.innerWidth < 768
     const zoomOutDuration = isMobile ? 1.5 : 1.2
 
-    // Reset all content - use fromTo for reversibility
+    // Reset folder positions first - use fromTo for reversibility
+    folders.forEach((folder, i) => {
+        if (i > 0) {
+            tl.fromTo(folder,
+                { yPercent: CONFIG.NEXT_FOLDER_Y_OFFSET },
+                {
+                    yPercent: 0,
+                    duration: 0.01,
+                    ease: "none"
+                }
+            )
+        }
+    })
+
+    // Animate wrapper scale down and folders width simultaneously
+    tl.to(wrapper, {
+        ...INITIAL_STATE.wrapper,
+        duration: zoomOutDuration,
+        ease: "power2.inOut"
+    })
+
+    folders.forEach((folder) => {
+        tl.to(folder, {
+            width: `${CONFIG.SCALED_FOLDER_WIDTH}%`,
+            duration: zoomOutDuration,
+            ease: "power2.inOut"
+        }, "<")
+    })
+
+    // Hide content AFTER zoom-out completes
     contents.forEach((content) => {
         tl.fromTo(content,
             {
@@ -189,27 +225,6 @@ export function createZoomOutAnimation(
             }
         )
     })
-
-    // Reset folder positions - use fromTo for reversibility
-    folders.forEach((folder, i) => {
-        if (i > 0) {
-            tl.fromTo(folder,
-                { yPercent: CONFIG.NEXT_FOLDER_Y_OFFSET },
-                {
-                    yPercent: 0,
-                    duration: 0.01,
-                    ease: "none"
-                }, "<"
-            )
-        }
-    })
-
-    // Animate wrapper scale down to exact initial state
-    tl.to(wrapper, {
-        ...INITIAL_STATE.wrapper,
-        duration: zoomOutDuration,
-        ease: "power2.inOut"
-    })
 }
 
 export function calculateTotalDuration(contents: HTMLDivElement[]): number {
@@ -219,8 +234,8 @@ export function calculateTotalDuration(contents: HTMLDivElement[]): number {
     contents.forEach((content, index) => {
         const contentHeight = getContentHeight(content)
         const scrollDuration = contentHeight / window.innerHeight
-        // Only add transition buffer if there's a next folder
-        const transitionBuffer = index < contents.length - 1 ? 1.2 : 0
+        // Only add transition buffer if there's a next folder - reduced from 1.2 to 0.8
+        const transitionBuffer = index < contents.length - 1 ? 0.8 : 0
         totalDuration += scrollDuration + transitionBuffer
     })
 

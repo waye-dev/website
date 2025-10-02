@@ -47,7 +47,6 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
         >
             <div className="relative h-full w-full flex items-end justify-center">
                 <div className="w-full h-[54rem] relative">
-                    {/* Tab positioned absolutely above the folder */}
                     <div className="absolute top-0 left-0 w-full" style={{ transform: 'translateY(-100%)' }}>
                         <SvgTab
                             label={label}
@@ -57,13 +56,21 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                         />
                     </div>
 
-                    {/* Folder content */}
-                    <div className={`h-full rounded-tr-[1rem] ${backgroundColor} p-[1.5rem] md:p-[3rem] overflow-hidden`}>
+                    <div className={`h-full rounded-[1rem] ${backgroundColor} overflow-hidden relative`}>
                         <div
                             ref={contentRef}
-                            className="h-full scrollbar overflow-y-auto"
+                            className="h-full overflow-y-auto scrollbar absolute"
+                            style={{ 
+                                top: '1.5rem',
+                                left: '1.5rem',
+                                right: '1.5rem',
+                                bottom: '1.5rem',
+                                paddingRight: '0'
+                            }}
                         >
-                            {children}
+                            <div className="p-0 md:p-[1.5rem] md:px-[10rem]">
+                                {children}
+                            </div>
                         </div>
                     </div>
                 </div>
