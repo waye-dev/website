@@ -4,7 +4,7 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 
 export const FolderContentThree = () => {
     return (
-        <div className="max-w-[98%] md:max-w-[95%] space-y-[1.5rem]">
+        <>
             <h1 className="text-[22px] font-inknutAntiqua">
                 The invisible labor of solopreneurship
             </h1>
@@ -110,6 +110,6 @@ export const FolderContentThree = () => {
                     },
                 ]}
             />
-        </div>
+        </>
     )
 }

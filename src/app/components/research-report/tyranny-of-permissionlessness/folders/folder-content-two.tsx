@@ -4,7 +4,7 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 
 export const FolderContentTwo = () => {
     return (
-        <div className="max-w-[98%] md:max-w-[95%] space-y-[1.5rem]">
+        <>
             <h1 className="text-[22px] font-inknutAntiqua">
                 Collaborating alone
             </h1>
@@ -213,6 +213,6 @@ export const FolderContentTwo = () => {
                     },
                 ]}
             />
-        </div>
+        </>
     )
 }
