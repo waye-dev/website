@@ -203,9 +203,10 @@ export function createZoomOutAnimation(
     const isMobile = window.innerWidth < 768
     const zoomOutDuration = isMobile ? 1.5 : 1.2
 
-    // Hide content BEFORE zoom-out starts
-    contents.forEach((content) => {
-        tl.to(content, {
+    // Hide last folder's content BEFORE zoom-out starts
+    const lastContent = contents[contents.length - 1]
+    if (lastContent) {
+        tl.to(lastContent, {
             pointerEvents: 'none',
             overflowY: 'hidden',
             opacity: 0,
@@ -213,19 +214,17 @@ export function createZoomOutAnimation(
             duration: 0.3,
             ease: "power2.in"
         })
-    })
+    }
 
-    // Reset folder positions
+    // Move folders back to center position (0) before scaling out
+    // This creates smooth reverse: last folder slides down in reverse order
     folders.forEach((folder, i) => {
         if (i > 0) {
-            tl.fromTo(folder,
-                { yPercent: CONFIG.NEXT_FOLDER_Y_OFFSET },
-                {
-                    yPercent: 0,
-                    duration: 0.01,
-                    ease: "none"
-                }
-            )
+            tl.to(folder, {
+                yPercent: 0,
+                duration: 0.6,
+                ease: "power2.in"
+            }, i === 1 ? undefined : "<") // Stagger in reverse (4th, 3rd, 2nd)
         }
     })
 
