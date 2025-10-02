@@ -19,7 +19,6 @@ export interface FolderRef {
 }
 
 export const Folder = forwardRef<FolderRef, FolderProps>(({
-    position,
     label,
     fillColor,
     backgroundColor,
@@ -56,16 +55,20 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                         />
                     </div>
 
-                    <div className={`h-full rounded-[1rem] ${backgroundColor} overflow-hidden relative`}>
+                    <div className={`h-full rounded-[1rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`}>
                         <div
                             ref={contentRef}
-                            className="h-full overflow-y-auto scrollbar absolute"
-                            style={{ 
+                            className="h-full scrollbar absolute"
+                            style={{
                                 top: '1.5rem',
                                 left: '1.5rem',
                                 right: '1.5rem',
                                 bottom: '1.5rem',
-                                paddingRight: '0'
+                                paddingRight: '0',
+                                overflowY: 'hidden',
+                                pointerEvents: 'none',
+                                opacity: 0,
+                                visibility: 'hidden'
                             }}
                         >
                             <div className="p-0 md:p-[1.5rem] md:px-[10rem]">
