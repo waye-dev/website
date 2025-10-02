@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -78,10 +78,19 @@ export const Folders = () => {
     const folderRefs = useRef<(HTMLDivElement | null)[]>([])
     const contentRefs = useRef<(HTMLDivElement | null)[]>([])
 
-    const tabLayout = calculateTabLayout(
-        FOLDER_CONFIG.length,
-        typeof window !== 'undefined' ? window.innerWidth * 0.92 : 1200 // Account for padding
+    const [tabLayout, setTabLayout] = useState(() =>
+        calculateTabLayout(FOLDER_CONFIG.length, 1200)
     )
+
+    useEffect(() => {
+        const updateLayout = () => {
+            setTabLayout(calculateTabLayout(FOLDER_CONFIG.length, window.innerWidth * 0.92))
+        }
+
+        updateLayout()
+        window.addEventListener('resize', updateLayout)
+        return () => window.removeEventListener('resize', updateLayout)
+    }, [])
 
     useGSAP(() => {
         if (!containerRef.current || !foldersWrapperRef.current) return

@@ -61,26 +61,39 @@ export function createZoomInAnimation(
         ease: "power2.inOut"
     })
 
-    // After zoom: position future folders at bottom, show first folder content
-    tl.call(() => {
-        // Position all future folders (except first) at bottom
-        folders.forEach((folder, i) => {
-            if (i > 0) {
-                gsap.set(folder, { yPercent: CONFIG.NEXT_FOLDER_Y_OFFSET })
-            }
-        })
+    // Position future folders at bottom - use fromTo for reversibility
+    folders.forEach((folder, i) => {
+        if (i > 0) {
+            tl.fromTo(folder,
+                { yPercent: 0 },
+                {
+                    yPercent: CONFIG.NEXT_FOLDER_Y_OFFSET,
+                    duration: 0.01,
+                    ease: "none"
+                }
+            )
+        }
+    })
 
-        // Show and enable scrolling on first folder
-        if (contents[0]) {
-            gsap.set(contents[0], {
+    // Show first folder content - use fromTo for reversibility
+    if (contents[0]) {
+        tl.fromTo(contents[0],
+            {
+                pointerEvents: 'none',
+                overflowY: 'hidden',
+                opacity: 0,
+                visibility: 'hidden',
+            },
+            {
                 pointerEvents: 'auto',
                 overflowY: 'auto',
                 opacity: 1,
                 visibility: 'visible',
-                scrollTop: 0
-            })
-        }
-    })
+                duration: 0.01,
+                ease: "none"
+            }, "<"
+        )
+    }
 }
 
 
@@ -160,17 +173,35 @@ export function createZoomOutAnimation(
     const isMobile = window.innerWidth < 768
     const zoomOutDuration = isMobile ? 1.5 : 1.2
 
-    // Reset all content to initial state BEFORE zoom out
-    tl.call(() => {
-        contents.forEach((content) => {
-            gsap.set(content, INITIAL_STATE.content)
-        })
+    // Reset all content - use fromTo for reversibility
+    contents.forEach((content) => {
+        tl.fromTo(content,
+            {
+                pointerEvents: 'auto',
+                overflowY: 'auto',
+                opacity: 1,
+                visibility: 'visible',
+            },
+            {
+                ...INITIAL_STATE.content,
+                duration: 0.01,
+                ease: "none"
+            }
+        )
+    })
 
-        // CRITICAL FIX: Reset folder positions BEFORE animating
-        // Otherwise folders animate from yPercent: 85 instead of 0
-        folders.forEach((folder) => {
-            gsap.set(folder, { yPercent: 0 })
-        })
+    // Reset folder positions - use fromTo for reversibility
+    folders.forEach((folder, i) => {
+        if (i > 0) {
+            tl.fromTo(folder,
+                { yPercent: CONFIG.NEXT_FOLDER_Y_OFFSET },
+                {
+                    yPercent: 0,
+                    duration: 0.01,
+                    ease: "none"
+                }, "<"
+            )
+        }
     })
 
     // Animate wrapper scale down to exact initial state
@@ -179,8 +210,6 @@ export function createZoomOutAnimation(
         duration: zoomOutDuration,
         ease: "power2.inOut"
     })
-
-    // Folders are already at yPercent: 0, so they stay centered during zoom out
 }
 
 export function calculateTotalDuration(contents: HTMLDivElement[]): number {
