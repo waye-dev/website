@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { sections } from './sections-data';
 import { QuoteCards } from '../_components/quotes';
-import { useMediaQuery } from '../../../../hooks/window-dimensions';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +13,6 @@ export function FromTyrannyToPermissionlessness() {
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [svgLoaded, setSvgLoaded] = useState(false);
   const section08TitleRef = useRef<HTMLParagraphElement>(null);
-  const isMobile = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     const loadSvg = async () => {
@@ -214,9 +212,10 @@ export function FromTyrannyToPermissionlessness() {
     };
   }, { scope: containerRef, dependencies: [svgLoaded] });
 
-  if (isMobile) {
-    return (
-      <div className="w-full px-4 py-8">
+  return (
+    <>
+      {/* Mobile version */}
+      <div className="md:hidden w-full px-4 py-8">
         {sections.map((section, index) => (
           <div key={section.id} className="mb-12">
             {section.id === '08' ? (
@@ -279,15 +278,13 @@ export function FromTyrannyToPermissionlessness() {
           </div>
         ))}
       </div>
-    );
-  }
 
-  return (
-    <div>
-      <div
-        ref={containerRef}
-        className="min-h-screen flex items-center justify-center relative"
-      >
+      {/* Desktop version */}
+      <div className="hidden md:block">
+        <div
+          ref={containerRef}
+          className="min-h-screen flex items-center justify-center relative"
+        >
         <div
           ref={svgRef}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 scale-125 flex justify-center items-center"
@@ -341,6 +338,7 @@ export function FromTyrannyToPermissionlessness() {
           ))}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
