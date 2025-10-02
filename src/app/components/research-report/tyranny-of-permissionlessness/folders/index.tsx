@@ -17,7 +17,7 @@ import {
     createZoomOutAnimation,
     calculateTotalDuration,
     calculateScrollPositionForFolder
-} from "./animation-utils"
+} from "./animations"
 
 const FOLDER_CONFIG = [
     {
