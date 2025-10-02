@@ -83,28 +83,35 @@ export function createZoomInAnimation(
     })
 
     // Position future folders at bottom - use fromTo for reversibility
+    // Animate all folders at once with smooth duration
     folders.forEach((folder, i) => {
         if (i > 0) {
             tl.fromTo(folder,
                 { yPercent: 0 },
                 {
                     yPercent: CONFIG.NEXT_FOLDER_Y_OFFSET,
-                    duration: 0.01,
-                    ease: "none"
-                }
+                    duration: 0.6,
+                    ease: "power2.out"
+                },
+                "<" // Start at the same time for all folders
             )
         }
     })
 
-    // Make first folder content visible and enable scrolling ONLY after scale reaches 100%
+    // Make first folder content visible ONLY after y-transition completes
     if (contents[0]) {
+        // First show content visually
         tl.to(contents[0], {
-            pointerEvents: 'auto',
-            overflowY: 'auto',
             opacity: 1,
             visibility: 'visible',
             duration: 0.3,
             ease: "power2.out"
+        })
+
+        // Then enable scrolling after visibility completes
+        tl.set(contents[0], {
+            pointerEvents: 'auto',
+            overflowY: 'auto'
         })
     }
 }
@@ -139,6 +146,14 @@ export function createFolderTransitions(
         if (nextFolder) {
             const transitionDuration = 0.8
 
+            // Ensure next content is completely locked before transition starts
+            tl.set(nextContent, {
+                pointerEvents: 'none',
+                overflowY: 'hidden',
+                opacity: 0,
+                visibility: 'hidden'
+            })
+
             // Hide current content and slide next folder simultaneously
             tl.to(content, {
                 pointerEvents: 'none',
@@ -163,16 +178,20 @@ export function createFolderTransitions(
                 ease: "power1.inOut"
             }, "<")
 
-            // Show next folder content when it reaches center
+            // AFTER y-transition completes, show content visually
             tl.to(nextContent, {
-                pointerEvents: 'auto',
-                overflowY: 'auto',
                 opacity: 1,
                 visibility: 'visible',
-                scrollTop: 0,
                 duration: 0.3,
                 ease: "power2.out"
-            }, "<0.5")
+            })
+
+            // Enable scrolling ONLY after all visual transitions complete
+            tl.set(nextContent, {
+                pointerEvents: 'auto',
+                overflowY: 'auto',
+                scrollTop: 0
+            })
         }
     })
 }
