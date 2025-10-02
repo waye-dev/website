@@ -18,6 +18,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.scrollbar::-webkit-scrollbar {
+    width: 7px;
+    background-color: rgb(183, 183, 183);
+    transition: all 0.3s ease-in-out;
+    border-radius: 0.5rem;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #1b1f35;
+    height: 0.15rem;
+    border-radius: 0.5rem;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: none;
+}
+
 /* Hash Navigation Highlight */
 @keyframes hashHighlight {
   0% {
