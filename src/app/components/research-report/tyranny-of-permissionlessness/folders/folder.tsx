@@ -9,8 +9,8 @@ interface FolderProps {
     fillColor: string;
     backgroundColor: string;
     children: ReactNode;
-    tabWidth: number; // Width in pixels for the tab
-    tabLeftPosition: number; // Left position in pixels for the tab
+    tabWidth: number;
+    tabLeftPosition: number;
     onTabClick?: () => void;
 }
 
