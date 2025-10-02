@@ -4,7 +4,7 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 
 export const FolderContentOne = () => {
     return (
-        <div className="max-w-[98%] md:max-w-[95%] space-y-[1.5rem]">
+        <>
             <h1 className="text-[22px] font-inknutAntiqua">
                 Free from authority, free to burn out
             </h1>
@@ -183,6 +183,6 @@ export const FolderContentOne = () => {
                     },
                 ]}
             />
-        </div>
+        </>
     )
 }

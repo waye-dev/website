@@ -11,6 +11,7 @@ interface FolderProps {
     children: ReactNode;
     tabWidth: number; // Width in pixels for the tab
     tabLeftPosition: number; // Left position in pixels for the tab
+    onTabClick?: () => void;
 }
 
 export interface FolderRef {
@@ -24,7 +25,8 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
     backgroundColor,
     children,
     tabWidth,
-    tabLeftPosition
+    tabLeftPosition,
+    onTabClick
 }, ref) => {
     const folderRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
@@ -42,7 +44,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
         <div
             ref={folderRef}
             className="absolute inset-0 w-full h-full text-black"
-            style={{ isolation: 'isolate' }}
+            style={{ isolation: 'isolate', pointerEvents: 'none' }}
         >
             <div className="relative h-full w-full flex items-end justify-center">
                 <div className="w-full h-[54rem] relative">
@@ -52,10 +54,11 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                             fillColor={fillColor}
                             width={tabWidth}
                             leftPosition={tabLeftPosition}
+                            onClick={onTabClick}
                         />
                     </div>
 
-                    <div className={`h-full rounded-[1rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`}>
+                    <div className={`h-full rounded-[1rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`} style={{ pointerEvents: 'auto' }}>
                         <div
                             ref={contentRef}
                             className="h-full scrollbar absolute"
@@ -71,7 +74,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                                 visibility: 'hidden'
                             }}
                         >
-                            <div className="p-0 md:p-[1.5rem] md:px-[10rem]">
+                           <div className="p-0 pb-[3rem] md:p-[1.5rem] md:pb-[4rem] md:px-[10rem] max-w-[98%] md:max-w-[95%] space-y-[1.5rem]">
                                 {children}
                             </div>
                         </div>

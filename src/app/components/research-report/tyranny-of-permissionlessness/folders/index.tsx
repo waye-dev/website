@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 import { Folder } from "./folder"
 import { FolderContentOne } from "./folder-content-one"
 import { FolderContentTwo } from "./folder-content-two"
@@ -14,7 +15,8 @@ import {
     createZoomInAnimation,
     createFolderTransitions,
     createZoomOutAnimation,
-    calculateTotalDuration
+    calculateTotalDuration,
+    calculateScrollPositionForFolder
 } from "./animation-utils"
 
 const FOLDER_CONFIG = [
@@ -49,7 +51,7 @@ const TAB_CONFIG = {
     OVERLAP_PERCENTAGE: 15, // How much tabs overlap each other (% of tab width)
 } as const
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP)
 
 function calculateTabLayout(folderCount: number, containerWidth: number) {
     const { TOTAL_WIDTH_PERCENTAGE, OVERLAP_PERCENTAGE } = TAB_CONFIG
@@ -90,6 +92,26 @@ export const Folders = () => {
         window.addEventListener('resize', updateLayout)
         return () => window.removeEventListener('resize', updateLayout)
     }, [])
+
+    const handleTabClick = (folderIndex: number) => {
+        const contents = contentRefs.current.filter((ref): ref is HTMLDivElement => ref !== null)
+        if (!containerRef.current || contents.length === 0) return
+
+        const scrollTrigger = ScrollTrigger.getById("folders-animation")
+        if (!scrollTrigger) return
+
+        const targetProgress = calculateScrollPositionForFolder(folderIndex, contents)
+        const totalDuration = calculateTotalDuration(contents)
+        const progress = targetProgress / totalDuration
+
+        const scrollPosition = scrollTrigger.start + (scrollTrigger.end - scrollTrigger.start) * progress
+
+        gsap.to(window, {
+            scrollTo: scrollPosition,
+            duration: 1,
+            ease: "power2.inOut"
+        })
+    }
 
     useGSAP(() => {
         if (!containerRef.current || !foldersWrapperRef.current) return
@@ -160,6 +182,7 @@ export const Folders = () => {
                                 backgroundColor={config.backgroundColor}
                                 tabWidth={tabDimensions.width}
                                 tabLeftPosition={tabDimensions.leftPosition}
+                                onTabClick={() => handleTabClick(index)}
                             >
                                 <ContentComponent />
                             </Folder>

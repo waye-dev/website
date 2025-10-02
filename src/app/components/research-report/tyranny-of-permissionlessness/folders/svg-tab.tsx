@@ -6,9 +6,10 @@ interface SvgTabProps {
     className?: string;
     width: number; // Width in pixels for the tab
     leftPosition: number; // Left position in pixels
+    onClick?: () => void;
 }
 
-export const SvgTab = ({ label, fillColor, className = "", width, leftPosition }: SvgTabProps) => {
+export const SvgTab = ({ label, fillColor, className = "", width, leftPosition, onClick }: SvgTabProps) => {
     // SVG original viewBox dimensions
     const SVG_VIEWBOX_WIDTH = 399
     const SVG_VIEWBOX_HEIGHT = 55
@@ -24,8 +25,11 @@ export const SvgTab = ({ label, fillColor, className = "", width, leftPosition }
                 left: `${leftPosition+5}px`,
                 width: `${width}px`,
                 height: `${height}px`,
-                bottom: -15
+                bottom: -15,
+                cursor: onClick ? 'pointer' : 'default',
+                pointerEvents: 'auto'
             }}
+            onClick={onClick}
         >
             {/* SVG Path - absolute positioned */}
             <svg

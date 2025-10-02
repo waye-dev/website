@@ -259,3 +259,28 @@ export function calculateTotalDuration(contents: HTMLDivElement[]): number {
     totalDuration += isMobile ? 1.5 : 1.2 // Final zoom out
     return totalDuration
 }
+
+export function calculateScrollPositionForFolder(
+    folderIndex: number,
+    contents: HTMLDivElement[]
+): number {
+    const isMobile = window.innerWidth < 768
+    let scrollPosition = isMobile ? 1.5 : 1.2 // Initial zoom in duration
+
+    // Add duration for all previous folders
+    for (let i = 0; i < folderIndex; i++) {
+        const content = contents[i]
+        if (!content) continue
+
+        const contentHeight = getContentHeight(content)
+        const scrollDuration = contentHeight / window.innerHeight
+        const transitionBuffer = 0.8 // Time for folder transition
+
+        scrollPosition += scrollDuration + transitionBuffer
+    }
+
+    // Add a small offset to ensure we're past the transition
+    scrollPosition += 0.2
+
+    return scrollPosition
+}
