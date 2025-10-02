@@ -106,10 +106,8 @@ export default function ResearchReport() {
             </Wrapper>
           </div>
         </div>
-        <div className='bg-blue-custom-1200'>
-          <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='tyranny-of-permissionlessness'>
-            <TyrannyOfPermissionlessness />
-          </Wrapper>
+        <div className='bg-blue-custom-1200' data-section='tyranny-of-permissionlessness'>
+          <TyrannyOfPermissionlessness />
         </div>
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='strategies'>
@@ -117,9 +115,9 @@ export default function ResearchReport() {
           </Wrapper>
         </div>
 
-        <div className='bg-blue-custom-1200'>
+        {/* <div className='bg-blue-custom-1200'>
           <StrategiesWall />
-        </div>
+        </div> */}
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='beyond-financial-sustainability'>
             <BeyondFinancialSustainability />
