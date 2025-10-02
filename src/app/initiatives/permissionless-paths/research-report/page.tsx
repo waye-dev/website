@@ -17,8 +17,6 @@ import { HashNavigation } from "@/app/components/hash-navigation";
 import { FloatingShareButton, SharePopover } from "@/app/components/share-mode";
 import { StickyNavigation } from "@/app/components/research-report/sticky-navigation";
 import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
-import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss";
-import { FolderAnimation } from "@/app/components/research-report/folder-animation";
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -113,15 +111,8 @@ export default function ResearchReport() {
             </Wrapper>
           </div>
         </div>
-        <div className='bg-blue-custom-1200'>
-          <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='tyranny-of-permissionlessness'>
-            <TyrannyOfPermissionlessness />
-          </Wrapper>
-        </div>
-        <div className="bg-blue-custom-1200 py-24">
-          <section className="h-screen md:h-[120vh] px-2">
-            <FolderAnimation />
-          </section>
+        <div className='bg-blue-custom-1200' data-section='tyranny-of-permissionlessness'>
+          <TyrannyOfPermissionlessness />
         </div>
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='strategies'>
@@ -129,9 +120,9 @@ export default function ResearchReport() {
           </Wrapper>
         </div>
 
-        <div className='bg-blue-custom-1200'>
+        {/* <div className='bg-blue-custom-1200'>
           <StrategiesWall />
-        </div>
+        </div> */}
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='beyond-financial-sustainability'>
             <BeyondFinancialSustainability />
