@@ -2,7 +2,6 @@ import Image from "next/image";
 import { useMediaQuery } from "@/hooks/window-dimensions";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
-import { CrocAnimation } from "./croc-animation";
 
 export const TopLevelAnalysis = () => {
   // const isMobile = useMediaQuery("(max-width: 768px)");
