@@ -107,11 +107,13 @@ export default function ResearchReport() {
             </Wrapper>
           </div>
         </div>
-        <div className='bg-gray-custom-400'>
+        <div className='bg-gray-custom-400 relative z-[2]'>
         <CoreFindingsTheTyrany />
         </div>
-        <div className='bg-blue-custom-1200 -mt-48 pt-64' data-section='tyranny-of-permissionlessness'>
-          <TyrannyOfPermissionlessness />
+        <div className='bg-blue-custom-1200 relative z-[11]' data-section='tyranny-of-permissionlessness'>
+          <div className='-mt-48 pt-64'>
+            <TyrannyOfPermissionlessness />
+          </div>
         </div>
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='strategies'>

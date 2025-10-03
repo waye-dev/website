@@ -32,7 +32,7 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
   const mobileCurrentLevel = data[mobileStage];
 
   return (
-    <div ref={containerRef} className="h-screen flex flex-col justify-center items-center px-4 relative z-10">
+    <div ref={containerRef} className="h-screen flex flex-col justify-center items-center px-4 relative z-10" suppressHydrationWarning>
       <ExperienceHeader title="Experience the paradoxes" />
 
       <ExperienceTimeline
