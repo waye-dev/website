@@ -134,7 +134,7 @@ export const Folders = () => {
                 trigger: containerRef.current,
                 start: "top top",
                 end: () => `+=${calculateTotalDuration(contents) * window.innerHeight}`,
-                scrub: 1,
+                scrub: 0.5,
                 pin: true,
                 pinSpacing: true,
                 anticipatePin: 1,
