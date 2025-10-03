@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useMediaQuery } from "@/hooks/window-dimensions";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
+import { CrocAnimation } from "./croc-animation";
 
 export const TopLevelAnalysis = () => {
   // const isMobile = useMediaQuery("(max-width: 768px)");
@@ -102,7 +103,6 @@ export const TopLevelAnalysis = () => {
         }
       }} />
 
-      {/* core findings section */}
       <div className='flex flex-col gap-12 py-24'>
         <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center'>
           Core findings: the tyranny of permissionlessness
@@ -120,7 +120,7 @@ export const TopLevelAnalysis = () => {
         </section>
 
         <section className='w-full h-full flex items-center justify-end pr-32'>
-          <Image src='/svgs/permissionless-woman.svg' alt='permissionless woman' width={398} height={448} />
+          {/* <Image src='/svgs/permissionless-woman.svg' alt='permissionless woman' width={398} height={448} /> */}
         </section>
       </div>
     </div>

@@ -13,6 +13,7 @@ import { BeyondFinancialSustainability } from "@/app/components/research-report/
 import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
 import { Conclusion } from "@/app/components/research-report/conclusion";
 import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
+import { CrocAnimation } from "@/app/components/research-report/croc-animation";
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -105,6 +106,9 @@ export default function ResearchReport() {
               <TopLevelAnalysis />
             </Wrapper>
           </div>
+        </div>
+        <div className='bg-gray-custom-400'>
+        <CrocAnimation />
         </div>
         <div className='bg-blue-custom-1200' data-section='tyranny-of-permissionlessness'>
           <TyrannyOfPermissionlessness />
