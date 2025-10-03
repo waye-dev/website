@@ -1,112 +1,16 @@
-import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
-
-import gsap from "gsap"
-import { useGSAP } from "@gsap/react"
-import ScrollTrigger from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
+import { CrocodileSvg } from "./crocodile-svg"
+import { BackgroundWoman } from "./background-woman"
+import { useCrocodileAnimation } from "./use-crocodile-animation"
 
 export const CrocAnimation = () => {
-    const containerRef = useRef<HTMLDivElement>(null)
-    const crocRef = useRef<HTMLSpanElement>(null)
-
-    const [snoutDistance, setSnoutDistance] = useState(0)
-
-    useEffect(() => {
-        const updateDistance = () => {
-            const containerWidth = containerRef.current?.offsetWidth || window.innerWidth;
-            const crocWidth = crocRef.current?.offsetWidth || 0;
-            setSnoutDistance(containerWidth - crocWidth);
-        }
-
-        updateDistance();
-
-        window.addEventListener("resize", () => updateDistance)
-
-        return () => window.removeEventListener("resize", updateDistance)
-    }, [])
-
-    useGSAP(() => {
-        const ctx = gsap.context(() => {
-            gsap.set("#top", { transformOrigin: "bottom left", rotate: -14 })
-            gsap.set("#bottom", { transformOrigin: "top left", rotate: 30 })
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top top",
-                    end: "+=500",
-                    scrub: true,
-                    pin: true,
-                    markers: true
-                }
-            })
-
-            tl.to(crocRef.current, {
-                x: snoutDistance + 50,
-                duration: 2,
-                ease: "power1.inOut"
-            }, 0)
-            .to("#bottom", {
-                rotate: -2,
-                duration: 1,
-            }, ">-=0.15")
-            .to(
-                "#top",
-                {
-                    rotate: 8,
-                    duration: 1,
-                }, ">"
-            )
-
-        })
-
-        return () => ctx.revert()
-    }, [snoutDistance])
-
+    const { containerRef, crocRef } = useCrocodileAnimation()
 
     return (
-        <div ref={containerRef} className="relative isolate h-screen w-full overflow-hidden">
-            <span ref={crocRef} className="absolute -bottom-10 md:-bottom-[10rem] -translate-x-[30rem] md:-translate-x-[1200px] inline-block">
-                <svg className="w-[40rem] h-[15rem] md:w-[94rem] md:h-[40rem]" viewBox="0 0 2150 571" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="croc2">
-                        <g id="top">
-                            <path id="Vector" d="M1556.3 14.3391C1579.26 22.2584 1606.33 23.6158 1630.35 22.3487C1648.33 21.3984 1657.95 17.4162 1674.32 10.4924C1699.87 -0.323138 1718.01 -5.79869 1744.42 9.18016C1758.16 16.9637 1765.56 32.0329 1778.07 40.4048C1792.75 50.27 1811.47 54.9766 1828.42 57.0582C1859.64 60.9048 1896.17 61.8096 1927.89 63.0314C1949.69 63.8912 1965.16 61.2668 1986.46 58.1896C1997.98 56.5152 2017.36 56.2889 2027.19 50.768C2044.26 41.1743 2052.49 28.6389 2073.67 39.5902C2091.53 48.8219 2118.59 68.462 2125.46 89.5048C2127.07 94.4374 2129.21 109.235 2126.99 113.715C2125.67 116.385 2114.11 117.155 2111.07 117.517C2074.87 121.499 2037.56 122.404 2001.19 125.3C1878.11 135.075 1755.32 149.691 1632.37 161.457C1629.4 162.181 1626.89 163.765 1625.5 166.843L1610.77 232.007L1580.16 244.407C1578.72 244.497 1576.79 239.474 1576.05 237.936C1570.5 226.667 1566.18 211.553 1560.05 201.19C1556.14 194.583 1553.92 194.13 1547.21 196.257C1537.34 199.425 1527.88 205.308 1517.84 208.068C1516.53 207.842 1513.56 193.859 1508.5 192.365C1503.45 190.872 1490.78 199.108 1485.47 200.33L1556.3 14.2938V14.3391ZM2064.91 61.4024C2062.07 60.3615 2057.05 60.2259 2054.3 61.5383C2051.09 63.0316 2045.33 69.5029 2051.71 70.0912C2053.06 70.227 2054.63 69.0502 2056.11 68.824C2060.43 68.2357 2063.35 69.0954 2067.26 71.3129C2068.7 72.1274 2076.18 79.0511 2075.98 73.2587C2075.81 68.6429 2068.61 62.76 2064.91 61.4024ZM1724.1 24.9735C1712.33 21.0365 1697.52 23.4349 1686.79 29.7704C1680.45 33.4811 1682.47 33.7979 1686.01 39.4093C1703.2 66.5161 1733.56 73.9375 1759.43 57.9631C1760.09 56.6055 1756.02 51.1751 1755.07 49.8175C1746.97 38.3232 1736.93 29.3179 1724.06 25.0188L1724.1 24.9735Z" fill="#031C51"/>
-                            <path id="Vector_2" d="M1724.1 24.9739C1736.97 29.2729 1747.01 38.3235 1755.11 49.7726C1756.06 51.1302 1760.13 56.5608 1759.47 57.9184C1733.6 73.9381 1703.2 66.4711 1686.04 39.3644C1682.51 33.753 1680.49 33.4362 1686.83 29.7254C1697.56 23.4352 1712.33 20.9915 1724.14 24.9286L1724.1 24.9739ZM1754.87 56.968C1744.5 37.2828 1725.21 24.2498 1704.14 27.508C1701.22 27.9606 1688.02 31.6715 1687.2 34.4319C1699.5 56.1535 1721.13 66.9237 1744.01 60.5882C1747.71 59.5474 1751.25 57.3753 1754.87 56.968Z" fill="#4A5775"/>
-                            <path id="Vector_3" d="M2064.91 61.4024C2068.61 62.76 2075.81 68.6429 2075.97 73.2587C2076.14 79.0512 2068.69 72.1274 2067.25 71.3129C2063.39 69.0955 2060.47 68.1904 2056.11 68.824C2054.58 69.0503 2053.02 70.227 2051.7 70.0912C2045.33 69.5029 2051.09 63.0769 2054.3 61.5383C2057.05 60.2259 2062.11 60.3616 2064.91 61.4024Z" fill="white"/>
-                            <path id="Vector_4" d="M1754.86 56.9676C1751.24 57.3748 1747.71 59.547 1744 60.5878C1721.17 66.9232 1699.54 56.1531 1687.2 34.4315C1688.02 31.6711 1701.26 27.9602 1704.14 27.5076C1725.2 24.2494 1744.5 37.2824 1754.86 56.9676ZM1715.83 57.4653C1717.47 61.2213 1721.05 56.3791 1722.24 54.569C1725.21 50.0889 1727.63 43.6179 1728.04 38.0517C1728.95 26.0143 1722.08 33.7074 1719.32 39.4999C1717.59 43.1201 1714.14 53.6188 1715.83 57.4653Z" fill="white"/>
-                            <path id="Vector_5" d="M1715.83 57.4652C1714.14 53.6187 1717.56 43.1653 1719.33 39.4998C1722.08 33.7073 1728.95 26.0142 1728.05 38.0516C1727.64 43.5725 1725.21 50.0888 1722.25 54.5689C1721.05 56.379 1717.48 61.2212 1715.83 57.4652Z" fill="#4A5775"/>
-                            <path id="Vector_6" d="M2066.47 119.462C2063.01 135.663 2055.57 155.258 2045.61 168.019C2045.08 168.698 2044.75 169.829 2043.8 169.105L2033.19 119.598L2066.51 119.417L2066.47 119.462Z" fill="#031C51"/>
-                            <path id="Vector_7" d="M1938.33 127.608C1931.91 145.664 1924.3 163.675 1912.5 178.202L1900.77 130.414L1938.33 127.608Z" fill="#031C51"/>
-                            <path id="Vector_8" d="M2117.64 114.258C2114.97 124.078 2112.62 133.943 2108.55 143.265C2107.57 145.573 2097.98 164.217 2096.54 163.448L2085.35 116.249L2117.64 114.303V114.258Z" fill="#031C51"/>
-                            <path id="Vector_9" d="M2000.9 122.404C1994.61 139.555 1988.15 157.43 1976.14 170.825L1966.76 125.391L2000.9 122.404Z" fill="#031C51"/>
-                            <path id="Vector_10" d="M1873.17 133.718C1867.45 149.602 1860.42 166.752 1849.68 179.333C1848.78 180.374 1847.96 182.003 1846.39 181.596L1837.84 136.342L1873.17 133.718Z" fill="#031C51"/>
-                            <path id="Vector_11" d="M1786.99 186.98L1776.34 143.989L1811.01 140.912C1806.16 157.973 1798.01 173.721 1786.99 186.98Z" fill="#031C51"/>
-                        </g>
-                        <path id="Vector_12" d="M1538.57 9.00391H0V570.507H1620.51L1573.37 19.5024L1538.57 9.00391Z" fill="#031C51"/>
-                        <g id="bottom">
-                            <path id="Vector_13" d="M1685.55 188.207L2101.07 195.311L2138.87 395.195L1599.41 518.691L1523.77 118.652L1635.49 93.084L1685.55 188.207Z" fill="#031C51"/>
-                            <path id="Vector_14" d="M2089.34 200.924C2085.93 190.606 2079.8 178.252 2072.64 170.468C2072.27 170.061 2071.98 169.337 2071.45 169.835L2068.73 202.553L2089.38 200.924H2089.34Z" fill="#2A3553"/>
-                            <path id="Vector_15" d="M2049.97 203.319C2045.37 189.29 2037.06 172.547 2027.31 162.003C2026.77 161.46 2026.4 160.464 2025.66 161.188L2021.96 205.537L2049.97 203.319Z" fill="#2A3553"/>
-                            <path id="Vector_16" d="M1955.73 200.965C1952.52 185.941 1945.65 167.795 1936.39 155.984C1935.9 155.35 1935.61 154.309 1934.71 154.988L1924.88 200.83L1955.73 201.011V200.965Z" fill="#031C51"/>
-                            <path id="Vector_17" d="M1837.1 193.408C1831.17 176.664 1824.1 160.011 1813.16 146.57L1802.3 190.828L1837.1 193.408Z" fill="#031C51"/>
-                            <path id="Vector_18" d="M2003.16 205.807C2000.69 196.711 1998.51 187.57 1994.73 178.972C1993.78 176.845 1984.93 159.603 1983.58 160.282L1973.21 203.997L2003.12 205.807H2003.16Z" fill="#031C51"/>
-                            <path id="Vector_19" d="M1895.01 198.249C1889.17 182.365 1883.21 165.803 1872.1 153.403L1863.42 195.489L1895.01 198.249Z" fill="#031C51"/>
-                            <path id="Vector_20" d="M2101.06 195.308L2124.1 192.955L2135.33 218.93C2139.32 228.207 2142.32 237.982 2144.21 248.074L2145.94 257.305C2150.38 280.792 2151 304.912 2147.83 328.624L2138.87 395.192L1950.09 384.829L2101.06 195.308Z" fill="#031C51"/>
-                            <path id="Vector_21" d="M2099.79 570.505H1595.05V420.128L2138.87 395.193L2099.79 570.505Z" fill="#031C51"/>
-                        </g>
-                    </g>
-                </svg>
+        <div ref={containerRef} className="relative h-screen w-full overflow-visible">
+            <BackgroundWoman />
+            <span ref={crocRef} className="absolute -bottom-10 left-0 inline-block will-change-transform">
+                <CrocodileSvg className="w-[50rem] h-[20rem] md:w-[120rem] md:h-[40rem]" />
             </span>
-            <div className="absolute bottom-0 right-0 md:right-[10rem] z-[-1]">
-                <div className="hidden md:block">
-                    <Image src='/svgs/permissionless-woman.svg' alt='permissionless woman' width={370} height={430} />
-                </div>
-                <div className="md:hidden">
-                    <Image src='/svgs/permissionless-woman.svg' alt='permissionless woman' width={170} height={50} />
-                </div>
-            </div>
         </div>
     )
 }
