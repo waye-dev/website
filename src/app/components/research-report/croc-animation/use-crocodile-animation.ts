@@ -11,9 +11,9 @@ export const useCrocodileAnimation = () => {
 
     useGSAP(() => {
         const ctx = gsap.context(() => {
-            // Set initial jaw positions
-            gsap.set("#top", { transformOrigin: "bottom left", rotation: -14, y: 5 })
-            gsap.set("#bottom", { transformOrigin: "top left", rotation: 30 })
+            // Set initial jaw positions (open)
+            gsap.set("#top-jaw", { transformOrigin: "right center", rotation: -15, y: -90 })
+            gsap.set("#bottom-jaw", { transformOrigin: "right center", rotation: 15, y: 150, x: -26 })
 
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -26,31 +26,49 @@ export const useCrocodileAnimation = () => {
                 }
             })
 
-            // Move crocodile from left to right across the screen
+            // Move crocodile from left (hidden) to right edge of container (40% of timeline)
             tl.fromTo(crocRef.current,
-                { x: "-100%" },
+                {
+                    x: () => {
+                        const croc = crocRef.current
+                        if (!croc) return "-100%"
+                        return `-${croc.offsetWidth}px`
+                    }
+                },
                 {
                     x: () => {
                         const container = containerRef.current
                         const croc = crocRef.current
-                        if (!container || !croc) return "0"
-                        const gap = window.innerWidth < 768 ? 0 : 0
-                        return `${container.offsetWidth - croc.offsetWidth + gap}px`
+                        if (!container || !croc) return "0px"
+                        // Stop when right edge of croc touches right edge of container
+                        return `${container.offsetWidth - croc.offsetWidth}px`
                     },
-                    ease: "none"
+                    ease: "none",
+                    duration: 0.4
                 },
                 0
             )
-            // Animate bottom jaw closing
-            .to("#bottom", {
-                rotation: -2,
-                ease: "power2.inOut"
-            }, 0.3)
-            // Animate top jaw closing
-            .to("#top", {
-                rotation: 8,
-                ease: "power2.inOut"
-            }, 0.3)
+
+            // Bottom jaw closes at 50% of timeline
+            .to("#bottom-jaw", {
+                rotation: 0,
+                x: 0,
+                ease: "power2.inOut",
+                duration: 0.2
+            }, 0.5)
+            .to("#bottom-jaw", {
+                y: 0,
+                ease: "power2.inOut",
+                duration: 0.18
+            }, 0.5)
+
+            // Top jaw closes at 75% of timeline
+            .to("#top-jaw", {
+                rotation: 0,
+                y: 0,
+                ease: "power2.inOut",
+                duration: 0.2
+            }, 0.75)
         })
 
         return () => ctx.revert()
