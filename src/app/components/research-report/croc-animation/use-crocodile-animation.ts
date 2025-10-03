@@ -40,8 +40,8 @@ export const useCrocodileAnimation = () => {
                         const container = containerRef.current
                         const croc = crocRef.current
                         if (!container || !croc) return "0px"
-                        // Stop when right edge of croc touches right edge of container
-                        return `${container.offsetWidth - croc.offsetWidth}px`
+                        // Stop before reaching the right edge of container
+                        return `${container.offsetWidth - croc.offsetWidth - 400}px`
                     },
                     ease: "none",
                     duration: 0.4
@@ -49,26 +49,26 @@ export const useCrocodileAnimation = () => {
                 0
             )
 
-            // Bottom jaw closes at 50% of timeline
+            // Bottom jaw closes at 40% of crocodile movement (16% of timeline)
             .to("#bottom-jaw", {
                 rotation: 0,
                 x: 0,
                 ease: "power2.inOut",
-                duration: 0.2
-            }, 0.5)
+                duration: 0.1
+            }, 0.20)
             .to("#bottom-jaw", {
                 y: 0,
                 ease: "power2.inOut",
-                duration: 0.18
-            }, 0.5)
+                duration: 0.08
+            }, 0.20)
 
-            // Top jaw closes at 75% of timeline
+            // Top jaw closes at 60% of crocodile movement (24% of timeline)
             .to("#top-jaw", {
                 rotation: 0,
                 y: 0,
                 ease: "power2.inOut",
-                duration: 0.2
-            }, 0.75)
+                duration: 0.1
+            }, 0.30)
         })
 
         return () => ctx.revert()
