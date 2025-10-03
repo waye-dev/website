@@ -13,13 +13,23 @@ export function createFolderTransitions(
 
         if (!content) return
 
+        const inner = content.querySelector('.content-inner') as HTMLElement
         const contentHeight = getContentHeight(content)
-        const scrollDuration = contentHeight / window.innerHeight
+        const scrollDuration = (contentHeight / window.innerHeight) * 0.75
 
-        tl.to({}, { duration: scrollDuration })
+        // Scroll through the content
+        if (inner && contentHeight > window.innerHeight) {
+            tl.to(inner, {
+                yPercent: -((contentHeight - window.innerHeight) / contentHeight) * 100,
+                duration: scrollDuration,
+                ease: 'none'
+            })
+        } else {
+            tl.to({}, { duration: scrollDuration })
+        }
 
         if (nextFolder) {
-            const transitionDuration = 0.8
+            const transitionDuration = 0.4
 
             tl.set(nextContent, {
                 pointerEvents: 'none',

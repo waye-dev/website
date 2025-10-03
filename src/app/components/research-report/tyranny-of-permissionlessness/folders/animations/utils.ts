@@ -1,7 +1,9 @@
 export function getContentHeight(content: HTMLDivElement): number {
-    const scrollHeight = content.scrollHeight
+    const inner = content.querySelector('.content-inner') as HTMLElement
+    if (!inner) return window.innerHeight
+    const scrollHeight = inner.scrollHeight || window.innerHeight * 2
     const isMobile = window.innerWidth < 768
-    const minHeight = isMobile ? window.innerHeight * 2 : window.innerHeight * 1.5
+    const minHeight = isMobile ? window.innerHeight * 0.8 : window.innerHeight * 0.5
     return Math.max(scrollHeight, minHeight)
 }
 
@@ -11,9 +13,9 @@ export function calculateTotalDuration(contents: HTMLDivElement[]): number {
 
     contents.forEach((content, index) => {
         const contentHeight = getContentHeight(content)
-        const scrollDuration = contentHeight / window.innerHeight
+        const scrollDuration = (contentHeight / window.innerHeight) * 0.75
         // Only add transition buffer if there's a next folder
-        const transitionBuffer = index < contents.length - 1 ? 0.8 : 0
+        const transitionBuffer = index < contents.length - 1 ? 0.4 : 0
         totalDuration += scrollDuration + transitionBuffer
     })
 
@@ -34,8 +36,8 @@ export function calculateScrollPositionForFolder(
         if (!content) continue
 
         const contentHeight = getContentHeight(content)
-        const scrollDuration = contentHeight / window.innerHeight
-        const transitionBuffer = 0.8 // Time for folder transition
+        const scrollDuration = (contentHeight / window.innerHeight) * 0.75
+        const transitionBuffer = 0.4 // Time for folder transition
 
         scrollPosition += scrollDuration + transitionBuffer
     }
