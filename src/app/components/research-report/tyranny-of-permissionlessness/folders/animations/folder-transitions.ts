@@ -15,17 +15,19 @@ export function createFolderTransitions(
 
         const inner = content.querySelector('.content-inner') as HTMLElement
         const contentHeight = getContentHeight(content)
-        const scrollDuration = (contentHeight / window.innerHeight) * 0.75
+        const scrollDuration = contentHeight / window.innerHeight
+        // Use the same adjusted duration as in utils
+        const adjustedScrollDuration = Math.max(scrollDuration * 0.3, 0.5)
 
         // Scroll through the content
         if (inner && contentHeight > window.innerHeight) {
             tl.to(inner, {
                 yPercent: -((contentHeight - window.innerHeight) / contentHeight) * 100,
-                duration: scrollDuration,
+                duration: adjustedScrollDuration,
                 ease: 'none'
             })
         } else {
-            tl.to({}, { duration: scrollDuration })
+            tl.to({}, { duration: adjustedScrollDuration })
         }
 
         if (nextFolder) {
