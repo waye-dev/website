@@ -20,7 +20,7 @@ export default function ResearchReport() {
 
   return (
       <main>
-        {/* <div className='bg-gray-custom-400 text-black'>
+        <div className='bg-gray-custom-400 text-black'>
           <Wrapper>
             <div className='flex flex-col gap-16 md:gap-24'>
               <div className='flex flex-col gap-14 items-center w-full pt-16'>
@@ -124,7 +124,7 @@ export default function ResearchReport() {
         <div className='bg-blue-custom-1200'>
           <StrategiesWall />
         </div>
-        */}
+       
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='beyond-financial-sustainability'>
             <BeyondFinancialSustainability />
