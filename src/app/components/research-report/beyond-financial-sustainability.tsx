@@ -11,8 +11,7 @@ export const BeyondFinancialSustainability = () => {
         </h5>
 
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability</h5>
-          <p>The ecosystem thrives, the position may not</p>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability: the ecosystem thrives, the position may not</h5>
         </section>
 
         <TakeawayCard
@@ -122,8 +121,7 @@ export const BeyondFinancialSustainability = () => {
       {/* Project sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability</h5>
-          <p>One funding model, two realities</p>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability: one funding model, two realities</h5>
         </section>
 
         <TakeawayCard
@@ -211,8 +209,7 @@ export const BeyondFinancialSustainability = () => {
       {/* psychological sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability</h5>
-          <p>burnout as systemic risk</p>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as a systemic risk</h5>
         </section>
 
         <TakeawayCard
