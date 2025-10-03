@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import ScrollTrigger from "gsap/ScrollTrigger"
@@ -9,20 +9,53 @@ export const useCrocodileAnimation = () => {
     const containerRef = useRef<HTMLDivElement>(null)
     const crocRef = useRef<HTMLSpanElement>(null)
 
+    // Cleanup on unmount
+    useEffect(() => {
+        return () => {
+            ScrollTrigger.getAll().forEach(st => {
+                if (st.vars.id === 'crocodile-animation') {
+                    st.kill(true)
+                }
+            })
+        }
+    }, [])
+
     useGSAP(() => {
+        if (typeof window === 'undefined') return
+        if (!containerRef.current || !crocRef.current) return
+
+        // Kill existing crocodile ScrollTriggers
+        ScrollTrigger.getAll().forEach(st => {
+            if (st.vars.id === 'crocodile-animation') {
+                st.kill(true)
+            }
+        })
+
         const ctx = gsap.context(() => {
-            // Set initial jaw positions (open)
-            gsap.set("#top-jaw", { transformOrigin: "right center", rotation: -15, y: -90 })
-            gsap.set("#bottom-jaw", { transformOrigin: "right center", rotation: 15, y: 150, x: -26 })
+            if (!containerRef.current || !crocRef.current) return
+
+            // Set initial jaw positions (open) - scoped to crocRef
+            const topJaw = crocRef.current.querySelector("#top-jaw")
+            const bottomJaw = crocRef.current.querySelector("#bottom-jaw")
+
+            if (!topJaw || !bottomJaw) return
+
+            gsap.set(topJaw, { transformOrigin: "right center", rotation: -15, y: -90 })
+            gsap.set(bottomJaw, { transformOrigin: "right center", rotation: 15, y: 150, x: -26 })
 
             const tl = gsap.timeline({
                 scrollTrigger: {
+                    id: 'crocodile-animation',
                     trigger: containerRef.current,
+                    scroller: window,
                     start: "bottom bottom",
                     end: "+=100%",
                     scrub: 1,
                     pin: true,
+                    pinSpacing: true,
                     invalidateOnRefresh: true,
+                    preventOverlaps: true,
+                    fastScrollEnd: true,
                 }
             })
 
@@ -50,29 +83,43 @@ export const useCrocodileAnimation = () => {
             )
 
             // Bottom jaw closes at 40% of crocodile movement (16% of timeline)
-            .to("#bottom-jaw", {
+            .to(bottomJaw, {
                 rotation: 0,
                 x: 0,
                 ease: "power2.inOut",
                 duration: 0.1
             }, 0.20)
-            .to("#bottom-jaw", {
+            .to(bottomJaw, {
                 y: 0,
                 ease: "power2.inOut",
                 duration: 0.08
             }, 0.20)
 
             // Top jaw closes at 60% of crocodile movement (24% of timeline)
-            .to("#top-jaw", {
+            .to(topJaw, {
                 rotation: 0,
                 y: 0,
                 ease: "power2.inOut",
                 duration: 0.1
             }, 0.30)
-        })
+        }, containerRef)
 
-        return () => ctx.revert()
+        return () => {
+            ctx.revert()
+            ScrollTrigger.getAll().forEach(st => {
+                if (st.vars.id === 'crocodile-animation') {
+                    st.kill(true)
+                }
+            })
+        }
     }, [])
+
+    // Force refresh on dependencies change
+    useEffect(() => {
+        if (containerRef.current) {
+            ScrollTrigger.refresh()
+        }
+    }, [containerRef])
 
     return {
         containerRef,
