@@ -10,7 +10,7 @@ import { Strategies } from "@/app/components/research-report/strategies";
 import { StrategiesWall } from "@/app/components/research-report/strategies-wall";
 import Eyeballs from "@/app/components/research-report/_components/eyeballs";
 import { BeyondFinancialSustainability } from "@/app/components/research-report/beyond-financial-sustainability";
-import { RecommendationReveal } from "@/app/components/research-report/recommendation-reveal";
+import { RecommendationReveal } from "@/app/components/research-report/mountains/index";
 import { Conclusion } from "@/app/components/research-report/conclusion";
 import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
 import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
@@ -124,6 +124,7 @@ export default function ResearchReport() {
         <div className='bg-blue-custom-1200'>
           <StrategiesWall />
         </div>
+       
         <div className='bg-blue-custom-1200'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='beyond-financial-sustainability'>
             <BeyondFinancialSustainability />
