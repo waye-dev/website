@@ -47,15 +47,16 @@ const FOLDER_CONFIG = [
 ]
 
 const TAB_CONFIG = {
-    TOTAL_WIDTH_PERCENTAGE: 95, // Total width that all tabs should cover (%)
-    OVERLAP_PERCENTAGE: 15, // How much tabs overlap each other (% of tab width)
+    TOTAL_WIDTH_PERCENTAGE: 95,
+    OVERLAP_PERCENTAGE: 15,
 } as const
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP)
 
-function calculateTabLayout(folderCount: number, containerWidth: number) {
+function calculateTabLayout(folderCount: number, containerWidth: number, folderWidthPercent: number = 0.88) {
     const { TOTAL_WIDTH_PERCENTAGE, OVERLAP_PERCENTAGE } = TAB_CONFIG
-    const totalAvailableWidth = (containerWidth * TOTAL_WIDTH_PERCENTAGE) / 100
+    const actualFolderWidth = containerWidth * folderWidthPercent
+    const totalAvailableWidth = (actualFolderWidth * TOTAL_WIDTH_PERCENTAGE) / 100
     const tabWidth = totalAvailableWidth / (folderCount - OVERLAP_PERCENTAGE / 100 * (folderCount - 1))
     const overlapPx = (tabWidth * OVERLAP_PERCENTAGE) / 100
 

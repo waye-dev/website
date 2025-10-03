@@ -11,6 +11,7 @@ interface FolderProps {
     children: ReactNode;
     tabWidth: number;
     tabLeftPosition: number;
+    tabScaleCorrection?: number;
     onTabClick?: () => void;
 }
 
@@ -26,6 +27,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
     children,
     tabWidth,
     tabLeftPosition,
+    tabScaleCorrection = 0.7,
     onTabClick
 }, ref) => {
     const folderRef = useRef<HTMLDivElement>(null)
@@ -54,11 +56,12 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                             fillColor={fillColor}
                             width={tabWidth}
                             leftPosition={tabLeftPosition}
+                            scaleCorrection={tabScaleCorrection}
                             onClick={onTabClick}
                         />
                     </div>
 
-                    <div className={`h-full rounded-[1rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`} style={{ pointerEvents: 'auto' }}>
+                    <div className={`h-full rounded-t-[1rem] rounded-b-[1.5rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`} style={{ pointerEvents: 'auto' }}>
                         <div
                             ref={contentRef}
                             className="h-full scrollbar absolute"
