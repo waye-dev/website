@@ -4,34 +4,38 @@ interface SvgTabProps {
     label: string;
     fillColor: string;
     className?: string;
-    width: number; // Width in pixels for the tab
-    leftPosition: number; // Left position in pixels
+    width: number;
+    leftPosition: number;
     onClick?: () => void;
+    scaleCorrection?: number;
 }
 
-export const SvgTab = ({ label, fillColor, className = "", width, leftPosition, onClick }: SvgTabProps) => {
-    // SVG original viewBox dimensions
+export const SvgTab = ({ label, fillColor, className = "", width, leftPosition, onClick, scaleCorrection = 1 }: SvgTabProps) => {
     const SVG_VIEWBOX_WIDTH = 399
     const SVG_VIEWBOX_HEIGHT = 55
     const aspectRatio = SVG_VIEWBOX_HEIGHT / SVG_VIEWBOX_WIDTH
 
-    // Calculate height based on width to maintain aspect ratio
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+    const scale = isMobile ? 2 : 1
+    const scaledWidth = width * scale
     const height = width * aspectRatio
+    const scaledHeight = height * scale
+
+    const correctedLeft = leftPosition * scaleCorrection + (isMobile ? 10 : 5)
 
     return (
         <div
             className={`absolute ${className}`}
             style={{
-                left: `${leftPosition+5}px`,
-                width: `${width}px`,
-                height: `${height}px`,
-                bottom: -15,
+                right: `${correctedLeft}px`,
+                width: `${scaledWidth}px`,
+                height: `${scaledHeight}px`,
+                bottom: -5,
                 cursor: onClick ? 'pointer' : 'default',
                 pointerEvents: 'auto'
             }}
             onClick={onClick}
         >
-            {/* SVG Path - absolute positioned */}
             <svg
                 className="absolute inset-0 w-full h-full"
                 viewBox={`0 0 ${SVG_VIEWBOX_WIDTH} ${SVG_VIEWBOX_HEIGHT}`}
@@ -46,12 +50,11 @@ export const SvgTab = ({ label, fillColor, className = "", width, leftPosition, 
                 />
             </svg>
 
-            {/* Text - absolute positioned on top */}
             <div
                 className="absolute inset-0 flex items-center justify-center"
-                style={{ paddingBottom: `${height * 0.08}px` }} // Slight adjustment for visual centering
+                style={{ paddingBottom: `${height * 0.08}px` }}
             >
-                <span className="text-[0.875rem] md:text-[1rem] font-inknutAntiqua text-[#222222]">
+                <span className="text-[0.75rem] sm:text-[0.875rem] md:text-[1rem] font-inknutAntiqua text-[#222222]">
                     {label}
                 </span>
             </div>

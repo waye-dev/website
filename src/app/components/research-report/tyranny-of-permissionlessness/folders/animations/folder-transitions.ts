@@ -16,14 +16,11 @@ export function createFolderTransitions(
         const contentHeight = getContentHeight(content)
         const scrollDuration = contentHeight / window.innerHeight
 
-        // Add scroll duration to timeline (user scrolls naturally)
         tl.to({}, { duration: scrollDuration })
 
-        // Transition to next folder
         if (nextFolder) {
             const transitionDuration = 0.8
 
-            // Ensure next content is completely locked before transition starts
             tl.set(nextContent, {
                 pointerEvents: 'none',
                 overflowY: 'hidden',
@@ -31,7 +28,6 @@ export function createFolderTransitions(
                 visibility: 'hidden'
             })
 
-            // Hide current content and slide next folder simultaneously
             tl.to(content, {
                 pointerEvents: 'none',
                 overflowY: 'hidden',
@@ -41,21 +37,18 @@ export function createFolderTransitions(
                 ease: "power2.in"
             })
 
-            // Slide next folder up from bottom to center
             tl.to(nextFolder, {
                 yPercent: 0,
                 duration: transitionDuration,
                 ease: "power1.inOut"
             }, "<0.2")
 
-            // Keep current folder centered while next folder slides over it
             tl.to(folder, {
                 yPercent: 0,
                 duration: transitionDuration,
                 ease: "power1.inOut"
             }, "<")
 
-            // AFTER y-transition completes, show content visually
             tl.to(nextContent, {
                 opacity: 1,
                 visibility: 'visible',
@@ -63,7 +56,6 @@ export function createFolderTransitions(
                 ease: "power2.out"
             })
 
-            // Enable scrolling ONLY after all visual transitions complete
             tl.set(nextContent, {
                 pointerEvents: 'auto',
                 overflowY: 'auto',
