@@ -18,8 +18,8 @@ export const useCrocodileAnimation = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: "top top",
-                    end: "bottom top",
+                    start: "bottom bottom",
+                    end: "+=100%",
                     scrub: 1,
                     pin: true,
                     invalidateOnRefresh: true,
@@ -41,7 +41,7 @@ export const useCrocodileAnimation = () => {
                         const croc = crocRef.current
                         if (!container || !croc) return "0px"
                         // Stop before reaching the right edge of container
-                        return `${container.offsetWidth - croc.offsetWidth - 400}px`
+                        return `${container.offsetWidth - croc.offsetWidth - 380}px`
                     },
                     ease: "none",
                     duration: 0.4
