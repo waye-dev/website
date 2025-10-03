@@ -11,7 +11,7 @@ export const sections: Section[] = [
   {
     id: "00",
     textContent: (
-      <div className="max-w-3xl">
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <p className="mb-4">
         Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away — admin burden, isolation, grant anxiety. This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
 
@@ -23,7 +23,7 @@ export const sections: Section[] = [
   {
     id: "01",
     textContent: (
-      <div className="max-w-3xl">
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed primarily to funders, since project maintainers and contributors are already bearing the full weight of the tyranny of permissionlessness.</p>
       </div>
     ),
@@ -32,10 +32,11 @@ export const sections: Section[] = [
   {
     id: "02",
     textContent: (
-      <div className="max-w-3xl">
-        <p className="font-bold">The core principle: sustain entry motivations by making everything else easier.</p>
-      <p>Many of the challenges that we identified are not new, and echo decades of experience in open source and civic tech communities. Rather than starting from scratch, we point to proven models and resources that the freedom tech ecosystem can adapt to its unique context to facilitate and support its contributors.</p>
-
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
+        <div>
+          <p className="font-bold">The core principle: sustain entry motivations by making everything else easier.</p>
+          <p>Many of the challenges that we identified are not new, and echo decades of experience in open source and civic tech communities. Rather than starting from scratch, we point to proven models and resources that the freedom tech ecosystem can adapt to its unique context to facilitate and support its contributors.</p>
+        </div>
       </div>
     ),
     animation: 'framesOnly',
@@ -43,15 +44,17 @@ export const sections: Section[] = [
   {
     id: "03",
     textContent: (
-      <div className="max-w-3xl">
-        <p className="uppercase font-bold mb-4">Restructure funding models</p>
-        <List>
-          <ListItem>Fund teams, not just individuals: introduce team-oriented grants to support application layer developers.</ListItem>
-          <ListItem>Learn from The FOSS Sustainability Fund which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.</ListItem>
-          <ListItem>Extend renewal cycles after year 1: reduce the grant-writing burden for proven contributors.</ListItem>
-          <ListItem>Create revenue friendly grants: encourage profitability in grant-funded applications, based on OSS principles, use licensing cleverly to avoid corporate capture.</ListItem>
-          <ListItem>Develop transition pathways: fund alumni roles (mentorship, documentation, part-time maintenance).</ListItem>
-        </List>
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
+        <div>
+          <p className="uppercase font-bold mb-4">Restructure funding models</p>
+          <List>
+            <ListItem>Fund teams, not just individuals: introduce team-oriented grants to support application layer developers.</ListItem>
+            <ListItem>Learn from The FOSS Sustainability Fund which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.</ListItem>
+            <ListItem>Extend renewal cycles after year 1: reduce the grant-writing burden for proven contributors.</ListItem>
+            <ListItem>Create revenue friendly grants: encourage profitability in grant-funded applications, based on OSS principles, use licensing cleverly to avoid corporate capture.</ListItem>
+            <ListItem>Develop transition pathways: fund alumni roles (mentorship, documentation, part-time maintenance).</ListItem>
+          </List>
+        </div>
       </div>
     ),
     animation: 'innerOnly',
@@ -59,15 +62,17 @@ export const sections: Section[] = [
   {
     id: "04",
     textContent: (
-      <div className="max-w-3xl">
-        <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
-        <List>
-          <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs.</ListItem>
-          <ListItem>Some community-led initiatives already exist to support admin work for Bitcoin developers: the Bitcoin Legal Defense Fund offers legal support, while Satoshi Pacioli Accounting provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
-          <ListItem>Co-working space stipends: combat isolation through physical presence.</ListItem>
-          <ListItem>Mentorship matching: connect new contributors to experienced developers to ease onboarding pains.</ListItem>
-          <ListItem>Learn from the Linux Foundation's LFX Mentorship program, which structures mentorship programs connecting experienced maintainers with new contributors.</ListItem>
-        </List>
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
+        <div>
+          <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
+          <List>
+            <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs.</ListItem>
+            <ListItem>Some community-led initiatives already exist to support admin work for Bitcoin developers: the Bitcoin Legal Defense Fund offers legal support, while Satoshi Pacioli Accounting provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
+            <ListItem>Co-working space stipends: combat isolation through physical presence.</ListItem>
+            <ListItem>Mentorship matching: connect new contributors to experienced developers to ease onboarding pains.</ListItem>
+            <ListItem>Learn from the Linux Foundation's LFX Mentorship program, which structures mentorship programs connecting experienced maintainers with new contributors.</ListItem>
+          </List>
+        </div>
       </div>
     ),
     animation: 'framesOnly',
@@ -75,13 +80,13 @@ export const sections: Section[] = [
   {
     id: "05",
     textContent: (
-      <div className="max-w-3xl">
-<List>
-<ListItem>Mental health resources: normalize and support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
-<ListItem>While community-led initiatives such as Open Source Guides provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
-<ListItem>Self-management toolkits: provide productivity resources, time management support, especially for newer contributors.</ListItem>
-<ListItem>Make invisible work visible and valued: explicitly recognize and compensate non-coding work (research, maintenance, mentorship, documentation, management) in grant structures and community recognition systems.</ListItem>
-</List>
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
+        <List>
+          <ListItem>Mental health resources: normalize and support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
+          <ListItem>While community-led initiatives such as Open Source Guides provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
+          <ListItem>Self-management toolkits: provide productivity resources, time management support, especially for newer contributors.</ListItem>
+          <ListItem>Make invisible work visible and valued: explicitly recognize and compensate non-coding work (research, maintenance, mentorship, documentation, management) in grant structures and community recognition systems.</ListItem>
+        </List>
       </div>
     ),
     animation: 'innerOnly',
@@ -89,14 +94,16 @@ export const sections: Section[] = [
   {
     id: "06",
     textContent: (
-      <div className="max-w-3xl">
-        <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
-        <List>
-          <ListItem>Partner with universities: create structured pathways and talent pipeline into the ecosystem.</ListItem>
-          <ListItem>Fund team offsites and developers retreats: provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
-          <ListItem>Document institutional knowledge: capture expertise before developers leave.</ListItem>
-          <ListItem>Support community initiatives aimed toward mindfulness and wellbeing: preventive approaches including yoga retreats, mindfulness programs at conferences, wellbeing workshops.</ListItem>
-        </List>
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
+        <div>
+          <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
+          <List>
+            <ListItem>Partner with universities: create structured pathways and talent pipeline into the ecosystem.</ListItem>
+            <ListItem>Fund team offsites and developers retreats: provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
+            <ListItem>Document institutional knowledge: capture expertise before developers leave.</ListItem>
+            <ListItem>Support community initiatives aimed toward mindfulness and wellbeing: preventive approaches including yoga retreats, mindfulness programs at conferences, wellbeing workshops.</ListItem>
+          </List>
+        </div>
       </div>
     ),
     animation: 'framesOnly',
