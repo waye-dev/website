@@ -11,36 +11,26 @@ export const sections: Section[] = [
   {
     id: "00",
     textContent: (
-      <div className="text-center font-inknutAntiqua">
-        <p className="text-lg text-gray-600">Recommendations:</p>
-        <h1 className="text-4xl font-bold mb-4">From tyranny to sustainable permissionlessness</h1>
+      <div className="max-w-3xl">
+        <p className="mb-4">
+        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away — admin burden, isolation, grant anxiety. This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
+
+        </p>
       </div>
     ),
-    animation: null,
+    animation: 'framesOnly',
   },
   {
     id: "01",
     textContent: (
       <div className="max-w-3xl">
-        <p className="mb-4">
-        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away — admin burden, isolation, grant anxiety. This “tyranny of permissionlessness” represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
-
-        </p>
-      </div>  
-    ),
-    animation: 'framesOnly',
-  },
-  {
-    id: "02",
-    textContent: (
-      <div className="max-w-3xl">
-        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors’ day-to-day experience. They are directed primarily to funders, since project maintainers and contributors are already bearing the full weight of the tyranny of permissionlessness.</p>
+        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed primarily to funders, since project maintainers and contributors are already bearing the full weight of the tyranny of permissionlessness.</p>
       </div>
     ),
     animation: 'innerOnly',
   },
   {
-    id: "03",
+    id: "02",
     textContent: (
       <div className="max-w-3xl">
         <p className="font-bold">The core principle: sustain entry motivations by making everything else easier.</p>
@@ -51,7 +41,7 @@ export const sections: Section[] = [
     animation: 'framesOnly',
   },
   {
-    id: "04",
+    id: "03",
     textContent: (
       <div className="max-w-3xl">
         <p className="uppercase font-bold mb-4">Restructure funding models</p>
@@ -67,7 +57,7 @@ export const sections: Section[] = [
     animation: 'innerOnly',
   },
   {
-    id: "05",
+    id: "04",
     textContent: (
       <div className="max-w-3xl">
         <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
@@ -83,7 +73,7 @@ export const sections: Section[] = [
     animation: 'framesOnly',
   },
   {
-    id: "06",
+    id: "05",
     textContent: (
       <div className="max-w-3xl">
 <List>
@@ -97,7 +87,7 @@ export const sections: Section[] = [
     animation: 'innerOnly',
   },
   {
-    id: "07",
+    id: "06",
     textContent: (
       <div className="max-w-3xl">
         <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
@@ -112,7 +102,7 @@ export const sections: Section[] = [
     animation: 'framesOnly',
   },
   {
-    id: "08",
+    id: "07",
     textContent: (
       <div className="max-w-6xl">
         <p className="font-bold mb-6 text-center">Developers' ideas</p>
@@ -123,14 +113,14 @@ export const sections: Section[] = [
             </p>
             <p className="text-xs text-gray-600 font-semibold">— Respondent #13 New contributor</p>
           </div>
-          
+
           <div className="p-4 rounded-lg">
             <p className="text-sm italic mb-3">
               "I feel like that might be a huge missing aspect of a lot of open source teams, this idea of an offsite or just getting together in person. It's kind of hard to get people around from around the world to travel for an open source project since they're not getting paid for, but when it does happen, it's actually really productive, and I would hope we do more of that."
             </p>
             <p className="text-xs text-gray-600 font-semibold">— Respondent #20 Expert contributor</p>
           </div>
-          
+
           <div className="p-4 rounded-lg">
             <p className="text-sm italic mb-3">
               "Just trying to slip in more mindfulness does make sense. So, a lot of projects and a lot of developers, they'll feel the need to travel around a lot, and go to a lot of conferences and and that can take its toll. There's usually a lot of alcohol involved, and it's quite high energy and then you feel bad because you're actually neglecting the project. So if you can have that space be more nurturing, and have some mindfulness. I think there is probably, maybe even subconscious, an active move to provide … satellite events at some of these conferences. Like, there's the Bitcoin runners, and in the event, I'll go for a jog around the local city or something, and there's a Bitcoin walkers society as well. And maybe something which you could push is, for some of these conferences, some mindfulness exercises or mindfulness workshops where there could be some meditation, or some guided meditation, or some yoga or something like that, I think that could be great for people."
