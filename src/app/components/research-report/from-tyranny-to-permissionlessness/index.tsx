@@ -69,13 +69,13 @@ export function FromTyrannyToPermissionlessness() {
     const textSectionDuration = 2;
     const totalTimelineDuration = sections.length * textSectionDuration;
 
-    const svgAnimationStartOffset = textSectionDuration;
+    const svgAnimationStartOffset = 0;
     const svgAnimationEndTime = totalTimelineDuration * 0.8;
 
     const strokeAnimationDuration = (svgAnimationEndTime - svgAnimationStartOffset) * 0.6;
     const fillAnimationStartTime = svgAnimationStartOffset + strokeAnimationDuration * 0.67;
     
-    const lastSectionIndex = sections.findIndex(section => section.id === '08');
+    const lastSectionIndex = sections.findIndex(section => section.id === '07');
     const swapStartTime = lastSectionIndex * textSectionDuration;
     
     strokeElements.forEach((element: Element, index: number) => {
@@ -160,7 +160,7 @@ export function FromTyrannyToPermissionlessness() {
         ease: "power2.out"
       }, startTime);
 
-      if (sections[index]?.id === '08') {
+      if (sections[index]?.id === '07') {
         if (section08TitleRef.current) {
           gsap.set(section08TitleRef.current, {
             opacity: 0,
@@ -218,7 +218,7 @@ export function FromTyrannyToPermissionlessness() {
       <div className="md:hidden w-full px-4 py-8">
         {sections.map((section, index) => (
           <div key={section.id} className="mb-12">
-            {section.id === '08' ? (
+            {section.id === '07' ? (
               <div className="space-y-6">
                 <p className="font-bold text-xl font-inknutAntiqua text-center mb-6">
                   Developers' ideas
@@ -306,7 +306,7 @@ export function FromTyrannyToPermissionlessness() {
               className="absolute w-full flex justify-center items-center"
               style={{ opacity: section.id === '00' ? 1 : 0 }}
             >
-              {section.id === '08' ? (
+              {section.id === '07' ? (
                 <div className="max-w-7xl bg-gray-custom-100">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="p-4 rounded-lg">
