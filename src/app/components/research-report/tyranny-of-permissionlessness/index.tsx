@@ -4,8 +4,8 @@ import { Folders } from "./folders";
 
 export const TyrannyOfPermissionlessness = () => {
   return (
-    <div className='text-white flex flex-col'>
-      <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24'>
+    <div className='text-white flex flex-col pt-12'>
+      <Wrapper className='max-w-[1000px] xl:max-w-[1250px]'>
         <section className='flex flex-col gap-4 text-lg'>
           <p>
             If Jo Freeman's tyranny of structurelessness{" "}

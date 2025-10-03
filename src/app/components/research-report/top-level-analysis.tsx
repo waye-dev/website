@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useMediaQuery } from "@/hooks/window-dimensions";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
+import { CrocAnimation } from "./croc-animation";
 
 export const TopLevelAnalysis = () => {
   // const isMobile = useMediaQuery("(max-width: 768px)");
@@ -101,52 +102,6 @@ export const TopLevelAnalysis = () => {
           labelOffset: { x: 0, y: 0 }
         }
       }} />
-
-      {/* core findings section */}
-      <div className='flex flex-col gap-12 py-24'>
-        <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center'>
-          Core findings: the tyranny of permissionlessness
-        </h5>
-
-        <section className='flex flex-col gap-8 text-lg'>
-          <p>
-            The paradoxes revealed in our opening exercise — between commons and commerce, sustainability and experience, autonomy and isolation — all
-            point to a deeper structural tension, revealed by our interviews.
-          </p>
-          <strong>{`Permissionlessness — the defining principle of Bitcoin and the broader OSS ecosystem — becomes oppressive when applied to human work systems.`}</strong>
-          <p>
-            We call this <strong>“the tyranny of permissionlessness.”</strong>
-          </p>
-        </section>
-
-        <section className='w-full h-full flex items-center justify-end pr-32'>
-          <Image src='/svgs/permissionless-woman.svg' alt='permissionless woman' width={398} height={448} />
-        </section>
-      </div>
     </div>
   );
 };
-
-const experienceLevels = [
-  {
-    title: "Institutional orientation",
-    description: "Public goods focus",
-    image: "/svgs/new-contributor.svg",
-    width: 260,
-    height: 250,
-  },
-  {
-    title: "Work Sustainability",
-    description: "Generally sustainable",
-    image: "/svgs/medium-contributor.svg",
-    width: 260,
-    height: 250,
-  },
-  {
-    title: "Work rhythm",
-    description: "Routine focus",
-    image: "/svgs/experienced-contributor.svg",
-    width: 260,
-    height: 250,
-  },
-];
