@@ -3,7 +3,7 @@ import { CrocAnimation } from "../croc-animation";
 export const CoreFindingsTheTyrany = () => {
   return (
     <section>
-    <div className='flex flex-col gap-12 px-12 lg:px-48'>
+    <div className='flex flex-col gap-12 px-12 lg:px-56'>
     <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center'>
       Core findings: the tyranny of permissionlessness
     </h5>
@@ -15,7 +15,7 @@ export const CoreFindingsTheTyrany = () => {
       </p>
       <strong>{`Permissionlessness — the defining principle of Bitcoin and the broader OSS ecosystem — becomes oppressive when applied to human work systems.`}</strong>
       <p>
-        We call this <strong>“the tyranny of permissionlessness.”</strong>
+        We call this <strong>"the tyranny of permissionlessness."</strong>
       </p>
     </section>
     </div>

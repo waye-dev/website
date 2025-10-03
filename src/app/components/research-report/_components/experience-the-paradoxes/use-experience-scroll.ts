@@ -25,21 +25,8 @@ export const useExperienceScroll = () => {
   const lastStageRef = useRef<'new' | 'mid' | 'expert'>('new');
   const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Kill all ScrollTriggers before cleanup
-  useEffect(() => {
-    return () => {
-      ScrollTrigger.getAll().forEach(st => {
-        if (st.vars.id?.includes('experience-paradoxes')) {
-          st.kill(true);
-        }
-      });
-    };
-  }, []);
-
   useGSAP(() => {
-    if (!containerRef.current || !avatarRef.current || !lineRef.current) return;
 
-    // Debounce resize events
     const handleResize = () => {
       if (resizeTimeoutRef.current) {
         clearTimeout(resizeTimeoutRef.current);
@@ -52,8 +39,6 @@ export const useExperienceScroll = () => {
     window.addEventListener('resize', handleResize);
 
     const mm = gsap.matchMedia();
-
-    // Kill existing ScrollTriggers before creating new ones
     ScrollTrigger.getAll().forEach(st => {
       if (st.vars.id?.includes('experience-paradoxes')) {
         st.kill(true);
@@ -61,8 +46,6 @@ export const useExperienceScroll = () => {
     });
     mm.add("(min-width: 768px)", () => {
       if (!avatarRef.current || !lineRef.current) return;
-
-      // Initialize desktop avatar position
       const lineWidth = lineRef.current.offsetWidth;
       const initialX = getAvatarPosition(0, lineWidth);
       const initialY = getAvatarVerticalPosition(0);
@@ -71,8 +54,6 @@ export const useExperienceScroll = () => {
         y: initialY,
         force3D: true
       });
-
-      // Create desktop ScrollTrigger
       ScrollTrigger.create({
         id: "experience-paradoxes-desktop",
         trigger: containerRef.current,
@@ -83,6 +64,16 @@ export const useExperienceScroll = () => {
         pinSpacing: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        fastScrollEnd: true,
+        onEnter: () => {
+          setCurrentStage('new');
+          setPreviousStage(null);
+          setIsAnimating(false);
+          setTargetStage('new');
+          setProgress(0);
+          lastProgressRef.current = 0;
+          lastStageRef.current = 'new';
+        },
         onUpdate: (self) => {
           const currentProgress = self.progress;
           const newStage = getStageFromProgress(currentProgress);
@@ -115,7 +106,6 @@ export const useExperienceScroll = () => {
       });
     });
 
-    // Mobile animations
     mm.add("(max-width: 767px)", () => {
       const mobileAvatarRefs = [
         { ref: mobileAvatarNewRef, stage: 'new' as const },
@@ -123,7 +113,6 @@ export const useExperienceScroll = () => {
         { ref: mobileAvatarExpertRef, stage: 'expert' as const }
       ];
 
-      // Initialize mobile avatars
       mobileAvatarRefs.forEach(({ ref, stage }) => {
         if (ref.current) {
           const initialTransform = getMobileAvatarTransform(0, stage, 'down');
@@ -136,7 +125,6 @@ export const useExperienceScroll = () => {
         }
       });
 
-      // Create mobile ScrollTrigger
       ScrollTrigger.create({
         id: "experience-paradoxes-mobile",
         trigger: containerRef.current,
@@ -147,6 +135,16 @@ export const useExperienceScroll = () => {
         pinSpacing: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        fastScrollEnd: true,
+        onEnter: () => {
+          setCurrentStage('new');
+          setPreviousStage(null);
+          setIsAnimating(false);
+          setTargetStage('new');
+          setProgress(0);
+          lastProgressRef.current = 0;
+          lastStageRef.current = 'new';
+        },
         onUpdate: (self) => {
           const currentProgress = self.progress;
           const newStage = getStageFromProgress(currentProgress);
