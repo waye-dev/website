@@ -11,8 +11,7 @@ export const BeyondFinancialSustainability = () => {
         </h5>
 
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability</h5>
-          <p>The ecosystem thrives, the position may not</p>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability: the ecosystem thrives, the position may not</h5>
         </section>
 
         <TakeawayCard
@@ -43,7 +42,7 @@ export const BeyondFinancialSustainability = () => {
         </p>
 
         <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[657px] text-center mx-auto'>
-          — The loss of experienced developers before they can pass on their expertise.
+          A deeper sustainability challenge: the loss of experienced developers before they can pass on their expertise.
         </p>
 
         <p>
@@ -53,7 +52,7 @@ export const BeyondFinancialSustainability = () => {
         </p>
 
         <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[908px] text-center mx-auto'>
-          — Without intentional structures for knowledge transfer, each departure means losing institutional knowledge that cannot be fully captured
+          Without intentional structures for knowledge transfer, each departure means losing institutional knowledge that cannot be fully captured
           in the project history.{" "}
         </p>
 
@@ -78,7 +77,7 @@ export const BeyondFinancialSustainability = () => {
         </p>
 
         <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[908px] text-center mx-auto'>
-          — The ecosystem sustains itself not by supporting individuals, but by continuously replacing them.
+          The ecosystem sustains itself not by supporting individuals, but by continuously replacing them.
         </p>
 
         <QuoteCards
@@ -122,8 +121,7 @@ export const BeyondFinancialSustainability = () => {
       {/* Project sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability</h5>
-          <p>One funding model, two realities</p>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability: one funding model, two realities</h5>
         </section>
 
         <TakeawayCard
@@ -154,20 +152,13 @@ export const BeyondFinancialSustainability = () => {
         <p>
           When application developers propose hybrid models for their projects — combining grants with revenue — they face skepticism from funders,
           which prevents the very sustainability it aims to encourage. For core infrastructure contributors, the limitation plays out differently:
-          yearly grant renewals incentivize short term deliverables rather than long-term investments.
+          yearly grant renewals incentivize short term deliverables rather than long-term investments. Projects with viable revenue streams stay
+          grant-dependent for fear of losing their grants. Individual-only funding prevents team scaling. Pure open-source requirements block
+          sustainable hybrid models.
         </p>
 
         <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[908px] text-center mx-auto'>
-          — The result across both is a set of perverse incentives that trap projects in dependency.
-        </p>
-
-        <p>
-          Projects with viable revenue streams stay grant-dependent for fear of losing their grants. Individual-only funding prevents team scaling.
-          Pure open-source requirements block sustainable hybrid models.
-        </p>
-
-        <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[908px] text-center mx-auto'>
-          — Funders inadvertently optimize for yearly renewal requirements over long-term project sustainability.{" "}
+          Funders inadvertently optimize for yearly renewal requirements over long-term project sustainability. The result across both is a set of perverse incentives that trap projects in dependency.{" "}
         </p>
 
         <QuoteCards
@@ -211,8 +202,7 @@ export const BeyondFinancialSustainability = () => {
       {/* psychological sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability</h5>
-          <p>burnout as systemic risk</p>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as a systemic risk</h5>
         </section>
 
         <TakeawayCard
@@ -236,7 +226,7 @@ export const BeyondFinancialSustainability = () => {
         </p>
 
         <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[907px] text-center mx-auto'>
-          — Among the top causes of burnout identified by contributors is “working too much in the wrong direction”
+          Among the top causes of burnout identified by contributors is “working too much in the wrong direction”
         </p>
 
         <p>
@@ -260,11 +250,8 @@ export const BeyondFinancialSustainability = () => {
         />
 
         <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[907px] text-center mx-auto'>
-          — When burnout occurs, contributors overwhelmingly internalize responsibility for fixing it
-        </p>
-
-        <p>
-          This self-reliance reflects both ecosystem values and practical reality: without clear support structures, developers have nowhere to turn.
+          When burnout occurs, contributors overwhelmingly internalize responsibility for fixing it. This self-reliance reflects both ecosystem values
+          and practical reality: without clear support structures, developers have nowhere to turn.
         </p>
 
         <QuoteCards
@@ -280,15 +267,11 @@ export const BeyondFinancialSustainability = () => {
           ]}
         />
 
-        <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[907px] text-center mx-auto'>
-          — This is where the gap between individual coping and systemic support is starkest.
-        </p>
-
         <p>
-          Contributors adapt through taking breaks ("giving myself permission to not do stuff … and have faith that you will want to come back to it
-          later"), setting boundaries, switching to creative side projects, and practicing meditation. Yet these strategies address symptoms, not
-          causes. Without support structures, burnout remains inevitable. As one participant noted, simply acknowledging burnout as legitimate can
-          help reduce feelings of inadequacy or isolation.
+          This is where the gap between individual coping and systemic support is starkest. Contributors adapt through taking breaks ("giving myself
+          permission to not do stuff … and have faith that you will want to come back to it later"), setting boundaries, switching to creative side
+          projects, and practicing meditation. Yet these strategies address symptoms, not causes. Without support structures, burnout remains inevitable.
+          As one participant noted, simply acknowledging burnout as legitimate can help reduce feelings of inadequacy or isolation.
         </p>
 
         <QuoteCards
