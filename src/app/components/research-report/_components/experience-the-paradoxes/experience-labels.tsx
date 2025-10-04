@@ -1,3 +1,5 @@
+"use client"
+
 import { ExperienceParadoxesData, ExperienceStage } from "./types";
 
 interface ExperienceLabelsProps {
@@ -18,11 +20,13 @@ export const ExperienceLabels = ({ data, progress = 0 }: ExperienceLabelsProps) 
       {(['new', 'mid', 'expert'] as const).map((stage, index) => {
         const levelData = data[stage];
         const positions = ['left-0', 'left-1/2', 'right-0'];
-        const transforms = [
-          'translate(calc(-50% + var(--offset-x)), var(--offset-y))',
-          'translate(calc(-50% + var(--offset-x)), var(--offset-y))',
-          'translate(calc(50% + var(--offset-x)), var(--offset-y))'
-        ];
+        const getTransform = (idx: number) => {
+          const offsetX = levelData.labelOffset.x;
+          const offsetY = levelData.labelOffset.y;
+          if (idx === 0) return `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
+          if (idx === 1) return `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
+          return `translate(calc(50% + ${offsetX}px), ${offsetY}px)`;
+        };
 
         return (
           <div
@@ -30,10 +34,8 @@ export const ExperienceLabels = ({ data, progress = 0 }: ExperienceLabelsProps) 
             className={`absolute ${positions[index]}`}
             style={{
               opacity: getOpacityForStage(stage),
-              transform: transforms[index],
-              '--offset-x': `${levelData.labelOffset.x}px`,
-              '--offset-y': `${levelData.labelOffset.y}px`,
-            } as React.CSSProperties}
+              transform: getTransform(index),
+            }}
           >
             <div className="text-center">
               <p className="text-sm font-josefinSans font-bold uppercase tracking-wide text-gray-800 leading-tight">
