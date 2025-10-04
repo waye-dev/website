@@ -89,7 +89,7 @@ export const TopLevelAnalysis = () => {
               image: "/svgs/experience-the-paradoxes/expert/Group 203.svg"
             },
             {
-              title: "Sprint-Oriented",
+              title: "Depends on Context & Tasks",
               subtitle: "Work Rhythm",
               image: "/svgs/experience-the-paradoxes/expert/Group 204.svg"
             }
