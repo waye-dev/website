@@ -6,6 +6,12 @@ type DonationData = {
   amount: number;
   taxDeductible: "yes" | "no";
   paymentMethod: "bitcoin" | "fiat";
+  status: "pending" | "completed" | "failed";
+  stripePaymentMethod?: string;
+  sessionId?: string;
+  invoiceId?: string;
+  donationId?: string; // For updates
+  action?: "create" | "update_status"; // To differentiate operations
 };
 
 export async function submitDonationData(body: DonationData) {
@@ -41,4 +47,19 @@ export async function submitDonationData(body: DonationData) {
   } catch (err: any) {
     return { success: false, error: err.message };
   }
+}
+
+// Helper function to update donation status
+export async function updateDonationStatus(donationId: string, status: "completed" | "failed") {
+  return submitDonationData({
+    action: "update_status",
+    donationId,
+    status,
+    // Required fields (won't be used for updates)
+    name: "",
+    email: "",
+    amount: 0,
+    taxDeductible: "no",
+    paymentMethod: "fiat",
+  });
 }

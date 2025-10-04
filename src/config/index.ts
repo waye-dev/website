@@ -7,7 +7,11 @@ export const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY ?? "";
 export const MAILCHIMP_SERVER = process.env.MAILCHIMP_SERVER ?? "";
 
 export const MAILCHIMP_LIST_ID = process.env.MAILCHIMP_LIST_ID ?? "";
+//
+export const STS_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_STS_PUBLISHABLE_KEY ?? "";
 
-if (!MAILCHIMP_API_KEY) {
-  throw new Error("MAILCHIMP_API_KEY not found");
-}
+export const STS_SECRET_KEY = process.env.STS_SECRET_KEY ?? "";
+
+export const BTCPAY_WEBHOOK_SECRET = process.env.BTCPAY_WEBHOOK_SECRET ?? "";
+
+export const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET ?? "";
