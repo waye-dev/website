@@ -71,21 +71,24 @@ export default function ResearchReport() {
           <div className='flex flex-col lg:flex-row w-full gap-16'>
             <section className='flex-1 relative'>
               <div className='flex flex-col gap-6 lg:pt-[70vh] pb-[85px]'>
-                {GLOSSARY_TEXT_SECTIONS.map((section, index) => (
-                  <GlossarySection
-                    key={index}
-                    title={section.title}
-                    index={index + 1}
-                    summary={section.summary}
-                    onInViewChange={(id, inView) => {
-                      if (inView) {
-                        setActiveId(id);
-                      } else {
-                        setActiveId((prev) => (prev === id ? null : prev));
-                      }
-                    }}
-                  />
-                ))}
+                {GLOSSARY_TEXT_SECTIONS.map((section, index) => {
+                  const itemId = index + 1;
+                  return (
+                    <GlossarySection
+                      key={index}
+                      title={section.title}
+                      index={itemId}
+                      summary={section.summary}
+                      onInViewChange={(id, inView) => {
+                        if (inView) {
+                          setActiveId(id);
+                        } else {
+                          setActiveId((prev) => (prev === id ? null : prev));
+                        }
+                      }}
+                    />
+                  );
+                })}
               </div>
             </section>
 
@@ -116,7 +119,7 @@ export default function ResearchReport() {
           </div>
         </div>
         <div className='bg-blue-custom-1200'>
-          <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='strategies'>
+          <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='four-strategies-for-chaos'>
             <Strategies />
           </Wrapper>
         </div>

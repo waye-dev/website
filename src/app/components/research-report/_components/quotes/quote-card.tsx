@@ -163,7 +163,7 @@ export function QuoteCard({
             fontFamily: "var(--font-inter)"
           }}
         >
-          {actualIsExpanded ? "show less" : "continue reading →"}
+          {actualIsExpanded ? "show less" : "expand →"}
         </button>
       )}
     </div>

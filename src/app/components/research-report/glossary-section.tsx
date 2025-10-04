@@ -3,6 +3,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion"
 
+const sectionSelectors = {
+  1: '[data-section="study-overview"]',
+  2: '[data-section="top-level-analysis"]',
+  3: '[data-section="tyranny-of-permissionlessness"]',
+  4: '[data-section="four-strategies-for-chaos"]',
+  5: '[data-section="beyond-financial-sustainability"]',
+  6: '[data-section="toward-sustainable-permissionlessness"]',
+} as const;
+
 export const GlossarySection = ({ summary, title, index, onInViewChange }: { title: string; index: number; summary: string | React.ReactNode; onInViewChange?: (id: number, inView: boolean) => void }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { margin: "-50% 0% -50% 0%" });
@@ -13,17 +22,35 @@ export const GlossarySection = ({ summary, title, index, onInViewChange }: { tit
     }
   }, [isInView, index, onInViewChange])
 
+  const handleSectionClick = () => {
+    const selector = sectionSelectors[index as keyof typeof sectionSelectors];
+    const element = document.querySelector(selector);
+
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const top = rect.top + window.scrollY - 100;
+
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       ref={ref}
+      id={`glossary-item-${index}`}
+      onClick={handleSectionClick}
       className={
-        `flex flex-col w-full gap-2.5 py-[1.875rem] px-[0.9375rem] pr-[1.875rem] rounded-[10px] text-black transition-all duration-500 ease-in-out`
+        `flex flex-col w-full gap-2.5 py-[1.875rem] px-[0.9375rem] pr-[1.875rem] rounded-[10px] text-black transition-all duration-500 ease-in-out cursor-pointer`
         + (isInView ? " bg-blue-custom-900 text-white" : "")
       }
     >
       <section className='hidden sm:flex flex-row items-center justify-between gap-6'>
-        <h4 className='uppercase text-2xl font-normal font-josefinSans'>{title}</h4>
-        <p className='uppercase text-2xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
+        <h4 className='uppercase text-xl font-normal font-josefinSans'>{title}</h4>
+        <p className='uppercase text-xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
+      </section>
+      <section className='flex sm:hidden flex-col items-start justify-between gap-3'>
+      <p className='uppercase text-xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
+        <h4 className='uppercase text-xl font-normal font-josefinSans'>{title}</h4>
       </section>
       <section className='flex sm:hidden flex-column items-center justify-between gap-6'>
       <p className='uppercase text-xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
@@ -32,7 +59,7 @@ export const GlossarySection = ({ summary, title, index, onInViewChange }: { tit
 
       <div
         className={
-          "text-lg cursor-pointer justify-normal font-normal transition-all duration-500 ease-in-out"
+          "text-sm sm:text-lg cursor-pointer justify-normal font-normal transition-all duration-500 ease-in-out"
           + (isInView ? " text-white" : "text-gray-custom-600")
         }
       >
@@ -176,6 +203,17 @@ export const GlossaryChart = ({ activeId }: { activeId: number | null }) => {
 
   const estimatedScreenHeight = screenHeight * 0.75;
 
+  const handleChartClick = (itemId: number) => {
+    const element = document.getElementById(`glossary-item-${itemId}`);
+
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const top = rect.top + window.scrollY - 150;
+
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="flex flex-row items-end gap-3">
       {GLOSSARY_LIST.map((part) => {
@@ -183,7 +221,8 @@ export const GlossaryChart = ({ activeId }: { activeId: number | null }) => {
         return (
           <div
             key={part.id}
-            className="bg-blue-custom-900 rounded-[2px] p-6 transition-transform duration-500 ease-in-out flex justify-center items-end"
+            onClick={() => handleChartClick(part.id)}
+            className="bg-blue-custom-900 rounded-[5px] p-6 transition-transform duration-500 ease-in-out flex justify-center items-end cursor-pointer"
             style={{
               height: isClient ? `${estimatedScreenHeight * part.heightPercentage}px` : "450px",
               width: `${Math.floor(12 * part.widthPercentage)}%`,
