@@ -52,6 +52,10 @@ export const GlossarySection = ({ summary, title, index, onInViewChange }: { tit
       <p className='uppercase text-xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
         <h4 className='uppercase text-xl font-normal font-josefinSans'>{title}</h4>
       </section>
+      <section className='flex sm:hidden flex-column items-center justify-between gap-6'>
+      <p className='uppercase text-xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
+        <h4 className='uppercase text-xl font-normal font-josefinSans'>{title}</h4>
+      </section>
 
       <div
         className={

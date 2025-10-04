@@ -40,7 +40,9 @@ export const useCardSwitchAnimation = ({
   };
 
   const animateCardSwitch = () => {
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    if (typeof window === 'undefined') return;
+
+    const isMobile = window.innerWidth < 768;
     if (!cardRefs.current.length || !isAnimating || isMobile) return;
 
     if (animationTimeline.current) {
@@ -50,12 +52,16 @@ export const useCardSwitchAnimation = ({
     const cards = cardRefs.current.filter(Boolean);
     if (cards.length < 2) return;
 
-    animationTimeline.current = gsap.timeline({
-      onComplete: onAnimationComplete
-    });
+    // Wait for next frame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      if (!cards.length) return;
 
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 1.5 + ANIMATION_CONSTANTS.VERTICAL_OFFSET;
+      animationTimeline.current = gsap.timeline({
+        onComplete: onAnimationComplete
+      });
+
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 1.5 + ANIMATION_CONSTANTS.VERTICAL_OFFSET;
 
 
     cards.forEach((card, index) => {
@@ -109,11 +115,12 @@ export const useCardSwitchAnimation = ({
       ease: "power2.inOut"
     }, returnStartTime);
 
-    const totalDuration = ANIMATION_CONSTANTS.CONVERGENCE_DURATION + ANIMATION_CONSTANTS.SWITCH_DURATION + ANIMATION_CONSTANTS.RETURN_DURATION;
-    animationTimeline.current.set(cards, { 
-      zIndex: "auto",
-      clearProps: "transform,opacity"
-    }, totalDuration);
+      const totalDuration = ANIMATION_CONSTANTS.CONVERGENCE_DURATION + ANIMATION_CONSTANTS.SWITCH_DURATION + ANIMATION_CONSTANTS.RETURN_DURATION;
+      animationTimeline.current!.set(cards, {
+        zIndex: "auto",
+        clearProps: "transform,opacity"
+      }, totalDuration);
+    });
   };
 
   useEffect(() => {
