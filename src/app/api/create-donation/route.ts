@@ -5,7 +5,15 @@ export async function POST(request: NextRequest) {
     const initRedirect = process.env.INITIATIVES_REDIRECT;
     const redirectKey = process.env.SUSTAINABILITY_REDIRECT;
 
-    const { amount, currency = "USD", checkoutDesc = "donation to waye" } = await request.json();
+    const {
+      amount,
+      currency = "USD",
+      checkoutDesc = "donation to waye",
+      donorName = "",
+      donorEmail = "",
+      taxDeductible = "no",
+      donationId = "", // Include donation ID for tracking
+    } = await request.json();
 
     if (!amount || amount <= 1) {
       return NextResponse.json({ error: "Valid amount is required" }, { status: 400 });
@@ -15,12 +23,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Payment system configuration error" }, { status: 500 });
     }
 
+    // Create metadata for BTCPay Server webhook processing
+    const metadata = {
+      donorName,
+      donorEmail,
+      taxDeductible,
+      paymentMethod: "bitcoin",
+      donationId, // Include donation ID for webhook tracking
+    };
+
     const params = {
       storeId: redirectKey,
       price: amount.toString(),
       currency,
       checkoutDesc,
       browserRedirect: "https://www.waye.dev/gracias",
+      // Add metadata as posData for BTCPay Server
+      posData: JSON.stringify(metadata),
     };
 
     const queryParams = new URLSearchParams(params);
