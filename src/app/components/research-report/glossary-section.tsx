@@ -21,9 +21,13 @@ export const GlossarySection = ({ summary, title, index, onInViewChange }: { tit
         + (isInView ? " bg-blue-custom-900 text-white" : "")
       }
     >
-      <section className='flex flex-row items-center justify-between gap-6'>
+      <section className='hidden sm:flex flex-row items-center justify-between gap-6'>
         <h4 className='uppercase text-2xl font-normal font-josefinSans'>{title}</h4>
         <p className='uppercase text-2xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
+      </section>
+      <section className='flex sm:hidden flex-column items-center justify-between gap-6'>
+      <p className='uppercase text-xl font-josefinSans text-gray-custom-500 font-normal whitespace-nowrap'>PART {index}</p>
+        <h4 className='uppercase text-xl font-normal font-josefinSans'>{title}</h4>
       </section>
 
       <div

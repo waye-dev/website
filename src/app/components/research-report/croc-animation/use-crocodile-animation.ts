@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"
+import { useRef } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import ScrollTrigger from "gsap/ScrollTrigger"
@@ -9,19 +9,8 @@ export const useCrocodileAnimation = () => {
     const containerRef = useRef<HTMLDivElement>(null)
     const crocRef = useRef<HTMLSpanElement>(null)
 
-    // Cleanup on unmount
-    useEffect(() => {
-        return () => {
-            ScrollTrigger.getAll().forEach(st => {
-                if (st.vars.id === 'crocodile-animation') {
-                    st.kill(true)
-                }
-            })
-        }
-    }, [])
-
     useGSAP(() => {
-        if (typeof window === 'undefined') return
+        if (typeof window === 'undefined') return   
         if (!containerRef.current || !crocRef.current) return
 
         // Kill existing crocodile ScrollTriggers
@@ -40,7 +29,7 @@ export const useCrocodileAnimation = () => {
 
             if (!topJaw || !bottomJaw) return
 
-            gsap.set(topJaw, { transformOrigin: "right center", rotation: -15, y: -90 })
+            gsap.set(topJaw, { transformOrigin: "right center", rotation: -15, y: -150 })
             gsap.set(bottomJaw, { transformOrigin: "right center", rotation: 15, y: 150, x: -26 })
 
             const tl = gsap.timeline({
@@ -73,8 +62,8 @@ export const useCrocodileAnimation = () => {
                         const container = containerRef.current
                         const croc = crocRef.current
                         if (!container || !croc) return "0px"
-                        // Stop before reaching the right edge of container
-                        return `${container.offsetWidth - croc.offsetWidth - 380}px`
+                        // Stop when crocodile's right edge touches container's right edge
+                        return `${container.offsetWidth - croc.offsetWidth}px`
                     },
                     ease: "none",
                     duration: 0.4
@@ -114,15 +103,8 @@ export const useCrocodileAnimation = () => {
         }
     }, [])
 
-    // Force refresh on dependencies change
-    useEffect(() => {
-        if (containerRef.current) {
-            ScrollTrigger.refresh()
-        }
-    }, [containerRef])
-
     return {
         containerRef,
-        crocRef
+        crocRef,
     }
 }
