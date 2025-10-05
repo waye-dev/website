@@ -137,7 +137,7 @@ export default function ResearchReport() {
           <RecommendationReveal />
         </div>
 
-        <div className='bg-gray-custom-400'>
+        <div className='bg-gray-custom-400' data-section='recommendations'>
           <FromTyrannyToPermissionlessness />
         </div>
         <div className='bg-gray-custom-400 text-black'>
