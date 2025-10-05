@@ -110,7 +110,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
 
       if (response.ok && data.success) {
         // Open BTCPay Server checkout page
-        window.open(data.donationUrl, "_blank", "noopener,noreferrer");
+        window.location.href = data.donationUrl;
 
         setSubmitMessage("Redirecting to Bitcoin payment page. The donation will be tracked automatically when payment is received.");
         clearModalData();
@@ -169,7 +169,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
       if (response.ok && data.success) {
         // Redirect to Stripe Checkout using the session URL
         if (data.url) {
-          window.open(data.url, "_blank", "noopener,noreferrer");
+          window.location.href = data.url;
         } else {
           setSubmitMessage("Error: No checkout URL received");
         }
