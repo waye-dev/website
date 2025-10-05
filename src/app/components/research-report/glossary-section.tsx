@@ -9,7 +9,8 @@ const sectionSelectors = {
   3: '[data-section="tyranny-of-permissionlessness"]',
   4: '[data-section="four-strategies-for-chaos"]',
   5: '[data-section="beyond-financial-sustainability"]',
-  6: '[data-section="toward-sustainable-permissionlessness"]',
+  6: '[data-section="recommendations"]',
+  7: '[data-section="toward-sustainable-permissionlessness"]',
 } as const;
 
 export const GlossarySection = ({ summary, title, index, onInViewChange }: { title: string; index: number; summary: string | React.ReactNode; onInViewChange?: (id: number, inView: boolean) => void }) => {
@@ -161,25 +162,31 @@ export const GLOSSARY_LIST = [
   },
   {
     id: 3,
-    title: "The Tyranny of Permissionlessness",
+    title: "Core Findings: The Tyranny of Permissionlessness",
     heightPercentage: 0.9,
     widthPercentage: 0.75,
   },
   {
     id: 4,
-    title: "Four Strategies for Chaos",
+    title: "Contributor Work Styles",
     heightPercentage: 0.75,
     widthPercentage: 1.25,
   },
   {
     id: 5,
-    title: "Beyond Financial Sustainability",
+    title: "The Invisible Labor",
     heightPercentage: 1,
     widthPercentage: 3.5,
   },
   {
     id: 6,
-    title: "Toward Sustainable Permissionlessness",
+    title: "Recommendations",
+    heightPercentage: 0.9,
+    widthPercentage: 2.5,
+  },
+  {
+    id: 7,
+    title: "Conclusion",
     heightPercentage: 0.9,
     widthPercentage: 2.5,
   },
