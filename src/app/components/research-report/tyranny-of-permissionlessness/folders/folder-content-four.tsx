@@ -5,14 +5,14 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 export const FolderContentFour = () => {
     return (
             <>
-            <h1 className="text-[22px] font-inknutAntiqua">
+            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
                 Autonomous over projects,
                 but constrained by the funding
                 structure
-            </h1>
+            </h2>
 
             <p className="text-[16px]">
-                <span className="font-bold">
+                <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
                 While financial compensation is not a primary motivator, sustainability remains elusive for most contributors. The expanding funding ecosystem has enabled many developers to enter and remain in the space (1A1z 2024) — but the structure of grants often undermines the very autonomy it is meant to support. Yearly renewals, individual funding models, and the opaque social aspects of grants create perverse incentives for people to "write for the grant," as one participant observed, rather than pursue long-term technical visions. While most grants are theoretically open to all, success often depends on informal networks and social capital. Additionally, hands-off funding approaches leave contributors navigating administrative burdens and isolation without adequate support structures.
@@ -49,7 +49,7 @@ export const FolderContentFour = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Bitcoin is forever, grants for a year only
                 </span>
                 <p>
@@ -79,7 +79,7 @@ export const FolderContentFour = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Individual grants vs team requirements
                 </span>
                 <p>
@@ -109,7 +109,7 @@ export const FolderContentFour = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Realizing your vision vs working for the grant
                 </span>
                 <p>
@@ -139,7 +139,7 @@ export const FolderContentFour = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Permissionless entry: open but opaque
                 </span>
                 <p>
@@ -161,7 +161,7 @@ export const FolderContentFour = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Hands-off funders: autonomous but abandoned
                 </span>
                 <p>

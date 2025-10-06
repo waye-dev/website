@@ -5,19 +5,19 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 export const FolderContentOne = () => {
     return (
         <>
-            <h1 className="text-[22px] font-inknutAntiqua">
+            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
                 Free from authority, free to burn out
-            </h1>
+            </h2>
 
             <p className="text-[16px]">
-                <span className="font-bold">
+                <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
                 Together with enthusiasm for the technology, the ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability.
             </p>
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Yes, people are "in for the tech" &mdash; but also for freedom
                 </span>
                 <p>
@@ -55,7 +55,7 @@ export const FolderContentOne = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Permissionlessness attracts, then overwhelms
                 </span>
                 <p>
@@ -101,7 +101,7 @@ export const FolderContentOne = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Experience enables, then exhausts
                 </span>
                 <p>
@@ -139,7 +139,7 @@ export const FolderContentOne = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Cultural frictions unsettle commitment
                 </span>
                 <p>
