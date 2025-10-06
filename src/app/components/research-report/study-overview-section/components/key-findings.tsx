@@ -9,10 +9,10 @@ export const KeyFindings = () => {
         <Image src='/svgs/key-findings-image.svg' alt='key findings image' width={375} height={308} />
 
         <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
-          <p>Our analysis revealed a central paradox:</p>
+          <p>Our core finding:</p>
           <p className='font-inknutAntiqua text-xl'>
-            The very values and processes that attract developers to the Bitcoin and Nostr ecosystems become the source of their most persistent
-            challenges.
+            The very values and features that attract developers to the Bitcoin and Nostr ecosystems — freedom as an
+            ideal, permissionless participation, autonomy over projects — become the source of their greatest challenges.
           </p>
         </article>
       </section>

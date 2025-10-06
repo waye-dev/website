@@ -36,8 +36,8 @@ export const TopLevelAnalysis = () => {
               image: "/svgs/experience-the-paradoxes/new/Group 114.svg"
             },
             {
-              title: "Work Sustainability",
-              subtitle: "Generally Sustainable",
+              title: "Generally Sustainable",
+              subtitle: "Work Sustainability",
               image: "/svgs/experience-the-paradoxes/new/Group 145.svg"
             },
             {

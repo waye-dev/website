@@ -4,9 +4,12 @@ export const CoreFindingsTheTyrany = () => {
   return (
     <section>
     <div className='flex flex-col gap-12 px-12 lg:px-56'>
-    <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center'>
-      Core findings: the tyranny of permissionlessness
+      <div className='flex flex-col gap-4'>
+    <p className='font-inknutAntiqua text-xl text-center'>Core findings: </p>
+    <h5 className='text-xl md:text-2xl lg:text-4xl leading-[120%] font-inknutAntiqua text-center'>
+      The tyranny of permissionlessness
     </h5>
+    </div>
 
     <section className='flex flex-col gap-8 text-lg'>
       <p>
