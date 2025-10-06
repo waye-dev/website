@@ -27,9 +27,9 @@ export const BeyondFinancialSustainability = () => {
             <p className='font-inter font-semibold text-[22px] max-w-[340px]'>of participants had held grant-funded roles for two years or less</p>
           </section>
 
-          <section className='flex flex-row gap-6 items-center'>
+          <section className='flex flex-row-reverse gap-6 items-center md:flex-row'>
             <Image src='/svgs/role-sustainability-map-icon.svg' alt='role sustainability map icon' width={124} height={103} />
-            <p className='font-inter font-semibold text-[22px] max-w-[340px]'>mentioned experiencing burnout at least once</p>
+            <p className='font-inter font-semibold text-right sm:text-left text-[22px] max-w-[340px]'>mentioned experiencing burnout at least once</p>
           </section>
         </div>
 

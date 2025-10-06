@@ -5,19 +5,19 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 export const FolderContentTwo = () => {
     return (
         <>
-            <h1 className="text-[22px] font-inknutAntiqua">
+            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
                 Collaborating alone
-            </h1>
+            </h2>
 
             <p className="text-[16px]">
-                <span className="font-bold">
+                <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
                 OSS promises collaborative development, peer learning, and community support. In reality, contributors work primarily in isolation — physically alone in remote areas to reduce costs, professionally uncertain without feedback, and struggling to maintain motivation amidst the uncertainty of their work environment. The infrastructure for human connection exists mainly through conferences (considered "taxing" by some) rather than sustained collaboration, leaving developers to self-manage everything from career progression to daily motivation.
             </p>
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Excited to collaborate, but working in isolation
                 </span>
                 <p>
@@ -63,7 +63,7 @@ export const FolderContentTwo = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Growing without guidance
                 </span>
                 <p>
@@ -109,7 +109,7 @@ export const FolderContentTwo = () => {
                 />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     No clear career pathways beyond cycling through grants
                 </span>
                 <p>
@@ -131,7 +131,7 @@ export const FolderContentTwo = () => {
             />
             
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Predictability of motivation in unpredictable environment
                 </span>
                 <p>
@@ -169,7 +169,7 @@ export const FolderContentTwo = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     IRL gatherings beyond conferences
                 </span>
                 <p>

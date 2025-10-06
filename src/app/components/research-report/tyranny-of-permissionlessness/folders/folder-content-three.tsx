@@ -5,19 +5,19 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 export const FolderContentThree = () => {
     return (
         <>
-            <h1 className="text-[22px] font-inknutAntiqua">
+            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
                 The invisible labor of solopreneurship
-            </h1>
+            </h2>
 
             <p className="text-[16px]">
-                <span className="font-bold">
+                <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
                 The OSS ecosystem has already undergone major structural shifts, from distributed communities toward a model where solo maintainers carry outsized responsibility (Eghbal 2020). For freedom tech developers, this burden is amplified by the unique demands of the Bitcoin/Nostr ecosystem, which involves different forms of invisible labor. Contributors must simultaneously be visionary builders and pragmatic managers, technical experts and community leaders, creative innovators and maintenance workers — all while navigating the additional complexities of Bitcoin payments, tax implications, immigration status, and other bureaucratic constraints that affect their ability to work and travel. As projects mature, the most creative contributors find themselves trapped between their desire to build and innovate and the growing responsibility to maintain, manage, and support what they've created. Developers must individually shoulder technical, administrative, and social responsibilities that would typically be distributed across teams in traditional organizations.
             </p>
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     The amorphous scope of OSS contribution
                 </span>
                 <p>
@@ -39,7 +39,7 @@ export const FolderContentThree = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     The invisibility of maintenance and management work
                 </span>
                 <p>
@@ -61,7 +61,7 @@ export const FolderContentThree = () => {
             />
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     The administrative burden of grant funding
                 </span>
                 <p>
@@ -82,7 +82,7 @@ export const FolderContentThree = () => {
                 ]}
             />
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
+                <span className="inline-block font-bold uppercase">
                     Location still matters in a borderless environment
                 </span>
                 <p>
