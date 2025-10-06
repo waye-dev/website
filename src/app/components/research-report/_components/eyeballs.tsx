@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+// Lazy load GSAP to reduce initial bundle
+const gsap = typeof window !== 'undefined' ? require('gsap').default : null;
 
 interface EyeballsProps {
   guyImageSrc?: string;
@@ -19,7 +21,9 @@ export default function Eyeballs({
   const eyesRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
+  useEffect(() => {
+    if (!gsap) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current || !eyesRef.current) return;
 
@@ -28,7 +32,7 @@ export default function Eyeballs({
       const relativeX = (e.clientX - containerCenterX) / (containerRect.width / 2);
       const clampedX = Math.max(-1, Math.min(1, relativeX));
       const eyeMovement = clampedX * 8;
-      
+
       gsap.to(eyesRef.current, {
         x: eyeMovement,
         duration: 0.3,
@@ -39,7 +43,7 @@ export default function Eyeballs({
     const container = containerRef.current;
     if (container) {
       container.addEventListener('mousemove', handleMouseMove);
-      
+
       return () => {
         container.removeEventListener('mousemove', handleMouseMove);
       };
@@ -53,7 +57,8 @@ export default function Eyeballs({
         alt="Guy illustration"
         width={390}
         height={350}
-        className="w-auto h-auto"
+        priority
+        style={{ width: 'auto', height: 'auto' }}
       />
       <div
         ref={eyesRef}
@@ -64,7 +69,8 @@ export default function Eyeballs({
           alt="Eyes"
           width={147}
           height={20}
-          className="w-auto h-auto scale-75 md:scale-100"
+          style={{ width: 'auto', height: 'auto' }}
+          className="scale-75 md:scale-100"
         />
       </div>
     </div>

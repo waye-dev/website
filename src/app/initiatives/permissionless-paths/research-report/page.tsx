@@ -1,19 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import Wrapper from "@/app/components/wrapper";
-import { StudyOverviewSection } from "@/app/components/research-report/study-overview-section";
 import { GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection } from "@/app/components/research-report/glossary-section";
-import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
-import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
-import { Strategies } from "@/app/components/research-report/strategies";
-import { StrategiesWall } from "@/app/components/research-report/strategies-wall";
 import Eyeballs from "@/app/components/research-report/_components/eyeballs";
-import { BeyondFinancialSustainability } from "@/app/components/research-report/beyond-financial-sustainability";
-import { RecommendationReveal } from "@/app/components/research-report/mountains/index";
-import { Conclusion } from "@/app/components/research-report/conclusion";
-import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
-import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
+
+// Lazy load heavy components with dynamic imports
+const StudyOverviewSection = dynamic(() => import("@/app/components/research-report/study-overview-section").then(mod => ({ default: mod.StudyOverviewSection })), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-200" />
+});
+
+const TopLevelAnalysis = dynamic(() => import("@/app/components/research-report/top-level-analysis").then(mod => ({ default: mod.TopLevelAnalysis })), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-200" />
+});
+
+const TyrannyOfPermissionlessness = dynamic(() => import("@/app/components/research-report/tyranny-of-permissionlessness").then(mod => ({ default: mod.TyrannyOfPermissionlessness })), {
+  loading: () => <div className="min-h-[600px] animate-pulse bg-blue-custom-1200" />
+});
+
+const Strategies = dynamic(() => import("@/app/components/research-report/strategies").then(mod => ({ default: mod.Strategies })), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-blue-custom-1200" />
+});
+
+const StrategiesWall = dynamic(() => import("@/app/components/research-report/strategies-wall").then(mod => ({ default: mod.StrategiesWall })), {
+  loading: () => <div className="min-h-[800px] animate-pulse bg-blue-custom-1200" />
+});
+
+const BeyondFinancialSustainability = dynamic(() => import("@/app/components/research-report/beyond-financial-sustainability").then(mod => ({ default: mod.BeyondFinancialSustainability })), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-blue-custom-1200" />
+});
+
+const RecommendationReveal = dynamic(() => import("@/app/components/research-report/mountains/index").then(mod => ({ default: mod.RecommendationReveal })), {
+  loading: () => <div className="min-h-[600px] animate-pulse bg-blue-custom-1100" />
+});
+
+const Conclusion = dynamic(() => import("@/app/components/research-report/conclusion").then(mod => ({ default: mod.Conclusion })), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-200" />
+});
+
+const FromTyrannyToPermissionlessness = dynamic(() => import("@/app/components/research-report/from-tyranny-to-permissionlessness").then(mod => ({ default: mod.FromTyrannyToPermissionlessness })), {
+  loading: () => <div className="min-h-[600px] animate-pulse bg-gray-200" />
+});
+
+const CoreFindingsTheTyrany = dynamic(() => import("@/app/components/research-report/core-findings-the-tyrany").then(mod => ({ default: mod.CoreFindingsTheTyrany })), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-200" />
+});
 
 export default function ResearchReport() {
   const [activeId, setActiveId] = useState<number | null>(null);

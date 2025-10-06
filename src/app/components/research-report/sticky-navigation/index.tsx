@@ -137,12 +137,6 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({ className = 
         }`}
       >
         <div className="flex flex-col gap-2">
-          <div className={`flex items-center gap-2 mb-1 ${textColor} opacity-60`}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-              <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-            <span className="text-xs uppercase font-josefinSans font-medium tracking-wide">Navigation</span>
-          </div>
           {visibleSections.map((section) => {
             const isActive = section.id === activeSection;
             return (
@@ -171,12 +165,6 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({ className = 
         }`}
       >
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 mb-1 text-gray-900 opacity-60 px-2">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-              <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-            <span className="text-xs uppercase font-josefinSans font-medium tracking-wide">Navigation</span>
-          </div>
           {GLOSSARY_LIST.map((section) => {
             const isActive = section.id === activeSection;
             return (

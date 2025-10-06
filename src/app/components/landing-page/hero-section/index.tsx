@@ -36,7 +36,7 @@ const HeroSection = () => {
 
         <div className='absolute bottom-0'>
           <Image
-            src='/images/mountains-hero-section.png'
+            src='/images/mountains-hero-section.webp'
             width={3200}
             height={574}
             className='h-[200px] lg:h-full w-full object-cover object-center'
