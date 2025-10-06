@@ -1,12 +1,42 @@
+"use client";
+
 import Link from "next/link";
 import Wrapper from "@/app/components/wrapper";
 import { Folders } from "./folders";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const TyrannyOfPermissionlessness = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        sectionRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 1.4,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+            end: "bottom 30%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    },
+    { scope: sectionRef }
+  );
+
   return (
     <div className='text-white flex flex-col pt-12'>
       <Wrapper className='max-w-[1000px] xl:max-w-[1250px]'>
-        <section className='flex flex-col gap-4 text-lg'>
+        <section ref={sectionRef} className='flex flex-col gap-4 text-lg'>
           <p>
             If Jo Freeman's tyranny of structurelessness{" "}
             <Link href={"https://www.jofreeman.com/joreen/tyranny.htm"} target='_blank'>
