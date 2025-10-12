@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
-import shareableContentData from '@/app/data/shareable-content.json';
-import { ShareableContent } from '@/app/types/shareable-content';
+import shareableContentData, { Shareabledescription } from '@/app/data/shareable-content';
 
 export const runtime = 'edge';
 
@@ -14,7 +13,7 @@ export async function GET(request: NextRequest) {
       return new Response('Missing id parameter', { status: 400 });
     }
 
-    const content = (shareableContentData as any)[id] as ShareableContent;
+    const content = shareableContentData[id];
     
     if (!content) {
       console.error(`Content not found for ID: ${id}`);
@@ -84,7 +83,7 @@ export async function GET(request: NextRequest) {
               marginBottom: '40px',
             }}
           >
-            {content.content}
+            {content.description}
           </div>
 
           {/* Footer */}

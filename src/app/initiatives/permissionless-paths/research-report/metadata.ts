@@ -1,15 +1,14 @@
 import { Metadata } from 'next';
-import shareableContentData from '@/app/data/shareable-content.json';
-import { ShareableContent } from '@/app/types/shareable-content';
+import shareableContentData from '@/app/data/shareable-content';
+import { getBaseUrl } from '@/app/utils/image-urls';
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ share?: string }> }): Promise<Metadata> {
   const resolvedSearchParams = await searchParams;
   const shareId = resolvedSearchParams.share;
   
-  const baseUrl = 'https://407cd9e9b679.ngrok-free.app';
+  const baseUrl = getBaseUrl();
 
   if (!shareId) {
-    // Default metadata for the main page
     return {
       metadataBase: new URL(baseUrl),
       title: 'Permissionless Paths - Research Report by Laura Lotti',
@@ -36,17 +35,15 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     };
   }
 
-  const content = (shareableContentData as any)[shareId] as ShareableContent;
+  const content = (shareableContentData)[shareId];
 
   if (!content) {
-    // Fallback metadata if content not found
     return {
       title: 'Permissionless Paths - Research Report by Laura Lotti',
       description: 'Research findings on sustainable open source development in the freedom tech ecosystem',
     };
   }
 
-  // Use the dynamic OG image API for proper Open Graph images
   const ogImageUrl = `${baseUrl}/api/og?id=${shareId}`;
 
   return {
