@@ -1,0 +1,58 @@
+{
+  "executive-summary": {
+    "id": "executive-summary",
+    "title": "Executive Summary - Permissionless Paths",
+    "content": "This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture.",
+    "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop",
+    "description": "Research findings on sustainable open source development in freedom tech ecosystem",
+    "section": "Executive Summary"
+  },
+  "core-finding": {
+    "id": "core-finding",
+    "title": "Core Finding - Tyranny of Permissionlessness",
+    "content": "Our core finding: the very values and features that attract developers to the Bitcoin and Nostr ecosystems — freedom as an ideal, permissionless participation, autonomy over projects — become the source of their greatest challenges.",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=630&fit=crop",
+    "description": "The tyranny of permissionlessness: how freedom principles create challenges for developers",
+    "section": "Executive Summary"
+  },
+  "study-overview": {
+    "id": "study-overview",
+    "title": "Study Overview - 26 Bitcoin & Nostr Contributors",
+    "content": "Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors with at least 12 months of full-time grant-funded experience.",
+    "imageUrl": "/images/og-study-overview.png",
+    "description": "Qualitative study of 26 Bitcoin and Nostr contributors with grant-funded experience",
+    "section": "Study Overview"
+  },
+  "tyranny-of-permissionlessness": {
+    "id": "tyranny-of-permissionlessness",
+    "title": "The Tyranny of Permissionlessness",
+    "content": "While these principles enable open innovation and resist capture, without support structures they lead developers to navigate unlimited responsibility alone.",
+    "imageUrl": "https://media.licdn.com/dms/image/v2/D4E22AQGVf8YrAbovoA/feedshare-shrink_800/B4EZk4pUXEHgAg-/0/1757591980307?e=2147483647&v=beta&t=KqljQAIFFbmiFimlIXqo63Iv4qB2rb3_KMRQX_GTO0I",
+    "description": "How permissionless principles create challenges for open source developers",
+    "section": "Tyranny of Permissionlessness"
+  },
+  "four-strategies": {
+    "id": "four-strategies",
+    "title": "Four Strategies for Chaos",
+    "content": "Four key strategies that developers use to navigate the challenges of permissionless development in open source ecosystems.",
+    "imageUrl": "/images/og-strategies.png",
+    "description": "Four strategies for navigating permissionless development challenges",
+    "section": "Four Strategies for Chaos"
+  },
+  "beyond-financial": {
+    "id": "beyond-financial",
+    "title": "Beyond Financial Sustainability",
+    "content": "Sustainable open source development requires more than just financial support - it needs community, recognition, and meaningful work structures.",
+    "imageUrl": "/images/og-beyond-financial.png",
+    "description": "What sustainable open source development really requires",
+    "section": "Beyond Financial Sustainability"
+  },
+  "recommendations": {
+    "id": "recommendations",
+    "title": "Recommendations for Sustainable Permissionlessness",
+    "content": "This isn't inevitable: with intentional design, we can maintain permissionless participation while building sustainable work practices.",
+    "imageUrl": "/images/og-recommendations.png",
+    "description": "How to build sustainable permissionless development practices",
+    "section": "Recommendations"
+  }
+}

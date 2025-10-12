@@ -38,8 +38,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
   };
 
   const handleTwitterShare = () => {
-    const text = selectedElement.content;
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}`;
     window.open(twitterUrl, "_blank", "width=550,height=420");
     setSharedOption("twitter");
     setTimeout(() => setSharedOption(null), 2000);

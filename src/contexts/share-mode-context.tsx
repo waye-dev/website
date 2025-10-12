@@ -9,6 +9,8 @@ export interface ShareableElement {
   content: string;
   element?: HTMLElement;
   type: "text" | "chart" | "section" | "quote";
+  imageData?: string; // Base64 encoded image data or blob URL
+  imageFile?: File; // Actual file for uploading
 }
 
 export interface SharePopoverPosition {

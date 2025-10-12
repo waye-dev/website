@@ -50,14 +50,6 @@ export const FloatingShareButton: React.FC = () => {
         aria-label={isShareModeActive ? "Exit Share Mode" : "Enter Share Mode"}
         title={isShareModeActive ? "Exit Share Mode" : "Enter Share Mode"}
       >
-        {isShareModeActive === true && (
-          <section className='flex flex-col items-start'>
-            <span className='uppercase font-josefinSans text-[7.48px] leading-[100%]'>Turn on</span>
-            <p className='uppercase font-josefinSans text-[11.28px] font-normal leading-[100%]'> Share</p>
-            <p className='uppercase font-josefinSans text-[11.28px] font-normal leading-[100%]'> Mode</p>
-          </section>
-        )}
-
         <div className='bg-white h-9 w-9 rounded-full flex items-center justify-center'>
           <svg width='18' height='20' viewBox='0 0 18 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
@@ -66,14 +58,6 @@ export const FloatingShareButton: React.FC = () => {
             />
           </svg>
         </div>
-
-        {isShareModeActive === false && (
-          <section className='flex flex-col items-start'>
-            <span className='uppercase font-josefinSans text-[7.48px] leading-[100%]'>Turn on</span>
-            <p className='uppercase font-josefinSans text-[11.28px] font-normal leading-[100%]'> Share</p>
-            <p className='uppercase font-josefinSans text-[11.28px] font-normal leading-[100%]'> Mode</p>
-          </section>
-        )}
       </button>
     </div>
   );
