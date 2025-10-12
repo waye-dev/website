@@ -33,7 +33,7 @@ export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
       content: content.description,
       type: "text",
       element: button,
-      imageData: `/images/og/${shareId}.jpg` // Use static image path for popover preview
+      imageData: content.imagePath // Use imagePath from dataset
     };
 
     // Show the existing share popover
