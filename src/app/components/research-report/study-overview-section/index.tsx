@@ -1,7 +1,6 @@
 "use client";
 
 import { ShareableContent } from "../../share-mode";
-import { SimpleShareButton } from "../../share-mode/simple-share-button";
 import { BitcoinSolution } from "./components/bitcoin-solution";
 import { OurResearch } from "./components/our-research";
 import { KeyFindings } from "./components/key-findings";
@@ -40,9 +39,6 @@ export const StudyOverviewSection = () => {
         </div>
       </div>
 
-      <div className='flex justify-end mt-8'>
-        <SimpleShareButton shareId="study-overview" />
-      </div>
     </div>
   );
 };

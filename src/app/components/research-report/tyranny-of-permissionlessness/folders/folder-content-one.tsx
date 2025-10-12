@@ -1,6 +1,7 @@
 "use client"
 
 import { QuoteCards } from "@components/research-report/_components/quotes";
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 
 export const FolderContentOne = () => {
     return (
@@ -183,6 +184,10 @@ export const FolderContentOne = () => {
                     },
                 ]}
             />
+
+            <div className="flex justify-center mt-8">
+                <SimpleShareButton shareId="free-from-authority" />
+            </div>
         </>
     )
 }

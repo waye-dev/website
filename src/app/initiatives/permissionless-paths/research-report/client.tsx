@@ -92,9 +92,6 @@ export function ResearchReportClient() {
               </section>
               <p>The report unfolds in six parts:</p>
               
-              <div className='flex justify-end mt-4'>
-                <SimpleShareButton shareId="executive-summary" />
-              </div>
             </div>
           </div>
         </Wrapper>
