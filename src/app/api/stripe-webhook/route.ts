@@ -1,14 +1,11 @@
 import Stripe from "stripe";
-import { STS_SECRET_KEY } from "@/config";
 import { NextRequest, NextResponse } from "next/server";
 import { updateDonationStatus } from "@/app/components/donation-modal/action";
-
-const stripe = new Stripe(STS_SECRET_KEY);
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 // Helper function to extract donation ID from session metadata
-async function getDonationIdFromSession(sessionId: string): Promise<string | null> {
+async function getDonationIdFromSession(sessionId: string, stripe: Stripe): Promise<string | null> {
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     return session.metadata?.donationId || null;
@@ -19,7 +16,7 @@ async function getDonationIdFromSession(sessionId: string): Promise<string | nul
 }
 
 // Helper function to get donation ID from payment intent
-async function getDonationIdFromPaymentIntent(paymentIntentId: string): Promise<string | null> {
+async function getDonationIdFromPaymentIntent(paymentIntentId: string, stripe: Stripe): Promise<string | null> {
   try {
     // Find the session associated with this payment intent
     const sessions = await stripe.checkout.sessions.list({
@@ -39,6 +36,7 @@ async function getDonationIdFromPaymentIntent(paymentIntentId: string): Promise<
 }
 
 export async function POST(request: NextRequest) {
+  const stripe = new Stripe(process.env.STS_SECRET_KEY || "");
   const body = await request.text();
   const signature = request.headers.get("stripe-signature")!;
 
@@ -59,7 +57,7 @@ export async function POST(request: NextRequest) {
       const session = event.data.object as Stripe.Checkout.Session;
 
       try {
-        const donationId = await getDonationIdFromSession(session.id);
+        const donationId = await getDonationIdFromSession(session.id, stripe);
 
         if (!donationId) {
           console.error(`No donation ID found for session: ${session.id}`);
@@ -104,7 +102,7 @@ export async function POST(request: NextRequest) {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
       try {
-        const donationId = await getDonationIdFromPaymentIntent(paymentIntent.id);
+        const donationId = await getDonationIdFromPaymentIntent(paymentIntent.id, stripe);
 
         if (!donationId) {
           console.error(`No donation ID found for payment intent: ${paymentIntent.id}`);
@@ -136,7 +134,7 @@ export async function POST(request: NextRequest) {
       const failedPayment = event.data.object as Stripe.PaymentIntent;
 
       try {
-        const donationId = await getDonationIdFromPaymentIntent(failedPayment.id);
+        const donationId = await getDonationIdFromPaymentIntent(failedPayment.id, stripe);
 
         if (!donationId) {
           console.error(`No donation ID found for failed payment: ${failedPayment.id}`);
