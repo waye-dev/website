@@ -1,10 +1,8 @@
 import Stripe from "stripe";
-import { STS_SECRET_KEY } from "@/config";
 import { NextRequest, NextResponse } from "next/server";
 
-const stripe = new Stripe(STS_SECRET_KEY);
-
 export async function POST(request: NextRequest) {
+  const stripe = new Stripe(process.env.STS_SECRET_KEY || "");
   try {
     const { amount, taxDeductible, donorName, donorEmail, donationId } = await request.json();
 

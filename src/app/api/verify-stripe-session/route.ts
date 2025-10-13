@@ -1,10 +1,8 @@
 import Stripe from "stripe";
-import { STS_SECRET_KEY } from "@/config";
 import { NextRequest, NextResponse } from "next/server";
 
-const stripe = new Stripe(STS_SECRET_KEY);
-
 export async function GET(request: NextRequest) {
+  const stripe = new Stripe(process.env.STS_SECRET_KEY || "");
   const { searchParams } = new URL(request.url);
   const sessionId = searchParams.get("session_id");
 
