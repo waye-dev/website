@@ -185,9 +185,9 @@ export const FolderContentOne = () => {
                 ]}
             />
 
-            <div className="flex justify-center mt-8">
+            {/* <div className="flex justify-center mt-8">
                 <SimpleShareButton shareId="free-from-authority" />
-            </div>
+            </div> */}
         </>
     )
 }
