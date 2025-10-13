@@ -38,6 +38,7 @@ export const StudyOverviewSection = () => {
           <EcosystemProject />
         </div>
       </div>
+
     </div>
   );
 };
