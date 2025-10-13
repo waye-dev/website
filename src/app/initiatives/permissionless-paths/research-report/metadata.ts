@@ -61,7 +61,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
           alt: content.title,
         }
       ],
-      type: 'website',
+      type: 'article',
       url: `${baseUrl}/initiatives/permissionless-paths/research-report?share=${shareId}`,
     },
     twitter: {
@@ -69,6 +69,10 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
       title: content.title,
       description: content.description,
       images: [ogImageUrl],
+    },
+    other: {
+      'og:image:secure_url': ogImageUrl,
+      'og:image:type': 'image/jpeg',
     },
   };
 }
