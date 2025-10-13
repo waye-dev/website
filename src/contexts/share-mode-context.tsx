@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useState, useCallback, useRef } from "react";
 
-// Types
 export interface ShareableElement {
   id: string;
   title?: string;
@@ -29,10 +28,6 @@ export interface ShareModeContextType {
   selectedElement: ShareableElement | null;
   popoverPosition: SharePopoverPosition | null;
   isPopoverVisible: boolean;
-  isNostrModalOpen: boolean;
-  nostrModalContent: { url: string; content: string } | null;
-  openNostrModal: (url: string, content: string) => void;
-  closeNostrModal: () => void;
   unregisterShareableElement: (id: string) => void;
   registerShareableElement: (element: ShareableElement) => void;
   showSharePopover: (element: ShareableElement, position: SharePopoverPosition) => void;
@@ -59,8 +54,6 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
   const [selectedElement, setSelectedElement] = useState<ShareableElement | null>(null);
   const [popoverPosition, setPopoverPosition] = useState<SharePopoverPosition | null>(null);
   const [isPopoverVisible, setIsPopoverVisible] = useState<boolean>(false);
-  const [isNostrModalOpen, setIsNostrModalOpen] = useState<boolean>(false);
-  const [nostrModalContent, setNostrModalContent] = useState<{ url: string; content: string } | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleShareMode = useCallback(() => {
@@ -120,15 +113,6 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     }, 100);
   }, []);
 
-  const openNostrModal = useCallback((url: string, content: string) => {
-    setNostrModalContent({ url, content });
-    setIsNostrModalOpen(true);
-  }, []);
-
-  const closeNostrModal = useCallback(() => {
-    setIsNostrModalOpen(false);
-    setNostrModalContent(null);
-  }, []);
 
   const contextValue: ShareModeContextType = {
     isShareModeActive,
@@ -139,10 +123,6 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     selectedElement,
     popoverPosition,
     isPopoverVisible,
-    isNostrModalOpen,
-    nostrModalContent,
-    openNostrModal,
-    closeNostrModal,
     showSharePopover,
     hideSharePopover,
     cancelHidePopover,

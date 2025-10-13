@@ -6,10 +6,9 @@ import { ShareableElement } from "@/contexts/share-mode-context";
 interface ShareButtonsProps {
   selectedElement: ShareableElement;
   shareUrl: string;
-  onNostrError: () => void;
 }
 
-export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, shareUrl, onNostrError }) => {
+export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, shareUrl }) => {
   const [copiedOption, setCopiedOption] = useState<string | null>(null);
   const [sharedOption, setSharedOption] = useState<string | null>(null);
 
@@ -44,31 +43,6 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
     setTimeout(() => setSharedOption(null), 2000);
   };
 
-  const handleNostrShare = async () => {
-    try {
-      if (typeof window !== "undefined" && (window as any).nostr) {
-        const content = `${selectedElement.content}\n\n${shareUrl}`;
-
-        const event = await (window as any).nostr.signEvent({
-          kind: 1,
-          created_at: Math.floor(Date.now() / 1000),
-          tags: [],
-          content: content,
-        });
-        if ((window as any).nostr.publish) {
-          await (window as any).nostr.publish(event);
-        }
-
-        setSharedOption("nostr");
-        setTimeout(() => setSharedOption(null), 2000);
-      } else {
-        onNostrError();
-      }
-    } catch (error) {
-      console.error("Error sharing to Nostr:", error);
-      onNostrError();
-    }
-  };
 
   const handleCopyLink = async () => {
     const success = await copyToClipboard(shareUrl);
@@ -96,25 +70,6 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
         )}
       </button>
 
-      <button
-        className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] transition-all duration-150 hover:scale-105 active:scale-95"
-        onClick={handleNostrShare}
-        title="Share on Nostr"
-      >
-        {sharedOption === "nostr" ? (
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        ) : (
-          <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor">
-            <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0zm0 234.7c-58.9 0-106.7-47.8-106.7-106.7S69.1 21.3 128 21.3 234.7 69.1 234.7 128 186.9 234.7 128 234.7z" />
-            <circle cx="128" cy="85" r="15" />
-            <circle cx="85" cy="128" r="15" />
-            <circle cx="171" cy="128" r="15" />
-            <circle cx="128" cy="171" r="15" />
-          </svg>
-        )}
-      </button>
 
       <button
         className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] transition-all duration-150 hover:scale-105 active:scale-95"

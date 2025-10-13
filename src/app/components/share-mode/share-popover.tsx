@@ -6,7 +6,7 @@ import { useShareMode } from "@/contexts/share-mode-context";
 import { ShareButtons } from "./share-buttons";
 
 export const SharePopover: React.FC = () => {
-  const { selectedElement, popoverPosition, isPopoverVisible, hideSharePopover, cancelHidePopover, openNostrModal } = useShareMode();
+  const { selectedElement, popoverPosition, isPopoverVisible, hideSharePopover, cancelHidePopover } = useShareMode();
   const pathname = usePathname();
 
   const createShareableUrl = () => {
@@ -61,7 +61,6 @@ export const SharePopover: React.FC = () => {
             <ShareButtons
               selectedElement={selectedElement}
               shareUrl={createShareableUrl()}
-              onNostrError={() => openNostrModal(createShareableUrl(), selectedElement.content)}
             />
           </div>
 
