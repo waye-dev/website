@@ -89,9 +89,6 @@ export function ResearchReportClient() {
                   support structures they lead developers to navigate unlimited responsibility alone. <strong>This isn't inevitable: with intentional design, we can maintain permissionless participation while building sustainable work
                   practices.</strong>
                 </span>
-                <div className="flex justify-center mt-8">
-                <SimpleShareButton shareId="free-from-authority" />
-              </div>
               </section>
               <p>The report unfolds in six parts:</p>
             

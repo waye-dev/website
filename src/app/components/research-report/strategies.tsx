@@ -1,4 +1,5 @@
 import { QuoteCards } from "./_components/quotes";
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 
 export const Strategies = () => {
   return (
@@ -10,7 +11,7 @@ export const Strategies = () => {
 
         <p>
           The combination of openness and permissionless ethos, unstructured work environment, lack of support structures, and short-term funding
-          cycles results in a day-to-day routine marked by chaos, which contributors navigate in different ways.{" "}
+          cycles results in a day-to-day routine marked by chaos, which contributors navigate in different ways. <SimpleShareButton shareId="no-framework" />
         </p>
       </section>
 
