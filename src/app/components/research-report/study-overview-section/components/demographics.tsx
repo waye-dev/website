@@ -1,4 +1,5 @@
 import { DemographicsMap } from "../../_components/map-demographics";
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 
 export const Demographics = () => {
   return (
@@ -9,7 +10,7 @@ export const Demographics = () => {
         <section className='flex flex-col gap-12 text-xl justify-between h-full lg:max-w-[415px]'>
           <p>We interviewed participants from 10+ countries, spanning 5 continents.</p>
           <p>However, over half of our interviewees came from North America and Europe.</p>
-          <p>Two participants chose not to disclose their location.</p>
+          <p>Two participants chose not to disclose their location. <SimpleShareButton shareId="sustainability-challenges" /></p>
         </section>
 
         <DemographicsMap />

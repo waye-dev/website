@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { QuoteCards } from "./_components/quotes";
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 
 export const BeyondFinancialSustainability = () => {
   return (
@@ -18,7 +19,7 @@ export const BeyondFinancialSustainability = () => {
           text='Despite expressing uncertainty about their roles, contributors are optimistic about the sustainability of Bitcoin and their individual
             career prospects in the wider ecosystem. Yet, this abundance mindset may mask a critical vulnerability: the prevailing two-year tenure in
             grant-funded roles quietly drains protocol expertise, as knowledge leaves with each departure and turnover outpaces the accumulation of
-            long-term experience.'
+            long-term experience. <SimpleShareButton shareId="ecosystem-replacement" />'
         />
 
         <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-6 flex-wrap justify-between'>
@@ -127,7 +128,7 @@ export const BeyondFinancialSustainability = () => {
         <TakeawayCard
           text='The one-size-fits-all grant model fails to recognize the different realities of core infrastructure vs application work. Protocol work
             needs ongoing funding streams, applications need revenue freedom. Current grant structures constrain both in perpetual dependency,
-            preventing the sustainability they aim to support.'
+            preventing the sustainability they aim to support. <SimpleShareButton shareId="one-size-fits-all" />'
         />
 
         <p>

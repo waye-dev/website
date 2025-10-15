@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { List, ListItem } from './list-components';
+import { SimpleShareButton } from '@/app/components/share-mode/simple-share-button';
 
 export interface Section {
   id: string;
@@ -13,7 +14,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <p className="mb-4">
-        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away — admin burden, isolation, grant anxiety. This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
+        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away — admin burden, isolation, grant anxiety. This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors. <SimpleShareButton shareId="not-inevitable" />
 
         </p>
       </div>
@@ -24,7 +25,7 @@ export const sections: Section[] = [
     id: "01",
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed primarily to funders, since project maintainers and contributors are already bearing the full weight of the tyranny of permissionlessness.</p>
+        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed primarily to funders, since project maintainers and contributors are already bearing the full weight of the tyranny of permissionlessness. <SimpleShareButton shareId="keeping-open-participation" /></p>
       </div>
     ),
     animation: 'innerOnly',
@@ -48,7 +49,7 @@ export const sections: Section[] = [
         <div>
           <p className="uppercase font-bold mb-4">Restructure funding models</p>
           <List>
-            <ListItem>Fund teams, not just individuals: introduce team-oriented grants to support application layer developers.</ListItem>
+            <ListItem>Fund teams, not just individuals: introduce team-oriented grants to support application layer developers. <SimpleShareButton shareId="fund-teams-recommendation" /></ListItem>
             <ListItem>Learn from The FOSS Sustainability Fund which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.</ListItem>
             <ListItem>Extend renewal cycles after year 1: reduce the grant-writing burden for proven contributors.</ListItem>
             <ListItem>Create revenue friendly grants: encourage profitability in grant-funded applications, based on OSS principles, use licensing cleverly to avoid corporate capture.</ListItem>
@@ -85,7 +86,7 @@ export const sections: Section[] = [
           <ListItem>Mental health resources: normalize and support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
           <ListItem>While community-led initiatives such as Open Source Guides provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
           <ListItem>Self-management toolkits: provide productivity resources, time management support, especially for newer contributors.</ListItem>
-          <ListItem>Make invisible work visible and valued: explicitly recognize and compensate non-coding work (research, maintenance, mentorship, documentation, management) in grant structures and community recognition systems.</ListItem>
+            <ListItem>Make invisible work visible and valued: explicitly recognize and compensate non-coding work (research, maintenance, mentorship, documentation, management) in grant structures and community recognition systems. <SimpleShareButton shareId="make-invisible-visible" /></ListItem>
         </List>
       </div>
     ),

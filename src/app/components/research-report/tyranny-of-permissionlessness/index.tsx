@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,7 +84,7 @@ export const TyrannyOfPermissionlessness = () => {
 
           <p>
             Below we describe these tensions. Each dimension shows how the very features that attract contributors to the space — mission, openness,
-            autonomy — become the primary causes of unsustainable work patterns.
+            autonomy — become the primary causes of unsustainable work patterns. <SimpleShareButton shareId="permissionlessness-enables" />
           </p>
         </section>
       </Wrapper>
