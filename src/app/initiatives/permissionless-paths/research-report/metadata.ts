@@ -72,7 +72,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     },
     other: {
       'og:image:secure_url': ogImageUrl,
-      'og:image:type': 'image/jpeg',
+      'og:image:type': 'image/webp',
     },
   };
 }

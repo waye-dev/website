@@ -6,13 +6,17 @@ import { useShareMode } from "@/contexts/share-mode-context";
 import { ShareButtons } from "./share-buttons";
 
 export const SharePopover: React.FC = () => {
-  const { selectedElement, popoverPosition, isPopoverVisible, hideSharePopover, cancelHidePopover } = useShareMode();
+  const { selectedElement, popoverPosition, isPopoverVisible, hideSharePopover, cancelHidePopover, openNostrModal } = useShareMode();
   const pathname = usePathname();
 
   const createShareableUrl = () => {
     if (!selectedElement) return "";
     // Use query parameter for proper Open Graph metadata generation
     return `${window.location.origin}${pathname}?share=${encodeURIComponent(selectedElement.id)}`;
+  };
+
+  const handleNostrError = () => {
+    openNostrModal(createShareableUrl(), selectedElement?.content || "");
   };
 
 
@@ -61,6 +65,7 @@ export const SharePopover: React.FC = () => {
             <ShareButtons
               selectedElement={selectedElement}
               shareUrl={createShareableUrl()}
+              onNostrError={handleNostrError}
             />
           </div>
 
