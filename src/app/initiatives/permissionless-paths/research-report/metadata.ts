@@ -44,7 +44,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     };
   }
 
-  const ogImageUrl = `${baseUrl}${content.imagePath}`;
+  const ogImageUrl = `${baseUrl}/api/og?id=${shareId}`;
 
   return {
     metadataBase: new URL(baseUrl),
