@@ -91,7 +91,7 @@ export function ResearchReportClient() {
                 </span>
               </section>
               <p>The report unfolds in six parts:</p>
-            
+              
             </div>
             
           </div>
