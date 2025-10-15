@@ -11,14 +11,14 @@ export async function GET(request: NextRequest) {
       return new Response('Missing id parameter', { status: 400 });
     }
 
-    const imagePath = join(process.cwd(), 'public', 'images', 'og', `${id}.jpg`);
+    const imagePath = join(process.cwd(), 'public', 'images', 'og', `${id}.webp`);
 
     try {
       const imageBuffer = await readFile(imagePath);
 
       return new Response(new Uint8Array(imageBuffer), {
         headers: {
-          'Content-Type': 'image/jpeg',
+          'Content-Type': 'image/webp',
           'Cache-Control': 'public, max-age=31536000, immutable',
         },
       });
