@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback, useRef } from "react";
+import { NostrModal } from "@/app/components/share-mode/nostr-modal";
 
 export interface ShareableElement {
   id: string;
@@ -31,6 +32,10 @@ export interface ShareModeContextType {
   unregisterShareableElement: (id: string) => void;
   registerShareableElement: (element: ShareableElement) => void;
   showSharePopover: (element: ShareableElement, position: SharePopoverPosition) => void;
+  isNostrModalOpen: boolean;
+  nostrModalContent: { shareUrl: string; content: string } | null;
+  openNostrModal: (shareUrl: string, content: string) => void;
+  closeNostrModal: () => void;
 }
 
 const ShareModeContext = createContext<ShareModeContextType | undefined>(undefined);
@@ -54,6 +59,8 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
   const [selectedElement, setSelectedElement] = useState<ShareableElement | null>(null);
   const [popoverPosition, setPopoverPosition] = useState<SharePopoverPosition | null>(null);
   const [isPopoverVisible, setIsPopoverVisible] = useState<boolean>(false);
+  const [isNostrModalOpen, setIsNostrModalOpen] = useState<boolean>(false);
+  const [nostrModalContent, setNostrModalContent] = useState<{ shareUrl: string; content: string } | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleShareMode = useCallback(() => {
@@ -113,6 +120,16 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     }, 100);
   }, []);
 
+  const openNostrModal = useCallback((shareUrl: string, content: string) => {
+    setNostrModalContent({ shareUrl, content });
+    setIsNostrModalOpen(true);
+  }, []);
+
+  const closeNostrModal = useCallback(() => {
+    setIsNostrModalOpen(false);
+    setNostrModalContent(null);
+  }, []);
+
 
   const contextValue: ShareModeContextType = {
     isShareModeActive,
@@ -126,7 +143,23 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     showSharePopover,
     hideSharePopover,
     cancelHidePopover,
+    isNostrModalOpen,
+    nostrModalContent,
+    openNostrModal,
+    closeNostrModal,
   };
 
-  return <ShareModeContext.Provider value={contextValue}>{children}</ShareModeContext.Provider>;
+  return (
+    <ShareModeContext.Provider value={contextValue}>
+      {children}
+      {nostrModalContent && (
+        <NostrModal
+          isOpen={isNostrModalOpen}
+          onClose={closeNostrModal}
+          content={nostrModalContent.content}
+          shareUrl={nostrModalContent.shareUrl}
+        />
+      )}
+    </ShareModeContext.Provider>
+  );
 };
