@@ -19,7 +19,6 @@ export const SharePopover: React.FC = () => {
     openNostrModal(createShareableUrl(), selectedElement?.content || "");
   };
 
-
   if (!isPopoverVisible || !popoverPosition || !selectedElement) {
     return null;
   }
