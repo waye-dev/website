@@ -52,9 +52,9 @@ export const sections: Section[] = [
           <List>
             <ListItem>Fund teams, not just individuals: introduce team-oriented grants to support application layer developers. <SimpleShareButton shareId={SHAREABLE_description_IDS.FUND_TEAMS_RECOMMENDATION} /></ListItem>
             <ListItem>Learn from The FOSS Sustainability Fund which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.</ListItem>
-            <ListItem>Extend renewal cycles after year 1: reduce the grant-writing burden for proven contributors.</ListItem>
-            <ListItem>Create revenue friendly grants: encourage profitability in grant-funded applications, based on OSS principles, use licensing cleverly to avoid corporate capture.</ListItem>
-            <ListItem>Develop transition pathways: fund alumni roles (mentorship, documentation, part-time maintenance).</ListItem>
+            <ListItem>Extend renewal cycles after year 1: reduce the grant-writing burden for proven contributors. <SimpleShareButton shareId={SHAREABLE_description_IDS.EXTEND_RENEWAL} /></ListItem>
+            <ListItem>Create revenue friendly grants: encourage profitability in grant-funded applications, based on OSS principles, use licensing cleverly to avoid corporate capture. <SimpleShareButton shareId={SHAREABLE_description_IDS.REVENUE_FRIENDLY} /></ListItem>
+            <ListItem>Develop transition pathways: fund alumni roles (mentorship, documentation, part-time maintenance). <SimpleShareButton shareId={SHAREABLE_description_IDS.TRANSITION_PATHWAYS} /></ListItem>
           </List>
         </div>
       </div>
@@ -68,9 +68,9 @@ export const sections: Section[] = [
         <div>
           <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
           <List>
-            <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs.</ListItem>
+            <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs. <SimpleShareButton shareId={SHAREABLE_description_IDS.SHARED_ADMIN} /></ListItem>
             <ListItem>Some community-led initiatives already exist to support admin work for Bitcoin developers: the Bitcoin Legal Defense Fund offers legal support, while Satoshi Pacioli Accounting provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
-            <ListItem>Co-working space stipends: combat isolation through physical presence.</ListItem>
+            <ListItem>Co-working space stipends: combat isolation through physical presence. <SimpleShareButton shareId={SHAREABLE_description_IDS.COWORKING_STIPEND} /></ListItem>
             <ListItem>Mentorship matching: connect new contributors to experienced developers to ease onboarding pains.</ListItem>
             <ListItem>Learn from the Linux Foundation's LFX Mentorship program, which structures mentorship programs connecting experienced maintainers with new contributors.</ListItem>
           </List>
@@ -101,7 +101,7 @@ export const sections: Section[] = [
           <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
           <List>
             <ListItem>Partner with universities: create structured pathways and talent pipeline into the ecosystem.</ListItem>
-            <ListItem>Fund team offsites and developers retreats: provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
+            <ListItem>Fund team offsites and developers retreats: provide financial and organizational support for smaller IRL events beyond conferences. <SimpleShareButton shareId={SHAREABLE_description_IDS.FUND_OFFSITES} /></ListItem>
             <ListItem>Document institutional knowledge: capture expertise before developers leave.</ListItem>
             <ListItem>Support community initiatives aimed toward mindfulness and wellbeing: preventive approaches including yoga retreats, mindfulness programs at conferences, wellbeing workshops.</ListItem>
           </List>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 const researchOverviewNumbers = [
   {
@@ -77,7 +78,7 @@ export const OurResearch = () => {
 
       <p>
         Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
-        least 12 months. Through semi-structured interviews, we explored: <SimpleShareButton shareId="study-stats" />
+        least 12 months. Through semi-structured interviews, we explored: <SimpleShareButton shareId={SHAREABLE_description_IDS.STUDY_STATS} />
       </p>
 
       <section className='grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10'>

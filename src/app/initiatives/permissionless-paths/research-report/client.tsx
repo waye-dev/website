@@ -15,46 +15,60 @@ import { RecommendationReveal } from "@/app/components/research-report/mountains
 import { Conclusion } from "@/app/components/research-report/conclusion";
 import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
 import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export function ResearchReportClient() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Check if there's a share parameter in the URL
     const shareId = searchParams.get('share');
     if (shareId) {
-      // Map share IDs to their corresponding data-section attributes
-      const sectionMap: { [key: string]: string } = {
-        'executive-summary': 'study-overview',
-        'study-overview': 'study-overview',
-        'top-level-analysis': 'top-level-analysis',
-        'sustainability-paradox': 'top-level-analysis',
-        'core-finding': 'tyranny-of-permissionlessness',
-        'tyranny-of-permissionlessness': 'tyranny-of-permissionlessness',
-        'permissionlessness-enables': 'tyranny-of-permissionlessness',
-        'permissionlessness-isolation': 'tyranny-of-permissionlessness',
-        'four-strategies': 'four-strategies-for-chaos',
-        'no-framework': 'four-strategies-for-chaos',
-        'beyond-financial': 'beyond-financial-sustainability',
-        'ecosystem-replacement': 'beyond-financial-sustainability',
-        'recommendations': 'recommendations',
-        'not-inevitable': 'recommendations',
-        'keeping-open-participation': 'recommendations',
-        'fund-teams-recommendation': 'recommendations',
-        'make-invisible-visible': 'recommendations',
-      };
+      setTimeout(() => {
+        // First try to find specific shareable element
+        const shareableElement = document.querySelector(`[data-shareable-id="${shareId}"]`);
+        
+        if (shareableElement) {
+          const elementRect = shareableElement.getBoundingClientRect();
+          const absoluteElementTop = elementRect.top + window.pageYOffset;
+          const scrollToPosition = absoluteElementTop - 100; // offset for navbar
+          
+          window.scrollTo({
+            top: Math.max(0, scrollToPosition),
+            behavior: 'smooth'
+          });
+        } else {
+          // Fallback to section-based navigation for backwards compatibility
+          const sectionMap: { [key: string]: string } = {
+            'executive-summary': 'study-overview',
+            'study-overview': 'study-overview',
+            'top-level-analysis': 'top-level-analysis',
+            'sustainability-paradox': 'top-level-analysis',
+            'core-finding': 'tyranny-of-permissionlessness',
+            'tyranny-of-permissionlessness': 'tyranny-of-permissionlessness',
+            'permissionlessness-enables': 'tyranny-of-permissionlessness',
+            'permissionlessness-isolation': 'tyranny-of-permissionlessness',
+            'four-strategies': 'four-strategies-for-chaos',
+            'no-framework': 'four-strategies-for-chaos',
+            'beyond-financial': 'beyond-financial-sustainability',
+            'ecosystem-replacement': 'beyond-financial-sustainability',
+            'recommendations': 'recommendations',
+            'not-inevitable': 'recommendations',
+            'keeping-open-participation': 'recommendations',
+            'fund-teams-recommendation': 'recommendations',
+            'make-invisible-visible': 'recommendations',
+          };
 
-      const targetSection = sectionMap[shareId];
-      if (targetSection) {
-        // Wait for the page to render, then scroll
-        setTimeout(() => {
-          const sectionElement = document.querySelector(`[data-section="${targetSection}"]`);
-          if (sectionElement) {
-            sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const targetSection = sectionMap[shareId];
+          if (targetSection) {
+            const sectionElement = document.querySelector(`[data-section="${targetSection}"]`);
+            if (sectionElement) {
+              sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
           }
-        }, 100);
-      }
+        }
+      }, 100);
     }
   }, [searchParams]);
 
@@ -93,10 +107,10 @@ export function ResearchReportClient() {
                   <strong>
                     Our core finding: the very values and features that attract developers to the Bitcoin and Nostr ecosystems — freedom as an
                     ideal, permissionless participation, autonomy over projects — become the source of their greatest challenges.
-                  </strong>{" "}
+                  </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.CORE_FINDING} />{" "}
                   We call this the "tyranny of permissionlessness": while these principles enable open innovation and resist capture, without
-                  support structures they lead developers to navigate unlimited responsibility alone. <strong>This isn't inevitable: with intentional design, we can maintain permissionless participation while building sustainable work
-                  practices.</strong>
+                  support structures they lead developers to navigate unlimited responsibility alone. <SimpleShareButton shareId={SHAREABLE_description_IDS.TYRANNY_DEFINITION} /> <strong>This isn't inevitable: with intentional design, we can maintain permissionless participation while building sustainable work
+                  practices.</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.INTENTIONAL_DESIGN} />
                 </span>
               </section>
               <p>The report unfolds in six parts:</p>

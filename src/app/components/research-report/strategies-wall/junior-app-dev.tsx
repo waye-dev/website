@@ -51,7 +51,7 @@ export const JuniorAppDev = () => {
           {
             id: "5",
             text: `This is probably the most common thing you're gonna hear the whole time. I'm my own best asset and worst enemy in the sense that I'm highly motivated, I want to work on the thing, I like to think I'm fairly intelligent and can do good work, but I am limited strongly by the number of hours I can work. I'm learning on the job and trying to figure stuff out. And often it takes me longer than I feel like it should. I just have all the general failings of a human and so, I have to just keep reminding myself on a regular basis.`,
-            shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_5,
+            shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_4,
             author: {
               type: "new",
               respondentNumber: 5,

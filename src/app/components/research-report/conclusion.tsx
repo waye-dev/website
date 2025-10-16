@@ -1,4 +1,5 @@
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const Conclusion = () => {
   return (
@@ -16,7 +17,7 @@ export const Conclusion = () => {
           The study was carried out independently, following research ethics standards: voluntary participation, informed consent, anonymity,
           confidentiality, and the right to withdraw. <br /> <br /> Our heartfelt thanks to the 26 contributors who shared their experiences,
           insights, and time with us. Their openness and generosity made this work possible, and will inform ongoing efforts to improve sustainability
-          in open-source Bitcoin and related freedom technologies. <SimpleShareButton shareId="sustainable-permissionlessness" />
+          in open-source Bitcoin and related freedom technologies. <SimpleShareButton shareId={SHAREABLE_description_IDS.SUSTAINABLE_PERMISSIONLESSNESS} />
         </p>
       </section>
     </div>

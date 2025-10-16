@@ -1,6 +1,7 @@
 "use client"
 
 import { QuoteCards } from "@components/research-report/_components/quotes";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const FolderContentTwo = () => {
     return (
@@ -30,7 +31,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "17",
                         text: "There wasn't a framework for collaboration, for newcomers. And I was in a space where, honestly, I felt like I could have done more if I was collaborating with other contributors. I tried here and there, but then I couldn't get a mentor.",
-                        shareId: "collaborating-alone",
+                        shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE,
                         author: {
                         type: "new",
                         respondentNumber: 17,
@@ -39,7 +40,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "11",
                         text: "Recently, I decided to go to a coworking space. … And that was an instant improvement. You feel much better, because in your coming back, you're like: \"Okay, I went somewhere, did something, I'm coming back.\" Remote was always overrated.",
-                        shareId: "collaborating-alone-quote-2",
+                        shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_2,
                         author: {
                         type: "new",
                         respondentNumber: 11,
@@ -48,7 +49,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "15",
                         text: "People only agree about Bitcoin in life, nothing else. And that's like a general fact in terms of community. So after having a bunch of troublesome experiences, I started maintaining some distance from the community.",
-                        shareId: "collaborating-alone-quote-3",
+                        shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_3,
                         author: {
                         type: "new",
                         respondentNumber: 15,
@@ -79,7 +80,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "8",
                         text: "I really like going on stage and just sharing my experience, but it takes a lot of energy for me to do that, just all the traveling, etc. And then I also love the socializing part … because it gives me this sense of community. But then I noticed that if I go to a conference and none of my friends are there, then I'm going to feel a bit like: it wasn't really worth it.",
-                        shareId: "growing-without-guidance",
+                        shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE,
                         author: {
                         type: "mid",
                         respondentNumber: 8,
@@ -88,7 +89,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "23",
                         text: "Usually, I find conferences kind of draining. I need to prepare the talks ... and I usually find them more taxing than uplifting.",
-                        shareId: "growing-without-guidance-quote-2",
+                        shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE_QUOTE_2,
                         author: {
                         type: "expert",
                         respondentNumber: 23,
@@ -97,7 +98,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "6",
                         text: "Conferences help you connect with people, especially when you work mostly by yourself at home, maybe on your own project, not collaborating with others so much. So conferences help you get connected with a community and keep you real and remind you that other people exist.",
-                        shareId: "growing-without-guidance-quote-3",
+                        shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE_QUOTE_3,
                         author: {
                         type: "expert",
                         respondentNumber: 6,
@@ -106,7 +107,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "3",
                         text: "When I started working on grants for the first time, I found it very hard. No one's giving me the question, how should I form the answer? You have to find your own questions. So there was a period in time when I felt like I didn't know what I was doing.",
-                        shareId: "growing-without-guidance-quote-4",
+                        shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE_QUOTE_5,
                         author: {
                         type: "new",
                         respondentNumber: 3,
@@ -129,7 +130,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "5",
                         text: "I'm probably going to do this forever, as long as I possibly can. And the more important thing is: can I do it in a way that is not going to be a total financial strain constantly and be really annoying?",
-                        shareId: "no-clear-career",
+                        shareId: SHAREABLE_description_IDS.NO_CLEAR_CAREER_QUOTE_2,
                         author: {
                         type: "new",
                         respondentNumber: 5,
@@ -152,7 +153,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "13",
                         text: "Some days, I wouldn't feel very motivated and wouldn't get much done, and because there wasn't really any pressure — you know, I work very well under pressure — that was a little bit of a struggle where I could just not get anything done for a day or a couple days, and it wouldn't matter, really. And so it was hard to hit the same level of output that I would hit when I was working at [a company] where it was very high pressure, with very strict deadlines.",
-                        shareId: "motivation-challenges",
+                        shareId: SHAREABLE_description_IDS.MOTIVATION_CHALLENGES,
                         author: {
                         type: "new",
                         respondentNumber: 13,
@@ -161,7 +162,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "3",
                         text: "Sometimes you're just feeling that you're not doing enough. You want to do so much, but then you don't do it, and then you get into this self-critical phase, and that negatively impacts till I get out of it. So it's always like waves.",
-                        shareId: "motivation-quote-2",
+                        shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_2,
                         author: {
                         type: "new",
                         respondentNumber: 3,
@@ -170,7 +171,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "5",
                         text: "I have ups and downs, but not in motivation. I think the motivation is always there. I think I put a lot of pressure on myself to just to do the thing and do it really well. I always feel like I'm not going fast enough, and that I'm not doing it well enough, which I think is standard in this business, for most of us.",
-                        shareId: "motivation-quote-3",
+                        shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_3,
                         author: {
                         type: "new",
                         respondentNumber: 5,
@@ -193,7 +194,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "9-2",
                         text: "I guess every day I hate Bitcoin because it's also full of assholes, and it has its share of problems and discourse, so it feels like every day is a decision to work on it again, but if I'm being realistic, I don't see anything better that I could do with my time, and it's rewarding work.",
-                        shareId: "irl-gatherings",
+                        shareId: SHAREABLE_description_IDS.IRL_GATHERINGS,
                         author: {
                         type: "expert",
                         respondentNumber: 9,
@@ -202,7 +203,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "11-2",
                         text: "Being a bitcoiner is bit of a lifestyle, too. Some people are very depp into it. But I think it's good to have a decent balance. You don't want to be too, too deep. You want to be in the cult, right?",
-                        shareId: "irl-gatherings-quote-2",
+                        shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_2,
                         author: {
                         type: "new",
                         respondentNumber: 11,
@@ -211,7 +212,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "15-2",
                         text: "People only agree about Bitcoin in life, nothing else. And that's like a general fact in terms of community. So after having a bunch of troublesome experiences, I started maintaining some distance from the community.",
-                        shareId: "irl-gatherings-quote-3",
+                        shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_3,
                         author: {
                         type: "new",
                         respondentNumber: 15,
@@ -220,7 +221,7 @@ export const FolderContentTwo = () => {
                     {
                         id: "9-3",
                         text: "I think the Bitcoin community itself has these cult-like tendencies which make it, I think, very demoralizing for people who are in the situation I was in … So it just seems like there's a lot more enthusiasm for cheerleading Michael Saylor and the crap he spouts, as opposed to the people who are actually trying to make tangible, positive change in this thing, because it's not ready. It's not. Like there's still so much work to be done.",
-                        shareId: "irl-gatherings-quote-4",
+                        shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_4,
                         author: {
                         type: "expert",
                         respondentNumber: 9,

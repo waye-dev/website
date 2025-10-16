@@ -47,6 +47,7 @@ export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
 
   return (
     <button
+      data-shareable-id={shareId}
       onClick={handleClick}
       className={`text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-full bg-[#282F40] transition-all duration-150 hover:scale-105 active:scale-95 ${className}`}
       title={content.title}
