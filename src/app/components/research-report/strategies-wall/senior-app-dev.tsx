@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { QuoteCards } from "../_components/quotes";
 import { StrategySubSection, StrategySubSectionWithList } from "./strategy-sub-sections";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const SeniorAppDev = () => {
   return (
@@ -49,6 +50,7 @@ export const SeniorAppDev = () => {
           {
             id: "5",
             text: `You know, how bitcoiners say "I'm in for the tech", I came in for much more leaning towards that and the curiosity that transpired and … now I will say that I have a far broader view and a much more humanitarian goal in sight than just a technical one.`,
+            shareId: SHAREABLE_description_IDS.SENIOR_APP_DEV_QUOTE_23,
             author: {
               type: "new",
               respondentNumber: 5,
@@ -57,6 +59,7 @@ export const SeniorAppDev = () => {
           {
             id: "20",
             text: "It's a lot different now than it was when we first started. It was kind of a toy prototype, and now it started to get a bit more serious, there's a lot more users, there's a lot more stakeholders, and people are expecting it to actually succeed.",
+            shareId: SHAREABLE_description_IDS.FUTURE_ORIENTATION,
             author: {
               type: "expert",
               respondentNumber: 20,
@@ -65,6 +68,7 @@ export const SeniorAppDev = () => {
           {
             id: "25",
             text: "There is this funny thing. So if you build something, then there's an expectation for you to then maintain that thing. And for some brains, like my brain, I like building something and moving on to the next thing, but you can't really do that, because people then become dependent upon the thing working, so you end up having to maintain and then more and more of your time starts to be focused on maintaining projects. Some people just move on to the next thing. But I think a lot of us feel the responsibility to maintain those projects. So even if you're reluctantly doing it, often you find yourself maintaining a lot more than innovating and contributing and developing and building new stuff.",
+            shareId: SHAREABLE_description_IDS.INVISIBILITY_MAINTENANCE,
             author: {
               type: "expert",
               respondentNumber: 25,

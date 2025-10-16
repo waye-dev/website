@@ -31,6 +31,7 @@ export const FolderContentOne = () => {
                     {
                         id: "6",
                         text: "It's still the best work I've found so far. The autonomy is great in a way, and the work is meaningful, and … the shared values in the Nostr and Bitcoin community and the freedom technology and better future we are pursuing, it's quite privileged in many ways, to have a work like this feels so meaningful. You get even paid for it",
+                        shareId: "free-from-authority",
                         author: {
                         type: "expert",
                         respondentNumber: 6,
@@ -39,6 +40,7 @@ export const FolderContentOne = () => {
                     {
                         id: "23",
                         text: "You know, how bitcoiners say \"I'm in for the tech\", I came in for much more leaning towards that and the curiosity that transpired and … now I will say that I have a far broader view and a much more humanitarian goal in sight than just a technical one.",
+                        shareId: "senior-app-dev-quote-23",
                         author: {
                         type: "expert",
                         respondentNumber: 23,
@@ -47,6 +49,7 @@ export const FolderContentOne = () => {
                     {
                         id: "16",
                         text: "At the start, I had like little knowledge about Bitcoin … but then I saw an opportunity and I applied. So it was after the program that I really learned about the project and the potential it provided, and I got really interested and attached to the ideals and the technology",
+                        shareId: "free-from-authority-quote-2",
                         author: {
                         type: "new",
                         respondentNumber: 16,
@@ -69,6 +72,7 @@ export const FolderContentOne = () => {
                     {
                         id: "21",
                         text: "It's nice to work for yourself, to have that freedom to do that. But then, of course, the curse is always that no one else is going to do it. So I've got to do it.",
+                        shareId: "permissionlessness-attracts",
                         author: {
                         type: "mid",
                         respondentNumber: 21,
@@ -77,6 +81,7 @@ export const FolderContentOne = () => {
                     {
                         id: "11-1",
                         text: "I can work whenever I want\" translates to \"I can not work whenever I want\", right? And so I had some trouble with that. Like, the whole day, I don't do anything, and then in the evening, ideas would pop in my head and I work 7pm to 10pm, that's not sustainable.",
+                        shareId: "permissionlessness-attracts-quote-11",
                         author: {
                         type: "new",
                         respondentNumber: 11,
@@ -85,6 +90,7 @@ export const FolderContentOne = () => {
                     {
                         id: "20",
                         text: "I guess that's always been the thing that's drawn me to Bitcoin, the fact that I can build this peer-to-peer transaction system on a social network, and I don't have to ask permission from anyone. So I definitely like that aspect of just not having someone telling me that I can or can't do something, and I can just do it.",
+                        shareId: "permissionlessness-attracts-quote-2",
                         author: {
                         type: "expert",
                         respondentNumber: 20,
@@ -93,6 +99,7 @@ export const FolderContentOne = () => {
                     {
                         id: "8",
                         text: "I would love to have a stricter routine. But on the other hand, it's great the fact that I dont't need to have one.",
+                        shareId: "permissionlessness-attracts-quote-3",
                         author: {
                         type: "mid",
                         respondentNumber: 8,
@@ -115,6 +122,7 @@ export const FolderContentOne = () => {
                     {
                         id: "23",
                         text: "Everybody's burnt out. Everybody I work with is completely burnt out. … Everybody's in the same boat. So no, I think it's a problem beyond just me and a few other people. It's the normal set of state of affairs.",
+                        shareId: "experience-enables",
                         author: {
                         type: "expert",
                         respondentNumber: 23,
@@ -123,6 +131,7 @@ export const FolderContentOne = () => {
                     {
                         id: "25",
                         text: "There's a hell of a lot of things to build, and I think a lot of us feel a sense of urgency, because we know that if traditional financial rails fail … people will seek out alternatives, and it's kind of important that those alternatives work. So I think there is kind of a sense of urgency amongst a lot of the people, like myself, who are lucky enough to stumble across this technology. … There's a bunch of tools which you need to build to realize that fallback if everything else breaks.",
+                        shareId: "experience-enables-quote-2",
                         author: {
                         type: "expert",
                         respondentNumber: 25,
@@ -131,6 +140,7 @@ export const FolderContentOne = () => {
                     {
                         id: "4",
                         text: "I think it was a big, long burnout. For a very long time, I just didn't know how to talk about it. And, wow, now I know and see where I am at.",
+                        shareId: "experience-enables-quote-3",
                         author: {
                         type: "mid",
                         respondentNumber: 4,
@@ -153,6 +163,7 @@ export const FolderContentOne = () => {
                     {
                         id: "19",
                         text: "I guess every day I hate Bitcoin because it's also full of assholes, and it has its share of problems and discourse, so it feels like every day is a decision to work on it again, but if I'm being realistic, I don't see anything better that I could do with my time, and it's rewarding work.",
+                        shareId: "cultural-frictions",
                         author: {
                         type: "expert",
                         respondentNumber: 19,
@@ -161,6 +172,7 @@ export const FolderContentOne = () => {
                     {
                         id: "11-2",
                         text: "Being a bitcoiner is bit of a lifestyle, too. Some people are very depp into it. But I think it's good to have a decent balance. You don't want to be too, too deep. You want to be in the cult, right?",
+                        shareId: "cultural-frictions-quote-2",
                         author: {
                         type: "new",
                         respondentNumber: 11,
@@ -169,6 +181,7 @@ export const FolderContentOne = () => {
                     {
                         id: "15-1",
                         text: "People only agree about Bitcoin in life, nothing else. And that's like a general fact in terms of community. So after having a bunch of troublesome experiences, I started maintaining some distance from the community.",
+                        shareId: "cultural-frictions-quote-3",
                         author: {
                         type: "new",
                         respondentNumber: 15,
@@ -177,6 +190,7 @@ export const FolderContentOne = () => {
                     {
                         id: "39",
                         text: "I think the Bitcoin community itself has these cult-like tendencies which make it, I think, very demoralizing for people who are in the situation I was in … So it just seems like there's a lot more enthusiasm for cheerleading Michael Saylor and the crap he spouts, as opposed to the people who are actually trying to make tangible, positive change in this thing, because it's not ready. It's not. Like there's still so much work to be done.",
+                        shareId: "cultural-frictions-quote-4",
                         author: {
                         type: "expert",
                         respondentNumber: 19,
@@ -185,9 +199,6 @@ export const FolderContentOne = () => {
                 ]}
             />
 
-            <div className="flex justify-center mt-8">
-                <SimpleShareButton shareId="free-from-authority" />
-            </div>
         </>
     )
 }

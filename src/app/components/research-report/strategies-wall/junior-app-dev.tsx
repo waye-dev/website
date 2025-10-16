@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { QuoteCards } from "../_components/quotes";
 import { StrategySubSection, StrategySubSectionWithList } from "./strategy-sub-sections";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const JuniorAppDev = () => {
   return (
@@ -50,6 +51,7 @@ export const JuniorAppDev = () => {
           {
             id: "5",
             text: `This is probably the most common thing you're gonna hear the whole time. I'm my own best asset and worst enemy in the sense that I'm highly motivated, I want to work on the thing, I like to think I'm fairly intelligent and can do good work, but I am limited strongly by the number of hours I can work. I'm learning on the job and trying to figure stuff out. And often it takes me longer than I feel like it should. I just have all the general failings of a human and so, I have to just keep reminding myself on a regular basis.`,
+            shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_5,
             author: {
               type: "new",
               respondentNumber: 5,
@@ -58,6 +60,7 @@ export const JuniorAppDev = () => {
           {
             id: "7",
             text: "Where I worked before, most times, at any slight inconvenience or slight roadblock, we usually jump on a call and resolve it. It's not like that in open source.",
+            shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_3,
             author: {
               type: "new",
               respondentNumber: 7,
@@ -66,6 +69,7 @@ export const JuniorAppDev = () => {
           {
             id: "1",
             text: "I'm worried that before a certain threshold of success or momentum, if I get jaded, I'm thinking about the risk of being at the tip of the spear stopping, and everything else stopping.",
+            shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_4,
             author: {
               type: "new",
               respondentNumber: 1,

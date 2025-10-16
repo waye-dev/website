@@ -17,7 +17,7 @@ function ShareComponents() {
           isOpen={isNostrModalOpen}
           onClose={closeNostrModal}
           content={nostrModalContent.content}
-          shareUrl={nostrModalContent.url}
+          shareUrl={nostrModalContent.shareUrl}
         />
       )}
     </>

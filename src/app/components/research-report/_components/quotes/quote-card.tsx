@@ -1,12 +1,14 @@
 import { useState } from "react"
 import { QuoteAuthor } from "./quote-author"
 import { useResponsiveQuote } from "./use-responsive-quote"
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button"
 
 export type AuthorType = "new" | "expert" | "mid"
 
 export interface Quote {
   id: string
   text: string
+  shareId?: string
   author: {
     type?: AuthorType
     respondentNumber?: number
@@ -151,21 +153,26 @@ export function QuoteCard({
         />
       </div>
 
-      {isActive && needsExpansion && (
-        <button
-          onClick={handleToggleExpansion}
-          className="absolute bottom-4 right-5 text-xs underline hover:no-underline 
-                     transition-all duration-200 z-10"
-          style={{ 
-            fontSize: "13px",
-            color: textColor,
-            textDecoration: "underline",
-            fontFamily: "var(--font-inter)"
-          }}
-        >
-          {actualIsExpanded ? "show less" : "expand →"}
-        </button>
-      )}
+      <div className="absolute bottom-4 right-5 flex items-center gap-2 z-10">
+        {isActive && needsExpansion && (
+          <button
+            onClick={handleToggleExpansion}
+            className="text-xs underline hover:no-underline 
+                       transition-all duration-200"
+            style={{ 
+              fontSize: "13px",
+              color: textColor,
+              textDecoration: "underline",
+              fontFamily: "var(--font-inter)"
+            }}
+          >
+            {actualIsExpanded ? "show less" : "expand →"}
+          </button>
+        )}
+        {quote.shareId && (
+          <SimpleShareButton shareId={quote.shareId} />
+        )}
+      </div>
     </div>
   )
 }

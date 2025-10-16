@@ -30,6 +30,7 @@ export const FolderContentThree = () => {
                     {
                         id: "4",
                         text: "At the moment … there are better places to enjoy programming than Bitcoin, because the project management is very poor, and it's just a lot of struggle to get work done, to organize, to get review. So if I wanted to do research, I would probably still do something different, something painless.",
+                        shareId: "amorphous-scope",
                         author: {
                         type: "mid",
                         respondentNumber: 4,
@@ -52,6 +53,7 @@ export const FolderContentThree = () => {
                     {
                         id: "18",
                         text: "We had a whole year of this creative process, and it was amazing, but I think right now it's kind of boring, because I'm not creating anymore, I'm just checking that every contributor is implementing. It's boring for me to just check and maintain.",
+                        shareId: "invisibility-maintenance",
                         author: {
                         type: "expert",
                         respondentNumber: 18,
@@ -74,6 +76,7 @@ export const FolderContentThree = () => {
                     {
                         id: "21",
                         text: "All the grants are paid in Bitcoin, which is great. I like that. It's a big experiment, see how this works. I am not an accountant. Luckily, I have one that understands Bitcoin, and how that is actually going to work out long term. I'm just sweeping that under the rug, either let the accountant figure it out or I'll figure it out later. That gives me some anxiety. … Like, am I paying more taxes? I really can't stand that side of business.",
+                        shareId: "administrative-burden",
                         author: {
                         type: "mid",
                         respondentNumber: 21,
@@ -95,6 +98,7 @@ export const FolderContentThree = () => {
                     {
                         id: "3",
                         text: "I was applying for grants again and noticed a shift in organizations preferring to only pay in Bitcoin. However I can't legally be paid in Bitcoin for my services according to FEMA laws in my country. So it's been a hassle trying to do both my software development work and also the administrative challenges of receiving funding.",
+                        shareId: "location-barriers",
                         author: {
                         type: "new",
                         respondentNumber: 3,
@@ -103,6 +107,7 @@ export const FolderContentThree = () => {
                     {
                         id: "10-1",
                         text: "I don't go to a lot of conferences. Unfortunately, there aren't many Bitcoin conferences where I am currently. … Once I tried to go to Europe, there was the whole visa issue, so I miss a lot of those conferences.",
+                        shareId: "location-barriers-quote-2",
                         author: {
                         type: "new",
                         respondentNumber: 10,

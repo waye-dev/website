@@ -36,10 +36,6 @@ export interface ShareModeContextType {
   unregisterShareableElement: (id: string) => void;
   registerShareableElement: (element: ShareableElement) => void;
   showSharePopover: (element: ShareableElement, position: SharePopoverPosition) => void;
-  isNostrModalOpen: boolean;
-  nostrModalContent: { shareUrl: string; content: string } | null;
-  openNostrModal: (shareUrl: string, content: string) => void;
-  closeNostrModal: () => void;
 }
 
 const ShareModeContext = createContext<ShareModeContextType | undefined>(undefined);
@@ -151,10 +147,6 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     showSharePopover,
     hideSharePopover,
     cancelHidePopover,
-    isNostrModalOpen,
-    nostrModalContent,
-    openNostrModal,
-    closeNostrModal,
   };
 
   return (
