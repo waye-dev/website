@@ -103,7 +103,7 @@ export function ResearchReportClient() {
                   structures for this decentralized workforce.
                 </p>
 
-                <span>
+                <p>
                   <strong>
                     Our core finding: the very values and features that attract developers to the Bitcoin and Nostr ecosystems — freedom as an
                     ideal, permissionless participation, autonomy over projects — become the source of their greatest challenges.
@@ -111,7 +111,7 @@ export function ResearchReportClient() {
                   We call this the "tyranny of permissionlessness": while these principles enable open innovation and resist capture, without
                   support structures they lead developers to navigate unlimited responsibility alone. <SimpleShareButton shareId={SHAREABLE_description_IDS.TYRANNY_DEFINITION} /> <strong>This isn't inevitable: with intentional design, we can maintain permissionless participation while building sustainable work
                   practices.</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.INTENTIONAL_DESIGN} />
-                </span>
+                </p>
               </section>
               <p>The report unfolds in six parts:</p>
               
