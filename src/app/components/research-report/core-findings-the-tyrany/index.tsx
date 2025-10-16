@@ -1,5 +1,6 @@
 import { CrocAnimation } from "../croc-animation";
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const CoreFindingsTheTyrany = () => {
   return (
@@ -19,7 +20,7 @@ export const CoreFindingsTheTyrany = () => {
       </p>
       <strong>{`Permissionlessness — the defining principle of Bitcoin and the broader OSS ecosystem — becomes oppressive when applied to human work systems.`}</strong>
       <p>
-        We call this <strong>"the tyranny of permissionlessness."</strong> <SimpleShareButton shareId="permissionlessness-isolation" />
+        We call this <strong>"the tyranny of permissionlessness."</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESSNESS_ISOLATION} />
       </p>
     </section>
     </div>

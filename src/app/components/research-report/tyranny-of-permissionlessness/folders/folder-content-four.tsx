@@ -174,6 +174,7 @@ export const FolderContentFour = () => {
                     {
                         id: "21",
                         text: "One of the things that has been lacking, I think, with these granting organizations is a community of people solving these problems, … like the admin stuff, taxes and things like that. We're obviously all having the same problems. So we can help one another figure it out",
+                        shareId: "individual-vs-team-quote-3",
                         author: {
                         type: "mid",
                         respondentNumber: 21,

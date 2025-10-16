@@ -3,6 +3,7 @@ import { useMediaQuery } from "@/hooks/window-dimensions";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const TopLevelAnalysis = () => {
   // const isMobile = useMediaQuery("(max-width: 768px)");
@@ -23,7 +24,7 @@ export const TopLevelAnalysis = () => {
           the closest to the first term, and 10 is closest to the second term).
         </p>
 
-        <p>Here are the results, highlighting common patterns and strongest polarizations. <SimpleShareButton shareId="sustainability-paradox" /></p>
+        <p>Here are the results, highlighting common patterns and strongest polarizations. <SimpleShareButton shareId={SHAREABLE_description_IDS.SUSTAINABILITY_PARADOX} /></p>
       </section>
       <ParadoxVisualization />
       {/* {TOFIX: NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.} */}

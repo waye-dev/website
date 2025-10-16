@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { QuoteCards } from "../_components/quotes";
 import { StrategySubSection, StrategySubSectionWithList } from "./strategy-sub-sections";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const SeniorCoreDev = () => {
   return (
@@ -55,6 +56,7 @@ export const SeniorCoreDev = () => {
           {
             id: "2",
             text: `At some point, I stopped being able to believe that I could just build a better technology and trust that it would be used well, and [became] more focused on how that technology is entering the world. > >`,
+            shareId: SHAREABLE_description_IDS.SENIOR_APP_DEV_QUOTE_23,
             author: {
               type: "mid",
               respondentNumber: 2,
@@ -63,6 +65,7 @@ export const SeniorCoreDev = () => {
           {
             id: "4",
             text: "[Motivation] was all the things. It was research, then it was ideology, then it was making money, then it was back to ideology. … It was always hard to reflect on this, so it was always kind of foggy. … I was working for many years, and I wish I spent more time thinking about meta questions about why I work than actually working. So if somebody had asked me more often, I would have a good answer by now, and maybe I would have quit earlier, or maybe I would just have enjoyed it better. … I wish I did more thinking about this exact question at the time.",
+            shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_4,
             author: {
               type: "mid",
               respondentNumber: 4,

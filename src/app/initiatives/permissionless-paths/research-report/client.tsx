@@ -15,7 +15,6 @@ import { RecommendationReveal } from "@/app/components/research-report/mountains
 import { Conclusion } from "@/app/components/research-report/conclusion";
 import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
 import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 
 export function ResearchReportClient() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -29,11 +28,21 @@ export function ResearchReportClient() {
       const sectionMap: { [key: string]: string } = {
         'executive-summary': 'study-overview',
         'study-overview': 'study-overview',
+        'top-level-analysis': 'top-level-analysis',
+        'sustainability-paradox': 'top-level-analysis',
         'core-finding': 'tyranny-of-permissionlessness',
         'tyranny-of-permissionlessness': 'tyranny-of-permissionlessness',
+        'permissionlessness-enables': 'tyranny-of-permissionlessness',
+        'permissionlessness-isolation': 'tyranny-of-permissionlessness',
         'four-strategies': 'four-strategies-for-chaos',
+        'no-framework': 'four-strategies-for-chaos',
         'beyond-financial': 'beyond-financial-sustainability',
+        'ecosystem-replacement': 'beyond-financial-sustainability',
         'recommendations': 'recommendations',
+        'not-inevitable': 'recommendations',
+        'keeping-open-participation': 'recommendations',
+        'fund-teams-recommendation': 'recommendations',
+        'make-invisible-visible': 'recommendations',
       };
 
       const targetSection = sectionMap[shareId];
