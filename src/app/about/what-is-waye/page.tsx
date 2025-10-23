@@ -1,5 +1,5 @@
-import Wrapper from "@/app/components/wrapper";
 import Image from "next/image";
+import Wrapper from "@/app/components/wrapper";
 
 export default function WhatIsWaye() {
   const heroSubSectionText = [
@@ -28,8 +28,8 @@ export default function WhatIsWaye() {
   return (
     <main>
       {/* hero section */}
-      <div className='max-h-screen h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] bg-blue-custom-100 bg-gradient-to-b from-[#1a1f36] to-[#323F6B] via-[#7192f51c] text-gray-custom-100 flex flex-col justify-between relative overflow-'>
-        <div className='py-20'>
+      <div className='md:max-h-screen h-[calc(100vh-73px) md:h-[calc(100vh-73px)] bg-blue-custom-100 bg-gradient-to-b from-[#1a1f36] to-[#323F6B] via-[#7192f51c] text-gray-custom-100 flex flex-col justify-between relative'>
+        <div className='md:py-20 py-10'>
           <section className='flex flex-col gap-6'>
             <h1 className='text-[42px] md:text-[60px] leading-[140%] md:leading-[80px]  font-workSans text-center'>
               Build things that matter - <br /> for the long term.
@@ -40,8 +40,8 @@ export default function WhatIsWaye() {
             </p>
           </section>
 
-          <section className='w-full flex justify-center items-center z-50 pt-12'>
-            <section className='flex flex-col gap-4 z-50 max-w-[35.8rem] mx-auto items-center justify-center'>
+          <section className='w-full flex justify-center items-center md:z-50 pt-12'>
+            <section className='flex flex-col gap-4 md:z-50 max-w-[35.8rem] mx-auto items-center justify-center'>
               {heroSubSectionText.map((text) => (
                 <div key={text.title} className='flex flex-row items-center gap-4'>
                   <h2 className='uppercase text-xs font-bold font-acme tracking-wider text-[#ADCEF1] whitespace-nowrap'>{text.title}</h2>
@@ -53,14 +53,13 @@ export default function WhatIsWaye() {
           </section>
         </div>
 
-        {/* reduce size of image later */}
-        <div className='absolute bottom-0 z-10'>
-          <Image src='/svgs/about-page/double-mountains.svg' width={3200} height={563} alt='double mountains' priority />
+        <div className='absolute -bottom-10 z-10 w-full hidden md:block'>
+          <Image src='/svgs/about-page/double-mountains.svg' alt='double mountains' priority height={420} width={2560} />
         </div>
       </div>
 
       {/* content section */}
-      <div className='bg-gray-custom-100 py-12 md:py-24'>
+      <div className='bg-gray-custom-100 py-12 md:py-24 md:pt-40'>
         <Wrapper className='max-w-[1256px] mx-auto'>
           <div className='flex flex-col gap-10 md:gap-20 lg:gap-40'>
             {/* build for long term section */}
@@ -157,7 +156,12 @@ export default function WhatIsWaye() {
                 </p>
               </article>
 
-              <section className='w-full flex items-center justify-center md:justify-end'>
+              <section className='w-full flex items-center justify-center md:justify-end relative'>
+                {/* line  connector */}
+                <section className='absolute top-0 left-0 hidden md:block -translate-y-3/4 -translate-x-1/2'>
+                  <Image src='/svgs/about-page/spaceship-line-connector.svg' width={341} height={486} alt='spaceship line connector' priority />
+                </section>
+
                 <Image
                   src='/images/about-page/spaceship-image.png'
                   width={524}

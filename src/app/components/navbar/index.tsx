@@ -26,11 +26,11 @@ const Navbar = () => {
       description: "Meet the community building freedom tech together.",
       href: "/about/who-is-waye",
     },
-    {
-      title: "What is Waye",
-      description: "Supporting builders creating censorship-resistant tech.",
-      href: "/about/what-is-waye",
-    },
+    // {
+    //   title: "What is Waye",
+    //   description: "Supporting builders creating censorship-resistant tech.",
+    //   href: "/about/what-is-waye",
+    // },
     {
       title: "About Waye",
       description: "Our mission, values, and impact. Learn more about Waye and its mission.",

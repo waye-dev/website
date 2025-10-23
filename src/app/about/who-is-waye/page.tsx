@@ -7,17 +7,17 @@ export default function WhoIsWaye() {
   return (
     <main>
       {/* hero section */}
-      <div className='max-h-screen h-[calc(100vh-75.5px)] md:h-[calc(100vh-98.3px)] bg-blue-custom-100 bg-gradient-to-b from-[#1a1f36] to-[#323F6B] via-[#7192f51c] text-gray-custom-100 flex flex-col justify-between relative overflow-hidden'>
-        <section className='grid grid-cols-2 h-full'>
-          <div></div>
+      <div className='md:max-h-screen md:h-[calc(100vh-98.3px)] bg-blue-custom-100 bg-gradient-to-b from-[#1a1f36] to-[#323F6B] via-[#7192f51c] text-gray-custom-100 flex flex-col justify-between relative overflow-hidden'>
+        <section className='grid grid-cols-1 md:grid-cols-2 h-full p-4 md:p-0'>
+          <div className='hidden md:block'></div>
 
           {/* add responsiveness here */}
           {/* hero text section */}
           <div className='flex flex-col justify-center items-center h-full'>
-            <div className='flex flex-col gap-6 max-w-[38.75rem] pb-10'>
-              <h1 className='text-[42px] md:text-[60px] leading-[140%] md:leading-[80px] text-left font-workSans'>Who is waye ?</h1>
+            <div className='flex flex-col gap-4 md:gap-6 max-w-[38.75rem] pt-10 md:pt-0 pb-10'>
+              <h1 className='text-[42px] lg:text-[60px] leading-[140%] md:leading-[80px] text-left font-workSans'>Who is waye ?</h1>
 
-              <section className='flex flex-col gap-4 text-base leading-7'>
+              <section className='flex flex-col gap-4 text-base leading-7 z-20'>
                 <p>Waye is an open-source movement for people building freedom tech.</p>
                 <p>
                   Freedom tech is an emerging movement of decentralized, censorship-resistant technologies designed to protect human autonomy in the
@@ -36,17 +36,17 @@ export default function WhoIsWaye() {
             </div>
           </div>
 
-          <div className='absolute -bottom-56 -left-20'>
-            <Image src='/images/about-page/about-section.webp' width={3200} height={574} alt='mountains' priority />
+          <div className='absolute -left-10 -bottom-24 lg:-bottom-32 2xl:-bottom-48 hidden md:block'>
+            <Image src='/images/about-page/firewood.png' width={3200} height={574} alt='mountains' priority />
           </div>
         </section>
       </div>
 
       <div className='bg-gray-custom-100 py-24'>
         <Wrapper className='max-w-[1256px] mx-auto'>
-          <div className='flex flex-col gap-24'>
+          <div className='flex flex-col gap-16'>
             {/* participants section */}
-            <div className='flex flex-col gap-8 md:gap-20'>
+            <div className='flex flex-col gap-8 md:gap-10'>
               <h3 className='text-[34px] md:text-[40px] lg:text-[46px] font-medium leading-[140%] tracking-tighter lg:max-w-[47.375rem]'>
                 Here are some of the humans involved in that process
               </h3>
@@ -92,7 +92,7 @@ export default function WhoIsWaye() {
               </div>
 
               {/* board of directors section */}
-              <div className='flex flex-col gap-8 md:gap-0 items-center justify-center pt-12 md:pt-0 relative z-20'>
+              <div className='flex flex-col gap-8 md:gap-0 items-center justify-center pt-16 md:pt-0 relative z-20'>
                 <section className='w-full relative'>
                   {/* director to maintainers line --- complete */}
                   <section className='absolute hidden md:flex items-center justify-center top-0 md:-translate-y-[80%] lg:-translate-y-[76%] xl:-translate-y-[80.5%] -z-40 md:w-[28vw] md:translate-x-[35%] lg:w-[26vw] lg:translate-x-[53%] xl:w-[24vw] xl:translate-x-[50%] 2xl:w-[367px] 2xl:translate-x-[50%]'>
@@ -135,7 +135,7 @@ export default function WhoIsWaye() {
               </div>
 
               {/*designers section */}
-              <div className='flex flex-col-reverse md:flex-row items-center justify-center gap-5 lg:gap-12 mt-10'>
+              <div className='flex flex-col-reverse md:flex-row items-center justify-center gap-5 lg:gap-12 mt-16'>
                 <section className='flex flex-col gap-4 items-center sm:pl-5 lg:pl-10 w-full'>
                   {ABOUT_PAGE_DATA.designers.map((designer, index) => (
                     <section key={designer.name} className={`${index === 1 ? "sm:pl-5 lg:pl-20" : "sm:pr-5 lg:pr-20"}`}>
@@ -224,7 +224,7 @@ export default function WhoIsWaye() {
               </div>
 
               {/* sponsors section */}
-              <div className='flex flex-col-reverse md:flex-row items-center justify-center gap-6 pt-12'>
+              <div className='flex flex-col-reverse md:flex-row items-center justify-center gap-6 pt-16'>
                 <section className='flex flex-col gap-6 max-w-[31.3rem]'>
                   {ABOUT_PAGE_DATA.sponsors.map((sponsor) => (
                     <AboutUserCard
