@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://www.waye.dev/images/webclip.webp",
+        url: "https://www.waye.dev/images/webclip.jpg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@waye_dev",
-    images: ["https://www.waye.dev/images/webclip.webp"],
+    images: ["https://www.waye.dev/images/webclip.jpg"],
   },
 };
 
