@@ -26,14 +26,17 @@ export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
     event.stopPropagation();
     const button = event.currentTarget;
     const rect = button.getBoundingClientRect();
-    
+
+    // Generate the image URL from the content's order number
+    const imageUrl = `/api/og?id=${content.order}`;
+
     const shareableElement: ShareableElement = {
       id: shareId,
       title: content.title,
       content: content.description,
       type: "text",
       element: button,
-      imageData: content.imagePath
+      imageData: imageUrl,
     };
 
     showSharePopover(shareableElement, {
