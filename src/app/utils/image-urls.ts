@@ -19,5 +19,5 @@ export function getBaseUrl(): string {
     return process.env.NEXT_PUBLIC_NGROK_URL;
   }
 
-  return 'https://ba3e6ddf872b.ngrok-free.app';
+  return 'https://f172fa1c2a94.ngrok-free.app';
 }

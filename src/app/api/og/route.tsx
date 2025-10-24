@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
     }
 
     const imagePath = join(process.cwd(), 'public', 'images', 'og', `${id}.jpg`);
+    const fallbackImagePath = join(process.cwd(), 'public', 'images', 'og', '1.jpg');
 
     try {
       const imageBuffer = await readFile(imagePath);
@@ -23,8 +24,20 @@ export async function GET(request: NextRequest) {
         },
       });
     } catch (error) {
-      console.error(`Image not found for ID: ${id}`);
-      return new Response('Image not found', { status: 404 });
+      console.error(`Image not found for ID: ${id}, using fallback`);
+
+      // Try to serve fallback image
+      try {
+        const fallbackBuffer = await readFile(fallbackImagePath);
+        return new Response(new Uint8Array(fallbackBuffer), {
+          headers: {
+            'Content-Type': 'image/jpeg',
+            'Cache-Control': 'public, max-age=3600',
+          },
+        });
+      } catch (fallbackError) {
+        return new Response('Image not found', { status: 404 });
+      }
     }
   } catch (e: any) {
     console.log(`${e.message}`);
