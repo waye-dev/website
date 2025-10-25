@@ -33,7 +33,7 @@ export function setInitialState({ wrapper, folders, contents }: AnimationRefs) {
     folders.forEach((folder, i) => {
         gsap.set(folder, {
             ...INITIAL_STATE.folder,
-            zIndex: 100 + i,
+            zIndex: 200 + i,
         })
     })
 

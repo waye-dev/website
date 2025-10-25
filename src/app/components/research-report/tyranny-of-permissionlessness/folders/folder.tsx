@@ -1,6 +1,6 @@
 "use client"
 
-import { forwardRef, useImperativeHandle, useRef, ReactNode } from "react"
+import { forwardRef, useImperativeHandle, useRef, ReactNode, useState, useEffect } from "react"
 import { SvgTab } from "./svg-tab";
 
 interface FolderProps {
@@ -11,6 +11,7 @@ interface FolderProps {
     children: ReactNode;
     tabWidth: number;
     tabLeftPosition: number;
+    navbarHeight: number;
     tabScaleCorrection?: number;
     onTabClick?: () => void;
 }
@@ -27,11 +28,13 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
     children,
     tabWidth,
     tabLeftPosition,
+    navbarHeight,
     tabScaleCorrection = 0.7,
     onTabClick
 }, ref) => {
     const folderRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
+    const [tabHeight, setTabHeight] = useState(0)
 
     useImperativeHandle(ref, () => ({
         get folderRef() {
@@ -42,15 +45,51 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
         }
     }))
 
+    // Calculate tab height based on tabWidth
+    useEffect(() => {
+        const SVG_VIEWBOX_WIDTH = 399
+        const SVG_VIEWBOX_HEIGHT = 55
+        const aspectRatio = SVG_VIEWBOX_HEIGHT / SVG_VIEWBOX_WIDTH
+        const isMobile = window.innerWidth < 768
+        const scale = isMobile ? 2 : 1
+        const height = tabWidth * aspectRatio * scale
+        setTabHeight(height)
+
+        const handleResize = () => {
+            const isMobile = window.innerWidth < 768
+            const scale = isMobile ? 2 : 1
+            const height = tabWidth * aspectRatio * scale
+            setTabHeight(height)
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [tabWidth])
+
+    // Calculate folder height: viewport height minus navbar height minus tab height
+    const availableHeight = navbarHeight > 0 && tabHeight > 0
+        ? `calc(100vh - ${navbarHeight + tabHeight}px)`
+        : 'calc(100vh - 140px)' // fallback
+
     return (
         <div
             ref={folderRef}
             className="absolute inset-0 w-full h-full text-black"
-            style={{ isolation: 'isolate', pointerEvents: 'none' }}
+            style={{
+                isolation: 'isolate',
+                pointerEvents: 'none'
+            }}
         >
-            <div className="relative h-full w-full flex items-end justify-center">
-                <div className="w-full h-[54rem] relative">
-                    <div className="absolute top-0 left-0 w-full" style={{ transform: 'translateY(-100%)' }}>
+            <div
+                className="relative w-full flex flex-col justify-end"
+                style={{
+                    marginTop: navbarHeight > 0 ? `${navbarHeight}px` : '70px',
+                    height: `calc(100vh - ${navbarHeight > 0 ? navbarHeight : 70}px)`
+                }}
+            >
+                {/* Tab positioned above the folder body */}
+                <div className="relative w-full" style={{ height: `${tabHeight}px` }}>
+                    <div className="absolute bottom-0 left-0 w-full">
                         <SvgTab
                             label={label}
                             fillColor={fillColor}
@@ -60,6 +99,11 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                             onClick={onTabClick}
                         />
                     </div>
+                </div>
+
+                {/* Folder body */}
+                <div className="w-full relative" style={{ height: availableHeight }}>
+
 
                     <div className={`h-full rounded-t-[1rem] rounded-b-[1.5rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`} style={{ pointerEvents: 'auto' }}>
                         <div
