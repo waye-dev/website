@@ -54,7 +54,7 @@ export const SvgTab = ({ label, fillColor, className = "", width, leftPosition, 
                 className="absolute inset-0 flex items-center justify-center"
                 style={{ paddingBottom: `${height * 0.08}px` }}
             >
-                <span className="text-[0.75rem] sm:text-[0.875rem] md:text-[1rem] font-inknutAntiqua text-[#222222]">
+                <span className="tab-label text-[0.65rem] sm:text-[0.875rem] md:text-[1rem] font-inknutAntiqua text-[#222222]">
                     {label}
                 </span>
             </div>

@@ -93,6 +93,7 @@ export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
       ref={buttonRef}
       data-shareable-id={shareId}
       onClick={handleClick}
+      suppressHydrationWarning
       className={`inline-flex items-center gap-1 text-[11.28px] font-inknutAntiqua text-nowrap h-[23px] px-1.5 rounded-full transition-all duration-150 hover:scale-105 active:scale-95 ${
         isDarkBg
           ? "text-gray-900 bg-white hover:bg-gray-200"
