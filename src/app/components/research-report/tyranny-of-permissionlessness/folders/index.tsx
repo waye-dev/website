@@ -83,10 +83,17 @@ export const Folders = () => {
     const [tabLayout, setTabLayout] = useState(() =>
         calculateTabLayout(FOLDER_CONFIG.length, 1200)
     )
+    const [navbarHeight, setNavbarHeight] = useState(0)
 
     useEffect(() => {
         const updateLayout = () => {
             setTabLayout(calculateTabLayout(FOLDER_CONFIG.length, window.innerWidth * 0.92))
+
+            // Measure navbar height
+            const navbar = document.querySelector('nav')
+            if (navbar) {
+                setNavbarHeight(navbar.offsetHeight)
+            }
         }
 
         updateLayout()
@@ -183,6 +190,7 @@ export const Folders = () => {
                                 backgroundColor={config.backgroundColor}
                                 tabWidth={tabDimensions.width}
                                 tabLeftPosition={tabDimensions.leftPosition}
+                                navbarHeight={navbarHeight}
                                 onTabClick={() => handleTabClick(index)}
                             >
                                 <ContentComponent />
