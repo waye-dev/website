@@ -31,19 +31,19 @@ export const RecommendationReveal = () => {
 
         let girlSpeed, wallSpeed;
         if (aspectRatio < 0.8) {
-          girlSpeed = 1.3;
+          girlSpeed = 1.35;
           wallSpeed = 1.2;
         } else if (aspectRatio < 1.2) {
-          girlSpeed = 1.0;
+          girlSpeed = 1.05;
           wallSpeed = 0.9;
         } else if (vw >= 1280) {
-          girlSpeed = 1.25;
+          girlSpeed = 1.3;
           wallSpeed = 1.05;
         } else if (vw >= 1024) {
-          girlSpeed = 1.25;
+          girlSpeed = 1.3;
           wallSpeed = 1.0;
         } else {
-          girlSpeed = 1.25;
+          girlSpeed = 1.3;
           wallSpeed = 1.2;
         }
 
@@ -82,9 +82,20 @@ export const RecommendationReveal = () => {
           const girlY = progress * distance * girlSpeed;
           const girlX = progress * distance * -girlXSpeed;
           const wallY = progress * distance * wallSpeed;
-          const mountainY = progress < 0.5 ? 0 : (progress - 0.5) * distance * mountainSpeed * 2;
-          const mountainX = progress < 0.5 ? 0 : (progress - 0.5) * distance * -mountainXSpeed * 2;
-          const mountainScaleValue = progress < 0.5 ? 1 : 1 + (progress - 0.5) * mountainScale;
+
+          // Delay mountain reveal until walls have separated more (0.65 instead of 0.5)
+          const mountainRevealStart = 0.65;
+          const mountainY = progress < mountainRevealStart ? 0 : (progress - mountainRevealStart) * distance * mountainSpeed * (1 / (1 - mountainRevealStart));
+          const mountainX = progress < mountainRevealStart ? 0 : (progress - mountainRevealStart) * distance * -mountainXSpeed * (1 / (1 - mountainRevealStart));
+          const mountainScaleValue = progress < mountainRevealStart ? 1 : 1 + (progress - mountainRevealStart) * mountainScale * (1 / (1 - mountainRevealStart));
+
+          // Add opacity fade for mountains starting at 0.6, fully visible at 0.7
+          const mountainOpacityStart = 0.6;
+          const mountainOpacityEnd = 0.7;
+          const mountainOpacity = progress < mountainOpacityStart ? 0 :
+            progress > mountainOpacityEnd ? 1 :
+            (progress - mountainOpacityStart) / (mountainOpacityEnd - mountainOpacityStart);
+
           const girlScaleValue = 1 + progress * girlScale;
 
           const fadeStart = 0.95;
@@ -96,7 +107,7 @@ export const RecommendationReveal = () => {
           gsap.set(girlRip.current, { y: girlY, x: girlX, scale: girlScaleValue, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
           gsap.set(wallLeft.current, { y: wallY, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
           gsap.set(wallRight.current, { y: wallY, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
-          gsap.set(mountains.current, { y: mountainY, x: mountainX, scale: mountainScaleValue, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
+          gsap.set(mountains.current, { y: mountainY, x: mountainX, scale: mountainScaleValue, opacity: Math.min(fadeOpacity, mountainOpacity), ease: "none", overwrite: 'auto' });
           gsap.set(background.current, { backgroundColor: bgColor, ease: "none", overwrite: 'auto' });
         },
       });
@@ -105,7 +116,7 @@ export const RecommendationReveal = () => {
   );
 
   return (
-    <div ref={container} className='h-screen w-full relative overflow-y-hidden'>
+    <div ref={container} className='h-screen w-full relative overflow-hidden'>
       <div ref={background} className='absolute inset-0 bg-white' />
 
       <div className='absolute h-full w-full'>
@@ -122,15 +133,15 @@ export const RecommendationReveal = () => {
         </div>
       </div>
 
-      <div ref={wallLeft} className='absolute bottom-0 left-0 z-10 w-1/2 h-[126vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[225vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
+      <div ref={wallLeft} className='absolute bottom-0 left-[-1px] z-10 w-[51%] h-[126vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[225vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
         <Image src="/svgs/research/mountains/wall-left.svg" alt='' fill className='object-cover object-bottom' style={{ objectPosition: 'left bottom' }} />
       </div>
 
-      <div ref={wallRight} className='absolute bottom-0 right-0 z-10 w-1/2 h-[126vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[220vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
+      <div ref={wallRight} className='absolute bottom-0 right-[-1px] z-10 w-[53%] h-[126vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[220vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
         <Image src="/svgs/research/mountains/wall-right.svg" alt='' fill className='object-cover object-bottom' style={{ objectPosition: 'right bottom' }} />
       </div>
 
-      <div ref={girlRip} className='absolute -top-7 sm:-top-10 md:-top-12 left-[35%] sm:left-[30%] lg:left-[38%] xl:left-[39%] -translate-x-1/2 z-30 w-[250px] sm:w-[300px] md:w-[440px] xl:w-[520px]'>
+      <div ref={girlRip} className='absolute -top-7 sm:-top-10 md:-top-12 left-[30%] sm:left-[32%] lg:left-[37%] xl:left-[37%] -translate-x-1/2 z-30 w-[250px] sm:w-[300px] md:w-[440px] xl:w-[520px]'>
         <Image src="/svgs/research/mountains/girl.svg" alt='' width={400} height={400} className='w-full h-auto' />
       </div>
     </div>
