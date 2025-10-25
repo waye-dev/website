@@ -47,16 +47,36 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
   const handleNostrShare = async () => {
     try {
       if (typeof window !== "undefined" && (window as any).nostr) {
-        const content = `${selectedElement.content}\n\n${shareUrl}`;
+        const nostr = (window as any).nostr;
+        const timestamp = Math.floor(Date.now() / 1000);
 
-        const event = await (window as any).nostr.signEvent({
-          kind: 1,
-          created_at: Math.floor(Date.now() / 1000),
-          tags: [],
-          content: content,
+        const highlightEvent = await nostr.signEvent({
+          kind: 9802,
+          created_at: timestamp,
+          tags: [
+            ["r", shareUrl, "source"],
+            ["context", selectedElement.content],
+          ],
+          content: selectedElement.content,
         });
-        if ((window as any).nostr.publish) {
-          await (window as any).nostr.publish(event);
+
+        if (nostr.publish) {
+          await nostr.publish(highlightEvent);
+        }
+
+        const quoteContent = `"${selectedElement.content}"\n\n${shareUrl}`;
+
+        const quoteEvent = await nostr.signEvent({
+          kind: 1,
+          created_at: timestamp + 1,
+          tags: [
+            ["r", shareUrl, "mention"],
+          ],
+          content: quoteContent,
+        });
+
+        if (nostr.publish) {
+          await nostr.publish(quoteEvent);
         }
 
         setSharedOption("nostr");
