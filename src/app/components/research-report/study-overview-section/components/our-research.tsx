@@ -53,7 +53,7 @@ export const OurResearch = () => {
     <div className='flex flex-col gap-12'>
       <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Our Research </h5>
 
-      <section className='flex flex-col gap-12 pl-16'>
+      <section className='flex flex-col gap-12 sm:pl-16'>
         <section className='flex md:flex-row flex-col md:gap-24 gap-8'>
           <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
 
