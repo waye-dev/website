@@ -25,21 +25,25 @@ export function ResearchReportClient() {
   useEffect(() => {
     const shareId = searchParams.get('share');
     if (shareId) {
-      setTimeout(() => {
-        // First try to find specific shareable element
+      const scrollTimeout = setTimeout(() => {
         const shareableElement = document.querySelector(`[data-shareable-id="${shareId}"]`);
-        
+
         if (shareableElement) {
+          const navbar = document.querySelector('nav');
+          const navbarHeight = navbar ? navbar.offsetHeight : 80;
+
           const elementRect = shareableElement.getBoundingClientRect();
-          const absoluteElementTop = elementRect.top + window.pageYOffset;
-          const scrollToPosition = absoluteElementTop - 100; // offset for navbar
-          
+          const absoluteElementTop = elementRect.top + window.scrollY;
+          const elementHeight = elementRect.height;
+
+          const viewportHeight = window.innerHeight;
+          const scrollToPosition = absoluteElementTop - (viewportHeight / 2) + (elementHeight / 2);
+
           window.scrollTo({
             top: Math.max(0, scrollToPosition),
             behavior: 'smooth'
           });
         } else {
-          // Fallback to section-based navigation for backwards compatibility
           const sectionMap: { [key: string]: string } = {
             'executive-summary': 'study-overview',
             'study-overview': 'study-overview',
@@ -64,11 +68,21 @@ export function ResearchReportClient() {
           if (targetSection) {
             const sectionElement = document.querySelector(`[data-section="${targetSection}"]`);
             if (sectionElement) {
-              sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              const navbar = document.querySelector('nav');
+              const navbarHeight = navbar ? navbar.offsetHeight : 80;
+              const rect = sectionElement.getBoundingClientRect();
+              const absoluteTop = rect.top + window.scrollY;
+
+              window.scrollTo({
+                top: Math.max(0, absoluteTop - navbarHeight - 20),
+                behavior: 'smooth'
+              });
             }
           }
         }
-      }, 100);
+      }, 300);
+
+      return () => clearTimeout(scrollTimeout);
     }
   }, [searchParams]);
 
