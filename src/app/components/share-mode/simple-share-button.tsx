@@ -95,7 +95,7 @@ export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
       onClick={handleClick}
       className={`inline-flex items-center gap-1 text-[11.28px] font-inknutAntiqua text-nowrap h-[23px] px-1.5 rounded-full transition-all duration-150 hover:scale-105 active:scale-95 ${
         isDarkBg
-          ? "text-gray-900 bg-white hover:bg-gray-100"
+          ? "text-gray-900 bg-white hover:bg-gray-200"
           : "text-white bg-[#282F40] hover:bg-[#3B4F6F]"
       } ${className}`}
       title={content.title}
