@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import shareableContentData from '@/app/data/shareable-content';
 import { useShareMode, ShareableElement } from '@/contexts/share-mode-context';
 
@@ -9,18 +9,59 @@ interface SimpleShareButtonProps {
   className?: string;
 }
 
-export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({ 
+const isDarkBackground = (element: HTMLElement): boolean => {
+  let currentElement: Element | null = element.parentElement;
+
+  while (currentElement && currentElement !== document.documentElement) {
+    const computedBg = window.getComputedStyle(currentElement).backgroundColor;
+
+    if (computedBg && computedBg !== 'transparent' && !computedBg.includes('rgba(0, 0, 0, 0)')) {
+      const match = computedBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+      if (match) {
+        const [_, r, g, b] = match.map(Number);
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luminance < 0.5;
+      }
+      break;
+    }
+
+    currentElement = currentElement.parentElement;
+  }
+
+  return false;
+};
+
+export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
   shareId,
-  className = "" 
+  className = ""
 }) => {
   const { showSharePopover } = useShareMode();
+  const [isDarkBg, setIsDarkBg] = useState<boolean>(false);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   const content = (shareableContentData)[shareId];
-  
+
   if (!content) {
     console.error(`Shareable content not found for ID: ${shareId}`);
     return null;
   }
+
+  useEffect(() => {
+    const checkBackground = () => {
+      if (buttonRef.current) {
+        setIsDarkBg(isDarkBackground(buttonRef.current));
+      }
+    };
+
+    checkBackground();
+    window.addEventListener("scroll", checkBackground, { passive: true });
+    window.addEventListener("resize", checkBackground);
+
+    return () => {
+      window.removeEventListener("scroll", checkBackground);
+      window.removeEventListener("resize", checkBackground);
+    };
+  }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -49,9 +90,14 @@ export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
 
   return (
     <button
+      ref={buttonRef}
       data-shareable-id={shareId}
       onClick={handleClick}
-      className={`inline-flex items-center gap-1 text-[11.28px] text-white font-inknutAntiqua text-nowrap h-[23px] px-1.5 rounded-full bg-[#282F40] hover:bg-[#3B4F6F] transition-all duration-150 hover:scale-105 active:scale-95 ${className}`}
+      className={`inline-flex items-center gap-1 text-[11.28px] font-inknutAntiqua text-nowrap h-[23px] px-1.5 rounded-full transition-all duration-150 hover:scale-105 active:scale-95 ${
+        isDarkBg
+          ? "text-gray-900 bg-white hover:bg-gray-200"
+          : "text-white bg-[#282F40] hover:bg-[#3B4F6F]"
+      } ${className}`}
       title={content.title}
     >
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">

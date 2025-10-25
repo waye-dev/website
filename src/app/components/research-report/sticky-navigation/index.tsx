@@ -137,26 +137,20 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({ className = 
         }`}
       >
         <div className="flex flex-col gap-2">
-          <div className={`flex items-center gap-2 mb-1 ${textColor} opacity-60`}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-              <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-            <span className="text-xs uppercase font-josefinSans font-medium tracking-wide">Navigation</span>
-          </div>
           {visibleSections.map((section) => {
             const isActive = section.id === activeSection;
             return (
               <div
                 key={section.id}
                 onClick={() => handleSectionClick(section.id)}
-                className={`flex items-start gap-2 text-base uppercase font-josefinSans font-medium tracking-wide cursor-pointer transition-all duration-200 ${
+                className={`flex items-start gap-2 text-sm uppercase font-josefinSans font-medium tracking-wide cursor-pointer transition-all duration-200 ${
                   isActive ? "font-bold opacity-100" : "opacity-40"
                 } ${textColor}`}
               >
                 <div className="font-bold min-w-[1.2em] px-1 rounded">
                   {section.id}.
                 </div>
-                <div className="line-clamp-2 max-w-[200px] px-1 rounded">
+                <div className="line-clamp-1 max-w-[200px] px-1 rounded">
                   {section.title}
                 </div>
               </div>
@@ -166,17 +160,11 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({ className = 
       </div>
 
       <div
-        className={`absolute top-0 left-0 px-3 py-2 rounded-md transition-all duration-200 bg-[#FCF7ED] ${
+        className={`absolute top-0 left-0 px-3 py-2 rounded-md transition-all duration-200 bg-[#FCF7ED] w-[320px] ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 mb-1 text-gray-900 opacity-60 px-2">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-              <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-            <span className="text-xs uppercase font-josefinSans font-medium tracking-wide">Navigation</span>
-          </div>
           {GLOSSARY_LIST.map((section) => {
             const isActive = section.id === activeSection;
             return (
@@ -186,14 +174,14 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({ className = 
                 className="group cursor-pointer"
               >
                 <div
-                  className={`px-2 py-1 rounded transition-all duration-200 flex items-start gap-2 text-base uppercase font-josefinSans font-medium tracking-wide ${
+                  className={`px-2 py-1 rounded transition-all duration-200 flex items-start gap-2 text-sm uppercase font-josefinSans font-medium tracking-wide ${
                     isActive ? "font-bold opacity-100" : "opacity-50"
                   } text-gray-900 group-hover:bg-[#E7D7B4] ${!isActive && 'group-hover:opacity-100'}`}
                 >
                   <span className="font-bold min-w-[1.2em]">
                     {section.id}.
                   </span>
-                  <span className="line-clamp-2 max-w-[200px]">
+                  <span>
                     {section.title}
                   </span>
                 </div>
