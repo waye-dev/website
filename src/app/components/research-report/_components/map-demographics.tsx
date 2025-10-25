@@ -38,7 +38,7 @@ const DataCircle = ({ percentage, bgColor, textColor, size, fontSize, position, 
         ...position,
       }}
     >
-      <span className={`font-inknutAntiqua ${fontSize} md:${fontSize}`} style={{ color: textColor, fontSize: `clamp(0.65rem, 2vw, 1rem)` }}>
+      <span className={`font-inknutAntiqua ${fontSize}`} style={{ color: textColor }}>
         {percentage}
       </span>
       <style jsx>{`
@@ -118,17 +118,17 @@ export const DemographicsMap = () => {
 
   const circles = [
     // Light blue circle (North America)
-    { percentage: "30.8%", bgColor: "#C4DEF8", textColor: "#031C51", size: 90, fontSize: "text-xl", position: { top: "20%", left: "10%" } },
+    { percentage: "30.8%", bgColor: "#C4DEF8", textColor: "#000000", size: 90, fontSize: "text-xl", position: { top: "20%", left: "10%" } },
     // Dark blue circle (Europe)
     { percentage: "26.9%", bgColor: "#031C51", textColor: "#FFFFFF", size: 80, fontSize: "text-md", position: { top: "15%", left: "52%" } },
     // Yellow circle (Africa)
-    { percentage: "23.1%", bgColor: "#F9D483", textColor: "#C4960F", size: 65, fontSize: "text-md", position: { bottom: "40%", left: "55%" } },
+    { percentage: "23.1%", bgColor: "#F9D483", textColor: "#000000", size: 65, fontSize: "text-md", position: { bottom: "40%", left: "55%" } },
     // Green circle (South America)
-    { percentage: "3.8%", bgColor: "#D6F8C4", textColor: "#2D5F1E", size: 35, fontSize: "text-xs", position: { bottom: "23%", left: "25%" } },
+    { percentage: "3.8%", bgColor: "#D6F8C4", textColor: "#000000", size: 35, fontSize: "text-[8px]", position: { bottom: "23%", left: "25%" } },
     // Gray circle (Not Disclosed)
-    { percentage: "7.7%", bgColor: "#D9D9D9", textColor: "#4A4A4A", size: 50, fontSize: "text-xs", position: { bottom: "5%", right: "25%" } },
+    { percentage: "7.7%", bgColor: "#D9D9D9", textColor: "#000000", size: 50, fontSize: "text-xs", position: { bottom: "5%", right: "25%" } },
     // Red circle (Asia)
-    { percentage: "7.7%", bgColor: "#FF9999", textColor: "#CC0000", size: 50, fontSize: "text-xs", position: { top: "45%", right: "7%" } },
+    { percentage: "7.7%", bgColor: "#FF9999", textColor: "#000000", size: 50, fontSize: "text-xs", position: { top: "45%", right: "7%" } },
   ];
 
   return (
