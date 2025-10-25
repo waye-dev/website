@@ -66,11 +66,11 @@ export const OurResearch = () => {
           </article>
         </section>
 
-        <section className='flex flex-row gap-4 justify-between'>
+        <section className='flex flex-row gap-2 md:gap-4 justify-between'>
           {researchOverviewNumbers.map((number) => (
-            <div key={number.description} className='flex flex-col gap-2 items-center'>
-              <p className='font-inknutAntiqua text-2xl md:text-4xl lg:text-4xl font-bold'>{number.number}</p>
-              <p className='font-inknutAntiqua text-xl md:text-3xl'>{number.description}</p>
+            <div key={number.description} className='flex flex-col gap-1 md:gap-2 items-center'>
+              <p className='font-inknutAntiqua text-xl md:text-4xl lg:text-4xl font-bold'>{number.number}</p>
+              <p className='font-inknutAntiqua text-sm md:text-3xl text-center'>{number.description}</p>
             </div>
           ))}
         </section>

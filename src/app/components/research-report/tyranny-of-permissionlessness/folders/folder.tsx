@@ -81,7 +81,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
             }}
         >
             <div
-                className="relative w-full flex flex-col justify-end"
+                className="relative w-full flex flex-col justify-end folder-inner-container"
                 style={{
                     marginTop: navbarHeight > 0 ? `${navbarHeight}px` : '70px',
                     height: `calc(100vh - ${navbarHeight > 0 ? navbarHeight : 70}px)`
@@ -102,9 +102,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                 </div>
 
                 {/* Folder body */}
-                <div className="w-full relative" style={{ height: availableHeight }}>
-
-
+                <div className="w-full relative folder-body-wrapper" style={{ height: availableHeight }}>
                     <div className={`h-full rounded-t-[1rem] rounded-b-[1.5rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`} style={{ pointerEvents: 'auto' }}>
                         <div
                             ref={contentRef}

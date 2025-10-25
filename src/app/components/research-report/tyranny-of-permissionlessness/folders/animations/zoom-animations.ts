@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { AnimationRefs, CONFIG, INITIAL_STATE } from "./initial-state"
+import { AnimationRefs, CONFIG, INITIAL_STATE, getInitialScale, getScaledFolderWidth, getInitialHeightScale } from "./initial-state"
 
 export function createZoomInAnimation(
     tl: gsap.core.Timeline,
@@ -30,9 +30,32 @@ export function createZoomInAnimation(
     folders.forEach((folder) => {
         tl.to(folder, {
             width: "100%",
+            left: 0,
+            right: 0,
+            xPercent: 0,
             duration: zoomDuration,
             ease: "power2.inOut"
         }, "<")
+
+        // Also animate the folder inner container back to full height
+        const folderInner = folder.querySelector('.folder-inner-container') as HTMLElement
+        if (folderInner) {
+            tl.to(folderInner, {
+                scaleY: 1,
+                duration: zoomDuration,
+                ease: "power2.inOut"
+            }, "<")
+        }
+
+        // Reset tab label scale to normal
+        const tabLabel = folder.querySelector('.tab-label') as HTMLElement
+        if (tabLabel) {
+            tl.to(tabLabel, {
+                scaleY: 1,
+                duration: zoomDuration,
+                ease: "power2.inOut"
+            }, "<")
+        }
     })
 
     // Position future folders at bottom - use fromTo for reversibility
@@ -102,17 +125,47 @@ export function createZoomOutAnimation(
     })
 
     // Animate wrapper scale down and folders width simultaneously
+    const initialScale = getInitialScale()
+    const folderWidth = getScaledFolderWidth()
+    const heightScale = getInitialHeightScale()
+
     tl.to(wrapper, {
-        ...INITIAL_STATE.wrapper,
+        scale: initialScale,
+        x: 0,
+        y: 0,
         duration: zoomOutDuration,
         ease: "power2.inOut"
     })
 
     folders.forEach((folder) => {
+        // Center all folders when zooming out
         tl.to(folder, {
-            width: `${CONFIG.SCALED_FOLDER_WIDTH}%`,
+            width: `${folderWidth}%`,
+            left: '50%',
+            right: 'auto',
+            xPercent: -50,
             duration: zoomOutDuration,
             ease: "power2.inOut"
         }, "<")
+
+        // Animate folder inner container height on mobile
+        const folderInner = folder.querySelector('.folder-inner-container') as HTMLElement
+        if (folderInner) {
+            tl.to(folderInner, {
+                scaleY: isMobile ? heightScale : 1,
+                duration: zoomOutDuration,
+                ease: "power2.inOut"
+            }, "<")
+        }
+
+        // Compensate tab label scale on mobile
+        const tabLabel = folder.querySelector('.tab-label') as HTMLElement
+        if (tabLabel) {
+            tl.to(tabLabel, {
+                scaleY: isMobile ? 1 / heightScale : 1,
+                duration: zoomOutDuration,
+                ease: "power2.inOut"
+            }, "<")
+        }
     })
 }
