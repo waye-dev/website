@@ -102,7 +102,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
   return (
     <section className="flex flex-row items-center gap-2">
       <button
-        className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] transition-all duration-150 hover:scale-105 active:scale-95"
+        className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] hover:bg-[#3B4F6F] transition-all duration-150 hover:scale-105 active:scale-95"
         onClick={handleTwitterShare}
         title="Share on Twitter"
       >
@@ -118,7 +118,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
       </button>
 
       <button
-        className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] transition-all duration-150 hover:scale-105 active:scale-95"
+        className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] hover:bg-[#3B4F6F] transition-all duration-150 hover:scale-105 active:scale-95"
         onClick={handleNostrShare}
         title="Share on Nostr"
       >
@@ -138,7 +138,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
       </button>
 
       <button
-        className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] transition-all duration-150 hover:scale-105 active:scale-95"
+        className="text-[11.28px] flex flex-row items-center gap-1 text-white font-inknutAntiqua text-nowrap h-[30px] px-2.5 rounded-lg bg-[#282F40] hover:bg-[#3B4F6F] transition-all duration-150 hover:scale-105 active:scale-95"
         onClick={handleCopyLink}
       >
         {copiedOption === "copy" ? (

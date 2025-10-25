@@ -12,6 +12,30 @@ interface QuoteCardsProps {
   firstColor?: CardColor
 }
 
+const isDarkBackground = (element: HTMLElement | null): boolean => {
+  if (!element) return false
+
+  let currentElement: Element | null = element
+
+  while (currentElement && currentElement !== document.documentElement) {
+    const computedBg = window.getComputedStyle(currentElement).backgroundColor
+
+    if (computedBg && computedBg !== 'transparent' && !computedBg.includes('rgba(0, 0, 0, 0)')) {
+      const match = computedBg.match(/rgba?\((\d+),?\s*(\d+),?\s*(\d+)/)
+      if (match) {
+        const [_, r, g, b] = match.map(Number)
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+        return luminance < 0.5
+      }
+      break
+    }
+
+    currentElement = currentElement.parentElement
+  }
+
+  return false
+}
+
 //usage
 {/* <QuoteCards quotes={[
 {
@@ -40,10 +64,37 @@ export function QuoteCards({
 }: QuoteCardsProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-  
+  const [isDarkBg, setIsDarkBg] = useState(false)
+
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
   const isMobile = useMediaQuery("(max-width: 767px)")
+
+  // Detect background color on mount and scroll
+  useEffect(() => {
+    const detectBackground = () => {
+      setIsDarkBg(isDarkBackground(containerRef.current))
+    }
+
+    detectBackground()
+
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          detectBackground()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Text color for "tap to switch" based on detected background
+  const tapToSwitchTextColor = isDarkBg ? "#FFFFFF" : "#000000"
 
   useEffect(() => {
     cardsRef.current.forEach((card, index) => {
@@ -176,12 +227,15 @@ export function QuoteCards({
         <div
           className="flex items-center pt-4 space-x-2 text-sm opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 cursor-pointer"
           onClick={switchToNext}
+          style={{ color: tapToSwitchTextColor }}
         >
           <img
             src="/svgs/research/quotes/cursor-switch.svg"
             alt="arrow"
             className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-            style={{ filter: "invert(1)" }}
+            style={{
+              filter: tapToSwitchTextColor === "#FFFFFF" ? "invert(1)" : "invert(0)"
+            }}
           />
           <span className="font-inknut-antiqua" style={{ fontFamily: "var(--font-inknut-antiqua)" }}>
             tap to switch
