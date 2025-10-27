@@ -19,6 +19,7 @@ const DonationModal = dynamic(() => import("@/app/components/donation-modal"), {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDonationOpen, setIsDonationOpen] = useState(false);
+  const [isAboutExpanded, setIsAboutExpanded] = useState(false);
 
   const aboutSubSections = [
     {
@@ -117,9 +118,47 @@ const Navbar = () => {
       >
         {isOpen && (
           <div>
+            {/* About expandable section */}
+            <div className='pb-[10px] px-6'>
+              <button
+                onClick={() => setIsAboutExpanded(!isAboutExpanded)}
+                className='w-full flex items-center justify-center gap-2 text-base font-normal'
+              >
+                <span>About</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${isAboutExpanded ? "rotate-180" : ""}`}
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+                </svg>
+              </button>
+
+              {/* About subsections */}
+              {isAboutExpanded && (
+                <div className='mt-2 flex flex-col gap-3 bg-blue-custom-900 py-3 px-4 border-[0.5px] border-white rounded-lg'>
+                  {aboutSubSections.map(({ title, href }) => (
+                    <Link
+                      key={title}
+                      href={href}
+                      className='text-sm text-gray-custom-100 hover:text-blue-custom-200 transition-colors'
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsAboutExpanded(false);
+                      }}
+                    >
+                      {title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Other nav links */}
             {NAV_LINKS.map(({ href, text }) => (
               <div className='pb-[10px]' key={text}>
-                <Link href={href} target={href.includes("https") ? "_blank" : "_self"}>
+                <Link href={href} target={href.includes("https") ? "_blank" : "_self"} onClick={() => setIsOpen(false)}>
                   {text}
                 </Link>
               </div>
