@@ -143,7 +143,7 @@ export const INITIATIVES_FILTER_KEYS = [
 ];
 
 export const NAV_LINKS = [
-  { href: "/about", text: "About" },
+  // { href: "/about", text: "About" },
   { href: "/initiatives", text: "Initiatives" },
   { href: "/initiatives/permissionless-paths", text: "Research" },
   { href: "https://github.com/waye-dev/waye/blob/main/doc/FAQ.md", text: "FAQ" },
