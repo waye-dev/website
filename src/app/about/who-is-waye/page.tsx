@@ -92,10 +92,10 @@ export default function WhoIsWaye() {
               </div>
 
               {/* board of directors section */}
-              <div className='flex flex-col gap-8 md:gap-0 items-center justify-center pt-16 md:pt-0 relative z-20'>
+              <div className='flex flex-col gap-8 md:gap-0 items-center justify-center pt-16 md:pt-4 relative z-20'>
                 <section className='w-full relative'>
                   {/* director to maintainers line --- complete */}
-                  <section className='absolute hidden md:flex items-center justify-center top-0 md:-translate-y-[80%] lg:-translate-y-[76%] xl:-translate-y-[80.5%] -z-40 md:w-[28vw] md:translate-x-[35%] lg:w-[26vw] lg:translate-x-[53%] xl:w-[24vw] xl:translate-x-[50%] 2xl:w-[367px] 2xl:translate-x-[50%]'>
+                  {/* <section className='absolute hidden md:flex items-center justify-center top-0 md:-translate-y-[80%] lg:-translate-y-[76%] xl:-translate-y-[80.5%] -z-40 md:w-[28vw] md:translate-x-[35%] lg:w-[26vw] lg:translate-x-[53%] xl:w-[24vw] xl:translate-x-[50%] 2xl:w-[367px] 2xl:translate-x-[50%]'>
                     <svg
                       width='100%'
                       height='100%'
@@ -114,7 +114,7 @@ export default function WhoIsWaye() {
                         vectorEffect='non-scaling-stroke'
                       />
                     </svg>
-                  </section>
+                  </section> */}
 
                   <section className='flex items-center justify-center'>
                     <Image src='/svgs/about-page/board-of-directors-image.svg' height={227} width={250} alt='maintainers image' priority />
@@ -194,7 +194,7 @@ export default function WhoIsWaye() {
                   </section>
 
                   <section className='items-center justify-center hidden md:flex'>
-                    <Image src='/svgs/about-page/advisors-image.svg' height={239} width={352} alt='maintainers image' priority />
+                    <Image src='/svgs/about-page/advisors-image.svg' height={239} width={352} alt='advisors image' priority />
                   </section>
 
                   <section className='flex flex-col gap-4'>
@@ -224,7 +224,7 @@ export default function WhoIsWaye() {
               </div>
 
               {/* sponsors section */}
-              <div className='flex flex-col-reverse md:flex-row items-center justify-center gap-6 pt-16'>
+              <div className='flex flex-col-reverse md:flex-row items-center justify-center gap-6 pt-16 relative'>
                 <section className='flex flex-col gap-6 max-w-[31.3rem]'>
                   {ABOUT_PAGE_DATA.sponsors.map((sponsor) => (
                     <AboutUserCard
@@ -237,8 +237,8 @@ export default function WhoIsWaye() {
                   ))}
                 </section>
 
-                <section>
-                  <Image src='/svgs/about-page/sponsors-image.svg' height={222} width={403} alt='maintainers image' priority />
+                <section className='flex items-center justify-center w-full'>
+                  <Image src='/svgs/about-page/sponsors-image.svg' height={222} width={403} alt='sponsors image' priority />
                 </section>
               </div>
             </div>
