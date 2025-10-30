@@ -1,5 +1,5 @@
 export const getStageFromProgress = (progress: number) => {
-  if (progress < 0.4) return 'new';
+  if (progress < 0.3) return 'new';
   if (progress < 0.8) return 'mid';
   return 'expert';
 };
@@ -52,16 +52,16 @@ export const getMobileAvatarTransform = (progress: number, stage: 'new' | 'mid' 
   const result = { x: 0, opacity: 1 };
 
   if (stage === 'new') {
-    if (progress < 0.4) {
+    if (progress < 0.3) {
       result.x = 0;
       result.opacity = 1;
     } else {
-      const exitProgress = Math.min((progress - 0.4) / 0.1, 1);
+      const exitProgress = Math.min((progress - 0.3) / 0.1, 1);
       result.x = -200 * exitProgress;
       result.opacity = 1;
     }
   } else if (stage === 'mid') {
-    if (progress < 0.4) {
+    if (progress < 0.3) {
       result.x = 0;
       result.opacity = 0;
     } else if (progress < 0.8) {

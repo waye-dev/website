@@ -28,7 +28,7 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
   const currentLevel = data[cardsStage];
   const previousLevel = previousStage ? data[previousStage] : null;
 
-  const mobileStage = progress < 0.4 ? 'new' : progress < 0.8 ? 'mid' : 'expert';
+  const mobileStage = progress < 0.3 ? 'new' : progress < 0.8 ? 'mid' : 'expert';
   const mobileCurrentLevel = data[mobileStage];
 
   return (
