@@ -9,8 +9,8 @@ interface ExperienceLabelsProps {
 
 export const ExperienceLabels = ({ data, progress = 0 }: ExperienceLabelsProps) => {
   const getOpacityForStage = (stage: ExperienceStage) => {
-    if (stage === 'new') return progress < 0.4 ? 1 : 0.4;
-    if (stage === 'mid') return progress >= 0.4 && progress < 0.8 ? 1 : 0.4;
+    if (stage === 'new') return progress < 0.3 ? 1 : 0.4;
+    if (stage === 'mid') return progress >= 0.3 && progress < 0.8 ? 1 : 0.4;
     if (stage === 'expert') return progress >= 0.8 ? 1 : 0.4;
     return 0.4;
   };
