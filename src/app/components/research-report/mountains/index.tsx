@@ -83,18 +83,10 @@ export const RecommendationReveal = () => {
           const girlX = progress * distance * -girlXSpeed;
           const wallY = progress * distance * wallSpeed;
 
-          // Delay mountain reveal until walls have separated more (0.65 instead of 0.5)
           const mountainRevealStart = 0.65;
           const mountainY = progress < mountainRevealStart ? 0 : (progress - mountainRevealStart) * distance * mountainSpeed * (1 / (1 - mountainRevealStart));
           const mountainX = progress < mountainRevealStart ? 0 : (progress - mountainRevealStart) * distance * -mountainXSpeed * (1 / (1 - mountainRevealStart));
           const mountainScaleValue = progress < mountainRevealStart ? 1 : 1 + (progress - mountainRevealStart) * mountainScale * (1 / (1 - mountainRevealStart));
-
-          // Add opacity fade for mountains starting at 0.6, fully visible at 0.7
-          const mountainOpacityStart = 0.6;
-          const mountainOpacityEnd = 0.7;
-          const mountainOpacity = progress < mountainOpacityStart ? 0 :
-            progress > mountainOpacityEnd ? 1 :
-            (progress - mountainOpacityStart) / (mountainOpacityEnd - mountainOpacityStart);
 
           const girlScaleValue = 1 + progress * girlScale;
 
@@ -107,7 +99,7 @@ export const RecommendationReveal = () => {
           gsap.set(girlRip.current, { y: girlY, x: girlX, scale: girlScaleValue, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
           gsap.set(wallLeft.current, { y: wallY, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
           gsap.set(wallRight.current, { y: wallY, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
-          gsap.set(mountains.current, { y: mountainY, x: mountainX, scale: mountainScaleValue, opacity: Math.min(fadeOpacity, mountainOpacity), ease: "none", overwrite: 'auto' });
+          gsap.set(mountains.current, { y: mountainY, x: mountainX, scale: mountainScaleValue, opacity: fadeOpacity, ease: "none", overwrite: 'auto' });
           gsap.set(background.current, { backgroundColor: bgColor, ease: "none", overwrite: 'auto' });
         },
       });
@@ -133,11 +125,11 @@ export const RecommendationReveal = () => {
         </div>
       </div>
 
-      <div ref={wallLeft} className='absolute bottom-0 left-[-1px] z-10 w-[51%] h-[126vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[225vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
+      <div ref={wallLeft} className='absolute bottom-0 left-[-1px] z-10 w-[51%] h-[120vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[225vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
         <Image src="/svgs/research/mountains/wall-left.svg" alt='' fill className='object-cover object-bottom' style={{ objectPosition: 'left bottom' }} />
       </div>
 
-      <div ref={wallRight} className='absolute bottom-0 right-[-1px] z-10 w-[53%] h-[126vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[220vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
+      <div ref={wallRight} className='absolute bottom-0 right-[-1px] z-10 w-[53%] h-[120vh] sm:h-[143vh] md:h-[165vh] lg:h-[180vh] xl:h-[220vh] [@media(min-aspect-ratio:4/5)_and_(max-aspect-ratio:6/5)]:h-[160vh]'>
         <Image src="/svgs/research/mountains/wall-right.svg" alt='' fill className='object-cover object-bottom' style={{ objectPosition: 'right bottom' }} />
       </div>
 
