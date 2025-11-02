@@ -5,15 +5,15 @@ import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 const researchOverviewNumbers = [
   {
     number: 26,
-    description: "Contributors",
+    description: "contributors",
   },
   {
     number: "12+",
-    description: "Months",
+    description: "months",
   },
   {
     number: "4",
-    description: "Focus areas",
+    description: "countries",
   },
 ];
 

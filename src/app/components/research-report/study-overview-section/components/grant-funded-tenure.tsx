@@ -1,3 +1,6 @@
+import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
+import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
+
 export const GrantFundedTenure = () => {
   return (
     <div className='flex flex-col gap-14'>
@@ -10,8 +13,9 @@ export const GrantFundedTenure = () => {
         </p>
         <p>
           Among all participants, <span className='font-inknutAntiqua text-3xl'>69%</span> have been in grant-funded roles for 2 years or less,
-          while a quarter have sustained funding for 2-5 years and only one participant has been grant-funded for over 5 years.
+          while a quarter have sustained funding for 2-5 years and only one participant has been grant-funded for over 5 years. <SimpleShareButton shareId={SHAREABLE_description_IDS.GRANT_FUNDED_TENURE} />
         </p>
+        
         <p>
           Funding was primarily provided by OpenSats, the Human Rights Foundation (HRF), and Btrust, although additional sources were mentioned.
         </p>

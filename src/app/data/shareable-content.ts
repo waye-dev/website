@@ -39,6 +39,7 @@ export const SHAREABLE_description_IDS = {
   TYRANNY_DEFINITION: 'tyranny-definition',
   INTENTIONAL_DESIGN: 'intentional-design',
   STUDY_STATS: 'study-stats',
+  GRANT_FUNDED_TENURE: 'grant-funded-tenure',
   SUSTAINABILITY_CHALLENGES: 'sustainability-challenges',
   PERMISSIONLESSNESS_ISOLATION: 'permissionlessness-isolation',
   SUSTAINABILITY_PARADOX: 'sustainability-paradox',
@@ -545,145 +546,152 @@ export const shareabledescriptionData: Record<string, Shareabledescription> = {
     section: "Study Overview",
     order: 65
   },
+  [SHAREABLE_description_IDS.GRANT_FUNDED_TENURE]: {
+    id: SHAREABLE_description_IDS.GRANT_FUNDED_TENURE,
+    title: "Study Overview",
+    description: "73% of contributors are currently grant-funded, while 27% have transitioned to employment or independent projects. 69% have been in grant-funded roles for 2 years or less.",
+    section: "Study Overview",
+    order: 66
+  },
   [SHAREABLE_description_IDS.SUSTAINABILITY_CHALLENGES]: {
     id: SHAREABLE_description_IDS.SUSTAINABILITY_CHALLENGES,
     title: "Study Overview",
     description: "“69% (of participants) have been grant-funded for 2 years or less, indicating potential sustainability challenges.”",
     section: "Study Overview",
-    order: 66
+    order: 67
   },
   [SHAREABLE_description_IDS.PERMISSIONLESSNESS_ISOLATION]: {
     id: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ISOLATION,
     title: "Study Overview",
-    description: "“Without structural support, permissionlessness — the core principle of Bitcoin — can create isolation, burnout, and unsustainable work patterns when applied to human systems.”",
+    description: "\"Without structural support, permissionlessness — the core principle of Bitcoin — can create isolation, burnout, and unsustainable work patterns when applied to human systems.\"",
     section: "Study Overview",
-    order: 67
+    order: 68
   },
   [SHAREABLE_description_IDS.SUSTAINABILITY_PARADOX]: {
     id: SHAREABLE_description_IDS.SUSTAINABILITY_PARADOX,
     title: "Top-level Analysis",
-    description: "“The sustainability paradox: the more the experience, the more unsustainable one’s work process becomes.”",
+    description: "\"The sustainability paradox: the more the experience, the more unsustainable one's work process becomes.\"",
     section: "Top-level Analysis",
-    order: 68
+    order: 69
   },
   [SHAREABLE_description_IDS.FUTURE_ORIENTATION]: {
     id: SHAREABLE_description_IDS.FUTURE_ORIENTATION,
     title: "Top-level Analysis",
-    description: "“All contributors have a strong future orientation for their projects, yet their daily work patterns diverge sharply with experience.”",
+    description: "\"All contributors have a strong future orientation for their projects, yet their daily work patterns diverge sharply with experience.\"",
     section: "Top-level Analysis",
-    order: 69
+    order: 70
   },
   [SHAREABLE_description_IDS.EXPERT_CARING]: {
     id: SHAREABLE_description_IDS.EXPERT_CARING,
     title: "Top-level Analysis",
-    description: "“Expert contributors report the highest scores on caring for others — collaborators, community, people outside work — even as their own work becomes less sustainable.”",
+    description: "\"Expert contributors report the highest scores on caring for others — collaborators, community, people outside work — even as their own work becomes less sustainable.\"",
     section: "Top-level Analysis",
-    order: 70
+    order: 71
   },
   [SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES]: {
     id: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES,
     title: "Core Findings",
     description: "“Permissionlessness enables innovation in technical systems, but when extended to human labor systems it can create overwhelming choice and invisible labor.”",
     section: "Core Findings",
-    order: 71
+    order: 72
   },
   [SHAREABLE_description_IDS.FREEDOM_FROM_OVERSIGHT]: {
     id: SHAREABLE_description_IDS.FREEDOM_FROM_OVERSIGHT,
     title: "Core Findings",
     description: "“Freedom from oversight means freedom from support; the right to contribute becomes the responsibility to self-manage everything.”",
     section: "Core Findings",
-    order: 72
+    order: 73
   },
   [SHAREABLE_description_IDS.BURNOUT_EXPECTATION]: {
     id: SHAREABLE_description_IDS.BURNOUT_EXPECTATION,
     title: "Core Findings",
     description: "“Burnout is not the exception but the expectation — a normal state of affairs.”",
     section: "Core Findings",
-    order: 73
+    order: 74
   },
   [SHAREABLE_description_IDS.NO_FRAMEWORK]: {
     id: SHAREABLE_description_IDS.NO_FRAMEWORK,
     title: "Core Findings",
     description: "“Contributors are excited to deepen their expertise, but there is no framework for evolving responsibilities or recognition.”",
     section: "Core Findings",
-    order: 74
+    order: 75
   },
   [SHAREABLE_description_IDS.ECOSYSTEM_REPLACEMENT]: {
     id: SHAREABLE_description_IDS.ECOSYSTEM_REPLACEMENT,
     title: "Beyond Financial Sustainability",
     description: "“The ecosystem sustains itself not by supporting individuals, but by continuously replacing them.”",
     section: "Beyond Financial Sustainability",
-    order: 75
+    order: 76
   },
   [SHAREABLE_description_IDS.CONSTANT_TURNOVER]: {
     id: SHAREABLE_description_IDS.CONSTANT_TURNOVER,
     title: "Beyond Financial Sustainability",
     description: "“The ecosystem depends on constant developer turnover while losing critical knowledge.”",
     section: "Beyond Financial Sustainability",
-    order: 76
+    order: 77
   },
   [SHAREABLE_description_IDS.INSTITUTIONAL_KNOWLEDGE]: {
     id: SHAREABLE_description_IDS.INSTITUTIONAL_KNOWLEDGE,
     title: "Beyond Financial Sustainability",
     description: "“Each departure means losing institutional knowledge that cannot be fully captured in the project history.”",
     section: "Beyond Financial Sustainability",
-    order: 77
+    order: 78
   },
   [SHAREABLE_description_IDS.ONE_SIZE_FITS_ALL]: {
     id: SHAREABLE_description_IDS.ONE_SIZE_FITS_ALL,
     title: "Beyond Financial Sustainability",
     description: "“The one-size-fits-all grant model fails to recognize the different realities of core infrastructure vs application work.”",
     section: "Beyond Financial Sustainability",
-    order: 78
+    order: 79
   },
   [SHAREABLE_description_IDS.YEARLY_RENEWALS]: {
     id: SHAREABLE_description_IDS.YEARLY_RENEWALS,
     title: "Beyond Financial Sustainability",
     description: "“Yearly grant renewals incentivize short-term deliverables rather than long-term investments.”",
     section: "Beyond Financial Sustainability",
-    order: 79
+    order: 80
   },
   [SHAREABLE_description_IDS.FUNDERS_OPTIMIZE]: {
     id: SHAREABLE_description_IDS.FUNDERS_OPTIMIZE,
     title: "Beyond Financial Sustainability",
     description: "“Funders inadvertently optimize for yearly renewal requirements over long-term project sustainability.”",
     section: "Beyond Financial Sustainability",
-    order: 80
+    order: 81
   },
   [SHAREABLE_description_IDS.PSYCHOLOGICAL_SUSTAINABILITY]: {
     id: SHAREABLE_description_IDS.PSYCHOLOGICAL_SUSTAINABILITY,
     title: "Beyond Financial Sustainability",
     description: "“Psychological sustainability is as crucial as financial stability, yet burnout is treated as an individual problem rather than a systemic issue.”",
     section: "Beyond Financial Sustainability",
-    order: 81
+    order: 82
   },
   [SHAREABLE_description_IDS.NOT_INEVITABLE]: {
     id: SHAREABLE_description_IDS.NOT_INEVITABLE,
     title: "Recommendations",
     description: "“The tyranny of permissionlessness represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome.”",
     section: "Recommendations",
-    order: 82
+    order: 83
   },
   [SHAREABLE_description_IDS.KEEPING_OPEN_PARTICIPATION]: {
     id: SHAREABLE_description_IDS.KEEPING_OPEN_PARTICIPATION,
     title: "Recommendations",
     description: "“Sustainable permissionlessness means keeping open participation while creating structural support.”",
     section: "Recommendations",
-    order: 83
+    order: 84
   },
   [SHAREABLE_description_IDS.FUND_TEAMS_RECOMMENDATION]: {
     id: SHAREABLE_description_IDS.FUND_TEAMS_RECOMMENDATION,
     title: "Recommendations",
     description: "“Fund teams, not just individuals.”",
     section: "Recommendations",
-    order: 84
+    order: 85
   },
   [SHAREABLE_description_IDS.MAKE_INVISIBLE_VISIBLE]: {
     id: SHAREABLE_description_IDS.MAKE_INVISIBLE_VISIBLE,
     title: "Recommendations",
     description: "“Make invisible work visible and valued.”",
     section: "Recommendations",
-    order: 85
+    order: 86
   },
 };
 
