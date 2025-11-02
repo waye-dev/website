@@ -154,39 +154,50 @@ export function FromTyrannyToPermissionlessness() {
 
       const startTime = index * textSectionDuration;
 
-      tl.to(textEl, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out"
-      }, startTime);
-
       if (sections[index]?.id === '07') {
+        // For section 07, keep text hidden until after swap completes
         if (section08TitleRef.current) {
           gsap.set(section08TitleRef.current, {
             opacity: 0,
             y: -50
           });
 
+          // Show title after swap completes (swap duration is 1 second)
           tl.to(section08TitleRef.current, {
             opacity: 1,
             y: 0,
             duration: 0.8,
             ease: "power2.out"
-          }, startTime);
+          }, startTime + 1);
         }
 
+        // Move text position during swap
         tl.to(textEl, {
           y: '31vh',
           duration: 1,
           ease: "power2.inOut"
         }, startTime);
 
+        // Fade in text after swap completes
         tl.to(textEl, {
           opacity: 1,
-          duration: textSectionDuration - 0.8
+          duration: 0.8,
+          ease: "power2.out"
         }, startTime + 1);
+
+        // Keep text visible for remaining time
+        tl.to(textEl, {
+          opacity: 1,
+          duration: textSectionDuration - 1.8
+        }, startTime + 1.8);
       } else {
+        tl.to(textEl, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        }, startTime);
+
         tl.to(textEl, {
           opacity: 1,
           y: 0,
@@ -291,7 +302,7 @@ export function FromTyrannyToPermissionlessness() {
         >
         <div
           ref={svgRef}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 scale-125 flex justify-center items-center"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 scale-[1.18] flex justify-center items-center"
         />
 
         <p
@@ -302,13 +313,13 @@ export function FromTyrannyToPermissionlessness() {
           Developers' ideas
         </p>
 
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-full z-20">
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-full z-30">
           {sections.map((section, index) => (
             <div
               key={section.id}
               ref={el => { textRefs.current[index] = el; }}
               className="absolute w-full flex justify-center items-center"
-              style={{ opacity: section.id === '00' ? 1 : 0 }}
+              style={{ opacity: section.id === '00' ? 1 : 0, zIndex: 30 }}
             >
               {section.id === '07' ? (
                 <div className="max-w-7xl bg-gray-custom-100">
@@ -334,6 +345,10 @@ export function FromTyrannyToPermissionlessness() {
                       <p className="text-xs text-gray-600 font-semibold">— Respondent #25 Expert contributor</p>
                     </div>
                   </div>
+                </div>
+              ) : section.id === '04' || section.id === '06' ? (
+                <div className="w-full max-w-4xl px-4">
+                  {section.textContent}
                 </div>
               ) : (
                 section.textContent
