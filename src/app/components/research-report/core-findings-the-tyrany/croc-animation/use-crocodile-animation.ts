@@ -38,7 +38,7 @@ export const useCrocodileAnimation = () => {
                     trigger: containerRef.current,
                     scroller: window,
                     start: "bottom bottom",
-                    end: "+=100%",
+                    end: "+=150%",
                     scrub: 1,
                     pin: true,
                     pinSpacing: true,
@@ -48,7 +48,7 @@ export const useCrocodileAnimation = () => {
                 }
             })
 
-            // Move crocodile from left (hidden) to right edge of container (40% of timeline)
+            // Move crocodile from left (hidden) to beyond right edge (takes 90% of timeline)
             tl.fromTo(crocRef.current,
                 {
                     x: () => {
@@ -62,35 +62,35 @@ export const useCrocodileAnimation = () => {
                         const container = containerRef.current
                         const croc = crocRef.current
                         if (!container || !croc) return "0px"
-                        // Stop when crocodile's right edge touches container's right edge
-                        return `${container.offsetWidth - croc.offsetWidth}px`
+                        // Go 20px beyond the container to get slightly covered on the right
+                        return `${container.offsetWidth - croc.offsetWidth + 40}px`
                     },
                     ease: "none",
-                    duration: 0.4
+                    duration: 0.9
                 },
                 0
             )
 
-            // Bottom jaw closes at 40% of crocodile movement (16% of timeline)
+            // Bottom jaw closes at 40% of crocodile movement (36% of timeline)
             .to(bottomJaw, {
                 rotation: 0,
                 x: 0,
                 ease: "power2.inOut",
                 duration: 0.1
-            }, 0.20)
+            }, 0.36)
             .to(bottomJaw, {
                 y: 0,
                 ease: "power2.inOut",
                 duration: 0.08
-            }, 0.20)
+            }, 0.36)
 
-            // Top jaw closes at 60% of crocodile movement (24% of timeline)
+            // Top jaw closes at 60% of crocodile movement (54% of timeline)
             .to(topJaw, {
                 rotation: 0,
                 y: 0,
                 ease: "power2.inOut",
                 duration: 0.1
-            }, 0.30)
+            }, 0.54)
         }, containerRef)
 
         return () => {
