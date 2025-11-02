@@ -106,18 +106,20 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                     <div className={`h-full rounded-t-[1rem] rounded-b-[1.5rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`} style={{ pointerEvents: 'auto' }}>
                         <div
                             ref={contentRef}
-                            className="h-full absolute overflow-hidden"
+                            className="absolute overflow-hidden"
                             style={{
-                                top: '1.5rem',
+                                // top: '1.5rem',
                                 left: '1.5rem',
                                 right: '1.5rem',
-                                bottom: '1.5rem',
+                                // bottom: '1.5rem',
                                 pointerEvents: 'none',
-                                opacity: 0,
+                                //opacity: 0,
                                 visibility: 'hidden'
                             }}
                         >
-                           <div className="content-inner p-0 pb-[3rem] md:p-[1.5rem] md:pb-[4rem] md:px-[10rem] max-w-[98%] md:max-w-[95%] space-y-[1.5rem] my-[3rem]">
+                           <div
+                           className="content-inner p-0 pb-[6rem] md:p-[1.5rem] md:pb-[8rem] md:px-[10rem] max-w-[98%] md:max-w-[95%] space-y-[1.5rem] my-[3rem]"
+                           >
                                 {children}
                             </div>
                         </div>
