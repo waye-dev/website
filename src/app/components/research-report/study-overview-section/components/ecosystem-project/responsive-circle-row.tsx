@@ -29,11 +29,12 @@ export const ResponsiveCircleRow = ({ availableWidth, darkPercentage = 0.76, dot
           ref={(el) => {
             if (el) dotsRef.current[index] = el;
           }}
-          className={`rounded-full ${circle.isDark ? "bg-blue-custom-900" : "bg-gray-custom-800"}`}
+          className={`rounded-full flex items-center justify-center ${circle.isDark ? "bg-blue-custom-900" : "bg-gray-custom-800"}`}
           style={{
             width: `${circleSize}px`,
             height: `${circleSize}px`,
             marginRight: index < circleCount - 1 ? `${gap}px` : "0",
+            fontSize: "0.75rem",
           }}
         />
       ))}

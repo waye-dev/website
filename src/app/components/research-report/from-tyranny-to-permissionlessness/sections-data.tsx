@@ -64,8 +64,8 @@ export const sections: Section[] = [
   {
     id: "04",
     textContent: (
-      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <div>
+      <div className="w-full min-h-[200px] flex items-center text-base">
+        <div className="w-full">
           <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
           <List>
             <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs. <SimpleShareButton shareId={SHAREABLE_description_IDS.SHARED_ADMIN} /></ListItem>
@@ -96,8 +96,8 @@ export const sections: Section[] = [
   {
     id: "06",
     textContent: (
-      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <div>
+      <div className="w-full min-h-[200px] flex items-center text-base">
+        <div className="w-full">
           <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
           <List>
             <ListItem>Partner with universities: create structured pathways and talent pipeline into the ecosystem.</ListItem>

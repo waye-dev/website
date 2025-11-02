@@ -46,12 +46,17 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         [shuffledIndices[i], shuffledIndices[j]] = [shuffledIndices[j], shuffledIndices[i]];
       }
 
+      // Track if we've applied shadow to one dot per target
+      let shadowAppliedToLeftTarget = false;
+      let shadowAppliedToRightTarget = false;
+
       dotsRef.current.forEach((dot, index) => {
         if (!dot) return;
 
         // Use shuffled index to determine target
         const shuffledIndex = shuffledIndices[index];
         const targetRef = shuffledIndex < darkCircleCount ? targetRef1 : targetRef2;
+        const isGoingToLightCircle = shuffledIndex >= darkCircleCount; // Right circle is the light one
         const targetRect = targetRef.current!.getBoundingClientRect();
         const dotRect = dot.getBoundingClientRect();
 
@@ -74,7 +79,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
 
         // Get original color from Tailwind config
         const isDark = index < darkCircleCount;
-        const bgColor = isDark ? "#1B1F35" : "#D9D9D9"; // blue-custom-900 : gray-custom-800
+        const bgColor = isDark ? "#1B1F35" : "#C4DEF9"; // blue-custom-900 : #C4DEF9
 
         // Set transform origin to center for proper scaling
         gsap.set(dot, { transformOrigin: "center center" });
@@ -110,6 +115,35 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
           },
           0.8
         );
+
+        // Add shadow to only one dot per target
+        const isGoingToLeftTarget = !isGoingToLightCircle;
+
+        if (isGoingToLeftTarget && !shadowAppliedToLeftTarget) {
+          // Apply shadow to first dot going to left target
+          tl.to(
+            dot,
+            {
+              boxShadow: "0 0 6px 3px rgba(196, 222, 249, 0.8)",
+              duration: 0.3,
+              ease: "power1.inOut",
+            },
+            0.95
+          );
+          shadowAppliedToLeftTarget = true;
+        } else if (isGoingToLightCircle && !shadowAppliedToRightTarget) {
+          // Apply shadow to first dot going to right target
+          tl.to(
+            dot,
+            {
+              boxShadow: "0 0 6px 3px rgba(196, 222, 249, 0.8)",
+              duration: 0.3,
+              ease: "power1.inOut",
+            },
+            0.95
+          );
+          shadowAppliedToRightTarget = true;
+        }
       });
 
       // Fade in text at the end
@@ -153,9 +187,9 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
                       left: '50%'
                     }}
                   />
-                  <p className='text-center text-black font-inknutAntiqua text-lg z-50 relative'>{distribution.value}</p>
+                  <p className='text-center text-black font-inknutAntiqua text-sm z-50 relative'>{distribution.value}</p>
                 </div>
-                <p className='text-center text-black'>{distribution.title}</p>
+                <p className='text-center text-black text-sm'>{distribution.title}</p>
               </div>
             </div>
           ))}
