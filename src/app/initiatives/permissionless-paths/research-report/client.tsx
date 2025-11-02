@@ -177,10 +177,10 @@ export function ResearchReportClient() {
           </Wrapper>
         </div>
       </div>
-      <div className='bg-gray-custom-400 relative z-[2]'>
+      <div className='bg-gray-custom-400 relative z-[11]'>
       <CoreFindingsTheTyrany />
       </div>
-      <div className='bg-blue-custom-1200 relative z-[11]' data-section='tyranny-of-permissionlessness'>
+      <div className='bg-blue-custom-1200 relative z-[2]' data-section='tyranny-of-permissionlessness'>
         <div className='-mt-48 pt-64'>
           <TyrannyOfPermissionlessness />
         </div>

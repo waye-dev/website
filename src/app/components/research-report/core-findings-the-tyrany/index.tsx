@@ -1,4 +1,4 @@
-import { CrocAnimation } from "../croc-animation";
+import { CrocAnimation } from "./croc-animation";
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
