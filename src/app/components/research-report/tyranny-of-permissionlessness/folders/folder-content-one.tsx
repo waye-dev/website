@@ -1,12 +1,11 @@
 "use client"
 
 import { QuoteCards } from "@components/research-report/_components/quotes";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const FolderContentOne = () => {
     return (
-        <>
+        <div className="pb-[80px] sm:pb-[150px]">
             <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
                 Free from authority, free to burn out
             </h2>
@@ -200,6 +199,6 @@ export const FolderContentOne = () => {
                 ]}
             />
 
-        </>
+        </div>
     )
 }

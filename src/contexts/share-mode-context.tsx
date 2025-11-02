@@ -29,6 +29,7 @@ export interface ShareModeContextType {
   selectedElement: ShareableElement | null;
   popoverPosition: SharePopoverPosition | null;
   isPopoverVisible: boolean;
+  setIsPopoverVisible: (visible: boolean) => void;
   isNostrModalOpen: boolean;
   nostrModalContent: { shareUrl: string; content: string } | null;
   openNostrModal: (shareUrl: string, content: string) => void;
@@ -58,22 +59,32 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
   const [shareableElements, setShareableElements] = useState<ShareableElement[]>([]);
   const [selectedElement, setSelectedElement] = useState<ShareableElement | null>(null);
   const [popoverPosition, setPopoverPosition] = useState<SharePopoverPosition | null>(null);
-  const [isPopoverVisible, setIsPopoverVisible] = useState<boolean>(false);
+  const [isPopoverVisibleState, setIsPopoverVisibleState] = useState<boolean>(false);
   const [isNostrModalOpen, setIsNostrModalOpen] = useState<boolean>(false);
   const [nostrModalContent, setNostrModalContent] = useState<{ shareUrl: string; content: string } | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Wrapper to clean up when popover is closed
+  const setIsPopoverVisible = useCallback((visible: boolean) => {
+    setIsPopoverVisibleState(visible);
+    if (!visible) {
+      // Clean up selected element and position when closing
+      setTimeout(() => {
+        setSelectedElement(null);
+        setPopoverPosition(null);
+      }, 150);
+    }
+  }, []);
 
   const toggleShareMode = useCallback(() => {
     setIsShareModeActive((prev) => {
       const newState = !prev;
       if (!newState) {
         setIsPopoverVisible(false);
-        setSelectedElement(null);
-        setPopoverPosition(null);
       }
       return newState;
     });
-  }, []);
+  }, [setIsPopoverVisible]);
 
   const registerShareableElement = useCallback((element: ShareableElement) => {
     setShareableElements((prev) => {
@@ -98,7 +109,7 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
 
     setSelectedElement(element);
     setPopoverPosition(position);
-    setIsPopoverVisible(true);
+    setIsPopoverVisibleState(true);
   }, []);
 
   const cancelHidePopover = useCallback(() => {
@@ -115,10 +126,8 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
 
     hideTimeoutRef.current = setTimeout(() => {
       setIsPopoverVisible(false);
-      setSelectedElement(null);
-      setPopoverPosition(null);
     }, 100);
-  }, []);
+  }, [setIsPopoverVisible]);
 
   const openNostrModal = useCallback((shareUrl: string, content: string) => {
     setNostrModalContent({ shareUrl, content });
@@ -139,7 +148,8 @@ export const ShareModeProvider: React.FC<ShareModeProviderProps> = ({ children }
     unregisterShareableElement,
     selectedElement,
     popoverPosition,
-    isPopoverVisible,
+    isPopoverVisible: isPopoverVisibleState,
+    setIsPopoverVisible,
     isNostrModalOpen,
     nostrModalContent,
     openNostrModal,

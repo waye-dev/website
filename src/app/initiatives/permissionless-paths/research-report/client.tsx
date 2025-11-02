@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Wrapper from "@/app/components/wrapper";
 import { StudyOverviewSection } from "@/app/components/research-report/study-overview-section";
-import { GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection } from "@/app/components/research-report/glossary-section";
+import { GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection } from "@/app/components/research-report/glossary";
 import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
 import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
 import { Strategies } from "@/app/components/research-report/strategies";

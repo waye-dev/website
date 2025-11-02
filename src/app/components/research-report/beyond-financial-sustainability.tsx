@@ -6,7 +6,6 @@ import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 export const BeyondFinancialSustainability = () => {
   return (
     <div>
-      {/* Role sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] pb-6 font-inknutAntiqua text-center  mx-auto'>
           Beyond financial sustainability: <br /> <br /> <span className='text-2xl md:text-[40px]'>The hidden costs of freedom tech development</span>
@@ -210,7 +209,6 @@ export const BeyondFinancialSustainability = () => {
         />
       </div>
 
-      {/* psychological sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
           <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as a systemic risk</h5>
