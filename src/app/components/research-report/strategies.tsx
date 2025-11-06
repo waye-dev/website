@@ -12,7 +12,7 @@ export const Strategies = () => {
 
         <p>
           The combination of openness and permissionless ethos, unstructured work environment, lack of support structures, and short-term funding
-          cycles results in a day-to-day routine marked by chaos, which contributors navigate in different ways. <SimpleShareButton shareId={SHAREABLE_description_IDS.NO_FRAMEWORK} />
+          cycles results in a day-to-day routine marked by chaos, to which contributors relate in different ways. <SimpleShareButton shareId={SHAREABLE_description_IDS.NO_FRAMEWORK} />
         </p>
       </section>
 
@@ -50,7 +50,7 @@ export const Strategies = () => {
 
       <section className='flex flex-col gap-4 text-lg'>
         <p>
-          The interviews revealed four distinct approaches to navigating the chaotic rhythms of day-to-day OSS work. These map onto two intersecting
+          Through the interviews, we can identify four distinct approaches to navigating the "beautiful chaos" of day-to-day OSS work. These map onto two intersecting
           dimensions:{" "}
         </p>
 

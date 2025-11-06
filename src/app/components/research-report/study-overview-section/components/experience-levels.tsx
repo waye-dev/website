@@ -18,7 +18,7 @@ const experienceLevels = [
   {
     title: "Senior contributors (6+ years)",
     image: "/svgs/senior-developer.svg",
-    description: "specialize in infrastructure and applications, not protocol work.",
+    description: "concentrate in infrastructure and applications, not protocol work.",
     width: 260,
     height: 250,
   },

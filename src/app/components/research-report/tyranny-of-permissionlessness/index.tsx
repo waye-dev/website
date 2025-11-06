@@ -55,8 +55,8 @@ export const TyrannyOfPermissionlessness = () => {
           <p>
             In technical systems, permissionlessness enables innovation and decentralized participation by removing gatekeepers — anyone can transmit
             data packets, build websites using HTTP, or contribute to and modify open source code by following protocol rules (Nabben and Zargham 2022).
-            But when extended to human labor systems, this same design principle can create overwhelming choice. Our findings suggest that the absence
-            of gatekeepers results in absence of guides; freedom from oversight means freedom from support; the right to contribute becomes the
+            But when extended to human labor systems, this same design principle creates overwhelming choice without guidance. The absence
+            of gatekeepers means absence of guides; freedom from oversight means freedom from support; the right to contribute becomes the
             responsibility to self-manage everything.
           </p>
 
@@ -73,19 +73,19 @@ export const TyrannyOfPermissionlessness = () => {
               <strong>Ideological factors:</strong> how freedom as mission becomes freedom as burden
             </li>
             <li>
-              <strong>Structural factors:</strong> how permissionless architecture and work practices create isolated work
+              <strong>Structural factors:</strong> how permissionless architecture creates isolated work
             </li>
             <li>
               <strong>Human factors:</strong> how self-management becomes self-exploitation
             </li>
             <li>
-              <strong>Institutional factors:</strong> how grant systems reinforce individual struggles, rather than facilitating collective support
+              <strong>Institutional factors:</strong> how grant systems reinforce individual struggles
             </li>
           </ul>
 
           <p>
             Below we describe these tensions. Each dimension shows how the very features that attract contributors to the space — mission, openness,
-            autonomy — become the primary causes of unsustainable work patterns. <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES} />
+            autonomy — become the primary causes of burnout and unsustainable work patterns. <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES} />
           </p>
         </section>
       </Wrapper>

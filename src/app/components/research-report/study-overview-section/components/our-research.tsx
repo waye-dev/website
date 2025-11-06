@@ -5,14 +5,14 @@ import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 const researchOverviewNumbers = [
   {
     number: 26,
-    description: "contributors",
+    description: "developers",
   },
   {
     number: "12+",
     description: "months",
   },
   {
-    number: "4",
+    number: "10+",
     description: "countries",
   },
 ];
@@ -77,7 +77,7 @@ export const OurResearch = () => {
       </section>
 
       <p>
-        Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
+        Between March and May 2025, we interviewed 26 Bitcoin and Nostr developers who had worked full-time on grant-funded projects for at
         least 12 months. Through semi-structured interviews, we explored: <SimpleShareButton shareId={SHAREABLE_description_IDS.STUDY_STATS} />
       </p>
 

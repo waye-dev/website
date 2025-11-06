@@ -57,6 +57,22 @@ export const SeniorAppDev = () => {
             },
           },
           {
+            id: "status-quo",
+            text: "I'm not happy with the status quo, but I haven't found something that works better for me … like time tracking, and then generate reports of exactly what I've done, setting very specific goals or fragmenting the day … Or Tuesdays are only for this type of work stuff. But yeah, very, very, very quickly, it doesn't work.",
+            author: {
+              type: "expert",
+              respondentNumber: 20,
+            },
+          },
+          {
+            id: "project-manager",
+            text: "We do have a volunteer project manager. So we kind of go through different waves of being more organized … But that's say 20% of the time, the other 80% is just kind of beautiful chaos that produces results.",
+            author: {
+              type: "expert",
+              respondentNumber: 20,
+            },
+          },
+          {
             id: "20",
             text: "It's a lot different now than it was when we first started. It was kind of a toy prototype, and now it started to get a bit more serious, there's a lot more users, there's a lot more stakeholders, and people are expecting it to actually succeed.",
             shareId: SHAREABLE_description_IDS.FUTURE_ORIENTATION,

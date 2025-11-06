@@ -18,8 +18,7 @@ export const KeyFindings = () => {
 
       <section className='flex flex-col gap-4 text-lg'>
         <p>
-          Without structural support, permissionlessness — the core principle of Bitcoin — can create isolation, burnout, and unsustainable work
-          patterns when applied to human systems.
+          Permissionlessness — the core principle of Bitcoin — creates isolation, burnout, and unsustainable work patterns when applied to human systems.
         </p>
         <p>
           We focused on Bitcoin and Nostr as critical infrastructure within the freedom tech ecosystem — a growing field in OSS building

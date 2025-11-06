@@ -12,15 +12,12 @@ export const BeyondFinancialSustainability = () => {
         </h5>
 
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability: the ecosystem thrives, the position may not</h5>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>The ecosystem is sustainable, the role may not</h5>
         </section>
 
         <TakeawayCard>
           <p>
-            Despite expressing uncertainty about their roles, contributors are optimistic about the sustainability of Bitcoin and their individual
-            career prospects in the wider ecosystem. Yet, this abundance mindset may mask a critical vulnerability: the prevailing two-year tenure in
-            grant-funded roles quietly drains protocol expertise, as knowledge leaves with each departure and turnover outpaces the accumulation of
-            long-term experience. <SimpleShareButton shareId={SHAREABLE_description_IDS.ECOSYSTEM_REPLACEMENT} />
+            Contributors are confident in the sustainability of Bitcoin and in their individual career prospects in the wider ecosystem. However, this abundance mindset masks a critical vulnerability: without structures to transition contributors beyond core development while keeping them engaged, the ecosystem loses critical protocol knowledge rather than accumulating it. <SimpleShareButton shareId={SHAREABLE_description_IDS.ECOSYSTEM_REPLACEMENT} />
           </p>
         </TakeawayCard>
 
@@ -37,27 +34,17 @@ export const BeyondFinancialSustainability = () => {
         </div>
 
         <p>
-          Across levels of experience, contributors expressed confidence in Bitcoin’s long-term sustainability, even as they acknowledged that their
-          own positions may be temporary — a sentiment voiced most often by newer and mid-career developers. Many in this group view grant-funded
-          development as a strategic career phase rather than a permanent destination. As noted earlier, 69% of participants had held their
-          grant-funded roles for two years or less. This could reflect the ecosystem’s recent growth, normal career progression, or a deeper
-          sustainability challenge:{" "}
-        </p>
-
-        <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[657px] text-center mx-auto'>
-          A deeper sustainability challenge: the loss of experienced developers before they can pass on their expertise.
+          Contributors universally believe in Bitcoin's long-term sustainability while acknowledging that their own positions may be temporary, viewing grant-funded development as a strategic career phase rather than a permanent destination.
         </p>
 
         <p>
-          The ecosystem's health depends on retaining enough developers long enough to build deep protocol knowledge — but the current model is
-          designed to encourage short-term contributions over long-term commitments. When developers leave, they take with them context and expertise
-          that no amount of logging can fully preserve.
+          As discussed at the beginning, 65% of participants had worked on their grant-funded roles for 2 years of less. This could either reflect the recent ecosystem's growth, or natural career progression, or indeed a sustainability challenge. However, contributors aren't panicking: they recognize that working on Bitcoin is a launchpad to other career opportunities in an expanding ecosystem. As one contributor (who had already left his grant-funded role) observed, it doesn't close any doors, it just opens them.
         </p>
 
-        <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[908px] text-center mx-auto'>
-          Without intentional structures for knowledge transfer, each departure means losing institutional knowledge that cannot be fully captured
-          in the project history.{" "}
+        <p>
+          Yet this individual resilience can mask a systemic risk. The ecosystem's health depends on retaining enough developers long enough to build deep protocol knowledge — but the current model is designed to encourage short-term contributions over long-term commitments. When developers leave, they take critical knowledge with them, with no structures to transfer expertise to the next generation. Each departure means starting from scratch.
         </p>
+
 
         <QuoteCards
           quotes={[
@@ -74,15 +61,9 @@ export const BeyondFinancialSustainability = () => {
         />
 
         <p>
-          However, contributors aren’t alarmed: they see Bitcoin work as a launchpad to other career opportunities in an expanding ecosystem. As one
-          contributor (who had already left his grant-funded role) observed: “it doesn’t close any doors, it just opens them.” Many accept this
-          replaceability as natural: "everybody's dispensable... it's the ecosystem that's important." But this normalization of transience means that
-          critical knowledge quietly disappears every few years, with no pathways for contributors to remain engaged.
+          Contributors accept this replaceability as natural: "everybody's dispensable... it's the ecosystem that's important." But this normalization of transience means that critical knowledge gets lost every couple of years, with no pathways for contributors to remain involved. The ecosystem sustains itself not through supporting individuals but through their endless replacement.
         </p>
 
-        <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[908px] text-center mx-auto'>
-          The ecosystem sustains itself not by supporting individuals, but by continuously replacing them.
-        </p>
 
         <QuoteCards
           quotes={[
@@ -127,7 +108,7 @@ export const BeyondFinancialSustainability = () => {
       {/* Project sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability: one funding model, two realities</h5>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>The stigma of profitability in OSS</h5>
         </section>
 
         <TakeawayCard>
@@ -139,9 +120,7 @@ export const BeyondFinancialSustainability = () => {
         </TakeawayCard>
 
         <p>
-          Contributors recognize that sustainability requirements differ between core protocol and application. For those working on the protocol and
-          its core infrastructure, grants are essential due to the lack of viable business model for their work. Those working on user-facing
-          applications, by contrast, often have potential revenue streams — yet many say this approach is implicitly discouraged by funders.{" "}
+          Contributors recognize that sustainability requirements differ between core protocol and application. For those working on core infrastructure, grants are essential because of the lack of business models for their projects. Meanwhile, those working on user-facing applications recognize that revenues would be a more sustainable model. Yet this approach seems to be discouraged by funding bodies.
         </p>
 
         <QuoteCards
@@ -159,15 +138,11 @@ export const BeyondFinancialSustainability = () => {
         />
 
         <p>
-          When application developers propose hybrid models for their projects — combining grants with revenue — they face skepticism from funders,
-          which prevents the very sustainability it aims to encourage. For core infrastructure contributors, the limitation plays out differently:
-          yearly grant renewals incentivize short term deliverables rather than long-term investments. Projects with viable revenue streams stay
-          grant-dependent for fear of losing their grants. Individual-only funding prevents team scaling. Pure open-source requirements block
-          sustainable hybrid models.
+          When projects propose hybrid models, they face skepticism from funders, which prevents the very sustainability it aims to encourage.
         </p>
 
-        <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[908px] text-center mx-auto'>
-          Funders inadvertently optimize for yearly renewal requirements over long-term project sustainability. The result across both is a set of perverse incentives that trap projects in dependency.{" "}
+        <p>
+          The result is perverse incentives throughout the ecosystem. Projects with viable revenue streams stay grant-dependent because "they're scared to do that because they don't want to lose the grants." Individual-only funding prevents team scaling. Pure open-source requirements block sustainable hybrid models. Funders inadvertently trap projects in grant dependency — optimizing for renewal requirements rather than long-term sustainability.
         </p>
 
         <QuoteCards
@@ -211,13 +186,11 @@ export const BeyondFinancialSustainability = () => {
 
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as a systemic risk</h5>
+          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>The psychosocial dimension of sustainability</h5>
         </section>
 
         <TakeawayCard
-          text="Psychological wellbeing is as crucial to sustainability as financial stability, yet burnout is primarily treated as an individual problem
-            rather than the systemic issue that it is. Chronic uncertainty, lack of feedback, and always-on rhythms drive exhaustion. The ecosystem's
-            resilience depends on recognizing that psychological sustainability requires structural support, not just individual coping strategies."
+          text="Psychological wellbeing is as crucial to sustainability as financial stability, yet the ecosystem treats burnout as an individual problem rather than the systemic issue that it is. Chronic uncertainty, lack of feedback, and always-on rhythms are among the top causes of burnout. The ecosystem's resilience depends on recognizing that psychological sustainability requires structural support, not just individual coping strategies."
         />
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'>
@@ -230,19 +203,15 @@ export const BeyondFinancialSustainability = () => {
         </div>
 
         <p>
-          Beyond financial considerations, psychological sustainability emerges as a critical issue. Over half of participants (14/26) mentioned
-          experiencing burnout at least once in their career, and for 3 contributors it was a primary reason for leaving their grant-funded roles.
+          Beyond financial considerations, psychological sustainability emerges as a critical issue. Over half of participants (14 of 26) report experiencing burnout at least once, and for 3 contributors it was a primary reason for leaving their grant-funded roles.
         </p>
 
         <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[907px] text-center mx-auto'>
-          Among the top causes of burnout identified by contributors is “working too much in the wrong direction”
+          Among the top causes of burnout recognized by contributors (7/26) is "working too much in the wrong direction," as one participants put it
         </p>
 
         <p>
-          as one participant put it, often connected with the lack of feedback and mentorship (7/26). Another 7 participants cited life events as
-          triggers, while 4 found that setting boundaries exacerbated stress and burnout risk — work becomes so engaging that “I’m always happy to
-          give more to the work stuff, because it's fun for me,” yet this same inability to disengage prevents the rest necessary to sustain the work
-          in the first place.{" "}
+          — directly connected with the lack of feedback and mentorship. Another 7 identified life getting in the way of work as a burnout trigger, while 4 participants found that setting boundaries exacerbated stress and burnout risk. The boundary paradox is telling: work becomes so engaging that "I'm always happy to give more to the work stuff, because it's fun for me," yet this same inability to disengage prevents the rest necessary to sustain the work in the first place.
         </p>
 
         <QuoteCards
@@ -259,9 +228,8 @@ export const BeyondFinancialSustainability = () => {
           ]}
         />
 
-        <p className='font-inknutAntiqua text-[22px] leading-[140%] font-light max-w-[907px] text-center mx-auto'>
-          When burnout occurs, contributors overwhelmingly internalize responsibility for fixing it. This self-reliance reflects both ecosystem values
-          and practical reality: without clear support structures, developers have nowhere to turn.
+        <p>
+          When burnout occurs, contributors overwhelmingly internalize responsibility — 5 of 26 explicitly stated that managing burnout was entirely their own responsibility. This self-reliance reflects both ecosystem values and practical reality: without clear support structures, developers have nowhere to turn. One participant captured this: "I don't think it's dependent on any external body per se."
         </p>
 
         <QuoteCards
@@ -279,10 +247,7 @@ export const BeyondFinancialSustainability = () => {
         />
 
         <p>
-          This is where the gap between individual coping and systemic support is starkest. Contributors adapt through taking breaks ("giving myself
-          permission to not do stuff … and have faith that you will want to come back to it later"), setting boundaries, switching to creative side
-          projects, and practicing meditation. Yet these strategies address symptoms, not causes. Without support structures, burnout remains inevitable.
-          As one participant noted, simply acknowledging burnout as legitimate can help reduce feelings of inadequacy or isolation.
+          Contributors develop individual approaches to manage burnout. Common strategies include taking breaks ("giving myself permission to not do stuff … and have faith that you will want to come back to it later"), boundary setting, switching to creative side projects, and practicing meditation. One participant emphasized the importance of simply acknowledging burnout as legitimate: "hearing the term burnout and it being acknowledged as something which happens to people, makes people feel less inadequate or lonely."
         </p>
 
         <QuoteCards
@@ -300,10 +265,7 @@ export const BeyondFinancialSustainability = () => {
         />
 
         <p>
-          While some contributors find relief through short breaks and boundary-setting, this becomes increasingly difficult for senior developers
-          maintaining critical infrastructure. The humanitarian stakes create added pressure, with expert developers facing the weight of knowing
-          their absence could directly impact users relying on these tools. For many at this level, adapting to burnout becomes part of the job —
-          “It's the normal set of state of affairs,” as one contributor put it.
+          While some contributors find relief through short breaks and boundary-setting, this becomes increasingly difficult for senior developers maintaining critical infrastructure. The humanitarian stakes create an impossible bind. Unlike newcomers who can step away for "two or three days," experienced developers face the weight of knowing their absence directly impacts users relying on these tools. The very expertise that makes them irreplaceable also makes rest feel irresponsible.
         </p>
 
         <QuoteCards

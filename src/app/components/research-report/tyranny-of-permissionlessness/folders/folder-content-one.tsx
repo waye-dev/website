@@ -14,7 +14,7 @@ export const FolderContentOne = () => {
                 <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
-                Together with enthusiasm for the technology, the ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability.
+                The ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability.
             </p>
 
             <div className="text-[16px] space-y-[1.5rem]">
@@ -22,7 +22,7 @@ export const FolderContentOne = () => {
                     Yes, people are "in for the tech" &mdash; but also for freedom
                 </span>
                 <p>
-                    All participants were initially drawn to the ecosystem by a fascination with the technology and the prospect of working with top engineers. After joining, however, the vast majority described how their motivation evolved to include a commitment to the ideals of freedom and decentralization embodied by the Bitcoin and Nostr ecosystem. Participants working for over two years on their grant-funded projects reported gaining greater awareness of the humanitarian goals of Bitcoin and Nostr, and a desire to engage with "big picture" thinking. 3/4 of participants explicitly described the meaningfulness of their work as a key motivator — often citing it to justify routines and patterns they acknowledged as unsustainable.
+                    Nearly all interviewees joined the ecosystem not only for a fascination with the technology and the prospect of working with top engineers, but also for the ideals of freedom and decentralization embodied by the Bitcoin and Nostr ecosystem. Participants working for over two years on their grant-funded projects report gaining greater awareness of the humanitarian goals of Bitcoin and Nostr, and a desire to engage with "big picture" thinking. 3/4 of participants explicitly described the meaningfulness of their work as a key motivator — often citing it to justify routines and patterns they acknowledged as unsustainable.
                 </p>
             </div>
 
@@ -39,7 +39,7 @@ export const FolderContentOne = () => {
                     },
                     {
                         id: "23",
-                        text: "You know, how bitcoiners say \"I'm in for the tech\", I came in for much more leaning towards that and the curiosity that transpired and … now I will say that I have a far broader view and a much more humanitarian goal in sight than just a technical one.",
+                        text: "I have a better understanding of the type of fundamental problems that it can solve from a more humanitarian perspective, and I came far more interested in it because of the technical details. You know, how bitcoiners say \"I'm in for the tech\", I came in for much more leaning towards that and the curiosity that transpired and … now I will say that I have a far broader view and a much more humanitarian goal in sight than just a technical one.",
                         shareId: SHAREABLE_description_IDS.SENIOR_APP_DEV_QUOTE_23,
                         author: {
                         type: "expert",
@@ -63,7 +63,7 @@ export const FolderContentOne = () => {
                     Permissionlessness attracts, then overwhelms
                 </span>
                 <p>
-                    The no-barrier ethos draws contributors across all experience levels — anyone can build without asking permission. Yet permissionlessness as an operating principle means no schedules, no managers, no external structure. Over half of participants appreciate this flexibility to choose what to work on and when, yet these are precisely the areas where they report the most challenges: nearly a third struggle with boundaries and a quarter with prioritizing tasks. The initially attractive open-ended nature leaves many contributors, particularly newer ones, paralyzed by infinite possibilities and no clear direction.
+                    The no-barrier ethos draws contributors across all experience levels — anyone can build without asking permission. Yet permissionlessness as an operating principle means no schedules, no managers, no external structure. Over half of participants appreciate this flexibility to choose what to work on and when, yet these are precisely the areas where they report the most challenges: nearly a third struggle with boundaries and a quarter with prioritizing tasks. The open-ended nature that initially attracts leaves many, particularly newer contributors, paralyzed by infinite possibilities and no clear direction.
                 </p>
             </div>
 
@@ -98,7 +98,7 @@ export const FolderContentOne = () => {
                     },
                     {
                         id: "8",
-                        text: "I would love to have a stricter routine. But on the other hand, it's great the fact that I dont't need to have one.",
+                        text: "I would love to be able to have a stricter routine. But on the other hand, it's great the fact that I dont't need to have one.",
                         shareId: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ATTRACTS_QUOTE_3,
                         author: {
                         type: "mid",
@@ -130,7 +130,7 @@ export const FolderContentOne = () => {
                     },
                     {
                         id: "25",
-                        text: "There's a hell of a lot of things to build, and I think a lot of us feel a sense of urgency, because we know that if traditional financial rails fail … people will seek out alternatives, and it's kind of important that those alternatives work. So I think there is kind of a sense of urgency amongst a lot of the people, like myself, who are lucky enough to stumble across this technology. … There's a bunch of tools which you need to build to realize that fallback if everything else breaks.",
+                        text: "There's a hell of things to build, and I think a lot of us feel a sense of urgency, because we know that if traditional financial rails fail … people will seek out alternatives, and it's kind of important that those alternatives work. So I think there is kind of a sense of urgency amongst a lot of the people, like myself, who are lucky enough to stumble across this technology. … There's a bunch of tools which you need to build to realize that fallback if everything else breaks.",
                         shareId: SHAREABLE_description_IDS.EXPERIENCE_ENABLES_QUOTE_2,
                         author: {
                         type: "expert",
@@ -141,6 +141,14 @@ export const FolderContentOne = () => {
                         id: "4",
                         text: "I think it was a big, long burnout. For a very long time, I just didn't know how to talk about it. And, wow, now I know and see where I am at.",
                         shareId: SHAREABLE_description_IDS.EXPERIENCE_ENABLES_QUOTE_3,
+                        author: {
+                        type: "mid",
+                        respondentNumber: 4,
+                        },
+                    },
+                    {
+                        id: "OSS",
+                        text: "I think it's working in free and open source. Actually, I suppose I'm really speaking for myself and the sorts of people I work with, but it's very altruistic and full of personal sacrifice, and you really are working on it because you see the greater good in the thing you're building.",
                         author: {
                         type: "mid",
                         respondentNumber: 4,

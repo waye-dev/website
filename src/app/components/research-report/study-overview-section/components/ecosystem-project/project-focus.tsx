@@ -196,7 +196,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         </section>
 
         <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[12px]'>
-          <li>Core protocol development dominates in the Bitcoin ecosystem.</li>
+          <li>Core development dominates in the Bitcoin ecosystem.</li>
           <li>
             Application work (payments, messaging, hardware) is evenly distributed between the Bitcoin and Nostr ecosystems. This mirrors the
             ecosystem's maturation: infrastructure exists, user-facing tools are now needed.
@@ -205,7 +205,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
             Infrastructure work (19.2%), comprising developer toolkits and libraries, appears to be the domain of either newcomers or veterans,
             with no middle ground.
           </li>
-          <li>Within our sample, no expert contributors (6+ years OSS experience) worked on core protocol development.</li>
+          <li>In our sample, no expert contributors (6+ years OSS experience) worked on core protocol development.</li>
         </ul>
       </section>
     </div>

@@ -20,7 +20,7 @@ export const TopLevelAnalysis = () => {
       <section className='flex flex-col gap-4 text-lg'>
         <p>
           Before starting with the open interviews, we asked participants to rate on a scale between 1 and 10 how close they saw themselves – in their
-          roles, their work processes and environment, and their projects’ organizational structures – in relation to two opposite terms (where 1 is
+          roles, their work processes and environment, and their projects' organizational structures – in relation to two opposite terms (where 1 is
           the closest to the first term, and 10 is closest to the second term).
         </p>
 

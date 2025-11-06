@@ -9,7 +9,7 @@ export const Demographics = () => {
         <section className='flex flex-col gap-12 text-xl justify-between h-full lg:max-w-[415px]'>
           <p>We interviewed participants from 10+ countries, spanning 5 continents.</p>
           <p>However, over half of our interviewees came from North America and Europe.</p>
-          <p>Locations were withheld by some participants. </p>
+          <p>Locations were withheld by some participants.</p>
         </section>
 
         <DemographicsMap />
