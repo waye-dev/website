@@ -25,7 +25,7 @@ export const FolderContentFour = () => {
                     Searching for sustainability amidst generalized unpredictability <SimpleShareButton shareId={SHAREABLE_description_IDS.SEARCHING_SUSTAINABILITY} />
                 </span>
                 <p>
-                    16/26 participants described ongoing difficulties navigating financial sustainability. For most, compensation itself is not the issue — it's predictability. Annual cycles of reapplication introduce stress and distraction, especially for contributors whose mother tongue is not English. 10 contributors explicitly identified long-term sustainability as a priority, yet only a few felt they had a stable path toward achieving it.
+                    16 out of 26 participants described ongoing difficulties navigating financial sustainability. For most, compensation itself is not the issue — it's predictability. Annual cycles of reapplication introduce stress and distraction, especially for contributors whose mother tongue is not English. 10 contributors explicitly identified long-term sustainability as a priority, yet only a few felt they had a stable path toward achieving it.
                 </p>
             </div>
 
@@ -57,7 +57,7 @@ export const FolderContentFour = () => {
                     Bitcoin is forever, grants for a year only
                 </span>
                 <p>
-                    Contributors define sustainability in terms of decades and view Bitcoin and OSS development as life-long commitments, even while recognizing role flexibility within the ecosystem. When asked what "long-term" meant to them, contributors consistently described it as at least 5 years, with a majority citing 10 years as their timeframe, and some equating it to the length of their career or beyond. 5/26 interviewees explicitly stated that they couldn't imagine going back to a "normal job" – Bitcoin is for life. Despite this enduring commitment, funding mechanisms remain out of sync. While opportunities for support have grown, most grants operate on short, annual cycles that fail to reflect contributors' long-term orientation. The renewal process is universally stressful, impacting negatively both long-term thinking and daily focus. <SimpleShareButton shareId={SHAREABLE_description_IDS.BITCOIN_FOREVER_GRANTS} />
+                    Contributors define sustainability in terms of decades and view OSS as a life-long commitment, even while recognizing role flexibility within the ecosystem. For all contributors, "long-term" means at least 5 years, with a majority mentioning 10 years as their measure of long-term, and some equating it to the length of their career or beyond. 5/26 interviewees explicitly stated that they couldn't imagine going back to a "normal job" – Bitcoin is for life. Despite this enduring commitment, funding mechanisms remain out of sync. While opportunities for support have grown, most grants operate on short, annual cycles that fail to reflect contributors' long-term orientation. The renewal process is universally stressful, impacting negatively both long-term thinking and daily focus — demanding at least two months of preparation prior to each deadline and proving especially challenging for non-native English speakers. <SimpleShareButton shareId={SHAREABLE_description_IDS.BITCOIN_FOREVER_GRANTS} />
                 </p>
             </div>
 
@@ -120,7 +120,7 @@ export const FolderContentFour = () => {
                     Realizing your vision vs working for the grant
                 </span>
                 <p>
-                    The individual and short-term structure of grants gives rise to a perverse incentive by which contributors will "write for the grant" instead of pursuing their visions, diverting time and attention from actual development work. The burden falls disproportionately on newer contributors, who may spend a month or more crafting proposals. This creates a cycle where those who most need funding face the highest barriers to obtaining it, while also incentivizing alignment with perceived funder priorities rather than technical vision. <SimpleShareButton shareId={SHAREABLE_description_IDS.REALIZING_VISION} />
+                    The individual and short-term structure of grants gives rise to perverse incentives, by which contributors will "write for the grant" instead of pursuing their visions, diverting time and attention from actual development work. The burden falls disproportionately on newer contributors, who may spend a month or more crafting proposals compared to the 10 days required by established experts. This creates a cycle where those who most need funding face the highest barriers to obtaining it, while also incentivizing alignment with perceived funder priorities rather than technical vision. <SimpleShareButton shareId={SHAREABLE_description_IDS.REALIZING_VISION} />
                 </p>
             </div>
             
@@ -173,7 +173,7 @@ export const FolderContentFour = () => {
                     Hands-off funders: autonomous but abandoned
                 </span>
                 <p>
-                    10/26 contributors have voiced concerns that granting organizations could do more to support their work. This is not so much in terms of compensation, but in providing additional support structures that would help developers navigate the uncertainty of daily work life. Among the aspects where contributors feel have been lacking support are: mentoring, guidance with admin tasks (including taxes, visas etc.), and tooling (one contributor wished for a supercomputer made available for the grantees). <SimpleShareButton shareId={SHAREABLE_description_IDS.MENTORSHIP_INFRASTRUCTURE} />
+                    10 out of 26 contributors have voiced concerns that granting organizations could do more to support their work. This is not so much in terms of compensation, but in providing additional support structures that would help developers navigate the uncertainty of daily work life. Among the aspects where contributors feel have been lacking support are: mentoring, guidance with admin stuff (including taxes, visas etc.), and tooling (one contributor wished for a supercomputer made available for the grantees). <SimpleShareButton shareId={SHAREABLE_description_IDS.MENTORSHIP_INFRASTRUCTURE} />
                 </p>
             </div>
             

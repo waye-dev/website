@@ -1,5 +1,7 @@
 "use client"
 
+import { useState, useEffect } from "react"
+
 interface SvgTabProps {
     label: string;
     fillColor: string;
@@ -15,7 +17,18 @@ export const SvgTab = ({ label, fillColor, className = "", width, leftPosition, 
     const SVG_VIEWBOX_HEIGHT = 55
     const aspectRatio = SVG_VIEWBOX_HEIGHT / SVG_VIEWBOX_WIDTH
 
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768)
+        }
+        
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
+
     const scale = isMobile ? 2 : 1
     const scaledWidth = width * scale
     const height = width * aspectRatio

@@ -15,7 +15,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <p className="mb-4">
-        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away — admin burden, isolation, grant anxiety. This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors. <SimpleShareButton shareId={SHAREABLE_description_IDS.NOT_INEVITABLE} />
+        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away — admin burden, isolation, grant anxiety. But this tyranny of permissionlessness isn't inevitable. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors. <SimpleShareButton shareId={SHAREABLE_description_IDS.NOT_INEVITABLE} />
 
         </p>
       </div>
@@ -26,7 +26,7 @@ export const sections: Section[] = [
     id: "01",
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed primarily to funders, since project maintainers and contributors are already bearing the full weight of the tyranny of permissionlessness. <SimpleShareButton shareId={SHAREABLE_description_IDS.KEEPING_OPEN_PARTICIPATION} /></p>
+        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed primarily to funders, since projects and contributors are already bearing the full weight of the tyranny of permissionlessness. <SimpleShareButton shareId={SHAREABLE_description_IDS.KEEPING_OPEN_PARTICIPATION} /></p>
       </div>
     ),
     animation: 'innerOnly',

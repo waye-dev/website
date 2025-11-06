@@ -22,7 +22,7 @@ export const FolderContentTwo = () => {
                     Excited to collaborate, but working in isolation
                 </span>
                 <p>
-                    Contributors are drawn by the prospect of collaborating with top engineers they respect, yet end up working mostly in isolation. 8/26 participants reported feeling isolated working alone — for two, this isolation was the primary reason for leaving their grant-funded positions. Several participants reported living in small towns or rural areas to reduce living expenses; however, that further adds to the sense of isolation as developers don't have occasions to meet up in person. For those that can (7/26 participants in our sample), joining a coworking space seems to improve the day-to-day routine.
+                    Contributors are drawn by the prospect of collaborating with top engineers they respect, yet end up working mostly in isolation. 8 of 26 participants reported feeling isolated working alone — for two, this isolation was the primary reason for leaving their grant-funded positions. Several participants reported living in small towns or rural areas to reduce living expenses; however, that further adds to the sense of isolation as developers don't have occasions to meet up in person. For those that can, joining a coworking space seems to improve the day-to-day routine.
                 </p>
             </div>
 
@@ -38,29 +38,21 @@ export const FolderContentTwo = () => {
                         },
                     },
                     {
-                        id: "11",
-                        text: "Recently, I decided to go to a coworking space. … And that was an instant improvement. You feel much better, because in your coming back, you're like: \"Okay, I went somewhere, did something, I'm coming back.\" Remote was always overrated.",
+                        id: "10",
+                        text: "The lack of structure, the lack of support from other, more experienced engineers and then just the sort of isolation, they're all different aspects of the same thing in a way.",
                         shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_2,
                         author: {
                         type: "new",
-                        respondentNumber: 11,
+                        respondentNumber: 10,
                         },
                     },
                     {
-                        id: "15",
-                        text: "People only agree about Bitcoin in life, nothing else. And that's like a general fact in terms of community. So after having a bunch of troublesome experiences, I started maintaining some distance from the community.",
+                        id: "11",
+                        text: "Recently, I decided to go to a coworking space. … And so I think that was an instant improvement, you feel much better, because in your coming back, you're like, okay, I went somewhere, did something, I'm coming back. Remote was always overrated",
                         shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_3,
                         author: {
                         type: "new",
-                        respondentNumber: 15,
-                        },
-                    },
-                    {
-                        id: "9-1",
-                        text: "I think the Bitcoin community itself has these cult-like tendencies which make it, I think, very demoralizing for people who are in the situation I was in … So it just seems like there's a lot more enthusiasm for cheerleading Michael Saylor and the crap he spouts, as opposed to the people who are actually trying to make tangible, positive change in this thing, because it's not ready. It's not. Like there's still so much work to be done.",
-                        author: {
-                        type: "expert",
-                        respondentNumber: 9,
+                        respondentNumber: 11,
                         },
                     },
                 ]}
@@ -71,46 +63,46 @@ export const FolderContentTwo = () => {
                     Growing without guidance
                 </span>
                 <p>
-                    Contributors join the ecosystem to grow professionally through peer learning, but struggle with a chronic lack of consistent feedback. Around 40% of participants reported struggling with feedback — either in receiving it, offering it, or both. This is particularly acute for newer developers: they need feedback most but feel least entitled to ask for it, assuming others are too busy or that they haven't "earned" the right to it. This creates a persistent sense of uncertainty that weighs on developers' day-to-day work — making it harder to assess progress, build confidence, or know when to ask for help. Despite only 3 interviewees having access to mentoring, the majority recognized its vital importance for navigation and retention.
+                    Contributors join to grow professionally through peer learning, but struggle with a chronic lack of consistent feedback. Around 40% of participants reported struggling with feedback — either in receiving it, offering it, or both. This is particularly acute for newer developers: they need feedback most but feel least entitled to ask for it, assuming others are too busy or that they haven't "earned" the right to it. This creates a persistent sense of uncertainty that weighs on developers' day-to-day work — making it harder to assess progress, build confidence, or know when to ask for help. Despite only 3 interviewees having access to formal mentoring, the majority recognized its vital importance for navigation and retention.
                 </p>
             </div>
 
             <QuoteCards
                 quotes={[
                     {
-                        id: "8",
-                        text: "I really like going on stage and just sharing my experience, but it takes a lot of energy for me to do that, just all the traveling, etc. And then I also love the socializing part … because it gives me this sense of community. But then I noticed that if I go to a conference and none of my friends are there, then I'm going to feel a bit like: it wasn't really worth it.",
+                        id: "13",
+                        text: "There was always some stress in the back of my mind of not doing enough, because it's hard to tell what is enough. There is no KPI. Nobody even tells me if I'm doing good or not. There is this recognition, but it's mostly people who have no idea what I'm doing.",
                         shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE,
                         author: {
-                        type: "mid",
-                        respondentNumber: 8,
+                        type: "new",
+                        respondentNumber: 13,
                         },
                     },
                     {
-                        id: "23",
-                        text: "Usually, I find conferences kind of draining. I need to prepare the talks ... and I usually find them more taxing than uplifting.",
+                        id: "16",
+                        text: "I think because they [project maintainers] don't know who you are at that point, they can't tell if you're serious or not, they don't like to waste their time. So I don't blame them that they ignored me. But I think getting that feedback or external help is probably the biggest challenge. And if you had somebody who was just there mentoring you and checking out your stuff, it really helps.",
                         shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE_QUOTE_2,
                         author: {
-                        type: "expert",
-                        respondentNumber: 23,
+                        type: "new",
+                        respondentNumber: 16,
                         },
                     },
                     {
-                        id: "6",
-                        text: "Conferences help you connect with people, especially when you work mostly by yourself at home, maybe on your own project, not collaborating with others so much. So conferences help you get connected with a community and keep you real and remind you that other people exist.",
+                        id: "14",
+                        text: "For reviewing PRs, I know how it feels when you write a PR and no one looks into it. So I know that even if I just spend some time reading code, and then I tell people, oh, it's all good, I know it's going to help with, first of all with their motivation, but also with the fact that if enough people say, Oh, it's good, then it gets merged.",
                         shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE_QUOTE_3,
                         author: {
-                        type: "expert",
-                        respondentNumber: 6,
+                        type: "new",
+                        respondentNumber: 14,
                         },
                     },
                     {
-                        id: "3",
-                        text: "When I started working on grants for the first time, I found it very hard. No one's giving me the question, how should I form the answer? You have to find your own questions. So there was a period in time when I felt like I didn't know what I was doing.",
+                        id: "13b",
+                        text: "In a for profit, you get these performance reviews, you know what people think of your work. But in open source, it's not like that, and I was a little bit shy or embarrassed to go out and solicit that and ask somebody if they think I'm doing good job or not. And it's no one's job or responsibility to do that assessment of me either. So that part, there was a lot of uncertainty.",
                         shareId: SHAREABLE_description_IDS.GROWING_WITHOUT_GUIDANCE_QUOTE_5,
                         author: {
                         type: "new",
-                        respondentNumber: 3,
+                        respondentNumber: 13,
                         },
                     },
                 ]}
@@ -144,7 +136,7 @@ export const FolderContentTwo = () => {
                     Predictability of motivation in unpredictable environment
                 </span>
                 <p>
-                    Half of the interviewees struggle with maintaining consistent motivation in their unpredictable work environment. Another quarter experience fluctuations in day-to-day energy depending on the task and context, even as their underlying commitment to the ecosystem mission remains steady. For two contributors, the shifts in motivation ("It was research, then it was ideology, then it was making money, then it was back to ideology") were a key determining factor for departure. Contributors develop various "self-help" strategies to manage their motivational swings, including walks, exercise, good sleep, envisioning the next day, and structured planning templates like Waye's AIR tool.
+                    Half of the interviewees struggle with maintaining consistent motivation in their unpredictable work environment, while a quarter experienced ups and downs in energy depending on the task and context, but not motivation. For two contributors, the shifts in motivation ("It was research, then it was ideology, then it was making money, then it was back to ideology") were a key determining factor for departure. Contributors develop various 'self-help' strategies to manage their motivational swings, including walks, exercise, good sleep, envisioning the next day, and structured planning templates like Waye's AIR tool.
                 </p>
             </div>
             
@@ -185,46 +177,46 @@ export const FolderContentTwo = () => {
                     IRL gatherings beyond conferences
                 </span>
                 <p>
-                    While conferences provide community connection, many find them taxing — the travel, preparation, and socializing drain energy rather than restore it. Some experienced contributors report attending 8-10 conferences yearly, which they consider excessive. Among the conferences that contributors mentioned appreciating the most are: Baltic Honeybadger, Bitcoin++, Africa Bitcoin Conference. More valuable are team offsites and contributor retreats that combine focused work with social activities, exercise, and relationship building. Instead of focusing on knowledge sharing, these smaller gatherings address the real need: sustained collaboration. As one participant noted, conferences help "remind that other people exist," but it's the deeper working sessions that make distributed work more sustainable.
+                    While conferences provide community connection, many find them taxing — the travel, preparation, and socializing drain energy rather than restore it. Some experienced contributors report attending 8-10 conferences yearly, which they consider excessive. Among the conferences that contributors mentioned appreciating the most are: Bitcoin Baltics, Honeybadger, Bitcoin++, Africa Bitcoin Conference. More valuable are team offsites and contributor retreats that combine focused work with social activities, exercise, and relationship building. These smaller gatherings address the real need: not knowledge sharing but sustained collaboration. As one participant noted, conferences help "remind that other people exist," but it's the deeper working sessions that make distributed work sustainable.
                 </p>
             </div>
             
             <QuoteCards
                 quotes={[
                     {
-                        id: "9-2",
-                        text: "I guess every day I hate Bitcoin because it's also full of assholes, and it has its share of problems and discourse, so it feels like every day is a decision to work on it again, but if I'm being realistic, I don't see anything better that I could do with my time, and it's rewarding work.",
+                        id: "6",
+                        text: "Conferences kind of help you connect with people, and especially when you work mostly by yourself at home, maybe on your own project, not collaborating with others so much, so conferences help you get connected with a community and keep you real and remind that other people exist.",
                         shareId: SHAREABLE_description_IDS.IRL_GATHERINGS,
                         author: {
                         type: "expert",
-                        respondentNumber: 9,
+                        respondentNumber: 6,
                         },
                     },
                     {
-                        id: "11-2",
-                        text: "Being a bitcoiner is bit of a lifestyle, too. Some people are very depp into it. But I think it's good to have a decent balance. You don't want to be too, too deep. You want to be in the cult, right?",
+                        id: "25",
+                        text: "One of the first Nostr events was in Costa Rica, and it was in a yoga retreat. And that was quite funny, because you had all these pale, miserable looking developers go into this yoga retreat in Costa Rica, and they're all in their black t-shirts, and they're all pale, and beards are overgrown … And then after three days in this yoga retreat, they're walking around barefoot, they got bangles on their wrists, and they're having these philosophical conversations. I thought that was very beneficial for a whole bunch of developers who I work with, and I think it was a good experience for them. And since then, I would like to see maybe more events in somewhere like a yoga retreat, because inevitably, people are going off and doing yoga, and they're eating well, and so it was quite funny. … I saw a transformation in some of my peers, which was probably, I don't know if life long, but I think it was very good for them to take some time out. Mindfulness, forced mindfulness.",
                         shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_2,
                         author: {
-                        type: "new",
-                        respondentNumber: 11,
+                        type: "expert",
+                        respondentNumber: 25,
                         },
                     },
                     {
-                        id: "15-2",
-                        text: "People only agree about Bitcoin in life, nothing else. And that's like a general fact in terms of community. So after having a bunch of troublesome experiences, I started maintaining some distance from the community.",
+                        id: "20",
+                        text: "I feel like that might be a huge missing aspect of a lot of open source teams, this idea of an offsite or just getting together in person. It's kind of hard to get people around from around the world to travel for an open source project since they're not getting paid for, but when it does happen, it's actually really productive, and I would hope we do more of that.",
                         shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_3,
                         author: {
-                        type: "new",
-                        respondentNumber: 15,
+                        type: "expert",
+                        respondentNumber: 20,
                         },
                     },
                     {
-                        id: "9-3",
-                        text: "I think the Bitcoin community itself has these cult-like tendencies which make it, I think, very demoralizing for people who are in the situation I was in … So it just seems like there's a lot more enthusiasm for cheerleading Michael Saylor and the crap he spouts, as opposed to the people who are actually trying to make tangible, positive change in this thing, because it's not ready. It's not. Like there's still so much work to be done.",
+                        id: "25b",
+                        text: "Just trying to slip in more mindfulness does make sense. So, a lot of projects and a lot of developers, they'll feel the need to travel around a lot, and go to a lot of conferences and and that can take its toll. There's usually a lot of alcohol involved, and it's quite high energy and then you feel bad because you're actually neglecting the project. So if you can have that space be more nurturing, and have some mindfulness. I think there is probably, maybe even subconscious, an active move to provide … satellite events at some of these conferences. Like, there's the Bitcoin runners, and in the event, I'll go for a jog around the local city or something, and there's the Bitcoin walkers society as well. And maybe something which you could push is, for some of these conferences, some mindfulness exercises or mindfulness workshops where there could be some meditation, or some guided meditation, or some yoga or something like that, I think that could be great for people.",
                         shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_4,
                         author: {
                         type: "expert",
-                        respondentNumber: 9,
+                        respondentNumber: 25,
                         },
                     },
                 ]}
