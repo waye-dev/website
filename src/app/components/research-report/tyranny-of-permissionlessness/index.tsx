@@ -41,11 +41,11 @@ export const TyrannyOfPermissionlessness = () => {
         <section ref={sectionRef} className='flex flex-col gap-4 text-lg'>
           <p>
             If Jo Freeman's tyranny of structurelessness{" "}
-            <Link href={"https://www.jofreeman.com/joreen/tyranny.htm"} target='_blank'>
+            <Link href={"https://www.jofreeman.com/joreen/tyranny.htm"} target='_blank' className='underline'>
               (1970)
             </Link>{" "}
             speaks to the invisible power dynamics in horizontal collectives, and Nathan Schneider's tyranny of openness{" "}
-            <Link href={"https://www.tandfonline.com/doi/abs/10.1080/14680777.2021.1890183"} target='_blank'>
+            <Link href={"https://www.tandfonline.com/doi/abs/10.1080/14680777.2021.1890183"} target='_blank' className='underline'>
               (2021)
             </Link>{" "}
             addresses how transparency masks exploitation in peer production, in the context of freedom tech tyranny of permissionlessness reveals how

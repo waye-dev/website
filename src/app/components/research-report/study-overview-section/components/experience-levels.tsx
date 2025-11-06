@@ -38,7 +38,7 @@ export const ExperienceLevels = () => {
 
             <section>
               <p className='text-lg font-bold'>{level.title}</p>
-              <p className='text-base italic'>{level.description}</p>
+              <p className='text-base'>{level.description}</p>
             </section>
           </div>
         ))}
