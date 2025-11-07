@@ -5,6 +5,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Modern viewport height units for mobile browser compatibility */
+  --dvh: 100dvh; /* Dynamic viewport height */
+  --svh: 100svh; /* Small viewport height */
+  --lvh: 100lvh; /* Large viewport height */
+}
+
+/* Fallback for browsers that don't support modern viewport units */
+@supports not (height: 100dvh) {
+  :root {
+    --dvh: 100vh;
+    --svh: 100vh;
+    --lvh: 100vh;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,4 +116,23 @@ body {
 .animate-slide-up {
   animation: slideUp 0.8s ease-out 0.6s forwards;
   opacity: 0;
+}
+
+.scroll-section-init {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mountains-section-init .background {
+  background-color: rgb(255, 255, 255);
+}
+
+.strategies-wall-init .background,
+.strategies-wall-init .windows-grid {
+  transform: scale(1) translate(0, 0);
+}
+
+.strategies-wall-init .overlay {
+  opacity: 0;
+  transform: scale(0.95);
 }

@@ -50,7 +50,7 @@ export function StrategiesWall() {
     const gridRect = windowsGridRef.current.getBoundingClientRect();
     
     const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    const viewportHeight = window.visualViewport?.height || window.innerHeight;
     
     const scaleX = viewportWidth / windowRect.width;
     const scaleY = viewportHeight / windowRect.height;
@@ -88,6 +88,8 @@ export function StrategiesWall() {
   useGSAP(() => {
     if (!containerRef.current || !windowsGridRef.current || !contentGridRef.current || !overlayRef.current) return;
 
+    gsap.set(backgroundRef.current, { scale: 1, x: 0, y: 0 });
+    gsap.set(windowsGridRef.current, { scale: 1, x: 0, y: 0 });
     gsap.set(overlayRef.current, { 
       opacity: 0, 
       scale: 0.95
@@ -108,10 +110,11 @@ export function StrategiesWall() {
 
     const getContentHeight = (layer: Element) => {
       const inner = layer.querySelector('.content-inner') as HTMLElement;
-      if (!inner) return window.innerHeight;
-      const contentHeight = inner.scrollHeight || window.innerHeight * 2;
+      const vh = window.visualViewport?.height || window.innerHeight;
+      if (!inner) return vh;
+      const contentHeight = inner.scrollHeight || vh * 2;
       const isMobile = window.innerWidth < 768;
-      const minHeight = isMobile ? window.innerHeight * 2.5 : window.innerHeight * 2;
+      const minHeight = isMobile ? vh * 2.5 : vh * 2;
       return Math.max(minHeight, contentHeight);
     };
 
@@ -123,60 +126,63 @@ export function StrategiesWall() {
     }, (context) => {
       const { isMobile } = context.conditions as { isMobile: boolean };
 
-      let totalDuration = isMobile ? 1.2 : 1;
+      const vh = window.visualViewport?.height || window.innerHeight;
+      let totalDuration = isMobile ? 1.5 : 1;
       contentLayers.forEach((layer) => {
-        const extraBuffer = isMobile ? 1.2 : 0.5;
-        totalDuration += getContentHeight(layer) / window.innerHeight + extraBuffer;
+        const extraBuffer = isMobile ? 1.5 : 0.5;
+        totalDuration += getContentHeight(layer) / vh + extraBuffer;
       });
-      totalDuration += isMobile ? 1.2 : 1;
+      totalDuration += isMobile ? 1.5 : 1;
 
       const positions = [0, 1, 2, 3].map(index => calculateZoomPosition(index));
 
-      // Main timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           id: "strategies-wall",
           trigger: containerRef.current,
           start: 'top top',
-          end: () => `+=${totalDuration * window.innerHeight}`,
-          scrub: 0.5,
+          end: () => `+=${totalDuration * vh}`,
+          scrub: isMobile ? 1 : 0.5,
           pin: true,
+          pinType: "fixed",
+          pinSpacing: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          preventOverlaps: true,
+          refreshPriority: 0,
         }
       });
 
-    // Zoom to first window
     const firstPosition = positions[0];
     if (firstPosition) {
       tl.to([windowsGridRef.current, backgroundRef.current], {
         scale: firstPosition.scale,
         x: firstPosition.x,
         y: firstPosition.y,
-        duration: isMobile ? 1 : 0.8,
+        duration: isMobile ? 1.2 : 0.8,
         ease: 'power2.inOut'
       });
     }
 
-    // Show overlay
     tl.to(overlayRef.current, {
       opacity: 1,
       scale: 1,
-      duration: 0.4,
+      duration: isMobile ? 0.5 : 0.4,
       ease: 'power1.out'
-    }, '-=0.3');
+    }, isMobile ? '-=0.4' : '-=0.3');
 
     // Animate each content layer
     contentLayers.forEach((layer, index) => {
       const inner = layer.querySelector('.content-inner') as HTMLElement;
       const contentHeight = getContentHeight(layer);
-      const scrollDuration = contentHeight / window.innerHeight;
-      
+      const scrollDuration = contentHeight / vh;
+
       if (index === 0) {
         // First layer: just scroll through its content
-        if (inner && contentHeight > window.innerHeight) {
+        if (inner && contentHeight > vh) {
           tl.to(inner, {
-            yPercent: -((contentHeight - window.innerHeight) / contentHeight) * 100,
+            yPercent: -((contentHeight - vh) / contentHeight) * 100,
             duration: scrollDuration,
             ease: 'none'
           });
@@ -187,28 +193,27 @@ export function StrategiesWall() {
         // Transition to next window position
         const windowIndex = index % 4;
         const position = positions[windowIndex];
-        
+
         if (position) {
           tl.to([windowsGridRef.current, backgroundRef.current], {
             x: position.x,
             y: position.y,
             scale: position.scale,
-            duration: isMobile ? 1.5 : 1.2,
+            duration: isMobile ? 1.8 : 1.2,
             ease: 'power2.inOut'
           });
         }
 
-        // Slide in the new layer
         tl.to(layer, {
           yPercent: 0,
-          duration: isMobile ? 3 : 2.5,
+          duration: isMobile ? 3.5 : 2.5,
           ease: 'power1.out'
-        }, isMobile ? '-=0.8' : '-=0.6');
-        
+        }, isMobile ? '-=1' : '-=0.6');
+
         // Scroll through its content
-        if (inner && contentHeight > window.innerHeight) {
+        if (inner && contentHeight > vh) {
           tl.to(inner, {
-            yPercent: -((contentHeight - window.innerHeight) / contentHeight) * 100,
+            yPercent: -((contentHeight - vh) / contentHeight) * 100,
             duration: scrollDuration,
             ease: 'none'
           });
@@ -218,33 +223,29 @@ export function StrategiesWall() {
       }
     });
 
-    // Calculate exit position (zoom out from last window)
     const lastPosition = positions[3];
     if (lastPosition) {
-      // Position for smooth transition before zoom out
       tl.to([windowsGridRef.current, backgroundRef.current], {
         x: lastPosition.x,
         y: lastPosition.y,
         scale: lastPosition.scale,
-        duration: isMobile ? 0.8 : 0.6,
+        duration: isMobile ? 1 : 0.6,
         ease: 'power2.inOut'
       });
     }
 
-    // Start overlay fade
     tl.to(overlayRef.current, {
       opacity: 0,
       scale: isMobile ? 0.9 : 0.95,
-      duration: isMobile ? 0.5 : 0.4,
+      duration: isMobile ? 0.6 : 0.4,
       ease: 'power1.in'
-    }, isMobile ? '-=0.3' : '-=0.2');
+    }, isMobile ? '-=0.4' : '-=0.2');
 
-      // Zoom out to original position
       tl.to([windowsGridRef.current, backgroundRef.current], {
         scale: 1,
         x: 0,
         y: 0,
-        duration: isMobile ? 1 : 0.8,
+        duration: isMobile ? 1.2 : 0.8,
         ease: 'power2.inOut'
       });
     });
@@ -256,7 +257,7 @@ export function StrategiesWall() {
     <div className="w-full">
       <div
         ref={containerRef}
-        className="relative w-full h-screen overflow-hidden"
+        className="relative w-full h-screen-dynamic overflow-hidden"
         style={{ backgroundColor: '#031C51' }}
       >
         <div
