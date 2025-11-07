@@ -2,6 +2,8 @@ import Image from "next/image";
 import { QuoteCards } from "./_components/quotes";
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
+import { AnimatedSvgDots } from "./_components/animated-svg-dots";
+import { CircularProgress } from "./_components/circular-progress";
 
 export const BeyondFinancialSustainability = () => {
   return (
@@ -23,12 +25,22 @@ export const BeyondFinancialSustainability = () => {
 
         <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-6 flex-wrap justify-between'>
           <section className='flex flex-row gap-6 items-end'>
-            <Image src='/svgs/role-sustainability-percent-icon.svg' alt='role sustainability icon' width={129} height={130} />
+            <CircularProgress value={69} size={130} />
             <p className='font-inter font-semibold text-[22px] max-w-[340px]'>of participants had held grant-funded roles for two years or less</p>
           </section>
 
           <section className='flex flex-row-reverse gap-6 items-center md:flex-row'>
-            <Image src='/svgs/role-sustainability-map-icon.svg' alt='role sustainability map icon' width={124} height={103} />
+            <AnimatedSvgDots 
+              svgPath='/svgs/beyond-financial-sustainability/burnout-once.svg' 
+              alt='dots animation' 
+              width={116} 
+              height={102}
+              staggerDelay={0.05}
+              animationDuration={0.6}
+              numerator={14}
+              denominator={26}
+              numeratorColor='#F9D483'
+            />
             <p className='font-inter font-semibold text-right sm:text-left text-[22px] max-w-[340px]'>mentioned experiencing burnout at least once</p>
           </section>
         </div>
@@ -105,7 +117,6 @@ export const BeyondFinancialSustainability = () => {
         />
       </div>
 
-      {/* Project sustainability section */}
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
           <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>The stigma of profitability in OSS</h5>
@@ -196,7 +207,15 @@ export const BeyondFinancialSustainability = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'>
           {psychologicalSustainabilityGridContent.map((item) => (
             <div key={item.text} className='flex flex-row gap-5 items-center'>
-              <Image src={item.image} alt={item.text} width={121} height={91} />
+              <AnimatedSvgDots 
+                svgPath={item.image} 
+                alt={item.text} 
+                width={102} 
+                height={90}
+                numerator={item.numerator}
+                denominator={item.denominator}
+                numeratorColor={item.numeratorColor}
+              />
               <p className='text-[15px] font-semibold leading-[140%]'>{item.text}</p>
             </div>
           ))}
@@ -355,15 +374,24 @@ export const TakeawayCard = ({ text, children }: { text?: string; children?: Rea
 
 export const psychologicalSustainabilityGridContent = [
   {
-    image: "/svgs/role-sustainability-map-icon.svg",
+    image: "/svgs/beyond-financial-sustainability/burnout-once-career.svg",
     text: "mentioned experiencing burnout at least once in their career",
+    numerator: 14,
+    denominator: 26,
+    numeratorColor: "#F9D483",
   },
   {
-    image: "/svgs/psycho-sus-icon-2.svg",
+    image: "/svgs/beyond-financial-sustainability/leaving-grant-funded-roles.svg",
     text: "it was a primary reason for leaving their grant-funded roles",
+    numerator: 3,
+    denominator: 26,
+    numeratorColor: "#91C2FF",
   },
   {
-    image: "/svgs/psycho-sus-icon-3.svg",
+    image: "/svgs/beyond-financial-sustainability/burnout-with-lack-of-feedback.svg",
     text: "connected burnout with lack of feedback and mentorship",
+    numerator: 7,
+    denominator: 26,
+    numeratorColor: "#FFFFFF",
   },
 ];
