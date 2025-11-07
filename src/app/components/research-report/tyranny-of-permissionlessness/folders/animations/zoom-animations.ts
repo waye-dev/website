@@ -99,32 +99,6 @@ export function createZoomOutAnimation(
     const isMobile = window.innerWidth < 768
     const zoomOutDuration = isMobile ? 1.5 : 1.2
 
-    // Hide last folder's content BEFORE zoom-out starts
-    const lastContent = contents[contents.length - 1]
-    if (lastContent) {
-        tl.to(lastContent, {
-            pointerEvents: 'none',
-            overflowY: 'hidden',
-            opacity: 0,
-            visibility: 'hidden',
-            duration: 0.3,
-            ease: "power2.in"
-        })
-    }
-
-    // Move folders back to center position (0) before scaling out
-    // This creates smooth reverse: last folder slides down in reverse order
-    folders.forEach((folder, i) => {
-        if (i > 0) {
-            tl.to(folder, {
-                yPercent: 0,
-                duration: 0.6,
-                ease: "power2.in"
-            }, i === 1 ? undefined : "<") // Stagger in reverse (4th, 3rd, 2nd)
-        }
-    })
-
-    // Animate wrapper scale down and folders width simultaneously
     const initialScale = getInitialScale()
     const folderWidth = getScaledFolderWidth()
     const heightScale = getInitialHeightScale()
@@ -137,18 +111,17 @@ export function createZoomOutAnimation(
         ease: "power2.inOut"
     })
 
-    folders.forEach((folder) => {
-        // Center all folders when zooming out
+    folders.forEach((folder, i) => {
         tl.to(folder, {
             width: `${folderWidth}%`,
             left: '50%',
             right: 'auto',
             xPercent: -50,
+            yPercent: 0,
             duration: zoomOutDuration,
             ease: "power2.inOut"
         }, "<")
 
-        // Animate folder inner container height on mobile
         const folderInner = folder.querySelector('.folder-inner-container') as HTMLElement
         if (folderInner) {
             tl.to(folderInner, {
@@ -158,7 +131,6 @@ export function createZoomOutAnimation(
             }, "<")
         }
 
-        // Compensate tab label scale on mobile
         const tabLabel = folder.querySelector('.tab-label') as HTMLElement
         if (tabLabel) {
             tl.to(tabLabel, {
@@ -168,4 +140,16 @@ export function createZoomOutAnimation(
             }, "<")
         }
     })
+
+    const lastContent = contents[contents.length - 1]
+    if (lastContent) {
+        tl.to(lastContent, {
+            pointerEvents: 'none',
+            overflowY: 'hidden',
+            opacity: 0,
+            visibility: 'hidden',
+            duration: 0.3,
+            ease: "power2.in"
+        }, "<0.5")
+    }
 }

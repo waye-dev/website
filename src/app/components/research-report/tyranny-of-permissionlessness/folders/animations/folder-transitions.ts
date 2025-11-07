@@ -40,6 +40,18 @@ export function createFolderTransitions(
                 visibility: 'hidden'
             })
 
+            tl.to(nextFolder, {
+                yPercent: 0,
+                duration: transitionDuration,
+                ease: "power1.inOut"
+            })
+
+            tl.to(folder, {
+                yPercent: 0,
+                duration: transitionDuration,
+                ease: "power1.inOut"
+            }, "<")
+
             tl.to(content, {
                 pointerEvents: 'none',
                 overflowY: 'hidden',
@@ -47,19 +59,7 @@ export function createFolderTransitions(
                 visibility: 'hidden',
                 duration: 0.3,
                 ease: "power2.in"
-            })
-
-            tl.to(nextFolder, {
-                yPercent: 0,
-                duration: transitionDuration,
-                ease: "power1.inOut"
-            }, "<0.2")
-
-            tl.to(folder, {
-                yPercent: 0,
-                duration: transitionDuration,
-                ease: "power1.inOut"
-            }, "<")
+            }, "<0.1")
 
             tl.to(nextContent, {
                 opacity: 1,
