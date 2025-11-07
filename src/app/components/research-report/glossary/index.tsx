@@ -194,14 +194,19 @@ export const GlossaryChart = ({ activeId }: { activeId: number | null }) => {
 
   useEffect(() => {
     setIsClient(true);
-    setScreenHeight(window.innerHeight);
+    setScreenHeight(window.visualViewport?.height || window.innerHeight);
 
     const handleResize = () => {
-      setScreenHeight(window.innerHeight);
+      setScreenHeight(window.visualViewport?.height || window.innerHeight);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleResize);
+      return () => window.visualViewport?.removeEventListener("resize", handleResize);
+    } else {
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   const estimatedScreenHeight = screenHeight * 0.75;

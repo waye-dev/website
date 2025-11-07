@@ -68,8 +68,8 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
 
     // Calculate folder height: viewport height minus navbar height minus tab height
     const availableHeight = navbarHeight > 0 && tabHeight > 0
-        ? `calc(100vh - ${navbarHeight + tabHeight}px)`
-        : 'calc(100vh - 140px)' // fallback
+        ? `calc(100dvh - ${navbarHeight + tabHeight}px)`
+        : 'calc(100dvh - 140px)' // fallback
 
     return (
         <div
@@ -84,7 +84,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                 className="relative w-full flex flex-col justify-end folder-inner-container"
                 style={{
                     marginTop: navbarHeight > 0 ? `${navbarHeight}px` : '70px',
-                    height: `calc(100vh - ${navbarHeight > 0 ? navbarHeight : 70}px)`
+                    height: `calc(100dvh - ${navbarHeight > 0 ? navbarHeight : 70}px)`
                 }}
             >
                 {/* Tab positioned above the folder body */}

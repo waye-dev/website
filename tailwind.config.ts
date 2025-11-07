@@ -11,6 +11,18 @@ export default {
         josefinSans: ["var(--font-josefin-sans)"],
         inter: ["var(--font-inter)"],
       },
+      height: {
+        'screen-dynamic': '100dvh',
+        'screen-small': '100svh',
+        'screen-large': '100lvh',
+      },
+      minHeight: {
+        'screen-dynamic': '100dvh',
+        'screen-small': '100svh',
+      },
+      maxHeight: {
+        'screen-dynamic': '100dvh',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

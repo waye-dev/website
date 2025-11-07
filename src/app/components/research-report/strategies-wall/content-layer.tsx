@@ -13,7 +13,7 @@ export const ContentLayer: React.FC<ContentLayerProps> = ({
       style={{
         backgroundColor: '#FBF7EE',
         zIndex,
-        height: '100vh',
+        height: '100dvh',
         boxShadow: '0 -5px 5px rgba(0, 0, 0, 0.03)',
       }}
     >
