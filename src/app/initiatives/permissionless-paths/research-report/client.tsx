@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 import Wrapper from "@/app/components/wrapper";
 import { StudyOverviewSection } from "@/app/components/research-report/study-overview-section";
 import { GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection } from "@/app/components/research-report/glossary";
@@ -16,9 +18,55 @@ import { FromTyrannyToPermissionlessness } from "@/app/components/research-repor
 import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
 import { ExecutiveSummary } from "@/app/components/research-report/executive-summary";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export function ResearchReportClient() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    ScrollTrigger.config({
+      ignoreMobileResize: true,
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+    });
+
+    ScrollTrigger.normalizeScroll({
+      allowNestedScroll: true,
+      type: "touch,wheel,pointer",
+      lockAxis: true
+    });
+
+    let resizeTimer: NodeJS.Timeout;
+    let lastHeight = window.visualViewport?.height || window.innerHeight;
+    let scrollPos = 0;
+
+    const handleVisualViewportResize = () => {
+      const currentHeight = window.visualViewport?.height || window.innerHeight;
+      const heightDiff = Math.abs(currentHeight - lastHeight);
+
+      if (heightDiff < 150 && heightDiff > 0) {
+        scrollPos = window.scrollY;
+        
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (Math.abs(window.scrollY - scrollPos) > 100) {
+            window.scrollTo(0, scrollPos);
+          }
+          lastHeight = currentHeight;
+        }, 150);
+      } else {
+        lastHeight = currentHeight;
+      }
+    };
+
+    window.visualViewport?.addEventListener('resize', handleVisualViewportResize);
+
+    return () => {
+      ScrollTrigger.normalizeScroll(false);
+      window.visualViewport?.removeEventListener('resize', handleVisualViewportResize);
+      clearTimeout(resizeTimer);
+    };
+  }, []);
 
   useEffect(() => {
     const shareId = searchParams.get('share');
@@ -34,7 +82,7 @@ export function ResearchReportClient() {
           const absoluteElementTop = elementRect.top + window.scrollY;
           const elementHeight = elementRect.height;
 
-          const viewportHeight = window.innerHeight;
+          const viewportHeight = window.visualViewport?.height || window.innerHeight;
           const scrollToPosition = absoluteElementTop - (viewportHeight / 2) + (elementHeight / 2);
 
           window.scrollTo({
@@ -92,7 +140,7 @@ export function ResearchReportClient() {
         <Wrapper className='py-24'>
         <div className='flex flex-col lg:flex-row w-full gap-16'>
           <section className='flex-1 relative'>
-            <div className='flex flex-col gap-6 lg:pt-[70vh] pb-[85px]'>
+            <div className='flex flex-col gap-6 lg:pt-[70dvh] pb-[85px]'>
               {GLOSSARY_TEXT_SECTIONS.map((section, index) => {
                 const itemId = index + 1;
                 return (
@@ -114,7 +162,7 @@ export function ResearchReportClient() {
             </div>
           </section>
 
-          <div className='hidden lg:block lg:sticky top-0 h-screen'>
+          <div className='hidden lg:block lg:sticky top-0 h-screen-dynamic'>
             <div className='w-full h-full flex items-center'>
               <GlossaryChart activeId={activeId} />
             </div>

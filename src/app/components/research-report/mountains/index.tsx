@@ -20,7 +20,7 @@ export const RecommendationReveal = () => {
   useGSAP(
     () => {
       const getResponsiveValues = () => {
-        const vh = window.innerHeight;
+        const vh = window.visualViewport?.height || window.innerHeight;
         const vw = window.innerWidth;
         const distance = vh * 2;
         const widthRatio = vw / 1920;
@@ -67,14 +67,27 @@ export const RecommendationReveal = () => {
         };
       };
 
+      gsap.set(background.current, { backgroundColor: 'rgb(255, 255, 255)' });
+      gsap.set(girlRip.current, { y: 0, x: 0, scale: 1, opacity: 1 });
+      gsap.set(wallLeft.current, { y: 0, opacity: 1 });
+      gsap.set(wallRight.current, { y: 0, opacity: 1 });
+      gsap.set(mountains.current, { y: 0, x: 0, scale: 1, opacity: 1 });
+
+      const isMobile = window.innerWidth < 768;
+
       ScrollTrigger.create({
         id: "recommendation-reveal",
         trigger: container.current,
         start: "top top",
         end: "+=300%",
         pin: true,
-        scrub: true,
+        pinType: "fixed",
+        scrub: isMobile ? 1 : 0.5,
         invalidateOnRefresh: true,
+        fastScrollEnd: true,
+        preventOverlaps: true,
+        anticipatePin: 1,
+        refreshPriority: 1,
         onUpdate: (self) => {
           const progress = self.progress;
           const { distance, girlSpeed, girlXSpeed, wallSpeed, mountainSpeed, mountainXSpeed, girlScale, mountainScale } = getResponsiveValues();
@@ -104,11 +117,11 @@ export const RecommendationReveal = () => {
         },
       });
     },
-    { scope: container }
+    { scope: container, dependencies: [] }
   );
 
   return (
-    <div ref={container} className='h-screen w-full relative overflow-hidden'>
+    <div ref={container} className='h-screen-dynamic w-full relative overflow-hidden'>
       <div ref={background} className='absolute inset-0 bg-white' />
 
       <div className='absolute h-full w-full'>
