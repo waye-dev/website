@@ -163,7 +163,7 @@ export const Folders = () => {
     return (
         <div
             ref={containerRef}
-            className="relative w-full h-screen overflow-hidden bg-blue-custom-1200"
+            className="relative w-full h-screen-dynamic overflow-hidden bg-blue-custom-1200"
             style={{ isolation: 'isolate' }}
         >
             <div

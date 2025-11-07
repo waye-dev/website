@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { Work_Sans, Inknut_Antiqua, Josefin_Slab, Inter, Josefin_Sans } from "next/font/google";
@@ -32,6 +32,15 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  interactiveWidget: "resizes-content",
+};
 
 export const metadata: Metadata = {
   title: "Waye",
