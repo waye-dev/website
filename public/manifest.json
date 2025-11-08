@@ -1,0 +1,20 @@
+{
+  "name": "Waye - Open Source Developer Resources",
+  "short_name": "Waye",
+  "description": "A website to discover tools, programs, and support systems designed to help open-source developers thrive.",
+  "start_url": "/initiatives/permissionless-paths/research-report",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "any",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

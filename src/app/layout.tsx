@@ -40,6 +40,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   interactiveWidget: "resizes-content",
+  themeColor: "#000000",
 };
 
 export const metadata: Metadata = {
@@ -50,6 +51,12 @@ export const metadata: Metadata = {
     "open source, open source development, developer tools, programming resources, software development, tech community, collaboration tools, coding resources, developer support, programming education, tech initiatives, community-driven projects, resilience in tech, decentralized technology, innovation in open source",
   icons: {
     icon: "/images/favicon.png",
+  },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Waye",
   },
   openGraph: {
     title: "Waye",
