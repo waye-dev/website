@@ -35,7 +35,7 @@ export const SeniorCoreDev = () => {
             title='Departure patterns: '
             description={[
               "Contributors navigate years of protocol work without clear impact metrics, until the motivation that sustained them fades, leading to what one contributor described as a 'fog of motivation.'",
-              "Expertise in core development paradoxically leads away from core development: the skills gained — protocol knowledge, ecosystem understanding —  makes contributors too valuable (or too burned out) to remain in grant-funded roles.",
+              "Expertise in core development paradoxically leads away from core development: the skills gained such as protocol knowledge and ecosystem understanding, make contributors too valuable (or too burned out) to remain in grant-funded roles.",
               "This suggests that grant-funded core development may be inherently transitional, a launching pad rather than a destination for experienced developers.",
             ]}
           />
@@ -55,7 +55,7 @@ export const SeniorCoreDev = () => {
         quotes={[
           {
             id: "2",
-            text: `At some point, I stopped being able to believe that I could just build a better technology and trust that it would be used well, and [became] more focused on how that technology is entering the world. > >`,
+            text: `At some point, I stopped being able to believe that I could just build a better technology and trust that it would be used well, and [became] more focused on how that technology is entering the world.`,
             shareId: SHAREABLE_description_IDS.SENIOR_APP_DEV_QUOTE_23,
             author: {
               type: "mid",
