@@ -14,15 +14,15 @@ export const FolderContentOne = () => {
                 <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
-                The ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability.
+                Together with enthusiasm for the technology, the ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability.
             </p>
 
             <div className="text-[16px] space-y-[1.5rem]">
                 <span className="inline-block font-bold uppercase">
-                    Yes, people are "in for the tech" &mdash; but also for freedom
+                    Yes, people are "in for the tech" but also for freedom
                 </span>
                 <p>
-                    Nearly all interviewees joined the ecosystem not only for a fascination with the technology and the prospect of working with top engineers, but also for the ideals of freedom and decentralization embodied by the Bitcoin and Nostr ecosystem. Participants working for over two years on their grant-funded projects report gaining greater awareness of the humanitarian goals of Bitcoin and Nostr, and a desire to engage with "big picture" thinking. 3/4 of participants explicitly described the meaningfulness of their work as a key motivator — often citing it to justify routines and patterns they acknowledged as unsustainable.
+                    All participants were initially drawn to the ecosystem by a fascination with the technology and the prospect of working with top engineers. After joining, however, the vast majority described how their motivation evolved to include a commitment to the ideals of freedom and decentralization embodied by the Bitcoin and Nostr ecosystem. Participants working for over two years on their grant-funded projects reported gaining greater awareness of the humanitarian goals of Bitcoin and Nostr, and a desire to engage with "big picture" thinking. 3/4 of participants explicitly described the meaningfulness of their work as a key motivator, often citing it to justify routines and patterns they acknowledged as unsustainable.
                 </p>
             </div>
 
@@ -39,7 +39,7 @@ export const FolderContentOne = () => {
                     },
                     {
                         id: "23",
-                        text: "I have a better understanding of the type of fundamental problems that it can solve from a more humanitarian perspective, and I came far more interested in it because of the technical details. You know, how bitcoiners say \"I'm in for the tech\", I came in for much more leaning towards that and the curiosity that transpired and … now I will say that I have a far broader view and a much more humanitarian goal in sight than just a technical one.",
+                        text: "You know, how bitcoiners say \"I'm in for the tech\", I came in for much more leaning towards that and the curiosity that transpired and … now I will say that I have a far broader view and a much more humanitarian goal in sight than just a technical one.",
                         shareId: SHAREABLE_description_IDS.SENIOR_APP_DEV_QUOTE_23,
                         author: {
                         type: "expert",
@@ -63,7 +63,7 @@ export const FolderContentOne = () => {
                     Permissionlessness attracts, then overwhelms
                 </span>
                 <p>
-                    The no-barrier ethos draws contributors across all experience levels — anyone can build without asking permission. Yet permissionlessness as an operating principle means no schedules, no managers, no external structure. Over half of participants appreciate this flexibility to choose what to work on and when, yet these are precisely the areas where they report the most challenges: nearly a third struggle with boundaries and a quarter with prioritizing tasks. The open-ended nature that initially attracts leaves many, particularly newer contributors, paralyzed by infinite possibilities and no clear direction.
+                    The no-barrier ethos draws contributors across all experience levels: anyone can build without asking permission. Yet permissionlessness as an operating principle means no schedules, no managers, no external structure. Over half of participants appreciate this flexibility to choose what to work on and when, yet these are precisely the areas where they report the most challenges: nearly a third struggle with boundaries and a quarter with prioritizing tasks. The initially attractive open-ended nature leaves many contributors, particularly newer ones, paralyzed by infinite possibilities and no clear direction.
                 </p>
             </div>
 
@@ -98,7 +98,7 @@ export const FolderContentOne = () => {
                     },
                     {
                         id: "8",
-                        text: "I would love to be able to have a stricter routine. But on the other hand, it's great the fact that I dont't need to have one.",
+                        text: "I would love to be able to have a stricter routine. But on the other hand, it's great the fact that I don't need to have one.",
                         shareId: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ATTRACTS_QUOTE_3,
                         author: {
                         type: "mid",
@@ -113,7 +113,7 @@ export const FolderContentOne = () => {
                     Experience enables, then exhausts
                 </span>
                 <p>
-                    As contributors gain experience, they develop deeper clarity about Bitcoin's humanitarian mission — but not about sustainable work practices. Instead of learning healthier routines, experienced contributors adapt to cycles of intense work and burnout, driven by the urgency of building critical freedom infrastructure. Over half of participants report experiencing burnout at least once in their professional life, with 3 citing it as a primary reason for leaving their grant-funded position. Yet it's senior developers who normalize it most: for them, burnout is "the normal state of affairs." The sacrificial ethos of OSS, compounded by freedom tech's humanitarian stakes, transforms exhaustion from exception to expectation.
+                    As contributors gain experience, they develop deeper clarity about Bitcoin's humanitarian mission, — but not about sustainable work practices. Instead of learning healthier routines, experienced contributors adapt to cycles of intense work and burnout, driven by the urgency of building critical freedom infrastructure. Over half of participants report experiencing burnout at least once in their professional life, with 3 citing it as a primary reason for leaving their grant-funded position. Yet it's senior developers who normalize it most: for them, burnout is "the normal state of affairs." The sacrificial ethos of OSS, compounded by freedom tech's humanitarian stakes, transforms exhaustion from exception to expectation.
                 </p>
             </div>
 
@@ -130,7 +130,7 @@ export const FolderContentOne = () => {
                     },
                     {
                         id: "25",
-                        text: "There's a hell of things to build, and I think a lot of us feel a sense of urgency, because we know that if traditional financial rails fail … people will seek out alternatives, and it's kind of important that those alternatives work. So I think there is kind of a sense of urgency amongst a lot of the people, like myself, who are lucky enough to stumble across this technology. … There's a bunch of tools which you need to build to realize that fallback if everything else breaks.",
+                        text: "There's a hell of a lot of things to build, and I think a lot of us feel a sense of urgency, because we know that if traditional financial rails fail … people will seek out alternatives, and it's kind of important that those alternatives work. So I think there is kind of a sense of urgency amongst a lot of the people, like myself, who are lucky enough to stumble across this technology. … There's a bunch of tools which you need to build to realize that fallback if everything else breaks.",
                         shareId: SHAREABLE_description_IDS.EXPERIENCE_ENABLES_QUOTE_2,
                         author: {
                         type: "expert",
@@ -162,7 +162,7 @@ export const FolderContentOne = () => {
                     Cultural frictions unsettle commitment
                 </span>
                 <p>
-                    A small but notable group of contributors (4/26) reported cultural tensions with the wider Bitcoin community — citing a lack of critical reflection, ideological rigidity, and a preference for hype over substance. Some described the culture as "cult-like" or toxic, where performative enthusiasm overshadows technical work. In a few cases, developers reported distancing themselves from the community as a coping strategy. Despite these challenges, contributors expressed continued commitment to Bitcoin as a technical and political project, while navigating the community on their own terms.
+                    A small but notable group of contributors (4/26) reported cultural tensions with the wider Bitcoin community, — citing a lack of critical reflection, ideological rigidity, and a preference for hype over substance as the main sources of friction. Some described the culture as "cult-like" or toxic, where performative enthusiasm overshadows technical work. In a few cases, developers reported distancing themselves from the community as a coping strategy. Despite these challenges, contributors expressed continued commitment to Bitcoin as a technical and political project, while navigating the community on their own terms.
                 </p>
             </div>
 
@@ -174,12 +174,12 @@ export const FolderContentOne = () => {
                         shareId: SHAREABLE_description_IDS.CULTURAL_FRICTIONS,
                         author: {
                         type: "expert",
-                        respondentNumber: 19,
+                        respondentNumber: 9,
                         },
                     },
                     {
                         id: "11-2",
-                        text: "Being a bitcoiner is bit of a lifestyle, too. Some people are very depp into it. But I think it's good to have a decent balance. You don't want to be too, too deep. You want to be in the cult, right?",
+                        text: "Being a Bitcoiner is bit of a lifestyle, too. Some people are very deep into it. But I think it's good to have a decent balance. You don't want to be too, too deep. You don't want to be in the cult, right?",
                         shareId: SHAREABLE_description_IDS.CULTURAL_FRICTIONS_QUOTE_2,
                         author: {
                         type: "new",
@@ -201,7 +201,7 @@ export const FolderContentOne = () => {
                         shareId: SHAREABLE_description_IDS.CULTURAL_FRICTIONS_QUOTE_4,
                         author: {
                         type: "expert",
-                        respondentNumber: 19,
+                        respondentNumber: 9,
                         },
                     },
                 ]}
