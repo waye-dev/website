@@ -23,7 +23,7 @@ export const JuniorCoreDev = () => {
           />
           <StrategySubSection
             title='Routine: '
-            description='Newer core developers (with less than 3 years grant-funded experience) tend to have more structured routines that help them deal with the uncertainty of everyday work. These include: focus tracking, productivity strategies, and tool minimization — as one participant put it: "we minimize the tools as much as possible and maximize the effectiveness of a single tool."'
+            description='Newer core developers (with less than 3 years grant-funded experience) tend to have more structured routines that help them deal with the uncertainty of everyday work. These include: focus tracking, productivity strategies, and tool minimization. As one participant put it: "we minimize the tools as much as possible and maximize the effectiveness of a single tool."'
           />
 
           <StrategySubSectionWithList
@@ -61,7 +61,7 @@ export const JuniorCoreDev = () => {
           },
           {
             id: "10",
-            text: " knew one person at the beginning. It's probably one of the biggest reasons why I lasted. You know, I survived last year.",
+            text: "I knew one person at the beginning. It's probably one of the biggest reasons why I lasted. You know, I survived last year.",
             shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_2,
             author: {
               type: "new",

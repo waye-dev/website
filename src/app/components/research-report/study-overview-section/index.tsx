@@ -17,7 +17,7 @@ export const StudyOverviewSection = () => {
           Study Overview
         </h2>
         <p className='text-lg font-inter font-normal text-left'>
-        Open Source Software (OSS) is foundational to our global digital infrastructure. OSS promises new modes of work that transcend corporate constraints — collaborative development beyond institutional boundaries, creative freedom without hierarchical control. In reality, however, open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure vulnerable to both burnout and institutional capture.
+        Open Source Software (OSS) promises to enable new modes of work that transcend corporate constraints: collaborative development beyond institutional boundaries and creative freedom without hierarchical control. In reality, however, open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure vulnerable to both burnout and institutional capture.
         </p>
       </section>
 

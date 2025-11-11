@@ -2,23 +2,23 @@ import Image from "next/image";
 
 const experienceLevels = [
   {
-    title: "New contributors (<3 years) ",
+    title: "New contributors (<3 years)",
     image: "/svgs/junior-developer.svg",
     description: "dominate at 42.3%, indicating healthy ecosystem growth.",
     width: 260,
     height: 250,
   },
   {
-    title: "Mid-level contributors (3-6 years)",
+    title: "Mid-level developers (3-6 years)",
     image: "/svgs/mid-level-developer.svg",
     description: "are evenly distributed, suggesting no clear specialization pathway.",
     width: 260,
     height: 250,
   },
   {
-    title: "Senior contributors (6+ years)",
+    title: "Senior developers (6+ years)",
     image: "/svgs/senior-developer.svg",
-    description: "concentrate in infrastructure and applications, not protocol work.",
+    description: "specialize in infrastructure and applications, not protocol work.",
     width: 260,
     height: 250,
   },
@@ -27,7 +27,7 @@ const experienceLevels = [
 export const ExperienceLevels = () => {
   return (
     <div className='flex flex-col gap-20 py-24'>
-      <h5 className='text-xl md:text-2xl lg:text-3xl leading-[120%] font-inknutAntiqua text-center'>Experience levels </h5>
+      <h5 className='text-xl md:text-2xl lg:text-3xl leading-[120%] font-inknutAntiqua text-center'>OSS experience levels</h5>
 
       <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
         {experienceLevels.map((level) => (

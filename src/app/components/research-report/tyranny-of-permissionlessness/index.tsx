@@ -53,17 +53,20 @@ export const TyrannyOfPermissionlessness = () => {
           </p>
 
           <p>
-            In technical systems, permissionlessness enables innovation and decentralized participation by removing gatekeepers — anyone can transmit
-            data packets, build websites using HTTP, or contribute to and modify open source code by following protocol rules (Nabben and Zargham 2022).
-            But when extended to human labor systems, this same design principle creates overwhelming choice without guidance. The absence
-            of gatekeepers means absence of guides; freedom from oversight means freedom from support; the right to contribute becomes the
+            In technical systems, permissionlessness enables innovation and decentralized participation by removing gatekeepers: anyone can transmit
+            data packets, build websites using HTTP, or contribute to and modify open source code by following protocol rules{" "}
+            <Link href={"https://policyreview.info/glossary/permissionlessness"} target='_blank' className='underline'>
+              (Nabben and Zargham 2022)
+            </Link>
+            . But when extended to human labor systems, this same design principle can create overwhelming choice. Our findings suggest that the absence
+            of gatekeepers results in absence of guides; freedom from oversight means freedom from support; the right to contribute becomes the
             responsibility to self-manage everything.
           </p>
 
           <p>
             As our paradox exercise showed, this tension intensifies with experience: senior developers report higher burnout while caring more for
             others, embrace "fun" because productivity alone cannot sustain them, and become pragmatic about commercial realities they initially
-            resisted. The tyranny doesn't diminish with time — it compounds.
+            resisted. The tyranny doesn't diminish with time, it compounds.
           </p>
 
           <p>This tyranny emerges at the confluence of four interconnected dimensions that shape the developer experience:</p>
@@ -73,19 +76,19 @@ export const TyrannyOfPermissionlessness = () => {
               <strong>Ideological factors:</strong> how freedom as mission becomes freedom as burden
             </li>
             <li>
-              <strong>Structural factors:</strong> how permissionless architecture creates isolated work
+              <strong>Structural factors:</strong> how permissionless architecture and work practices create isolated work
             </li>
             <li>
               <strong>Human factors:</strong> how self-management becomes self-exploitation
             </li>
             <li>
-              <strong>Institutional factors:</strong> how grant systems reinforce individual struggles
+              <strong>Institutional factors:</strong> how grant systems reinforce individual struggles, rather than facilitating collective support
             </li>
           </ul>
 
           <p>
-            Below we describe these tensions. Each dimension shows how the very features that attract contributors to the space — mission, openness,
-            autonomy — become the primary causes of burnout and unsustainable work patterns. <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES} />
+            Below we describe these tensions. Each dimension shows how the very features that attract contributors to the space, mission, openness,
+            autonomy, become the primary causes of unsustainable work patterns. <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES} />
           </p>
         </section>
       </Wrapper>

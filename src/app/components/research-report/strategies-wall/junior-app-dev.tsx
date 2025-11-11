@@ -27,7 +27,7 @@ export const JuniorAppDev = () => {
 
           <StrategySubSection
             title='Entry pathways: '
-            description='Contributors working on applications generally come from "fiat careers" in tech startups, as one contributor described it, or from a hacker background. They enter the space by volunteering to projects with small tasks and eventually get funded through grants, in some cases to work on their own projects.'
+            description='Contributors working on applications generally come from "fiat careers" in tech startups, as one participant described it, or from a hacker background. They enter the space by volunteering to projects with small tasks and eventually get funded through grants, in some cases to work on their own projects.'
           />
           <StrategySubSection
             title='Routine : '

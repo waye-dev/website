@@ -226,7 +226,6 @@ export function FromTyrannyToPermissionlessness() {
 
   return (
     <>
-      {/* Mobile version */}
       <div className="md:hidden w-full px-4 py-8">
         {sections.map((section, index) => (
           <div key={section.id} className="mb-12">
@@ -294,7 +293,6 @@ export function FromTyrannyToPermissionlessness() {
         ))}
       </div>
 
-      {/* Desktop version */}
       <div className="hidden md:block">
         <div
           ref={containerRef}

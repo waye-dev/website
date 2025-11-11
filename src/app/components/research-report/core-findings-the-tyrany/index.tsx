@@ -69,10 +69,9 @@ export const CoreFindingsTheTyrany = () => {
 
         <section className='flex flex-col gap-8 text-lg'>
           <p>
-            The paradoxes revealed in our opening exercise — between commons and commerce, sustainability and experience, autonomy and isolation — all
-            point to a deeper structural tension, revealed by our interviews.
+            The paradoxes revealed in our opening exercise between commons and commerce, sustainability and experience, autonomy and isolation, all point to a deeper structural tension. This tension was revealed by our interviews.
           </p>
-          <strong>{`Permissionlessness — the defining principle of Bitcoin and the broader OSS ecosystem — becomes oppressive when applied to human work systems.`}</strong>
+          <strong>Permissionlessness, the defining principle of Bitcoin and the broader OSS ecosystem, becomes oppressive when applied to human work systems.</strong>
         </section>
       </div>
 

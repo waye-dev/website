@@ -23,8 +23,8 @@ export const SeniorAppDev = () => {
           <StrategySubSectionWithList
             title='Routine : '
             description={[
-              `More experienced developers have learnt to navigate the chaos of OSS work, not through any particular strategy but by leaning into it — with one interviewee explicitly "using chaos to keep things interesting."`,
-              "Often contributors simply keep a mental todo list of their next tasks and update it as things proceed. However, this mastery of chaos comes at a cost — the constant adaptation and lack of clear boundaries eventually leads to chronic burnout, which becomes normalized within the community.",
+              `More experienced developers have learnt to navigate the chaos of OSS work, not through any particular strategy but by leaning into it. One interviewee explicitly mentioned "using chaos to keep things interesting."`,
+              "Often contributors simply keep a mental todo list of their next tasks and update it as things proceed. However, this mastery of chaos comes at a cost: the constant adaptation and lack of clear boundaries eventually lead to chronic burnout, which becomes normalized within the community.",
               "Unlike their protocol counterparts who work in isolation, they must coordinate multiple stakeholders and manage volunteer teams, adding further complexity to their already chaotic environment.",
               "User feedback provides an important validating factor and helps give direction to a project, while also adding further expectations for lead maintainers. Managing a team of volunteer contributors adds further psychological pressure, with maintainers feeling personally responsible for their contributors' experience.",
             ]}
@@ -39,7 +39,6 @@ export const SeniorAppDev = () => {
               "The amorphous scope of OSS contribution [Human]",
               "Individual grants vs team requirements [Institutional]",
               "Bitcoin is forever, grants for a year only [Institutional]",
-              "Permissionlessness attracts, then overwhelms [Ideological]",
             ]}
           />
         </div>
@@ -48,34 +47,27 @@ export const SeniorAppDev = () => {
       <QuoteCards
         quotes={[
           {
-            id: "5",
-            text: `You know, how bitcoiners say "I'm in for the tech", I came in for much more leaning towards that and the curiosity that transpired and … now I will say that I have a far broader view and a much more humanitarian goal in sight than just a technical one.`,
-            shareId: SHAREABLE_description_IDS.SENIOR_APP_DEV_QUOTE_23,
-            author: {
-              type: "new",
-              respondentNumber: 5,
-            },
-          },
-          {
-            id: "status-quo",
-            text: "I'm not happy with the status quo, but I haven't found something that works better for me … like time tracking, and then generate reports of exactly what I've done, setting very specific goals or fragmenting the day … Or Tuesdays are only for this type of work stuff. But yeah, very, very, very quickly, it doesn't work.",
+            id: "23-status-quo",
+            text: "I'm not happy with the status quo, but I haven't found something that works better for me … like time tracking, and then generate reports of exactly what I've done, setting very specific goals or fragmenting the day, or Tuesdays are only for this type of work stuff. But yeah, very, very, very quickly, it doesn't work.",
+            shareId: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ATTRACTS,
             author: {
               type: "expert",
-              respondentNumber: 20,
+              respondentNumber: 23,
             },
           },
           {
-            id: "project-manager",
+            id: "19-project-manager",
             text: "We do have a volunteer project manager. So we kind of go through different waves of being more organized … But that's say 20% of the time, the other 80% is just kind of beautiful chaos that produces results.",
+            shareId: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ATTRACTS_QUOTE_2,
             author: {
-              type: "expert",
-              respondentNumber: 20,
+              type: "mid",
+              respondentNumber: 19,
             },
           },
           {
             id: "20",
             text: "It's a lot different now than it was when we first started. It was kind of a toy prototype, and now it started to get a bit more serious, there's a lot more users, there's a lot more stakeholders, and people are expecting it to actually succeed.",
-            shareId: SHAREABLE_description_IDS.FUTURE_ORIENTATION,
+            shareId: SHAREABLE_description_IDS.EXPERIENCE_ENABLES,
             author: {
               type: "expert",
               respondentNumber: 20,
@@ -93,6 +85,7 @@ export const SeniorAppDev = () => {
           {
             id: "20b",
             text: "It's this constant battle between balancing your own work and trying to review contributors and help contributors. So that's probably one of the biggest challenges, and I struggle with that too, because sometimes I look and this guy's been waiting for four weeks for me to review his PR. I just haven't gotten to it yet, but I know. And then he goes away, and I'm like, Oh, I lost a potential contributor.",
+            shareId: SHAREABLE_description_IDS.AMORPHOUS_SCOPE,
             author: {
               type: "expert",
               respondentNumber: 20,
@@ -101,6 +94,7 @@ export const SeniorAppDev = () => {
           {
             id: "25b",
             text: "We've got a team of four developers who are pretty much full time … and then you feel responsible. I mean, they've got lives, they don't get paid much because they're working on a project which they really love. So they're making sacrifices already … And then all you can really do is being the person who's helping source those funds to keep them working on the project. You just feel a lot of responsibility, because they have kids, they have families, and they have responsibility.",
+            shareId: SHAREABLE_description_IDS.INDIVIDUAL_VS_TEAM,
             author: {
               type: "expert",
               respondentNumber: 25,
@@ -109,6 +103,7 @@ export const SeniorAppDev = () => {
           {
             id: "18",
             text: "I can easily find a job at a company. I mean, I don't have a problem or fear of not having a job. I have a problem, a fear of not working on Bitcoin.",
+            shareId: SHAREABLE_description_IDS.BITCOIN_FOREVER_GRANTS,
             author: {
               type: "expert",
               respondentNumber: 18,

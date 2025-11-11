@@ -15,10 +15,9 @@ export const BitcoinSolution = () => {
           </p>
           <p>
             The <strong>Bitcoin</strong> ecosystem, including <strong>Nostr</strong> as its primary decentralized communication layer, now
-            supports hundreds of developers through an expanding grant landscape, enabling them to work full-time on OSS projects without
-            institutional affiliation.
+            supports hundreds of developers through an expanding grant landscape, enabling them to work full-time on OSS projects <i>without</i> an institutional affiliation.
           </p>
-          <p>For the first time, the original OSS vision — sustainable, independent development — seems within reach</p>
+          <p>For the first time, the original OSS vision of sustainable, independent development seems within reach.</p>
         </article>
       </section>
 

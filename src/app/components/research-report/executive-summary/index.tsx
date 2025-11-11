@@ -27,26 +27,27 @@ export const ExecutiveSummary = () => {
           <h3 className='text-xl sm:text-3xl font-inknutAntiqua font-semibold sm:text-center'>Executive Summary</h3>
           <section className='flex flex-col gap-3'>
             <p>
-              This report presents findings from a qualitative study examining sustainable open source development in the freedom tech ecosystem
-              — an emerging field of decentralized, censorship-resistant technologies built to resist institutional capture. Between March and
-              May 2025, we interviewed 26 Bitcoin and Nostr contributors with at least 12 months of full-time grant-funded experience. We
-              explored their motivations, work patterns, and challenges to understand how they navigate open source development as independent
-              contributors. While grant funding enables work free from corporate capture, our research reveals critical gaps in support
-              structures for this decentralized workforce.
+              <strong>
+                This report is the first-ever deep-dive into the working lives of independent developers building censorship-resistant technology and what they need to sustain their work.
+              </strong> Earlier this year, we interviewed 26 independent contributors within the Bitcoin and Nostr ecosystems, where grant funding is critical to ensure freedom from institutional capture. Rather than examining specific projects or funding mechanisms, we focused on the builders themselves: their motivations, work patterns, and the challenges they face navigating open source development.
             </p>
 
             <p>
               <strong>
-                Our core finding: the very values and features that attract developers to the Bitcoin and Nostr ecosystems — freedom as an
-                ideal, permissionless participation, autonomy over projects — become the source of their greatest challenges.
+                Our core finding: the very values and features that attract developers to Bitcoin and Nostr, including freedom, autonomy and permissionless participation, become the source of their greatest challenges.
               </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.CORE_FINDING} />{" "}
-              We call this the "tyranny of permissionlessness": while these principles enable open innovation and resist capture, without
-              support structures they lead developers to navigate unlimited responsibility alone. <SimpleShareButton shareId={SHAREABLE_description_IDS.TYRANNY_DEFINITION} /> <strong>This isn't inevitable: with intentional design, we can maintain permissionless participation while building sustainable work
-              practices.</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.INTENTIONAL_DESIGN} />
+              We call this the "tyranny of permissionlessness." While these principles enable open innovation and resist capture, without
+              support structures they lead developers to navigate unlimited responsibility alone, leading to burnout and departure. <SimpleShareButton shareId={SHAREABLE_description_IDS.TYRANNY_DEFINITION} />
+            </p>
+
+            <p>
+              <strong>
+                This isn't inevitable. With intentional design, we can maintain permissionless participation while building sustainable work practices.
+              </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.INTENTIONAL_DESIGN} />{" "}
+              We provide evidence-based, actionable recommendations for funders and ecosystem leaders to better support decentralized development. These include: team-based funding models, extended renewal cycles, administrative support infrastructure, mental health resources, and structured transition pathways for experienced contributors.
             </p>
           </section>
           <p>The report unfolds in six parts:</p>
-          
         </div>
         
       </div>
