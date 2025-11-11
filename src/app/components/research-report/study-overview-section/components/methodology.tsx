@@ -11,7 +11,7 @@ export const Methodology = () => {
             <li>Comprehensive literature review of OSS sustainability, developer experience, and burnout research</li>
             <li>Qualitative approach using semi-structured interviews</li>
             <li>
-              Two-step inductive coding analysis — identifying themes iteratively from the interviews rather than applying preset frameworks
+              Two-step inductive coding analysis (identifying themes iteratively from the interviews rather than applying preset frameworks)
             </li>
             <li>Focus on capturing social, ideological, and contextual factors</li>
           </ul>

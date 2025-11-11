@@ -35,18 +35,15 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         },
       });
 
-      // Find the rightmost dot position to calculate common path
       const containerRect = containerRef.current.getBoundingClientRect();
       const rightEdge = containerRect.right;
 
-      // Randomize which dots go to which target
       const shuffledIndices = Array.from({ length: dotsRef.current.length }, (_, i) => i);
       for (let i = shuffledIndices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffledIndices[i], shuffledIndices[j]] = [shuffledIndices[j], shuffledIndices[i]];
       }
 
-      // Track if we've applied shadow to one dot per target
       let shadowAppliedToLeftTarget = false;
       let shadowAppliedToRightTarget = false;
 
@@ -56,45 +53,35 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         // Use shuffled index to determine target
         const shuffledIndex = shuffledIndices[index];
         const targetRef = shuffledIndex < darkCircleCount ? targetRef1 : targetRef2;
-        const isGoingToLightCircle = shuffledIndex >= darkCircleCount; // Right circle is the light one
+        const isGoingToLightCircle = shuffledIndex >= darkCircleCount;
         const targetRect = targetRef.current!.getBoundingClientRect();
         const dotRect = dot.getBoundingClientRect();
 
-        // Calculate centers
         const dotCenterX = dotRect.left + dotRect.width / 2;
         const dotCenterY = dotRect.top + dotRect.height / 2;
         const targetCenterX = targetRect.left;
         const targetCenterY = targetRect.top;
 
-        // Common path points for all dots
-        const rightPoint = rightEdge - dotCenterX - 50; // Right edge of section
-        const downDistance = 150; // How far down to go
+        const rightPoint = rightEdge - dotCenterX - 50;
+        const downDistance = 150;
 
-        // Final target offset - center to center
         const finalX = targetCenterX - dotCenterX;
         const finalY = targetCenterY - dotCenterY;
-
-        // Same scale for both targets
         const scale = 3.5;
 
-        // Get original color from Tailwind config
         const isDark = index < darkCircleCount;
-        const bgColor = isDark ? "#1B1F35" : "#C4DEF9"; // blue-custom-900 : #C4DEF9
+        const bgColor = isDark ? "#1B1F35" : "#C4DEF9";
 
-        // Set transform origin to center for proper scaling
         gsap.set(dot, { transformOrigin: "center center" });
-
-        // All dots follow same path: right -> down (arc) -> left to target
-        // First animate the path
         tl.to(
           dot,
           {
             motionPath: {
               path: [
-                { x: 0, y: 0 },                    // Start position
-                { x: rightPoint, y: 0 },           // Move right to edge
-                { x: rightPoint, y: downDistance }, // Move down
-                { x: finalX, y: finalY }           // Move left to final position
+                { x: 0, y: 0 },                    
+                { x: rightPoint, y: 0 },           
+                { x: rightPoint, y: downDistance }, 
+                { x: finalX, y: finalY }           
               ],
               curviness: 1.2,
             },
@@ -105,7 +92,6 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
           0
         );
 
-        // Then scale up at the very end
         tl.to(
           dot,
           {
@@ -116,11 +102,9 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
           0.8
         );
 
-        // Add shadow to only one dot per target
         const isGoingToLeftTarget = !isGoingToLightCircle;
 
         if (isGoingToLeftTarget && !shadowAppliedToLeftTarget) {
-          // Apply shadow to first dot going to left target
           tl.to(
             dot,
             {
@@ -196,7 +180,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         </section>
 
         <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[12px]'>
-          <li>Core development dominates in the Bitcoin ecosystem.</li>
+          <li>Core protocol development dominates in the Bitcoin ecosystem.</li>
           <li>
             Application work (payments, messaging, hardware) is evenly distributed between the Bitcoin and Nostr ecosystems. This mirrors the
             ecosystem's maturation: infrastructure exists, user-facing tools are now needed.
@@ -205,7 +189,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
             Infrastructure work (19.2%), comprising developer toolkits and libraries, appears to be the domain of either newcomers or veterans,
             with no middle ground.
           </li>
-          <li>In our sample, no expert contributors (6+ years OSS experience) worked on core protocol development.</li>
+          <li>Within our sample, no expert contributors (6+ years OSS experience) worked on core protocol development.</li>
         </ul>
       </section>
     </div>

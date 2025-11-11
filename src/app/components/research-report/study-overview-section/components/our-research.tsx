@@ -44,7 +44,7 @@ export const researchOverviewNumbersIcons = [
     alt: "Chains",
     title: "Constraints",
     description:
-      "What structural challenges prevent sustainable development? Are there practical barriers that can be addressed by projects or their funders? ",
+      "What structural challenges prevent sustainable development? Are there practical barriers that can be addressed by projects or their funders?",
   },
 ];
 
@@ -61,7 +61,7 @@ export const OurResearch = () => {
             <p>This pilot study addresses a foundational question:</p>
             <p className='font-inknutAntiqua text-xl'>
               How do full-time, grant-funded, institutionally unaffiliated developers in the Bitcoin and Bitcoin-adjacent (i.e. Nostr) ecosystem
-              work – and what do they need to sustainably perform their role?
+              work and what do they need to sustainably perform their role?
             </p>
           </article>
         </section>
@@ -77,7 +77,7 @@ export const OurResearch = () => {
       </section>
 
       <p>
-        Between March and May 2025, we interviewed 26 Bitcoin and Nostr developers who had worked full-time on grant-funded projects for at
+        Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
         least 12 months. Through semi-structured interviews, we explored: <SimpleShareButton shareId={SHAREABLE_description_IDS.STUDY_STATS} />
       </p>
 
