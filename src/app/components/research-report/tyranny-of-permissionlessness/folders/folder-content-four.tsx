@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import { QuoteCards } from "@components/research-report/_components/quotes";
 import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
@@ -8,29 +9,36 @@ export const FolderContentFour = () => {
     return (
             <>
             <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
-                Autonomous over projects,
-                but constrained by the funding
-                structure
+            Autonomous over projects, but constrained by the funding structure
             </h2>
 
             <p className="text-[16px]">
                 <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
-                While financial compensation is not a primary motivator, sustainability remains elusive for most contributors. The expanding funding ecosystem has enabled many developers to enter and remain in the space (1A1z 2024) — but the structure of grants often undermines the very autonomy it is meant to support. Yearly renewals, individual funding models, and the opaque social aspects of grants create perverse incentives for people to "write for the grant," as one participant observed, rather than pursue long-term technical visions. While most grants are theoretically open to all, success often depends on informal networks and social capital. Additionally, hands-off funding approaches leave contributors navigating administrative burdens and isolation without adequate support structures. <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESS_ENTRY} />
+                While financial compensation is not a primary motivator, sustainability remains elusive for most contributors. The expanding funding ecosystem has enabled many developers to enter and remain in the space (<Link href="https://s3.amazonaws.com/1a1z.com/files/1A1z%20-%20Funding%20Bitcoin%20-%20Part%201.pdf" target="_blank" className="underline">1A1z 2024</Link>); yet the structure of grants often undermines the very autonomy it is meant to support. Yearly renewals, individual funding models, and the opaque social aspects of grants create perverse incentives for people to "write for the grant," as one participant observed, rather than pursue long-term technical visions. While most grants are theoretically open to all, success often depends on informal networks and social capital. Additionally, hands-off funding approaches leave contributors navigating administrative burdens and isolation without adequate support structures.
             </p>
 
             <div className="text-[16px] space-y-[1.5rem]">
-                <span className="inline-block font-bold">
-                    Searching for sustainability amidst generalized unpredictability <SimpleShareButton shareId={SHAREABLE_description_IDS.SEARCHING_SUSTAINABILITY} />
+                <span className="inline-block font-bold uppercase">
+                    Searching for sustainability amidst generalized unpredictability
                 </span>
                 <p>
-                    16 out of 26 participants described ongoing difficulties navigating financial sustainability. For most, compensation itself is not the issue — it's predictability. Annual cycles of reapplication introduce stress and distraction, especially for contributors whose mother tongue is not English. 10 contributors explicitly identified long-term sustainability as a priority, yet only a few felt they had a stable path toward achieving it.
+                    16/26 participants described ongoing difficulties navigating financial sustainability. For most, compensation itself is not the issue: it's predictability. Annual cycles of reapplication introduce stress and distraction, especially for contributors whose mother tongue is not English. 10 contributors explicitly identified long-term sustainability as a priority, yet only a few felt they had a stable path toward achieving it.
                 </p>
             </div>
 
             <QuoteCards
                 quotes={[
+                    {
+                        id: "24",
+                        text: "It's hard, because I really did love working on open source stuff and having the freedom to do it, I felt really lucky to have that. But just the financial instability and not knowing if I would get renewed, and just feeling a little isolated were probably the three main reasons I decided to change.",
+                        shareId: SHAREABLE_description_IDS.SEARCHING_SUSTAINABILITY,
+                        author: {
+                        type: "expert",
+                        respondentNumber: 24,
+                        },
+                    },
                     {
                         id: "10",
                         text: "I don't think that it's 100% sustainable. I'm not sure how that can be done. I think some people actually do this 100% like all the time, but I'm not sure it's that sustainable. Like, having to write a new grant every year is very, very stressful.",
@@ -42,7 +50,7 @@ export const FolderContentFour = () => {
                     },
                     {
                         id: "14",
-                        text: " think it's sustainable for a handful of high-impact people in the ecosystem, people who have shown over time they care about the technology, and their expertise is also evident to people who use the technology. But it takes a while to get to that level of expertise. And so in terms of sustainability, I would say that for a small group, yes, it is. But when you are initially starting out, if you begin now just at an intermediate level, not so much.",
+                        text: "I think it's sustainable for a handful of high-impact people in the ecosystem, people who have shown over time they care about the technology, and their expertise is also evident to people who use the technology. But it takes a while to get to that level of expertise. And so in terms of sustainability, I would say that for a small group, yes, it is. But when you are initially starting out, if you begin now just at an intermediate level, not so much.",
                         shareId: SHAREABLE_description_IDS.SEARCHING_SUSTAINABILITY_QUOTE_3,
                         author: {
                         type: "new",
@@ -57,12 +65,21 @@ export const FolderContentFour = () => {
                     Bitcoin is forever, grants for a year only
                 </span>
                 <p>
-                    Contributors define sustainability in terms of decades and view OSS as a life-long commitment, even while recognizing role flexibility within the ecosystem. For all contributors, "long-term" means at least 5 years, with a majority mentioning 10 years as their measure of long-term, and some equating it to the length of their career or beyond. 5/26 interviewees explicitly stated that they couldn't imagine going back to a "normal job" – Bitcoin is for life. Despite this enduring commitment, funding mechanisms remain out of sync. While opportunities for support have grown, most grants operate on short, annual cycles that fail to reflect contributors' long-term orientation. The renewal process is universally stressful, impacting negatively both long-term thinking and daily focus — demanding at least two months of preparation prior to each deadline and proving especially challenging for non-native English speakers. <SimpleShareButton shareId={SHAREABLE_description_IDS.BITCOIN_FOREVER_GRANTS} />
+                    Contributors define sustainability in terms of decades and view Bitcoin and OSS development as life-long commitments, even while recognizing role flexibility within the ecosystem. When asked what "long-term" meant to them, contributors consistently described it as at least 5 years, with a majority citing 10 years as their timeframe, and some equating it to the length of their career or beyond. 5/26 interviewees explicitly stated that they couldn't imagine going back to a "normal job" – Bitcoin is for life. Despite this enduring commitment, funding mechanisms remain out of sync. While opportunities for support have grown, most grants operate on short, annual cycles that fail to reflect contributors' long-term orientation. The renewal process is universally stressful, impacting negatively both long-term thinking and daily focus.
                 </p>
             </div>
 
             <QuoteCards
                 quotes={[
+                    {
+                        id: "10-forever",
+                        text: "Every year you have to apply for a new grant, so that whole process is stressful. Or generally, not having to worry about your grant organization can allow you to be a whole lot more free with what you work on, because if you're pressured to deliver results, you might avoid certain projects, like multi-year projects, or they might be difficult to get started.",
+                        shareId: SHAREABLE_description_IDS.BITCOIN_FOREVER_GRANTS,
+                        author: {
+                        type: "new",
+                        respondentNumber: 10,
+                        },
+                    },
                     {
                         id: "3",
                         text: "If I'm looking for grants, it's very hard. There's so much admin work, so even when I'm trying to work, I keep thinking of my proposal, which I have to write, and I've procrastinated and I feel bad for not doing the grant proposal. So all that admin stuff does affect my productivity a lot, especially the grant renewal every year.",
@@ -70,15 +87,6 @@ export const FolderContentFour = () => {
                         author: {
                         type: "new",
                         respondentNumber: 3,
-                        },
-                    },
-                    {
-                        id: "4",
-                        text: " think it's sustainable for a handful of high-impact people in the ecosystem, people who have shown over time they care about the technology, and their expertise is also evident to people who use the technology. But it takes a while to get to that level of expertise. And so in terms of sustainability, I would say that for a small group, yes, it is. But when you are initially starting out, if you begin now just at an intermediate level, not so much.",
-                        shareId: SHAREABLE_description_IDS.SEARCHING_SUSTAINABILITY_QUOTE_3,
-                        author: {
-                        type: "new",
-                        respondentNumber: 4,
                         },
                     },
                 ]}
@@ -89,12 +97,21 @@ export const FolderContentFour = () => {
                     Individual grants vs team requirements
                 </span>
                 <p>
-                    Particularly for contributors working on self-directed projects, individual grant structures often fall short of what's needed to scale or sustain their work. While grants may support a single developer, they are not suited for the requirements of teams working on projects. The lack of team-based funding models limits long-term planning and ability to focus as individual maintainers need to take on roles beyond development — including grant writing, onboarding, and community management. In one case, a participant chose to use the grant to pay his team, while complementing OSS work with a traditional business. <SimpleShareButton shareId={SHAREABLE_description_IDS.INDIVIDUAL_VS_TEAM} />
+                    Particularly for contributors working on self-directed projects, individual grant structures often fall short of what's needed to scale or sustain their work. While grants may support a single developer, they are not suited for the requirements of teams working on projects. The lack of team-based funding models limits long-term planning and ability to focus as individual maintainers need to take on roles beyond development, including grant writing, onboarding, and community management. In one case, a participant chose to use the grant to pay his team, while complementing OSS work with a traditional business.
                 </p>
             </div>
 
             <QuoteCards
                 quotes={[
+                    {
+                        id: "26",
+                        text: "The very first thing is that I'm currently working entirely alone on a project that could never be completed by me alone, and I have to try to convince other people of what I'm trying to do, so that I think will be a big challenge and getting to be on board with the vision and contributing to it.",
+                        shareId: SHAREABLE_description_IDS.INDIVIDUAL_VS_TEAM,
+                        author: {
+                        type: "mid",
+                        respondentNumber: 26,
+                        },
+                    },
                     {
                         id: "5",
                         text: "If somebody was like: \"Okay, wave a magic wand and you want this project to just succeed way better, what are the things you need?\" Pretty top of the list is just money, because I know I can't scale my hours any further, so the only thing I can do is scale the size of the team. And I feel very confident that I'd be able to do that well because of my background, but the economic resource isn't there. And so, I think that's the one thing where I do feel constrained. You know, how do I make this financially sustainable on a broader scale, not just me.",
@@ -107,8 +124,9 @@ export const FolderContentFour = () => {
                     {
                         id: "21",
                         text: "This can't be just me, so I need other people to get grants as well. So then it's like, can I help them with that? Is that even how this works? Like, figuring out how to get other maintainers responsible … how to get them committed longer term, which usually means money.",
+                        shareId: SHAREABLE_description_IDS.INDIVIDUAL_VS_TEAM_QUOTE_3,
                         author: {
-                        type: "new",
+                        type: "mid",
                         respondentNumber: 21,
                         },
                     },
@@ -120,15 +138,25 @@ export const FolderContentFour = () => {
                     Realizing your vision vs working for the grant
                 </span>
                 <p>
-                    The individual and short-term structure of grants gives rise to perverse incentives, by which contributors will "write for the grant" instead of pursuing their visions, diverting time and attention from actual development work. The burden falls disproportionately on newer contributors, who may spend a month or more crafting proposals compared to the 10 days required by established experts. This creates a cycle where those who most need funding face the highest barriers to obtaining it, while also incentivizing alignment with perceived funder priorities rather than technical vision. <SimpleShareButton shareId={SHAREABLE_description_IDS.REALIZING_VISION} />
+                    The individual and short-term structure of grants gives rise to a perverse incentive by which contributors will "write for the grant" instead of pursuing their visions, diverting time and attention from actual development work. The burden falls disproportionately on newer contributors, who may spend a month or more crafting proposals. This creates a cycle where those who most need funding face the highest barriers to obtaining it, while also incentivizing alignment with perceived funder priorities rather than technical vision.
                 </p>
             </div>
             
             <QuoteCards
                 quotes={[
                     {
+                        id: "22",
+                        text: "It's kind of a silly thing to complain about, because it's not that hard considering the fact that they're giving you money. But it definitely does create a little bit of a compromising thing … Sometimes I work on things that I think people who are reviewing the applications are going to think are a good idea — which they are — but I'll shift the priorities of things. There's a little bit of an extra pressure, which may be a good thing sometimes, but it's definitely a new skill that I've had to learn.",
+                        shareId: SHAREABLE_description_IDS.REALIZING_VISION,
+                        author: {
+                        type: "mid",
+                        respondentNumber: 22,
+                        },
+                    },
+                    {
                         id: "4",
                         text: "Finding a problem — like some problem that is not too easy, not too hard, that has a chance of being merged, has impact. All these factors are just really hard to navigate, and I wish somebody told me what to do sometimes.",
+                        shareId: SHAREABLE_description_IDS.REALIZING_VISION,
                         author: {
                         type: "mid",
                         respondentNumber: 4,
@@ -158,11 +186,21 @@ export const FolderContentFour = () => {
             <QuoteCards
                 quotes={[
                     {
-                        id: "9-4",
-                        text: "Long way to answer about writing grants, but unfortunately, it's all tied in with these people and these personalities and these incentives that are part of these organizations. There's no way to untangle them and that's been one of the most important things just for my mental well being, I can't just sit here and be angry and fuel this frustration over it.",
+                        id: "21-permissionless",
+                        text: "The reality of grants is that there's a social aspect to it. You have to be somewhat known, because it's people making these decisions. So you have to lobby on your behalf and do that kind of outreach to make sure that the granting organizations understand the value of your project, and that, I guess in my case, they understand my need for these grants. Because I don't sell, so I don't have income from that direction. And I want to keep it that way. That's this sort of decentralized ideal there. That's a challenge, like getting grants and maintaining that clear perception with the granting organizations that I need it, that it's important.",
+                        shareId: SHAREABLE_description_IDS.PERMISSIONLESS_ENTRY,
                         author: {
                         type: "mid",
-                        respondentNumber: 9,
+                        respondentNumber: 21,
+                        },
+                    },
+                    {
+                        id: "19",
+                        text: "Long way to answer about writing grants, but unfortunately, it's all tied in with these people and these personalities and these incentives that are part of these organizations. There's no way to untangle them and that's been one of the most important things just for my mental well being, I can't just sit here and be angry and fuel this frustration over it.",
+                        shareId: SHAREABLE_description_IDS.PERMISSIONLESS_ENTRY,
+                        author: {
+                        type: "mid",
+                        respondentNumber: 19,
                         },
                     },
                 ]}
@@ -173,16 +211,25 @@ export const FolderContentFour = () => {
                     Hands-off funders: autonomous but abandoned
                 </span>
                 <p>
-                    10 out of 26 contributors have voiced concerns that granting organizations could do more to support their work. This is not so much in terms of compensation, but in providing additional support structures that would help developers navigate the uncertainty of daily work life. Among the aspects where contributors feel have been lacking support are: mentoring, guidance with admin stuff (including taxes, visas etc.), and tooling (one contributor wished for a supercomputer made available for the grantees). <SimpleShareButton shareId={SHAREABLE_description_IDS.MENTORSHIP_INFRASTRUCTURE} />
+                    10/26 contributors have voiced concerns that granting organizations could do more to support their work. This is not so much in terms of compensation, but in providing additional support structures that would help developers navigate the uncertainty of daily work life. Among the aspects where contributors feel have been lacking support are: mentoring, guidance with admin tasks (including taxes, visas etc.), and tooling (one contributor wished for a supercomputer made available for the grantees).
                 </p>
             </div>
             
             <QuoteCards
                 quotes={[
                     {
-                        id: "21",
+                        id: "13-hands-off",
+                        text: "I think if I had stayed there from the beginning, when there was somebody more experienced who I was checking in with regularly, I could have brought all these things that came up to this person, and they would have helped me figure out what I could do … And in retrospect, I should have done more to create that, instead of just needing it to be handed to me. But if the funder had invested more in creating support and structure, that definitely would have been significantly helpful.",
+                        shareId: SHAREABLE_description_IDS.MENTORSHIP_INFRASTRUCTURE,
+                        author: {
+                        type: "new",
+                        respondentNumber: 13,
+                        },
+                    },
+                    {
+                        id: "21-hands-off",
                         text: "One of the things that has been lacking, I think, with these granting organizations is a community of people solving these problems, … like the admin stuff, taxes and things like that. We're obviously all having the same problems. So we can help one another figure it out",
-                        shareId: SHAREABLE_description_IDS.INDIVIDUAL_VS_TEAM_QUOTE_3,
+                        shareId: SHAREABLE_description_IDS.MENTORSHIP_INFRASTRUCTURE,
                         author: {
                         type: "mid",
                         respondentNumber: 21,
