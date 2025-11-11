@@ -164,12 +164,10 @@ export const Folders = () => {
         <div
             ref={containerRef}
             className="relative w-full h-screen-dynamic overflow-hidden bg-blue-custom-1200"
-            style={{ isolation: 'isolate' }}
         >
             <div
                 ref={foldersWrapperRef}
                 className="absolute inset-0 flex items-center justify-center sm:p-4 md:p-8"
-                style={{ isolation: 'isolate' }}
             >
                     {FOLDER_CONFIG.map((config, index) => {
                         const ContentComponent = config.content

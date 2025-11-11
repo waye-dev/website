@@ -67,27 +67,14 @@ export const RecommendationReveal = () => {
         };
       };
 
-      gsap.set(background.current, { backgroundColor: 'rgb(255, 255, 255)' });
-      gsap.set(girlRip.current, { y: 0, x: 0, scale: 1, opacity: 1 });
-      gsap.set(wallLeft.current, { y: 0, opacity: 1 });
-      gsap.set(wallRight.current, { y: 0, opacity: 1 });
-      gsap.set(mountains.current, { y: 0, x: 0, scale: 1, opacity: 1 });
-
-      const isMobile = window.innerWidth < 768;
-
       ScrollTrigger.create({
         id: "recommendation-reveal",
         trigger: container.current,
         start: "top top",
         end: "+=300%",
         pin: true,
-        pinType: "fixed",
-        scrub: isMobile ? 1 : 0.5,
+        scrub: true,
         invalidateOnRefresh: true,
-        fastScrollEnd: true,
-        preventOverlaps: true,
-        anticipatePin: 1,
-        refreshPriority: 1,
         onUpdate: (self) => {
           const progress = self.progress;
           const { distance, girlSpeed, girlXSpeed, wallSpeed, mountainSpeed, mountainXSpeed, girlScale, mountainScale } = getResponsiveValues();
@@ -117,7 +104,7 @@ export const RecommendationReveal = () => {
         },
       });
     },
-    { scope: container, dependencies: [] }
+    { scope: container }
   );
 
   return (
