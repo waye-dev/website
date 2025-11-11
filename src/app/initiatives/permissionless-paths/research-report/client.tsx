@@ -197,13 +197,13 @@ export function ResearchReportClient() {
       <div className='bg-blue-custom-1200'>
         <StrategiesWall />
       </div>
-     
+
       <div className='bg-blue-custom-1200'>
         <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='beyond-financial-sustainability'>
           <BeyondFinancialSustainability />
         </Wrapper>
       </div>
-      <div className='bg-blue-custom-1100 overflow-hidden'>
+      <div className='bg-blue-custom-1100 overflow-hidden relative z-[10]'>
         <RecommendationReveal />
       </div>
 
