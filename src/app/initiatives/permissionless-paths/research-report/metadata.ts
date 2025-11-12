@@ -61,6 +61,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
           width: 1200,
           height: 630,
           alt: content.quote,
+          type: 'image/jpeg',
+          secureUrl: ogImageUrl,
         }
       ],
       type: 'article',
@@ -71,10 +73,6 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
       title: content.quote,
       description: content.description,
       images: [ogImageUrl],
-    },
-    other: {
-      'og:image:secure_url': ogImageUrl,
-      'og:image:type': 'image/jpeg',
     },
   };
 }
