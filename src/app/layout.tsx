@@ -3,6 +3,9 @@ import type { Metadata, Viewport } from "next";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { Work_Sans, Inknut_Antiqua, Josefin_Slab, Inter, Josefin_Sans } from "next/font/google";
+import Script from "next/script";
+import { GA_TRACKING_ID } from "./utils/analytics";
+import { Analytics } from "./components/analytics";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -81,6 +84,23 @@ export default function RootLayout({
       <body
         className={`${workSans.variable} ${inknutAntiqua.variable} ${josefinSlab.variable} ${josefinSans.variable} ${inter.variable} bg-blue-custom-100 font-workSans antialiased`}
       >
+        {GA_TRACKING_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_TRACKING_ID}');
+              `}
+            </Script>
+          </>
+        )}
+        <Analytics />
         <Navbar />
         {children}
         <Footer />
