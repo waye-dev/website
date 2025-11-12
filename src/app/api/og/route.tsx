@@ -17,9 +17,10 @@ export async function GET(request: NextRequest) {
     try {
       const imageBuffer = await readFile(imagePath);
 
-      return new Response(new Uint8Array(imageBuffer), {
+      return new Response(imageBuffer, {
         headers: {
           'Content-Type': 'image/jpeg',
+          'Content-Length': imageBuffer.length.toString(),
           'Cache-Control': 'public, max-age=31536000, immutable',
         },
       });
@@ -29,9 +30,10 @@ export async function GET(request: NextRequest) {
       // Try to serve fallback image
       try {
         const fallbackBuffer = await readFile(fallbackImagePath);
-        return new Response(new Uint8Array(fallbackBuffer), {
+        return new Response(fallbackBuffer, {
           headers: {
             'Content-Type': 'image/jpeg',
+            'Content-Length': fallbackBuffer.length.toString(),
             'Cache-Control': 'public, max-age=3600',
           },
         });
