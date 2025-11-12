@@ -6,6 +6,7 @@ import { Work_Sans, Inknut_Antiqua, Josefin_Slab, Inter, Josefin_Sans } from "ne
 import Script from "next/script";
 import { GA_TRACKING_ID } from "./utils/analytics";
 import { Analytics } from "./components/analytics";
+import { Suspense } from "react";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -100,7 +101,9 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        <Analytics />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         <Navbar />
         {children}
         <Footer />
