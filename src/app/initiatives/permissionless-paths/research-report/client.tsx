@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
@@ -17,12 +17,15 @@ import { Conclusion } from "@/app/components/research-report/conclusion";
 import { FromTyrannyToPermissionlessness } from "@/app/components/research-report/from-tyranny-to-permissionlessness";
 import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
 import { ExecutiveSummary } from "@/app/components/research-report/executive-summary";
+import { trackResearchReportSection, trackScrollDepth } from "@/app/utils/analytics";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function ResearchReportClient() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const searchParams = useSearchParams();
+  const trackedSectionsRef = useRef<Set<string>>(new Set());
+  const trackedScrollDepthsRef = useRef<Set<number>>(new Set());
 
   useEffect(() => {
     ScrollTrigger.config({
@@ -131,6 +134,51 @@ export function ResearchReportClient() {
       return () => clearTimeout(scrollTimeout);
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    // Scroll depth tracking
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      const scrollPercent = ((scrollTop + windowHeight) / documentHeight) * 100;
+
+      const depths = [25, 50, 75, 100];
+      depths.forEach((depth) => {
+        if (scrollPercent >= depth && !trackedScrollDepthsRef.current.has(depth)) {
+          trackedScrollDepthsRef.current.add(depth);
+          trackScrollDepth(depth, window.location.pathname);
+        }
+      });
+    };
+
+    // Section view tracking
+    const sections = document.querySelectorAll('[data-section]');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionName = entry.target.getAttribute('data-section');
+            if (sectionName && !trackedSectionsRef.current.has(sectionName)) {
+              trackedSectionsRef.current.add(sectionName);
+              const order = trackedSectionsRef.current.size;
+              trackResearchReportSection(sectionName, order);
+            }
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    window.addEventListener('scroll', handleScroll);
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   return (
     <main>

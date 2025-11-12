@@ -1,10 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "@/app/components/modal";
 import { RobotsMeta } from "./robots-meta";
 import { submitDonationData } from "./action";
 import { DONATION_DESCRIPTIONS, isValidEmail, PRESET_AMOUNTS } from "@/utils";
+import { 
+  trackDonationModalOpen, 
+  trackDonationModalClose, 
+  trackDonationSubmit,
+  trackDonationSuccess,
+  trackDonationFailure 
+} from "@/app/utils/analytics";
 
 type DonationModalProps = {
   isOpen: boolean;
@@ -23,6 +30,12 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
   const [amount, setAmount] = useState<number | "">(PRESET_AMOUNTS[0]);
   const [isTaxDeductible, setIsTaxDeductible] = useState<"yes" | "no">("no");
   const [isSubmitting, setIsSubmitting] = useState({ bitcoin: false, fiat: false });
+
+  useEffect(() => {
+    if (isOpen) {
+      trackDonationModalOpen();
+    }
+  }, [isOpen]);
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9]/g, "");
@@ -68,6 +81,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
 
     setIsSubmitting({ ...isSubmitting, bitcoin: true });
     setSubmitMessage("");
+    trackDonationSubmit('bitcoin', amount as number);
 
     try {
       // First, create donation record with pending status
@@ -82,7 +96,9 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
       });
 
       if (!donationResult.success) {
-        setSubmitMessage(`Error creating donation record: ${donationResult.error}`);
+        const errorMsg = `Error creating donation record: ${donationResult.error}`;
+        setSubmitMessage(errorMsg);
+        trackDonationFailure('bitcoin', errorMsg);
         return;
       }
 
@@ -102,23 +118,27 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim(),
           taxDeductible: isTaxDeductible,
-          donationId: donationId, // Include donation ID for webhook tracking
+          donationId: donationId,
         }),
       });
 
       const data = await response.json();
 
       if (response.ok && data.success) {
-        // Open BTCPay Server checkout page
+        trackDonationSuccess('bitcoin', amount as number);
         window.location.href = data.donationUrl;
 
         setSubmitMessage("Redirecting to Bitcoin payment page. The donation will be tracked automatically when payment is received.");
         clearModalData();
       } else {
-        setSubmitMessage(`Error: ${data.error || "Failed to create donation"}`);
+        const errorMsg = `Error: ${data.error || "Failed to create donation"}`;
+        setSubmitMessage(errorMsg);
+        trackDonationFailure('bitcoin', errorMsg);
       }
     } catch (error) {
-      setSubmitMessage("An unexpected error occurred. Please try again.");
+      const errorMsg = "An unexpected error occurred. Please try again.";
+      setSubmitMessage(errorMsg);
+      trackDonationFailure('bitcoin', errorMsg);
     } finally {
       setIsSubmitting({ ...isSubmitting, bitcoin: false });
     }
@@ -129,6 +149,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
 
     setIsSubmitting({ ...isSubmitting, fiat: true });
     setSubmitMessage("");
+    trackDonationSubmit('fiat', amount as number);
 
     try {
       // First, create donation record with pending status
@@ -143,7 +164,9 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
       });
 
       if (!donationResult.success) {
-        setSubmitMessage(`Error creating donation record: ${donationResult.error}`);
+        const errorMsg = `Error creating donation record: ${donationResult.error}`;
+        setSubmitMessage(errorMsg);
+        trackDonationFailure('fiat', errorMsg);
         return;
       }
 
@@ -160,25 +183,31 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
           taxDeductible: isTaxDeductible,
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim(),
-          donationId: donationId, // Include donation ID for webhook tracking
+          donationId: donationId,
         }),
       });
 
       const data = await response.json();
 
       if (response.ok && data.success) {
-        // Redirect to Stripe Checkout using the session URL
         if (data.url) {
+          trackDonationSuccess('fiat', amount as number);
           window.location.href = data.url;
         } else {
-          setSubmitMessage("Error: No checkout URL received");
+          const errorMsg = "Error: No checkout URL received";
+          setSubmitMessage(errorMsg);
+          trackDonationFailure('fiat', errorMsg);
         }
       } else {
-        setSubmitMessage(`Error: ${data.error || "Failed to create checkout session"}`);
+        const errorMsg = `Error: ${data.error || "Failed to create checkout session"}`;
+        setSubmitMessage(errorMsg);
+        trackDonationFailure('fiat', errorMsg);
       }
     } catch (error) {
       console.log(error);
-      setSubmitMessage("An unexpected error occurred. Please try again.");
+      const errorMsg = "An unexpected error occurred. Please try again.";
+      setSubmitMessage(errorMsg);
+      trackDonationFailure('fiat', errorMsg);
     } finally {
       setIsSubmitting({ ...isSubmitting, fiat: false });
     }
@@ -192,6 +221,7 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
       <Modal
         isOpen={isOpen}
         onClose={() => {
+          trackDonationModalClose();
           onClose();
           setSubmitMessage("");
         }}

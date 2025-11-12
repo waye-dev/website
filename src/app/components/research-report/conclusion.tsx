@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
+import { event } from "@/app/utils/analytics";
 
 export const Conclusion = () => {
   return (
@@ -30,7 +33,22 @@ export const Conclusion = () => {
         </p>
 
         <p>
-          If this research resonates with you, we invite you to support Waye's work by sharing this report with your networks, donating through <Link href="https://www.waye.dev/" className="underline underline-offset-4">our website</Link>, or joining <Link href="https://www.waye.dev/subscribe" className="underline underline-offset-4">our mailing list</Link> for updates on our programs and research initiatives.
+          If this research resonates with you, we invite you to support Waye's work by sharing this report with your networks, donating through{" "}
+          <Link 
+            href="https://www.waye.dev/" 
+            className="underline underline-offset-4"
+            onClick={() => event({ action: "donation_link_click", category: "Research Report", label: "conclusion_section" })}
+          >
+            our website
+          </Link>, or joining{" "}
+          <Link 
+            href="https://www.waye.dev/subscribe" 
+            className="underline underline-offset-4"
+            onClick={() => event({ action: "subscribe_link_click", category: "Research Report", label: "conclusion_section" })}
+          >
+            our mailing list
+          </Link>{" "}
+          for updates on our programs and research initiatives.
         </p>
       </section>
     </div>
