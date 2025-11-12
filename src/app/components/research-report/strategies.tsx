@@ -21,7 +21,6 @@ export const Strategies = () => {
           {
             id: "13",
             text: "It was a little bit all over the place, because there was no structure — I don't have any meetings, I don't have any sprints or accountability. So some days weren't very productive. Other it might be late night coding, I'd get the inspiration and go to 2, 3am coding. It was very chaotic … It was a bit of a struggle to figure out a more stable pattern, because there's no structure at all.",
-            shareId: SHAREABLE_description_IDS.MOTIVATION_CHALLENGES,
             author: {
               type: "new",
               respondentNumber: 13,
@@ -30,7 +29,6 @@ export const Strategies = () => {
           {
             id: "20",
             text: "It's not super unstructured, but it is still kind of chaotic, because no one's getting really paid, and people are just dropping in and out. So it's a mix of chaos and organized.",
-            shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_2,
             author: {
               type: "expert",
               respondentNumber: 20,
@@ -39,7 +37,6 @@ export const Strategies = () => {
           {
             id: "9",
             text: "I just try to have enough things that if I'm bored or I feel stuck, I can occupy myself with something else, but not too many that I don't abandon something for weeks. But basically I use chaos to keep things interesting.",
-            shareId: SHAREABLE_description_IDS.MOTIVATION_QUOTE_3,
             author: {
               type: "expert",
               respondentNumber: 9,

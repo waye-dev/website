@@ -25,7 +25,7 @@ export const Conclusion = () => {
         <p>
           Our heartfelt thanks to the 26 contributors who shared their experiences,
           insights, and time with us. Their openness and generosity made this work possible, and will inform ongoing efforts to improve sustainability
-          in open-source Bitcoin and related freedom technologies. <SimpleShareButton shareId={SHAREABLE_description_IDS.SUSTAINABLE_PERMISSIONLESSNESS} />
+          in open-source Bitcoin and related freedom technologies.
         </p>
 
         <p>

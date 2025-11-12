@@ -44,7 +44,6 @@ export const JuniorCoreDev = () => {
           {
             id: "3",
             text: "I've been doing the AIR sessions. … I do that every week, so that next week I know exactly what I'm supposed to do, because there's no one telling me what to do.",
-            shareId: SHAREABLE_description_IDS.NO_FRAMEWORK,
             author: {
               type: "new",
               respondentNumber: 3,
@@ -53,7 +52,6 @@ export const JuniorCoreDev = () => {
           {
             id: "14",
             text: "I'm quite wary about open communication and coming out as coming across as unprepared or not as informed or knowledgeable about something. So that really impacted how much I wouldn't ask questions because I felt I should know it, and I think that affected how much I could communicate in the community channel.",
-            shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE,
             author: {
               type: "new",
               respondentNumber: 14,
@@ -62,7 +60,6 @@ export const JuniorCoreDev = () => {
           {
             id: "10",
             text: "I knew one person at the beginning. It's probably one of the biggest reasons why I lasted. You know, I survived last year.",
-            shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_2,
             author: {
               type: "new",
               respondentNumber: 10,

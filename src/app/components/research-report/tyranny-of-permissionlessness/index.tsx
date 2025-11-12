@@ -87,8 +87,8 @@ export const TyrannyOfPermissionlessness = () => {
           </ul>
 
           <p>
-            Below we describe these tensions. Each dimension shows how the very features that attract contributors to the space, mission, openness,
-            autonomy, become the primary causes of unsustainable work patterns. <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES} />
+            Below we describe these tensions.             Each dimension shows how the very features that attract contributors to the space, mission, openness,
+            autonomy, become the primary causes of unsustainable work patterns. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_25} />
           </p>
         </section>
       </Wrapper>

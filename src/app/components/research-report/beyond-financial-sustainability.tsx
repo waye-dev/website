@@ -19,7 +19,7 @@ export const BeyondFinancialSustainability = () => {
 
         <TakeawayCard>
           <p>
-            Despite expressing uncertainty about their roles, contributors are optimistic about the sustainability of Bitcoin and their individual career prospects in the wider ecosystem. Yet, this abundance mindset may mask a critical vulnerability: the prevailing two-year tenure in grant-funded roles quietly drains protocol expertise, as knowledge leaves with each departure and turnover outpaces the accumulation of long-term experience. <SimpleShareButton shareId={SHAREABLE_description_IDS.ECOSYSTEM_REPLACEMENT} />
+            Despite expressing uncertainty about their roles, contributors are optimistic about the sustainability of Bitcoin and their individual career prospects in the wider ecosystem. Yet, this abundance mindset may mask a critical vulnerability: the prevailing two-year tenure in grant-funded roles quietly drains protocol expertise, as knowledge leaves with each departure and turnover outpaces the accumulation of long-term experience. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_54} />
           </p>
         </TakeawayCard>
 
@@ -58,7 +58,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "24",
               text: "I spent a year and a half working on this project and really getting to know it, and then, because I left, they basically had to train a whole new person who has to spend probably similar amount of time to really catch up to speed on how everything works. So that makes me wonder, is it really sustainable?",
-              shareId: SHAREABLE_description_IDS.ECOSYSTEM_REPLACEMENT,
+              shareId: SHAREABLE_description_IDS.QUOTE_54,
               author: {
                 type: "expert",
                 respondentNumber: 24,
@@ -76,7 +76,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "3",
               text: "We need to retain contributors who have had experience with the code base. Only if you're able to sustain new contributors, they will eventually become experienced contributors, and we need experienced contributors for the project sustainability. Otherwise, it's pretty bad, because there's so many intricate stuff in the code base which only experienced contributors see. So if there are no new contributors, there are no experienced contributors.",
-              shareId: SHAREABLE_description_IDS.CONSTANT_TURNOVER,
+              shareId: SHAREABLE_description_IDS.QUOTE_53,
               author: {
                 type: "new",
                 respondentNumber: 3,
@@ -85,7 +85,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "7",
               text: "The project was sustainable before I joined. I believe any project will be sustainable without any individual, anybody can go. So it's more like, how much the project helps me as a person?",
-              shareId: SHAREABLE_description_IDS.INSTITUTIONAL_KNOWLEDGE,
+              shareId: SHAREABLE_description_IDS.QUOTE_53,
               author: {
                 type: "new",
                 respondentNumber: 7,
@@ -118,7 +118,7 @@ export const BeyondFinancialSustainability = () => {
 
         <TakeawayCard>
           <p>
-            The one-size-fits-all grant model fails to recognize the different realities of core infrastructure vs application work. Protocol work needs ongoing funding streams, applications need revenue freedom. Current grant structures constrain both in perpetual dependency, preventing the sustainability they aim to support. <SimpleShareButton shareId={SHAREABLE_description_IDS.ONE_SIZE_FITS_ALL} />
+            The one-size-fits-all grant model fails to recognize the different realities of core infrastructure vs application work. Protocol work needs ongoing funding streams, applications need revenue freedom. Current grant structures constrain both in perpetual dependency, preventing the sustainability they aim to support. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_55} />
           </p>
         </TakeawayCard>
 
@@ -131,7 +131,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "6",
               text: "Right now we have these foundations that are funding our work. But … maybe the more sustainable thing, long term, would be actual business revenue. I might pursue that direction, but it might not be available to everyone. I work on a user-facing product, where I could have paying subscribers, but if you're developing a library, or if you're developing Bitcoin Core, then you basically need sponsors.",
-              shareId: SHAREABLE_description_IDS.YEARLY_RENEWALS,
+              shareId: SHAREABLE_description_IDS.QUOTE_58,
               author: {
                 type: "expert",
                 respondentNumber: 6,
@@ -149,7 +149,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "25",
               text: "I know some projects that have become constricted in their development by the expectations of the people who are giving them the grant. So for example, a grant may say: we will only fund one developer directly … so that then means that you can't expand your team and pay other people to work on that thing. They don't want to, they prefer not to give a grant out to a project. And then also, they would prefer to only give grants out to completely free and open source projects. And then some of the projects I know, they have good ideas for creating for profit revenue streams which could help sustain their projects, but they're scared to do that because they don't want to lose the grants. So there is kind of a skewering of incentives that happen just by grants existing. Not being unappreciative of the grant existing in the first place, but you can almost become beholden to the expectations of the people giving you the grant.",
-              shareId: SHAREABLE_description_IDS.FUNDERS_OPTIMIZE,
+              shareId: SHAREABLE_description_IDS.QUOTE_58,
               author: {
                 type: "expert",
                 respondentNumber: 25,
@@ -218,7 +218,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "13",
               text: "There were a lot of moments of doubt, like, maybe I'm not good enough. And I didn't really know, do people like me? Do they not like me? Do they like the work, not like the work? So that would create burnout sometimes, and it could be hard to get motivated, because I'm not really sure: is this actually successful or not, and if not, how do I improve? And how do I get better? And so that would create a sense of burnout and lack of motivation.",
-              shareId: SHAREABLE_description_IDS.PSYCHOLOGICAL_SUSTAINABILITY,
+              shareId: SHAREABLE_description_IDS.QUOTE_59,
               author: {
                 type: "new",
                 respondentNumber: 13,
@@ -236,7 +236,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "7",
               text: "But [overcoming burnout] that's all on myself. That's all on me to do. I don't think it's dependent on any external body per se.",
-              shareId: SHAREABLE_description_IDS.ONE_SIZE_FITS_ALL,
+              shareId: SHAREABLE_description_IDS.QUOTE_61,
               author: {
                 type: "new",
                 respondentNumber: 7,
@@ -254,7 +254,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "25",
               text: "I think just being aware of burnout, and hearing the term burnout and it being acknowledged as something which happens to people, makes people feel less kind of inadequate or lonely if they go through that process. So it's good for people to speak about it openly.",
-              shareId: SHAREABLE_description_IDS.BURNOUT_EXPECTATION,
+              shareId: SHAREABLE_description_IDS.QUOTE_62,
               author: {
                 type: "expert",
                 respondentNumber: 25,
@@ -272,7 +272,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "23",
               text: "We are trying to solve issues that are getting people in very serious situations. It's a pretty big burden, and being able to talk with someone that understands the urgency, that they don't tell you: \"Oh, why don't you take a few months off,\" you know, they'd understand that they would just make things worse",
-              shareId: SHAREABLE_description_IDS.FREEDOM_FROM_OVERSIGHT,
+              shareId: SHAREABLE_description_IDS.QUOTE_23,
               author: {
                 type: "expert",
                 respondentNumber: 23,
@@ -281,7 +281,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "15",
               text: "You need to create boundaries, and how exactly to create boundaries and stuff like that. But many young kids I see getting into Bitcoin, they're good, smart kids, really motivated, but they are losing it in their head because of all the excitement, all the things that they get to learn. It's all so very intense. You learn so many things simultaneously. You learn about money, you learn about computers, you learn about softwares. So, yeah, it does affect me also, but it used to affect me much, much more. Then I started doing meditation … doing meditation as a medication.",
-              shareId: SHAREABLE_description_IDS.NO_FRAMEWORK,
+              shareId: SHAREABLE_description_IDS.QUOTE_34,
               author: {
                 type: "new",
                 respondentNumber: 15,
@@ -290,7 +290,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "25",
               text: "We have extreme burnout. … in Bitcoin world, people go to the extreme. … I think a lot is about identity. … Then that identity is kind of pegged to the success of the technology, the price, the idea, how people are talking about it. … Then your sense of identity can kind of fluctuate quite heavily.",
-              shareId: SHAREABLE_description_IDS.EXPERT_CARING,
+              shareId: SHAREABLE_description_IDS.QUOTE_18,
               author: {
                 type: "expert",
                 respondentNumber: 25,
@@ -307,7 +307,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "20b",
               text: "I think it's really hard to get someone to admit that they need help. But I would say, maybe, but I don't even know what that would look like.",
-              shareId: SHAREABLE_description_IDS.FUTURE_ORIENTATION,
+              shareId: SHAREABLE_description_IDS.QUOTE_45,
               author: {
                 type: "expert",
                 respondentNumber: 20,
@@ -316,7 +316,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "6",
               text: "Mostly burnout has been related to just going in the wrong direction, and working too much in the wrong direction, and then noticing that, and questioning decisions.",
-              shareId: SHAREABLE_description_IDS.SUSTAINABILITY_PARADOX,
+              shareId: SHAREABLE_description_IDS.QUOTE_15,
               author: {
                 type: "expert",
                 respondentNumber: 6,
@@ -325,7 +325,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "12",
               text: "I think the thing with burnout is that you just have to trust that you'll get through it. … I think the hard part of getting through those particular emotions is just having faith that you're going to want to do it again in the future, and not getting into the bad emotional cycle of feeling like you should be doing something when you don't want to. … I can get over being burned out really quickly, because I give myself the space to let go.",
-              shareId: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ENABLES,
+              shareId: SHAREABLE_description_IDS.QUOTE_23,
               author: {
                 type: "mid",
                 respondentNumber: 12,
@@ -334,7 +334,7 @@ export const BeyondFinancialSustainability = () => {
             {
               id: "5",
               text: "The burnout for me feels to come more from the family side of stuff. Like, I'm always happy to give more to the work stuff, because it's fun for me.",
-              shareId: SHAREABLE_description_IDS.PERMISSIONLESSNESS_ISOLATION,
+              shareId: SHAREABLE_description_IDS.QUOTE_12,
               author: {
                 type: "new",
                 respondentNumber: 5,

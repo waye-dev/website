@@ -33,7 +33,6 @@ export const FolderContentThree = () => {
                     {
                         id: "2",
                         text: "It was very different than working at an app company, where you're writing a lot of lines of code. Whereas in Bitcoin Core, sometimes I talk for three weeks about like a three-line change of code and so you do a lot of technical writing, thinking and technical writing and communication.",
-                        shareId: SHAREABLE_description_IDS.AMORPHOUS_SCOPE,
                         author: {
                         type: "mid",
                         respondentNumber: 2,
@@ -42,7 +41,6 @@ export const FolderContentThree = () => {
                     {
                         id: "4",
                         text: "At the moment … there are better places to enjoy programming than Bitcoin, because the project management is very poor, and it's just a lot of struggle to get work done, to organize, to get review. So if I wanted to do research, I would probably still do something different, something painless.",
-                        shareId: SHAREABLE_description_IDS.AMORPHOUS_SCOPE_QUOTE_2,
                         author: {
                         type: "mid",
                         respondentNumber: 4,
@@ -65,7 +63,6 @@ export const FolderContentThree = () => {
                     {
                         id: "20",
                         text: "It's a struggle even for me, and some of our contributors, the balance between reviewing pull requests from open source contributors who just come along, and also just trying to get your own work done. It's really hard to do those two things at the same time, and you're trying to focus on the work that you're just trying to do. But then again, you want to encourage more people to contribute to the project. … But what you really want is them to join and then become autonomous. To do that, you have to train them. But you're also just like: I don't have time to do that. … So it's this constant battle between balancing your own work and trying to review contributors and help contributors.",
-                        shareId: SHAREABLE_description_IDS.INVISIBILITY_MAINTENANCE,
                         author: {
                         type: "expert",
                         respondentNumber: 20,
@@ -74,7 +71,6 @@ export const FolderContentThree = () => {
                     {
                         id: "18",
                         text: "We had a whole year of this creative process, and it was amazing, but I think right now it's kind of boring, because I'm not creating anymore, I'm just checking that every contributor is implementing. It's boring for me to just check and maintain.",
-                        shareId: SHAREABLE_description_IDS.INVISIBILITY_MAINTENANCE_QUOTE_2,
                         author: {
                         type: "expert",
                         respondentNumber: 18,
@@ -97,7 +93,6 @@ export const FolderContentThree = () => {
                     {
                         id: "2-taxes",
                         text: "Taxes were a shitshow.",
-                        shareId: SHAREABLE_description_IDS.ADMINISTRATIVE_BURDEN,
                         author: {
                         type: "mid",
                         respondentNumber: 2,
@@ -106,7 +101,6 @@ export const FolderContentThree = () => {
                     {
                         id: "21",
                         text: "All the grants are paid in Bitcoin, which is great. I like that. It's a big experiment, see how this works. I am not an accountant. Luckily, I have one that understands Bitcoin, and how that is actually going to work out long term. I'm just sweeping that under the rug, either let the accountant figure it out or I'll figure it out later. That gives me some anxiety. … Like, am I paying more taxes? I really can't stand that side of business.",
-                        shareId: SHAREABLE_description_IDS.ADMINISTRATIVE_BURDEN_QUOTE_2,
                         author: {
                         type: "mid",
                         respondentNumber: 21,
@@ -129,7 +123,6 @@ export const FolderContentThree = () => {
                     {
                         id: "17",
                         text: "I could have gone to a lot more conferences if I had a stable immigration status … Another thing is that I was getting paid entirely in Bitcoin. And so from an immigration point of view, a lot of the destinations required a bank account statement for the last three months. My bank account is empty, so how do I do that?",
-                        shareId: SHAREABLE_description_IDS.LOCATION_BARRIERS,
                         author: {
                         type: "new",
                         respondentNumber: 17,
@@ -138,7 +131,6 @@ export const FolderContentThree = () => {
                     {
                         id: "3",
                         text: "I was applying for grants again and noticed a shift in organizations preferring to only pay in Bitcoin. However I can't legally be paid in Bitcoin for my services according to FEMA laws in my country. So it's been a hassle trying to do both my software development work and also the administrative challenges of receiving funding.",
-                        shareId: SHAREABLE_description_IDS.LOCATION_BARRIERS_QUOTE_2,
                         author: {
                         type: "new",
                         respondentNumber: 3,
@@ -147,7 +139,6 @@ export const FolderContentThree = () => {
                     {
                         id: "10",
                         text: "I don't go to a lot of conferences. Unfortunately, there aren't many Bitcoin conferences where I am currently. … Once I tried to go to Europe, there was the whole visa issue, so I miss a lot of those conferences.",
-                        shareId: SHAREABLE_description_IDS.LOCATION_BARRIERS,
                         author: {
                         type: "new",
                         respondentNumber: 10,

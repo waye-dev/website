@@ -29,21 +29,21 @@ export const ExecutiveSummary = () => {
             <p>
               <strong>
                 This report is the first-ever deep-dive into the working lives of independent developers building censorship-resistant technology and what they need to sustain their work.
-              </strong> Earlier this year, we interviewed 26 independent contributors within the Bitcoin and Nostr ecosystems, where grant funding is critical to ensure freedom from institutional capture. Rather than examining specific projects or funding mechanisms, we focused on the builders themselves: their motivations, work patterns, and the challenges they face navigating open source development.
+              </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_1} /> Earlier this year, we interviewed 26 independent contributors within the Bitcoin and Nostr ecosystems, where grant funding is critical to ensure freedom from institutional capture. Rather than examining specific projects or funding mechanisms, we focused on the builders themselves: their motivations, work patterns, and the challenges they face navigating open source development.
             </p>
 
             <p>
               <strong>
                 Our core finding: the very values and features that attract developers to Bitcoin and Nostr, including freedom, autonomy and permissionless participation, become the source of their greatest challenges.
-              </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.CORE_FINDING} />{" "}
+              </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_2} />{" "}
               We call this the "tyranny of permissionlessness." While these principles enable open innovation and resist capture, without
-              support structures they lead developers to navigate unlimited responsibility alone, leading to burnout and departure. <SimpleShareButton shareId={SHAREABLE_description_IDS.TYRANNY_DEFINITION} />
+              support structures they lead developers to navigate unlimited responsibility alone, leading to burnout and departure.
             </p>
 
             <p>
               <strong>
                 This isn't inevitable. With intentional design, we can maintain permissionless participation while building sustainable work practices.
-              </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.INTENTIONAL_DESIGN} />{" "}
+              </strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_3} />{" "}
               We provide evidence-based, actionable recommendations for funders and ecosystem leaders to better support decentralized development. These include: team-based funding models, extended renewal cycles, administrative support infrastructure, mental health resources, and structured transition pathways for experienced contributors.
             </p>
           </section>

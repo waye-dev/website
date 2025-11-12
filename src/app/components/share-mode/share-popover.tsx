@@ -16,7 +16,7 @@ export const SharePopover: React.FC = () => {
   };
 
   const handleNostrError = () => {
-    openNostrModal(createShareableUrl(), selectedElement?.content || "");
+    openNostrModal(createShareableUrl(), selectedElement?.quote || "");
   };
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export const SharePopover: React.FC = () => {
               <div className="flex-shrink-0">
                 <img
                   src={selectedElement.imageData}
-                  alt={selectedElement.title || "Share image"}
+                  alt={selectedElement.quote || "Share image"}
                   className="w-16 h-16 object-cover rounded-lg"
                 />
               </div>
@@ -66,7 +66,7 @@ export const SharePopover: React.FC = () => {
 
             <div className="flex-1">
               <div className="text-base font-light text-white font-josefinSans break-words">
-                "{selectedElement.content.length > 50 ? selectedElement.content.substring(0, 72) + "..." : selectedElement.content}"
+                "{selectedElement.quote && selectedElement.quote.length > 50 ? selectedElement.quote.substring(0, 72) + "..." : selectedElement.quote || ""}"
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ export const SharePopover: React.FC = () => {
                 <div className="flex-shrink-0">
                   <img
                     src={selectedElement.imageData}
-                    alt={selectedElement.title || "Share image"}
+                    alt={selectedElement.quote || "Share image"}
                     className="w-16 h-16 object-cover rounded-lg"
                   />
                 </div>
@@ -93,7 +93,7 @@ export const SharePopover: React.FC = () => {
 
               <div className="pr-3 py-2 rounded-b-lg flex-1 w-full">
                 <div className="text-base font-light text-white font-josefinSans flex-1 w-full break-words">
-                  "{selectedElement.content.length > 50 ? selectedElement.content.substring(0, 72) + "..." : selectedElement.content}"
+                  "{selectedElement.quote && selectedElement.quote.length > 50 ? selectedElement.quote.substring(0, 72) + "..." : selectedElement.quote || ""}"
                 </div>
               </div>
             </section>

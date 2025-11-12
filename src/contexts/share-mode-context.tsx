@@ -5,7 +5,7 @@ import { NostrModal } from "@/app/components/share-mode/nostr-modal";
 
 export interface ShareableElement {
   id: string;
-  title?: string;
+  quote?: string;
   content: string;
   element?: HTMLElement;
   type: "text" | "chart" | "section" | "quote";
