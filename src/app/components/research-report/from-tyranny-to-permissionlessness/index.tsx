@@ -239,7 +239,6 @@ export function FromTyrannyToPermissionlessness() {
                     {
                       id: "quote-13",
                       text: "One thing I've been doing is mentoring other people getting into open source. There's a developer that I mentored for over a year, and I still mentored and helped him get a grant, and then I just took on a new person, and I'm really trying to give these people what I didn't get, and take all these experiences I had and really help them feel supported, and create a space where they can be a beginner and not have the answers, and that they don't have to feel like they're constantly having to prove themselves and impress somebody. And so that's been really gratifying to be able to kind of support other people and but in general, I think Bitcoin open source is an amazing thing, and is and something I continue to be inspired by, and I love working with the open source community and connecting with them.",
-                      shareId: SHAREABLE_description_IDS.COLLABORATING_ALONE_QUOTE_2,
                       author: {
                         type: "new",
                         respondentNumber: 13,
@@ -248,7 +247,6 @@ export function FromTyrannyToPermissionlessness() {
                     {
                       id: "quote-20",
                       text: "I feel like that might be a huge missing aspect of a lot of open source teams, this idea of an offsite or just getting together in person. It's kind of hard to get people around from around the world to travel for an open source project since they're not getting paid for, but when it does happen, it's actually really productive, and I would hope we do more of that.",
-                      shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_3,
                       author: {
                         type: "expert",
                         respondentNumber: 20,
@@ -257,7 +255,6 @@ export function FromTyrannyToPermissionlessness() {
                     {
                       id: "quote-25",
                       text: "Just trying to slip in more mindfulness does make sense. So, a lot of projects and a lot of developers, they'll feel the need to travel around a lot, and go to a lot of conferences and and that can take its toll. There's usually a lot of alcohol involved, and it's quite high energy and then you feel bad because you're actually neglecting the project. So if you can have that space be more nurturing, and have some mindfulness. I think there is probably, maybe even subconscious, an active move to provide … satellite events at some of these conferences. Like, there's the Bitcoin runners, and in the event, I'll go for a jog around the local city or something, and there's a Bitcoin walkers society as well. And maybe something which you could push is, for some of these conferences, some mindfulness exercises or mindfulness workshops where there could be some meditation, or some guided meditation, or some yoga or something like that, I think that could be great for people.",
-                      shareId: SHAREABLE_description_IDS.IRL_GATHERINGS_QUOTE_2,
                       author: {
                         type: "expert",
                         respondentNumber: 25,

@@ -45,21 +45,22 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   }
 
   // Derive the OG image URL from the content's order number
+  // Add version parameter for cache busting when needed (e.g., v=2)
   const ogImageUrl = `${baseUrl}/api/og?id=${content.order}`;
 
   return {
     metadataBase: new URL(baseUrl),
-    title: content.title,
+    title: content.quote,
     description: content.description,
     openGraph: {
-      title: content.title,
+      title: content.quote,
       description: content.description,
       images: [
         {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: content.title,
+          alt: content.quote,
         }
       ],
       type: 'article',
@@ -67,7 +68,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     },
     twitter: {
       card: 'summary_large_image',
-      title: content.title,
+      title: content.quote,
       description: content.description,
       images: [ogImageUrl],
     },

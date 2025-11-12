@@ -61,7 +61,7 @@ export const OurResearch = () => {
             <p>This pilot study addresses a foundational question:</p>
             <p className='font-inknutAntiqua text-xl'>
               How do full-time, grant-funded, institutionally unaffiliated developers in the Bitcoin and Bitcoin-adjacent (i.e. Nostr) ecosystem
-              work and what do they need to sustainably perform their role?
+              work and what do they need to sustainably perform their role? <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_10} />
             </p>
           </article>
         </section>
@@ -78,7 +78,7 @@ export const OurResearch = () => {
 
       <p>
         Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
-        least 12 months. Through semi-structured interviews, we explored: <SimpleShareButton shareId={SHAREABLE_description_IDS.STUDY_STATS} />
+        least 12 months. Through semi-structured interviews, we explored:
       </p>
 
       <section className='grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10'>

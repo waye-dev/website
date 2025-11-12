@@ -76,7 +76,7 @@ export const CoreFindingsTheTyrany = () => {
       </div>
 
       <p ref={textToPinRef} className='text-lg'>
-        We call this <strong>"the tyranny of permissionlessness."</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.PERMISSIONLESSNESS_ISOLATION} />
+        We call this <strong>"the tyranny of permissionlessness."</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_22} />
       </p>
     </div>
 

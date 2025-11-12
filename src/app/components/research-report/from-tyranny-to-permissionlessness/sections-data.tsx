@@ -16,7 +16,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <p className="mb-4">
-        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away (admin burden, isolation, grant anxiety). <strong>This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome</strong>. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors. <SimpleShareButton shareId={SHAREABLE_description_IDS.NOT_INEVITABLE} />
+        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away (admin burden, isolation, grant anxiety). <strong>This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome</strong>. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_63} /> While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
 
         </p>
       </div>
@@ -27,7 +27,7 @@ export const sections: Section[] = [
     id: "01",
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed to funders and ecosystem leaders, recognizing that sustainable development requires coordinated action. <strong>The core principle: sustain entry motivations by making everything else easier</strong>. <SimpleShareButton shareId={SHAREABLE_description_IDS.KEEPING_OPEN_PARTICIPATION} /></p>
+        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_64} /> They are directed to funders and ecosystem leaders, recognizing that sustainable development requires coordinated action. <strong>The core principle: sustain entry motivations by making everything else easier</strong>. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_67} /></p>
       </div>
     ),
     animation: 'innerOnly',
@@ -72,9 +72,9 @@ export const sections: Section[] = [
         <div className="w-full">
           <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
           <List>
-            <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs. <SimpleShareButton shareId={SHAREABLE_description_IDS.SHARED_ADMIN} /></ListItem>
+            <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs.</ListItem>
             <ListItem>Some community-led initiatives already exist to support admin work for Bitcoin developers: the <Link href="https://bitcoindefense.org/" target="_blank" className="underline">Bitcoin Legal Defense Fund</Link> offers legal support, while <Link href="https://satoshipacioli.com/satoshi-pacioli-accounting-announces-free-tax-services-for-open-source-bitcoin-developers/" target="_blank" className="underline">Satoshi Pacioli Accounting</Link> provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
-            <ListItem>Co-working space stipends: combat isolation through physical presence. <SimpleShareButton shareId={SHAREABLE_description_IDS.COWORKING_STIPEND} /></ListItem>
+            <ListItem>Co-working space stipends: combat isolation through physical presence.</ListItem>
             <ListItem>Mentorship matching: connect new contributors to experienced developers to ease onboarding pains.</ListItem>
             <ListItem>Learn from the <Link href="https://lfx.linuxfoundation.org/tools/mentorship/" target="_blank" className="underline">Linux Foundation's LFX Mentorship</Link> program, which structures mentorship programs connecting experienced maintainers with new contributors.</ListItem>
           </List>
@@ -91,7 +91,7 @@ export const sections: Section[] = [
           <ListItem>Mental health resources: normalize and support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
           <ListItem>While community-led initiatives such as <Link href="https://opensource.guide/maintaining-balance-for-open-source-maintainers/" target="_blank" className="underline">Open Source Guides</Link> provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
           <ListItem>Self-management toolkits: provide productivity resources, time management support, especially for newer contributors.</ListItem>
-            <ListItem>Make invisible work visible and valued: explicitly recognize and compensate non-coding work (research, maintenance, mentorship, documentation, management) in grant structures and community recognition systems. <SimpleShareButton shareId={SHAREABLE_description_IDS.MAKE_INVISIBLE_VISIBLE} /></ListItem>
+            <ListItem>Make invisible work visible and valued: explicitly recognize and compensate non-coding work (research, maintenance, mentorship, documentation, management) in grant structures and community recognition systems. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_70} /></ListItem>
         </List>
       </div>
     ),
@@ -105,7 +105,7 @@ export const sections: Section[] = [
           <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
           <List>
             <ListItem>Partner with universities: create structured pathways and talent pipeline into the ecosystem.</ListItem>
-            <ListItem>Fund team offsites and developers retreats: provide financial and organizational support for smaller IRL events beyond conferences. <SimpleShareButton shareId={SHAREABLE_description_IDS.FUND_OFFSITES} /></ListItem>
+            <ListItem>Fund team offsites and developers retreats: provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
             <ListItem>Document institutional knowledge: capture expertise before developers leave.</ListItem>
             <ListItem>Support community initiatives aimed toward mindfulness and wellbeing: preventive approaches including yoga retreats, mindfulness programs at conferences, wellbeing workshops.</ListItem>
           </List>
