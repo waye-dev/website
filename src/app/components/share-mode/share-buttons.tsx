@@ -38,7 +38,12 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
   };
 
   const handleTwitterShare = () => {
-    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}`;
+    // Replace the generic URL in the description with the specific share URL
+    const descriptionWithShareUrl = selectedElement.content.replace(
+      /https:\/\/www\.waye\.dev\/initiatives\/permissionless-paths\/research-report/,
+      shareUrl
+    );
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(descriptionWithShareUrl)}`;
     window.open(twitterUrl, "_blank", "width=550,height=420");
     setSharedOption("twitter");
     setTimeout(() => setSharedOption(null), 2000);
@@ -64,7 +69,11 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
           await nostr.publish(highlightEvent);
         }
 
-        const quoteContent = `"${selectedElement.content}"\n\n${shareUrl}`;
+        // Replace the generic URL in the description with the specific share URL
+        const descriptionWithShareUrl = selectedElement.content.replace(
+          /https:\/\/www\.waye\.dev\/initiatives\/permissionless-paths\/research-report/,
+          shareUrl
+        );
 
         const quoteEvent = await nostr.signEvent({
           kind: 1,
@@ -72,7 +81,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
           tags: [
             ["r", shareUrl, "mention"],
           ],
-          content: quoteContent,
+          content: descriptionWithShareUrl,
         });
 
         if (nostr.publish) {
@@ -92,7 +101,12 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
 
 
   const handleCopyLink = async () => {
-    const success = await copyToClipboard(shareUrl);
+    // Replace the generic URL in the description with the specific share URL
+    const textToCopy = selectedElement.content.replace(
+      /https:\/\/www\.waye\.dev\/initiatives\/permissionless-paths\/research-report/,
+      shareUrl
+    );
+    const success = await copyToClipboard(textToCopy);
     if (success) {
       setCopiedOption("copy");
       setTimeout(() => setCopiedOption(null), 2000);
