@@ -2,9 +2,9 @@
 
 import { ExperienceParadoxesData } from "./types";
 import { useExperienceScroll } from "./use-experience-scroll";
-import { ExperienceHeader } from "./experience-header";
 import { ExperienceTimeline } from "./experience-timeline";
 import { ExperienceCardsGrid } from "./experience-cards-grid";
+import { SectionTitleDescription } from "../../section-title-description";
 
 export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData }) => {
   const {
@@ -32,8 +32,10 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
   const mobileCurrentLevel = data[mobileStage];
 
   return (
+    <section className="flex flex-col gap-12">
+     
+    
     <div ref={containerRef} className="h-screen flex flex-col justify-center items-center px-4 relative z-10" suppressHydrationWarning>
-      <ExperienceHeader title="Experience the paradoxes" />
 
       <ExperienceTimeline
         lineRef={lineRef}
@@ -70,5 +72,6 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
         />
       </div>
     </div>
+    </section>
   );
 };
