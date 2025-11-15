@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+export const GA_TRACKING_ID = "G-X8E1Q4N30H";
 
 export const pageview = (url: string) => {
   if (!GA_TRACKING_ID || !window.gtag) return;
