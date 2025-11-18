@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import shareableContentData from '@/app/data/shareable-content';
 import { useShareMode, ShareableElement } from '@/contexts/share-mode-context';
+import { event } from '@/app/utils/analytics';
 
 interface SimpleShareButtonProps {
   shareId: string;
@@ -63,12 +64,20 @@ export const SimpleShareButton: React.FC<SimpleShareButtonProps> = ({
     };
   }, []);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-    const button = event.currentTarget;
+  const handleClick = (clickEvent: React.MouseEvent<HTMLButtonElement>) => {
+    clickEvent.stopPropagation();
+    const button = clickEvent.currentTarget;
     const rect = button.getBoundingClientRect();
 
-    // Generate the image URL from the content's order number
+    event({
+      action: "share_button_click",
+      category: "Share",
+      label: shareId,
+      value: content.order,
+      share_id: shareId,
+      share_order: content.order,
+    });
+
     const imageUrl = `/api/og?id=${content.order}`;
 
     const shareableElement: ShareableElement = {
