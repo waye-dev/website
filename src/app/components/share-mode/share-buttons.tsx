@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { ShareableElement } from "@/contexts/share-mode-context";
+import { event } from "@/app/utils/analytics";
+import shareableContentData from "@/app/data/shareable-content";
 
 interface ShareButtonsProps {
   selectedElement: ShareableElement;
@@ -12,6 +14,11 @@ interface ShareButtonsProps {
 export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, shareUrl, onNostrError }) => {
   const [copiedOption, setCopiedOption] = useState<string | null>(null);
   const [sharedOption, setSharedOption] = useState<string | null>(null);
+
+  const getShareOrder = (): number | undefined => {
+    const content = shareableContentData[selectedElement.id];
+    return content?.order;
+  };
 
   const copyToClipboard = async (text: string): Promise<boolean> => {
     try {
@@ -38,7 +45,16 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
   };
 
   const handleTwitterShare = () => {
-    // Replace the generic URL in the description with the specific share URL
+    const order = getShareOrder();
+    event({
+      action: "share_twitter",
+      category: "Share",
+      label: selectedElement.id,
+      value: order,
+      share_id: selectedElement.id,
+      share_order: order,
+    });
+
     const descriptionWithShareUrl = selectedElement.content.replace(
       /https:\/\/www\.waye\.dev\/initiatives\/permissionless-paths\/research-report/,
       shareUrl
@@ -50,6 +66,16 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
   };
 
   const handleNostrShare = async () => {
+    const order = getShareOrder();
+    event({
+      action: "share_nostr",
+      category: "Share",
+      label: selectedElement.id,
+      value: order,
+      share_id: selectedElement.id,
+      share_order: order,
+    });
+
     try {
       if (typeof window !== "undefined" && (window as any).nostr) {
         const nostr = (window as any).nostr;
@@ -101,7 +127,16 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ selectedElement, sha
 
 
   const handleCopyLink = async () => {
-    // Replace the generic URL in the description with the specific share URL
+    const order = getShareOrder();
+    event({
+      action: "share_copy_link",
+      category: "Share",
+      label: selectedElement.id,
+      value: order,
+      share_id: selectedElement.id,
+      share_order: order,
+    });
+
     const textToCopy = selectedElement.content.replace(
       /https:\/\/www\.waye\.dev\/initiatives\/permissionless-paths\/research-report/,
       shareUrl
