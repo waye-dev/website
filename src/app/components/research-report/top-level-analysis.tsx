@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { useMediaQuery } from "@/hooks/window-dimensions";
+"use client";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
 import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
