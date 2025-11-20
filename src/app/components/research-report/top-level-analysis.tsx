@@ -61,7 +61,7 @@ export const TopLevelAnalysis = () => {
 
       <div className="flex flex-col gap-8 items-start">
         <SectionTitleDescription title="Role identity varies with project focus and experience:" inline>
-          Core devs see themselves more as contributors, while app developers as maintainers. More experienced devs embrace the hacker identity, while newcomers see their roles as more professional – especially those working on core infrastructure.
+          Core devs see themselves more as contributors, while app developers as maintainers. More experienced devs embrace the hacker identity, while newcomers see their roles as more professional - especially those working on core infrastructure.
         </SectionTitleDescription>
 
         <SectionTitleDescription title="Work motivation evolution:" inline>
