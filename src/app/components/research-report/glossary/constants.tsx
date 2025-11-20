@@ -9,7 +9,7 @@ export const sectionSelectors = {
   6: '[data-section="recommendations"]',
   7: '[data-section="toward-sustainable-permissionlessness"]',
 } as const;
-
+//
 export const GLOSSARY_TEXT_SECTIONS = [
   {
     title: "STUDY OVERVIEW",
