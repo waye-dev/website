@@ -223,9 +223,9 @@ export function ResearchReportClient() {
             <StudyOverviewSection />
           </Wrapper>
 
-          {/* <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='top-level-analysis'>
+          <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='top-level-analysis'>
             <TopLevelAnalysis />
-          </Wrapper> */}
+          </Wrapper>
         </div>
       </div>
       <div className='bg-gray-custom-400 relative z-[11]'>
