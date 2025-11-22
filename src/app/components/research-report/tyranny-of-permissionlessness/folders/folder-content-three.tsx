@@ -54,7 +54,7 @@ export const FolderContentThree = () => {
                     The invisibility of maintenance and management work
                 </span>
                 <p>
-                    The most crucial work for project sustainability, reviewing pull requests, training new contributors, maintaining existing code. This crucial work is also the least visible and recognized. 5/26 contributors reported struggling with the transition from creative development to these maintenance and management tasks. This shift is particularly challenging for experienced developers who must give up hands-on building and innovating to perform essential but unrecognized work. Contributors find themselves spending more time checking others' implementations than creating, leading to frustration and boredom among those who thrive on innovation. Yet this key maintenance work remains largely unacknowledged by funders and the community.
+                The most crucial work for project sustainability – reviewing pull requests, training new contributors, maintaining existing code – is also the least visible and recognized 5/26 contributors reported struggling with the transition from creative development to these maintenance and management tasks. This shift is particularly challenging for experienced developers who must give up hands-on building and innovating to perform essential but unrecognized work. Contributors find themselves spending more time checking others' implementations than creating, leading to frustration and boredom among those who thrive on innovation. Yet this key maintenance work remains largely unacknowledged by funders and the community.
                 </p>
             </div>
 

@@ -15,7 +15,7 @@ export const FolderContentTwo = () => {
                 <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
-                OSS promises collaborative development, peer learning, and community support. In reality, contributors work primarily in isolation. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_32} /> — They are physically alone in remote areas to reduce costs, professionally uncertain without feedback, and struggleing to maintain motivation amidst the uncertainty of their work environment. The infrastructure for human connection exists mainly through conferences (considered "taxing" by some) rather than sustained collaboration, leaving developers to self-manage everything from career progression to daily motivation.
+                OSS promises collaborative development, peer learning, and community support. In reality, contributors work primarily in isolation. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_32} /> They are physically alone in remote areas to reduce costs, professionally uncertain without feedback, and struggleing to maintain motivation amidst the uncertainty of their work environment. The infrastructure for human connection exists mainly through conferences (considered "taxing" by some) rather than sustained collaboration, leaving developers to self-manage everything from career progression to daily motivation.
             </p>
 
             <div className="text-[16px] space-y-[1.5rem]">
@@ -23,7 +23,7 @@ export const FolderContentTwo = () => {
                     Excited to collaborate, but working in isolation
                 </span>
                 <p>
-                    Contributors are drawn by the prospect of collaborating with top engineers they respect, yet end up working mostly in isolation. 8/26 participants reported feeling isolated working alone and— for two of them, this isolation was the primary reason for leaving their grant-funded positions. Several participants reported living in small towns or rural areas to reduce living expenses; however, that further adds to the sense of isolation as developers don't have occasions to meet up in person. For those that can (7/26 participants in our sample), joining a coworking space seems to improve the day-to-day routine.
+                    Contributors are drawn by the prospect of collaborating with top engineers they respect, yet end up working mostly in isolation. 8/26 participants reported feeling isolated working alone and for two of them, this isolation was the primary reason for leaving their grant-funded positions. Several participants reported living in small towns or rural areas to reduce living expenses; however, that further adds to the sense of isolation as developers don't have occasions to meet up in person. For those that can (7/26 participants in our sample), joining a coworking space seems to improve the day-to-day routine.
                 </p>
             </div>
 
@@ -61,7 +61,7 @@ export const FolderContentTwo = () => {
                     Growing without guidance
                 </span>
                 <p>
-                    Contributors join the ecosystem to grow professionally through peer learning, but struggle with a chronic lack of consistent feedback. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_33} /> Around 40% of participants reported struggling with feedback, — either in receiving it, offering it, or both. This is particularly acute for newer developers: they need feedback most but feel least entitled to ask for it, assuming others are too busy or that they haven't "earned" the right to it. This creates a persistent sense of uncertainty that weighs on developers' day-to-day work, — making it harder to assess progress, build confidence, or know when to ask for help. Despite only 3 interviewees having access to mentoring, the majority recognized its vital importance for navigation and retention.
+                    Contributors join the ecosystem to grow professionally through peer learning, but struggle with a chronic lack of consistent feedback. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_33} /> Around 40% of participants reported struggling with feedback, either in receiving it, offering it, or both. This is particularly acute for newer developers: they need feedback most but feel least entitled to ask for it, assuming others are too busy or that they haven't "earned" the right to it. This creates a persistent sense of uncertainty that weighs on developers' day-to-day work, making it harder to assess progress, build confidence, or know when to ask for help. Despite only 3 interviewees having access to mentoring, the majority recognized its vital importance for navigation and retention.
                 </p>
             </div>
 
@@ -115,7 +115,7 @@ export const FolderContentTwo = () => {
                     No clear career pathways beyond cycling through grants
                 </span>
                 <p>
-                    Unlike traditional employment with defined progression (junior → senior → lead), grant-funded OSS offers no structured advancement. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_34} /> Contributors are excited to deepen their expertise or expand their project scope, but there's no framework for evolving responsibilities or recognition. The implicit "career path" often means either perpetual grant renewals, transitioning to a company, or starting one's own project. However,  — but these transitions happen by necessity rather than design, leaving mid-career developers particularly unclear about their professional future.
+                    Unlike traditional employment with defined progression (junior → senior → lead), grant-funded OSS offers no structured advancement. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_34} /> Contributors are excited to deepen their expertise or expand their project scope, but there's no framework for evolving responsibilities or recognition. The implicit "career path" often means either perpetual grant renewals, transitioning to a company, or starting one's own project. However, but these transitions happen by necessity rather than design, leaving mid-career developers particularly unclear about their professional future.
                 </p>
             </div>
 

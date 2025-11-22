@@ -33,13 +33,13 @@ const FOLDER_CONFIG = [
         content: FolderContentTwo,
     },
     {
-        label: "Financial Factors",
+        label: "Human Factors",
         fillColor: "#d9d9d9",
         backgroundColor: "bg-[#d9d9d9]",
         content: FolderContentThree,
     },
     {
-        label: "Practical Factors",
+        label: "Financial Factors",
         fillColor: "#c4def8",
         backgroundColor: "bg-[#c4def8]",
         content: FolderContentFour,
