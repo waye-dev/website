@@ -13,21 +13,26 @@ interface QuoteCardsProps {
 }
 
 const isDarkBackground = (element: HTMLElement | null): boolean => {
-  if (!element) return false
+  if (!element || !(element instanceof Element)) return false
 
   let currentElement: Element | null = element
 
   while (currentElement && currentElement !== document.documentElement) {
-    const computedBg = window.getComputedStyle(currentElement).backgroundColor
+    try {
+      const computedBg = window.getComputedStyle(currentElement).backgroundColor
 
-    if (computedBg && computedBg !== 'transparent' && !computedBg.includes('rgba(0, 0, 0, 0)')) {
-      const match = computedBg.match(/rgba?\((\d+),?\s*(\d+),?\s*(\d+)/)
-      if (match) {
-        const [_, r, g, b] = match.map(Number)
-        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-        return luminance < 0.5
+      if (computedBg && computedBg !== 'transparent' && !computedBg.includes('rgba(0, 0, 0, 0)')) {
+        const match = computedBg.match(/rgba?\((\d+),?\s*(\d+),?\s*(\d+)/)
+        if (match) {
+          const [_, r, g, b] = match.map(Number)
+          const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+          return luminance < 0.5
+        }
+        break
       }
-      break
+    } catch (error) {
+      console.error('Error getting computed style:', error)
+      return false
     }
 
     currentElement = currentElement.parentElement
@@ -225,16 +230,23 @@ export function QuoteCards({
 
       {quotes.length > 1 && (
         <div
-          className="flex items-center pt-4 space-x-2 text-sm opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 cursor-pointer"
+          className="flex items-center pt-4 space-x-2 text-sm opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 cursor-pointer"
           onClick={switchToNext}
-          style={{ color: tapToSwitchTextColor }}
+          style={{
+            color: tapToSwitchTextColor,
+            textShadow: isDarkBg
+              ? '0 1px 2px rgba(0, 0, 0, 0.5), 0 0 8px rgba(255, 255, 255, 0.1)'
+              : '0 1px 2px rgba(255, 255, 255, 0.8), 0 0 8px rgba(0, 0, 0, 0.05)',
+          }}
         >
           <img
             src="/svgs/research/quotes/cursor-switch.svg"
             alt="arrow"
             className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
             style={{
-              filter: tapToSwitchTextColor === "#FFFFFF" ? "invert(1)" : "invert(0)"
+              filter: tapToSwitchTextColor === "#FFFFFF"
+                ? "invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3))"
+                : "invert(0) drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5))"
             }}
           />
           <span className="font-inknut-antiqua" style={{ fontFamily: "var(--font-inknut-antiqua)" }}>

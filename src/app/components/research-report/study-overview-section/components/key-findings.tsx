@@ -10,7 +10,7 @@ export const KeyFindings = () => {
 
         <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
           <p>
-            Our analysis revealed a central paradox: <strong>the very values and processes that attract developers to the Bitcoin and Nostr ecosystems become the source of their most persistent challenges.</strong> Without structural support, <strong>permissionlessness, the core principle of Bitcoin,can create isolation, burnout, and unsustainable work patterns when applied to human systems.</strong>
+            Our analysis revealed a central paradox: <strong>the very values and processes that attract developers to the Bitcoin and Nostr ecosystems become the source of their most persistent challenges.</strong> Without structural support, <strong>permissionlessness, the core principle of Bitcoin, can create isolation, burnout, and unsustainable work patterns when applied to human systems.</strong>
           </p>
         </article>
       </section>
@@ -20,11 +20,11 @@ export const KeyFindings = () => {
           We focused on Bitcoin and Nostr as critical infrastructure within the freedom tech ecosystem, a growing field in OSS building
           censorship-resistant, decentralized infrastructure for financial sovereignty and free speech. The ecosystem's emphasis on decentralized
           development and grant funding ensures that this critical software remains free from gatekeeping and institutional lock-in. Without
-          adequate support structures, however, this total autonomy leads developers to navigate increasingly unsustainable working conditions.
+          adequate support structures, however, this total autonomy – leads developers to navigate increasingly unsustainable working conditions.
           Given the foundational role OSS plays in advancing digital freedom, addressing these systemic challenges is key to supporting the people that build and maintain these critical tools.
         </p>
         <p>
-          While our findings emerge from the freedom tech ecosystem,where the stakes of maintaining decentralization and censorship resistance
+          While our findings emerge from the freedom tech ecosystem, where the stakes of maintaining decentralization and censorship resistance
           are particularly high, they apply to any open source ecosystem seeking to support full-time, independent contributors and decentralized
           development. This study lays the groundwork for a shared understanding of how these developers work and what they need, providing
           insights that can inform the development of tools, funding programs, and support structures.

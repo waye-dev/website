@@ -18,7 +18,7 @@ export const FolderContentOne = () => {
                 Together with enthusiasm for the technology, the ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_26} />
             </p>
 
-            <div className="text-[16px] space-y-[1.5rem]">
+            <div className="text-[16px] space-y-[1rem] pt-[1rem]">
                 <span className="inline-block font-bold uppercase">
                     Yes, people are "in for the tech" but also for freedom
                 </span>
@@ -56,7 +56,7 @@ export const FolderContentOne = () => {
                 ]}
             />
 
-            <div className="text-[16px] space-y-[1.5rem]">
+            <div className="text-[16px] space-y-[1rem]">
                 <span className="inline-block font-bold uppercase">
                     Permissionlessness attracts, then overwhelms
                 </span>
@@ -102,12 +102,12 @@ export const FolderContentOne = () => {
                 ]}
             />
 
-            <div className="text-[16px] space-y-[1.5rem]">
+            <div className="text-[16px] space-y-[1rem]">
                 <span className="inline-block font-bold uppercase">
                     Experience enables, then exhausts
                 </span>
                 <p>
-                    As contributors gain experience, they develop deeper clarity about Bitcoin's humanitarian mission, — but not about sustainable work practices. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_30} /> Instead of learning healthier routines, experienced contributors adapt to cycles of intense work and burnout, driven by the urgency of building critical freedom infrastructure. Over half of participants report experiencing burnout at least once in their professional life, with 3 citing it as a primary reason for leaving their grant-funded position. Yet it's senior developers who normalize it most: for them, burnout is "the normal state of affairs." The sacrificial ethos of OSS, compounded by freedom tech's humanitarian stakes, transforms exhaustion from exception to expectation.
+                    As contributors gain experience, they develop deeper clarity about Bitcoin's humanitarian mission, but not about sustainable work practices. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_30} /> Instead of learning healthier routines, experienced contributors adapt to cycles of intense work and burnout, driven by the urgency of building critical freedom infrastructure. Over half of participants report experiencing burnout at least once in their professional life, with 3 citing it as a primary reason for leaving their grant-funded position. Yet it's senior developers who normalize it most: for them, burnout is "the normal state of affairs." The sacrificial ethos of OSS, compounded by freedom tech's humanitarian stakes, transforms exhaustion from exception to expectation.
                 </p>
             </div>
 
@@ -148,12 +148,12 @@ export const FolderContentOne = () => {
                 ]}
             />
 
-            <div className="text-[16px] space-y-[1.5rem]">
+            <div className="text-[16px] space-y-[1rem]">
                 <span className="inline-block font-bold uppercase">
                     Cultural frictions unsettle commitment
                 </span>
                 <p>
-                    A small but notable group of contributors (4/26) reported cultural tensions with the wider Bitcoin community, — citing a lack of critical reflection, ideological rigidity, and a preference for hype over substance as the main sources of friction. Some described the culture as "cult-like" or toxic, where performative enthusiasm overshadows technical work. In a few cases, developers reported distancing themselves from the community as a coping strategy. Despite these challenges, contributors expressed continued commitment to Bitcoin as a technical and political project, while navigating the community on their own terms.
+                    A small but notable group of contributors (4/26) reported cultural tensions with the wider Bitcoin community, citing a lack of critical reflection, ideological rigidity, and a preference for hype over substance as the main sources of friction. Some described the culture as "cult-like" or toxic, where performative enthusiasm overshadows technical work. In a few cases, developers reported distancing themselves from the community as a coping strategy. Despite these challenges, contributors expressed continued commitment to Bitcoin as a technical and political project, while navigating the community on their own terms.
                 </p>
             </div>
 

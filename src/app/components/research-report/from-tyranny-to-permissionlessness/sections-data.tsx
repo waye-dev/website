@@ -49,12 +49,10 @@ export const sections: Section[] = [
           <p className="uppercase font-bold mb-4">Restructure funding models</p>
           <List>
             <ListItem>
-              <strong>Fund teams, not just individuals:</strong> introduce team-oriented grants to support application layer developers. 
-              <List className="ml-6 mt-2">
-                <ListItem>
-                  Learn from <Link href="https://www.opentech.fund/funds/free-and-open-source-software-sustainability-fund/" target="_blank" className="underline">The FOSS Sustainability Fund</Link> which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.
-                </ListItem>
-              </List>
+              <strong>Fund teams, not just individuals:</strong> introduce team-oriented grants to support application layer developers.
+            </ListItem>
+            <ListItem>
+              Learn from <Link href="https://www.opentech.fund/funds/free-and-open-source-software-sustainability-fund/" target="_blank" className="underline">The FOSS Sustainability Fund</Link> which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.
             </ListItem>
             <ListItem><strong>Extend renewal cycles after year 1:</strong> reduce the grant-writing burden for proven contributors. </ListItem>
             <ListItem><strong>Create revenue friendly grants:</strong> encourage profitability in grant-funded applications, based on OSS principles, use licensing cleverly to avoid corporate capture. </ListItem>
@@ -72,11 +70,12 @@ export const sections: Section[] = [
         <div className="w-full">
           <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
           <List>
-            <ListItem>Facilitate admin support: facilitate shared services for taxes, healthcare, legal needs.</ListItem>
+            <ListItem><strong>Facilitate admin support:</strong> facilitate shared services for taxes, healthcare, legal needs.</ListItem>
             <ListItem>Some community-led initiatives already exist to support admin work for Bitcoin developers: the <Link href="https://bitcoindefense.org/" target="_blank" className="underline">Bitcoin Legal Defense Fund</Link> offers legal support, while <Link href="https://satoshipacioli.com/satoshi-pacioli-accounting-announces-free-tax-services-for-open-source-bitcoin-developers/" target="_blank" className="underline">Satoshi Pacioli Accounting</Link> provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
-            <ListItem>Co-working space stipends: combat isolation through physical presence.</ListItem>
-            <ListItem>Mentorship matching: connect new contributors to experienced developers to ease onboarding pains.</ListItem>
-            <ListItem>Learn from the <Link href="https://lfx.linuxfoundation.org/tools/mentorship/" target="_blank" className="underline">Linux Foundation's LFX Mentorship</Link> program, which structures mentorship programs connecting experienced maintainers with new contributors.</ListItem>
+            <ListItem><strong>Provide coworking space stipends:</strong> combat isolation through physical presence.</ListItem>
+            <ListItem><strong>Fund mental health programs and toolkits tailored to this niche:</strong> support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
+            <ListItem>While community-led initiatives such as <Link href="https://opensource.guide/maintaining-balance-for-open-source-maintainers/" target="_blank" className="underline">Open Source Guides</Link> provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
+            <ListItem><strong>Compensate non-coding work:</strong> explicitly recognize and fund non-coding work (research, maintenance, mentorship, documentation, management) in grant structures, not just feature development.</ListItem>
           </List>
         </div>
       </div>
@@ -87,27 +86,11 @@ export const sections: Section[] = [
     id: "05",
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <List>
-          <ListItem>Mental health resources: normalize and support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
-          <ListItem>While community-led initiatives such as <Link href="https://opensource.guide/maintaining-balance-for-open-source-maintainers/" target="_blank" className="underline">Open Source Guides</Link> provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
-          <ListItem>Self-management toolkits: provide productivity resources, time management support, especially for newer contributors.</ListItem>
-            <ListItem>Make invisible work visible and valued: explicitly recognize and compensate non-coding work (research, maintenance, mentorship, documentation, management) in grant structures and community recognition systems. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_70} /></ListItem>
-        </List>
-      </div>
-    ),
-    animation: 'innerOnly',
-  },
-  {
-    id: "06",
-    textContent: (
-      <div className="w-full min-h-[200px] flex items-center text-base">
-        <div className="w-full">
+        <div>
           <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
           <List>
-            <ListItem>Partner with universities: create structured pathways and talent pipeline into the ecosystem.</ListItem>
-            <ListItem>Fund team offsites and developers retreats: provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
-            <ListItem>Document institutional knowledge: capture expertise before developers leave.</ListItem>
-            <ListItem>Support community initiatives aimed toward mindfulness and wellbeing: preventive approaches including yoga retreats, mindfulness programs at conferences, wellbeing workshops.</ListItem>
+            <ListItem><strong>Partner with universities:</strong> create structured pathways and talent pipeline into the ecosystem.</ListItem>
+            <ListItem><strong>Fund team offsites and developers retreats:</strong> provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
           </List>
         </div>
       </div>
@@ -115,7 +98,44 @@ export const sections: Section[] = [
     animation: 'framesOnly',
   },
   {
+    id: "06",
+    textContent: (
+      <div className="max-w-3xl min-h-[200px] flex items-center text-base">
+        <div>
+          <p className="uppercase font-bold mb-4">Foster peer support and knowledge sharing</p>
+          <List>
+            <ListItem>
+              <strong>Create routes for mentorship matching:</strong> connect new contributors to experienced developers to ease onboarding pains.
+            </ListItem>
+            <ListItem>
+              Learn from the <Link href="https://lfx.linuxfoundation.org/tools/mentorship/" target="_blank" className="underline">Linux Foundation's LFX Mentorship</Link> program, which structures mentorship programs connecting experienced maintainers with new contributors.
+            </ListItem>
+            <ListItem><strong>Develop self-management toolkits:</strong> provide productivity resources, time management support, especially for newer contributors.</ListItem>
+            <ListItem><strong>Document institutional knowledge:</strong> capture expertise before developers leave.</ListItem>
+            <ListItem><strong>Make invisible work visible and valued:</strong> recognize and celebrate non-coding contributions through community recognition systems, public acknowledgment, and cultural validation.</ListItem>
+          </List>
+        </div>
+      </div>
+    ),
+    animation: 'innerOnly',
+  },
+  {
     id: "07",
+    textContent: (
+      <div className="w-full min-h-[200px] flex items-center text-base">
+        <div className="w-full">
+          <p className="uppercase font-bold mb-4">Cultivate community wellbeing</p>
+          <List>
+            <ListItem><strong>Integrate mental health support:</strong> normalize psychological wellbeing through accessible resources, integrate mental health discussions into community spaces, and develop toolkits that address the unique stressors of decentralized development.</ListItem>
+            <ListItem><strong>Support offsites, retreats, and mindfulness initiatives:</strong> organize and facilitate smaller IRL events beyond major conferences, including developer retreats, yoga retreats, mindfulness programs at conferences, and wellbeing workshops that build peer support networks and combat isolation.</ListItem>
+          </List>
+        </div>
+      </div>
+    ),
+    animation: 'framesOnly',
+  },
+  {
+    id: "08",
     textContent: (
       <div className="max-w-6xl">
         <p className="font-bold mb-6 text-center">Developers' ideas</p>
@@ -136,7 +156,7 @@ export const sections: Section[] = [
 
           <div className="p-4 rounded-lg">
             <p className="text-sm italic mb-3">
-              "One thing I've been doing is mentoring other people getting into open source. There's a developer that I mentored for over a year, and I still mentored and helped him get a grant, and then I just took on a new person, and I'm really trying to give these people what I didn't get, and take all these experiences I had and really help them feel supported, and create a space where they can be a beginner and not have the answers, and that they don't have to feel like they're constantly having to prove themselves and impress somebody. And so that's been really gratifying to be able to kind of support other people and but in general, I think Bitcoin open source is an amazing thing, and is and something I continue to be inspired by, and I love working with the open source community and connecting with them."
+              "One thing I've been doing is mentoring other people getting into open source. There's a developer that I mentored for over a year, and I still mentored and helped him get a grant, and then I just took on a new person, and I'm really trying to give these people what I didn't get, and take all these experiences I had and really help them feel supported, and create a space where they can be a beginner and not have the answers, and that they don't have to feel like they're constantly having to prove themselves and impress somebody. And so that's been really gratifying to be able to kind of support other people and in general, I think Bitcoin open source is an amazing thing, and is something I continue to be inspired by, and I love working with the open source community and connecting with them."
             </p>
             <p className="text-xs text-gray-600 font-semibold">— Respondent #13 New contributor</p>
           </div>
