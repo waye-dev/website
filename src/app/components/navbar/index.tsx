@@ -7,32 +7,65 @@ import { NAV_LINKS } from "@/app/data";
 import React, { useState } from "react";
 import Wrapper from "@/app/components/wrapper";
 import { trackDonationClick } from "@/app/utils/analytics";
+import { usePathname } from "next/navigation";
+import { ReportShareButton } from "./report-share-button";
 
 const DonationModal = dynamic(() => import("@/app/components/donation-modal"), { ssr: false });
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDonationOpen, setIsDonationOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isResearchReportPage = pathname?.includes('/research-report');
 
   return (
-    <nav
-      className={`sticky top-0 flex flex-col items-center justify-between py-4 ${
-        isOpen ? "pb-0" : ""
-    } bg-blue-custom-100 text-gray-custom-100 z-50`}
-      // OLD VERSION (commented for future reference):
-      // className={`sticky top-0 flex flex-col items-center justify-between py-4 md:py-5 ${
-      //   isOpen ? "pb-0" : "pb-[16px]"
-      // } bg-blue-custom-100 text-gray-custom-100 border-b-[1.5px] border-gray-custom-300 z-50`}
+    <div
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        isolation: 'isolate',
+        willChange: 'transform',
+        transform: 'translate3d(0, 0, 0)',
+        WebkitTransform: 'translate3d(0, 0, 0)',
+        minHeight: 'fit-content',
+      }}
     >
+      <nav
+        className={`flex flex-col items-center justify-between py-4 ${
+          isOpen ? "pb-0" : ""
+      } bg-blue-custom-100 text-gray-custom-100`}
+        style={{
+          transform: 'translate3d(0, 0, 0)',
+          WebkitTransform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          contain: 'layout style paint',
+          opacity: 0.9999,
+          WebkitFontSmoothing: 'antialiased',
+          position: 'relative',
+          zIndex: 1,
+        }}
+        // OLD VERSION (commented for future reference):
+        // className={`sticky top-0 flex flex-col items-center justify-between py-4 md:py-5 ${
+        //   isOpen ? "pb-0" : "pb-[16px]"
+        // } bg-blue-custom-100 text-gray-custom-100 border-b-[1.5px] border-gray-custom-300 z-50`}
+      >
       <Wrapper>
-        <div className='flex items-center justify-between w-full'>
-          <Link href='/' className='flex items-center'>
-            <Image 
-              src='/images/waye-temp-logo-p-500.png' 
-              alt='Waye Logo' 
-              width={100} 
-              height={28} 
-              priority 
+        <div className='flex items-center justify-between w-full' style={{ contain: 'layout' }}>
+          <Link href='/' className='flex items-center' style={{ contain: 'layout paint' }}>
+            <Image
+              src='/images/waye-temp-logo-p-500.png'
+              alt='Waye Logo'
+              width={100}
+              height={28}
+              priority
+              style={{
+                width: '100px',
+                height: '28px',
+                display: 'block',
+              }}
             />
             {/* OLD VERSION (commented for future reference):
             <Image src='/images/waye-temp-logo-p-500.png' alt='Waye Logo' width={133} height={34.31} className='h-[34px] w-[133px]' priority />
@@ -47,7 +80,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className='hidden md:flex items-center space-x-8'>
+          <div className='hidden md:flex items-center space-x-4'>
+            {isResearchReportPage && (
+              <ReportShareButton
+                className='rounded-full bg-transparent border border-gray-custom-100 text-md leading-[160%] font-medium py-1.5 px-6 text-gray-custom-100 text-nowrap hover:bg-gray-custom-100/10 transition-colors'
+              />
+            )}
             <button
               onClick={() => {
                 trackDonationClick('navbar');
@@ -62,7 +100,13 @@ const Navbar = () => {
           </div>
 
           <div className='items-center gap-4 flex md:hidden'>
-            <div className='flex md:hidden items-center space-x-8'>
+            <div className='flex md:hidden items-center space-x-3'>
+              {isResearchReportPage && (
+                <ReportShareButton
+                  isMobile={true}
+                  mobileClassName='rounded-full bg-transparent border border-gray-custom-100 text-md leading-[160%] font-medium py-[10px] px-[14px] text-gray-custom-100 text-nowrap'
+                />
+              )}
               <button
                 onClick={() => {
                   trackDonationClick('mobile_menu');
@@ -101,6 +145,7 @@ const Navbar = () => {
       </div>
       <DonationModal isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />
     </nav>
+    </div>
   );
 };
 

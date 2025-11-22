@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Wrapper from "@/app/components/wrapper";
 import { StudyOverviewSection } from "@/app/components/research-report/study-overview-section";
-import { GLOSSARY_TEXT_SECTIONS, GlossaryChart, GlossarySection } from "@/app/components/research-report/glossary";
+import { Glossary } from "@/app/components/research-report/glossary";
 import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
 import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
 import { Strategies } from "@/app/components/research-report/strategies";
@@ -22,7 +22,6 @@ import { trackResearchReportSection, trackScrollDepth } from "@/app/utils/analyt
 gsap.registerPlugin(ScrollTrigger);
 
 export function ResearchReportClient() {
-  const [activeId, setActiveId] = useState<number | null>(null);
   const searchParams = useSearchParams();
   const trackedSectionsRef = useRef<Set<string>>(new Set());
   const trackedScrollDepthsRef = useRef<Set<number>>(new Set());
@@ -41,20 +40,34 @@ export function ResearchReportClient() {
 
     let resizeTimer: NodeJS.Timeout;
     let lastHeight = window.visualViewport?.height || window.innerHeight;
-    let scrollPos = 0;
+    let isUserScrolling = false;
+    let scrollTimeout: NodeJS.Timeout;
+
+    // Track when user is actively scrolling
+    const handleScroll = () => {
+      isUserScrolling = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isUserScrolling = false;
+      }, 100);
+    };
 
     const handleVisualViewportResize = () => {
+      // Don't interfere if user is actively scrolling
+      if (isUserScrolling) {
+        lastHeight = window.visualViewport?.height || window.innerHeight;
+        return;
+      }
+
       const currentHeight = window.visualViewport?.height || window.innerHeight;
       const heightDiff = Math.abs(currentHeight - lastHeight);
 
-      if (heightDiff < 150 && heightDiff > 0) {
-        scrollPos = window.scrollY;
-        
+      // Only handle keyboard/input field resize (large height changes)
+      // Ignore address bar show/hide (small height changes during scroll)
+      if (heightDiff > 150) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-          if (Math.abs(window.scrollY - scrollPos) > 100) {
-            window.scrollTo(0, scrollPos);
-          }
+          ScrollTrigger.refresh();
           lastHeight = currentHeight;
         }, 150);
       } else {
@@ -62,12 +75,15 @@ export function ResearchReportClient() {
       }
     };
 
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.visualViewport?.addEventListener('resize', handleVisualViewportResize);
 
     return () => {
       ScrollTrigger.normalizeScroll(false);
+      window.removeEventListener('scroll', handleScroll);
       window.visualViewport?.removeEventListener('resize', handleVisualViewportResize);
       clearTimeout(resizeTimer);
+      clearTimeout(scrollTimeout);
     };
   }, []);
 
@@ -186,37 +202,8 @@ export function ResearchReportClient() {
         <ExecutiveSummary />
 
         <Wrapper className='py-24'>
-        <div className='flex flex-col lg:flex-row w-full gap-16'>
-          <section className='flex-1 relative'>
-            <div className='flex flex-col gap-6 lg:pt-[70dvh] pb-[85px]'>
-              {GLOSSARY_TEXT_SECTIONS.map((section, index) => {
-                const itemId = index + 1;
-                return (
-                  <GlossarySection
-                    key={index}
-                    title={section.title}
-                    index={itemId}
-                    summary={section.summary}
-                    onInViewChange={(id, inView) => {
-                      if (inView) {
-                        setActiveId(id);
-                      } else {
-                        setActiveId((prev) => (prev === id ? null : prev));
-                      }
-                    }}
-                  />
-                );
-              })}
-            </div>
-          </section>
-
-          <div className='hidden lg:block lg:sticky top-0 h-screen-dynamic'>
-            <div className='w-full h-full flex items-center'>
-              <GlossaryChart activeId={activeId} />
-            </div>
-          </div>
-        </div>
-      </Wrapper>
+          <Glossary />
+        </Wrapper>
 
         <div className='flex flex-col gap-16'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='study-overview'>
