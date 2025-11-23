@@ -53,7 +53,6 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         // Use shuffled index to determine target
         const shuffledIndex = shuffledIndices[index];
         const targetRef = shuffledIndex < darkCircleCount ? targetRef1 : targetRef2;
-        const isGoingToLightCircle = shuffledIndex >= darkCircleCount;
         const targetRect = targetRef.current!.getBoundingClientRect();
         const dotRect = dot.getBoundingClientRect();
 
@@ -69,7 +68,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         const finalY = targetCenterY - dotCenterY;
         const scale = 3.5;
 
-        const bgColor = isGoingToLightCircle ? "#C4DEF9" : "#1B1F35";
+        const bgColor = "#C4DEF9";
 
         gsap.set(dot, { transformOrigin: "center center" });
         tl.to(
@@ -101,9 +100,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
           0.8
         );
 
-        const isGoingToLeftTarget = !isGoingToLightCircle;
-
-        if (isGoingToLeftTarget && !shadowAppliedToLeftTarget) {
+        if (!shadowAppliedToLeftTarget) {
           tl.to(
             dot,
             {
@@ -114,8 +111,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
             0.95
           );
           shadowAppliedToLeftTarget = true;
-        } else if (isGoingToLightCircle && !shadowAppliedToRightTarget) {
-          // Apply shadow to first dot going to right target
+        } else if (!shadowAppliedToRightTarget) {
           tl.to(
             dot,
             {

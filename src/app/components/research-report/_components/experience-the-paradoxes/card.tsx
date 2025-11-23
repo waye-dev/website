@@ -14,7 +14,7 @@ export const Card = ({ title, subtitle, image, alt, currentStage = 'new' }: Card
   return (
     <>
       <div
-        className="hidden md:block bg-white rounded-xl p-6 transition-all duration-500 ease-out h-[22rem] w-72 relative"
+        className="hidden md:block bg-white rounded-xl p-6 transition-all duration-500 ease-out h-[22rem] w-56 md:w-64 lg:w-72 relative"
         style={{
           boxShadow: `5px 6px 17px ${avatarColor}39`
         }}
