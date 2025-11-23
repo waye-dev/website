@@ -52,15 +52,15 @@ export const useGlossaryScroll = () => {
       id: "glossary-scroll-main",
       trigger: containerRef.current,
       start: "top top",
-      end: `+=${TOTAL_PARTS * 100}vh`, // 100vh per part
-      scrub: 1,
+      end: `+=${TOTAL_PARTS * 400}vh`, // 150vh per part - slower, less sensitive scroll
+      scrub: 2, // Higher scrub = smoother, slower animation
       pin: true,
       pinSpacing: true,
       anticipatePin: 1,
       invalidateOnRefresh: true,
       snap: {
         snapTo: 1 / (TOTAL_PARTS - 1), // Snap to each part
-        duration: { min: 0.5, max: 1 },
+        duration: { min: 0.6, max: 1.2 }, // Longer snap duration for smoother feel
         ease: "power2.inOut"
       },
       onEnter: () => {
