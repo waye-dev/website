@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Wrapper from "@/app/components/wrapper";
 import { StudyOverviewSection } from "@/app/components/research-report/study-overview-section";
-import { Glossary } from "@/app/components/research-report/glossary";
 import { TopLevelAnalysis } from "@/app/components/research-report/top-level-analysis";
 import { TyrannyOfPermissionlessness } from "@/app/components/research-report/tyranny-of-permissionlessness";
 import { Strategies } from "@/app/components/research-report/strategies";
@@ -18,6 +17,7 @@ import { FromTyrannyToPermissionlessness } from "@/app/components/research-repor
 import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
 import { ExecutiveSummary } from "@/app/components/research-report/executive-summary";
 import { trackResearchReportSection, trackScrollDepth } from "@/app/utils/analytics";
+import { BookStack } from "@/app/components/research-report/glossary/_components/book-stack";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -202,7 +202,7 @@ export function ResearchReportClient() {
         <ExecutiveSummary />
 
         <Wrapper className='py-24'>
-          <Glossary />
+          <BookStack activePart={1} onBookClick={(partId: number) => {}} />
         </Wrapper>
 
         <div className='flex flex-col gap-16'>

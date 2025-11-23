@@ -69,8 +69,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
         const finalY = targetCenterY - dotCenterY;
         const scale = 3.5;
 
-        const isDark = index < darkCircleCount;
-        const bgColor = isDark ? "#1B1F35" : "#C4DEF9";
+        const bgColor = isGoingToLightCircle ? "#C4DEF9" : "#1B1F35";
 
         gsap.set(dot, { transformOrigin: "center center" });
         tl.to(
@@ -179,7 +178,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
           ))}
         </section>
 
-        <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[12px]'>
+        <ul className='list-disc pl-5 md:pl-8 flex flex-col gap-[12px] text-lg'>
           <li>Core protocol development dominates in the Bitcoin ecosystem.</li>
           <li>
             Application work (payments, messaging, hardware) is evenly distributed between the Bitcoin and Nostr ecosystems. This mirrors the

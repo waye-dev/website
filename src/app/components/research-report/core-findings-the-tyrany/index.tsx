@@ -61,9 +61,10 @@ export const CoreFindingsTheTyrany = () => {
     <div className='flex flex-col gap-12 px-12 lg:px-56 pb-12'>
       <div ref={textToFadeRef} className='flex flex-col gap-12'>
         <div className='flex flex-col gap-4'>
-          <p className='font-inknutAntiqua text-xl text-center'>Core findings: </p>
-          <h5 className='text-xl md:text-2xl lg:text-4xl leading-[120%] font-inknutAntiqua text-center'>
-            The tyranny of permissionlessness
+          <p className='font-inknutAntiqua text-xl text-center hidden sm:block'>Core findings: </p>
+          <h5 className='text-2xl sm:text-4xl leading-[120%] font-inknutAntiqua text-center'>
+           <span className='block sm:hidden'>Core findings: The tyranny of permissionlessness</span>
+           <span className='hidden sm:block'>The tyranny of permissionlessness</span>
           </h5>
         </div>
 

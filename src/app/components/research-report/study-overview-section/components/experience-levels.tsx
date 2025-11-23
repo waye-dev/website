@@ -36,10 +36,10 @@ export const ExperienceLevels = () => {
               <Image src={level.image} alt={level.title} width={level.width} height={level.height} />
             </div>
 
-            <section>
+            <div className='text-center sm:text-left px-4 sm:px-0'>
               <p className='text-lg font-bold'>{level.title}</p>
               <p className='text-base'>{level.description}</p>
-            </section>
+            </div>
           </div>
         ))}
       </section>

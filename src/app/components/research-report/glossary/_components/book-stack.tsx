@@ -29,7 +29,10 @@ export const BookStack: React.FC<BookStackProps> = ({ activePart, onBookClick })
     }
   }, []);
 
-  const estimatedScreenHeight = screenHeight * 0.75;
+  const estimatedScreenHeight = screenHeight * 0.7;
+
+  const isMobile = screenHeight < 768;
+  const mobileMultiplier = isMobile ? 0.5 : 1;
 
   return (
     <div className="flex flex-row items-end gap-3 justify-center">
@@ -37,7 +40,7 @@ export const BookStack: React.FC<BookStackProps> = ({ activePart, onBookClick })
         const isActive = part.id === activePart;
 
         const heightMultiplier = part.id === 5 ? 1.0 : part.id === 3 || part.id === 6 || part.id === 7 ? 0.9 : part.id === 2 || part.id === 4 ? 0.75 : 0.6;
-        const height = isClient ? estimatedScreenHeight * heightMultiplier : 450;
+        const height = isClient ? estimatedScreenHeight * heightMultiplier * mobileMultiplier : 450;
 
         const widthMultiplier = part.id === 5 || part.id === 6 || part.id === 7 ? 2.5 : part.id === 2 || part.id === 4 ? 1.25 : 0.75;
         const width = Math.floor(12 * widthMultiplier);
@@ -57,7 +60,7 @@ export const BookStack: React.FC<BookStackProps> = ({ activePart, onBookClick })
               willChange: "transform",
             }}
           >
-            <h1
+            <h2
               className="font-inknutAntiqua text-white text-xl [writing-mode:vertical-rl] rotate-180 whitespace-nowrap"
               style={{
                 fontSize: `${estimatedScreenHeight * 0.025}px`,
@@ -66,7 +69,7 @@ export const BookStack: React.FC<BookStackProps> = ({ activePart, onBookClick })
               }}
             >
               Part {part.id}: {part.title}
-            </h1>
+            </h2>
           </div>
         );
       })}

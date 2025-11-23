@@ -4,7 +4,6 @@ import { ExperienceParadoxesData } from "./types";
 import { useExperienceScroll } from "./use-experience-scroll";
 import { ExperienceTimeline } from "./experience-timeline";
 import { ExperienceCardsGrid } from "./experience-cards-grid";
-import { SectionTitleDescription } from "../../section-title-description";
 
 export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData }) => {
   const {
@@ -61,7 +60,7 @@ export const ExperienceParadoxes = ({ data }: { data: ExperienceParadoxesData })
         />
       </div>
 
-      <div className="md:hidden block absolute left-1/2 -translate-x-1/4 top-1/2 -translate-y-1/2 w-3/5 pt-56">
+      <div className="md:hidden block absolute left-1/2 -translate-x-1/4 top-1/3 -translate-y-1/2 w-3/5 pt-56">
         <ExperienceCardsGrid
           cards={mobileCurrentLevel.cards}
           previousCards={previousLevel?.cards}

@@ -55,41 +55,39 @@ export const OurResearch = () => {
 
       <section className='flex flex-col gap-12 sm:pl-16'>
         <section className='flex md:flex-row flex-col md:gap-24 gap-8'>
-          <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
-
           <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
             <p>This pilot study addresses a foundational question:</p>
-            <p className='font-inknutAntiqua text-xl'>
+            <p className='font-inknutAntiqua text-md'>
               How do full-time, grant-funded, institutionally unaffiliated developers in the Bitcoin and Bitcoin-adjacent (i.e. Nostr) ecosystem
               work and what do they need to sustainably perform their role? <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_10} />
             </p>
           </article>
         </section>
-
-        <section className='flex flex-row gap-2 md:gap-4 justify-between'>
-          {researchOverviewNumbers.map((number) => (
-            <div key={number.description} className='flex flex-col gap-1 md:gap-2 items-center'>
-              <p className='font-inknutAntiqua text-xl md:text-4xl lg:text-4xl font-bold'>{number.number}</p>
-              <p className='font-inknutAntiqua text-sm md:text-3xl text-center'>{number.description}</p>
-            </div>
-          ))}
-        </section>
-      </section>
+        <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
 
       <p>
         Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
         least 12 months. Through semi-structured interviews, we explored:
       </p>
 
+      <section className='flex flex-col sm:flex-row gap-4 justify-between'>
+          {researchOverviewNumbers.map((number) => (
+            <div key={number.description} className='flex flex-col gap-1 md:gap-2 items-center'>
+              <p className='font-inknutAntiqua text-4xl font-bold'>{number.number}</p>
+              <p className='font-inknutAntiqua text-3xl text-center'>{number.description}</p>
+            </div>
+          ))}
+        </section>
+      </section>
+
       <section className='grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10'>
         {researchOverviewNumbersIcons.map((icon) => (
-          <div key={icon.description} className='flex flex-row items-start gap-4'>
-            <Image src={icon.icon} alt={icon.alt} width={128} height={142} />
-
-            <section className='flex flex-col gap-2'>
+          <div key={icon.description} className='flex flex-row items-start gap-2 sm:gap-4'>
+            <Image src={icon.icon} alt={icon.alt} width={128} height={142} className="w-20 h-auto md:w-32 md:h-auto" />
+            <div className='flex flex-col gap-2'>
               <p className='text-lg font-bold'>{icon.title}</p>
               <p className='text-base'>{icon.description}</p>
-            </section>
+            </div>
           </div>
         ))}
       </section>
