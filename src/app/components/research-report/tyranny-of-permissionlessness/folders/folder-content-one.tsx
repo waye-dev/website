@@ -7,7 +7,7 @@ import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 export const FolderContentOne = () => {
     return (
         <div className="pb-[80px] sm:pb-[150px]">
-            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
+            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold pb-6 sm:pb-0">
                 Free from authority, free to burn out
             </h2>
 

@@ -29,31 +29,34 @@ export const BookStack: React.FC<BookStackProps> = ({ activePart, onBookClick })
     }
   }, []);
 
-  const estimatedScreenHeight = screenHeight * 0.7;
+  // Mobile detection using window width (lg breakpoint = 1024px)
+  const isMobile = isClient && window.innerWidth < 1024;
 
-  const isMobile = screenHeight < 768;
-  const mobileMultiplier = isMobile ? 0.5 : 1;
+  // Different base height for mobile vs desktop
+  const baseHeight = isMobile ? screenHeight * 0.27 : screenHeight * 0.7;
 
   return (
-    <div className="flex flex-row items-end gap-3 justify-center">
+    <div className="flex flex-row items-end gap-2 justify-center my-14">
       {GLOSSARY_PARTS.map((part) => {
         const isActive = part.id === activePart;
 
         const heightMultiplier = part.id === 5 ? 1.0 : part.id === 3 || part.id === 6 || part.id === 7 ? 0.9 : part.id === 2 || part.id === 4 ? 0.75 : 0.6;
-        const height = isClient ? estimatedScreenHeight * heightMultiplier * mobileMultiplier : 450;
+        const height = isClient ? baseHeight * heightMultiplier : 450;
 
         const widthMultiplier = part.id === 5 || part.id === 6 || part.id === 7 ? 2.5 : part.id === 2 || part.id === 4 ? 1.25 : 0.75;
-        const width = Math.floor(12 * widthMultiplier);
+        // Mobile: much narrower widths
+        const baseWidthMultiplier = isMobile ? 8 : 12;
+        const width = Math.floor(baseWidthMultiplier * widthMultiplier);
 
         return (
           <div
             key={part.id}
             onClick={() => onBookClick(part.id)}
-            className="bg-blue-custom-900 rounded-[5px] p-6 flex justify-center items-end cursor-pointer"
+            className={`bg-blue-custom-900 rounded-[5px] flex justify-center items-end cursor-pointer ${isMobile ? 'p-2' : 'p-6'}`}
             style={{
               height: `${height}px`,
               width: `${width}%`,
-              transform: isActive ? "translate3d(0, -60px, 0)" : "translate3d(0, 0, 0)",
+              transform: isActive ? "translate3d(0, -30px, 0)" : "translate3d(0, 0, 0)",
               transition: "transform 0.4s ease-out",
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
@@ -63,7 +66,7 @@ export const BookStack: React.FC<BookStackProps> = ({ activePart, onBookClick })
             <h2
               className="font-inknutAntiqua text-white text-xl [writing-mode:vertical-rl] rotate-180 whitespace-nowrap"
               style={{
-                fontSize: `${estimatedScreenHeight * 0.025}px`,
+                fontSize: isMobile ? `${baseHeight * 0.030}px` : `${baseHeight * 0.025}px`,
                 WebkitTransform: "translateZ(0)",
                 transform: "translateZ(0)",
               }}

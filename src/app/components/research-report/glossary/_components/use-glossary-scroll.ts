@@ -9,10 +9,13 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 // Calculate which part should be active based on scroll progress
 const getPartFromProgress = (progress: number): number => {
   if (progress <= 0) return 1;
-  if (progress >= 1) return TOTAL_PARTS;
+  // Show Part 7 earlier (at 85% progress) and hold it for the remaining scroll
+  if (progress >= 0.85) return TOTAL_PARTS;
 
   // Divide scroll into equal parts with slight overlap for smooth transitions
-  const partIndex = Math.floor(progress * TOTAL_PARTS);
+  // Map 0-0.85 progress to parts 1-6
+  const adjustedProgress = progress / 0.85;
+  const partIndex = Math.floor(adjustedProgress * (TOTAL_PARTS - 1));
   return Math.min(Math.max(partIndex + 1, 1), TOTAL_PARTS);
 };
 

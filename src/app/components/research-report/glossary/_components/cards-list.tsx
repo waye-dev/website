@@ -22,11 +22,25 @@ export const CardsList: React.FC<CardsListProps> = ({ activePart, progress, onCa
 
     // Calculate cumulative offset to center the target card
     let offsetY = 0;
-    for (let i = 0; i < targetCardIndex; i++) {
-      if (cardRefs.current[i]) {
-        const cardHeight = cardRefs.current[i]!.offsetHeight;
-        const gap = 48; // mb-12 = 3rem = 48px
-        offsetY -= (cardHeight + gap);
+    const isMobile = window.innerWidth < 640; // sm breakpoint
+    const gap = isMobile ? 24 : 48; // mb-6 on mobile (1.5rem), mb-12 on desktop (3rem)
+
+    // For the last card (Part 7), calculate offset to center it but don't scroll beyond
+    if (activePart === TOTAL_PARTS) {
+      // Calculate total height of all cards up to the second-to-last
+      for (let i = 0; i < targetCardIndex; i++) {
+        if (cardRefs.current[i]) {
+          const cardHeight = cardRefs.current[i]!.offsetHeight;
+          offsetY -= (cardHeight + gap);
+        }
+      }
+    } else {
+      // Normal centering for cards 1-6
+      for (let i = 0; i < targetCardIndex; i++) {
+        if (cardRefs.current[i]) {
+          const cardHeight = cardRefs.current[i]!.offsetHeight;
+          offsetY -= (cardHeight + gap);
+        }
       }
     }
 
@@ -40,7 +54,7 @@ export const CardsList: React.FC<CardsListProps> = ({ activePart, progress, onCa
   }, [activePart]);
 
   return (
-    <div className="w-full flex-shrink-0">
+    <div className="w-full" style={{ minHeight: '200px' }}>
       <div ref={cardsContainerRef} className="w-full" style={{ willChange: 'transform' }}>
         {GLOSSARY_PARTS.map((part, index) => {
           const isActive = activePart === part.id;
@@ -52,7 +66,7 @@ export const CardsList: React.FC<CardsListProps> = ({ activePart, progress, onCa
               onClick={() => onCardClick(part.id)}
               data-card-id={part.id}
               className={
-                `flex flex-col w-full gap-2.5 py-[1.875rem] px-[0.9375rem] pr-[1.875rem] rounded-[10px] transition-all duration-500 ease-out cursor-pointer mb-12 ${
+                `flex flex-col w-full gap-2 sm:gap-2.5 py-3 sm:py-[1.875rem] px-3 sm:px-[0.9375rem] pr-3 sm:pr-[1.875rem] rounded-[10px] transition-all duration-500 ease-out cursor-pointer mb-6 sm:mb-12 ${
                   isActive
                     ? "bg-blue-custom-900 text-white scale-105"
                     : "bg-transparent text-black scale-100"
@@ -62,6 +76,8 @@ export const CardsList: React.FC<CardsListProps> = ({ activePart, progress, onCa
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden",
                 willChange: "background-color, color, transform",
+                position: "relative",
+                zIndex: isActive ? 10 : 1,
               }}
             >
             <section className="hidden sm:flex flex-row items-center justify-between gap-6">
@@ -73,18 +89,18 @@ export const CardsList: React.FC<CardsListProps> = ({ activePart, progress, onCa
               </p>
             </section>
 
-            <section className="flex sm:hidden flex-col items-start justify-between gap-3">
-              <p className={`uppercase text-xl font-josefinSans font-normal whitespace-nowrap ${
+            <section className="flex sm:hidden flex-col items-start justify-between gap-2">
+              <p className={`uppercase text-sm font-josefinSans font-normal whitespace-nowrap ${
                 isActive ? "text-gray-300" : "text-gray-custom-500"
               }`}>
                 PART {part.id}
               </p>
-              <h4 className="uppercase text-xl font-normal font-josefinSans">{part.title}</h4>
+              <h4 className="uppercase text-base font-normal font-josefinSans">{part.title}</h4>
             </section>
 
             <div
               className={
-                `text-sm sm:text-lg cursor-pointer justify-normal font-normal transition-all duration-300 ease-out ${
+                `text-xs sm:text-lg cursor-pointer justify-normal font-normal transition-all duration-300 ease-out ${
                   isActive ? "text-white" : "text-gray-custom-600"
                 }`
               }

@@ -5,7 +5,7 @@ export const KeyFindings = () => {
     <div className='flex flex-col gap-4 px-6 sm:px-0'>
       <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Key Findings & Impact </h5>
 
-      <section className='flex md:flex-row flex-col items-center sm:gap-8 gap-4 sm:pl-16'>
+      <section className='flex md:flex-row-reverse flex-col items-center sm:gap-8 gap-4 sm:pl-16'>
       <article className='flex flex-col gap-4'>
           <p className='text-md'>Our analysis revealed a central paradox:</p>
           <p className='font-inknutAntiqua text-sm'>The very values and processes that attract developers to the Bitcoin and Nostr ecosystems become the source of their most persistent challenges. Without structural support, permissionlessness, the core principle of Bitcoin, can create isolation, burnout, and unsustainable work patterns when applied to human systems.</p>

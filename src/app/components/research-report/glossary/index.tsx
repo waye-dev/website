@@ -46,36 +46,34 @@ export const Glossary = () => {
   return (
     <div ref={containerRef} className="h-screen flex flex-col justify-center items-center relative">
       {/* Desktop: Side-by-side layout */}
-      <div className="hidden lg:flex lg:flex-row w-full gap-16 h-full items-center px-4">
-        {/* Left: Cards - Container with justify-center to center the first card initially */}
-        <div ref={cardsRef} className="flex-1 h-full flex items-start justify-center" style={{ paddingTop: '50vh' }}>
-          <CardsList activePart={activePart} progress={progress} onCardClick={handleCardClick} />
+      <div className="hidden lg:flex lg:flex-row w-full gap-16 h-full items-center px-4 max-w-[1400px] mx-auto">
+        {/* Left: Cards - Container with padding on sides */}
+        <div ref={cardsRef} className="flex-1 h-full flex items-start justify-center px-8" style={{ paddingTop: '50vh' }}>
+          <div className="w-full max-w-[700px]">
+            <CardsList activePart={activePart} progress={progress} onCardClick={handleCardClick} />
+          </div>
         </div>
 
         {/* Right: Book Stack */}
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end flex-shrink-0">
           <BookStack activePart={activePart} onBookClick={handleBookClick} />
         </div>
       </div>
 
-      {/* Mobile: 50/50 Split (Book Stack top, Cards bottom) */}
-      <div className="lg:hidden flex flex-col w-full h-full">
-        {/* Top 50vh: Book Stack */}
-        <div className="h-[50vh] w-full flex items-center justify-center px-4 bg-gray-custom-400">
+      {/* Mobile: 40% books top, 60% cards bottom */}
+      <div className="lg:hidden w-full h-screen relative flex flex-col">
+        {/* Top: Book Stack - stays at top */}
+        <div className="h-[45vh] w-full flex items-end justify-center px-4 bg-gray-custom-400" style={{ zIndex: 5 }}>
           <BookStack activePart={activePart} onBookClick={handleBookClick} />
         </div>
 
-        {/* Bottom 50vh: Cards */}
-        <div className="h-[50vh] w-full flex items-start justify-center px-4" style={{ paddingTop: '25vh' }}>
-          <CardsList activePart={activePart} progress={progress} onCardClick={handleCardClick} />
+        {/* Bottom: Cards container - flex-1 to fill remaining space */}
+        <div className="flex-1 w-full flex items-start justify-center px-4 bg-gray-custom-400 overflow-hidden relative" style={{ zIndex: 3 }}>
+          <div className="w-full absolute top-0 left-0 right-0 px-4" style={{ paddingTop: 'calc(50vh - 45vh)' }}>
+            <CardsList activePart={activePart} progress={progress} onCardClick={handleCardClick} />
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
-// Export components for potential reuse
-export { BookStack } from "./_components/book-stack";
-export { CardsList } from "./_components/cards-list";
-export { GLOSSARY_PARTS, TOTAL_PARTS, GLOSSARY_LIST } from "./constants";
-

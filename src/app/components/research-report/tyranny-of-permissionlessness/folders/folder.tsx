@@ -66,7 +66,6 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
         return () => window.removeEventListener('resize', handleResize)
     }, [tabWidth])
 
-    // Calculate folder height: viewport height minus navbar height minus tab height
     const availableHeight = navbarHeight > 0 && tabHeight > 0
         ? `calc(100dvh - ${navbarHeight + tabHeight}px)`
         : 'calc(100dvh - 140px)' // fallback
@@ -87,7 +86,6 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                     height: `calc(100dvh - ${navbarHeight > 0 ? navbarHeight : 70}px)`
                 }}
             >
-                {/* Tab positioned above the folder body */}
                 <div className="relative w-full" style={{ height: `${tabHeight}px` }}>
                     <div className="absolute bottom-0 left-0 w-full">
                         <SvgTab
@@ -101,7 +99,6 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                     </div>
                 </div>
 
-                {/* Folder body */}
                 <div className="w-full relative folder-body-wrapper" style={{ height: availableHeight }}>
                     <div className={`h-full rounded-t-[1rem] rounded-b-[1.5rem] 'rounded-b-[3rem] ${backgroundColor} overflow-hidden relative`} style={{ pointerEvents: 'auto' }}>
                         <div
@@ -118,7 +115,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                             }}
                         >
                            <div
-                           className="content-inner p-0 pb-[6rem] md:p-[1.5rem] md:pb-[8rem] md:px-[10rem] max-w-[98%] md:max-w-[95%] space-y-[1.5rem] my-[3rem]"
+                           className="content-inner p-0 pb-[6rem] md:p-[1.5rem] md:pb-[8rem] md:px-[2rem] max-w-[98%] md:max-w-[95%] space-y-[1.5rem] my-[3rem]"
                            >
                                 {children}
                             </div>

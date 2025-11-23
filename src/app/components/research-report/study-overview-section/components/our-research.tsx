@@ -54,7 +54,7 @@ export const OurResearch = () => {
       <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Our Research </h5>
 
       <section className='flex flex-col gap-12 sm:pl-16'>
-        <section className='flex md:flex-row flex-col md:gap-24 gap-8'>
+        <section className='flex md:flex-row-reverse flex-col md:gap-24 gap-8'>
           <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
             <p>This pilot study addresses a foundational question:</p>
             <p className='font-inknutAntiqua text-md'>
@@ -62,15 +62,10 @@ export const OurResearch = () => {
               work and what do they need to sustainably perform their role? <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_10} />
             </p>
           </article>
+          <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
         </section>
-        <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
 
-      <p>
-        Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
-        least 12 months. Through semi-structured interviews, we explored:
-      </p>
-
-      <section className='flex flex-col sm:flex-row gap-4 justify-between'>
+      <section className='flex flex-col sm:flex-row gap-4 justify-between md:order-1'>
           {researchOverviewNumbers.map((number) => (
             <div key={number.description} className='flex flex-col gap-1 md:gap-2 items-center'>
               <p className='font-inknutAntiqua text-4xl font-bold'>{number.number}</p>
@@ -78,6 +73,11 @@ export const OurResearch = () => {
             </div>
           ))}
         </section>
+
+      <p className='md:order-2'>
+        Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
+        least 12 months. Through semi-structured interviews, we explored:
+      </p>
       </section>
 
       <section className='grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10'>

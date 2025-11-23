@@ -17,7 +17,7 @@ import { FromTyrannyToPermissionlessness } from "@/app/components/research-repor
 import { CoreFindingsTheTyrany } from "@/app/components/research-report/core-findings-the-tyrany";
 import { ExecutiveSummary } from "@/app/components/research-report/executive-summary";
 import { trackResearchReportSection, trackScrollDepth } from "@/app/utils/analytics";
-import { BookStack } from "@/app/components/research-report/glossary/_components/book-stack";
+import { Glossary } from "@/app/components/research-report/glossary";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -201,9 +201,7 @@ export function ResearchReportClient() {
       <div className='bg-gray-custom-400 text-black'>
         <ExecutiveSummary />
 
-        <Wrapper className='py-24'>
-          <BookStack activePart={1} onBookClick={(partId: number) => {}} />
-        </Wrapper>
+        <Glossary />
 
         <div className='flex flex-col gap-16'>
           <Wrapper className='max-w-[1000px] xl:max-w-[1250px] py-24' data-section='study-overview'>
