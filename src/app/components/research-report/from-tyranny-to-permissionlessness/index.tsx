@@ -76,7 +76,7 @@ export function FromTyrannyToPermissionlessness() {
     const strokeAnimationDuration = (svgAnimationEndTime - svgAnimationStartOffset) * 0.6;
     const fillAnimationStartTime = svgAnimationStartOffset + strokeAnimationDuration * 0.67;
     
-    const lastSectionIndex = sections.findIndex(section => section.id === '07');
+    const lastSectionIndex = sections.findIndex(section => section.id === '08');
     const swapStartTime = lastSectionIndex * textSectionDuration;
     
     strokeElements.forEach((element: Element, index: number) => {
@@ -154,15 +154,13 @@ export function FromTyrannyToPermissionlessness() {
 
       const startTime = index * textSectionDuration;
 
-      if (sections[index]?.id === '07') {
-        // For section 07, keep text hidden until after swap completes
+      if (sections[index]?.id === '08') {
         if (section08TitleRef.current) {
           gsap.set(section08TitleRef.current, {
             opacity: 0,
             y: -50
           });
 
-          // Show title after swap completes (swap duration is 1 second)
           tl.to(section08TitleRef.current, {
             opacity: 1,
             y: 0,
@@ -171,21 +169,18 @@ export function FromTyrannyToPermissionlessness() {
           }, startTime + 1);
         }
 
-        // Move text position during swap
         tl.to(textEl, {
           y: '31vh',
           duration: 1,
           ease: "power2.inOut"
         }, startTime);
 
-        // Fade in text after swap completes
         tl.to(textEl, {
           opacity: 1,
           duration: 0.8,
           ease: "power2.out"
         }, startTime + 1);
 
-        // Keep text visible for remaining time
         tl.to(textEl, {
           opacity: 1,
           duration: textSectionDuration - 1.8
@@ -229,7 +224,7 @@ export function FromTyrannyToPermissionlessness() {
       <div className="md:hidden w-full px-4 py-8">
         {sections.map((section, index) => (
           <div key={section.id} className="mb-12">
-            {section.id === '07' ? (
+            {section.id === '08' ? (
               <div className="space-y-6">
                 <p className="font-bold text-xl font-inknutAntiqua text-center mb-6">
                   Developers' ideas
@@ -316,7 +311,7 @@ export function FromTyrannyToPermissionlessness() {
               className="absolute w-full flex justify-center items-center"
               style={{ opacity: section.id === '00' ? 1 : 0, zIndex: 30 }}
             >
-              {section.id === '07' ? (
+              {section.id === '08' ? (
                 <div className="max-w-7xl bg-gray-custom-100">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="p-4 rounded-lg">
@@ -341,7 +336,7 @@ export function FromTyrannyToPermissionlessness() {
                     </div>
                   </div>
                 </div>
-              ) : section.id === '04' || section.id === '06' ? (
+              ) : section.id === '04' || section.id === '06' || section.id === '07' ? (
                 <div className="w-full max-w-4xl px-4">
                   {section.textContent}
                 </div>
