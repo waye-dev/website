@@ -1,6 +1,6 @@
 "use client";
 
-import { GLOSSARY_LIST } from "../glossary";
+import { GLOSSARY_LIST } from "../glossary/constants";
 import React, { useState, useEffect } from "react";
 
 interface StickyNavigationProps {
