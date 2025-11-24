@@ -15,11 +15,12 @@ export const ContentLayer: React.FC<ContentLayerProps> = ({
         zIndex,
         height: '100dvh',
         boxShadow: '0 -5px 5px rgba(0, 0, 0, 0.03)',
+        pointerEvents: 'auto',
       }}
     >
         <div className="content-inner w-full max-w-[1000px] xl:max-w-[1250px] mx-auto px-4 md:px-8 my-[80px] md:my-[150px] pb-[100px] md:pb-0">
           {children}
-      </div>
+        </div>
     </div>
   );
 };

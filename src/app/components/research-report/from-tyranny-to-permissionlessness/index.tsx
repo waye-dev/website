@@ -48,24 +48,25 @@ export function FromTyrannyToPermissionlessness() {
     const svg = svgRef.current?.querySelector('svg');
     if (!svg) return;
 
-    const strokeElements = svg.querySelectorAll('path[stroke]');
-    const fillElements = svg.querySelectorAll('path[fill]:not([stroke])');
-    
-    console.log(`Found ${strokeElements.length} stroke elements and ${fillElements.length} fill elements`);
+    requestAnimationFrame(() => {
+      const strokeElements = svg.querySelectorAll('path[stroke]');
+      const fillElements = svg.querySelectorAll('path[fill]:not([stroke])');
+      
+      console.log(`Found ${strokeElements.length} stroke elements and ${fillElements.length} fill elements`);
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        id: "tyranny-permissionlessness",
-        trigger: containerRef.current,
-        start: 'top top',
-        end: `+=${sections.length * 100}%`,
-        scrub: 1.5,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        markers: false
-      }
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: "tyranny-permissionlessness",
+          trigger: containerRef.current,
+          start: 'top top',
+          end: `+=${sections.length * 100}%`,
+          scrub: 1.5,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          markers: false
+        }
+      });
 
     const textSectionDuration = 2;
     const totalTimelineDuration = sections.length * textSectionDuration;
@@ -105,7 +106,8 @@ export function FromTyrannyToPermissionlessness() {
     fillElements.forEach((element: Element, index: number) => {
       gsap.set(element, {
         opacity: 0,
-        scale: 0.8
+        scale: 0.8,
+        transformOrigin: "center center"
       });
 
       const fillStartTime = fillAnimationStartTime + (index / fillElements.length) * (svgAnimationEndTime - fillAnimationStartTime);
@@ -114,7 +116,8 @@ export function FromTyrannyToPermissionlessness() {
         opacity: 1,
         scale: 1,
         duration: 0.8,
-        ease: "back.out(1.7)"
+        ease: "back.out(1.7)",
+        transformOrigin: "center center"
       }, fillStartTime);
     });
 
@@ -143,12 +146,14 @@ export function FromTyrannyToPermissionlessness() {
       if (sections[index]?.id === '00') {
         gsap.set(textEl, {
           opacity: 1,
-          y: 0
+          y: 0,
+          pointerEvents: 'auto'
         });
       } else {
         gsap.set(textEl, {
           opacity: 0,
-          y: 100
+          y: 100,
+          pointerEvents: 'none'
         });
       }
 
@@ -177,6 +182,7 @@ export function FromTyrannyToPermissionlessness() {
 
         tl.to(textEl, {
           opacity: 1,
+          pointerEvents: 'auto',
           duration: 0.8,
           ease: "power2.out"
         }, startTime + 1);
@@ -189,6 +195,7 @@ export function FromTyrannyToPermissionlessness() {
         tl.to(textEl, {
           opacity: 1,
           y: 0,
+          pointerEvents: 'auto',
           duration: 0.8,
           ease: "power2.out"
         }, startTime);
@@ -203,11 +210,13 @@ export function FromTyrannyToPermissionlessness() {
           tl.to(textEl, {
             opacity: 0,
             y: -150,
+            pointerEvents: 'none',
             duration: 0.8,
             ease: "power2.in"
           }, startTime + textSectionDuration - 0.8);
         }
       }
+    });
     });
 
     return () => {
@@ -292,24 +301,31 @@ export function FromTyrannyToPermissionlessness() {
         >
         <div
           ref={svgRef}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 scale-[1.18] flex justify-center items-center"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 scale-[1.18] flex justify-center items-center"
+          style={{ pointerEvents: 'none', zIndex: 1 }}
         />
 
         <p
           ref={section08TitleRef}
-          className="font-bold text-2xl font-inknutAntiqua text-center absolute top-[15vh] left-1/2 -translate-x-1/2 w-full z-20"
-          style={{ opacity: 0 }}
+          className="font-bold text-2xl font-inknutAntiqua text-center absolute top-[15vh] left-1/2 -translate-x-1/2 w-full"
+          style={{ opacity: 0, zIndex: 50 }}
         >
           Developers' ideas
         </p>
 
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-full z-30">
+        <div
+          className="absolute top-[20%] left-1/2 -translate-x-1/2 w-full"
+          style={{ zIndex: 100 }}
+        >
           {sections.map((section, index) => (
             <div
               key={section.id}
               ref={el => { textRefs.current[index] = el; }}
               className="absolute w-full flex justify-center items-center"
-              style={{ opacity: section.id === '00' ? 1 : 0, zIndex: 30 }}
+              style={{ 
+                opacity: section.id === '00' ? 1 : 0,
+                pointerEvents: section.id === '00' ? 'auto' : 'none'
+              }}
             >
               {section.id === '08' ? (
                 <div className="max-w-7xl bg-gray-custom-100">
