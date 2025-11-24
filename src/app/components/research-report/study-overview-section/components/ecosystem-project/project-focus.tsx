@@ -52,7 +52,8 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
 
         // Use shuffled index to determine target
         const shuffledIndex = shuffledIndices[index];
-        const targetRef = shuffledIndex < darkCircleCount ? targetRef1 : targetRef2;
+        const isLeftTarget = shuffledIndex < darkCircleCount;
+        const targetRef = isLeftTarget ? targetRef1 : targetRef2;
         const targetRect = targetRef.current!.getBoundingClientRect();
         const dotRect = dot.getBoundingClientRect();
 
@@ -76,10 +77,10 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
           {
             motionPath: {
               path: [
-                { x: 0, y: 0 },                    
-                { x: rightPoint, y: 0 },           
-                { x: rightPoint, y: downDistance }, 
-                { x: finalX, y: finalY }           
+                { x: 0, y: 0 },
+                { x: rightPoint, y: 0 },
+                { x: rightPoint, y: downDistance },
+                { x: finalX, y: finalY }
               ],
               curviness: 1.2,
             },
@@ -100,7 +101,8 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
           0.8
         );
 
-        if (!shadowAppliedToLeftTarget) {
+        // Apply shadow based on which target this dot is going to
+        if (isLeftTarget && !shadowAppliedToLeftTarget) {
           tl.to(
             dot,
             {
@@ -111,7 +113,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
             0.95
           );
           shadowAppliedToLeftTarget = true;
-        } else if (!shadowAppliedToRightTarget) {
+        } else if (!isLeftTarget && !shadowAppliedToRightTarget) {
           tl.to(
             dot,
             {
