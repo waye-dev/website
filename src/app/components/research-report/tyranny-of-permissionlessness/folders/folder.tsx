@@ -75,8 +75,7 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
             ref={folderRef}
             className="absolute inset-0 w-full h-full text-black"
             style={{
-                isolation: 'isolate',
-                pointerEvents: 'none'
+                isolation: 'isolate'
             }}
         >
             <div

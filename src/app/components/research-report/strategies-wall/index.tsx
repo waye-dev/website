@@ -169,7 +169,12 @@ export function StrategiesWall() {
       opacity: 1,
       scale: 1,
       duration: isMobile ? 0.5 : 0.4,
-      ease: 'power1.out'
+      ease: 'power1.out',
+      onStart: () => {
+        if (overlayRef.current) {
+          overlayRef.current.style.pointerEvents = 'auto';
+        }
+      }
     }, isMobile ? '-=0.4' : '-=0.3');
 
     // Animate each content layer
@@ -238,7 +243,12 @@ export function StrategiesWall() {
       opacity: 0,
       scale: isMobile ? 0.9 : 0.95,
       duration: isMobile ? 0.6 : 0.4,
-      ease: 'power1.in'
+      ease: 'power1.in',
+      onComplete: () => {
+        if (overlayRef.current) {
+          overlayRef.current.style.pointerEvents = 'none';
+        }
+      }
     }, isMobile ? '-=0.4' : '-=0.2');
 
       tl.to([windowsGridRef.current, backgroundRef.current], {
@@ -299,9 +309,10 @@ export function StrategiesWall() {
 
         <div
           ref={overlayRef}
-          className="fixed inset-0 pointer-events-auto"
-          style={{ 
+          className="fixed inset-0"
+          style={{
             opacity: 0,
+            pointerEvents: 'none',
           }}
         >
           <div 
