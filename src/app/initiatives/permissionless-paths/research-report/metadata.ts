@@ -44,9 +44,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     };
   }
 
-  // Derive the OG image URL from the content's order number
-  // Add version parameter for cache busting when needed (e.g., v=2)
-  const ogImageUrl = `${baseUrl}/api/og?id=${content.order}`;
+  // Use static image path for better social media crawler compatibility
+  const ogImageUrl = `${baseUrl}/images/og/${content.order}.jpg`;
 
   return {
     metadataBase: new URL(baseUrl),

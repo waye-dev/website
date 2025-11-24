@@ -55,7 +55,7 @@ export const Card = ({ title, subtitle, image, alt, currentStage = 'new' }: Card
 
         <div className="flex-1 min-w-0 max-w-[200px]">
           <p className="text-sm text-gray-600 font-light leading-relaxed font-josefinSans">{subtitle}</p>
-          <h3 className="text-base text-sm font-300 text-gray-800 font-inknutAntiqua">{title}</h3>
+          <h3 className="text-base font-300 text-gray-800 font-inknutAntiqua">{title}</h3>
         </div>
       </div>
     </>
