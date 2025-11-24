@@ -47,6 +47,11 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   // Use static image path for better social media crawler compatibility
   const ogImageUrl = `${baseUrl}/images/og/${content.order}.jpg`;
 
+  // Sanitize special characters for better Twitter compatibility
+  const sanitizedQuote = content.quote
+    .replace(/[""]/g, '"')  // Replace curly quotes with straight quotes
+    .replace(/['']/g, "'"); // Replace curly apostrophes with straight apostrophes
+
   return {
     metadataBase: new URL(baseUrl),
     title: content.quote,
@@ -59,7 +64,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: content.quote,
+          alt: sanitizedQuote,
           type: 'image/jpeg',
           secureUrl: ogImageUrl,
         }
