@@ -36,9 +36,9 @@ export const TyrannyOfPermissionlessness = () => {
   );
 
   return (
-    <div className='text-white flex flex-col pt-12'>
+    <div className='text-white flex flex-col pt-12' style={{ userSelect: 'text', touchAction: 'auto' }}>
       <Wrapper className='max-w-[1000px] xl:max-w-[1250px]'>
-        <section ref={sectionRef} className='flex flex-col gap-4 text-lg'>
+        <section ref={sectionRef} className='flex flex-col gap-4 text-lg' style={{ userSelect: 'text', touchAction: 'auto' }}>
           <p>
             If Jo Freeman's tyranny of structurelessness{" "}
             <Link href={"https://www.jofreeman.com/joreen/tyranny.htm"} target='_blank' className='underline'>

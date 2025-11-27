@@ -34,7 +34,7 @@ export function ResearchReportClient() {
 
     ScrollTrigger.normalizeScroll({
       allowNestedScroll: true,
-      type: "touch,wheel,pointer",
+      type: "touch,wheel",
       lockAxis: true
     });
 
