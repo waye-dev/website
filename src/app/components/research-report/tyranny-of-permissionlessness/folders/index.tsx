@@ -146,8 +146,6 @@ export const Folders = () => {
                 pinSpacing: true,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
-                normalizeScroll: false,
-                ignoreMobileResize: true,
             }
         })
 
