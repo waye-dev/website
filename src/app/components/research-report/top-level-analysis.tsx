@@ -9,7 +9,7 @@ export const TopLevelAnalysis = () => {
   // const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
-    <div className='flex flex-col gap-8 sm:gap-14'>
+    <div className='flex flex-col gap-8 sm:gap-14' style={{ userSelect: 'text', touchAction: 'auto' }}>
       <section className='flex flex-col gap-6 items-center max-w-[731px] mx-auto'>
         <h1 className='text-xl md:text-2xl leading-[120%]  font-inknutAntiqua font-light text-center'>Top Level Analysis</h1>
         <h1 className='text-[30px] md:text-3xl leading-[140%]  font-inknutAntiqua font-normal text-center'>

@@ -71,7 +71,9 @@ export function createFolderTransitions(
             tl.set(nextContent, {
                 pointerEvents: 'auto',
                 overflowY: 'auto',
-                scrollTop: 0
+                scrollTop: 0,
+                userSelect: 'text',
+                touchAction: 'auto'
             })
         }
     })

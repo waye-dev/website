@@ -110,11 +110,14 @@ export const Folder = forwardRef<FolderRef, FolderProps>(({
                                 // bottom: '1.5rem',
                                 pointerEvents: 'none',
                                 //opacity: 0,
-                                visibility: 'hidden'
+                                visibility: 'hidden',
+                                userSelect: 'text',
+                                touchAction: 'auto'
                             }}
                         >
                            <div
                            className="content-inner p-0 pb-[6rem] md:p-[1.5rem] md:pb-[8rem] md:px-[2rem] max-w-[98%] md:max-w-[95%] space-y-[1.5rem] my-[3rem]"
+                           style={{ userSelect: 'text', touchAction: 'auto' }}
                            >
                                 {children}
                             </div>

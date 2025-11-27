@@ -297,7 +297,7 @@ export function FromTyrannyToPermissionlessness() {
       <div className="hidden md:block">
         <div
           ref={containerRef}
-          className="min-h-screen flex items-center justify-center relative"
+          className="min-h-screen flex items-center justify-center relative gsap-no-drag"
         >
         <div
           ref={svgRef}
@@ -315,7 +315,7 @@ export function FromTyrannyToPermissionlessness() {
 
         <div
           className="absolute top-[20%] left-1/2 -translate-x-1/2 w-full"
-          style={{ zIndex: 100 }}
+          style={{ zIndex: 100, userSelect: 'text', touchAction: 'auto' }}
         >
           {sections.map((section, index) => (
             <div

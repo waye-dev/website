@@ -267,7 +267,7 @@ export function StrategiesWall() {
     <div className="w-full">
       <div
         ref={containerRef}
-        className="relative w-full h-screen-dynamic overflow-hidden"
+        className="relative w-full h-screen-dynamic overflow-hidden gsap-no-drag"
         style={{ backgroundColor: '#031C51' }}
       >
         <div

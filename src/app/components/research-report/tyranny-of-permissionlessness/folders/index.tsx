@@ -146,6 +146,8 @@ export const Folders = () => {
                 pinSpacing: true,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
+                normalizeScroll: false,
+                ignoreMobileResize: true,
             }
         })
 
@@ -163,7 +165,7 @@ export const Folders = () => {
     return (
         <div
             ref={containerRef}
-            className="relative w-full h-screen-dynamic overflow-hidden bg-blue-custom-1200"
+            className="relative w-full h-screen-dynamic overflow-hidden bg-blue-custom-1200 gsap-no-drag"
         >
             <div
                 ref={foldersWrapperRef}

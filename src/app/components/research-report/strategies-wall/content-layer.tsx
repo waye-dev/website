@@ -18,7 +18,7 @@ export const ContentLayer: React.FC<ContentLayerProps> = ({
         pointerEvents: 'auto',
       }}
     >
-        <div className="content-inner w-full max-w-[1000px] xl:max-w-[1250px] mx-auto px-4 md:px-8 my-[80px] md:my-[150px] pb-[100px] md:pb-0">
+        <div className="content-inner w-full max-w-[1000px] xl:max-w-[1250px] mx-auto px-4 md:px-8 my-[80px] md:my-[150px] pb-[100px] md:pb-0" style={{ userSelect: 'text', touchAction: 'auto' }}>
           {children}
         </div>
     </div>

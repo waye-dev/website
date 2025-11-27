@@ -87,7 +87,9 @@ export function createZoomInAnimation(
         // Then enable scrolling after visibility completes
         tl.set(contents[0], {
             pointerEvents: 'auto',
-            overflowY: 'auto'
+            overflowY: 'auto',
+            userSelect: 'text',
+            touchAction: 'auto'
         })
     }
 }
