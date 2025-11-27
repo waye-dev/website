@@ -28,7 +28,6 @@ export function ResearchReportClient() {
 
   useEffect(() => {
     ScrollTrigger.config({
-      ignoreMobileResize: true,
       autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
     });
 
