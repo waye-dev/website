@@ -61,8 +61,6 @@ export function ResearchReportClient() {
       const currentHeight = window.visualViewport?.height || window.innerHeight;
       const heightDiff = Math.abs(currentHeight - lastHeight);
 
-      // Only handle keyboard/input field resize (large height changes)
-      // Ignore address bar show/hide (small height changes during scroll)
       if (heightDiff > 150) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
