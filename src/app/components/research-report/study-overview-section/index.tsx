@@ -11,7 +11,7 @@ import { EcosystemProject } from "./components/ecosystem-project";
 
 export const StudyOverviewSection = () => {
   return (
-    <div className='flex flex-col gap-14' style={{ userSelect: 'text', touchAction: 'auto' }}>
+    <div className='flex flex-col gap-14'>
       <section className='flex flex-col gap-9'>
         <h2 className='text-[30px] md:text-[40px] lg:text-[50px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua text-center'>
           Study Overview

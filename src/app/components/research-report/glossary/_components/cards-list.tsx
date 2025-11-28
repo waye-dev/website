@@ -54,7 +54,7 @@ export const CardsList: React.FC<CardsListProps> = ({ activePart, progress, onCa
   }, [activePart]);
 
   return (
-    <div className="w-full" style={{ minHeight: '200px' }}>
+    <div className="w-full" style={{ minHeight: '200px', position: 'relative', overflow: 'visible' }}>
       <div ref={cardsContainerRef} className="w-full" style={{ willChange: 'transform' }}>
         {GLOSSARY_PARTS.map((part, index) => {
           const isActive = activePart === part.id;

@@ -44,12 +44,12 @@ export const Glossary = () => {
   };
 
   return (
-    <div ref={containerRef} className="h-screen flex flex-col justify-center items-center relative">
+    <div ref={containerRef} className="h-screen flex flex-col justify-center items-center relative" style={{ zIndex: 1, overflow: 'hidden' }}>
       {/* Desktop: Side-by-side layout */}
       <div className="hidden lg:flex lg:flex-row w-full gap-16 h-full items-center px-4 max-w-[1400px] mx-auto">
         {/* Left: Cards - Container with padding on sides */}
-        <div ref={cardsRef} className="flex-1 h-full flex items-start justify-center px-8" style={{ paddingTop: '50vh' }}>
-          <div className="w-full max-w-[700px]">
+        <div ref={cardsRef} className="flex-1 h-full flex items-start justify-center px-8" style={{ paddingTop: '50vh', overflow: 'visible' }}>
+          <div className="w-full max-w-[700px]" style={{ position: 'relative', overflow: 'visible' }}>
             <CardsList activePart={activePart} progress={progress} onCardClick={handleCardClick} />
           </div>
         </div>
@@ -68,8 +68,8 @@ export const Glossary = () => {
         </div>
 
         {/* Bottom: Cards container - flex-1 to fill remaining space */}
-        <div className="flex-1 w-full flex items-start justify-center px-4 bg-gray-custom-400 overflow-hidden relative" style={{ zIndex: 3 }}>
-          <div className="w-full absolute top-0 left-0 right-0 px-4" style={{ paddingTop: 'calc(50vh - 45vh)' }}>
+        <div className="flex-1 w-full flex items-start justify-center px-4 bg-gray-custom-400 relative" style={{ zIndex: 3, overflow: 'visible' }}>
+          <div className="w-full absolute top-0 left-0 right-0 px-4" style={{ paddingTop: 'calc(50vh - 45vh)', overflow: 'visible' }}>
             <CardsList activePart={activePart} progress={progress} onCardClick={handleCardClick} />
           </div>
         </div>
