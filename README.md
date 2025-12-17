@@ -1,6 +1,6 @@
 # waye
 
-A website to discover tools, programs, and support systems designed to help open-source developers thrive. Waye empowers builders to stay clear-headed, motivated, and aligned for long-term impact.
+Waye's website to discover tools, programs, and support systems designed to help open-source developers thrive. Waye empowers builders to stay clear-headed, motivated, and aligned for long-term impact.
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
