@@ -7,13 +7,13 @@ export const KeyFindings = () => {
 
       <section className='flex md:flex-row-reverse flex-col items-center sm:gap-8 gap-4 sm:pl-16'>
       <article className='flex flex-col gap-4'>
-          <p className='text-md'>Our analysis revealed a central paradox:</p>
-          <p className='font-inknutAntiqua text-sm'>The very values and processes that attract developers to the Bitcoin and Nostr ecosystems become the source of their most persistent challenges. Without structural support, permissionlessness, the core principle of Bitcoin, can create isolation, burnout, and unsustainable work patterns when applied to human systems.</p>
+          <p className='text-lg'>Our analysis revealed a central paradox:</p>
+          <p className='font-inknutAntiqua text-lg'>The very values and processes that attract developers to the Bitcoin and Nostr ecosystems become the source of their most persistent challenges. Without structural support, permissionlessness, the core principle of Bitcoin, can create isolation, burnout, and unsustainable work patterns when applied to human systems.</p>
       </article>
         <Image src='/svgs/key-findings-image.svg' alt='key findings image' width={375} height={308} />
       </section>
 
-      <section className='flex flex-col gap-4 text-md'>
+      <section className='flex flex-col gap-4 text-lg'>
         <p>
           We focused on Bitcoin and Nostr as critical infrastructure within the freedom tech ecosystem, a growing field in OSS building
           censorship-resistant, decentralized infrastructure for financial sovereignty and free speech. The ecosystem's emphasis on decentralized

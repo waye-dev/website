@@ -37,7 +37,7 @@ export const ExecutiveSummary = () => {
 
         <div className='flex flex-col gap-5'>
           <h3 className='text-xl sm:text-3xl font-inknutAntiqua font-semibold sm:text-center'>Executive Summary</h3>
-          <section className='flex flex-col gap-3'>
+          <section className='flex flex-col gap-3 text-lg'>
             <p>
               <strong>
                 This report is the first-ever deep-dive into the working lives of independent developers building censorship-resistant technology and what they need to sustain their work.
@@ -59,7 +59,7 @@ export const ExecutiveSummary = () => {
               We provide evidence-based, actionable recommendations for funders and ecosystem leaders to better support decentralized development. These include: team-based funding models, extended renewal cycles, administrative support infrastructure, mental health resources, and structured transition pathways for experienced contributors.
             </p>
           </section>
-          <p>The report unfolds in six parts:</p>
+          <p className='text-lg'>The report unfolds in six parts:</p>
         </div>
         
       </div>
