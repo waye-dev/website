@@ -2,20 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { NAV_LINKS } from "@/app/data";
 import React, { useState } from "react";
 import Wrapper from "@/app/components/wrapper";
 import { trackDonationClick } from "@/app/utils/analytics";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ReportShareButton } from "./report-share-button";
-
-const DonationModal = dynamic(() => import("@/app/components/donation-modal"), { ssr: false });
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDonationOpen, setIsDonationOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const isResearchReportPage = pathname?.includes('/research-report');
 
@@ -89,7 +86,7 @@ const Navbar = () => {
             <button
               onClick={() => {
                 trackDonationClick('navbar');
-                setIsDonationOpen(true);
+                router.push('/donate');
               }}
               className='rounded-full bg-blue-custom-200 text-md leading-[160%] font-medium py-1.5 px-8 text-black text-nowrap'
               // OLD VERSION (commented for future reference):
@@ -110,7 +107,7 @@ const Navbar = () => {
               <button
                 onClick={() => {
                   trackDonationClick('mobile_menu');
-                  setIsDonationOpen(true);
+                  router.push('/donate');
                 }}
                 className='rounded-full bg-blue-custom-200 text-lg leading-[160%] font-medium py-[10px] px-[16px] text-black text-nowrap lg:min-w-[183.66px]'
               >
@@ -143,7 +140,6 @@ const Navbar = () => {
           </div>
         )}
       </div>
-      <DonationModal isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />
     </nav>
     </div>
   );
