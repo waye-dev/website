@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHmac } from "crypto";
-import { updateDonationStatus } from "@/app/components/donation-modal/action";
+import { updateDonationStatus } from "@/app/donate/actions";
 
 // BTCPay Server webhook secret - add this to your environment variables
 const BTCPAY_WEBHOOK_SECRET = process.env.BTCPAY_WEBHOOK_SECRET!;

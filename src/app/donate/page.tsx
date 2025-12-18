@@ -1,29 +1,23 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Modal from "@/app/components/modal";
-import { RobotsMeta } from "./robots-meta";
-import { submitDonationData } from "./action";
+import Image from "next/image";
+import Wrapper from "@/app/components/wrapper";
+import { submitDonationData } from "./actions";
 import { DONATION_DESCRIPTIONS, isValidEmail, PRESET_AMOUNTS } from "@/utils";
 import { 
-  trackDonationModalOpen, 
-  trackDonationModalClose, 
+  trackDonationPageView, 
   trackDonationSubmit,
   trackDonationSuccess,
   trackDonationFailure 
 } from "@/app/utils/analytics";
-
-type DonationModalProps = {
-  isOpen: boolean;
-  onClose: () => void;
-};
 
 const getRandomDonationDescription = () => {
   const randomIndex = Math.floor(Math.random() * DONATION_DESCRIPTIONS.length);
   return DONATION_DESCRIPTIONS[randomIndex];
 };
 
-const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
+export default function DonatePage() {
   const [donorName, setDonorName] = useState("");
   const [donorEmail, setDonorEmail] = useState("");
   const [submitMessage, setSubmitMessage] = useState("");
@@ -32,10 +26,8 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState({ bitcoin: false, fiat: false });
 
   useEffect(() => {
-    if (isOpen) {
-      trackDonationModalOpen();
-    }
-  }, [isOpen]);
+    trackDonationPageView();
+  }, []);
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9]/g, "");
@@ -63,17 +55,6 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
     }
 
     return true;
-  };
-
-  const clearModalData = () => {
-    return setTimeout(() => {
-      setDonorName("");
-      setDonorEmail("");
-      setAmount(PRESET_AMOUNTS[0]);
-      setIsTaxDeductible("no");
-      setSubmitMessage("");
-      onClose();
-    }, 5000);
   };
 
   const makeBitcoinDonation = async () => {
@@ -129,7 +110,6 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
         window.location.href = data.donationUrl;
 
         setSubmitMessage("Redirecting to Bitcoin payment page. The donation will be tracked automatically when payment is received.");
-        clearModalData();
       } else {
         const errorMsg = `Error: ${data.error || "Failed to create donation"}`;
         setSubmitMessage(errorMsg);
@@ -216,19 +196,20 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
   const selectedOptionTaxDeductible = Boolean(isTaxDeductible === "yes");
 
   return (
-    <>
-      <RobotsMeta isModalOpen={isOpen} />
-      <Modal
-        isOpen={isOpen}
-        onClose={() => {
-          trackDonationModalClose();
-          onClose();
-          setSubmitMessage("");
-        }}
-        ariaLabel='Donation form'
-        className='bg-blue-custom-100 text-[#090909]'
-      >
-        <div className='space-y-8'>
+    <div className='text-gray-custom-100'>
+      <section className='w-full bg-blue-custom-100 pt-[72px]'>
+        <Image
+          src='/images/Mountains_initiatives_2-p-2600.png'
+          width={3200}
+          height={360}
+          alt='mountains footer'
+          className='h-[200px] lg:h-full w-full object-cover object-center'
+        />
+      </section>
+
+      <div className='bg-gray-custom-100 text-[#090909] py-12 md:py-20'>
+        <Wrapper>
+          <div className='max-w-3xl mx-auto space-y-8'>
           <div className='space-y-3'>
             <h2 className='text-2xl lg:text-4xl font-semibold'>Support Decentralized Technologies</h2>
             <p className='mt-1 text-[#090909]'>
@@ -404,9 +385,9 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
             </div>
           </div>
         </div>
-      </Modal>
-    </>
+      </Wrapper>
+      </div>
+    </div>
   );
-};
+}
 
-export default DonationModal;
