@@ -182,6 +182,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
             Application work (payments, messaging, hardware) is evenly distributed between the Bitcoin and Nostr ecosystems. This mirrors the
             ecosystem's maturation: infrastructure exists, user-facing tools are now needed.
           </li>
+          <li>Nostr developers cluster primarily in applications.</li>
           <li>
             Infrastructure work (19.2%), comprising developer toolkits and libraries, appears to be the domain of either newcomers or veterans,
             with no middle ground.
