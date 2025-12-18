@@ -146,3 +146,95 @@ body {
   -ms-user-select: text !important;
   touch-action: pan-y pinch-zoom !important;
 }
+
+/* PDF Download Button Animations */
+@keyframes subtlePulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 5px 18px 0 rgba(0, 0, 0, 0.12);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+
+.pdf-download-button {
+  animation: subtlePulse 4s ease-in-out infinite;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.pdf-download-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.pdf-download-button::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(27, 31, 53, 0.1), rgba(59, 130, 246, 0.1), rgba(27, 31, 53, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pdf-download-button:hover::before {
+  left: 100%;
+}
+
+.pdf-download-button:hover::after {
+  opacity: 0.5;
+}
+
+.pdf-download-button:hover {
+  animation: none;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(27, 31, 53, 0.2);
+  background: linear-gradient(135deg, rgba(27, 31, 53, 0.95) 0%, rgba(27, 31, 53, 0.98) 100%);
+}
+
+.pdf-download-button:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.15s ease;
+}
+
+.pdf-download-button:hover .pdf-icon {
+  animation: iconBounce 1.2s ease-in-out infinite;
+}
