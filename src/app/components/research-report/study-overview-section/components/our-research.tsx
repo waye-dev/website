@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 const researchOverviewNumbers = [
   {
@@ -59,7 +57,7 @@ export const OurResearch = () => {
             <p>This pilot study addresses a foundational question:</p>
             <p className='font-inknutAntiqua text-md'>
               How do full-time, grant-funded, institutionally unaffiliated developers in the Bitcoin and Bitcoin-adjacent (i.e. Nostr) ecosystem
-              work and what do they need to sustainably perform their role? <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_10} />
+              work and what do they need to sustainably perform their role?
             </p>
           </article>
           <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />

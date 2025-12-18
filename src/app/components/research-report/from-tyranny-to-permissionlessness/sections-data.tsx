@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { List, ListItem } from './list-components';
-import { SimpleShareButton } from '@/app/components/share-mode/simple-share-button';
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export interface Section {
   id: string;
@@ -16,7 +14,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <p className="mb-4">
-        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away (admin burden, isolation, grant anxiety). <strong>This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome</strong>. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_63} /> While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
+        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away (admin burden, isolation, grant anxiety). <strong>This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome</strong>. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
 
         </p>
       </div>
@@ -27,7 +25,7 @@ export const sections: Section[] = [
     id: "01",
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_64} /> They are directed to funders and ecosystem leaders, recognizing that sustainable development requires coordinated action. <strong>The core principle: sustain entry motivations by making everything else easier</strong>. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_67} /></p>
+        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed to funders and ecosystem leaders, recognizing that sustainable development requires coordinated action. <strong>The core principle: sustain entry motivations by making everything else easier</strong>.</p>
       </div>
     ),
     animation: 'innerOnly',

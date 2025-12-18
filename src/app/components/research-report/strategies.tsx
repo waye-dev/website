@@ -1,6 +1,4 @@
 import { QuoteCards } from "./_components/quotes";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const Strategies = () => {
   return (

@@ -4,8 +4,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { CrocAnimation } from "./croc-animation";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,7 +75,7 @@ export const CoreFindingsTheTyrany = () => {
       </div>
 
       <p ref={textToPinRef} className='text-lg'>
-        We call this <strong>"the tyranny of permissionlessness."</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_22} />
+        We call this <strong>"the tyranny of permissionlessness."</strong>
       </p>
     </div>
 

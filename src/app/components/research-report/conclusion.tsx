@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 import { event } from "@/app/utils/analytics";
 
 export const Conclusion = () => {
