@@ -49,7 +49,7 @@ export const sections: Section[] = [
             <ListItem>
               <strong>Fund teams, not just individuals:</strong> introduce team-oriented grants to support application layer developers.
             </ListItem>
-            <ListItem>
+            <ListItem className="ml-6">
               Learn from <Link href="https://www.opentech.fund/funds/free-and-open-source-software-sustainability-fund/" target="_blank" className="underline">The FOSS Sustainability Fund</Link> which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.
             </ListItem>
             <ListItem><strong>Extend renewal cycles after year 1:</strong> reduce the grant-writing burden for proven contributors. </ListItem>
@@ -69,10 +69,10 @@ export const sections: Section[] = [
           <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
           <List>
             <ListItem><strong>Facilitate admin support:</strong> facilitate shared services for taxes, healthcare, legal needs.</ListItem>
-            <ListItem>Some community-led initiatives already exist to support admin work for Bitcoin developers: the <Link href="https://bitcoindefense.org/" target="_blank" className="underline">Bitcoin Legal Defense Fund</Link> offers legal support, while <Link href="https://satoshipacioli.com/satoshi-pacioli-accounting-announces-free-tax-services-for-open-source-bitcoin-developers/" target="_blank" className="underline">Satoshi Pacioli Accounting</Link> provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
+            <ListItem className="ml-6">Some community-led initiatives already exist to support admin work for Bitcoin developers: the <Link href="https://bitcoindefense.org/" target="_blank" className="underline">Bitcoin Legal Defense Fund</Link> offers legal support, while <Link href="https://satoshipacioli.com/satoshi-pacioli-accounting-announces-free-tax-services-for-open-source-bitcoin-developers/" target="_blank" className="underline">Satoshi Pacioli Accounting</Link> provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
             <ListItem><strong>Provide coworking space stipends:</strong> combat isolation through physical presence.</ListItem>
             <ListItem><strong>Fund mental health programs and toolkits tailored to this niche:</strong> support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
-            <ListItem>While community-led initiatives such as <Link href="https://opensource.guide/maintaining-balance-for-open-source-maintainers/" target="_blank" className="underline">Open Source Guides</Link> provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
+            <ListItem className="ml-6">While community-led initiatives such as <Link href="https://opensource.guide/maintaining-balance-for-open-source-maintainers/" target="_blank" className="underline">Open Source Guides</Link> provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
             <ListItem><strong>Compensate non-coding work:</strong> explicitly recognize and fund non-coding work (research, maintenance, mentorship, documentation, management) in grant structures, not just feature development.</ListItem>
           </List>
         </div>
@@ -105,7 +105,7 @@ export const sections: Section[] = [
             <ListItem>
               <strong>Create routes for mentorship matching:</strong> connect new contributors to experienced developers to ease onboarding pains.
             </ListItem>
-            <ListItem>
+            <ListItem className="ml-6">
               Learn from the <Link href="https://lfx.linuxfoundation.org/tools/mentorship/" target="_blank" className="underline">Linux Foundation's LFX Mentorship</Link> program, which structures mentorship programs connecting experienced maintainers with new contributors.
             </ListItem>
             <ListItem><strong>Develop self-management toolkits:</strong> provide productivity resources, time management support, especially for newer contributors.</ListItem>
