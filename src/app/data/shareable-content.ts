@@ -436,84 +436,84 @@ export const shareabledescriptionData: Record<string, Shareabledescription> = {
     id: SHAREABLE_description_IDS.QUOTE_51,
     quote: "Many in this group view grant-funded development as a strategic career phase rather than a permanent destination.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Role sustainability",
+    section: "Hidden costs – Role sustainability",
     order: 51
   },
   [SHAREABLE_description_IDS.QUOTE_52]: {
     id: SHAREABLE_description_IDS.QUOTE_52,
     quote: "The ecosystem's health depends on retaining enough developers long enough to build deep protocol knowledge, but the current model is designed to encourage short-term contributions over long-term commitments.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Role sustainability",
+    section: "Hidden costs – Role sustainability",
     order: 52
   },
   [SHAREABLE_description_IDS.QUOTE_53]: {
     id: SHAREABLE_description_IDS.QUOTE_53,
     quote: "Without intentional structures for knowledge transfer, each departure means losing institutional knowledge that cannot be fully captured in the project history.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Role sustainability",
+    section: "Hidden costs – Role sustainability",
     order: 53
   },
   [SHAREABLE_description_IDS.QUOTE_54]: {
     id: SHAREABLE_description_IDS.QUOTE_54,
     quote: "The ecosystem sustains itself not by supporting individuals, but by continuously replacing them.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Role sustainability",
+    section: "Hidden costs – Role sustainability",
     order: 54
   },
   [SHAREABLE_description_IDS.QUOTE_55]: {
     id: SHAREABLE_description_IDS.QUOTE_55,
     quote: "The one-size-fits-all grant model fails to recognize the different realities of core infrastructure vs application work.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Project sustainability",
+    section: "Hidden costs – Project sustainability",
     order: 55
   },
   [SHAREABLE_description_IDS.QUOTE_56]: {
     id: SHAREABLE_description_IDS.QUOTE_56,
     quote: "Protocol work needs ongoing funding streams, applications need revenue freedom.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Project sustainability",
+    section: "Hidden costs – Project sustainability",
     order: 56
   },
   [SHAREABLE_description_IDS.QUOTE_57]: {
     id: SHAREABLE_description_IDS.QUOTE_57,
     quote: "The result across both is a set of perverse incentives that trap projects in dependency.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Project sustainability",
+    section: "Hidden costs – Project sustainability",
     order: 57
   },
   [SHAREABLE_description_IDS.QUOTE_58]: {
     id: SHAREABLE_description_IDS.QUOTE_58,
     quote: "Funders inadvertently optimize for yearly renewal requirements over long-term project sustainability.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Project sustainability",
+    section: "Hidden costs – Project sustainability",
     order: 58
   },
   [SHAREABLE_description_IDS.QUOTE_59]: {
     id: SHAREABLE_description_IDS.QUOTE_59,
     quote: "Psychological wellbeing is as crucial to sustainability as financial stability, yet burnout is primarily treated as an individual problem rather than the systemic issue that it is.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Psychological sustainability",
+    section: "Hidden costs – Psychological sustainability",
     order: 59
   },
   [SHAREABLE_description_IDS.QUOTE_60]: {
     id: SHAREABLE_description_IDS.QUOTE_60,
     quote: "The ecosystem's resilience depends on recognizing that psychological sustainability requires structural support, not just individual coping strategies.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Psychological sustainability",
+    section: "Hidden costs – Psychological sustainability",
     order: 60
   },
   [SHAREABLE_description_IDS.QUOTE_61]: {
     id: SHAREABLE_description_IDS.QUOTE_61,
     quote: "When burnout occurs, contributors overwhelmingly internalize responsibility for fixing it.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Psychological sustainability",
+    section: "Hidden costs – Psychological sustainability",
     order: 61
   },
   [SHAREABLE_description_IDS.QUOTE_62]: {
     id: SHAREABLE_description_IDS.QUOTE_62,
     quote: "Without support structures, burnout remains inevitable.",
     description: "Direct quote from Permissionless Paths by @waye_dev\n - the first research report to explore the human experience of permissionless systems.\n\nRead the full report → https://www.waye.dev/initiatives/permissionless-paths/research-report",
-    section: "Beyond financial sustainability – Psychological sustainability",
+    section: "Hidden costs – Psychological sustainability",
     order: 62
   },
   [SHAREABLE_description_IDS.QUOTE_63]: {
