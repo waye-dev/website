@@ -8,12 +8,12 @@ export const BeyondFinancialSustainability = () => {
   return (
     <div>
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
-        <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] pb-6 font-inknutAntiqua text-center  mx-auto'>
-          Beyond financial sustainability: <br /> <br /> <span className='text-2xl md:text-[40px]'>The hidden costs of freedom tech development</span>
+        <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] pb-6 font-inknutAntiqua text-center  mx-auto'>
+          Beyond financial sustainability: <br /> <br /> <span className='text-xl md:text-2xl lg:text-[32px] leading-[120%]'>The hidden costs of freedom tech development</span>
         </h5>
 
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability: the ecosystem thrives, the position may not</h5>
+          <h5 className='text-lg md:text-xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability: the ecosystem thrives, the position may not</h5>
         </section>
 
         <TakeawayCard>
@@ -112,7 +112,7 @@ export const BeyondFinancialSustainability = () => {
 
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability: one funding model, two realities</h5>
+          <h5 className='text-lg md:text-xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability: one funding model, two realities</h5>
         </section>
 
         <TakeawayCard>
@@ -184,7 +184,7 @@ export const BeyondFinancialSustainability = () => {
 
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as systemic risk</h5>
+          <h5 className='text-lg md:text-xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as systemic risk</h5>
         </section>
 
         <TakeawayCard

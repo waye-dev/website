@@ -4,7 +4,7 @@ export const Strategies = () => {
   return (
     <div className='text-white flex flex-col gap-14 font-inter'>
       <section className='flex flex-col gap-12 text-lg '>
-        <h1 className='text-[30px] md:text-3xl lg:text-4xl leading-[140%] md:leading-[170%]  lg:leading-[170%] font-inknutAntiqua font-normal text-center max-w-[701px] mx-auto'>
+        <h1 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center max-w-[701px] mx-auto'>
           Strategies: 4 approaches to the chaos of day-to-day work
         </h1>
 

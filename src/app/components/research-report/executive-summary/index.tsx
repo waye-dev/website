@@ -50,7 +50,7 @@ export const ExecutiveSummary = () => {
         </div>
 
         <div className='flex flex-col gap-5'>
-          <h3 className='text-xl sm:text-3xl font-inknutAntiqua font-semibold sm:text-center'>Executive Summary</h3>
+          <h3 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-semibold text-center'>Executive Summary</h3>
           <section className='flex flex-col gap-3 text-lg'>
             <p>
               <strong>

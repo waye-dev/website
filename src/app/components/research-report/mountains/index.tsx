@@ -117,8 +117,8 @@ export const RecommendationReveal = () => {
         </div>
         <div className='absolute h-full w-full flex items-center justify-center'>
           <div className='text-center space-y-3 text-black font-inknutAntiqua'>
-            <h3 className='text-2xl'>Recommendations:</h3>
-            <p className='text-[34px]'>
+            <h3 className='text-lg md:text-xl lg:text-2xl'>Recommendations:</h3>
+            <p className='text-xl md:text-2xl lg:text-[32px] leading-[120%]'>
               From tyranny to sustainable <br /> permissionlessness
             </p>
           </div>
