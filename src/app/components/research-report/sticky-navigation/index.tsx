@@ -2,6 +2,7 @@
 
 import { GLOSSARY_LIST } from "../glossary/constants";
 import React, { useState, useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface StickyNavigationProps {
   className?: string;
@@ -189,10 +190,27 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({ className = 
     const element = document.querySelector(selector);
 
     if (element) {
-      const rect = element.getBoundingClientRect();
-      const top = rect.top + window.scrollY - 100;
-
-      window.scrollTo({ top, behavior: "smooth" });
+      // For section 6 (recommendations) which has a ScrollTrigger pinned section
+      if (sectionId === 6) {
+        // Check for the recommendation-reveal ScrollTrigger (the mountains animation)
+        const revealTrigger = ScrollTrigger.getById("recommendation-reveal");
+        
+        if (revealTrigger) {
+          // Scroll to the start of the recommendation reveal section
+          const targetScroll = revealTrigger.start - 100;
+          window.scrollTo({ top: Math.max(0, targetScroll), behavior: "smooth" });
+        } else {
+          // Fallback: use standard calculation
+          const rect = element.getBoundingClientRect();
+          const top = rect.top + window.scrollY - 100;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      } else {
+        // Standard scroll calculation for other sections
+        const rect = element.getBoundingClientRect();
+        const top = rect.top + window.scrollY - 100;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
       setIsOpen(false);
     }
   };

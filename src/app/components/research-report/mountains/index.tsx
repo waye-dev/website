@@ -108,7 +108,7 @@ export const RecommendationReveal = () => {
   );
 
   return (
-    <div ref={container} className='h-screen-dynamic w-full relative overflow-hidden'>
+    <div ref={container} className='h-screen-dynamic w-full relative overflow-hidden' data-section="recommendations">
       <div ref={background} className='absolute inset-0 bg-white' />
 
       <div className='absolute h-full w-full'>

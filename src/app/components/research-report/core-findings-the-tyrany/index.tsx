@@ -55,7 +55,7 @@ export const CoreFindingsTheTyrany = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="gsap-no-drag">
+    <section ref={sectionRef} className="gsap-no-drag" data-section="tyranny-of-permissionlessness">
     <div className='flex flex-col gap-12 px-12 lg:px-56 pb-12'>
       <div ref={textToFadeRef} className='flex flex-col gap-12'>
         <div className='flex flex-col gap-4'>
