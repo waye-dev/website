@@ -6,7 +6,7 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 export const FolderContentThree = () => {
     return (
         <>
-            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
+            <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center font-normal">
             The invisible labor of solopreneurship
             </h2>
 

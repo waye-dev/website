@@ -44,7 +44,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <div>
-          <p className="uppercase font-bold mb-4">Restructure funding models</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Restructure funding models</p>
           <List>
             <ListItem>
               <strong>Fund teams, not just individuals:</strong> introduce team-oriented grants to support application layer developers.
@@ -66,7 +66,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="w-full min-h-[200px] flex items-center text-base">
         <div className="w-full">
-          <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Provide individual support beyond money</p>
           <List>
             <ListItem><strong>Facilitate admin support:</strong> facilitate shared services for taxes, healthcare, legal needs.</ListItem>
             <ListItem className="ml-6">Some community-led initiatives already exist to support admin work for Bitcoin developers: the <Link href="https://bitcoindefense.org/" target="_blank" className="underline">Bitcoin Legal Defense Fund</Link> offers legal support, while <Link href="https://satoshipacioli.com/satoshi-pacioli-accounting-announces-free-tax-services-for-open-source-bitcoin-developers/" target="_blank" className="underline">Satoshi Pacioli Accounting</Link> provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
@@ -85,7 +85,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <div>
-          <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Support ecosystem coordination and health</p>
           <List>
             <ListItem><strong>Partner with universities:</strong> create structured pathways and talent pipeline into the ecosystem.</ListItem>
             <ListItem><strong>Fund team offsites and developers retreats:</strong> provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
@@ -100,7 +100,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <div>
-          <p className="uppercase font-bold mb-4">Foster peer support and knowledge sharing</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Foster peer support and knowledge sharing</p>
           <List>
             <ListItem>
               <strong>Create routes for mentorship matching:</strong> connect new contributors to experienced developers to ease onboarding pains.
@@ -122,7 +122,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="w-full min-h-[200px] flex items-center text-base">
         <div className="w-full">
-          <p className="uppercase font-bold mb-4">Cultivate community wellbeing</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Cultivate community wellbeing</p>
           <List>
             <ListItem><strong>Integrate mental health support:</strong> normalize psychological wellbeing through accessible resources, integrate mental health discussions into community spaces, and develop toolkits that address the unique stressors of decentralized development.</ListItem>
             <ListItem><strong>Support offsites, retreats, and mindfulness initiatives:</strong> organize and facilitate smaller IRL events beyond major conferences, including developer retreats, yoga retreats, mindfulness programs at conferences, and wellbeing workshops that build peer support networks and combat isolation.</ListItem>

@@ -3,7 +3,7 @@ import Image from "next/image";
 export const KeyFindings = () => {
   return (
     <div className='flex flex-col gap-4 px-6 sm:px-0'>
-      <h5 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-bold'>Key Findings & Impact </h5>
+      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Key Findings & Impact </h5>
 
       <section className='flex md:flex-row-reverse flex-col items-center sm:gap-8 gap-4 sm:pl-16'>
       <article className='flex flex-col gap-4'>

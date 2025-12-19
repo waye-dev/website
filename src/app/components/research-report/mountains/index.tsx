@@ -116,11 +116,11 @@ export const RecommendationReveal = () => {
           <Image src="/svgs/research/mountains/mountains.svg" alt='' fill className='object-cover object-center' />
         </div>
         <div className='absolute h-full w-full flex items-center justify-center'>
-          <div className='text-center space-y-3 text-black font-inknutAntiqua'>
-            <h3 className='text-lg md:text-xl lg:text-2xl'>Recommendations:</h3>
-            <p className='text-xl md:text-2xl lg:text-[32px] leading-[120%]'>
+          <div className='text-center text-black font-inknutAntiqua'>
+            <p className='font-inknutAntiqua text-lg md:text-xl lg:text-2xl text-center mb-8 md:mb-10'>Recommendations:</p>
+            <h3 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal'>
               From tyranny to sustainable <br /> permissionlessness
-            </p>
+            </h3>
           </div>
         </div>
       </div>

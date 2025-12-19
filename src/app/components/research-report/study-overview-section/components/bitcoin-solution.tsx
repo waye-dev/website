@@ -3,7 +3,7 @@ import Image from "next/image";
 export const BitcoinSolution = () => {
   return (
     <div className='flex flex-col gap-8'>
-      <h5 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-bold'>Decentralizing OSS</h5>
+      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Decentralizing OSS</h5>
 
       <section className='flex md:flex-row flex-col gap-8'>
         <Image src='/svgs/bitcoin-solution-image.svg' alt='bitcoin solution image' width={353} height={246} />

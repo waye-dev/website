@@ -5,7 +5,7 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 export const FolderContentOne = () => {
     return (
         <div className="pb-[80px] sm:pb-[150px]">
-            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold pb-6 sm:pb-0">
+            <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center font-normal pb-6 sm:pb-0">
                 Free from authority, free to burn out
             </h2>
 

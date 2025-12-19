@@ -8,12 +8,15 @@ export const BeyondFinancialSustainability = () => {
   return (
     <div>
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
-        <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] pb-6 font-inknutAntiqua text-center  mx-auto'>
-          Beyond financial sustainability: <br /> <br /> <span className='text-xl md:text-2xl lg:text-[32px] leading-[120%]'>The hidden costs of freedom tech development</span>
-        </h5>
+        <div className='flex flex-col gap-4 items-center pb-6'>
+          <p className='font-inknutAntiqua text-lg md:text-xl lg:text-2xl text-center'>Beyond financial sustainability:</p>
+          <h5 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center'>
+            The hidden costs of freedom tech development
+          </h5>
+        </div>
 
         <section className='flex flex-col gap-2'>
-          <h5 className='text-lg md:text-xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability: the ecosystem thrives, the position may not</h5>
+          <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Role sustainability: the ecosystem thrives, the position may not</h5>
         </section>
 
         <TakeawayCard>
@@ -112,7 +115,7 @@ export const BeyondFinancialSustainability = () => {
 
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-lg md:text-xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability: one funding model, two realities</h5>
+          <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Project sustainability: one funding model, two realities</h5>
         </section>
 
         <TakeawayCard>
@@ -184,7 +187,7 @@ export const BeyondFinancialSustainability = () => {
 
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-lg md:text-xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as systemic risk</h5>
+          <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Psychological sustainability: burnout as systemic risk</h5>
         </section>
 
         <TakeawayCard

@@ -49,7 +49,7 @@ export const researchOverviewNumbersIcons = [
 export const OurResearch = () => {
   return (
     <div className='flex flex-col gap-12'>
-      <h5 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-bold'>Our Research </h5>
+      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Our Research </h5>
 
       <section className='flex flex-col gap-12 sm:pl-16'>
         <section className='flex md:flex-row-reverse flex-col md:gap-24 gap-8'>

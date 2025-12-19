@@ -8,8 +8,8 @@ export const TopLevelAnalysis = () => {
 
   return (
     <div className='flex flex-col gap-8 sm:gap-14' style={{ userSelect: 'text', touchAction: 'auto' }}>
-      <section className='flex flex-col gap-6 items-center max-w-[731px] mx-auto'>
-        <h1 className='text-xl md:text-2xl lg:text-[32px] leading-[120%]  font-inknutAntiqua font-light text-center'>Top Level Analysis</h1>
+      <section className='flex flex-col gap-4 items-center max-w-[731px] mx-auto'>
+        <p className='font-inknutAntiqua text-lg md:text-xl lg:text-2xl text-center'>Top Level Analysis:</p>
         <h1 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center'>
           Navigating the paradoxes of OSS freedom tech development
         </h1>
@@ -27,7 +27,7 @@ export const TopLevelAnalysis = () => {
       <ParadoxVisualization />
       {/* {TOFIX: NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.} */}
       
-      <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-medium text-center">
+      <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center">
       Core tensions
       </h2>
 
@@ -52,7 +52,7 @@ export const TopLevelAnalysis = () => {
         </SectionTitleDescription>
       </div>
 
-      <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-medium text-center">
+      <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center">
         Experience evolution patterns
       </h2>
 

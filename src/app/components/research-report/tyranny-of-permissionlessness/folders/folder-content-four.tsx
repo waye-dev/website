@@ -6,7 +6,7 @@ import { QuoteCards } from "@components/research-report/_components/quotes";
 export const FolderContentFour = () => {
     return (
             <>
-            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
+            <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center font-normal">
             Autonomous over projects, but constrained by the funding structure
             </h2>
 
