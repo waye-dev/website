@@ -7,7 +7,7 @@ import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 export const SeniorAppDev = () => {
   return (
     <div className='flex flex-col gap-16'>
-      <h1 className='text-[30px] md:text-[28px] leading-[120%] font-inknutAntiqua text-center'>
+      <h1 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center'>
         Senior app dev: "using chaos to keep things interesting"
       </h1>
 

@@ -17,9 +17,27 @@ export const Glossary = () => {
 
     const element = document.querySelector(part.sectionSelector);
     if (element) {
-      const rect = element.getBoundingClientRect();
-      const top = rect.top + window.scrollY - 100;
-      window.scrollTo({ top, behavior: "smooth" });
+      // For section 6 (recommendations) which has a ScrollTrigger pinned section
+      if (partId === 6) {
+        // Check for the recommendation-reveal ScrollTrigger (the mountains animation)
+        const revealTrigger = ScrollTrigger.getById("recommendation-reveal");
+        
+        if (revealTrigger) {
+          // Scroll to the start of the recommendation reveal section
+          const targetScroll = revealTrigger.start - 100;
+          window.scrollTo({ top: Math.max(0, targetScroll), behavior: "smooth" });
+        } else {
+          // Fallback: use standard calculation
+          const rect = element.getBoundingClientRect();
+          const top = rect.top + window.scrollY - 100;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      } else {
+        // Standard scroll calculation for other sections
+        const rect = element.getBoundingClientRect();
+        const top = rect.top + window.scrollY - 100;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
     }
   };
 

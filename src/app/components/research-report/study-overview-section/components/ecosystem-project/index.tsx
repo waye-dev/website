@@ -36,7 +36,7 @@ export const EcosystemProject = () => {
 
   return (
     <div ref={containerRef} className='flex flex-col gap-14'>
-      <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua text-center'>Ecosystem distribution </h5>
+      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center'>Ecosystem distribution </h5>
 
       <EcosystemDistribution availableWidth={resizedWidthForDesign} dotsRef={dotsRef} />
 

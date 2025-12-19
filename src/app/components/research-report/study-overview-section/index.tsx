@@ -13,10 +13,10 @@ export const StudyOverviewSection = () => {
   return (
     <div className='flex flex-col gap-14'>
       <section className='flex flex-col gap-9'>
-        <h2 className='text-[30px] md:text-[40px] lg:text-[50px] leading-[120%] md:leading-[75.6px] font-inknutAntiqua text-center'>
+        <h2 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center'>
           Study Overview
         </h2>
-        <p className='text-lg font-inter font-normal text-left'>
+        <p className='text-lg font-normal text-left'>
         Open Source Software (OSS) promises to enable new modes of work that transcend corporate constraints: collaborative development beyond institutional boundaries and creative freedom without hierarchical control. In reality, however, open source development is largely beholden to either unpaid volunteer work or corporate employment. This leaves critical infrastructure vulnerable to both burnout and institutional capture.
         </p>
       </section>

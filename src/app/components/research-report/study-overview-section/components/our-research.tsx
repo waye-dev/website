@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 const researchOverviewNumbers = [
   {
@@ -51,15 +49,15 @@ export const researchOverviewNumbersIcons = [
 export const OurResearch = () => {
   return (
     <div className='flex flex-col gap-12'>
-      <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-inknutAntiqua font-bold'>Our Research </h5>
+      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Our Research </h5>
 
       <section className='flex flex-col gap-12 sm:pl-16'>
         <section className='flex md:flex-row-reverse flex-col md:gap-24 gap-8'>
           <article className='flex flex-col gap-4 text-lg max-w-[731px]'>
             <p>This pilot study addresses a foundational question:</p>
-            <p className='font-inknutAntiqua text-md'>
+            <p className='font-inknutAntiqua text-lg'>
               How do full-time, grant-funded, institutionally unaffiliated developers in the Bitcoin and Bitcoin-adjacent (i.e. Nostr) ecosystem
-              work and what do they need to sustainably perform their role? <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_10} />
+              work and what do they need to sustainably perform their role?
             </p>
           </article>
           <Image src='/svgs/our-research-image.svg' alt='our research image' width={256} height={246} />
@@ -74,7 +72,7 @@ export const OurResearch = () => {
           ))}
         </section>
 
-      <p className='md:order-2'>
+      <p className='md:order-2 text-lg'>
         Between March and May 2025, we interviewed 26 Bitcoin and Nostr contributors who had worked full-time on grant-funded projects for at
         least 12 months. Through semi-structured interviews, we explored:
       </p>

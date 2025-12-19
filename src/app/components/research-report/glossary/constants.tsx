@@ -55,7 +55,7 @@ export const GLOSSARY_PARTS: GlossaryPart[] = [
   },
   {
     id: 5,
-    title: "BEYOND FINANCIAL SUSTAINABILITY",
+    title: "HIDDEN COSTS",
     summary: (
       <div>
         Three critical tensions emerge for a sustainable work environment:

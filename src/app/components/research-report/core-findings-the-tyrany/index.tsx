@@ -4,8 +4,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { CrocAnimation } from "./croc-animation";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,13 +55,13 @@ export const CoreFindingsTheTyrany = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="gsap-no-drag">
+    <section ref={sectionRef} className="gsap-no-drag" data-section="tyranny-of-permissionlessness">
     <div className='flex flex-col gap-12 px-12 lg:px-56 pb-12'>
       <div ref={textToFadeRef} className='flex flex-col gap-12'>
         <div className='flex flex-col gap-4'>
-          <p className='font-inknutAntiqua text-xl text-center hidden sm:block'>Core findings: </p>
-          <h5 className='text-2xl sm:text-4xl leading-[120%] font-inknutAntiqua text-center'>
-           <span className='block sm:hidden'>Core findings: The tyranny of permissionlessness</span>
+          <p className='font-inknutAntiqua text-lg md:text-xl lg:text-2xl text-center'>Core findings: </p>
+          <h5 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center'>
+           <span className='block sm:hidden'>The tyranny of permissionlessness</span>
            <span className='hidden sm:block'>The tyranny of permissionlessness</span>
           </h5>
         </div>
@@ -77,7 +75,7 @@ export const CoreFindingsTheTyrany = () => {
       </div>
 
       <p ref={textToPinRef} className='text-lg'>
-        We call this <strong>"the tyranny of permissionlessness."</strong> <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_22} />
+        We call this <strong>"the tyranny of permissionlessness."</strong>
       </p>
     </div>
 

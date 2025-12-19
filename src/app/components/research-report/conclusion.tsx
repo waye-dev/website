@@ -1,14 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 import { event } from "@/app/utils/analytics";
 
 export const Conclusion = () => {
   return (
     <div className='font-inter text-lg flex flex-col gap-10'>
-      <h1 className='text-[30px] md:text-[33px] leading-[120%] font-inknutAntiqua text-center'>Conclusion</h1>
+      <h1 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center'>Conclusion</h1>
 
       <section className='flex flex-col gap-4'>
         <p>
