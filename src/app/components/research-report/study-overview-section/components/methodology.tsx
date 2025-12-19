@@ -1,7 +1,7 @@
 export const Methodology = () => {
   return (
     <div className='py-12 flex flex-col gap-12 items-center'>
-      <h1 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center'>Methodology</h1>
+      <h1 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua text-center'>Methodology</h1>
 
       <div className='bg-blue-custom-1000 rounded-3xl border border-black p-8 flex flex-col gap-4'>
         <section className='flex flex-col gap-2'>

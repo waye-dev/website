@@ -2,7 +2,7 @@
 export const GrantFundedTenure = () => {
   return (
     <div className='flex flex-col gap-14'>
-      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua text-center'>Grant-funded tenure </h5>
+      <h5 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-bold font-inknutAntiqua text-center'>Grant-funded tenure </h5>
 
       <section className='flex flex-col gap-8 text-xl font-inter font-normal px-4 sm:px-0'>
         <p>
