@@ -211,11 +211,26 @@ export default function DonatePage() {
         <Wrapper>
           <div className='max-w-3xl mx-auto space-y-6 sm:space-y-8'>
           <div className='space-y-3 text-center'>
-            <h2 className='text-2xl sm:text-3xl lg:text-4xl font-semibold'>Support Decentralized Technologies</h2>
+            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6'>Donate to Waye</h2>
             <p className='mt-1 text-[#090909] text-sm sm:text-base'>
-              Help us to provide sustainable support for free and open-source contributors working on freedom tech and projects that help
-              decentralized technologies flourish. <br />{" "}
-              <span className='text-xs sm:text-sm italic'>We are a 501(c)(3) public charity. All donations are tax deductible.</span>
+              Your contribution supports freedom tech builders across the globe. We're talking: less burnout, more impact. Executive coaching cultivates independent thought, which is exactly what we need for this human-powered revolution. <br />{" "}
+              <br />{" "}
+              Together, let's strengthen the human infrastructure of open source. <br />{" "}
+              <br />{" "}
+              Thank you 🙏
+            </p>
+          </div>
+
+          {/* Visual break */}
+          <div className='border-t border-gray-300 w-full my-6 sm:my-8'></div>
+
+          {/* Foundation Information */}
+          <div className='text-center space-y-3'>
+            <p className='mt-1 text-[#090909] text-sm sm:text-base'>
+              The OS Waye Foundation (EIN: 99-5041645) is a 501(c)(3) non-profit organization. All donations are tax-deductible to the full extent of the law.
+            </p>
+            <p className='text-[#090909] text-sm sm:text-base'>
+              You can donate fiat or anonymously with bitcoin. For a tax deduction, provide your name and email so we can send you a written acknowledgment.
             </p>
           </div>
 
@@ -248,7 +263,7 @@ export default function DonatePage() {
 
             <div className='grid gap-4 sm:gap-4 md:grid-cols-2'>
               <div className='flex flex-col gap-2'>
-                <label className='text-xs sm:text-sm'>Name {!selectedOptionTaxDeductible && <span>(optional)</span>}</label>
+                <label className='text-sm sm:text-base'>Name {!selectedOptionTaxDeductible && <span>(optional)</span>}</label>
                 <input
                   type='text'
                   placeholder='Satoshi Nakamoto'
@@ -260,12 +275,12 @@ export default function DonatePage() {
                 />
               </div>
               <div className='flex flex-col gap-2'>
-                <label className='text-xs sm:text-sm'>
+                <label className='text-sm sm:text-base'>
                   Email <span>{!selectedOptionTaxDeductible && <span>(optional)</span>}</span>
                 </label>
                 <input
                   type='email'
-                  placeholder='satoshin@gmx.com'
+                  placeholder='satoshi@nakamoto.com'
                   name='donorEmail'
                   value={donorEmail}
                   required={isTaxDeductible === "yes"}
