@@ -207,7 +207,7 @@ export default function DonatePage() {
         />
       </section>
 
-      <div className='bg-gray-custom-100 text-[#090909] py-8 px-4 sm:py-12 sm:px-6 md:py-20'>
+      <div className='bg-gray-custom-100 text-[#090909] pt-4 pb-8 px-4 sm:pt-6 sm:pb-12 sm:px-6 md:pt-10 md:pb-20'>
         <Wrapper>
           <div className='max-w-3xl mx-auto space-y-6 sm:space-y-8'>
           <div className='space-y-3 text-center'>
@@ -236,7 +236,7 @@ export default function DonatePage() {
 
           <div className='space-y-5 sm:space-y-6'>
             <div className='text-center'>
-              <p className='mb-3 sm:mb-2 text-sm sm:text-base font-medium'>Do you want this donation to be tax deductible?</p>
+              <p className='mb-3 sm:mb-2 text-sm sm:text-base'>Do you want this donation to be tax deductible?</p>
               <div className='flex items-center justify-center gap-4 sm:gap-6 text-black'>
                 <label className='inline-flex items-center gap-2 cursor-pointer'>
                   <input
@@ -396,6 +396,17 @@ export default function DonatePage() {
                 )}
               </button>
             </div>
+          </div>
+
+          {/* Additional Information */}
+          <div className='text-center mt-12 sm:mt-16 mb-12 sm:mb-16'>
+            <p className='text-[#090909] text-sm sm:text-base'>
+              If you are interested in setting up a recurring donation, using a wire transfer, donating via donor-advised fund or have any questions please reach out to{" "}
+              <a href='mailto:hello@waye.dev' className='text-blue-custom-100 hover:underline'>
+                hello@waye.dev
+              </a>
+              .
+            </p>
           </div>
         </div>
       </Wrapper>
