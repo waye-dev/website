@@ -207,50 +207,48 @@ export default function DonatePage() {
         />
       </section>
 
-      <div className='bg-gray-custom-100 text-[#090909] py-12 md:py-20'>
+      <div className='bg-gray-custom-100 text-[#090909] py-8 px-4 sm:py-12 sm:px-6 md:py-20'>
         <Wrapper>
-          <div className='max-w-3xl mx-auto space-y-8'>
-          <div className='space-y-3'>
-            <h2 className='text-2xl lg:text-4xl font-semibold'>Support Decentralized Technologies</h2>
-            <p className='mt-1 text-[#090909]'>
+          <div className='max-w-3xl mx-auto space-y-6 sm:space-y-8'>
+          <div className='space-y-3 text-center'>
+            <h2 className='text-2xl sm:text-3xl lg:text-4xl font-semibold'>Support Decentralized Technologies</h2>
+            <p className='mt-1 text-[#090909] text-sm sm:text-base'>
               Help us to provide sustainable support for free and open-source contributors working on freedom tech and projects that help
               decentralized technologies flourish. <br />{" "}
-              <span className='text-sm italic'>We are a 501(c)(3) public charity. All donations are tax deductible.</span>
+              <span className='text-xs sm:text-sm italic'>We are a 501(c)(3) public charity. All donations are tax deductible.</span>
             </p>
           </div>
 
-          <div className='border-b border-gray-400 w-full'></div>
-
-          <div className='space-y-5'>
-            <div>
-              <p className='mb-2 font-medium'>Do you want this donation to be tax deductible?</p>
-              <div className='flex items-center gap-6 text-black'>
-                <label className='inline-flex items-center gap-2'>
+          <div className='space-y-5 sm:space-y-6'>
+            <div className='text-center'>
+              <p className='mb-3 sm:mb-2 text-sm sm:text-base font-medium'>Do you want this donation to be tax deductible?</p>
+              <div className='flex items-center justify-center gap-4 sm:gap-6 text-black'>
+                <label className='inline-flex items-center gap-2 cursor-pointer'>
                   <input
                     type='radio'
                     name='tax_deductible'
                     checked={isTaxDeductible === "yes"}
                     onChange={() => setIsTaxDeductible("yes")}
-                    className='h-4 w-4'
+                    className='h-4 w-4 sm:h-4 sm:w-4'
                   />
-                  <span>Yes</span>
+                  <span className='text-sm sm:text-base'>Yes</span>
                 </label>
-                <label className='inline-flex items-center gap-2'>
+                <label className='inline-flex items-center gap-2 cursor-pointer'>
                   <input
                     type='radio'
                     name='tax_deductible'
                     checked={isTaxDeductible === "no"}
                     onChange={() => setIsTaxDeductible("no")}
-                    className='h-4 w-4'
+                    className='h-4 w-4 sm:h-4 sm:w-4'
                   />
-                  <span>No</span>
+                  <span className='text-sm sm:text-base'>No</span>
                 </label>
               </div>
             </div>
 
-            <div className='grid gap-4 md:grid-cols-2'>
+            <div className='grid gap-4 sm:gap-4 md:grid-cols-2'>
               <div className='flex flex-col gap-2'>
-                <label className='text-sm'>Name {!selectedOptionTaxDeductible && <span>(optional)</span>}</label>
+                <label className='text-xs sm:text-sm'>Name {!selectedOptionTaxDeductible && <span>(optional)</span>}</label>
                 <input
                   type='text'
                   placeholder='Satoshi Nakamoto'
@@ -258,11 +256,11 @@ export default function DonatePage() {
                   value={donorName}
                   required={isTaxDeductible === "yes"}
                   onChange={(e) => setDonorName(e.target.value)}
-                  className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-3 text-black placeholder-gray-500 focus:outline-none'
+                  className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-2.5 sm:py-3 text-sm sm:text-base text-black placeholder-gray-500 focus:outline-none'
                 />
               </div>
               <div className='flex flex-col gap-2'>
-                <label className='text-sm'>
+                <label className='text-xs sm:text-sm'>
                   Email <span>{!selectedOptionTaxDeductible && <span>(optional)</span>}</span>
                 </label>
                 <input
@@ -272,14 +270,14 @@ export default function DonatePage() {
                   value={donorEmail}
                   required={isTaxDeductible === "yes"}
                   onChange={(e) => setDonorEmail(e.target.value)}
-                  className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-3 text-black placeholder-gray-500 focus:outline-none'
+                  className='w-full rounded-md border border-gray-300 bg-white/90 px-3 py-2.5 sm:py-3 text-sm sm:text-base text-black placeholder-gray-500 focus:outline-none'
                 />
               </div>
             </div>
 
-            <div>
-              <p className='mb-3 font-medium'>How much would you like to donate?</p>
-              <div className='flex flex-wrap gap-3'>
+            <div className='text-center'>
+              <p className='mb-3 sm:mb-4 text-sm sm:text-base font-medium'>How much would you like to donate?</p>
+              <div className='flex flex-wrap gap-2 sm:gap-3 justify-center'>
                 {PRESET_AMOUNTS.map((value) => {
                   const active = amount !== "" && amount === value;
                   return (
@@ -287,7 +285,7 @@ export default function DonatePage() {
                       key={value}
                       type='button'
                       onClick={() => setAmount(value)}
-                      className={`rounded-lg border px-4 py-2 text-black ${
+                      className={`rounded-lg border px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base text-black ${
                         active ? "border-orange-500 bg-orange-100/70" : "border-gray-300 bg-white"
                       }`}
                     >
@@ -295,8 +293,8 @@ export default function DonatePage() {
                     </button>
                   );
                 })}
-                <div className='relative flex-1'>
-                  <span className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500'>$</span>
+                <div className='relative w-full sm:flex-1 sm:max-w-[200px]'>
+                  <span className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm sm:text-base'>$</span>
                   <input
                     type='text'
                     inputMode='numeric'
@@ -304,7 +302,7 @@ export default function DonatePage() {
                     value={amount === "" ? "" : String(amount)}
                     onChange={handleCustomAmountChange}
                     placeholder='Or enter custom amount'
-                    className='w-full rounded-lg border border-gray-300 bg-white py-2 pl-7 pr-3 text-black placeholder-gray-500 focus:outline-none'
+                    className='w-full rounded-lg border border-gray-300 bg-white py-2 pl-7 pr-3 text-sm sm:text-base text-black placeholder-gray-500 focus:outline-none'
                   />
                 </div>
               </div>
@@ -321,12 +319,12 @@ export default function DonatePage() {
               </div>
             )}
 
-            <div className='grid gap-4 grid-cols-1 md:grid-cols-2'>
+            <div className='grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2'>
               <button
                 type='button'
                 onClick={() => makeBitcoinDonation()}
                 disabled={!canDonate || isSubmitting.bitcoin}
-                className={`flex items-center justify-center gap-3 rounded-xl border px-6 py-5 text-lg font-semibold transition-colors ${
+                className={`flex items-center justify-center gap-2 sm:gap-3 rounded-xl border px-4 sm:px-6 py-3 sm:py-5 text-base sm:text-lg font-semibold transition-colors ${
                   canDonate && !isSubmitting.bitcoin
                     ? "border-orange-500 bg-orange-100 text-orange-600 hover:bg-orange-200"
                     : "cursor-not-allowed border-gray-300 bg-gray-200 text-gray-500"
@@ -335,12 +333,12 @@ export default function DonatePage() {
                 {isSubmitting.bitcoin ? (
                   <div className='flex items-center gap-2'>
                     <div className='h-4 w-4 animate-spin rounded-full border-2 border-orange-600 border-t-transparent'></div>
-                    <span>Processing...</span>
+                    <span className='text-sm sm:text-base'>Processing...</span>
                   </div>
                 ) : (
                   <>
-                    <span>₿</span>
-                    <span>Donate with Bitcoin</span>
+                    <span className='text-lg sm:text-xl'>₿</span>
+                    <span className='text-sm sm:text-base'>Donate with Bitcoin</span>
                   </>
                 )}
               </button>
@@ -349,7 +347,7 @@ export default function DonatePage() {
                 type='button'
                 onClick={() => makeStripeDonation()}
                 disabled={!canDonate || isSubmitting.fiat}
-                className={`flex items-center justify-center gap-3 rounded-xl border px-6 py-5 text-lg font-semibold transition-colors ${
+                className={`flex items-center justify-center gap-2 sm:gap-3 rounded-xl border px-4 sm:px-6 py-3 sm:py-5 text-base sm:text-lg font-semibold transition-colors ${
                   canDonate && !isSubmitting.fiat
                     ? "border-blue-500 bg-blue-100 text-blue-600 hover:bg-blue-200"
                     : "cursor-not-allowed border-gray-300 bg-gray-200 text-gray-500"
@@ -359,12 +357,12 @@ export default function DonatePage() {
                 {isSubmitting.fiat ? (
                   <div className='flex items-center gap-2'>
                     <div className='h-4 w-4 animate-spin rounded-full border-2 border-blue-600 border-t-transparent'></div>
-                    <span>Processing...</span>
+                    <span className='text-sm sm:text-base'>Processing...</span>
                   </div>
                 ) : (
                   <>
                     <span>
-                      <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                      <svg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' className='sm:w-6 sm:h-6'>
                         <path
                           d='M2.88539 8.84875C3.55805 6.13983 5.70602 4.04534 8.43056 3.44162L8.88443 3.34105C10.9366 2.88632 13.0634 2.88632 15.1156 3.34105L15.5694 3.44162C18.294 4.04534 20.442 6.13984 21.1146 8.84875C21.6285 10.9182 21.6285 13.0819 21.1146 15.1512C20.442 17.8602 18.294 19.9547 15.5694 20.5584L15.1156 20.659C13.0634 21.1137 10.9366 21.1137 8.88443 20.659L8.43056 20.5584C5.70601 19.9547 3.55805 17.8602 2.88539 15.1513C2.37154 13.0819 2.37154 10.9181 2.88539 8.84875Z'
                           stroke='currentColor'
@@ -378,7 +376,7 @@ export default function DonatePage() {
                         />
                       </svg>
                     </span>
-                    <span>Donate with Fiat</span>
+                    <span className='text-sm sm:text-base'>Donate with Fiat</span>
                   </>
                 )}
               </button>
