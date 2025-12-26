@@ -44,16 +44,9 @@ export const trackDonationClick = (location: string) => {
   });
 };
 
-export const trackDonationModalOpen = () => {
+export const trackDonationPageView = () => {
   event({
-    action: "donation_modal_open",
-    category: "Donation",
-  });
-};
-
-export const trackDonationModalClose = () => {
-  event({
-    action: "donation_modal_close",
+    action: "donation_page_view",
     category: "Donation",
   });
 };

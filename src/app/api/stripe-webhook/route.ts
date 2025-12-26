@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 import { NextRequest, NextResponse } from "next/server";
-import { updateDonationStatus } from "@/app/components/donation-modal/action";
+import { updateDonationStatus } from "@/app/donate/actions";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
