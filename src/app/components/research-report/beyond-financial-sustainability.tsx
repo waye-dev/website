@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { QuoteCards } from "./_components/quotes";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 import { AnimatedSvgDots } from "./_components/animated-svg-dots";
 import { CircularProgress } from "./_components/circular-progress";
@@ -9,17 +8,20 @@ export const BeyondFinancialSustainability = () => {
   return (
     <div>
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
-        <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] pb-6 font-inknutAntiqua text-center  mx-auto'>
-          Beyond financial sustainability: <br /> <br /> <span className='text-2xl md:text-[40px]'>The hidden costs of freedom tech development</span>
-        </h5>
+        <div className='flex flex-col gap-4 items-center pb-6'>
+          <p className='font-inknutAntiqua text-lg md:text-xl lg:text-2xl text-center'>Beyond financial sustainability:</p>
+          <h5 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center'>
+            The hidden costs of freedom tech development
+          </h5>
+        </div>
 
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Role sustainability: the ecosystem thrives, the position may not</h5>
+          <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Role sustainability: the ecosystem thrives, the position may not</h5>
         </section>
 
         <TakeawayCard>
           <p>
-            Despite expressing uncertainty about their roles, contributors are optimistic about the sustainability of Bitcoin and their individual career prospects in the wider ecosystem. Yet, this abundance mindset may mask a critical vulnerability: the prevailing two-year tenure in grant-funded roles quietly drains protocol expertise, as knowledge leaves with each departure and turnover outpaces the accumulation of long-term experience. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_54} />
+            Despite expressing uncertainty about their roles, contributors are optimistic about the sustainability of Bitcoin and their individual career prospects in the wider ecosystem. Yet, this abundance mindset may mask a critical vulnerability: the prevailing two-year tenure in grant-funded roles quietly drains protocol expertise, as knowledge leaves with each departure and turnover outpaces the accumulation of long-term experience.
           </p>
         </TakeawayCard>
 
@@ -113,12 +115,12 @@ export const BeyondFinancialSustainability = () => {
 
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Project sustainability: one funding model, two realities</h5>
+          <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Project sustainability: one funding model, two realities</h5>
         </section>
 
         <TakeawayCard>
           <p>
-            The one-size-fits-all grant model fails to recognize the different realities of core infrastructure vs application work. Protocol work needs ongoing funding streams, applications need revenue freedom. Current grant structures constrain both in perpetual dependency, preventing the sustainability they aim to support. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_55} />
+            The one-size-fits-all grant model fails to recognize the different realities of core infrastructure vs application work. Protocol work needs ongoing funding streams, applications need revenue freedom. Current grant structures constrain both in perpetual dependency, preventing the sustainability they aim to support.
           </p>
         </TakeawayCard>
 
@@ -185,7 +187,7 @@ export const BeyondFinancialSustainability = () => {
 
       <div className='flex flex-col gap-14 text-base md:text-lg text-white font-inter py-24'>
         <section className='flex flex-col gap-2'>
-          <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua'>Psychological sustainability: burnout as systemic risk</h5>
+          <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal'>Psychological sustainability: burnout as systemic risk</h5>
         </section>
 
         <TakeawayCard

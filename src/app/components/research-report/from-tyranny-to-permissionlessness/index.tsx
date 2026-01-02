@@ -235,7 +235,7 @@ export function FromTyrannyToPermissionlessness() {
           <div key={section.id} className="mb-12">
             {section.id === '08' ? (
               <div className="space-y-6">
-                <p className="font-bold text-xl font-inknutAntiqua text-center mb-6">
+                <p className="font-semibold text-base md:text-lg font-inknutAntiqua text-center mb-6">
                   Developers' ideas
                 </p>
                 <QuoteCards
@@ -307,7 +307,7 @@ export function FromTyrannyToPermissionlessness() {
 
         <p
           ref={section08TitleRef}
-          className="font-bold text-2xl font-inknutAntiqua text-center absolute top-[15vh] left-1/2 -translate-x-1/2 w-full"
+          className="font-semibold text-base md:text-lg font-inknutAntiqua text-center absolute top-[15vh] left-1/2 -translate-x-1/2 w-full"
           style={{ opacity: 0, zIndex: 50 }}
         >
           Developers' ideas

@@ -27,7 +27,7 @@ const experienceLevels = [
 export const ExperienceLevels = () => {
   return (
     <div className='flex flex-col gap-20 py-24'>
-      <h5 className='text-xl md:text-2xl lg:text-3xl leading-[120%] font-inknutAntiqua text-center'>OSS experience levels</h5>
+      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center'>OSS experience levels</h5>
 
       <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
         {experienceLevels.map((level) => (

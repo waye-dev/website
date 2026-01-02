@@ -1,13 +1,11 @@
 "use client"
 
 import { QuoteCards } from "@components/research-report/_components/quotes";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export const FolderContentOne = () => {
     return (
         <div className="pb-[80px] sm:pb-[150px]">
-            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold pb-6 sm:pb-0">
+            <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center font-normal pb-6 sm:pb-0">
                 Free from authority, free to burn out
             </h2>
 
@@ -15,7 +13,7 @@ export const FolderContentOne = () => {
                 <span className="font-bold uppercase">
                     The tension: {' '}
                 </span>
-                Together with enthusiasm for the technology, the ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_26} />
+                Together with enthusiasm for the technology, the ideals of decentralization and freedom from institutional capture attract developers and sustain motivation. Yet this same ideological commitment accelerates burnout: the social mission justifies self-exploitation, unlimited freedom becomes paralyzing, and cultural rigidity alienates diverse perspectives. The very values that make the work meaningful become the mechanisms of burnout, leaving developers caught between their commitment to freedom technology and their own sustainability.
             </p>
 
             <div className="text-[16px] space-y-[1rem] pt-[1rem]">
@@ -23,7 +21,7 @@ export const FolderContentOne = () => {
                     Yes, people are "in for the tech" but also for freedom
                 </span>
                 <p>
-                    All participants were initially drawn to the ecosystem by a fascination with the technology and the prospect of working with top engineers. After joining, however, the vast majority described how their motivation evolved to include a commitment to the ideals of freedom and decentralization embodied by the Bitcoin and Nostr ecosystem. Participants working for over two years on their grant-funded projects reported gaining greater awareness of the humanitarian goals of Bitcoin and Nostr, and a desire to engage with "big picture" thinking. 3/4 of participants explicitly described the meaningfulness of their work as a key motivator, often citing it to justify routines and patterns they acknowledged as unsustainable. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_27} />
+                    All participants were initially drawn to the ecosystem by a fascination with the technology and the prospect of working with top engineers. After joining, however, the vast majority described how their motivation evolved to include a commitment to the ideals of freedom and decentralization embodied by the Bitcoin and Nostr ecosystem. Participants working for over two years on their grant-funded projects reported gaining greater awareness of the humanitarian goals of Bitcoin and Nostr, and a desire to engage with "big picture" thinking. 3/4 of participants explicitly described the meaningfulness of their work as a key motivator, often citing it to justify routines and patterns they acknowledged as unsustainable.
                 </p>
             </div>
 
@@ -61,7 +59,7 @@ export const FolderContentOne = () => {
                     Permissionlessness attracts, then overwhelms
                 </span>
                 <p>
-                    The no-barrier ethos draws contributors across all experience levels: anyone can build without asking permission. Yet permissionlessness as an operating principle means no schedules, no managers, no external structure. Over half of participants appreciate this flexibility to choose what to work on and when, yet these are precisely the areas where they report the most challenges: <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_29} /> nearly a third struggle with boundaries and a quarter with prioritizing tasks. The initially attractive open-ended nature leaves many contributors, particularly newer ones, paralyzed by infinite possibilities and no clear direction.
+                    The no-barrier ethos draws contributors across all experience levels: anyone can build without asking permission. Yet permissionlessness as an operating principle means no schedules, no managers, no external structure. Over half of participants appreciate this flexibility to choose what to work on and when, yet these are precisely the areas where they report the most challenges: nearly a third struggle with boundaries and a quarter with prioritizing tasks. The initially attractive open-ended nature leaves many contributors, particularly newer ones, paralyzed by infinite possibilities and no clear direction.
                 </p>
             </div>
 
@@ -107,7 +105,7 @@ export const FolderContentOne = () => {
                     Experience enables, then exhausts
                 </span>
                 <p>
-                    As contributors gain experience, they develop deeper clarity about Bitcoin's humanitarian mission, but not about sustainable work practices. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_30} /> Instead of learning healthier routines, experienced contributors adapt to cycles of intense work and burnout, driven by the urgency of building critical freedom infrastructure. Over half of participants report experiencing burnout at least once in their professional life, with 3 citing it as a primary reason for leaving their grant-funded position. Yet it's senior developers who normalize it most: for them, burnout is "the normal state of affairs." The sacrificial ethos of OSS, compounded by freedom tech's humanitarian stakes, transforms exhaustion from exception to expectation.
+                    As contributors gain experience, they develop deeper clarity about Bitcoin's humanitarian mission, but not about sustainable work practices. Instead of learning healthier routines, experienced contributors adapt to cycles of intense work and burnout, driven by the urgency of building critical freedom infrastructure. Over half of participants report experiencing burnout at least once in their professional life, with 3 citing it as a primary reason for leaving their grant-funded position. Yet it's senior developers who normalize it most: for them, burnout is "the normal state of affairs." The sacrificial ethos of OSS, compounded by freedom tech's humanitarian stakes, transforms exhaustion from exception to expectation.
                 </p>
             </div>
 

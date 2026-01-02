@@ -1,8 +1,6 @@
 "use client";
 import ParadoxVisualization from "@/app/components/research-report/_components/nav-paradoxes-oss/index";
 import { ExperienceParadoxes } from "./_components/experience-the-paradoxes";
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 import { SectionTitleDescription } from "./section-title-description";
 
 export const TopLevelAnalysis = () => {
@@ -10,9 +8,9 @@ export const TopLevelAnalysis = () => {
 
   return (
     <div className='flex flex-col gap-8 sm:gap-14' style={{ userSelect: 'text', touchAction: 'auto' }}>
-      <section className='flex flex-col gap-6 items-center max-w-[731px] mx-auto'>
-        <h1 className='text-xl md:text-2xl leading-[120%]  font-inknutAntiqua font-light text-center'>Top Level Analysis</h1>
-        <h1 className='text-[30px] md:text-3xl leading-[140%]  font-inknutAntiqua font-normal text-center'>
+      <section className='flex flex-col gap-4 items-center max-w-[731px] mx-auto'>
+        <p className='font-inknutAntiqua text-lg md:text-xl lg:text-2xl text-center'>Top Level Analysis:</p>
+        <h1 className='text-xl md:text-2xl lg:text-[32px] leading-[120%] font-inknutAntiqua font-normal text-center'>
           Navigating the paradoxes of OSS freedom tech development
         </h1>
       </section>
@@ -24,12 +22,12 @@ export const TopLevelAnalysis = () => {
           the closest to the first term, and 10 is closest to the second term).
         </p>
 
-        <p>Here are the results, highlighting common patterns and strongest polarizations. While overall contributors find their roles somewhat sustainable, a clear pattern emerged: the more the experience, the more unsustainable one's work process becomes. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_15} /></p>
+        <p>Here are the results, highlighting common patterns and strongest polarizations. While overall contributors find their roles somewhat sustainable, a clear pattern emerged: the more the experience, the more unsustainable one's work process becomes.</p>
       </section>
       <ParadoxVisualization />
       {/* {TOFIX: NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.} */}
       
-      <h2 className="text-2xl leading-[120%] font-inknutAntiqua font-medium text-center">
+      <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center">
       Core tensions
       </h2>
 
@@ -54,7 +52,7 @@ export const TopLevelAnalysis = () => {
         </SectionTitleDescription>
       </div>
 
-      <h2 className="text-2xl leading-[120%] font-inknutAntiqua font-medium text-center">
+      <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center">
         Experience evolution patterns
       </h2>
 

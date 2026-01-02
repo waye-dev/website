@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import { QuoteCards } from "@components/research-report/_components/quotes";
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
-import { SimpleShareButton } from "@/app/components/share-mode/simple-share-button";
 
 export const FolderContentFour = () => {
     return (
             <>
-            <h2 className="text-[28px] font-inknutAntiqua text-center font-semibold">
+            <h2 className="text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua text-center font-normal">
             Autonomous over projects, but constrained by the funding structure
             </h2>
 

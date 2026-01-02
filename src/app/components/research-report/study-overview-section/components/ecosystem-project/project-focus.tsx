@@ -143,7 +143,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
 
   return (
     <div className='flex flex-col gap-14'>
-      <h5 className='text-xl md:text-2xl lg:text-2xl leading-[120%] font-bold font-inknutAntiqua text-center'>Project focus </h5>
+      <h5 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center'>Project focus </h5>
 
       <section className='flex flex-col gap-10 text-xl font-inter font-normal items-center'>
         <section className='flex flex-row gap-20 justify-center w-full max-w-[600px]'>
@@ -182,6 +182,7 @@ export const ProjectFocus = ({ containerRef, dotsRef, darkCircleCount, onAnimati
             Application work (payments, messaging, hardware) is evenly distributed between the Bitcoin and Nostr ecosystems. This mirrors the
             ecosystem's maturation: infrastructure exists, user-facing tools are now needed.
           </li>
+          <li>Nostr developers cluster primarily in applications.</li>
           <li>
             Infrastructure work (19.2%), comprising developer toolkits and libraries, appears to be the domain of either newcomers or veterans,
             with no middle ground.

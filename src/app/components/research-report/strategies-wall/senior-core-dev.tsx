@@ -8,7 +8,7 @@ import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 export const SeniorCoreDev = () => {
   return (
       <div className='flex flex-col gap-16'>
-      <h1 className='text-[30px] md:text-[28px] leading-[120%] font-inknutAntiqua text-center'>Senior core dev: looking beyond the protocol</h1>
+      <h1 className='text-lg md:text-xl lg:text-2xl leading-[120%] font-inknutAntiqua font-normal text-center'>Senior core dev: looking beyond the protocol</h1>
 
       <section className='grid grid-cols-1 md:grid-cols-2 gap-14 items-center'>
         <Image src='/svgs/senior-core-dev.svg' alt='senior core dev' width={516} height={580} />

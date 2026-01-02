@@ -237,7 +237,7 @@ export function ResearchReportClient() {
         <RecommendationReveal />
       </div>
 
-      <div className='bg-gray-custom-400' data-section='recommendations'>
+      <div className='bg-gray-custom-400'>
         <FromTyrannyToPermissionlessness />
       </div>
       <div className='bg-gray-custom-400 text-black'>

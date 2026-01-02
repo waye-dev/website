@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { List, ListItem } from './list-components';
-import { SimpleShareButton } from '@/app/components/share-mode/simple-share-button';
-import { SHAREABLE_description_IDS } from '@/app/data/shareable-content';
 
 export interface Section {
   id: string;
@@ -16,7 +14,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <p className="mb-4">
-        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away (admin burden, isolation, grant anxiety). <strong>This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome</strong>. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_63} /> While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
+        Our findings revealed that the very freedom that attracts developers creates the conditions that drive them away (admin burden, isolation, grant anxiety). <strong>This "tyranny of permissionlessness" represents one possible, yet critical, failure mode of open, decentralized systems — not an inevitable outcome</strong>. While the funding ecosystem for Bitcoin and related technologies is expanding, there are several ways in which funders and stakeholders in the ecosystem can further support grant-funded contributors.
 
         </p>
       </div>
@@ -27,7 +25,7 @@ export const sections: Section[] = [
     id: "01",
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
-        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_64} /> They are directed to funders and ecosystem leaders, recognizing that sustainable development requires coordinated action. <strong>The core principle: sustain entry motivations by making everything else easier</strong>. <SimpleShareButton shareId={SHAREABLE_description_IDS.QUOTE_67} /></p>
+        <p>These recommendations outline concrete steps toward "sustainable permissionlessness" — maintaining open participation while creating structural support for contributors' day-to-day experience. They are directed to funders and ecosystem leaders, recognizing that sustainable development requires coordinated action. <strong>The core principle: sustain entry motivations by making everything else easier</strong>.</p>
       </div>
     ),
     animation: 'innerOnly',
@@ -46,12 +44,12 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <div>
-          <p className="uppercase font-bold mb-4">Restructure funding models</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Restructure funding models</p>
           <List>
             <ListItem>
               <strong>Fund teams, not just individuals:</strong> introduce team-oriented grants to support application layer developers.
             </ListItem>
-            <ListItem>
+            <ListItem className="ml-6">
               Learn from <Link href="https://www.opentech.fund/funds/free-and-open-source-software-sustainability-fund/" target="_blank" className="underline">The FOSS Sustainability Fund</Link> which supports projects and "the communities that sustain them" through grants that can be awarded to organizations.
             </ListItem>
             <ListItem><strong>Extend renewal cycles after year 1:</strong> reduce the grant-writing burden for proven contributors. </ListItem>
@@ -68,13 +66,13 @@ export const sections: Section[] = [
     textContent: (
       <div className="w-full min-h-[200px] flex items-center text-base">
         <div className="w-full">
-          <p className="uppercase font-bold mb-4">Provide individual support beyond money</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Provide individual support beyond money</p>
           <List>
             <ListItem><strong>Facilitate admin support:</strong> facilitate shared services for taxes, healthcare, legal needs.</ListItem>
-            <ListItem>Some community-led initiatives already exist to support admin work for Bitcoin developers: the <Link href="https://bitcoindefense.org/" target="_blank" className="underline">Bitcoin Legal Defense Fund</Link> offers legal support, while <Link href="https://satoshipacioli.com/satoshi-pacioli-accounting-announces-free-tax-services-for-open-source-bitcoin-developers/" target="_blank" className="underline">Satoshi Pacioli Accounting</Link> provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
+            <ListItem className="ml-6">Some community-led initiatives already exist to support admin work for Bitcoin developers: the <Link href="https://bitcoindefense.org/" target="_blank" className="underline">Bitcoin Legal Defense Fund</Link> offers legal support, while <Link href="https://satoshipacioli.com/satoshi-pacioli-accounting-announces-free-tax-services-for-open-source-bitcoin-developers/" target="_blank" className="underline">Satoshi Pacioli Accounting</Link> provides free tax services for OSS Bitcoin developers. More work could be done to support these initiatives and connect them with grant-funded developers.</ListItem>
             <ListItem><strong>Provide coworking space stipends:</strong> combat isolation through physical presence.</ListItem>
             <ListItem><strong>Fund mental health programs and toolkits tailored to this niche:</strong> support initiatives aimed to improve contributors' psychological wellbeing.</ListItem>
-            <ListItem>While community-led initiatives such as <Link href="https://opensource.guide/maintaining-balance-for-open-source-maintainers/" target="_blank" className="underline">Open Source Guides</Link> provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
+            <ListItem className="ml-6">While community-led initiatives such as <Link href="https://opensource.guide/maintaining-balance-for-open-source-maintainers/" target="_blank" className="underline">Open Source Guides</Link> provide general self-care tips for OSS maintainers, freedom tech developers face unique stressors. Funders could support tailored programs and resources that understand the specific challenges of building censorship-resistant infrastructure.</ListItem>
             <ListItem><strong>Compensate non-coding work:</strong> explicitly recognize and fund non-coding work (research, maintenance, mentorship, documentation, management) in grant structures, not just feature development.</ListItem>
           </List>
         </div>
@@ -87,7 +85,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <div>
-          <p className="uppercase font-bold mb-4">Support ecosystem coordination and health</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Support ecosystem coordination and health</p>
           <List>
             <ListItem><strong>Partner with universities:</strong> create structured pathways and talent pipeline into the ecosystem.</ListItem>
             <ListItem><strong>Fund team offsites and developers retreats:</strong> provide financial and organizational support for smaller IRL events beyond conferences.</ListItem>
@@ -102,12 +100,12 @@ export const sections: Section[] = [
     textContent: (
       <div className="max-w-3xl min-h-[200px] flex items-center text-base">
         <div>
-          <p className="uppercase font-bold mb-4">Foster peer support and knowledge sharing</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Foster peer support and knowledge sharing</p>
           <List>
             <ListItem>
               <strong>Create routes for mentorship matching:</strong> connect new contributors to experienced developers to ease onboarding pains.
             </ListItem>
-            <ListItem>
+            <ListItem className="ml-6">
               Learn from the <Link href="https://lfx.linuxfoundation.org/tools/mentorship/" target="_blank" className="underline">Linux Foundation's LFX Mentorship</Link> program, which structures mentorship programs connecting experienced maintainers with new contributors.
             </ListItem>
             <ListItem><strong>Develop self-management toolkits:</strong> provide productivity resources, time management support, especially for newer contributors.</ListItem>
@@ -124,7 +122,7 @@ export const sections: Section[] = [
     textContent: (
       <div className="w-full min-h-[200px] flex items-center text-base">
         <div className="w-full">
-          <p className="uppercase font-bold mb-4">Cultivate community wellbeing</p>
+          <p className="uppercase font-semibold text-base md:text-lg mb-4">Cultivate community wellbeing</p>
           <List>
             <ListItem><strong>Integrate mental health support:</strong> normalize psychological wellbeing through accessible resources, integrate mental health discussions into community spaces, and develop toolkits that address the unique stressors of decentralized development.</ListItem>
             <ListItem><strong>Support offsites, retreats, and mindfulness initiatives:</strong> organize and facilitate smaller IRL events beyond major conferences, including developer retreats, yoga retreats, mindfulness programs at conferences, and wellbeing workshops that build peer support networks and combat isolation.</ListItem>

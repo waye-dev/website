@@ -23,8 +23,6 @@ export const EcosystemDistribution = ({ availableWidth, dotsRef }: EcosystemDist
           ))}
         </section>
       </div>
-
-      <p className='text-center'>Nostr developers cluster primarily in applications.</p>
     </section>
   );
 };
