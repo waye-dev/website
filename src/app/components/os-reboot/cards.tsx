@@ -53,43 +53,47 @@ export const CTACard = ({
 
 export const DetailsCard = (
   {
+    intro,
     timeline,
     tldr,
     who,
     location,
-    buttonLinks
+    buttonLinks,
   }: {
+    intro?: React.JSX.Element;
     timeline: React.JSX.Element;
     tldr: React.JSX.Element;
-    who?: React.JSX.Element,
-    location?: React.JSX.Element,
+    who?: React.JSX.Element;
+    location?: React.JSX.Element;
     buttonLinks?: {
       link: string;
       text: string;
     }[];
-  }) => {
+  }
+) => {
   return (
     <div className='flex flex-col p-6 sm:p-8 md:p-10 md:pb-[55px] sm:bg-blue-custom-800 rounded-[10px] w-full md:min-w-[400px] border-2 border-black text-lg leading-[160%]'>
+      {intro && <div className='mb-4'>{intro}</div>}
       <section className='flex flex-col gap-2'>
-        <p className='text-2xl sm:text-3xl font-medium'>Timeline</p>
+        <p className='text-xl sm:text-2xl font-medium'>Timeline</p>
         <p>{timeline}</p>
       </section>
 
       {location && (
         <section className='flex flex-col gap-2'>
-          <p className='text-2xl sm:text-3xl font-medium'>Location:</p>
+          <p className='text-xl sm:text-2xl font-medium'>Location:</p>
           <p>{location}</p>
         </section>
       )}
 
       <section className='flex flex-col gap-2 mt-5'>
-        <p className='text-2xl sm:text-3xl font-medium'>TLDR</p>
+        <p className='text-xl sm:text-2xl font-medium'>TLDR</p>
         <p>{tldr}</p>
       </section>
 
       {who && (
         <section className='flex flex-col gap-2'>
-          <p className='text-2xl sm:text-3xl font-medium'>WHO:</p>
+          <p className='text-xl sm:text-2xl font-medium'>WHO:</p>
           <p>{who}</p>
         </section>
       )}

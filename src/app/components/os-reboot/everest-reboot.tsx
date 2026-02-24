@@ -26,13 +26,30 @@ const EverestReboot = () => {
 
       <section className='pt-12 sm:pt-16 pb-12 sm:pb-16'>
         <DetailsCard
+          intro={
+            <div className='flex flex-col gap-2'>
+              <p className='text-2xl sm:text-3xl font-medium leading-tight'>
+                You&apos;re committed to building freedom tech.
+              </p>
+              <p className='text-xl sm:text-2xl font-medium leading-tight text-black/90'>
+                We&apos;re committed to helping you build systems that lasts.
+              </p>
+            </div>
+          }
           timeline={
             <span className='flex flex-col gap-1'>
               <span>8 sessions. March - August 2026. Thursdays @ 4:30-6PM GMT.</span>
-			  <span className='font-medium'>Mar 26 ✧ Apr 16 ✧ May 7 ✧ May 28 ✧ Jun 18 ✧ Jul 9 ✧ Jul 30 ✧ Aug 20</span>
+              <span className='font-medium'>
+                Mar 26 ✧ Apr 16 ✧ May 7 ✧ May 28 ✧ Jun 18 ✧ Jul 9 ✧ Jul 30 ✧ Aug 20
+              </span>
             </span>
           }
-          tldr={<span>Upgrade your mental OS through this structured protocol designed specifically for freedom tech builders. If you are looking to <span className='font-semibold'>increase flow state</span> and <span className='font-semibold'>prevent burnout</span>, this program is for you.</span>}
+          tldr={
+            <span>
+              Upgrade your mental OS through this structured protocol designed specifically for freedom tech builders. If you are looking to{" "}
+              <span className='font-semibold'>increase flow state</span> and <span className='font-semibold'>prevent burnout</span>, this program is for you.
+            </span>
+          }
         />
       </section>
 
@@ -40,11 +57,8 @@ const EverestReboot = () => {
         <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 p-6 sm:p-8 md:p-10'>
           <div className='flex flex-col gap-2 mb-8'>
             <h2 className='text-2xl sm:text-3xl font-medium leading-tight'>
-              You&apos;re committed to building freedom tech.
+              This work helps with
             </h2>
-            <h3 className='text-xl sm:text-2xl font-medium leading-tight text-black/90'>
-              We&apos;re committed to helping you build technology that lasts.
-            </h3>
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 md:gap-x-10 md:gap-y-8'>
             <div className='flex gap-4 items-start min-h-[200px]'>
