@@ -11,7 +11,7 @@ const AboutOSReboot = ({ setActiveTab }: { setActiveTab: (tab: string) => void }
           <p className='text-lg lg:text-[22px] leading-[160%] max-w-[307px]'>A group cohort redefining open-source success</p>
         </section>
 
-        <section className='flex justify-end items-end w-full sm:mt-10 md:mt-0'>
+        <section className='flex justify-end items-end w-full min-w-0 flex-1 sm:mt-10 md:mt-0'>
           <RebootImage />
         </section>
       </div>
