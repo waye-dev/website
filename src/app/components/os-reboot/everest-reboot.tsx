@@ -24,7 +24,7 @@ const EverestReboot = () => {
         </section>
       </div>
 
-      <section className='pt-[30px] sm:pt-[60px]'>
+      <section className='pt-12 sm:pt-16 pb-12 sm:pb-16'>
         <DetailsCard
           timeline={
             <span className='flex flex-col gap-1'>
@@ -36,70 +36,74 @@ const EverestReboot = () => {
         />
       </section>
 
-      <section className='pt-10 sm:pt-[60px] pb-10'>
+      <section className='pt-12 sm:pt-16 pb-12 sm:pb-16'>
         <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 p-6 sm:p-8 md:p-10'>
-          <div className='flex flex-col gap-2 mb-8 md:mb-10'>
+          <div className='flex flex-col gap-2 mb-8'>
             <h2 className='text-2xl sm:text-3xl font-medium leading-tight'>
-              You're committed to building freedom tech.
+              You&apos;re committed to building freedom tech.
             </h2>
-            <p className='text-xl sm:text-2xl leading-[160%]'>
-              We're committed to helping you build systems that last.
-            </p>
+            <h3 className='text-xl sm:text-2xl font-medium leading-tight text-black/90'>
+              We&apos;re committed to helping you build technology that lasts.
+            </h3>
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 md:gap-x-10 md:gap-y-6'>
-            <div className='flex gap-4 items-start min-h-[240px]'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 md:gap-x-10 md:gap-y-8'>
+            <div className='flex gap-4 items-start min-h-[200px]'>
               <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
-                  <circle cx='12' cy='12' r='8' />
-                  <circle cx='12' cy='12' r='4' />
+                  <circle cx='12' cy='12' r='9' />
+                  <path d='M12 6l-2 6 2 2 2-2-2-6z' />
                   <circle cx='12' cy='12' r='1.5' fill='currentColor' stroke='none' />
                 </svg>
               </div>
               <div className='flex flex-col gap-2 min-w-0 flex-1'>
                 <h3 className='text-lg font-semibold'>Distill your goals</h3>
                 <p className='text-lg leading-[160%]'>
-                  Identify your objectives to crystallize what radically impacts the fight for freedom. Cultivate focus.
+                  Identify your objectives and crystallize what radically impacts the fight for freedom. Cultivate focus.
                 </p>
               </div>
             </div>
-            <div className='flex gap-4 items-start min-h-[240px]'>
+            <div className='flex gap-4 items-start min-h-[200px]'>
               <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
-                  <path d='M3 20 C 3 20 14 20 21 5' />
-                </svg>
-              </div>
-              <div className='flex flex-col gap-2 min-w-0 flex-1'>
-                <h3 className='text-lg font-semibold'>Go exponential</h3>
-                <p className='text-lg leading-[160%]'>
-                  Build systems so you can do less & get more done. Design for 10x impact instead of grinding for 2x output.
-                </p>
-              </div>
-            </div>
-            <div className='flex gap-4 items-start min-h-[240px]'>
-              <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
-                <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
-                  <path d='M12 20V4' />
-                  <path d='M6 10l6-6 6 6' />
-                  <path d='M4 14h16' opacity='0.6' />
+                  <path d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8' />
+                  <path d='M3 3v5h5' />
                 </svg>
               </div>
               <div className='flex flex-col gap-2 min-w-0 flex-1'>
                 <h3 className='text-lg font-semibold'>Break through limits</h3>
                 <p className='text-lg leading-[160%]'>
-                  Use neuroscience-backed techniques to reduce cognitive drag, reframe limiting beliefs, and build a personal protocol for reliable flow.
+                  Use neuroscience-backed techniques to reduce cognitive drag and build personal protocols for reliable flow.
                 </p>
               </div>
             </div>
-            <div className='flex gap-4 items-start min-h-[240px]'>
+            <div className='flex gap-4 items-start min-h-[200px]'>
               <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
-                <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
-                  <path d='M4 12 C 4 6 12 6 12 12 C 12 18 20 18 20 12 C 20 6 12 6 12 12 C 12 18 4 18 4 12' />
+                <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
+                  <path d='M4 20V14 M8 20V9 M12 20V6 M16 20V10 M20 20V5' />
+                </svg>
+              </div>
+              <div className='flex flex-col gap-2 min-w-0 flex-1'>
+                <h3 className='text-lg font-semibold'>Go exponential</h3>
+                <p className='text-lg leading-[160%]'>
+                  Build systems so you can do less while you get more done.
+                </p>
+              </div>
+            </div>
+            <div className='flex gap-4 items-start min-h-[200px]'>
+              <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
+                <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
+                  <rect x='5' y='5' width='14' height='14' rx='2' />
+                  <path d='M12 8v8M8 12h8' />
+                  <circle cx='6' cy='6' r='1' fill='currentColor' stroke='none' />
+                  <circle cx='18' cy='6' r='1' fill='currentColor' stroke='none' />
+                  <circle cx='6' cy='18' r='1' fill='currentColor' stroke='none' />
+                  <circle cx='18' cy='18' r='1' fill='currentColor' stroke='none' />
                 </svg>
               </div>
               <div className='flex flex-col gap-2 min-w-0 flex-1'>
                 <h3 className='text-lg font-semibold'>Create lasting change</h3>
                 <p className='text-lg leading-[160%]'>
-                  Play long term games and proactively prevent burnout.
+                  Play long term games and proactively prevent burnout. Make sure you build things that matter.
                 </p>
               </div>
             </div>
@@ -107,9 +111,9 @@ const EverestReboot = () => {
         </div>
       </section>
 
-      <section className='pt-10 sm:pt-[60px] pb-10'>
+      <section className='pt-12 sm:pt-16 pb-12 sm:pb-16'>
         <div className='rounded-[10px] border-2 border-black bg-blue-custom-800 p-6 sm:p-8 md:p-10'>
-          <h2 className='text-2xl sm:text-3xl font-medium leading-tight mb-6'>
+          <h2 className='text-2xl sm:text-3xl font-medium leading-tight mb-8'>
             Could you imagine?
           </h2>
           <div className='flex flex-col gap-6 text-lg leading-[160%]'>
@@ -120,15 +124,15 @@ const EverestReboot = () => {
               How are you supposed to turn off your laptop at the end of the day, let alone your mind?
             </p>
             <p className='leading-[1.6]'>
-              But what if...<br />
-              You don't just <em>hope</em> you did enough.<br />
-              You <em>know</em> you moved the mission forward.
+              But what if…<br />
+              You don&apos;t just <em>feel guilty</em> about not doing enough.<br />
+              You <em>know</em> you moved the mission forward in a meaningful way.
             </p>
             <p>
               Is that even possible? OS Reboot is a space for us to explore this question together.
             </p>
           </div>
-          <div className='mt-14 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 md:gap-6'>
+          <div className='mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 md:gap-6'>
             <div className='shrink-0 w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px] aspect-square flex items-center justify-center [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges]'>
               <Image
                 src='/images/am-i-doing-enough.png'
@@ -158,9 +162,9 @@ const EverestReboot = () => {
         </div>
       </section>
 
-      <section className='pt-10 sm:pt-[60px] pb-10'>
+      <section className='pt-12 sm:pt-16 pb-12 sm:pb-16'>
         <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 p-6 sm:p-8 md:p-10'>
-          <div className='flex flex-col gap-2 mb-6 md:mb-8'>
+          <div className='flex flex-col gap-2 mb-8'>
             <h2 className='text-2xl sm:text-3xl font-medium leading-tight'>
               How it works
             </h2>
@@ -169,13 +173,13 @@ const EverestReboot = () => {
             </p>
           </div>
           <h3 className='text-xl sm:text-2xl font-medium leading-tight mb-4'>
-            On the curriculum:
+            On the curriculum
           </h3>
-          <p className='text-lg leading-[160%] mb-6'>
+          <p className='text-lg leading-[160%] mb-8'>
             Each session is thoughtfully designed to turn nebulous goals like &ldquo;more impact&rdquo; or &ldquo;less burnout&rdquo; into tangible shifts. You&apos;ll define observable milestones & build testable behaviors.
           </p>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 md:gap-x-10 md:gap-y-6'>
-            <div className='flex gap-4 items-start min-h-[240px]'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 md:gap-x-10 md:gap-y-8'>
+            <div className='flex gap-4 items-start min-h-[200px]'>
               <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
                   <circle cx='12' cy='12' r='9' />
@@ -190,7 +194,7 @@ const EverestReboot = () => {
                 </p>
               </div>
             </div>
-            <div className='flex gap-4 items-start min-h-[240px]'>
+            <div className='flex gap-4 items-start min-h-[200px]'>
               <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
                   <path d='M4 20V14 M8 20V9 M12 20V6 M16 20V10 M20 20V5' />
@@ -203,7 +207,7 @@ const EverestReboot = () => {
                 </p>
               </div>
             </div>
-            <div className='flex gap-4 items-start min-h-[240px]'>
+            <div className='flex gap-4 items-start min-h-[200px]'>
               <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
                   <path d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8' />
@@ -217,7 +221,7 @@ const EverestReboot = () => {
                 </p>
               </div>
             </div>
-            <div className='flex gap-4 items-start min-h-[240px]'>
+            <div className='flex gap-4 items-start min-h-[200px]'>
               <div className='w-12 h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center flex-shrink-0'>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
                   <rect x='5' y='5' width='14' height='14' rx='2' />
@@ -237,14 +241,14 @@ const EverestReboot = () => {
             </div>
           </div>
 
-          <div className='pt-2 mt-2'>
+          <div className='pt-8 mt-8'>
             <h3 className='text-xl sm:text-2xl font-medium leading-tight mb-4'>
-              Cross-disciplinary support:
+              Cross-disciplinary support
             </h3>
             <p className='text-lg leading-[160%] mb-6'>
               We&apos;re bringing together an awesome team to ensure impact. Here&apos;s a glimpse, more to come!
             </p>
-            <ul className='text-lg leading-[160%] flex flex-col gap-5 list-none pl-0'>
+            <ul className='text-lg leading-[160%] flex flex-col gap-6 list-none pl-0'>
               <li>
                 <span className='font-semibold'>Amiti Uttarwar:</span> Began working full time as a Bitcoin Core protocol dev in 2019. After years of navigating the ecosystem as an individual contributor, founded Waye to build systemic support for permissionless builders. Lead facilitator.
               </li>
@@ -259,16 +263,15 @@ const EverestReboot = () => {
         </div>
       </section>
 
-      <section className='pt-10 sm:pt-[60px] pb-10'>
+      <section className='pt-12 sm:pt-16 pb-12 sm:pb-16'>
         <div className='rounded-[10px] border-2 border-black bg-blue-custom-800 p-6 sm:p-8 md:p-10'>
-          <h2 className='text-2xl sm:text-3xl font-medium leading-tight mb-8 md:mb-10'>
+          <h2 className='text-2xl sm:text-3xl font-medium leading-tight mb-8'>
             The approach
           </h2>
-
-          <h3 className='text-xl sm:text-2xl font-medium leading-tight mb-5'>
+          <h3 className='text-xl sm:text-2xl font-medium leading-tight mb-4'>
             Our values
           </h3>
-          <div className='flex flex-col gap-6 mb-10 md:mb-12'>
+          <div className='flex flex-col gap-6 mb-8'>
             <div>
               <p className='text-lg font-semibold leading-tight mb-2'>You are an explorer</p>
               <p className='text-lg leading-[160%]'>
@@ -292,7 +295,7 @@ const EverestReboot = () => {
             </div>
           </div>
 
-          <h3 className='text-xl sm:text-2xl font-medium leading-tight mb-5'>
+          <h3 className='text-xl sm:text-2xl font-medium leading-tight mb-4'>
             Your commitment
           </h3>
           <p className='text-lg leading-[160%] mb-6'>
@@ -321,9 +324,9 @@ const EverestReboot = () => {
         </div>
       </section>
 
-      <section className='pt-10 sm:pt-[60px] pb-10 sm:pb-[90px]'>
+      <section className='pt-12 sm:pt-16 pb-12 sm:pb-20'>
         <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 p-6 sm:p-8 md:p-10'>
-          <h2 className='text-2xl sm:text-3xl font-medium leading-tight mb-6'>
+          <h2 className='text-2xl sm:text-3xl font-medium leading-tight mb-8'>
             Interested?
           </h2>
           <div className='flex flex-col gap-6 text-lg leading-[160%]'>
