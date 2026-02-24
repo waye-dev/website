@@ -69,31 +69,27 @@ export const DetailsCard = (
     }[];
   }) => {
   return (
-    <div className='flex flex-col gap-5 sm:gap-[5px] sm:p-5 md:p-[30px] md:pb-[55px] sm:bg-blue-custom-800 rounded-[10px] w-full md:min-w-[400px] text-lg leading-[25.5px] sm:leading-[28.8px]'>
-      <section className='hidden sm:flex flex-col border-b border-b-black pb-2.5 mb-2.5'>
-        <p className='text-2xl font-medium'>Details:</p>
-      </section>
-
-      <section className='flex flex-col gap-[1px]'>
-        <p className='font-semibold'>TIMELINE:</p>
+    <div className='flex flex-col p-6 sm:p-8 md:p-10 md:pb-[55px] sm:bg-blue-custom-800 rounded-[10px] w-full md:min-w-[400px] border-2 border-black text-lg leading-[160%]'>
+      <section className='flex flex-col gap-2'>
+        <p className='text-2xl sm:text-3xl font-medium'>Timeline</p>
         <p>{timeline}</p>
       </section>
 
       {location && (
-        <section className='flex flex-col gap-[1px]'>
-          <p className='font-semibold'>Location:</p>
+        <section className='flex flex-col gap-2'>
+          <p className='text-2xl sm:text-3xl font-medium'>Location:</p>
           <p>{location}</p>
         </section>
       )}
 
-      <section className='flex flex-col gap-[1px]'>
-        <p className='font-semibold'>{`Tl;DR`}:</p>
+      <section className='flex flex-col gap-2 mt-5'>
+        <p className='text-2xl sm:text-3xl font-medium'>TLDR</p>
         <p>{tldr}</p>
       </section>
 
       {who && (
-        <section className='flex flex-col gap-[1px]'>
-          <p className='font-semibold'>WHO:</p>
+        <section className='flex flex-col gap-2'>
+          <p className='text-2xl sm:text-3xl font-medium'>WHO:</p>
           <p>{who}</p>
         </section>
       )}
@@ -128,5 +124,16 @@ export const CardHeading = ({ title }: { title: string }) => {
 };
 
 export const RebootImage = () => {
-  return <Image src='/images/mountain-climbers.png' priority alt='mountain climbers' width={653} height={400} />;
+  return (
+    <div className='w-full min-w-0 flex-1 flex justify-end'>
+      <Image
+        src='/images/mountain-climbers.png'
+        priority
+        alt='mountain climbers'
+        width={900}
+        height={552}
+        className='w-full h-auto max-w-[900px]'
+      />
+    </div>
+  );
 };

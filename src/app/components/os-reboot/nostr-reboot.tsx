@@ -12,7 +12,7 @@ const NostrReboot = () => {
           </h1>
         </section>
 
-        <section className='flex justify-end items-end w-full sm:mt-10 md:mt-0'>
+        <section className='flex justify-end items-end w-full min-w-0 flex-1 sm:mt-10 md:mt-0'>
           <RebootImage />
         </section>
       </div>
