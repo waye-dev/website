@@ -1,6 +1,7 @@
 import React from "react";
 import Wrapper from "@/app/components/wrapper";
 import { genPageMetadata } from "@/app/seo";
+import { cn } from "@/utils";
 import { DetailsCard, RebootImage } from "@/app/components/os-reboot/cards";
 
 export const metadata = genPageMetadata({
@@ -10,22 +11,30 @@ export const metadata = genPageMetadata({
   url: "https://waye.dev/initiatives/wayepoints",
 });
 
-/** Icon tiles — same visual language as OS Reboot [Everest] */
-const IconTile = ({ children }: { children: React.ReactNode }) => (
-  <div className='w-11 h-11 sm:w-12 sm:h-12 rounded-[10px] bg-blue-custom-800 border border-black flex items-center justify-center shrink-0 mt-0.5'>
+/** Icon tiles — navy on cream (Everest); white wells on blue panels (same language as step numbers in “How it works”) */
+const IconTile = ({ children, onBluePanel = false }: { children: React.ReactNode; onBluePanel?: boolean }) => (
+  <div
+    className={cn(
+      "w-11 h-11 sm:w-12 sm:h-12 rounded-[10px] flex items-center justify-center shrink-0 mt-0.5 text-black",
+      onBluePanel ? "border-2 border-black bg-white" : "border border-black bg-blue-custom-800"
+    )}
+  >
     {children}
   </div>
 );
 
 const BenefitGrid = ({
   items,
+  onBluePanel = false,
 }: {
   items: readonly { icon: React.ReactNode; title: string; body: string }[];
+  /** White icon wells on blue-custom-800 sections. */
+  onBluePanel?: boolean;
 }) => (
   <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 md:gap-x-10 md:gap-y-10'>
     {items.map(({ icon, title, body }) => (
       <div key={title} className='flex gap-3 sm:gap-4 items-start'>
-        <IconTile>{icon}</IconTile>
+        <IconTile onBluePanel={onBluePanel}>{icon}</IconTile>
         <div className='flex flex-col gap-1.5 min-w-0 flex-1'>
           <h3 className='text-base font-semibold leading-snug text-black'>{title}</h3>
           <p className='text-base leading-7 text-black/85'>{body}</p>
@@ -63,6 +72,12 @@ const iconGrid = (
     <circle cx='18' cy='18' r='1' fill='currentColor' stroke='none' />
   </svg>
 );
+
+/** Match OS Reboot [Everest]: alternate cream panels with blue-gray panels */
+const panelGray =
+  "rounded-[10px] border-2 border-black bg-gray-custom-100 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9";
+const panelBlue =
+  "rounded-[10px] border-2 border-black bg-blue-custom-800 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9";
 
 const page = () => {
   const whatYouGetItems = [
@@ -160,7 +175,7 @@ const page = () => {
             </section>
 
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12'>
-              <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9'>
+              <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-5'>The challenge</h2>
                 <div className='max-w-prose flex flex-col gap-4 text-base leading-7 text-black/90'>
                   <p>High-autonomy environments produce extraordinary work. They also produce a particular kind of exhaustion.</p>
@@ -183,7 +198,7 @@ const page = () => {
             </section>
 
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12'>
-              <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9'>
+              <div className={panelBlue}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-3'>
                   What coaching actually looks like
                 </h2>
@@ -191,8 +206,8 @@ const page = () => {
                   A structured conversation focused on a specific outcome — practical, concrete, and led by you.
                 </p>
                 <p className='text-base leading-7 text-black/80 mb-6'>Together with your coach, you will:</p>
-                <BenefitGrid items={coachingItems} />
-                <div className='max-w-prose flex flex-col gap-4 mt-8 pt-6 border-t border-black/15 text-base leading-7 text-black/90'>
+                <BenefitGrid items={coachingItems} onBluePanel />
+                <div className='max-w-prose flex flex-col gap-4 mt-8 pt-6 border-t border-black/25 text-base leading-7 text-black/90'>
                   <p>
                     Sometimes this means solving a current problem. Sometimes it means seeing a situation differently. Often it means discovering a simpler or
                     more effective path forward.
@@ -206,7 +221,7 @@ const page = () => {
             </section>
 
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12'>
-              <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9'>
+              <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-6'>What you get</h2>
                 <BenefitGrid items={whatYouGetItems} />
                 <p className='mt-8 max-w-prose text-base leading-7 text-black/80 pt-6 border-t border-black/15'>
@@ -217,10 +232,10 @@ const page = () => {
             </section>
 
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12' aria-label='How the program works'>
-              <div className='rounded-[10px] border-2 border-black bg-blue-custom-600 px-5 py-7 sm:px-8 sm:py-9 md:px-10 md:py-10'>
+              <div className={cn(panelBlue, "sm:px-8 sm:py-9 md:px-10 md:py-10")}>
                 <div className='mb-8 md:mb-10 max-w-prose'>
                   <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black'>How it works</h2>
-                  <p className='mt-2 text-sm font-medium uppercase tracking-[0.12em] text-blue-custom-900/80'>Interest → match → sessions → closing</p>
+                  <p className='mt-2 text-sm font-medium uppercase tracking-[0.12em] text-black/60'>Interest → match → sessions → closing</p>
                 </div>
 
                 <ol className='list-none m-0 p-0 max-w-3xl'>
@@ -246,7 +261,7 @@ const page = () => {
             </section>
 
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12'>
-              <div className='rounded-[10px] border-2 border-black bg-blue-custom-800 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9'>
+              <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-6'>The approach</h2>
                 <h3 className='text-base sm:text-lg font-medium leading-snug text-black mb-3'>Our values</h3>
                 <div className='flex flex-col gap-5 mb-8 max-w-prose'>
@@ -266,7 +281,7 @@ const page = () => {
                   </div>
                 </div>
 
-                <h3 className='text-base sm:text-lg font-medium leading-snug text-black mb-3 pt-2 border-t border-black/25'>Your commitment</h3>
+                <h3 className='text-base sm:text-lg font-medium leading-snug text-black mb-3 pt-2 border-t border-black/15'>Your commitment</h3>
                 <div className='flex flex-col gap-5 max-w-prose'>
                   <div>
                     <p className='text-base font-semibold leading-snug text-black mb-1.5'>Show up</p>
@@ -292,7 +307,7 @@ const page = () => {
             </section>
 
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-14'>
-              <div className='rounded-[10px] border-2 border-black bg-gray-custom-100 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9'>
+              <div className={panelBlue}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-5'>Interested?</h2>
                 <div className='max-w-prose flex flex-col gap-4 text-base leading-7 text-black/90'>
                   <p>If you received an invitation from HRF, follow the link in your email to express interest.</p>

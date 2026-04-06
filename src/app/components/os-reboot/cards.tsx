@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { cn } from "@/utils";
 import CustomButton from "../custom-button";
 
 export const CTACard = ({
@@ -60,6 +61,7 @@ export const DetailsCard = (
     location,
     buttonLinks,
     tldrFirst = false,
+    surface = "default",
   }: {
     intro?: React.JSX.Element;
     timeline: React.JSX.Element;
@@ -72,6 +74,8 @@ export const DetailsCard = (
     }[];
     /** When true, TLDR appears before Timeline (and Location stays between them). */
     tldrFirst?: boolean;
+    /** `cream` matches gray initiative cards; `default` keeps the blue-gray panel (OS Reboot). */
+    surface?: "default" | "cream";
   }
 ) => {
   const timelineSection = (
@@ -96,7 +100,12 @@ export const DetailsCard = (
   ) : null;
 
   return (
-    <div className='flex flex-col p-6 sm:p-8 md:p-10 md:pb-[55px] sm:bg-blue-custom-800 rounded-[10px] w-full md:min-w-[400px] border-2 border-black text-lg leading-[160%]'>
+    <div
+      className={cn(
+        "flex flex-col p-6 sm:p-8 md:p-10 md:pb-[55px] rounded-[10px] w-full md:min-w-[400px] border-2 border-black text-lg leading-[160%]",
+        surface === "cream" ? "bg-gray-custom-100" : "sm:bg-blue-custom-800"
+      )}
+    >
       {intro && <div className='mb-4'>{intro}</div>}
       {tldrFirst ? (
         <>
