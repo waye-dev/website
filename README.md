@@ -8,6 +8,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 If you just cloned the repo, run `npm install`.
 
+### Node version
+
+This project expects a supported Node.js LTS release (see `.nvmrc`). If you run a very new Node version (like v25), Next dev can misbehave (including missing CSS).
+
 Run the development server:
 
 ```bash
