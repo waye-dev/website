@@ -116,10 +116,10 @@ export const INITIATIVES_SECTION_DATA = [
       "A Wayepoint call helps you reflect, reset, and plan next steps. Complete a self-audit, then join a 60-minute session focused on clarity and tangible actions tailored to you.",
     infoText: "",
     advertText: "",
-    linkText: "Step 1: Complete this Self Audit",
-    href: "https://drive.google.com/file/d/1zL-peL2X-Ijg4dNHxBqGSlKfvHpOycGF/view?usp=sharing",
+    linkText: "Learn more",
+    href: "/initiatives/wayepoints",
     filterKey: "program",
-    linkText2: "Step 2: Join the waitlist",
+    linkText2: "Join the waitlist",
     href2: "https://docs.google.com/forms/d/e/1FAIpQLScpLf4OFIVfcu0SMMOt_IyDnbCeMv-jn1zgDgPa6cGou1HxoQ/viewform?usp=dialog",
   },
   {

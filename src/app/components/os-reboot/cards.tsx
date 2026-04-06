@@ -59,6 +59,7 @@ export const DetailsCard = (
     who,
     location,
     buttonLinks,
+    tldrFirst = false,
   }: {
     intro?: React.JSX.Element;
     timeline: React.JSX.Element;
@@ -69,27 +70,47 @@ export const DetailsCard = (
       link: string;
       text: string;
     }[];
+    /** When true, TLDR appears before Timeline (and Location stays between them). */
+    tldrFirst?: boolean;
   }
 ) => {
+  const timelineSection = (
+    <section className='flex flex-col gap-2'>
+      <p className='text-xl sm:text-2xl font-medium'>Timeline</p>
+      <p>{timeline}</p>
+    </section>
+  );
+
+  const tldrSection = (
+    <section className='flex flex-col gap-2'>
+      <p className='text-xl sm:text-2xl font-medium'>TLDR</p>
+      <p>{tldr}</p>
+    </section>
+  );
+
+  const locationSection = location ? (
+    <section className='flex flex-col gap-2'>
+      <p className='text-xl sm:text-2xl font-medium'>Location:</p>
+      <p>{location}</p>
+    </section>
+  ) : null;
+
   return (
     <div className='flex flex-col p-6 sm:p-8 md:p-10 md:pb-[55px] sm:bg-blue-custom-800 rounded-[10px] w-full md:min-w-[400px] border-2 border-black text-lg leading-[160%]'>
       {intro && <div className='mb-4'>{intro}</div>}
-      <section className='flex flex-col gap-2'>
-        <p className='text-xl sm:text-2xl font-medium'>Timeline</p>
-        <p>{timeline}</p>
-      </section>
-
-      {location && (
-        <section className='flex flex-col gap-2'>
-          <p className='text-xl sm:text-2xl font-medium'>Location:</p>
-          <p>{location}</p>
-        </section>
+      {tldrFirst ? (
+        <>
+          {tldrSection}
+          {locationSection}
+          <div className='mt-5'>{timelineSection}</div>
+        </>
+      ) : (
+        <>
+          {timelineSection}
+          {locationSection}
+          <div className='mt-5'>{tldrSection}</div>
+        </>
       )}
-
-      <section className='flex flex-col gap-2 mt-5'>
-        <p className='text-xl sm:text-2xl font-medium'>TLDR</p>
-        <p>{tldr}</p>
-      </section>
 
       {who && (
         <section className='flex flex-col gap-2'>
