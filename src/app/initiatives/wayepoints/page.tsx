@@ -150,7 +150,7 @@ const page = () => {
               <DetailsCard
                 tldrFirst
                 intro={
-                  <div className='flex flex-col gap-3 max-w-prose'>
+                  <div className='flex flex-col gap-3'>
                     <p className='text-xl sm:text-2xl font-medium leading-snug text-black'>
                       You&apos;re committed to building freedom tech.
                     </p>
@@ -161,14 +161,14 @@ const page = () => {
                 }
                 timeline={
                   <span className='flex flex-col gap-1'>
-                    <span>6 sessions. 60 minutes each. Monthly pacing.</span>
+                    <span>6 sessions. 60 minutes each. Every 3 weeks.</span>
                     <span className='font-medium'>1:1 coaching · Built for freedom tech builders</span>
                   </span>
                 }
                 tldr={
-                  <span>
-                    Wayepoints is <span className='font-semibold'>1:1 coaching</span> for freedom tech builders — personalized support to help you identify
-                    high-leverage ways to increase your impact and <span className='font-semibold'>sustain it</span>.
+                  <span className='flex flex-col gap-3'>
+                    <span>Wayepoints are 1:1 coaching sessions for freedom tech builders.</span>
+                    <span>Executive coaches help you identify high-leverage ways to increase your impact in sustainable ways.</span>
                   </span>
                 }
               />
@@ -177,7 +177,7 @@ const page = () => {
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12'>
               <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-5'>The challenge</h2>
-                <div className='max-w-prose flex flex-col gap-4 text-base leading-7 text-black/90'>
+                <div className='flex flex-col gap-4 text-base leading-7 text-black/90'>
                   <p>High-autonomy environments produce extraordinary work. They also produce a particular kind of exhaustion.</p>
                   <p>When there&apos;s a lot of freedom and very little imposed structure, it&apos;s common to experience:</p>
                   <ul className='list-disc pl-[1.15em] flex flex-col gap-2 marker:text-black/70'>
@@ -187,11 +187,10 @@ const page = () => {
                     <li className='pl-1'>Isolation and eventual burnout</li>
                   </ul>
                   <p>
-                    Waye exists to provide the missing layer of human support. Not by adding hierarchy or control — but by helping builders develop internal
-                    structure, clarity, and sustainable ways of working.
+                    Executive coaching supports high-agency builders in developing internal structure, clarity, and long-term ways of working.
                   </p>
-                  <p className='text-lg sm:text-xl font-medium leading-snug text-black mt-4 max-w-prose'>
-                    Because sustainable builders create sustainable infrastructure.
+                  <p className='text-lg sm:text-xl font-medium leading-snug text-black mt-4'>
+                    <span className='font-semibold'>Sustainable builders create sustainable infrastructure.</span>
                   </p>
                 </div>
               </div>
@@ -202,12 +201,12 @@ const page = () => {
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-3'>
                   What coaching actually looks like
                 </h2>
-                <p className='text-base font-medium leading-7 text-black/90 max-w-prose mb-6'>
+                <p className='text-base font-medium leading-7 text-black/90 mb-6'>
                   A structured conversation focused on a specific outcome — practical, concrete, and led by you.
                 </p>
                 <p className='text-base leading-7 text-black/80 mb-6'>Together with your coach, you will:</p>
                 <BenefitGrid items={coachingItems} onBluePanel />
-                <div className='max-w-prose flex flex-col gap-4 mt-8 pt-6 border-t border-black/25 text-base leading-7 text-black/90'>
+                <div className='flex flex-col gap-4 mt-8 pt-6 border-t border-black/25 text-base leading-7 text-black/90'>
                   <p>
                     Sometimes this means solving a current problem. Sometimes it means seeing a situation differently. Often it means discovering a simpler or
                     more effective path forward.
@@ -224,7 +223,7 @@ const page = () => {
               <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-6'>What you get</h2>
                 <BenefitGrid items={whatYouGetItems} />
-                <p className='mt-8 max-w-prose text-base leading-7 text-black/80 pt-6 border-t border-black/15'>
+                <p className='mt-8 text-base leading-7 text-black/80 pt-6 border-t border-black/15'>
                   Coaching is not therapy, advice-giving, or friendship — and it&apos;s not designed to make you dependent on a coach. The goal is always your
                   own sovereignty and self-sufficiency.
                 </p>
@@ -233,7 +232,7 @@ const page = () => {
 
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12' aria-label='How the program works'>
               <div className={cn(panelBlue, "sm:px-8 sm:py-9 md:px-10 md:py-10")}>
-                <div className='mb-8 md:mb-10 max-w-prose'>
+                <div className='mb-8 md:mb-10'>
                   <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black'>How it works</h2>
                   <p className='mt-2 text-sm font-medium uppercase tracking-[0.12em] text-black/60'>Interest → match → sessions → closing</p>
                 </div>
@@ -264,7 +263,7 @@ const page = () => {
               <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-6'>The approach</h2>
                 <h3 className='text-base sm:text-lg font-medium leading-snug text-black mb-3'>Our values</h3>
-                <div className='flex flex-col gap-5 mb-8 max-w-prose'>
+                <div className='flex flex-col gap-5 mb-8'>
                   <div>
                     <p className='text-base font-semibold leading-snug text-black mb-1.5'>You are an explorer</p>
                     <p className='text-base leading-7 text-black/90'>
@@ -282,7 +281,7 @@ const page = () => {
                 </div>
 
                 <h3 className='text-base sm:text-lg font-medium leading-snug text-black mb-3 pt-2 border-t border-black/15'>Your commitment</h3>
-                <div className='flex flex-col gap-5 max-w-prose'>
+                <div className='flex flex-col gap-5'>
                   <div>
                     <p className='text-base font-semibold leading-snug text-black mb-1.5'>Show up</p>
                     <p className='text-base leading-7 text-black/90'>
@@ -309,7 +308,7 @@ const page = () => {
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-14'>
               <div className={panelBlue}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-5'>Interested?</h2>
-                <div className='max-w-prose flex flex-col gap-4 text-base leading-7 text-black/90'>
+                <div className='flex flex-col gap-4 text-base leading-7 text-black/90'>
                   <p>If you received an invitation from HRF, follow the link in your email to express interest.</p>
                   <p>
                     Questions? Email us at{" "}
