@@ -20,7 +20,7 @@ const ContentTabs = () => {
   }, []);
 
   const tabContent = {
-    "about": <AboutOSReboot setActiveTab={setActiveTab} />,
+    "about": <AboutOSReboot />,
     "nostr": <NostrReboot />,
     "bitcoin": <BitcoinReboot />,
     "everest": <EverestReboot />,

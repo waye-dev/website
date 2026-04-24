@@ -78,53 +78,60 @@ export const DetailsCard = (
     surface?: "default" | "cream";
   }
 ) => {
+  /** Match initiative sections: h3-style labels + `text-lg` body rhythm */
+  const sectionLabelClass = "text-lg font-semibold leading-[160%] text-black";
+
+  const bodySlotClass = "text-lg leading-[160%] text-black font-normal";
+
   const timelineSection = (
-    <section className='flex flex-col gap-2'>
-      <p className='text-xl sm:text-2xl font-medium'>Timeline</p>
-      <p>{timeline}</p>
+    <section className='flex flex-col gap-2.5'>
+      <p className={sectionLabelClass}>Timeline</p>
+      <div className={bodySlotClass}>{timeline}</div>
     </section>
   );
 
   const tldrSection = (
-    <section className='flex flex-col gap-2'>
-      <p className='text-xl sm:text-2xl font-medium'>TLDR</p>
-      <p>{tldr}</p>
+    <section className='flex flex-col gap-2.5'>
+      <p className={sectionLabelClass}>TLDR</p>
+      <div className={bodySlotClass}>{tldr}</div>
     </section>
   );
 
   const locationSection = location ? (
-    <section className='flex flex-col gap-2'>
-      <p className='text-xl sm:text-2xl font-medium'>Location:</p>
-      <p>{location}</p>
+    <section className='flex flex-col gap-2.5'>
+      <p className={sectionLabelClass}>Location</p>
+      <div className={bodySlotClass}>{location}</div>
     </section>
   ) : null;
+
+  const sectionDivider = "pt-6 border-t border-black/[0.12]";
 
   return (
     <div
       className={cn(
-        "flex flex-col p-6 sm:p-8 md:p-10 md:pb-[55px] rounded-[10px] w-full md:min-w-[400px] border-2 border-black text-lg leading-[160%]",
+        "flex flex-col gap-6 p-6 sm:p-8 md:p-10 md:pb-[55px] rounded-[10px] w-full md:min-w-[400px] border-2 border-black antialiased",
         surface === "cream" ? "bg-gray-custom-100" : "sm:bg-blue-custom-800"
       )}
     >
-      {intro && <div className='mb-4'>{intro}</div>}
+      {intro && <div className='pb-6 border-b border-black/[0.12]'>{intro}</div>}
       {tldrFirst ? (
         <>
           {tldrSection}
           {locationSection}
-          <div className='mt-5'>{timelineSection}</div>
+          <div className={sectionDivider}>{timelineSection}</div>
         </>
       ) : (
         <>
           {timelineSection}
           {locationSection}
-          <div className='mt-5'>{tldrSection}</div>
+          <div className={sectionDivider}>{tldrSection}</div>
         </>
       )}
 
       {who && (
-        <section className='flex flex-col gap-2'>
-          <p className='text-xl sm:text-2xl font-medium'>WHO:</p>
-          <p>{who}</p>
+        <section className={cn("flex flex-col gap-2.5", sectionDivider)}>
+          <p className={sectionLabelClass}>Who</p>
+          <div className={bodySlotClass}>{who}</div>
         </section>
       )}
 
