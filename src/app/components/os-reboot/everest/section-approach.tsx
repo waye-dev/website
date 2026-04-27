@@ -2,7 +2,7 @@ import React from "react";
 
 export function EverestSectionApproach() {
   return (
-    <section className='pt-12 sm:pt-16 pb-12 sm:pb-16'>
+    <section id='the-approach' className='pt-12 sm:pt-16 pb-12 sm:pb-16 scroll-mt-24'>
       <div className='rounded-[10px] border-2 border-black bg-blue-custom-800 p-6 sm:p-8 md:p-10'>
         <h2 className='text-2xl sm:text-3xl font-medium leading-tight mb-8'>
           The approach

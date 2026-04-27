@@ -13,10 +13,35 @@ const ContentTabs = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash && tabKeys.includes(hash)) {
-      setActiveTab(hash);
-    }
+    let scrollTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const applyHash = () => {
+      if (scrollTimer !== undefined) {
+        clearTimeout(scrollTimer);
+        scrollTimer = undefined;
+      }
+
+      const hash = window.location.hash.replace("#", "");
+      if (hash === "the-approach") {
+        setActiveTab("everest");
+        scrollTimer = setTimeout(() => {
+          scrollTimer = undefined;
+          if (window.location.hash.replace("#", "") !== "the-approach") return;
+          document.getElementById("the-approach")?.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+        return;
+      }
+      if (hash && tabKeys.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => {
+      window.removeEventListener("hashchange", applyHash);
+      if (scrollTimer !== undefined) clearTimeout(scrollTimer);
+    };
   }, []);
 
   const tabContent = {
