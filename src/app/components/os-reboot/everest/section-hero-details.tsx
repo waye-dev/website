@@ -24,7 +24,7 @@ export function EverestSectionHeroDetails() {
               <p className='text-2xl sm:text-3xl font-medium leading-tight text-black'>
                 You&apos;re committed to building freedom tech.
               </p>
-              <p className='text-lg leading-[160%] text-black'>
+              <p className='text-2xl sm:text-3xl font-medium leading-tight text-black'>
                 We&apos;re committed to helping you build systems that lasts.
               </p>
             </div>
@@ -36,7 +36,7 @@ export function EverestSectionHeroDetails() {
                   8 sessions · May–November 2026
                 </p>
                 <p className='text-lg leading-[160%] text-black'>
-                  Please let us know which time zones work best for you.
+                  We are offering two cohorts across different time zones to support our global team.
                 </p>
               </div>
               <div className='flex flex-col gap-3'>

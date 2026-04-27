@@ -26,7 +26,16 @@ export function EverestSectionApproach() {
           <div>
             <p className='text-lg font-semibold leading-tight mb-2'>We are respectful</p>
             <p className='text-lg leading-[160%]'>
-              Chatham House Rule by default. Other than sharing minimal participation data with HRF, we commit to each other that no identifying information leaves the room.
+              Chatham House Rule by default. Other than sharing minimal participation data with HRF, we commit to each other that no identifying information leaves the room. More info{" "}
+              <a
+                href='https://wayedev.notion.site/os-reboot-privacy'
+                className='underline underline-offset-4 hover:opacity-80'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                here
+              </a>
+              .
             </p>
             <p className='text-lg leading-[160%] mt-2'>
               We are not jerks to each other. You know what that means.

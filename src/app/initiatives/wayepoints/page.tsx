@@ -154,7 +154,7 @@ const page = () => {
                     <p className='text-xl sm:text-2xl font-medium leading-snug text-black'>
                       You&apos;re committed to building freedom tech.
                     </p>
-                    <p className='text-lg sm:text-xl font-medium leading-snug text-black/80'>
+                    <p className='text-xl sm:text-2xl font-medium leading-snug text-black/80'>
                       We&apos;re committed to helping you build systems that last.
                     </p>
                   </div>
