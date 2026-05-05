@@ -93,10 +93,10 @@ export function EverestSectionHowItWorks() {
               <span className='font-semibold'>Amiti Uttarwar:</span> Began working full time as a Bitcoin Core protocol dev in 2019. After years of navigating the ecosystem as an individual contributor, founded Waye to build systemic support for permissionless builders. Lead facilitator.
             </li>
             <li>
-              <span className='font-semibold'>Vanina Kala Waizmann.</span> Doctor of Psychology with specialized knowledge of burnout and nervous system regulation. 20+ years helping people and organizations achieve their full potential. Guest facilitator.
+              <span className='font-semibold'>Vanina Kala Waizmann:</span> Doctor of Psychology with specialized knowledge of burnout and nervous system regulation. 20+ years helping people and organizations achieve their full potential. Guest facilitator.
             </li>
             <li>
-              <span className='font-semibold'>Dr. Edith Brignoni.</span> Neuroscientist & brain health educator. Passionate about bridging rigorous neuroscience and practical strategies for wellbeing. Program advisor ensuring the curriculum is grounded in evidence.
+              <span className='font-semibold'>Amy Moore:</span> Coach, facilitator and designer of transformational learning experiences. Certified in over a dozen healing modalities and has supported 100s of people in shifting deeply held subconscious patterns. Operations lead.
             </li>
           </ul>
         </div>
