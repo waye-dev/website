@@ -73,6 +73,12 @@ const iconGrid = (
   </svg>
 );
 
+const coachingStepIcon = (digit: "1" | "2" | "3" | "4") => (
+  <span className='text-lg sm:text-xl font-bold tabular-nums leading-none text-black' aria-hidden>
+    {digit}
+  </span>
+);
+
 /** Match OS Reboot [Everest]: alternate cream panels with blue-gray panels */
 const panelGray =
   "rounded-[10px] border-2 border-black bg-gray-custom-100 px-5 py-7 sm:px-7 sm:py-8 md:px-9 md:py-9";
@@ -88,10 +94,10 @@ const page = () => {
   ] as const;
 
   const coachingItems = [
-    { icon: iconTarget, title: "Goal clarity", body: "Clarify the goal you want to move forward." },
-    { icon: iconBars, title: "Patterns & blind spots", body: "Identify patterns, constraints, or blind spots." },
-    { icon: iconRefresh, title: "Perspectives", body: "Test new perspectives or approaches." },
-    { icon: iconGrid, title: "Next step", body: "Leave with a clear next step or experiment." },
+    { icon: coachingStepIcon("1"), title: "Goal clarity", body: "Clarify the goal you want to move forward." },
+    { icon: coachingStepIcon("2"), title: "Patterns & blind spots", body: "Identify patterns, constraints, or blind spots." },
+    { icon: coachingStepIcon("3"), title: "Perspectives", body: "Test new perspectives or approaches." },
+    { icon: coachingStepIcon("4"), title: "Next step", body: "Leave with a clear next step or experiment." },
   ] as const;
 
   const howSteps = [
@@ -120,7 +126,7 @@ const page = () => {
       title: "Coaching + feedback",
       body: (
         <p>
-          <span className='font-semibold text-black'>6 sessions, 60 minutes each, monthly pacing.</span> Sessions are concrete — you&apos;ll leave each one
+          <span className='font-semibold text-black'>6 sessions, 60 minutes each, 3 weeks apart.</span> Sessions are concrete — you&apos;ll leave each one
           with a clear goal and a technique to get you closer to it. If you don&apos;t like your coach, you can change.
         </p>
       ),
@@ -196,7 +202,7 @@ const page = () => {
             <section className='pt-2 sm:pt-4 pb-10 sm:pb-12'>
               <div className={panelBlue}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-3'>
-                  What coaching actually looks like
+                  Anatomy of a call
                 </h2>
                 <p className='text-base font-medium leading-7 text-black/90 mb-6'>
                   A structured conversation focused on a specific outcome — practical, concrete, and led by you.
