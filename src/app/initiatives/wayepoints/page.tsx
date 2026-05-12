@@ -184,13 +184,12 @@ const page = () => {
               <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-5'>The challenge</h2>
                 <div className='flex flex-col gap-4 text-base leading-7 text-black/90'>
-                  <p>High-autonomy environments produce extraordinary work. They also produce a particular kind of exhaustion.</p>
+                  <p>High-autonomy environments produce extraordinary work. They can also produce a particular kind of exhaustion.</p>
                   <p>When there&apos;s a lot of freedom and very little imposed structure, it&apos;s common to experience:</p>
                   <ul className='list-disc pl-[1.15em] flex flex-col gap-2 marker:text-black/70'>
                     <li className='pl-1'>Ambiguity around what actually matters</li>
                     <li className='pl-1'>Diffuse accountability and long feedback loops</li>
                     <li className='pl-1'>Sustained cognitive load</li>
-                    <li className='pl-1'>Isolation and eventual burnout</li>
                   </ul>
                   <p>
                     Executive coaching supports high-agency builders in developing internal structure, clarity, and long-term ways of working.
@@ -208,7 +207,7 @@ const page = () => {
                   Anatomy of a call
                 </h2>
                 <p className='text-base font-medium leading-7 text-black/90 mb-6'>
-                  A structured conversation focused on a specific outcome — practical, concrete, and led by you.
+                  A structured conversation focused on specific &amp; practical outcomes based on the specifics of your circumstance.
                 </p>
                 <p className='text-base leading-7 text-black/80 mb-6'>Together with your coach, you will:</p>
                 <BenefitGrid items={coachingItems} onBluePanel />
