@@ -105,10 +105,13 @@ const page = () => {
       step: "1",
       title: "Express interest",
       body: (
-        <div className='flex flex-col gap-3'>
-          <p>Fill out a short form. Tell us what you&apos;re hoping to get out of the program.</p>
-          <p>If you have questions about the program, you can ask them before applying.</p>
-        </div>
+        <p>
+          Fill out a short form to let HRF know you&apos;re interested! If you have any questions, please email us at{" "}
+          <a href='mailto:hello@waye.dev' className='underline underline-offset-[0.2em] decoration-black/40 hover:decoration-black'>
+            hello@waye.dev
+          </a>
+          .
+        </p>
       ),
     },
     {
@@ -226,10 +229,6 @@ const page = () => {
               <div className={panelGray}>
                 <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black mb-6'>What you get</h2>
                 <BenefitGrid items={whatYouGetItems} />
-                <p className='mt-8 text-base leading-7 text-black/80 pt-6 border-t border-black/15'>
-                  Coaching is not therapy, advice-giving, or friendship — and it&apos;s not designed to make you dependent on a coach. The goal is always your
-                  own sovereignty and self-sufficiency.
-                </p>
               </div>
             </section>
 
