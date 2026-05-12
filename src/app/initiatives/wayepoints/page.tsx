@@ -160,10 +160,7 @@ const page = () => {
                   </div>
                 }
                 timeline={
-                  <span className='flex flex-col gap-1'>
-                    <span>6 sessions. 60 minutes each. Every 3 weeks.</span>
-                    <span className='font-medium'>1:1 coaching · Built for freedom tech builders</span>
-                  </span>
+                  <span>6 sessions. 60 minutes each. Every 3 weeks. Program runs June through November.</span>
                 }
                 tldr={
                   <span className='flex flex-col gap-3'>
@@ -276,6 +273,22 @@ const page = () => {
                     <p className='text-base leading-7 text-black/90'>
                       We practice healthy skepticism. Failure is data. Feelings are data. Discomfort is often information. We define goals, then test, observe,
                       and iterate.
+                    </p>
+                  </div>
+                  <div>
+                    <p className='text-base font-semibold leading-snug text-black mb-1.5'>Privacy matters</p>
+                    <p className='text-base leading-7 text-black/90'>
+                      Chatham House Rule by default. Two exceptions that you are agreeing to by participating: attendance is shared with HRF & Waye coaches may
+                      share internally. Full details{" "}
+                      <a
+                        href='https://wayedev.notion.site/wayepoints-operating-overview?source=copy_link'
+                        className='underline underline-offset-[0.2em] decoration-black/40 hover:decoration-black'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        here
+                      </a>
+                      .
                     </p>
                   </div>
                 </div>
