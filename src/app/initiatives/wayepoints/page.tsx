@@ -11,7 +11,7 @@ export const metadata = genPageMetadata({
   url: "https://waye.dev/initiatives/wayepoints",
 });
 
-/** Icon tiles — navy on cream (Everest); white wells on blue panels (same language as step numbers in “How it works”) */
+/** Icon tiles — navy on cream (Everest); white wells on blue panels (same language as step numbers in “Program overview”) */
 const IconTile = ({ children, onBluePanel = false }: { children: React.ReactNode; onBluePanel?: boolean }) => (
   <div
     className={cn(
@@ -227,10 +227,10 @@ const page = () => {
               </div>
             </section>
 
-            <section className='pt-2 sm:pt-4 pb-10 sm:pb-12' aria-label='How the program works'>
+            <section className='pt-2 sm:pt-4 pb-10 sm:pb-12' aria-label='Program overview'>
               <div className={cn(panelBlue, "sm:px-8 sm:py-9 md:px-10 md:py-10")}>
                 <div className='mb-8 md:mb-10'>
-                  <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black'>How it works</h2>
+                  <h2 className='text-xl sm:text-2xl font-medium leading-snug tracking-tight text-black'>Program overview</h2>
                   <p className='mt-2 text-sm font-medium uppercase tracking-[0.12em] text-black/60'>Interest → match → sessions → closing</p>
                 </div>
 
@@ -279,7 +279,7 @@ const page = () => {
                     <p className='text-base font-semibold leading-snug text-black mb-1.5'>Privacy matters</p>
                     <p className='text-base leading-7 text-black/90'>
                       Chatham House Rule by default. Two exceptions that you are agreeing to by participating: attendance is shared with HRF & Waye coaches may
-                      share internally. Full details{" "}
+                      share internally. More details{" "}
                       <a
                         href='https://wayedev.notion.site/wayepoints-operating-overview?source=copy_link'
                         className='underline underline-offset-[0.2em] decoration-black/40 hover:decoration-black'
@@ -293,25 +293,24 @@ const page = () => {
                   </div>
                 </div>
 
-                <h3 className='text-base sm:text-lg font-medium leading-snug text-black mb-3 pt-2 border-t border-black/15'>Your commitment</h3>
+                <h3 className='text-base sm:text-lg font-medium leading-snug text-black mb-3 pt-2 border-t border-black/15'>Participation</h3>
                 <div className='flex flex-col gap-5'>
                   <div>
-                    <p className='text-base font-semibold leading-snug text-black mb-1.5'>Show up</p>
+                    <p className='text-base font-semibold leading-snug text-black mb-1.5'>Show up ready</p>
                     <p className='text-base leading-7 text-black/90'>
-                      Check your calendar before you sign up. If you miss two sessions, you will be asked to leave.
+                      This program only works if you bring honesty to your coaching calls. If you do, you&apos;ll see results.
                     </p>
                   </div>
                   <div>
-                    <p className='text-base font-semibold leading-snug text-black mb-1.5'>Be present</p>
+                    <p className='text-base font-semibold leading-snug text-black mb-1.5'>Rescheduling is fine within reason</p>
                     <p className='text-base leading-7 text-black/90'>
-                      No homework. The container is simple: show up every month and fully engage for 60 minutes. If you do, you&apos;ll see results.
+                      Life happens. Rescheduling is fine, as long as you provide advance notice and sessions stay within the program timeline.
                     </p>
                   </div>
                   <div>
-                    <p className='text-base font-semibold leading-snug text-black mb-1.5'>Acknowledge your bandwidth</p>
+                    <p className='text-base font-semibold leading-snug text-black mb-1.5'>You can change coaches</p>
                     <p className='text-base leading-7 text-black/90'>
-                      This program creates leverage, but it requires activation energy. If your plate is already completely full, it may be better to wait until
-                      you can create space to engage meaningfully.
+                      If something isn&apos;t feeling right, you can switch coaches at any time.
                     </p>
                   </div>
                 </div>
