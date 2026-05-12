@@ -96,7 +96,7 @@ const page = () => {
   const coachingItems = [
     { icon: coachingStepIcon("1"), title: "Goal clarity", body: "Clarify the goal you want to move forward." },
     { icon: coachingStepIcon("2"), title: "Patterns & blind spots", body: "Identify patterns, constraints, or blind spots." },
-    { icon: coachingStepIcon("3"), title: "Perspectives", body: "Test new perspectives or approaches." },
+    { icon: coachingStepIcon("3"), title: "Perspectives", body: "Test new mental frameworks & strategic approaches." },
     { icon: coachingStepIcon("4"), title: "Next step", body: "Leave with a clear next step or experiment." },
   ] as const;
 
